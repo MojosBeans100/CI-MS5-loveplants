@@ -1,3 +1,20 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+
+
 #index-banner {
-    background-image: url();
+    height: calc(100vh - 80px);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648229681/LovePlants/Media/pexels-madison-inouye-1382392_n8gajn.jpg')
+}
+
+.navbar {
+    box-shadow: 0 0 1px rgb(177, 177, 177);
+}
+
+.navbar h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 55px;
+    letter-spacing: 1px;
 }
