@@ -34,6 +34,9 @@ class Category(models.Model):
         max_length=40
         )
 
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     def __str__(self):
         return self.name
 
@@ -45,6 +48,9 @@ class PlantCategory(models.Model):
     name = models.CharField(
         max_length=50
     )
+
+    class Meta:
+        verbose_name_plural = 'Plant Categories'
 
     def __str__(self):
         return self.name
