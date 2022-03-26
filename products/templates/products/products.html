@@ -4,10 +4,52 @@
 {% block content %}
 <div class="container-fluid border" style="margin-top: 80px;">
     <div class="row">
-        <div class="col-3">
-
+        <div class="col-md-3 order-md-first border border-dark p-3">
+            <div>
+                <button class="btn btn-dark w-100 text-left" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Button with data-bs-target<i class="fa-solid fa-sort-down"></i>
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <ul class="list-group">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A fourth item</li>
+                        <li class="list-group-item">And a fifth one</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <button class="btn btn-dark w-100" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                    Button with data-bs-target
+                </button>
+                <div class="collapse" id="collapseExample2">
+                    <ul class="list-group">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                        <li class="list-group-item">A fourth item</li>
+                        <li class="list-group-item">And a fifth one</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
         </div>
-        <div class="col-9">
+        <div class="col-md-9 border border-primary">
+            <div class="row">
+                <div class="col p-2">
+                    <p>&nbsp;&nbsp;{{all_products.count}} products</p>
+                </div>
+                <div class="col p-2 d-flex justify-content-end">
+                    <p>SORT</p>
+                    <select>
+                        <option value="dfsf">dfsdfd</option>
+                    </select>
+                </div>
+            </div>
             <div class="row">
                 {% for product in all_products %}
                 <div class="col-sm-6 col-lg-4 d-flex justify-content-center">
@@ -23,7 +65,7 @@
                 </div>
                 {% endfor %}
             </div>
-           
+
         </div>
     </div>
 </div>
