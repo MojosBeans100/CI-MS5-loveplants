@@ -18,6 +18,12 @@ maturity = (
     ('years', 'years'),
 )
 
+stock_options = (
+    ('in stock', 'In stock'),
+    ('out of stock', 'Out of stock'),
+    ('returning soon', 'Returning soon'),
+)
+
 
 class Category(models.Model):
     """
@@ -27,6 +33,18 @@ class Category(models.Model):
     name = models.CharField(
         max_length=40
         )
+
+    def __str__(self):
+        return self.name
+
+
+class PlantCategory(models.Model):
+    """
+    A class to define plant categories
+    """
+    name = models.CharField(
+        max_length=50
+    )
 
     def __str__(self):
         return self.name
@@ -42,6 +60,12 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         null=True
         )
+    plant_category = models.ForeignKey(
+        'PlantCategory',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
     name = models.CharField(
         max_length=100
         )
@@ -63,13 +87,40 @@ class Product(models.Model):
         null=True,
         blank=True
         )
-    image_url = CloudinaryField(
-        'image',
-        default='placeholder'
-        )
+    image1_source = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True
+    )
+    image1_source_url = models.URLField(
+        max_length=400,
+        null=True,
+        blank=True
+    )
+    image2_source = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True
+    )
+    image2_source_url = models.URLField(
+        max_length=400,
+        null=True,
+        blank=True
+    )
+    image3_source = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True
+    )
+    image3_source_url = models.URLField(
+        max_length=400,
+        null=True,
+        blank=True
+    )
     price = models.DecimalField(
         decimal_places=2,
-        max_digits=6
+        max_digits=6,
+        verbose_name='Price (£)'
         )
     stock_quantity = models.PositiveIntegerField(
         null=True,
@@ -77,15 +128,18 @@ class Product(models.Model):
         )
     pot_size = models.PositiveIntegerField(
         null=True,
-        blank=True
+        blank=True,
+        verbose_name='Pot size (cm)'
         )
     height = models.PositiveIntegerField(
         null=True,
-        blank=True
+        blank=True,
+        verbose_name='Height (cm)'
         )
     length = models.PositiveIntegerField(
         null=True,
-        blank=True
+        blank=True,
+        verbose_name='Length (cm)'
         )
     maturity_num = models.PositiveIntegerField(
         null=True,
@@ -109,11 +163,16 @@ class Product(models.Model):
         null=True,
         blank=True
         )
-    care_required = models.BooleanField(
+    care_required = models.CharField(
         choices=care_demand,
+        max_length=50,
         null=True,
         blank=True
         )
+    care_instructions = models.TextField(
+        null=True,
+        blank=True
+    )
     rare = models.BooleanField(
         null=True,
         blank=True
@@ -122,14 +181,11 @@ class Product(models.Model):
         null=True,
         blank=True
         )
-    out_of_stock = models.BooleanField(
-        null=True,
-        blank=True
-        )
-    returning_soon = models.BooleanField(
-        null=True,
-        blank=True
-        )
+    stock = models.CharField(
+        choices=stock_options,
+        max_length=100,
+        default='out of stock'
+    )
 
     class Meta:
         ordering = ['-stock_quantity']
