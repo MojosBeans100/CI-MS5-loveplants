@@ -2,5 +2,19 @@
 {% load static %}
 
 {% block content %}
-{{all_products}}
+<div class="container border" style="height: 500px; margin-top: 80px;">
+    <div class="row">
+        {% for product in all_products %}
+        <div class="card text-center border-0" style="width: 20rem;">
+            <img src="{{product.image1_source_url}}" class="card-img-top rounded-0" alt="{{product.friendly_name}} product image">
+            <div class="card-body">
+                <h5 class="card-title">{{product.friendly_name}}</h5>
+                <p class="card-text">£{{product.price}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock %}

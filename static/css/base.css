@@ -22,3 +22,8 @@ body {
     font-size: 55px;
     letter-spacing: 1px;
 }
+
+/* ALL PRODUCTS */
+.card-img-top {
+    height: 300px;
+}
