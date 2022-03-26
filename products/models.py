@@ -173,6 +173,16 @@ class Product(models.Model):
         null=True,
         blank=True
     )
+    care_instructions_source = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True
+    )
+    care_instructions_url = models.URLField(
+        max_length=400,
+        null=True,
+        blank=True
+    )
     rare = models.BooleanField(
         null=True,
         blank=True
