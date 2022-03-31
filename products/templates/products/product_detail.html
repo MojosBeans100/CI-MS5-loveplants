@@ -2,6 +2,22 @@
 {% load static %}
 
 {% block content %}
+<div class="container border">
+    <div class="row">
+        <!-- LH for pics -->
+        <div class="col">
+            <img class="detail_image" src="{{ product.image1_source_url }}">
+        </div>
+        <!-- RH for detail -->
+        <div class="col">
+            <h2>{{product.friendly_name}}</h2>
+            <p>{{product.latin_name}}</p>
+            <hr>
+            <h4>£{{product.price}}</h4>
+            <br>
+            <p>{{product.description}} <small>(<a href="{{product.description_url}}" target="_blank">{{product.description_source}}</a>)</small></p>
+        </div>
+    </div>
+</div>
 
-{{product}}
 {% endblock content %}

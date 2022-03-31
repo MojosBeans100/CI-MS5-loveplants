@@ -36,3 +36,9 @@
 button {
     text-align: left !important;
 }
+
+/* PRODUCT DETAIL */
+.detail_image {
+    height: 600px;
+    width: 600px;
+}
