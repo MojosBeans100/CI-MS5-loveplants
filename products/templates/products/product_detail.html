@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container border">
+<div class="container py-5">
     <div class="row">
         <!-- LH for pics -->
         <div class="col">
@@ -11,12 +11,37 @@
         <!-- RH for detail -->
         <div class="col">
             <h2>{{product.friendly_name}}</h2>
-            <p>{{product.latin_name}}</p>
+            <p class="fst-italic">{{product.latin_name|lower}}</p>
+            <p class="text-center"> 
+                {% if product.rare == True %}
+                <i class="px-3 fa-solid fa-gem"></i>Rare
+                {% endif %}
+                {% if product.popular == True %}
+                <i class="px-3 fa-solid fa-bolt"></i>Popular
+                {% endif %}</p>
             <hr>
-            <h4>£{{product.price}}</h4>
+            <div class="row">
+                <div class="col">
+                    <h4>£{{product.price}}</h4>
+                </div>
+                <div class="col"></div>
+            </div>
             <br>
-            <p>{{product.description}} <small>(<a href="{{product.description_url}}" target="_blank">{{product.description_source}}</a>)</small></p>
+            <p>"{{product.description}}" <small><a href="{{product.description_url}}"
+                        target="_blank">{{product.description_source}}</a></small></p>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item border-0" title="Plant maturity"><i class="px-3 fa-solid fa-seedling"></i>{{product.maturity_num}}
+                    {{product.maturity_time}}</li>
+                <li class="list-group-item border-0" title="Watering frequency"><i class="px-3 fa-solid fa-droplet"></i>{{product.watering}}</li>
+                <li class="list-group-item border-0" title="Sunlight"><i class="px-3 fa-solid fa-sun"></i>{{product.sunlight}}</li>
+            </ul>
         </div>
+    </div>
+    <div class="py-4 row">
+        <h4>Care Instructions</h4>
+        <p>"{{product.care_instructions}}" <small><a href="{{product.care_instructions_url}}"
+                    target="_blank">{{product.care_instructions_source}}</a></small></p>
     </div>
 </div>
 
