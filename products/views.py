@@ -25,8 +25,16 @@ def product_detail(request, id):
 
     product = Product.objects.get(id=id)
 
+    if product.rare is True:
+        rare_products = Product.objects.filter(rare=True).exclude(id=id)
+
+    if product.popular is True:
+        popular_products = Product.objects.filter(popular=True).exclude(id=id)
+
     context = {
-        'product': product
+        'product': product,
+        'rare_products': rare_products,
+        'popular_products': popular_products,
     }
 
     return render(request, 'products/product_detail.html', context)

@@ -26,13 +26,13 @@
                 </div>
                 <div class="d-flex align-items-center col-8">
                     <button type="button" class="mx-2 btn btn-outline-secondary btn-sm"><large>-</large></button>
-                    <input type="number" min=0 max=4>
+                    <input class="text-center" type="number" min=0 max=4 value=1>
                     <button type="button" class="mx-2 btn btn-outline-secondary btn-sm"><large>+</large></button>
                     <button type="button" class="mx-2 btn btn-outline-secondary">Add to basket</button>
                 </div>
             </div>
             <br>
-            <p>"{{product.description}}" <small><a href="{{product.description_url}}"
+            <p>{{product.description}} <small><a href="{{product.description_url}}"
                         target="_blank">{{product.description_source}}</a></small></p>
             <hr>
             <table class="table table-borderless">
@@ -69,6 +69,39 @@
         <p>"{{product.care_instructions}}" <small><a href="{{product.care_instructions_url}}"
                     target="_blank">{{product.care_instructions_source}}</a></small></p>
     </div>
+    <hr>
+    <div class="py-4 row">
+        <h3 class="text-center">You may also like</h3>
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+
+    <!-- if product is rare, list other rare products -->
+    {% if product.rare == True %}
+    <div class="my-4 row">
+        <h4>See other rare products</h4>
+        {% for rare in rare_products %}
+        <div class="col-3">
+            <img style="width:100%; height:80%" class="p-3" src="{{rare.image1_source_url}}">
+            <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if product.popular == True %}
+    <!-- if product is popular, list other popular products -->
+    <div class="my-4 row">
+        <h4>See other popular products</h4>
+        {% for popular in popular_products %}
+        <div class="col-3">
+            <img style="width:100%; height:80%" class="p-3" src="{{popular.image1_source_url}}">
+            <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}
