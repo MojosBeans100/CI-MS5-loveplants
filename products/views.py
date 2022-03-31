@@ -1,6 +1,7 @@
 
 # import Django
 from django.shortcuts import render
+from django.db.models import Q
 
 # import local
 from products.models import Product
@@ -11,6 +12,13 @@ def all_products(request):
     """
 
     all_products = Product.objects.all()
+
+    if 'q' in request.GET:
+        search_query = request.GET['q']
+        # if not search_query:
+
+        search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
+        all_products = all_products.filter(search_queries)
 
     context = {
         'all_products': all_products
