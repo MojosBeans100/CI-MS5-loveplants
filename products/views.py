@@ -26,10 +26,14 @@ def product_detail(request, id):
     product = Product.objects.get(id=id)
 
     if product.rare is True:
-        rare_products = Product.objects.filter(rare=True).exclude(id=id)
+        rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
+    else:
+        rare_products = ""
 
     if product.popular is True:
-        popular_products = Product.objects.filter(popular=True).exclude(id=id)
+        popular_products = Product.objects.filter(popular=True).exclude(id=id)[0:4]
+    else:
+        popular_products = ""
 
     context = {
         'product': product,
