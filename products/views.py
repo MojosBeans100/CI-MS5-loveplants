@@ -17,3 +17,17 @@ def all_products(request):
     }
 
     return render(request, 'products/products.html', context)
+
+
+def product_detail(request, id):
+    """
+    """
+
+    product = Product.objects.get(id=id)
+
+    context = {
+        'product': product
+    }
+
+    return render(request, 'products/product_detail.html', context)
+

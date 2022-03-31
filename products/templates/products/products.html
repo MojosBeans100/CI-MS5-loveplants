@@ -5,18 +5,17 @@
 <div class="container-fluid border" style="margin-top: 80px;">
     <div class="row">
         <div class="col-md-3 order-md-first border border-dark p-3">
+            <h5 class="text-center">Filter</h5>
             <div>
-                <button class="btn btn-dark w-100 text-left" type="button" data-bs-toggle="collapse"
+                <button class="btn w-100" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                    Button with data-bs-target<i class="fa-solid fa-sort-down"></i>
+                    Availability
                 </button>
                 <div class="collapse" id="collapseExample">
                     <ul class="list-group">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                        <li class="list-group-item">A fourth item</li>
-                        <li class="list-group-item">And a fifth one</li>
+                        <li class="list-group-item">In stock</li>
+                        <li class="list-group-item">Out of stock</li>
+                        <li class="list-group-item">Returning soon</li>
                     </ul>
                 </div>
             </div>
@@ -53,11 +52,11 @@
             <div class="row">
                 {% for product in all_products %}
                 <div class="col-sm-6 col-lg-4 d-flex justify-content-center">
-                    <div class="card text-center border-0" style="width: 18rem;">
+                    <div class="card text-center border-0" style="width: 20rem;">
                         <img src="{{product.image1_source_url}}" class="card-img-top rounded-0"
                             alt="{{product.friendly_name}} product image">
                         <div class="card-body">
-                            <h5 class="card-title">{{product.friendly_name|upper}}</h5>
+                            <a href="{% url 'product_detail' product.id %}"><h5 class="card-title">{{product.friendly_name|upper}}</h5></a>
                             <p><em><small>{{product.latin_name}}</small></em></p>
                             <p class="card-text">£{{product.price}}</p>
                         </div>
