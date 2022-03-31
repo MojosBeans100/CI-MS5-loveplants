@@ -1,10 +1,15 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
 /* body {
     max-height: 100vh;
     overflow: hidden;
 } */
+
+/* GENERAL */
+a {
+    text-decoration: none;
+    color: black;
+}
 
 #index-banner {
     height: calc(100vh - 90px);
@@ -25,12 +30,31 @@
 
 /* ALL PRODUCTS */
 .card-img-top {
-    /* height: 320px; */
-    image-rendering: -moz-crisp-edges;         /* Firefox */
-  image-rendering:   -o-crisp-edges;         /* Opera */
-  image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;
+    height: 320px;
+    image-rendering: -moz-crisp-edges;
+    /* Firefox */
+    image-rendering: -o-crisp-edges;
+    /* Opera */
+    image-rendering: -webkit-optimize-contrast;
+    /* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+.card-img-top:hover {
+    opacity: 0.6;
+}
+
+#product-out-of-stock {
+    opacity: 0.2;
+}
+
+#oos-image-banner {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bolder;
 }
 
 button {
@@ -42,4 +66,3 @@ button {
     height: 600px;
     width: 600px;
 }
-

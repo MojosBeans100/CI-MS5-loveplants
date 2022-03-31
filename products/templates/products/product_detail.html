@@ -10,7 +10,7 @@
         </div>
         <!-- RH for detail -->
         <div class="col">
-            <h2>{{product.friendly_name}}</h2>
+            <h2>{{product.friendly_name}} {% if product.stock == "out of stock" %}(out of stock){% else %}{% endif %}</h2>
             <p class="fst-italic">{{product.latin_name|lower}}</p>
             <p class="text-center"> 
                 {% if product.rare == True %}
@@ -28,10 +28,17 @@
                     <h4>£ {{product.price}}</h4>
                 </div>
                 <div class="d-flex align-items-center col-8">
+                    {% if product.stock == "out of stock" %}
+                    <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm"><large>-</large></button>
+                    <input class="text-center" disabled type="number" min=0 max=4>
+                    <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm"><large>+</large></button>
+                    <button type="button" disabled class="mx-2 btn btn-outline-secondary">Add to basket</button>
+                    {% else %}
                     <button type="button" class="mx-2 btn btn-outline-secondary btn-sm"><large>-</large></button>
                     <input class="text-center" type="number" min=0 max=4 value=1>
                     <button type="button" class="mx-2 btn btn-outline-secondary btn-sm"><large>+</large></button>
                     <button type="button" class="mx-2 btn btn-outline-secondary">Add to basket</button>
+                    {% endif %}
                 </div>
             </div>
             <br>
