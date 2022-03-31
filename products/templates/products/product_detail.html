@@ -6,7 +6,7 @@
     <div class="row">
         <!-- LH for pics -->
         <div class="col">
-            <img class="detail_image" src="{{ product.image1_source_url }}">
+            <img class="detail_image" src="{{ product.image1_source_url }}" title="Image credit: {{product.image1_source}}">
         </div>
         <!-- RH for detail -->
         <div class="col">
@@ -30,12 +30,33 @@
             <p>"{{product.description}}" <small><a href="{{product.description_url}}"
                         target="_blank">{{product.description_source}}</a></small></p>
             <hr>
-            <ul class="list-group">
-                <li class="list-group-item border-0" title="Plant maturity"><i class="px-3 fa-solid fa-seedling"></i>{{product.maturity_num}}
-                    {{product.maturity_time}}</li>
-                <li class="list-group-item border-0" title="Watering frequency"><i class="px-3 fa-solid fa-droplet"></i>{{product.watering}}</li>
-                <li class="list-group-item border-0" title="Sunlight"><i class="px-3 fa-solid fa-sun"></i>{{product.sunlight}}</li>
-            </ul>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td class="text-end"><i class="px-3 fa-solid fa-ruler-horizontal" title="Pot diameter"></i></td>
+                        <td class="text-start">{{product.pot_size}} cm</td>
+                        {% if product.height %}
+                        <td class="text-end"><i class="px-3 fa-solid fa-ruler-vertical" title="Plant height"></i></td>
+                        <td class="text-start">{{product.height}} cm</td>
+                        {% else %}
+                        <td class="text-end"><i class="px-3 fa-solid fa-ruler-vertical" title="Plant length"></i></td>
+                        <td class="text-start">{{product.length}} cm</td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        <td class="text-end"><i class="px-3 fa-solid fa-seedling" title="Plant maturity"></i></td>
+                        <td class="text-start">{{product.maturity_num}} {{product.maturity_time}}</td>
+                        <td class="text-end"><i class="px-3 fa-solid fa-droplet" title="Watering frequency"></i></td>
+                        <td class="text-start">{{product.watering}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-end"><i class="px-3 fa-solid fa-sun" title="Sunlight"></i></td>
+                        <td class="text-start">{{product.sunlight}}</td>
+                        <td class="text-end"><i class="px-3 fa-solid fa-hand-holding-heart" title="Care difficulty"></i></td>
+                        <td class="text-start">{{product.care_required}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="py-4 row">
