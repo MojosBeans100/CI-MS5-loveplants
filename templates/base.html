@@ -57,9 +57,9 @@
               Shop
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Plants</a></li>
-              <li><a class="dropdown-item" href="#">Pots</a></li>
-              <li><a class="dropdown-item" href="#">Accessories</a></li>
+              <li><a class="dropdown-item" href="{% url 'products' %}?category=Plants">Plants</a></li>
+              <li><a class="dropdown-item" href="{% url 'products' %}?category=Pots">Pots</a></li>
+              <li><a class="dropdown-item" href="{% url 'products' %}?category=Accessories">Accessories</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
