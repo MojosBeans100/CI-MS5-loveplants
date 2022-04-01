@@ -25,7 +25,7 @@ class ProductReviewAdmin(admin.ModelAdmin):
         'rating',
         'review_time',
     )
-
+    
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -38,6 +38,7 @@ class ProductAdmin(admin.ModelAdmin):
         'price',
         'stock',
         'popular',
+        'average_rating',
     )
 
     list_filter = ('category', 'stock')

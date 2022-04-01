@@ -6,14 +6,23 @@
     <div class="row">
         <!-- LH for pics -->
         <div class="col">
-            <img class="detail_image" src="{{ product.image1_source_url }}" title="Image credit: {{product.image1_source}}">
+            <img class="detail_image" src="{{ product.image1_source_url }}"
+                title="Image credit: {{product.image1_source}}">
         </div>
         <!-- RH for detail -->
         <div class="col">
-            <h2>{{product.friendly_name}} {% if product.stock == "out of stock" %}(out of stock){% else %}{% endif %}</h2>
+            <h2>{{product.friendly_name}} {% if product.stock == "out of stock" %}(out of stock){% else %}{% endif %}
+            </h2>
             {% if product.plant_category %}
-            <p class="fst-italic">{{product.latin_name|lower}}</p>
-            <p class="text-center"> 
+            <div class="row">
+                <div class="col">
+                    <p class="fst-italic">{{product.latin_name|lower}}</p>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
+            <p class="text-center">
                 {% if product.rare == True %}
                 <i class="ps-4 pe-2 fa-solid fa-gem"></i>Rare
                 {% endif %}
@@ -32,14 +41,22 @@
                 </div>
                 <div class="d-flex align-items-center col-8">
                     {% if product.stock == "out of stock" %}
-                    <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm"><large>-</large></button>
+                    <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm">
+                        <large>-</large>
+                    </button>
                     <input class="text-center" disabled type="number" min=0 max=4>
-                    <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm"><large>+</large></button>
+                    <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm">
+                        <large>+</large>
+                    </button>
                     <button type="button" disabled class="mx-2 btn btn-outline-secondary">Add to basket</button>
                     {% else %}
-                    <button type="button" class="mx-2 btn btn-outline-secondary btn-sm"><large>-</large></button>
+                    <button type="button" class="mx-2 btn btn-outline-secondary btn-sm">
+                        <large>-</large>
+                    </button>
                     <input class="text-center" type="number" min=0 max=4 value=1>
-                    <button type="button" class="mx-2 btn btn-outline-secondary btn-sm"><large>+</large></button>
+                    <button type="button" class="mx-2 btn btn-outline-secondary btn-sm">
+                        <large>+</large>
+                    </button>
                     <button type="button" class="mx-2 btn btn-outline-secondary">Add to basket</button>
                     {% endif %}
                 </div>
@@ -71,13 +88,36 @@
                     <tr>
                         <td class="text-end"><i class="px-3 fa-solid fa-sun" title="Sunlight"></i></td>
                         <td class="text-start">{{product.sunlight}}</td>
-                        <td class="text-end"><i class="px-3 fa-solid fa-hand-holding-heart" title="Care difficulty"></i></td>
+                        <td class="text-end"><i class="px-3 fa-solid fa-hand-holding-heart" title="Care difficulty"></i>
+                        </td>
                         <td class="text-start">{{product.care_required}}</td>
                     </tr>
                 </tbody>
             </table>
             {% else %}
             {% endif %}
+
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td> <i class="fa-solid fa-star"></i></td>
+                                <td> <i class="fa-solid fa-star"></i></td>
+                                <td> <i class="fa-solid fa-star"></i></td>
+                                <td><i class="fa-solid fa-star-half"></i></td>
+                                <td>4.5/5</td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-center"><small><a href="#product-review-title">({{reviews.count}} reviews)</a></small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col"></div>
+
+            </div>
         </div>
     </div>
     {% if product.plant_category %}
@@ -116,7 +156,9 @@
         {% for popular in popular_products %}
         <div class="col-3">
             <img style="width:100%; height:80%" class="p-3" src="{{popular.image1_source_url}}">
-            <a href="{% url 'product_detail' popular.id %}"><p class="text-center"><strong>{{popular.friendly_name}}</strong></p></a>
+            <a href="{% url 'product_detail' popular.id %}">
+                <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
+            </a>
         </div>
         {% endfor %}
     </div>
@@ -134,6 +176,32 @@
         {% endfor %}
     </div>
     {% endif %} -->
+
+    {% if reviews %}
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-8 py-3 border">
+            <h2 class="text-center" id="product-review-title">Reviews</h2>
+            {% for review in reviews %}
+            <div class="row">
+                <div class="col">
+                    <p>{{review.review}} {{review.rating}}</p>
+                    <p><small><em>{{review.user}}</em></small></p>
+                </div>
+                <div class="col text-end">
+                    <p>{{review.review_time}}</p>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+    {% else %}
+
+    {% endif %}
 </div>
 
 {% endblock content %}

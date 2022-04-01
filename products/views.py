@@ -4,7 +4,10 @@ from django.shortcuts import render
 from django.db.models import Q
 
 # import local
-from products.models import Product, Category
+from products.models import (
+                    Product,
+                    Category,
+                    ProductReview)
 
 
 def all_products(request):
@@ -55,11 +58,14 @@ def product_detail(request, id):
     # else:
     #     easy_products = ""
 
+    product_reviews = ProductReview.objects.filter(product=product.id)
+
     context = {
         'product': product,
         'rare_products': rare_products,
         'popular_products': popular_products,
         #'easy_care': easy_products,
+        'reviews': product_reviews,
     }
 
     return render(request, 'products/product_detail.html', context)

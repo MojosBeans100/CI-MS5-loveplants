@@ -211,6 +211,11 @@ class Product(models.Model):
         max_length=100,
         default='out of stock'
     )
+    average_rating = models.DecimalField(
+        decimal_places=2,
+        max_digits=6,
+        null=True
+    )
 
     class Meta:
         ordering = ['-stock_quantity']
@@ -265,5 +270,5 @@ class ProductReview(models.Model):
         null=True
     )
 
-    def __str__(self):
-        return self.product
+    # def __str__(self):
+    #     return self.product
