@@ -7,7 +7,8 @@ from django.db.models import Q
 from products.models import (
                     Product,
                     Category,
-                    ProductReview)
+                    ProductReview,
+                    PlantCategory)
 
 
 def all_products(request):
@@ -15,9 +16,11 @@ def all_products(request):
     """
 
     all_products = Product.objects.all()
+    plant_categories = PlantCategory.objects.all()
     search_query = None
     category = None
     stock = None
+    plant_cats = None
 
     if request.GET:
         if 'category' in request.GET:
@@ -27,8 +30,25 @@ def all_products(request):
 
         if 'stock' in request.GET:
             stock_opt = request.GET['stock'].replace('_', ' ')
-            print(stock_opt)
             all_products = all_products.filter(stock=stock_opt)
+
+        if 'plant_cats' in request.GET:
+            plant_cat = request.GET['plant_cats']
+            plant_cat_id = PlantCategory.objects.get(name=plant_cat)
+            all_products = all_products.filter(plant_category=plant_cat_id)
+
+        if 'price' in request.GET:
+            price = request.GET['price'].split(',')
+            if len(price) > 1:
+                price_low = price[0]
+                price_high = price[1]
+                all_products = all_products.filter(
+                                    price__gte=price_low,
+                                    price__lte=price_high
+                                    )
+            else:
+                price_low = price[0]
+                all_products = all_products.filter(price__gte=price_low)
 
         if 'q' in request.GET:
             search_query = request.GET['q']
@@ -36,7 +56,8 @@ def all_products(request):
             all_products = all_products.filter(search_queries)
 
     context = {
-        'all_products': all_products
+        'all_products': all_products,
+        'plant_cats': plant_categories,
     }
 
     return render(request, 'products/products.html', context)

@@ -6,6 +6,8 @@
     <div class="row">
         <div class="col-md-3 order-md-first border border-dark p-3">
             <h5 class="text-center">Filter</h5>
+
+            <!-- availability filter -->
             <div>
                 <button class="btn w-100" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -20,18 +22,36 @@
                 </div>
             </div>
             <hr>
+
+            <!-- plant category filter -->
             <div>
-                <button class="btn btn-dark w-100" type="button" data-bs-toggle="collapse"
+                <button class="btn w-100" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-                    Button with data-bs-target
+                    Plant Type
                 </button>
                 <div class="collapse" id="collapseExample2">
                     <ul class="list-group">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                        <li class="list-group-item">A fourth item</li>
-                        <li class="list-group-item">And a fifth one</li>
+                        {% for plant_cat in plant_cats %}
+                        <a href="{% url 'products' %}?plant_cats={{plant_cat.name}}"><li class="list-group-item">{{plant_cat.name}}</li></a>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <hr>
+
+            <!-- price filter -->
+            <div>
+                <button class="btn w-100" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                    Price
+                </button>
+                <div class="collapse" id="collapseExample3">
+                    <ul class="list-group">
+                        <a href="{% url 'products' %}?price=0,20"><li class="list-group-item">£0 - £20</li></a>
+                        <a href="{% url 'products' %}?price=20,30"><li class="list-group-item">£20 - £30</li></a>
+                        <a href="{% url 'products' %}?price=30,40"><li class="list-group-item">£30 - £40</li></a>
+                        <a href="{% url 'products' %}?price=40,50"><li class="list-group-item">£40 - £50</li></a>
+                        <a href="{% url 'products' %}?price=50"><li class="list-group-item">> £50</li></a>
                     </ul>
                 </div>
             </div>
