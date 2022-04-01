@@ -13,9 +13,9 @@
                 </button>
                 <div class="collapse" id="collapseExample">
                     <ul class="list-group">
-                        <li class="list-group-item">In stock</li>
-                        <li class="list-group-item">Out of stock</li>
-                        <li class="list-group-item">Returning soon</li>
+                        <a href="{% url 'products' %}?stock=in_stock"><li class="list-group-item">In stock</li></a>
+                        <a href="{% url 'products' %}?stock=out_of_stock"><li class="list-group-item">Out of stock</li></a>
+                        <a href="{% url 'products' %}?stock=returning_soon"><li class="list-group-item">Returning soon</li></a>
                     </ul>
                 </div>
             </div>
@@ -52,7 +52,7 @@
             <div class="row">
                 {% for product in all_products %}
                 <div class="col-sm-6 col-lg-4 d-flex justify-content-center">
-                    <div class="card text-center border-0" style="width: 20rem;">
+                    <div class="card text-center border-0 py-3" style="width: 20rem;">
                         {% if product.stock == 'out of stock' %}
                         <a href="{% url 'product_detail' product.id %}">
                             <div>

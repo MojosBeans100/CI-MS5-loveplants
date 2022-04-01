@@ -17,13 +17,18 @@ def all_products(request):
     all_products = Product.objects.all()
     search_query = None
     category = None
+    stock = None
 
     if request.GET:
         if 'category' in request.GET:
             categories = request.GET['category']
             category_id = Category.objects.get(name=categories)
             all_products = all_products.filter(category=category_id.id)
-            print(all_products)
+
+        if 'stock' in request.GET:
+            stock_opt = request.GET['stock'].replace('_', ' ')
+            print(stock_opt)
+            all_products = all_products.filter(stock=stock_opt)
 
         if 'q' in request.GET:
             search_query = request.GET['q']

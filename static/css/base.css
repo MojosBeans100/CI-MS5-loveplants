@@ -64,5 +64,9 @@ button {
 /* PRODUCT DETAIL */
 .detail_image {
     height: 600px;
-    width: 600px;
+    width: 100%;
+}
+
+.product_detail_alt_img:hover {
+    opacity: 0.6;
 }
