@@ -127,8 +127,7 @@
                                 <td><i class="fa-regular fa-star"></i></td>
                             </tr>
                             <tr>
-                                <td colspan="5" class="text-center"><small><a
-                                            href="#product-review-title">({{reviews.count}} reviews)</a></small></td>
+                                <td colspan="5" class="text-center"><small>({{reviews.count}} reviews)</small></td>
                             </tr>
                             {% else %}
                             <tr>
@@ -199,18 +198,33 @@
     </div>
     {% endif %}
 
-    <!-- {% if product.care_required == 'low' %}
-  
+    {% if product.care_required == 'low' %}
     <div class="my-4 row">
         <h4>See other easy care products</h4>
         {% for easy in easy_care %}
         <div class="col-3">
             <img style="width:100%; height:80%" class="p-3" src="{{easy.image1_source_url}}">
-            <a href="{% url 'product_detail' popular.id %}"><p class="text-center"><strong>{{easy.friendly_name}}</strong></p></a>
+            <a href="{% url 'product_detail' easy.id %}"><p class="text-center"><strong>{{easy.friendly_name}}</strong></p></a>
         </div>
         {% endfor %}
     </div>
-    {% endif %} -->
+    {% endif %}
+
+    <!-- if product is rare, list other rare products -->
+    {% if recently_viewed %}
+    <div class="my-4 row">
+        <h4>Recently viewed products</h4>
+        {% for recent in recently_viewed %}
+        <div class="col-3">
+            <a href="{% url 'product_detail' recent.id %}"><img style="width:100%; height:80%" class="p-3"
+                    src="{{recent.image1_source_url}}"></a>
+            <a href="{% url 'product_detail' recent.id %}">
+                <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
     {% if reviews %}
     <div class="row">
