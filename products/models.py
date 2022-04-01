@@ -26,11 +26,11 @@ stock_options = (
 )
 
 rating = (
-    ('1', 1),
-    ('2', 2),
-    ('3', 3),
-    ('4', 4),
-    ('5', 5),
+    (1, '1'),
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
 )
 
 
@@ -259,3 +259,11 @@ class ProductReview(models.Model):
         choices=rating,
         default=5
         )
+
+    review_time = models.DateTimeField(
+        auto_now_add=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.product
