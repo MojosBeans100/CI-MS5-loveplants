@@ -72,7 +72,10 @@
                             alt="{{product.friendly_name}} product image"></a>
                         <div class="card-body">
                             <a href="{% url 'product_detail' product.id %}"><h5 class="card-title">{{product.friendly_name|upper}}</h5></a>
+                            {% if product.latin_name %}
                             <p><em><small>{{product.latin_name}}</small></em></p>
+                            {% else %}
+                            {% endif %}
                             <p class="card-text">£{{product.price}}</p>
                         </div>
                         {% endif %}

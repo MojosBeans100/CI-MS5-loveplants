@@ -50,10 +50,16 @@ def product_detail(request, id):
     else:
         popular_products = ""
 
+    # if product.care_required == 'low':
+    #     easy_products = Product.objects.filter(care_required='low').exclude(id=id)[0:4]
+    # else:
+    #     easy_products = ""
+
     context = {
         'product': product,
         'rare_products': rare_products,
         'popular_products': popular_products,
+        #'easy_care': easy_products,
     }
 
     return render(request, 'products/product_detail.html', context)

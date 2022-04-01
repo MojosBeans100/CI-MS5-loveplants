@@ -1,5 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 sun_or_water = (
     ('low', 'low'),
@@ -22,6 +23,14 @@ stock_options = (
     ('in stock', 'In stock'),
     ('out of stock', 'Out of stock'),
     ('returning soon', 'Returning soon'),
+)
+
+rating = (
+    ('1', 1),
+    ('2', 2),
+    ('3', 3),
+    ('4', 4),
+    ('5', 5),
 )
 
 
@@ -208,3 +217,45 @@ class Product(models.Model):
 
     def __str__(self):
         return self.friendly_name
+
+
+class RecentlyViewed(models.Model):
+    """
+    """
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE
+        )
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE
+        )
+
+    viewed = models.DateTimeField()
+
+
+class ProductReview(models.Model):
+    """
+    """
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True
+        )
+
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE
+        )
+
+    review = models.TextField(
+        max_length=250,
+        null=False,
+        blank=False
+        )
+
+    rating = models.IntegerField(
+        choices=rating,
+        default=5
+        )
