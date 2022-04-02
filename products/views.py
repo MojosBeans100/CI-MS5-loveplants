@@ -24,8 +24,25 @@ def all_products(request):
     category = None
     stock = None
     plant_cats = None
+    sort = None
+    direction = None
 
     if request.GET:
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+
+            # if sortkey == 'name':
+            #     sortkey == 'lower_name'
+            #     all_products = all_products.annotate(lower_name=Lower('name'))
+
+            if 'direction' in request.GET:
+                direction = request.GET['direction']
+                if direction == 'desc':
+                    sortkey = f'-{sortkey}'
+            all_products = all_products.order_by(sortkey)
+
         if 'category' in request.GET:
             categories = request.GET['category']
             category_id = Category.objects.get(name=categories)
@@ -58,9 +75,12 @@ def all_products(request):
             search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
             all_products = all_products.filter(search_queries)
 
+    current_sorting = f'{sort}_{direction}'
+
     context = {
         'all_products': all_products,
         'plant_cats': plant_categories,
+        'current_sorting': current_sorting,
     }
 
     return render(request, 'products/products.html', context)

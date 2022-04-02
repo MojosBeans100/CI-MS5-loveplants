@@ -9,15 +9,21 @@
 
             <!-- availability filter -->
             <div>
-                <button class="btn w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                    aria-expanded="false" aria-controls="collapseExample">
                     Availability
                 </button>
                 <div class="collapse" id="collapseExample">
                     <ul class="list-group">
-                        <a href="{% url 'products' %}?stock=in_stock"><li class="list-group-item">In stock</li></a>
-                        <a href="{% url 'products' %}?stock=out_of_stock"><li class="list-group-item">Out of stock</li></a>
-                        <a href="{% url 'products' %}?stock=returning_soon"><li class="list-group-item">Returning soon</li></a>
+                        <a href="{% url 'products' %}?stock=in_stock">
+                            <li class="list-group-item">In stock</li>
+                        </a>
+                        <a href="{% url 'products' %}?stock=out_of_stock">
+                            <li class="list-group-item">Out of stock</li>
+                        </a>
+                        <a href="{% url 'products' %}?stock=returning_soon">
+                            <li class="list-group-item">Returning soon</li>
+                        </a>
                     </ul>
                 </div>
             </div>
@@ -25,14 +31,16 @@
 
             <!-- plant category filter -->
             <div>
-                <button class="btn w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2"
+                    aria-expanded="false" aria-controls="collapseExample">
                     Plant Type
                 </button>
                 <div class="collapse" id="collapseExample2">
                     <ul class="list-group">
                         {% for plant_cat in plant_cats %}
-                        <a href="{% url 'products' %}?plant_cats={{plant_cat.name}}"><li class="list-group-item">{{plant_cat.name}}</li></a>
+                        <a href="{% url 'products' %}?plant_cats={{plant_cat.name}}">
+                            <li class="list-group-item">{{plant_cat.name}}</li>
+                        </a>
                         {% endfor %}
                     </ul>
                 </div>
@@ -41,17 +49,27 @@
 
             <!-- price filter -->
             <div>
-                <button class="btn w-100" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3"
+                    aria-expanded="false" aria-controls="collapseExample">
                     Price
                 </button>
                 <div class="collapse" id="collapseExample3">
                     <ul class="list-group">
-                        <a href="{% url 'products' %}?price=0,20"><li class="list-group-item">£0 - £20</li></a>
-                        <a href="{% url 'products' %}?price=20,30"><li class="list-group-item">£20 - £30</li></a>
-                        <a href="{% url 'products' %}?price=30,40"><li class="list-group-item">£30 - £40</li></a>
-                        <a href="{% url 'products' %}?price=40,50"><li class="list-group-item">£40 - £50</li></a>
-                        <a href="{% url 'products' %}?price=50"><li class="list-group-item">> £50</li></a>
+                        <a href="{% url 'products' %}?price=0,20">
+                            <li class="list-group-item">£0 - £20</li>
+                        </a>
+                        <a href="{% url 'products' %}?price=20,30">
+                            <li class="list-group-item">£20 - £30</li>
+                        </a>
+                        <a href="{% url 'products' %}?price=30,40">
+                            <li class="list-group-item">£30 - £40</li>
+                        </a>
+                        <a href="{% url 'products' %}?price=40,50">
+                            <li class="list-group-item">£40 - £50</li>
+                        </a>
+                        <a href="{% url 'products' %}?price=50">
+                            <li class="list-group-item">> £50</li>
+                        </a>
                     </ul>
                 </div>
             </div>
@@ -64,36 +82,51 @@
                 </div>
                 <div class="col p-2 d-flex justify-content-end">
                     <p>SORT</p>
-                    <select>
-                        <option value="dfsf">dfsdfd</option>
-                    </select>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown link
+                        </a>
+                    
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Price (low-high)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Price (high-low)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=average_rating&direction=asc">Rating (low-high)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=average_rating&direction=desc">Rating (high-low)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=asc">Name (A-Z)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=desc">Name (Z-A)</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 {% for product in all_products %}
-                
+
                 <div class="col-sm-6 col-lg-4 d-flex justify-content-center">
-                    
-                        <div class="card text-center border-0 py-3" style="width: 20rem;">
+                    <div class="card text-center border-0 py-3" style="width: 20rem;">
                         {% if product.stock == 'out of stock' %}
                         <a href="{% url 'product_detail' product.id %}">
                             <div>
-                            <p id="oos-image-banner">Out of stock</p>
-                            <img src="{{product.image1_source_url}}" id="product-out-of-stock" class="card-img-top rounded-0"
-                            alt="{{product.friendly_name}} product image">
+                                <p id="oos-image-banner">Out of stock</p>
+                                <img src="{{product.image1_source_url}}" id="product-out-of-stock"
+                                    class="card-img-top rounded-0" alt="{{product.friendly_name}} product image">
                             </div>
                         </a>
                         <div class="card-body">
-                            <a href="{% url 'product_detail' product.id %}"><h5 class="card-title">{{product.friendly_name|upper}}</h5></a>
+                            <a href="{% url 'product_detail' product.id %}">
+                                <h5 class="card-title">{{product.friendly_name|upper}}</h5>
+                            </a>
                             <p><em><small>{{product.latin_name}}</small></em></p>
                             <p class="card-text">£{{product.price}}</p>
                         </div>
-                        
+
                         {% else %}
-                        <a href="{% url 'product_detail' product.id %}"><img src="{{product.image1_source_url}}" class="card-img-top rounded-0"
-                            alt="{{product.friendly_name}} product image"></a>
+                        <a href="{% url 'product_detail' product.id %}"><img src="{{product.image1_source_url}}"
+                                class="card-img-top rounded-0" alt="{{product.friendly_name}} product image"></a>
                         <div class="card-body">
-                            <a href="{% url 'product_detail' product.id %}"><h5 class="card-title">{{product.friendly_name|upper}}</h5></a>
+                            <a href="{% url 'product_detail' product.id %}">
+                                <h5 class="card-title">{{product.friendly_name|upper}}</h5>
+                            </a>
                             {% if product.latin_name %}
                             <p><em><small>{{product.latin_name}}</small></em></p>
                             {% else %}
@@ -103,7 +136,7 @@
                         {% endif %}
                     </div>
                 </div>
-                
+
                 {% endfor %}
             </div>
 
