@@ -3,6 +3,13 @@
 
 {% block content %}
 <div class="container py-5">
+
+    <div class="row my-5">
+        <h5 class="text-start"><a href="{% url 'products' %}">Products</a> / <a
+                href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a> / <a
+                href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}</a></h5>
+    </div>
+
     <div class="row">
         <!-- LH for pics -->
         <div class="col border border-primary">

@@ -18,7 +18,7 @@ def all_products(request):
     """
     """
 
-    all_products = Product.objects.all()
+    all_products = Product.objects.filter(stock='in stock')
     plant_categories = PlantCategory.objects.all()
     search_query = None
     category = None
@@ -49,6 +49,7 @@ def all_products(request):
             all_products = all_products.filter(category=category_id.id)
 
         if 'stock' in request.GET:
+            all_products = Product.objects.all()
             stock_opt = request.GET['stock'].replace('_', ' ')
             all_products = all_products.filter(stock=stock_opt)
 
