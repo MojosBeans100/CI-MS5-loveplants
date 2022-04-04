@@ -78,12 +78,16 @@
         <div class="col-md-9 border border-primary">
             
             <!-- number of products, products per page, sort  -->
-            <div class="row">
+            <div class="row border border-dark">
                 <div class="col p-2">
-                    <p>&nbsp;&nbsp;{{all_products.count}} products {% if total_products.count == all_products.count %}{% else %}<a href="{% url 'products' %}">(clear all
-                            filters)</a>{% endif %}</p>
+                    <p>&nbsp;&nbsp;{{all_products.count}} products 
+                        {% if total_products.count == all_products.count or all_products.count == 0 %}
+                        {% else %}
+                        <a href="{% url 'products' %}">(clear all
+                            filters)</a>
+                        {% endif %}</p>
                 </div>
-                <div class="col">
+                <div class="col text-center">
                     <p>Products per page</p>
                     <p>10  20  50  100</p>
                 </div>
@@ -115,12 +119,18 @@
                 </div>
             </div>
 
+            <!-- the users search query -->
             {% if search_query != None %}
-            <div class="row">
-                <h4 class="text-center">{{all_products.count}} results for "{{search_query}}"</h4>
+            <div class="row text-center">
+                <h4>{{all_products.count}} results for "{{search_query}}"</h4>
+
+                {% if all_products.count == 0 %}
+                <p>Try searching by a different term</p>
+                {% endif %}
             </div>
             {% endif %}
 
+            <!-- list the products -->
             <div class="row">
                 {% for product in page_obj %}
 
@@ -162,6 +172,7 @@
                 {% endfor %}
             </div>
 
+            <!-- pagination -->
             <div class="pagination">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
