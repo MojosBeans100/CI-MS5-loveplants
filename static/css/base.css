@@ -63,10 +63,27 @@ button {
 
 /* PRODUCT DETAIL */
 .detail_image {
-    height: 600px;
+    height: 400px;
     width: 100%;
 }
 
 .product_detail_alt_img:hover {
     opacity: 0.6;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 768px) {
+    
+    .detail_image {
+        height: 500px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+
+    .detail_image {
+        height: 600px;
+    }
+
 }

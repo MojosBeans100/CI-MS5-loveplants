@@ -3,12 +3,17 @@
 
 {% block content %}
 <div class="container my-5">
+
+    <div class="row">
+        <p><i class="fa-solid fa-arrow-left-long"></i> <a href="{% url 'products' %}">Continue shopping</a></p>
+    </div>
+
     <div class="row">
         <h2>Your basket ({{product_count}})</h2>
-        <div class="col-8 border border-dark">
+        <div class="col-8">
 
             <!-- product list table -->
-            <table class="table">
+            <table class="table table-borderless">
                 <thead>
                     <tr>
                         <th></th>
@@ -32,11 +37,32 @@
                         <td>{{item.quantity}}</td>
                     </tr>
                     {% endfor %}
+
+                    <tr class="text-end">
+                        <td></td>
+                        <td></td>
+                        <td>Subtotal:</td>
+                        <td>£{{grand_total}}</td>
+                    </tr>
+
+                    <tr class="text-end">
+                        <td></td>
+                        <td></td>
+                        <td>Delivery:</td>
+                        <td>£{{delivery}}</td>
+                    </tr>
+
+                    <tr class="text-end">
+                        <td></td>
+                        <td></td>
+                        <td>Grand Total:</td>
+                        <td>£{{grand_total}}</td>
+                    </tr>
                 </tbody>
             </table>
 
         </div>
-        <div class="col-4 border border-primary">
+        <div class="col-4">
             <h4>Subtotal: &nbsp; £{{grand_total}}</h4>
         </div>
     </div>
