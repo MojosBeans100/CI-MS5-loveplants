@@ -87,14 +87,21 @@
                     </button>
                     <button type="button" disabled class="mx-2 btn btn-outline-secondary">Add to basket</button>
                     {% else %}
-                    <button type="button" class="mx-2 btn btn-outline-secondary btn-sm">
-                        <large>-</large>
-                    </button>
-                    <input class="text-center" type="number" min=0 max=4 value=1>
-                    <button type="button" class="mx-2 btn btn-outline-secondary btn-sm">
-                        <large>+</large>
-                    </button>
-                    <button type="button" class="mx-2 btn btn-outline-secondary">Add to basket</button>
+
+                    <!-- add product to bag -->
+                    <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+                        {% csrf_token %}
+                        <button type="button" class="mx-2 btn btn-outline-secondary btn-sm">
+                            <large>-</large>
+                        </button>
+                        <input class="form-control qty_input" type="number" min=0 max=99 value=1 name="quantity">
+                        <button type="button" class="mx-2 btn btn-outline-secondary btn-sm">
+                            <large>+</large>
+                        </button>
+                        <input type="submit" class="mx-2 btn btn-outline-secondary" value="Add to bag">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </form>
+
                     {% endif %}
                 </div>
             </div>
