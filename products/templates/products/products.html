@@ -76,31 +76,46 @@
             <hr>
         </div>
         <div class="col-md-9 border border-primary">
+            
+            <!-- number of products, products per page, sort  -->
             <div class="row">
                 <div class="col p-2">
-                    <p>&nbsp;&nbsp;{{all_products.count}} products</p>
+                    <p>&nbsp;&nbsp;{{all_products.count}} products <a href="{% url 'products' %}">(clear all
+                            filters)</a></p>
+                </div>
+                <div class="col">
+                    <p>Products per page</p>
+                    <p>10  20  50  100</p>
                 </div>
                 <div class="col p-2 d-flex justify-content-end">
                     <p>SORT</p>
                     <div class="dropdown">
-                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown link
                         </a>
-                    
+
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Price (low-high)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Price (high-low)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=average_rating&direction=asc">Rating (low-high)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=average_rating&direction=desc">Rating (high-low)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=asc">Name (A-Z)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=desc">Name (Z-A)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc">Price
+                                    (low-high)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc">Price
+                                    (high-low)</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{% url 'products' %}?sort=average_rating&direction=asc">Rating (low-high)</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{% url 'products' %}?sort=average_rating&direction=desc">Rating (high-low)</a>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=asc">Name
+                                    (A-Z)</a></li>
+                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=desc">Name
+                                    (Z-A)</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="row">
-                {% for product in all_products %}
+                {% for product in page_obj %}
 
                 <div class="col-sm-6 col-lg-4 d-flex justify-content-center">
                     <div class="card text-center border-0 py-3" style="width: 20rem;">
@@ -140,6 +155,23 @@
                 {% endfor %}
             </div>
 
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
         </div>
     </div>
 </div>

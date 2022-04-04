@@ -5,9 +5,14 @@
 <div class="container py-5">
 
     <div class="row my-5">
-        <h5 class="text-start"><a href="{% url 'products' %}">Products</a> / <a
-                href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a> / <a
-                href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}</a></h5>
+        <h5 class="text-start">
+            <a href="{% url 'products' %}">Products</a> / 
+            <a href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a>
+            {% if product.plant_category %}/ 
+            <a href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}
+            {% else %}
+            {% endif %}</a>
+            / <strong><em>{{product.friendly_name}}</em></strong></h5>
     </div>
 
     <div class="row">
@@ -248,11 +253,11 @@
             {% for review in reviews %}
             <div class="row">
                 <div class="col">
-                    <p>{{review.review}} {{review.rating}}</p>
-                    <p><small><em>{{review.user}}</em></small></p>
+                    <p>{{review.review}}</p>
+                    <p><small><em>{{review.user}} | {{review.review_time}}</em></small></p>
                 </div>
                 <div class="col text-end">
-                    <p>{{review.review_time}}</p>
+                    <p>{{review.rating}}</p>
                 </div>
                 <hr>
                 {% endfor %}

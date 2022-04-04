@@ -1,6 +1,7 @@
 
 # import Django
 from django.shortcuts import render
+from django.core.paginator import Paginator
 from django.db.models import Q
 from datetime import datetime
 
@@ -76,12 +77,23 @@ def all_products(request):
             search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
             all_products = all_products.filter(search_queries)
 
+        if 'page_obj' in request.GET:
+            page = request.GET['page_obj']
+            print(page)
+    
     current_sorting = f'{sort}_{direction}'
+
+    
+
+    paginator = Paginator(all_products, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     context = {
         'all_products': all_products,
         'plant_cats': plant_categories,
         'current_sorting': current_sorting,
+        'page_obj': page_obj,
     }
 
     return render(request, 'products/products.html', context)
@@ -100,12 +112,14 @@ def product_detail(request, id):
         rare_products = ""
 
     if product.popular is True:
-        popular_products = Product.objects.filter(popular=True).exclude(id=id)[0:4]
+        popular_products = Product.objects.filter(popular=True)
+        popular_products = popular_products.exclude(id=id)[0:4]
     else:
         popular_products = ""
 
     if product.care_required == 'low':
-        easy_products = Product.objects.filter(care_required='low').exclude(id=id)[0:4]
+        easy_products = Product.objects.filter(care_required='low')
+        easy_products = easy_products.exclude(id=id)[0:4]
     else:
         easy_products = ""
 
@@ -142,7 +156,6 @@ def product_detail(request, id):
 
     recently_viewed = Product.objects.filter(
                                     name__in=recently_viewed_products)[0:4]
-    #print(recently_viewed)
 
     context = {
         'product': product,
@@ -154,4 +167,3 @@ def product_detail(request, id):
     }
 
     return render(request, 'products/product_detail.html', context)
-
