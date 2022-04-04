@@ -50,6 +50,14 @@
         <div class="col">
             <h2>{{product.friendly_name}} {% if product.stock == "out of stock" %}(out of stock){% else %}{% endif %}
             </h2>
+
+            
+            {% for item in bag_items %}
+            {% if item.product.friendly_name == product.friendly_name %}
+            <p class="fw-bold">This item is already in your basket.</p>
+            {% endif %}
+            {% endfor %}
+
             {% if product.plant_category %}
             <div class="row">
                 <div class="col">
@@ -101,6 +109,8 @@
                         <input type="submit" class="mx-2 btn btn-outline-secondary" value="Add to bag">
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </form>
+
+                   
 
                     {% endif %}
                 </div>

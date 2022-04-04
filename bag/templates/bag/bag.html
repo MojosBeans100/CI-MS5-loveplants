@@ -4,8 +4,10 @@
 {% block content %}
 <div class="container my-5">
     <div class="row">
-        <h2>Your basket</h2>
+        <h2>Your basket ({{product_count}})</h2>
         <div class="col-8 border border-dark">
+
+            <!-- product list table -->
             <table class="table">
                 <thead>
                     <tr>
@@ -15,18 +17,28 @@
                         <th>Quantity</th>
                     </tr>
                 </thead>
+
+                <!-- list items -->
                 <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    {% for item in bag_items %}
+                    <tr class="align-middle">
+                        <td>
+                            <a href="{% url 'product_detail' item.product.id %}"><img
+                                    style="width:300px; height: 300px;" src="{{item.product.image1_source_url}}"></a>
+                        </td>
+                        <td><a href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}} |
+                                {{item.product.pot_size}}cm</a></td>
+                        <td>£{{item.product.price}}</td>
+                        <td>{{item.quantity}}</td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
         </div>
-        <div class="col-4 border border-primary"></div>
+        <div class="col-4 border border-primary">
+            <h4>Subtotal: &nbsp; £{{grand_total}}</h4>
+        </div>
     </div>
 </div>
 {% endblock content %}
