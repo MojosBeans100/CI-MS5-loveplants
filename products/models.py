@@ -9,8 +9,8 @@ sun_or_water = (
 )
 
 care_demand = (
-    ('low', 'low maintenance'),
-    ('high', 'high maintenance'),
+    ('can stand a little neglect', 'low maintenance'),
+    ('requires frequent care', 'high maintenance'),
 )
 
 maturity = (

@@ -19,6 +19,7 @@ def all_products(request):
     """
     """
 
+    total_products = Product.objects.filter(stock='in stock')
     all_products = Product.objects.filter(stock='in stock')
     plant_categories = PlantCategory.objects.all()
     search_query = None
@@ -76,14 +77,8 @@ def all_products(request):
             search_query = request.GET['q']
             search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
             all_products = all_products.filter(search_queries)
-
-        if 'page_obj' in request.GET:
-            page = request.GET['page_obj']
-            print(page)
-    
+           
     current_sorting = f'{sort}_{direction}'
-
-    
 
     paginator = Paginator(all_products, 10)
     page_number = request.GET.get('page')
@@ -94,6 +89,8 @@ def all_products(request):
         'plant_cats': plant_categories,
         'current_sorting': current_sorting,
         'page_obj': page_obj,
+        'search_query': search_query,
+        'total_products': total_products,
     }
 
     return render(request, 'products/products.html', context)

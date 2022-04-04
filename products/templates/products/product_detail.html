@@ -6,12 +6,12 @@
 
     <div class="row my-5">
         <h5 class="text-start">
-            <a href="{% url 'products' %}">Products</a> / 
+            <a href="{% url 'products' %}">Products</a> /
             <a href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a>
-            {% if product.plant_category %}/ 
+            {% if product.plant_category %}/
             <a href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}
-            {% else %}
-            {% endif %}</a>
+                {% else %}
+                {% endif %}</a>
             / <strong><em>{{product.friendly_name}}</em></strong></h5>
     </div>
 

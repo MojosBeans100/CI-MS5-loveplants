@@ -80,8 +80,8 @@
             <!-- number of products, products per page, sort  -->
             <div class="row">
                 <div class="col p-2">
-                    <p>&nbsp;&nbsp;{{all_products.count}} products <a href="{% url 'products' %}">(clear all
-                            filters)</a></p>
+                    <p>&nbsp;&nbsp;{{all_products.count}} products {% if total_products.count == all_products.count %}{% else %}<a href="{% url 'products' %}">(clear all
+                            filters)</a>{% endif %}</p>
                 </div>
                 <div class="col">
                     <p>Products per page</p>
@@ -114,6 +114,13 @@
                     </div>
                 </div>
             </div>
+
+            {% if search_query != None %}
+            <div class="row">
+                <h4 class="text-center">{{all_products.count}} results for "{{search_query}}"</h4>
+            </div>
+            {% endif %}
+
             <div class="row">
                 {% for product in page_obj %}
 
