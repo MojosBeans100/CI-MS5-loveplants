@@ -20,23 +20,30 @@
         <div class="col border border-primary">
             <div class="row">
                 <div class="col">
-                    <img class="detail_image" src="{{ product.image1_source_url }}"
+                    <img class="detail_image" src="{{ product.image1_source_url }}" id="main-image"
                         title="Image credit: {{product.image1_source}}">
                 </div>
             </div>
             <div class="row border py-4">
                 <div class="col">
-                    <img class="product_detail_alt_img" style="width:100%; height:80%"
+                    <img class="product_detail_alt_img" style="width:100%; height:80%" onclick="changeImage(this)" 
                         src="{{ product.image1_source_url }}">
                 </div>
+
                 <div class="col">
-                    <img class="product_detail_alt_img" style="width:100%; height:80%"
-                        src="{{ product.image1_source_url }}">
+                    {% if product.image2_source %}
+                    <img class="product_detail_alt_img" style="width:100%; height:80%" onclick="changeImage(this)"
+                        src="{{ product.image2_source_url }}">
+                    {% endif %}
                 </div>
+
                 <div class="col">
-                    <img class="product_detail_alt_img" style="width:100%; height:80%"
-                        src="{{ product.image1_source_url }}">
+                    {% if product.image3_source %}
+                    <img class="product_detail_alt_img" style="width:100%; height:80%" onclick="changeImage(this)"
+                        src="{{ product.image3_source_url }}">
+                    {% endif %}
                 </div>
+
             </div>
         </div>
         <!-- RH for detail -->
@@ -165,6 +172,8 @@
             </div>
         </div>
     </div>
+
+    <!-- care instructions if product type is a plant -->
     {% if product.plant_category %}
     <div class="py-4 row">
         <h4>Care Instructions</h4>
@@ -174,76 +183,81 @@
     {% else %}
     {% endif %}
     <hr>
-    <div class="py-4 row">
-        <h3 class="text-center">You may also like</h3>
-        <div class="row">
-            <div class="col"></div>
+
+    <!-- similar products, other recommended products -->
+    <div>
+        <div class="py-4 row">
+            <h3 class="text-center">You may also like</h3>
+            <div class="row">
+                <div class="col"></div>
+            </div>
         </div>
+
+        <!-- if product is rare, list other rare products -->
+        {% if product.rare == True %}
+        <div class="my-4 row">
+            <h4>See other rare products</h4>
+            {% for rare in rare_products %}
+            <div class="col-3">
+                <a href="{% url 'product_detail' rare.id %}"><img style="width:100%; height:80%" class="p-3"
+                        src="{{rare.image1_source_url}}"></a>
+                <a href="{% url 'product_detail' rare.id %}">
+                    <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if product.popular == True %}
+        <!-- if product is popular, list other popular products -->
+        <div class="my-4 row">
+            <h4>See other popular products</h4>
+            {% for popular in popular_products %}
+            <div class="col-3">
+                <a href="{% url 'product_detail' popular.id %}"><img style="width:100%; height:80%" class="p-3"
+                        src="{{popular.image1_source_url}}"></a>
+                <a href="{% url 'product_detail' popular.id %}">
+                    <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if product.care_required == 'low' %}
+        <div class="my-4 row">
+            <h4>See other easy care products</h4>
+            {% for easy in easy_care %}
+            <div class="col-3">
+                <a href="{% url 'product_detail' easy.id %}"><img style="width:100%; height:80%" class="p-3"
+                        src="{{easy.image1_source_url}}"></a>
+                <a href="{% url 'product_detail' easy.id %}">
+                    <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- list recently viewed products -->
+        {% if recently_viewed %}
+        <div class="my-4 row">
+            <h4>Recently viewed products</h4>
+            {% for recent in recently_viewed %}
+            <div class="col-3">
+                <a href="{% url 'product_detail' recent.id %}"><img style="width:100%; height:80%" class="p-3"
+                        src="{{recent.image1_source_url}}"></a>
+                <a href="{% url 'product_detail' recent.id %}">
+                    <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
     </div>
 
-    <!-- if product is rare, list other rare products -->
-    {% if product.rare == True %}
-    <div class="my-4 row">
-        <h4>See other rare products</h4>
-        {% for rare in rare_products %}
-        <div class="col-3">
-            <a href="{% url 'product_detail' rare.id %}"><img style="width:100%; height:80%" class="p-3"
-                    src="{{rare.image1_source_url}}"></a>
-            <a href="{% url 'product_detail' rare.id %}">
-                <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    {% if product.popular == True %}
-    <!-- if product is popular, list other popular products -->
-    <div class="my-4 row">
-        <h4>See other popular products</h4>
-        {% for popular in popular_products %}
-        <div class="col-3">
-            <a href="{% url 'product_detail' popular.id %}"><img style="width:100%; height:80%" class="p-3"
-                    src="{{popular.image1_source_url}}"></a>
-            <a href="{% url 'product_detail' popular.id %}">
-                <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    {% if product.care_required == 'low' %}
-    <div class="my-4 row">
-        <h4>See other easy care products</h4>
-        {% for easy in easy_care %}
-        <div class="col-3">
-            <a href="{% url 'product_detail' easy.id %}"><img style="width:100%; height:80%" class="p-3"
-                    src="{{easy.image1_source_url}}"></a>
-            <a href="{% url 'product_detail' easy.id %}">
-                <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    <!-- list recently viewed products -->
-    {% if recently_viewed %}
-    <div class="my-4 row">
-        <h4>Recently viewed products</h4>
-        {% for recent in recently_viewed %}
-        <div class="col-3">
-            <a href="{% url 'product_detail' recent.id %}"><img style="width:100%; height:80%" class="p-3"
-                    src="{{recent.image1_source_url}}"></a>
-            <a href="{% url 'product_detail' recent.id %}">
-                <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
+    <!-- reviews of the product -->
     {% if reviews %}
     <div class="row">
         <div class="col-2">
@@ -267,8 +281,22 @@
         </div>
     </div>
     {% else %}
-
     {% endif %}
+
 </div>
 
 {% endblock content %}
+
+{% block postloadjs %}
+<script>
+
+    /**
+    Change main image when sub images are clicked
+    */
+    function changeImage(element) {
+        main_image = document.getElementById('main-image')
+        main_image.src = element.src
+    }
+
+</script>
+{% endblock %}
