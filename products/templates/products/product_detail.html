@@ -5,14 +5,14 @@
 <div class="container py-5">
 
     <div class="row my-5">
-        <h5 class="text-start">
+        <pp class="text-start">
             <a href="{% url 'products' %}">Products</a> /
             <a href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a>
             {% if product.plant_category %}/
             <a href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}
                 {% else %}
                 {% endif %}</a>
-            / <strong><em>{{product.friendly_name}}</em></strong></h5>
+            / <strong><em>{{product.friendly_name}}</em></strong></p>
     </div>
 
     <div class="row">
@@ -213,7 +213,7 @@
         <div class="my-4 row">
             <h4>See other rare products</h4>
             {% for rare in rare_products %}
-            <div class="col-3">
+            <div class="col-sm-4 col-lg-3">
                 <a href="{% url 'product_detail' rare.id %}"><img style="width:100%; height:80%" class="p-3"
                         src="{{rare.image1_source_url}}"></a>
                 <a href="{% url 'product_detail' rare.id %}">
@@ -229,7 +229,7 @@
         <div class="my-4 row">
             <h4>See other popular products</h4>
             {% for popular in popular_products %}
-            <div class="col-3">
+            <div class="col-sm-4 col-lg-3">
                 <a href="{% url 'product_detail' popular.id %}"><img style="width:100%; height:80%" class="p-3"
                         src="{{popular.image1_source_url}}"></a>
                 <a href="{% url 'product_detail' popular.id %}">
@@ -244,7 +244,7 @@
         <div class="my-4 row">
             <h4>See other easy care products</h4>
             {% for easy in easy_care %}
-            <div class="col-3">
+            <div class="col-sm-4 col-lg-3">
                 <a href="{% url 'product_detail' easy.id %}"><img style="width:100%; height:80%" class="p-3"
                         src="{{easy.image1_source_url}}"></a>
                 <a href="{% url 'product_detail' easy.id %}">
@@ -257,10 +257,10 @@
 
         <!-- list recently viewed products -->
         {% if recently_viewed %}
-        <div class="my-4 row">
+        <div class="row my-3">
             <h4>Recently viewed products</h4>
             {% for recent in recently_viewed %}
-            <div class="col-3">
+            <div class="col-sm-4 col-lg-3">
                 <a href="{% url 'product_detail' recent.id %}"><img style="width:100%; height:80%" class="p-3"
                         src="{{recent.image1_source_url}}"></a>
                 <a href="{% url 'product_detail' recent.id %}">
