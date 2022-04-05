@@ -57,6 +57,14 @@ a {
     font-weight: bolder;
 }
 
+#like-heart {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    z-index: 9999;
+    font-size: 20px;
+}
+
 button {
     text-align: left !important;
 }

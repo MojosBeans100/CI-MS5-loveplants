@@ -140,6 +140,7 @@
                         <a href="{% url 'product_detail' product.id %}">
                             <div>
                                 <p id="oos-image-banner">Out of stock</p>
+
                                 <img src="{{product.image1_source_url}}" id="product-out-of-stock"
                                     class="card-img-top rounded-0" alt="{{product.friendly_name}} product image">
                             </div>
@@ -153,8 +154,11 @@
                         </div>
 
                         {% else %}
-                        <a href="{% url 'product_detail' product.id %}"><img src="{{product.image1_source_url}}"
-                                class="card-img-top rounded-0" alt="{{product.friendly_name}} product image"></a>
+                        <div>
+                           
+                            <a href="{% url 'product_detail' product.id %}"><img src="{{product.image1_source_url}}"
+                                    class="card-img-top rounded-0" alt="{{product.friendly_name}} product image"></a>
+                        </div>
                         <div class="card-body">
                             <a href="{% url 'product_detail' product.id %}">
                                 <h5 class="card-title">{{product.friendly_name|upper}}</h5>
@@ -195,4 +199,23 @@
 </div>
 
 
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+
+    // function likeProduct(element){
+    //     changeHeart = document.getElementsByClassName(element.className)
+
+
+    //     console.log(changeHeart)
+    //     if (changeHeart.className == "fa-solid fa-heart") {
+    //         changeHeart.className = "fa-regular fa-heart"
+    //     } else {
+    //         changeHeart.className = "fa-solid fa-heart"
+    //     }
+        
+    // }
+
+</script>
 {% endblock %}
