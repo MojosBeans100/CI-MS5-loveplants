@@ -76,11 +76,11 @@
             <hr>
         </div>
         <div class="col-md-9 border border-primary">
-            
+
             <!-- number of products, products per page, sort  -->
             <div class="row border border-dark">
                 <div class="col p-2">
-                    <p>&nbsp;&nbsp;{{all_products.count}} products 
+                    <p>&nbsp;&nbsp;{{all_products.count}} products
                         {% if total_products.count == all_products.count or all_products.count == 0 %}
                         {% else %}
                         <a href="{% url 'products' %}">(clear all
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col text-center">
                     <p>Products per page</p>
-                    <p>10  20  50  100</p>
+                    <p>10 20 50 100</p>
                 </div>
                 <div class="col p-2 d-flex justify-content-end">
                     <p>SORT</p>

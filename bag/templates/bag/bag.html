@@ -16,6 +16,8 @@
 
         {% if free_delivery_delta > 0 %}
         <p class="text-center">Spend £{{free_delivery_delta}} more to qualify for free shipping!</p>
+        {% else %}
+        <p class="text-center">You have qualified for free shipping!</p>
         {% endif %}
 
         <div class="col-8">
