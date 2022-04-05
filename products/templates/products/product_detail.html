@@ -256,6 +256,7 @@
         {% endif %}
 
         <!-- list recently viewed products -->
+        {% if user.is_authenticated %}
         {% if recently_viewed %}
         <div class="row my-3">
             <h4>Recently viewed products</h4>
@@ -269,6 +270,8 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
+        {% else %}
         {% endif %}
     </div>
 
