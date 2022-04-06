@@ -29,8 +29,34 @@ def all_products(request):
     plant_cats = None
     sort = None
     direction = None
+    current_filters = ""
 
     if request.GET:
+
+        # copy the dictionary of filters in the front end
+        querydict = request.GET.copy()
+        print(querydict)
+
+        # for all items in the new request
+        for i in request.GET.items():
+
+            print(i)
+
+            # if the filter category is already in the dict
+            # change the value
+            if i[0] in querydict:
+                print("i")
+                querydict[i[0]] = i[1]
+
+            # if not, add this filter category
+            else:
+                querydict.update({i[0]: i[1]})
+                print(querydict)
+       
+        # for i in querydict.items():
+        
+            current_filters = current_filters + "&" + i[0] + "=" + i[1]
+            print(current_filters)
 
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -61,6 +87,12 @@ def all_products(request):
             plant_cat_id = PlantCategory.objects.get(name=plant_cat)
             all_products = all_products.filter(plant_category=plant_cat_id)
 
+        if 'rare' in request.GET:
+            all_products = all_products.filter(rare=True)
+            
+        if 'popular' in request.GET:
+            all_products = all_products.filter(popular=True)
+
         if 'price' in request.GET:
             price = request.GET['price'].split(',')
             if len(price) > 1:
@@ -78,9 +110,8 @@ def all_products(request):
             search_query = request.GET['q']
             search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
             all_products = all_products.filter(search_queries)
-           
-    current_sorting = f'{sort}_{direction}'
 
+    current_sorting = f'{sort}_{direction}'
     paginator = Paginator(all_products, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -92,6 +123,7 @@ def all_products(request):
         'page_obj': page_obj,
         'search_query': search_query,
         'total_products': total_products,
+        'current_filters': current_filters,
     }
 
     return render(request, 'products/products.html', context)

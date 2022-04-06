@@ -7,12 +7,28 @@
     <div class="row m-4 border">
         <div class="col-6 offset-3">
             <ul class="list-group list-group-horizontal-sm border">
-                <li class="list-group-item flex-fill border-0">All Products</li>
-                <li class="list-group-item flex-fill border-0">Plants</li>
-                <li class="list-group-item flex-fill border-0">Pots</li>
-                <li class="list-group-item flex-fill border-0">Accessories</li>
-                <li class="list-group-item flex-fill border-0">Rare</li>
-                <li class="list-group-item flex-fill border-0">Popular</li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}">All Products</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?category=Plants">Plants</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?category=Pots">Pots</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?category=Accessories">Accessories</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?rare{{current_filters}}">Rare</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?popular{{current_filters}}">Popular</a></li>
+            </ul>
+
+            <p>{{current_filter}}</p>
+
+            <ul class="list-group list-group-horizontal-sm border">
+                {% for plant_cat in plant_cats %}
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?plant_cats={{plant_cat.name}}">{{plant_cat.name}}</a></li>
+                {% endfor %}
+            </ul>
+
+            <ul class="list-group list-group-horizontal-sm border">
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=0,20&{{current_filters}}">£0 - £20</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=20,30&{{current_filters}}">£20 - £30</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=30,40&{{current_filters}}">£30 - £40</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=40,50&{{current_filters}}">£40 - £50</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=50&{{current_filters}}">£50+</a></li>
             </ul>
         </div>
     </div>
