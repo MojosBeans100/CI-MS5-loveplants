@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
-/* body {
-    max-height: 100vh;
-    overflow: hidden;
-} */
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500;700;900&display=swap');
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
 
 /* GENERAL */
+
+
+
 a {
     text-decoration: none;
     color: black;
@@ -20,10 +25,11 @@ a {
 
 .navbar {
     box-shadow: 0 0 1px rgb(177, 177, 177);
+    font-family: 'Raleway', sans-serif;
 }
 
 .navbar h1 {
-    font-family: 'Amatic SC', cursive;
+    /* font-family: 'Amatic SC', cursive; */
     font-size: 55px;
     letter-spacing: 1px;
 }

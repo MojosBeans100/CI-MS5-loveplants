@@ -2,80 +2,25 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid border" style="margin-top: 80px;">
-    <div class="row">
-        <div class="col-md-3 order-md-first border border-dark p-3">
-            <h5 class="text-center">Filter</h5>
+<div class="container-fluid border" style="margin-top: 80px; padding: 30px;">
 
-            <!-- availability filter -->
-            <div>
-                <button class="btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Availability
-                </button>
-                <div class="collapse" id="collapseExample">
-                    <ul class="list-group">
-                        <a href="{% url 'products' %}?stock=in_stock">
-                            <li class="list-group-item">In stock</li>
-                        </a>
-                        <a href="{% url 'products' %}?stock=out_of_stock">
-                            <li class="list-group-item">Out of stock</li>
-                        </a>
-                        <a href="{% url 'products' %}?stock=returning_soon">
-                            <li class="list-group-item">Returning soon</li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-
-            <!-- plant category filter -->
-            <div>
-                <button class="btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Plant Type
-                </button>
-                <div class="collapse" id="collapseExample2">
-                    <ul class="list-group">
-                        {% for plant_cat in plant_cats %}
-                        <a href="{% url 'products' %}?plant_cats={{plant_cat.name}}">
-                            <li class="list-group-item">{{plant_cat.name}}</li>
-                        </a>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <hr>
-
-            <!-- price filter -->
-            <div>
-                <button class="btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    Price
-                </button>
-                <div class="collapse" id="collapseExample3">
-                    <ul class="list-group">
-                        <a href="{% url 'products' %}?price=0,20">
-                            <li class="list-group-item">£0 - £20</li>
-                        </a>
-                        <a href="{% url 'products' %}?price=20,30">
-                            <li class="list-group-item">£20 - £30</li>
-                        </a>
-                        <a href="{% url 'products' %}?price=30,40">
-                            <li class="list-group-item">£30 - £40</li>
-                        </a>
-                        <a href="{% url 'products' %}?price=40,50">
-                            <li class="list-group-item">£40 - £50</li>
-                        </a>
-                        <a href="{% url 'products' %}?price=50">
-                            <li class="list-group-item">> £50</li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-            <hr>
+    <div class="row m-4 border">
+        <div class="col-6 offset-3">
+            <ul class="list-group list-group-horizontal-sm border">
+                <li class="list-group-item flex-fill border-0">All Products</li>
+                <li class="list-group-item flex-fill border-0">Plants</li>
+                <li class="list-group-item flex-fill border-0">Pots</li>
+                <li class="list-group-item flex-fill border-0">Accessories</li>
+                <li class="list-group-item flex-fill border-0">Rare</li>
+                <li class="list-group-item flex-fill border-0">Popular</li>
+            </ul>
         </div>
-        <div class="col-md-9 border border-primary">
+    </div>
+
+    <div class="row">
+
+        <!-- products list -->
+        <div class="col border border-primary">
 
             <!-- number of products, products per page, sort  -->
             <div class="row border border-dark">
@@ -134,7 +79,7 @@
             <div class="row">
                 {% for product in page_obj %}
 
-                <div class="col-sm-6 col-lg-4 d-flex justify-content-center">
+                <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
                     <div class="card text-center border-0 py-3" style="width: 20rem;">
                         {% if product.stock == 'out of stock' %}
                         <a href="{% url 'product_detail' product.id %}">
@@ -155,7 +100,7 @@
 
                         {% else %}
                         <div>
-                           
+
                             <a href="{% url 'product_detail' product.id %}"><img src="{{product.image1_source_url}}"
                                     class="card-img-top rounded-0" alt="{{product.friendly_name}} product image"></a>
                         </div>
@@ -203,7 +148,6 @@
 
 {% block postloadjs %}
 <script>
-
     // function likeProduct(element){
     //     changeHeart = document.getElementsByClassName(element.className)
 
@@ -214,8 +158,7 @@
     //     } else {
     //         changeHeart.className = "fa-solid fa-heart"
     //     }
-        
-    // }
 
+    // }
 </script>
 {% endblock %}
