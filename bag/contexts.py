@@ -37,7 +37,6 @@ def bag_contents(request):
 
     grand_total = delivery + total
 
-
     # look for products around the price of the free delivery delta
     if free_delivery_delta > 0:
         free_delivery_delta_20 = free_delivery_delta*Decimal(str(1.2))

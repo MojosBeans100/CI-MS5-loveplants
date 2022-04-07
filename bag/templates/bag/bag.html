@@ -34,6 +34,7 @@
                         <th>Product</th>
                         <th>Price</th>
                         <th>Quantity</th>
+                        <th>Subtotal</th>
                     </tr>
                 </thead>
 
@@ -47,12 +48,17 @@
                         </td>
                         <td><a href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}} |
                                 {{item.product.pot_size}}cm</a></td>
-                        <td>£{{item.product.price}}</td>
-                        <td>{{item.quantity}}</td>
+                        <td class="item_price">{{item.product.price}}</td>
+                        <td><input type="number" value={{item.quantity}} min=1 max={{item.product.stock_quantity}}
+                                id="{{item.product.price}}" class="item_quantity form-control"
+                                onchange="updateSubtotals();"></td>
+                        <td class="item_subtotal"></td>
                     </tr>
                     {% endfor %}
 
+
                     <tr class="text-end">
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td>Subtotal:</td>
@@ -62,11 +68,13 @@
                     <tr class="text-end">
                         <td></td>
                         <td></td>
+                        <td></td>
                         <td>Delivery:</td>
                         <td>£{{delivery}}</td>
                     </tr>
 
                     <tr class="text-end">
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td>Grand Total:</td>
@@ -101,3 +109,39 @@
     {% endif %}
 </div>
 {% endblock content %}
+
+{% block postloadjs %}
+<script>
+
+    updateSubtotals();
+
+    function updateSubtotals() {
+        products_prices = document.getElementsByClassName('item_price')
+        products_quantities = document.getElementsByClassName('item_quantity')
+        products_subtotals = document.getElementsByClassName('item_subtotal')
+        max_values = document.getElementsByClassName('item_quantity')
+        
+
+        for (i = 0; i < products_prices.length; i++) {
+
+            if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) < parseInt(
+                    max_values[i].max)) {
+
+                products_subtotals[i].innerHTML = (parseInt(products_quantities[i].value)) * (parseFloat(
+                    products_prices[i].innerHTML))
+            } else {
+                products_subtotals[i].innerHTML = ""
+                products_quantities[i].value = 1
+                products_quantities[i].style.backgroundColor = "#ffce96"
+            }
+        }
+    }
+
+    // function updateSubtotal(element) {
+    //     item_price = parseFloat(element.id)
+    //     item_quantity = element.value
+    //     item_subtotal = item_price*item_quantity
+    //     console.log(item_subtotal)
+    // }
+</script>
+{% endblock %}
