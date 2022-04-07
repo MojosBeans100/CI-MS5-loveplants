@@ -112,6 +112,15 @@
 
 {% block postloadjs %}
 <script>
+    let original_quantities = [];
+
+    // collect all original quantities for products
+    document.addEventListener('DOMContentLoaded', () => {
+        products_quantities = document.getElementsByClassName('item_quantity')
+        for (i = 0; i < products_quantities.length; i++) {
+            original_quantities.push(products_quantities[i].value)
+        }
+    });
 
     updateSubtotals();
 
@@ -120,19 +129,18 @@
         products_quantities = document.getElementsByClassName('item_quantity')
         products_subtotals = document.getElementsByClassName('item_subtotal')
         max_values = document.getElementsByClassName('item_quantity')
-        
 
         for (i = 0; i < products_prices.length; i++) {
 
-            if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) < parseInt(
+            if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <= parseInt(
                     max_values[i].max)) {
-
-                products_subtotals[i].innerHTML = (parseInt(products_quantities[i].value)) * (parseFloat(
-                    products_prices[i].innerHTML))
+                
+                products_quantities[i].style.backgroundColor = "#FEFEFE"
+                products_subtotals[i].innerHTML = ((parseInt(products_quantities[i].value)) * (parseFloat(
+                    products_prices[i].innerHTML))).toFixed(2)
             } else {
                 products_subtotals[i].innerHTML = ""
-                products_quantities[i].value = 1
-                products_quantities[i].style.backgroundColor = "#ffce96"
+                products_quantities[i].value = original_quantities[i]
             }
         }
     }
