@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from products.models import Product
 
 
@@ -33,3 +33,22 @@ def add_to_bag(request, item_id):
     print(request.session['bag'])
 
     return redirect(redirect_url)
+
+
+def edit_bag(request, item_id):
+
+    items_in_stock = Product.objects.get(id=item_id).stock_quantity
+    quantity = int(request.POST.get('quantity'))
+    bag = request.session.get('bag', {})
+
+    if quantity > items_in_stock:
+        message = "There are not enough items in stock: please choose a smaller quantity"
+        print(message)
+    else:
+        if quantity > 0:
+            bag[item_id] = quantity
+        else:
+            bag.pop[item_id]
+
+    request.session['bag'] = bag
+    return redirect(reverse('view_bag'))

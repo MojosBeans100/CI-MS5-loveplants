@@ -49,9 +49,20 @@
                         <td><a href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}} |
                                 {{item.product.pot_size}}cm</a></td>
                         <td class="item_price">{{item.product.price}}</td>
-                        <td><input type="number" value={{item.quantity}} min=1 max={{item.product.stock_quantity}}
-                                id="{{item.product.price}}" class="item_quantity form-control"
-                                onchange="updateSubtotals();"></td>
+                        <td>
+                            <form class="form update-basket border" method="POST"
+                                action="{% url 'edit_bag' item.item_id %}">
+                                {% csrf_token %}
+                                <input type="number" value={{item.quantity}} min=1 max={{item.product.stock_quantity}}
+                                    name="quantity" id="{{item.item_id}}" class="item_quantity form-control"
+                                    onchange="userUpdate();">
+                            </form>
+                            <div>
+                                <a href="#" onclick="updateItem();" class="update-item">Update</a>
+                                <a href="#" onclick="removeItem();" class="remove-item" id="remove_{{item.item_id}}">|
+                                    Remove</a>
+                            </div>
+                        </td>
                         <td class="item_subtotal"></td>
                     </tr>
                     {% endfor %}
@@ -114,16 +125,57 @@
 <script>
     let original_quantities = [];
 
-    // collect all original quantities for products
+    /**
+    collect all original quantities for products
+    */
     document.addEventListener('DOMContentLoaded', () => {
+        updateSubtotals();
         products_quantities = document.getElementsByClassName('item_quantity')
         for (i = 0; i < products_quantities.length; i++) {
             original_quantities.push(products_quantities[i].value)
         }
     });
 
-    updateSubtotals();
+    /**
+    if user updates an item quantity, update the form
+    */
+    function userUpdate() {
+        products_quantities = document.getElementsByClassName('item_quantity')
+        update_buttons = document.getElementsByClassName('update-item')
 
+        for (i = 0; i < products_quantities.length; i++) {
+
+            // if user has changed the original quantity
+            if (parseInt(products_quantities[i].value) != original_quantities[i]) {
+
+                // if the quantity is between 1 and max items in stock
+                if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <=
+                    parseInt(
+                        max_values[i].max)) {
+
+                    // submit the update form
+                    updateItem();
+
+                    // update the subtotals
+                    products_subtotals[i].innerHTML = ((parseInt(products_quantities[i].value)) * (parseFloat(
+                        products_prices[i].innerHTML))).toFixed(2)
+
+                // if quantity is outwith acceptable range
+                } else {
+
+                    // remove subtotal and change quantity back to original value
+                    products_subtotals[i].innerHTML = (original_quantities[i]*(parseFloat(
+                    products_prices[i].innerHTML))).toFixed(2)
+                    products_quantities[i].value = original_quantities[i]
+                }
+
+            }
+        }
+    }
+
+    /**
+    calculate original subtotals on page load
+    */
     function updateSubtotals() {
         products_prices = document.getElementsByClassName('item_price')
         products_quantities = document.getElementsByClassName('item_quantity')
@@ -134,8 +186,7 @@
 
             if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <= parseInt(
                     max_values[i].max)) {
-                
-                products_quantities[i].style.backgroundColor = "#FEFEFE"
+
                 products_subtotals[i].innerHTML = ((parseInt(products_quantities[i].value)) * (parseFloat(
                     products_prices[i].innerHTML))).toFixed(2)
             } else {
@@ -145,11 +196,17 @@
         }
     }
 
-    // function updateSubtotal(element) {
-    //     item_price = parseFloat(element.id)
-    //     item_quantity = element.value
-    //     item_subtotal = item_price*item_quantity
-    //     console.log(item_subtotal)
-    // }
+    /**
+    submit the update form
+    */
+    function updateItem() {
+        form = document.getElementsByClassName('update-basket')[0]
+        form.submit()
+        updateSubtotals();
+    }
+
+    function removeItem() {
+
+    }
 </script>
 {% endblock %}
