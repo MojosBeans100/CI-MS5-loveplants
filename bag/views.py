@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from products.models import Product
+from django.contrib import messages
 
 
 def view_bag(request):
@@ -36,6 +37,7 @@ def add_to_bag(request, item_id):
 def edit_bag(request, item_id):
 
     items_in_stock = Product.objects.get(id=item_id).stock_quantity
+    product = Product.objects.get(id=item_id)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
 
@@ -45,12 +47,10 @@ def edit_bag(request, item_id):
     else:
         if quantity > 0:
             bag[item_id] = quantity
+            messages.success(request, f'Updated quantity of {product.friendly_name} to {quantity}')
         else:
             bag.pop(item_id)
+            messages.success(request, f'Removed {quantity} of from basket')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
-
-
-# def remove_item(request, item_id):
-

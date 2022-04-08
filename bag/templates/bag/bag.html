@@ -67,8 +67,7 @@
                     </tr>
                     {% endfor %}
 
-
-                    <tr class="text-end">
+                    <tr id="bag-table-line" class="text-end">
                         <td></td>
                         <td></td>
                         <td></td>
@@ -218,7 +217,7 @@
                 form = document.getElementsByClassName('update-basket')[i]
                 console.log(form)
                 form.submit()
-                //updateSubtotals();
+                updateSubtotals();
             }
         }
     }

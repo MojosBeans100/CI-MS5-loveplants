@@ -109,6 +109,9 @@
 
   {% if messages %}
   <div class="message-container">
+    {% for message in messages %}
+    {% include 'includes/toasts/toast_success.html' %}
+    {% endfor %}
   </div>
   {% endif %}
 
@@ -119,6 +122,11 @@
   {% endblock %}
 
   {% block postloadjs %}
+  <script>
+    var toast = document.getElementsByClassName('toast')[0]
+    var toastElement = new bootstrap.toast(toast)
+    toastElement.show()
+  </script>
   {% endblock %}
 
 </body>

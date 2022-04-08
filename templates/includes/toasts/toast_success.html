@@ -1,0 +1,54 @@
+<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true">
+  
+  <div class="toast-header">
+    <p><em>{{message}}</em></p>
+    <button type="button" class="btn-close" data-bs-dismiss="toast hide" aria-label="Close"></button>
+  </div>
+  
+  <div class="toast-body">
+    <strong class="me-auto">Your basket</strong>
+  </div>
+
+  <!-- list bag items -->
+  {% for item in bag_items %}
+  <div class="row p-3">
+    <div class="col-4">
+      <img style="height: 90px; width: 90px;" src="{{item.product.image1_source_url}}">
+    </div>
+    <div class="col-6">
+      <p>{{item.product.friendly_name}}<br>
+        <em>{{item.product.latin_name}}</em><br>
+        quantity: {{item.quantity}}</p>
+      <br>
+      <br>
+      <p><strong>£{{item.product.price}}</strong></p>
+    </div>
+    <div class="col-2">
+      <i class="fa-solid fa-trash-can"></i>
+    </div>
+  </div>
+  <hr class="toast-hr">
+  {% endfor %}
+
+  <!-- totals and link to payment -->
+  <div class="row p-3 fw-bold">
+
+    
+    <div class="col">
+      <p>Delivery:</p>
+      <p>Total:</p>
+    </div>
+    <div class="col text-end">
+      {% if delivery == 0 %}
+      <p class="text-decoration-line-through">£{{standard_delivery}}</p>
+      <p>£{{delivery}}</p>
+      {% else %}
+      <p>{{delivery}}</p>
+      {% endif %}
+
+      <p>£{{grand_total}}</p>
+    </div>
+
+  </div>
+
+</div>
