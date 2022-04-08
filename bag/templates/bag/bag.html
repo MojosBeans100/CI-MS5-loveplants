@@ -59,7 +59,7 @@
                             </form>
                             <div>
                                 <a href="#" onclick="updateItem();" class="update-item">Update</a>
-                                <a href="#" onclick="removeItem();" class="remove-item" id="remove_{{item.item_id}}">|
+                                <a href="#" onclick="removeItem(this);" class="remove-item" id="{{item.item_id}}">|
                                     Remove</a>
                             </div>
                         </td>
@@ -154,18 +154,18 @@
                         max_values[i].max)) {
 
                     // submit the update form
-                    updateItem();
+                    updateItem(i);
 
                     // update the subtotals
                     products_subtotals[i].innerHTML = ((parseInt(products_quantities[i].value)) * (parseFloat(
                         products_prices[i].innerHTML))).toFixed(2)
 
-                // if quantity is outwith acceptable range
+                    // if quantity is outwith acceptable range
                 } else {
 
                     // remove subtotal and change quantity back to original value
-                    products_subtotals[i].innerHTML = (original_quantities[i]*(parseFloat(
-                    products_prices[i].innerHTML))).toFixed(2)
+                    products_subtotals[i].innerHTML = (original_quantities[i] * (parseFloat(
+                        products_prices[i].innerHTML))).toFixed(2)
                     products_quantities[i].value = original_quantities[i]
                 }
 
@@ -197,16 +197,30 @@
     }
 
     /**
-    submit the update form
+    submit the relevant update form
     */
-    function updateItem() {
-        form = document.getElementsByClassName('update-basket')[0]
+    function updateItem(item_num) {
+        form = document.getElementsByClassName('update-basket')[item_num]
         form.submit()
         updateSubtotals();
     }
 
-    function removeItem() {
+    function removeItem(item_id) {
 
+        items_in_basket = document.getElementsByClassName('remove-item')
+
+        for (i = 0; i < items_in_basket.length; i++) {
+            if (items_in_basket[i].id == item_id.id) {
+                item_to_remove = document.getElementById(item_id.id)
+                console.log(item_to_remove)
+                item_to_remove.setAttribute('value', 0)
+                console.log(item_to_remove.value)
+                form = document.getElementsByClassName('update-basket')[i]
+                console.log(form)
+                form.submit()
+                //updateSubtotals();
+            }
+        }
     }
 </script>
 {% endblock %}

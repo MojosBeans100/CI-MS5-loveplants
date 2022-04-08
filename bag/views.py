@@ -14,7 +14,6 @@ def add_to_bag(request, item_id):
     """
 
     items_in_stock = Product.objects.get(id=item_id).stock_quantity
-    print(items_in_stock)
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
@@ -30,7 +29,6 @@ def add_to_bag(request, item_id):
             bag[item_id] = quantity
 
     request.session['bag'] = bag
-    print(request.session['bag'])
 
     return redirect(redirect_url)
 
@@ -48,7 +46,11 @@ def edit_bag(request, item_id):
         if quantity > 0:
             bag[item_id] = quantity
         else:
-            bag.pop[item_id]
+            bag.pop(item_id)
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
+
+
+# def remove_item(request, item_id):
+
