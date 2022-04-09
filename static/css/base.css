@@ -108,6 +108,23 @@ button {
     border-top: grey solid 1px;
 }
 
+.add-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 9999;
+}
+
+.free-delivery-products {
+    position: relative;
+}
+
+.free-delivery-img {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
 /* TOASTS */
 
 .toast {
