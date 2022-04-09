@@ -17,33 +17,60 @@
                 <li class="text-center list-group-item flex-fill border-0"><a
                         href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging">
                         {% for filter in front_end_filters %}
+                        {% if filter.0 == 'plant_cats' %}
                         {% if filter.1 == 'Hanging' %}
                         <img src="/static/media/hanging_bold.png" title="Hanging plants">
                         {% else %}
                         <img src="/static/media/hanging.png" title="Hanging plants">
+                        {% endif %}
                         {% endif %}
                         {% endfor %}
                         <br><br><small>Hanging</small></a></li>
                 <li class="text-center list-group-item flex-fill border-0"><a
                         href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor">
                         {% for filter in front_end_filters %}
+                        {% if filter.0 == 'plant_cats' %}
                         {% if filter.1 == 'Floor' %}
                         <img src="/static/media/floor_bold.png" title="Floor plants">
                         {% else %}
                         <img src="/static/media/floor.png" title="Hanging plants">
                         {% endif %}
+                        {% endif %}
                         {% endfor %}
                         <br><br><small>Floor</small></a></li>
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted"><img
-                            src="/static/media/potted.png" title="Floor plants"><br><br><small>Potted</small></a></li>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted">
+                        {% for filter in front_end_filters %}
+                        {% if filter.0 == 'plant_cats' %}
+                        {% if filter.1 == 'Potted' %}
+                        <img src="/static/media/potted_bold.png" title="Floor plants">
+                        {% else %}
+                        <img src="/static/media/potted.png" title="Hanging plants">
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                        <br><br><small>Potted</small></a></li>
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers"><img
-                            src="/static/media/flowers.png" title="Flower plants"><br><br><small>Flowers</small></a>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers">
+                        {% for filter in front_end_filters %}
+                        {% if filter.0 == 'plant_cats' %}
+                        {% if filter.1 == 'Flowers' %}<img src="/static/media/flower_bold.png" title="Flower plants">
+                        {% else %}
+                        <img src="/static/media/flowers.png" title="Plants with flowers">
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}<br><br><small>Flowers</small></a>
                 </li>
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents"><img
-                            src="/static/media/succulent.png" title="Succulents"><br><br><small>Succulents</small></a>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents">
+                        {% for filter in front_end_filters %}
+                        {% if filter.0 == 'plant_cats' %}
+                        {% if filter.1 == 'Succulents' %}<img src="/static/media/succulent_bold.png" title="Succulents">
+                        {% else %}
+                        <img src="/static/media/succulent.png" title="Succulent plants">
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}<br><br><small>Succulents</small></a>
                 </li>
             </ul>
             <hr>
@@ -150,9 +177,7 @@
                 <div class="col p-2 text-center">
                     <h4>&nbsp;&nbsp;{{all_products.count}} products {% if filtered_by %}for "{{filtered_by}}"{% endif %}
 
-                        {% for filter in front_end_filters %}
-                        <p>{{filter}}</p>
-                        {% endfor %}
+                        {{front_end_filters}}
                         <!-- {% if total_products.count == all_products.count or all_products.count == 0 %}
                         {% else %}
                         <br>
