@@ -2,42 +2,75 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid border" style="margin-top: 80px; padding: 30px;">
+<div class="container-fluid" style="margin-top: 80px; padding: 30px;">
 
-    <div class="row m-4 border">
+    <div class="row m-4">
         <div class="col-6 offset-3">
 
-            
-            {% for filter in friendly_filters %}
-            
-            <a href="{% url 'products' %}?remove={{filter.0}}{{current_filters}}"><button type="button" class="btn btn-outline-secondary">{{filter.1}} <i class="fa-solid fa-xmark"></i></button></a>
-            <br>
-            {% endfor %}
+            <!-- <a href="https://www.flaticon.com/free-icons/plant">Plant icons created by Icongeek26 - Flaticon </a>
+            <a href="{% url 'products' %}?plant_cats=Hanging"></a> -->
+            <!-- <a href="https://www.flaticon.com/free-icons/plant" title="plant icons">Plant icons created by Icongeek26 - Flaticon</a> -->
 
-            <ul class="list-group list-group-horizontal-sm border">
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}">All Products</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?category=Plants{{current_filters}}">Plants</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?category=Pots{{current_filters}}">Pots</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?category=Accessories{{current_filters}}">Accessories</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?rare{{current_filters}}">Rare</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?popular{{current_filters}}">Popular</a></li>
+            <div class="d-flex">
+                <hr class="flex-grow-1">
+            <h2 class="text-center px-5">PLANTS</h2>
+            <hr class="flex-grow-1">
+        </div>
+
+            <ul class="list-group list-group-horizontal-sm">
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?plant_cats=Hanging"><img
+                            src="/static/media/hanging.png" title="Hanging plants"><br><br><small>Hanging</small></a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?plant_cats=Floor"><img
+                            src="/static/media/floor.png" title="Floor plants"><br><br><small>Floor</small></a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?plant_cats=Potted"><img
+                            src="/static/media/potted.png" title="Floor plants"><br><br><small>Potted</small></a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?plant_cats=Potted"><img
+                            src="/static/media/flowers.png" title="Flower plants"><br><br><small>Flowers</small></a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?plant_cats=Potted"><img
+                            src="/static/media/succulent.png" title="Succulents"><br><br><small>Succulents</small></a></li>
             </ul>
 
-            <p>{{current_filter}}</p>
-
+            <!-- 
             <ul class="list-group list-group-horizontal-sm border">
+                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}">All
+                        Products</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?category=Plants{{current_filters}}">Plants</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?category=Pots{{current_filters}}">Pots</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?category=Accessories{{current_filters}}">Accessories</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?rare{{current_filters}}">Rare</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?popular{{current_filters}}">Popular</a></li>
+            </ul> -->
+
+            <!-- <ul class="list-group list-group-horizontal-sm border">
                 {% for plant_cat in plant_cats %}
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?plant_cats={{plant_cat.name}}{{current_filters}}">{{plant_cat.name}}</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?plant_cats={{plant_cat.name}}{{current_filters}}">{{plant_cat.name}}</a>
+                </li>
                 {% endfor %}
-            </ul>
+            </ul> -->
 
-            <ul class="list-group list-group-horizontal-sm border">
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=0,20{{current_filters}}">£0 - £20</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=20,30{{current_filters}}">£20 - £30</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=30,40{{current_filters}}">£30 - £40</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=40,50{{current_filters}}">£40 - £50</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}?price=50{{current_filters}}">£50+</a></li>
-            </ul>
+            <!-- <ul class="list-group list-group-horizontal-sm border">
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?price=0,20{{current_filters}}">£0 - £20</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?price=20,30{{current_filters}}">£20 - £30</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?price=30,40{{current_filters}}">£30 - £40</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?price=40,50{{current_filters}}">£40 - £50</a></li>
+                <li class="text-center list-group-item flex-fill border-0"><a
+                        href="{% url 'products' %}?price=50{{current_filters}}">£50+</a></li>
+            </ul> -->
         </div>
     </div>
 
@@ -69,9 +102,11 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=asc{{current_filters}}">Price
+                            <li><a class="dropdown-item"
+                                    href="{% url 'products' %}?sort=price&direction=asc{{current_filters}}">Price
                                     (low-high)</a></li>
-                            <li><a class="dropdown-item" href="{% url 'products' %}?sort=price&direction=desc{{current_filters}}">Price
+                            <li><a class="dropdown-item"
+                                    href="{% url 'products' %}?sort=price&direction=desc{{current_filters}}">Price
                                     (high-low)</a></li>
                             <li><a class="dropdown-item"
                                     href="{% url 'products' %}?sort=average_rating&direction=asc">Rating (low-high)</a>
@@ -172,10 +207,8 @@
 
 {% block postloadjs %}
 <script>
-    
     function showFilter(element) {
         console.log(element)
     }
-
 </script>
 {% endblock %}
