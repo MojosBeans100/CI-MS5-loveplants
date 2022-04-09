@@ -32,8 +32,8 @@
             </ul>
             <hr>
 
-            <ul class="list-group border-0">
-                <li class="list-group-item">
+            <ul class="list-group border-0 list-group-horizontal-lg">
+                <li class="list-group-item border-0">
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,29 +51,34 @@
                             <li class="text-center list-group-item flex-fill border-0"><a
                                     href="{% url 'products' %}?{{current_filters}}&price=50">£50+</a></li>
                         </ul>
+                        {% for filter in front_end_filters %}
+                        {% if filter.0 == 'price' %}
+                        <p class="text-center">{{filter.2|title}}</p>
+                        {% endif %}
+                        {% endfor %}
 
                     </div>
                 </li>
 
-                <li class="list-group-item">
+                <li class="list-group-item border-0">
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Price
+                            Sunlight required
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuButton1">
                             <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&price=0,20">£0 - £20</a></li>
+                                    href="{% url 'products' %}?{{current_filters}}&sunlight=low">Low <i class="fa-solid fa-cloud"></i></a></li>
                             <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&price=20,30">£20 - £30</a></li>
+                                    href="{% url 'products' %}?{{current_filters}}&sunlight=med">Medium <i class="fa-solid fa-cloud-sun"></i></a></li>
                             <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&price=30,40">£30 - £40</a></li>
-                            <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&price=40,50">£40 - £50</a></li>
-                            <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&price=50">£50+</a></li>
+                                    href="{% url 'products' %}?{{current_filters}}&sunlight=high">High <i class="fa-solid fa-sun"></i></a></li>
                         </ul>
-
+                        {% for filter in front_end_filters %}
+                        {% if filter.0 == 'sunlight' %}
+                        <p class="text-center">{{filter.2|title}}</p>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </li>
             </ul>
@@ -121,6 +126,10 @@
                 </div>
                 <div class="col p-2 text-center">
                     <h4>&nbsp;&nbsp;{{all_products.count}} products {% if filtered_by %}for "{{filtered_by}}"{% endif %}
+                        
+                        {% for filter in front_end_filters %}
+                        <p>{{filter}}</p>
+                        {% endfor %}
                         <!-- {% if total_products.count == all_products.count or all_products.count == 0 %}
                         {% else %}
                         <br>

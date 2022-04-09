@@ -31,7 +31,7 @@ def all_products(request):
     direction = None
     current_filters = ""
     querydict = ""
-    friendly_filters = []
+    front_end_filters = []
     filtered_by = ""
 
     if request.GET:
@@ -89,15 +89,25 @@ def all_products(request):
             plant_cat = request.GET['plant_cats']
             plant_cat_id = PlantCategory.objects.get(name=plant_cat)
             all_products = all_products.filter(plant_category=plant_cat_id)
-            filtered_by = plant_cat
+            filtered_by = f'{plant_cat} plants'
+            
+            front_end_filters.append(filtered_by)
+
+        if 'sunlight' in request.GET:
+            sunlight = request.GET['sunlight']
+            all_products = all_products.filter(sunlight=sunlight)
+            filtered_by = ['sunlight', sunlight, f'{sunlight}']
+            front_end_filters.append(filtered_by)
 
         if 'rare' in request.GET:
             all_products = all_products.filter(rare=True)
             filtered_by = "Rare"
+            front_end_filters.append(filtered_by)
             
         if 'popular' in request.GET:
             all_products = all_products.filter(popular=True)
             filtered_by = "Popular"
+            front_end_filters.append(filtered_by)
 
         if 'price' in request.GET:
             price_1 = request.GET['price']
@@ -112,7 +122,9 @@ def all_products(request):
             else:
                 price_low = price[0]
                 all_products = all_products.filter(price__gte=price_low)
-                
+            filtered_by = ['price', f'{price_low}-{price_high}', f'£{price_low} - £{price_high}']
+            front_end_filters.append(filtered_by)
+
         if 'q' in request.GET:
             search_query = request.GET['q']
             search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
@@ -122,6 +134,7 @@ def all_products(request):
     paginator = Paginator(all_products, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    print(front_end_filters)
 
     context = {
         'all_products': all_products,
@@ -134,6 +147,7 @@ def all_products(request):
         #'current_filter_queryset': querydict.items(),
         #'friendly_filters': friendly_filters,
         'filtered_by': filtered_by,
+        'front_end_filters': front_end_filters,
     }
 
     return render(request, 'products/products.html', context)
