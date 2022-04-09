@@ -21,6 +21,7 @@ def bag_contents(request):
     for item_id, quantity in bag.items():
 
         product = get_object_or_404(Product, pk=item_id)
+        products = Product.objects.all()
         total += quantity * product.price
         product_count += quantity
         product_subtotal = product.price*quantity
@@ -42,9 +43,10 @@ def bag_contents(request):
 
     # look for products around the price of the free delivery delta
     if free_delivery_delta > 0:
-        free_delivery_delta_20 = free_delivery_delta*Decimal(str(1.2))
-        free_delivery_products = Product.objects.filter(price__gte=free_delivery_delta,
-                                    price__lte=free_delivery_delta_20)
+
+        free_delivery_products = products.filter(price__gte=free_delivery_delta,stock='in stock').order_by('price')
+
+
     else:
         free_delivery_products = ""
 

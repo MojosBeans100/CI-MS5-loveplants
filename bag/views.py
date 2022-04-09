@@ -5,6 +5,7 @@ from django.contrib import messages
 
 def view_bag(request):
     """
+    A view to render the contents of the basket
     """
 
     return render(request, 'bag/bag.html')
@@ -12,6 +13,7 @@ def view_bag(request):
 
 def add_to_bag(request, item_id):
     """
+    A view to add items to the basket
     """
 
     items_in_stock = Product.objects.get(id=item_id).stock_quantity
@@ -34,18 +36,22 @@ def add_to_bag(request, item_id):
             messages.success(request, add_message)
 
     request.session['bag'] = bag
-
     return redirect(redirect_url)
 
 
 def edit_bag(request, item_id):
+    """
+    A view to edit the contents of the basket
+    """
 
     items_in_stock = Product.objects.get(id=item_id).stock_quantity
     product = Product.objects.get(id=item_id)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
     edit_message = f'Updated quantity of {product.friendly_name} to {quantity}'
-    remove_message = f'Removed {quantity} of from basket'
+    remove_message = (f'Removed {quantity} of '
+                      f'{product.friendly_name} from basket'
+                    )
 
     if quantity > items_in_stock:
         message = "There are not enough items in stock: "
@@ -58,6 +64,18 @@ def edit_bag(request, item_id):
         else:
             bag.pop(item_id)
             messages.success(request, remove_message)
+
+    request.session['bag'] = bag
+    return redirect(reverse('view_bag'))
+
+
+def delete_bag(request, item_id):
+    """
+    A view to delete an item from the basket
+    """
+
+    bag = request.session.get('bag', {})
+    bag.pop(item_id)
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))

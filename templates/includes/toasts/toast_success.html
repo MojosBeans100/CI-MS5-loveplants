@@ -6,7 +6,7 @@
   </div>
 
   <div class="toast-body">
-    <strong class="me-auto">Your basket</strong>
+    <strong class="me-auto"><a href="{% url 'view_bag' %}">Your basket</a></strong>
   </div>
 
   <!-- list bag items -->
@@ -24,7 +24,7 @@
       <p><strong>£{{item.product_subtotal}}</strong></p>
     </div>
     <div class="col-2">
-      <i class="fa-solid fa-trash-can"></i>
+      <a href="{% url 'delete_bag' item.product.id %}"><i class="fa-solid fa-trash-can"></i></a>
     </div>
   </div>
   <hr class="toast-hr">
@@ -58,7 +58,7 @@
         <tr>
           <td>Delivery:
           </td>
-          <td class="text-decoration-line-through text-end">
+          <td class="text-end">
             £{{delivery}}
           </td>
         </tr>
