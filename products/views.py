@@ -87,16 +87,22 @@ def all_products(request):
 
         if 'plant_cats' in request.GET:
             plant_cat = request.GET['plant_cats']
+            print(plant_cat)
             plant_cat_id = PlantCategory.objects.get(name=plant_cat)
             all_products = all_products.filter(plant_category=plant_cat_id)
-            filtered_by = f'{plant_cat} plants'
-            
+            filtered_by = ['plant_cats', plant_cat, f'{plant_cat} plants']
             front_end_filters.append(filtered_by)
 
         if 'sunlight' in request.GET:
             sunlight = request.GET['sunlight']
             all_products = all_products.filter(sunlight=sunlight)
             filtered_by = ['sunlight', sunlight, f'{sunlight}']
+            front_end_filters.append(filtered_by)
+
+        if 'watering' in request.GET:
+            watering = request.GET['watering']
+            all_products = all_products.filter(watering=watering)
+            filtered_by = ['watering', watering, f'{watering}']
             front_end_filters.append(filtered_by)
 
         if 'rare' in request.GET:

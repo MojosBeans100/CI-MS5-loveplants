@@ -15,24 +15,42 @@
 
             <ul class="list-group list-group-horizontal-lg">
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging"><img src="/static/media/hanging.png"
-                            title="Hanging plants"><br><br><small>Hanging</small></a></li>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging">
+                        {% for filter in front_end_filters %}
+                        {% if filter.1 == 'Hanging' %}
+                        <img src="/static/media/hanging_bold.png" title="Hanging plants">
+                        {% else %}
+                        <img src="/static/media/hanging.png" title="Hanging plants">
+                        {% endif %}
+                        {% endfor %}
+                        <br><br><small>Hanging</small></a></li>
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor"><img src="/static/media/floor.png"
-                            title="Floor plants"><br><br><small>Floor</small></a></li>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor">
+                        {% for filter in front_end_filters %}
+                        {% if filter.1 == 'Floor' %}
+                        <img src="/static/media/floor_bold.png" title="Floor plants">
+                        {% else %}
+                        <img src="/static/media/floor.png" title="Hanging plants">
+                        {% endif %}
+                        {% endfor %}
+                        <br><br><small>Floor</small></a></li>
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted"><img src="/static/media/potted.png"
-                            title="Floor plants"><br><br><small>Potted</small></a></li>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted"><img
+                            src="/static/media/potted.png" title="Floor plants"><br><br><small>Potted</small></a></li>
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers"><img src="/static/media/flowers.png"
-                            title="Flower plants"><br><br><small>Flowers</small></a></li>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers"><img
+                            src="/static/media/flowers.png" title="Flower plants"><br><br><small>Flowers</small></a>
+                </li>
                 <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents"><img src="/static/media/succulent.png"
-                            title="Succulents"><br><br><small>Succulents</small></a></li>
+                        href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents"><img
+                            src="/static/media/succulent.png" title="Succulents"><br><br><small>Succulents</small></a>
+                </li>
             </ul>
             <hr>
 
             <ul class="list-group border-0 list-group-horizontal-lg">
+
+                <!-- filter by price -->
                 <li class="list-group-item border-0">
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -60,6 +78,7 @@
                     </div>
                 </li>
 
+                <!-- filter by sunlight -->
                 <li class="list-group-item border-0">
                     <div class="dropdown">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -68,11 +87,14 @@
                         </button>
                         <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuButton1">
                             <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&sunlight=low">Low <i class="fa-solid fa-cloud"></i></a></li>
+                                    href="{% url 'products' %}?{{current_filters}}&sunlight=low">Low <i
+                                        class="fa-solid fa-cloud"></i></a></li>
                             <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&sunlight=med">Medium <i class="fa-solid fa-cloud-sun"></i></a></li>
+                                    href="{% url 'products' %}?{{current_filters}}&sunlight=med">Medium <i
+                                        class="fa-solid fa-cloud-sun"></i></a></li>
                             <li class="text-center list-group-item flex-fill border-0"><a
-                                    href="{% url 'products' %}?{{current_filters}}&sunlight=high">High <i class="fa-solid fa-sun"></i></a></li>
+                                    href="{% url 'products' %}?{{current_filters}}&sunlight=high">High <i
+                                        class="fa-solid fa-sun"></i></a></li>
                         </ul>
                         {% for filter in front_end_filters %}
                         {% if filter.0 == 'sunlight' %}
@@ -81,34 +103,35 @@
                         {% endfor %}
                     </div>
                 </li>
+
+                <!-- filter by watering -->
+                <li class="list-group-item border-0">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Watering required
+                        </button>
+                        <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuButton1">
+                            <li class="text-center list-group-item flex-fill border-0"><a
+                                    href="{% url 'products' %}?{{current_filters}}&watering=low">Low <i
+                                        class="fa-solid fa-droplet"></i></a></li>
+                            <li class="text-center list-group-item flex-fill border-0"><a
+                                    href="{% url 'products' %}?{{current_filters}}&watering=med">Medium <i
+                                        class="fa-solid fa-cloud-rain"></i></a></li>
+                            <li class="text-center list-group-item flex-fill border-0"><a
+                                    href="{% url 'products' %}?{{current_filters}}&watering=high">High <i
+                                        class="fa-solid fa-cloud-showers-heavy"></i></a></li>
+                        </ul>
+                        {% for filter in front_end_filters %}
+                        {% if filter.0 == 'watering' %}
+                        <p class="text-center">{{filter.2|title}}</p>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </li>
             </ul>
 
-
-            <!-- 
-            <ul class="list-group list-group-horizontal-sm border">
-                <li class="text-center list-group-item flex-fill border-0"><a href="{% url 'products' %}">All
-                        Products</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?category=Plants{{current_filters}}">Plants</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?category=Pots{{current_filters}}">Pots</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?category=Accessories{{current_filters}}">Accessories</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?rare{{current_filters}}">Rare</a></li>
-                <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?popular{{current_filters}}">Popular</a></li>
-            </ul> -->
-
-            <!-- <ul class="list-group list-group-horizontal-sm border">
-                {% for plant_cat in plant_cats %}
-                <li class="text-center list-group-item flex-fill border-0"><a
-                        href="{% url 'products' %}?plant_cats={{plant_cat.name}}{{current_filters}}">{{plant_cat.name}}</a>
-                </li>
-                {% endfor %}
-            </ul> -->
-
-
+            <p class="text-center"><a href="{% url 'products' %}">Clear all</a></p>
         </div>
     </div>
 
@@ -126,7 +149,7 @@
                 </div>
                 <div class="col p-2 text-center">
                     <h4>&nbsp;&nbsp;{{all_products.count}} products {% if filtered_by %}for "{{filtered_by}}"{% endif %}
-                        
+
                         {% for filter in front_end_filters %}
                         <p>{{filter}}</p>
                         {% endfor %}
@@ -250,6 +273,6 @@
 
 {% block postloadjs %}
 <script>
-    
+
 </script>
 {% endblock %}
