@@ -17,6 +17,11 @@ a {
     color: black;
 }
 
+a:hover {
+    font-weight: bold;
+    color: black;
+}
+
 #index-banner {
     height: calc(100vh - 90px);
     background-size: cover;

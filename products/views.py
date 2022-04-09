@@ -31,10 +31,34 @@ def all_products(request):
     direction = None
     current_filters = ""
     querydict = ""
-    querydict2 = ""
     friendly_filters = []
+    filtered_by = ""
 
     if request.GET:
+
+        # copy the dictionary of filters in the front end
+        querydict = request.GET.copy()
+
+        # for all items in the new request
+        for i in request.GET.items():
+            
+            # if the filter category is already in the dict
+            # change the value
+            if i[0] in querydict:
+
+                querydict[i[0]] = i[1]
+
+            # if not, add this filter category
+            else:
+                querydict.update({i[0]: i[1]})
+
+            # if the filter category says remove
+            # remove it
+            if i[0] == 'remove':
+                querydict.pop('remove')
+                querydict.pop(i[1])
+
+            current_filters = current_filters + "&" + i[0] + "=" + i[1]
 
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
@@ -59,19 +83,21 @@ def all_products(request):
             all_products = Product.objects.all()
             stock_opt = request.GET['stock'].replace('_', ' ')
             all_products = all_products.filter(stock=stock_opt)
+            filtered_by = stock_opt
 
         if 'plant_cats' in request.GET:
             plant_cat = request.GET['plant_cats']
             plant_cat_id = PlantCategory.objects.get(name=plant_cat)
             all_products = all_products.filter(plant_category=plant_cat_id)
-            friendly_filter = [f'{plant_cat}', {plant_cat}]
-            friendly_filters.append(friendly_filter)
+            filtered_by = plant_cat
 
         if 'rare' in request.GET:
             all_products = all_products.filter(rare=True)
+            filtered_by = "Rare"
             
         if 'popular' in request.GET:
             all_products = all_products.filter(popular=True)
+            filtered_by = "Popular"
 
         if 'price' in request.GET:
             price_1 = request.GET['price']
@@ -86,9 +112,7 @@ def all_products(request):
             else:
                 price_low = price[0]
                 all_products = all_products.filter(price__gte=price_low)
-            friendly_filter = ['price', f'£{price_low} - £{price_high}', price]
-            friendly_filters.append(friendly_filter)
-
+                
         if 'q' in request.GET:
             search_query = request.GET['q']
             search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
@@ -106,9 +130,10 @@ def all_products(request):
         'page_obj': page_obj,
         'search_query': search_query,
         'total_products': total_products,
-        #'current_filters': current_filters,
+        'current_filters': current_filters,
         #'current_filter_queryset': querydict.items(),
         #'friendly_filters': friendly_filters,
+        'filtered_by': filtered_by,
     }
 
     return render(request, 'products/products.html', context)
