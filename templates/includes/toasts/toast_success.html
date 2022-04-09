@@ -1,10 +1,10 @@
 <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true">
-  
+
   <div class="toast-header">
     <p><em>{{message}}</em></p>
     <button type="button" class="btn-close" data-bs-dismiss="toast hide" aria-label="Close"></button>
   </div>
-  
+
   <div class="toast-body">
     <strong class="me-auto">Your basket</strong>
   </div>
@@ -21,7 +21,7 @@
         quantity: {{item.quantity}}</p>
       <br>
       <br>
-      <p><strong>£{{item.product.price}}</strong></p>
+      <p><strong>£{{item.product_subtotal}}</strong></p>
     </div>
     <div class="col-2">
       <i class="fa-solid fa-trash-can"></i>
@@ -32,22 +32,43 @@
 
   <!-- totals and link to payment -->
   <div class="row p-3 fw-bold">
+    <table class="table table-borderless">
+      <tbody>
 
-    
-    <div class="col">
-      <p>Delivery:</p>
-      <p>Total:</p>
-    </div>
-    <div class="col text-end">
-      {% if delivery == 0 %}
-      <p class="text-decoration-line-through">£{{standard_delivery}}</p>
-      <p>£{{delivery}}</p>
-      {% else %}
-      <p>{{delivery}}</p>
-      {% endif %}
+        <!-- if delivery is 0 -->
+        {% if delivery == 0 %}
+        <tr>
+          <td>Delivery:
+          </td>
+          <td class="text-end text-decoration-line-through">
+            £{{standard_delivery}}
+          </td>
+        </tr>
+        <tr>
+          <td class="text-end">You qualify for free delivery!</td>
+          <td class="text-end">£{{delivery}}</td>
+        </tr>
+        <tr>
+          <td>Total:</td>
+          <td class="text-end">£{{grand_total}}</td>
+        </tr>
 
-      <p>£{{grand_total}}</p>
-    </div>
+        <!-- if delivery is standard 8.99 -->
+        {% else %}
+        <tr>
+          <td>Delivery:
+          </td>
+          <td class="text-decoration-line-through text-end">
+            £{{delivery}}
+          </td>
+        </tr>
+        <tr>
+          <td>Total:</td>
+          <td class="text-end">£{{grand_total}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
 
   </div>
 
