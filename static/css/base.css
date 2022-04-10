@@ -81,6 +81,40 @@ button {
     text-align: left !important;
 }
 
+.extra-filter {
+    width: 60%;
+}
+
+button {
+    text-align: center !important;
+}
+
+.btn-outline-secondary {
+    width: 100%;
+}
+
+.filter {
+    color: orange;
+}
+
+@media (min-width: 576px) {
+    .extra-filter {
+        width: 100%;
+    }
+}
+
+/* @media (min-width: 1200px) {
+    .extra-filter {
+        width: 70%;
+    }
+} */
+
+@media (min-width: 1400px) {
+    .extra-filter {
+        width: 90%;
+    }
+}
+
 /* PRODUCT DETAIL */
 .detail_image {
     height: 400px;
