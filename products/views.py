@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from datetime import datetime
+from django.http import QueryDict
 
 # import local
 from products.models import (
@@ -33,12 +34,33 @@ def all_products(request):
     querydict = ""
     front_end_filters = []
     filtered_by = ""
+    delete = []
 
     if request.GET:
 
         # copy the dictionary of filters in the front end
         querydict = request.GET.copy()
+        #print(querydict.iterlists())
+        #print(querydict['direction'])
+        myDict = dict(request.GET.lists())
+        #print(myDict)
+       # print(myDict['direction'])
 
+        for j in myDict:
+           # print(myDict[j])
+           # print(len(myDict[j]))
+            if len(myDict[j])>1:
+                
+                delete.append(myDict[j][-1])
+                
+                # for k in myDict[j]:
+                #     print(k)
+        print(delete)
+  
+
+        #for key, value in request.GET.items():
+          #  print(key, value)
+    
         # for all items in the new request
         for i in request.GET.items():
            
@@ -48,6 +70,7 @@ def all_products(request):
 
                 #querydict.pop(i[0])
                 querydict[i[0]] = i[1]
+                
                 #querydict.update({i[0]: i[1]})
                 #print(querydict)
 

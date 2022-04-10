@@ -2,27 +2,25 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid" style="padding: 30px;">
+<div class="container-fluid border" style="padding: 30px;">
 
     <!-- product filters choice -->
-    <div class="row m-4">
-        <div class="col-6 offset-3">
+    <div class="row m-md-4 border">
+        <div class="col-md-8 col-lg-6 offset-lg-3 offset-md-2 border border-primary">
 
             <!-- plant type filters -->
             <div>
 
-                <div class="d-flex">
+                <div class="d-flex border">
                     <hr class="flex-grow-1">
-                    <h2 class="text-center px-5">PLANTS</h2>
+                    <h2 class="text-center px-2 px-md-3 px-xl-5">PLANTS</h2>
                     <hr class="flex-grow-1">
                 </div>
 
                 <!-- plant types list choice - images credit "https://www.flaticon.com/free-icons/plant" Plant icons created by Icongeek26 - Flaticon -->
-                <ul class="list-group list-group-horizontal-lg">
-
-                    <!-- hanging plants -->
-                    <li class="text-center list-group-item flex-fill border-0"><a
-                            href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging">
+                <div class="row">
+                    <div class="text-center col-md col-4 d-flex justify-content-around py-2">
+                        <a href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging">
                             {% if front_end_filters|length > 0 %}
                             {% for filter in front_end_filters %}
                             {% if filter.0 == 'plant_cats' %}
@@ -36,11 +34,10 @@
                             {% else %}
                             <img src="/static/media/hanging.png" title="Hanging plants">
                             {% endif %}
-                            <br><br><small>Hanging</small></a></li>
-
-                    <!-- floor plants -->
-                    <li class="text-center list-group-item flex-fill border-0"><a
-                            href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor">
+                            <br><br><small>Hanging</small></a>
+                    </div>
+                    <div class="text-center col-md col-4 d-flex justify-content-around py-2">
+                        <a href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor">
                             {% if front_end_filters|length > 0 %}
                             {% for filter in front_end_filters %}
                             {% if filter.0 == 'plant_cats' %}
@@ -54,10 +51,10 @@
                             {% else %}
                             <img src="/static/media/floor.png" title="Floor plants">
                             {% endif %}
-                            <br><br><small>Floor</small></a></li>
-
-                    <!-- potted plants -->
-                    <li class="text-center list-group-item flex-fill border-0"><a
+                            <br><br><small>Floor</small></a>
+                    </div>
+                    <div class="text-center col-md col-4 d-flex justify-content-around py-2">
+                        <a
                             href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted">
                             {% if front_end_filters|length > 0 %}
                             {% for filter in front_end_filters %}
@@ -72,10 +69,10 @@
                             {% else %}
                             <img src="/static/media/potted.png" title="Potted plants">
                             {% endif %}
-                            <br><br><small>Potted</small></a></li>
-
-                    <!-- plants with flowers -->
-                    <li class="text-center list-group-item flex-fill border-0"><a
+                            <br><br><small>Potted</small></a>
+                    </div>
+                    <div class="text-center col-md col-6 d-flex justify-content-around py-2">
+                        <a
                             href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers">
                             {% if front_end_filters|length > 0 %}
                             {% for filter in front_end_filters %}
@@ -91,10 +88,9 @@
                             <img src="/static/media/flowers.png" title="Plants with flowers">
                             {% endif %}
                             <br><br><small>Flowers</small></a>
-                    </li>
-
-                    <!-- succulents -->
-                    <li class="text-center list-group-item flex-fill border-0"><a
+                    </div>
+                    <div class="text-center col-md col-6 d-flex justify-content-around py-2">
+                        <a
                             href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents">
                             {% if front_end_filters|length > 0 %}
                             {% for filter in front_end_filters %}
@@ -110,8 +106,8 @@
                             <img src="/static/media/succulent.png" title="Succulent plants">
                             {% endif %}
                             <br><br><small>Succulents</small></a>
-                    </li>
-                </ul>
+                    </div>
+                </div>
                 <hr>
             </div>
 
@@ -221,11 +217,9 @@
                 </li>
             </ul>
 
-            <p class="text-center"><a href="{% url 'products' %}">Clear all</a></p>
+            <p class="text-center"><a href="{% url 'products' %}">Clear all filters</a></p>
         </div>
     </div>
-
-
 
     <div class="row">
 
@@ -240,14 +234,7 @@
 
                 </div>
                 <div class="col p-2 text-center">
-                    <!-- <h4>&nbsp;&nbsp;{{all_products.count}} products {% if filtered_by %}for "{{filtered_by}}"{% endif %} -->
-
-
-                    <!-- {% if total_products.count == all_products.count or all_products.count == 0 %}
-                        {% else %}
-                        <br>
-                        <a href="{% url 'products' %}"><small>(clear)</small></a>
-                        {% endif %}</h4> -->
+                    <h3>{{all_products.count}} products</h3>
                 </div>
 
                 <div class="col p-2 d-flex justify-content-end">
