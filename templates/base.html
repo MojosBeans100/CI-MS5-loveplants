@@ -45,10 +45,9 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <div class="d-flex align-items-start">
-          <h1 style="font-family: 'Amatic SC', cursive; font-size: 65px; letter-spacing: 2px;">L</h1>
-          <img style="transform: rotate(55deg); height: 60px; width: 60px;"
-              src="/static/media/hoya_icon.png">
-          <h1 style="font-family: 'Amatic SC', cursive; font-size: 65px; letter-spacing: 2px; font-weight: 700;">VE PLANTS</h1>
+          <img src="/static/media/green-tea.png">
+          <h3>Love  &nbsp;Plants</h3>
+          
       </div>
       </a>
 
@@ -101,12 +100,16 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'view_bag' %}"><i class="fa-solid fa-basket-shopping">
-                {% if product_count != 0 %}£{{grand_total}} ({{product_count}}){% endif %}</i></a>
+            <a class="nav-link" aria-current="page" href="{% url 'view_bag' %}">
+              {% if product_count == 0 %}
+              <img src="/static/media/bag-empty.png">
+              {% else %}
+              <img src="/static/media/bag-full.png">
+              {% endif %}
+              {% if product_count != 0 %}£{{grand_total}}{% endif %}</a>
           </li>
         </ul>
     
-
       </div>
     </div>
   </nav>

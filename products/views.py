@@ -166,6 +166,9 @@ def all_products(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
+    liked_products = ProductReview.objects.filter(user=request.user,
+                                                  liked=True)
+
     context = {
         'all_products': all_products,
         'plant_cats': plant_categories,
@@ -178,6 +181,7 @@ def all_products(request):
         #'friendly_filters': friendly_filters,
         'filtered_by': filtered_by,
         'front_end_filters': front_end_filters,
+        'liked_products': liked_products,
     }
 
     return render(request, 'products/products.html', context)
@@ -251,3 +255,28 @@ def product_detail(request, id):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+def product_like(request, id):
+    """
+    A view for users to like/unlike products
+    """
+
+    product = Product.objects.get(id=id)
+    if ProductReview.objects.filter(product=product,
+                                    user=request.user).exists():
+        product_review = ProductReview.objects.get(product=product,
+                                                   user=request.user)
+        if product_review.liked is True:
+            product_review.liked = False
+            product_review.save()
+        else:
+            product_review.liked = True
+            product_review.save()
+    else:
+        product_review = ProductReview(product=product,
+                                       user=request.user,
+                                       liked=True)
+        product_review.save()
+
+    return redirect(reverse('products'))

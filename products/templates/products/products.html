@@ -230,7 +230,11 @@
 
                 </div>
                 <div class="col p-2 text-center">
+                    {% if all_products.count == 0 %}
+                    <h3>No products found, try widening your search!</h3>
+                    {% else %}
                     <h3>{{all_products.count}} products</h3>
+                    {% endif %}
                 </div>
 
                 <div class="col p-2 d-flex justify-content-end">
@@ -281,17 +285,21 @@
             </div>
             {% endif %}
 
+            {% for i in liked_products %}
+            {{i.product}}
+            {% endfor %}
+
             <!-- list the products -->
             <div class="row">
                 {% for product in page_obj %}
-
                 <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
+
+                    <!-- product card -->
                     <div class="card text-center border-0 py-3" style="width: 20rem;">
                         {% if product.stock == 'out of stock' %}
                         <a href="{% url 'product_detail' product.id %}">
                             <div>
                                 <p id="oos-image-banner">Out of stock</p>
-
                                 <img src="{{product.image1_source_url}}" id="product-out-of-stock"
                                     class="card-img-top rounded-0" alt="{{product.friendly_name}} product image">
                             </div>
@@ -305,16 +313,27 @@
                         </div>
 
                         {% else %}
-                        <div>
 
-                            <a href="{% url 'product_detail' product.id %}"><img
-                                    onmouseover="hoverImage(this)"
-                                    onmouseout="unHoverImage(this)"
-                                    id="{{product.image2_source_url}}"
-                                    title="{{product.image1_source_url}}"
+                        <!-- product image -->
+                        <div style="position: relative;">
+                            <form method="POST" action="{% url 'product_like' product.id %}" class="form">
+                                {% csrf_token %}
+                                <button id="product-like-button" type="submit"> 
+                                    {% if product.friendly_name in liked_products %}
+                                    <i class="fa-solid fa-heart"></i>
+                                    {% else %}
+                                    <i class="fa-regular fa-heart"></i>
+                                    {% endif %}
+                                </button>
+                            </form>
+                            <a href="{% url 'product_detail' product.id %}">
+                                <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
+                                    id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
                                     src="{{product.image1_source_url}}" class="card-img-top rounded-0"
                                     alt="{{product.friendly_name}} product image"></a>
                         </div>
+
+                        <!-- product name and price -->
                         <div class="card-body">
                             <a href="{% url 'product_detail' product.id %}">
                                 <h5 class="card-title">{{product.friendly_name|upper}}</h5>
@@ -359,12 +378,14 @@
 
 {% block postloadjs %}
 <script>
-
     /**
     Display different product image on hover
     */
     function hoverImage(element) {
-        element.src= element.id
+
+        if (element.id !== 'None') {
+            element.src = element.id
+        } else {}
     }
 
     /**
