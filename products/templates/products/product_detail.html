@@ -6,6 +6,7 @@
 
     <div class="row my-5">
         <pp class="text-start">
+            <button onclick="history.back()">Go Back</button>
             <a href="{% url 'products' %}">Products</a> /
             <a href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a>
             {% if product.plant_category %}/
