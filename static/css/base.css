@@ -95,8 +95,16 @@ button {
     width: 60%;
 }
 
-button {
+button,
+#add-to-bag {
     text-align: center !important;
+    border-radius: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    color: white;
+    background-color: black;
 }
 
 .btn-outline-secondary {
@@ -105,6 +113,11 @@ button {
 
 .filter {
     color: orange;
+}
+
+.card-body{
+    padding-left: 0 !important;
+    line-height: 10px;
 }
 
 @media (min-width: 576px) {
@@ -134,6 +147,22 @@ button {
 .product_detail_alt_img:hover {
     opacity: 0.6;
 }
+
+#product-detail-add {
+    box-shadow: 0 0 2px 1px rgb(238, 235, 235) !important;
+}
+
+.qty_input,
+#add-to-bag {
+    width: 80%;
+}
+
+input[type=submit] {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
 
 /* MEDIA QUERIES */
 @media (min-width: 768px) {
