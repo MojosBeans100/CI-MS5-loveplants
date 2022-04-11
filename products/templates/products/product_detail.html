@@ -4,6 +4,7 @@
 {% block content %}
 <div class="container py-5">
 
+    <!-- navigate back to all products -->
     <div class="row mt-5">
         <pp class="text-start">
             <button class="btn btn-dark" onclick="history.back()">Go Back</button>
@@ -18,10 +19,12 @@
             / <strong><em>{{product.friendly_name}}</em></strong></p>
     </div>
 
+    <!-- main container for product detail -->
     <div class="row">
+
         <!-- LH for pics -->
-        <div class="col-sm-12 col-md-6 order-first">
-            
+        <div class="col-sm-12 col-md-6">
+
             <div class="row">
                 <div class="col">
                     <img class="detail_image" src="{{ product.image1_source_url }}" id="main-image"
@@ -52,39 +55,42 @@
         </div>
 
         <!-- RH for detail -->
-        <div class="col-sm-12 col-md-6 order-last">
+        <div class="col-sm-12 col-md-6">
             <h2>{{product.friendly_name}} {% if product.stock == "out of stock" %}(out of stock){% else %}{% endif %}
             </h2>
 
+            <!-- if the product is a plant, display plant detail -->
             {% if product.plant_category %}
-            <div class="row">
-                <div class="col">
-                    <p class="fst-italic">{{product.latin_name|lower}}</p>
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <p class="fst-italic">{{product.latin_name|lower}}</p>
+                    </div>
+                    <div class="col">
+                    </div>
                 </div>
-                <div class="col">
-                </div>
-            </div>
 
-            <!-- rare, popular, easy care -->
-            <p class="text-center">
-                {% if product.rare == True %}
-                <i class="ps-4 pe-2 fa-solid fa-gem"></i>Rare
-                {% endif %}
-                {% if product.popular == True %}
-                <i class="ps-4 pe-2 fa-solid fa-bolt"></i>Popular
-                {% endif %}
-                {% if product.care_required == 'low' %}
-                <i class="ps-4 pe-2 fa-solid fa-face-smile"></i>Easy care
-                {% endif %}</p>
-            {% else %}
+                <!-- rare, popular, easy care -->
+                <p class="text-center">
+                    {% if product.rare == True %}
+                    <i class="ps-4 pe-2 fa-solid fa-gem"></i>Rare
+                    {% endif %}
+                    {% if product.popular == True %}
+                    <i class="ps-4 pe-2 fa-solid fa-bolt"></i>Popular
+                    {% endif %}
+                    {% if product.care_required == 'low' %}
+                    <i class="ps-4 pe-2 fa-solid fa-face-smile"></i>Easy care
+                    {% endif %}</p>
+                {% else %}
+            </div>
             {% endif %}
             <hr>
 
             <!-- price, add to basket -->
             <div id="product-detail-add" class="row bg-white py-3">
 
-                <div class="col-12 text-center border border-primary">
-                    <p>{{product.friendly_name}}  £ {{product.price}}</p>
+                <div class="col-12 text-center">
+                    <p>{{product.friendly_name}} £ {{product.price}}</p>
                 </div>
 
                 <div class="col-12">
@@ -97,37 +103,41 @@
                         <large>+</large>
                     </button> -->
                     <button type="button" disabled class="btn btn-outline-secondary">Add to basket</button>
-                    
+
 
                     {% else %}
                     <!-- add product to bag -->
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="row px-2">
-                            <div class="col col-sm-6 d-flex justify-content-end justify-content-sm-center border">
+                            <div class="col col-sm-6 d-flex justify-content-end justify-content-sm-center">
                                 <input class="qty_input text-center" type="number" min=1 max={{product.stock_quantity}}
-                                oninvalid="setCustomValidity('Not enough items in stock!')" value=1 name="quantity">
+                                    oninvalid="setCustomValidity('Not enough items in stock!')" value=1 name="quantity">
                             </div>
-                            <div class="col col-sm-6 d-flex justify-content-start justify-content-sm-center border">
-                                    <input id="add-to-bag" type="submit" class="text-center" value="Add to bag">
+                            <div class="col col-sm-6 d-flex justify-content-start justify-content-sm-center">
+                                <input id="add-to-bag" type="submit" class="text-center" value="Add to bag">
                             </div>
                         </div>
-                        
-                        
-                        <input style="width: 0; height: 0;" type="hidden" name="redirect_url" value="{{ request.path }}">
+
+
+                        <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                            value="{{ request.path }}">
                     </form>
                     {% endif %}
                 </div>
                 {% for item in bag_items %}
-                    {% if item.product.friendly_name == product.friendly_name %}
-                    <p class="text-center fw-bold">This item is already in your <a href="{% url 'view_bag' %}">basket</a>.</p>
-                    {% endif %}
-                    {% endfor %}
+                {% if item.product.friendly_name == product.friendly_name %}
+                <p class="text-center fw-bold">This item is already in your <a href="{% url 'view_bag' %}">basket</a>.
+                </p>
+                {% endif %}
+                {% endfor %}
             </div>
             <br>
             <p>{{product.description}} <small><a href="{{product.description_url}}"
                         target="_blank">{{product.description_source}}</a></small></p>
             <hr>
+
+            <!-- if product is plant, display plant detail -->
             {% if product.plant_category %}
             <table class="table table-borderless">
                 <tbody>
@@ -160,6 +170,7 @@
             {% else %}
             {% endif %}
 
+            <!-- reviews form and rating display -->
             <div class="row">
                 <div class="col"></div>
                 <div class="col">
@@ -194,7 +205,6 @@
                     </table>
                 </div>
                 <div class="col"></div>
-
             </div>
         </div>
     </div>
@@ -235,8 +245,8 @@
         </div>
         {% endif %}
 
-        {% if product.popular == True %}
         <!-- if product is popular, list other popular products -->
+        {% if product.popular == True %}
         <div class="my-4 row">
             <h4>See other popular products</h4>
             {% for popular in popular_products %}
@@ -251,6 +261,7 @@
         </div>
         {% endif %}
 
+        <!-- if product is easy care, list other easy care products -->
         {% if product.care_required == 'low' %}
         <div class="my-4 row">
             <h4>See other easy care products</h4>
@@ -291,7 +302,7 @@
     <div class="row">
         <div class="col-2">
         </div>
-        <div class="col-8 py-3 border">
+        <div class="col-8 py-3">
             <h2 class="text-center" id="product-review-title">Reviews</h2>
             {% for review in reviews %}
             <div class="row">

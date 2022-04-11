@@ -168,6 +168,10 @@ def all_products(request):
 
     liked_products = ProductReview.objects.filter(user=request.user,
                                                   liked=True)
+    liked_products_list = []
+
+    for i in liked_products:
+        liked_products_list.append(i.product.friendly_name)
 
     context = {
         'all_products': all_products,
@@ -182,6 +186,7 @@ def all_products(request):
         'filtered_by': filtered_by,
         'front_end_filters': front_end_filters,
         'liked_products': liked_products,
+        'liked_list': liked_products_list,
     }
 
     return render(request, 'products/products.html', context)

@@ -19,6 +19,16 @@ a:hover {
     color: black;
 }
 
+button {
+    text-align: left !important;
+}
+
+#add-to-bag:hover {
+    background-color: white !important;
+    color: black !important;
+    border: solid 1px black !important;
+}
+
 #index-banner {
     height: calc(100vh - 90px);
     background-size: cover;
@@ -80,10 +90,6 @@ a:hover {
     font-size: 20px;
 }
 
-button {
-    text-align: left !important;
-}
-
 .extra-filter {
     width: 60%;
 }
@@ -98,6 +104,7 @@ button,
     padding-right: 30px !important;
     color: white;
     background-color: black;
+    border: 1px solid black;
 }
 
 .btn-outline-secondary {

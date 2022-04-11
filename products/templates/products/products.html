@@ -285,10 +285,6 @@
             </div>
             {% endif %}
 
-            {% for i in liked_products %}
-            {{i.product}}
-            {% endfor %}
-
             <!-- list the products -->
             <div class="row">
                 {% for product in page_obj %}
@@ -318,14 +314,15 @@
                         <div style="position: relative;">
                             <form method="POST" action="{% url 'product_like' product.id %}" class="form">
                                 {% csrf_token %}
-                                <button id="product-like-button" type="submit"> 
-                                    {% if product.friendly_name in liked_products %}
+                                <button id="product-like-button" type="submit">
+                                    {% if product.friendly_name in liked_list %}
                                     <i class="fa-solid fa-heart"></i>
                                     {% else %}
                                     <i class="fa-regular fa-heart"></i>
                                     {% endif %}
                                 </button>
                             </form>
+
                             <a href="{% url 'product_detail' product.id %}">
                                 <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
                                     id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
