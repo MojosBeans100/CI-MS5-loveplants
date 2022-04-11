@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container py-5">
 
-    <div class="row my-5">
+    <div class="row mt-5">
         <pp class="text-start">
             <button class="btn btn-dark" onclick="history.back()">Go Back</button>
             <br>
@@ -81,13 +81,13 @@
             <hr>
 
             <!-- price, add to basket -->
-            <div id="product-detail-add" class="row fixed-bottom bg-white">
+            <div id="product-detail-add" class="row bg-white py-3">
 
-                <div class="col-12 col-sm-4 text-center py-1">
+                <div class="col-12 text-center border border-primary">
                     <p>{{product.friendly_name}}  £ {{product.price}}</p>
                 </div>
 
-                <div class="col-12 col-sm-8">
+                <div class="col-12">
                     {% if product.stock == "out of stock" %}
                     <!-- <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm">
                         <large>-</large>
@@ -101,17 +101,15 @@
 
                     {% else %}
                     <!-- add product to bag -->
-                    <form class="form border border-primary" action="{% url 'add_to_bag' product.id %}" method="POST">
+                    <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="row px-2">
-                            <div class="col d-flex justify-content-end">
+                            <div class="col col-sm-6 d-flex justify-content-end justify-content-sm-center border">
                                 <input class="qty_input text-center" type="number" min=1 max={{product.stock_quantity}}
                                 oninvalid="setCustomValidity('Not enough items in stock!')" value=1 name="quantity">
                             </div>
-                            <div class="col d-flex justify-content-start">
-                                
-                                    <input type="submit" class="" value="Add to bag">
-                                
+                            <div class="col col-sm-6 d-flex justify-content-start justify-content-sm-center border">
+                                    <input id="add-to-bag" type="submit" class="text-center" value="Add to bag">
                             </div>
                         </div>
                         
@@ -122,7 +120,7 @@
                 </div>
                 {% for item in bag_items %}
                     {% if item.product.friendly_name == product.friendly_name %}
-                    <p class="fw-bold">This item is already in your basket.</p>
+                    <p class="text-center fw-bold">This item is already in your <a href="{% url 'view_bag' %}">basket</a>.</p>
                     {% endif %}
                     {% endfor %}
             </div>

@@ -1,16 +1,13 @@
-
 /* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Raleway:wght@100;300;500;700;900&display=swap');
 
+
+/* GENERAL */
 body {
     font-family: 'Raleway', sans-serif;
 }
-
-/* GENERAL */
-
-
 
 a {
     text-decoration: none;
@@ -35,7 +32,6 @@ a:hover {
 }
 
 .navbar h3 {
-    /* font-family: 'Amatic SC', cursive; */
     font-size: 45px;
     letter-spacing: -3px;
 }
@@ -44,11 +40,8 @@ a:hover {
 .card-img-top {
     height: 320px;
     image-rendering: -moz-crisp-edges;
-    /* Firefox */
     image-rendering: -o-crisp-edges;
-    /* Opera */
     image-rendering: -webkit-optimize-contrast;
-    /* Webkit (non-standard naming) */
     image-rendering: crisp-edges;
     -ms-interpolation-mode: nearest-neighbor;
 }
@@ -115,22 +108,18 @@ button,
     color: orange;
 }
 
-.card-body{
+.card-body {
     padding-left: 0 !important;
     line-height: 10px;
 }
+
+/* ALL PRODUCTS MEDIA QUERIES */
 
 @media (min-width: 576px) {
     .extra-filter {
         width: 100%;
     }
 }
-
-/* @media (min-width: 1200px) {
-    .extra-filter {
-        width: 70%;
-    }
-} */
 
 @media (min-width: 1400px) {
     .extra-filter {
@@ -150,11 +139,13 @@ button,
 
 #product-detail-add {
     box-shadow: 0 0 2px 1px rgb(238, 235, 235) !important;
+    position: fixed;
+    bottom: 0;
 }
 
 .qty_input,
 #add-to-bag {
-    width: 80%;
+    width: 90%;
 }
 
 input[type=submit] {
@@ -163,10 +154,24 @@ input[type=submit] {
     border: none;
 }
 
+/* PRODUCT DETAIL MEDIA QUERIES */
 
-/* MEDIA QUERIES */
+@media (min-width: 576px) {
+    #product-detail-add {
+        position: relative;
+        box-shadow: 0 0 0 0 white !important;
+    }
+
+    .qty_input,
+    #add-to-bag {
+        width: 100% !important;
+    }
+
+
+}
+
 @media (min-width: 768px) {
-    
+
     .detail_image {
         height: 500px;
     }
@@ -180,6 +185,15 @@ input[type=submit] {
     }
 
 }
+
+@media (min-width: 1400px) {
+
+    .qty_input,
+    #add-to-bag {
+        width: 60% !important;
+    }
+}
+
 
 /* BAG */
 
