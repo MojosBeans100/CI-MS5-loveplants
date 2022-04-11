@@ -23,6 +23,16 @@ button {
     text-align: left !important;
 }
 
+.black-button {
+    border-radius: 0;
+    background-color: black;
+    color: white;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
 #add-to-bag:hover {
     background-color: white !important;
     color: black !important;
@@ -44,6 +54,24 @@ button {
 .navbar h3 {
     font-size: 45px;
     letter-spacing: -3px;
+}
+
+/* IMAGES */
+.bag-images {
+    height: 150px;
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    .bag-images {
+        height: 200px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bag-images {
+        height: 300px;
+    }
 }
 
 /* ALL PRODUCTS */
@@ -94,7 +122,11 @@ button {
     width: 60%;
 }
 
-button,
+.white-button {
+    background-color: white;
+    border: solid black 1px;
+}
+
 #add-to-bag {
     text-align: center !important;
     border-radius: 0 !important;
@@ -223,6 +255,11 @@ input[type=submit] {
     position: relative;
     height: 300px;
     width: 100%;
+}
+
+input[type=number] {
+    border: black 1px;
+    background-color:rgb(255, 251, 251);
 }
 
 /* TOASTS */

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-from products.models import Product
+from products.models import Product, ProductReview
 from django.contrib import messages
 
 
@@ -8,7 +8,19 @@ def view_bag(request):
     A view to render the contents of the basket
     """
 
-    return render(request, 'bag/bag.html')
+    liked_products = ProductReview.objects.filter(user=request.user,
+                                                  liked=True)
+
+    liked_products_list = []
+
+    for i in liked_products:
+        liked_products_list.append(i.product.friendly_name)
+
+    context = {
+        'liked_list': liked_products_list
+    }
+
+    return render(request, 'bag/bag.html', context)
 
 
 def add_to_bag(request, item_id):
@@ -50,8 +62,7 @@ def edit_bag(request, item_id):
     bag = request.session.get('bag', {})
     edit_message = f'Updated quantity of {product.friendly_name} to {quantity}'
     remove_message = (f'Removed {quantity} of '
-                      f'{product.friendly_name} from basket'
-                    )
+                      f'{product.friendly_name} from basket')
 
     if quantity > items_in_stock:
         message = "There are not enough items in stock: "

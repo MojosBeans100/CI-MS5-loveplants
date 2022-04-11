@@ -284,4 +284,6 @@ def product_like(request, id):
                                        liked=True)
         product_review.save()
 
-    return redirect(reverse('products'))
+    redirect_url = request.POST.get('redirect_url')
+
+    return redirect(redirect_url)
