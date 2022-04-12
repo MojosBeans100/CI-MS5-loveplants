@@ -40,39 +40,16 @@ def all_products(request):
 
         # copy the dictionary of filters in the front end
         querydict = request.GET.copy()
-        #print(querydict.iterlists())
-        #print(querydict['direction'])
         myDict = dict(request.GET.lists())
-        #print(myDict)
-       # print(myDict['direction'])
 
-        for j in myDict:
-           # print(myDict[j])
-           # print(len(myDict[j]))
-            if len(myDict[j])>1:
-                
-                delete.append(myDict[j][-1])
-                
-                # for k in myDict[j]:
-                #     print(k)
-        print(delete)
-  
-
-        #for key, value in request.GET.items():
-          #  print(key, value)
-    
         # for all items in the new request
         for i in request.GET.items():
-           
+
             # if the filter category is already in the dict
             # change the value
             if i[0] in querydict:
 
-                #querydict.pop(i[0])
                 querydict[i[0]] = i[1]
-                
-                #querydict.update({i[0]: i[1]})
-                #print(querydict)
 
             # if not, add this filter category
             else:
@@ -89,10 +66,6 @@ def all_products(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
-
-            # if sortkey == 'name':
-            #     sortkey == 'lower_name'
-            #     all_products = all_products.annotate(lower_name=Lower('name'))
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
@@ -141,7 +114,6 @@ def all_products(request):
             front_end_filters.append(filtered_by)
 
         if 'price' in request.GET:
-            price_1 = request.GET['price']
             price = request.GET['price'].split(',')
             if len(price) > 1:
                 price_low = price[0]
@@ -153,7 +125,9 @@ def all_products(request):
             else:
                 price_low = price[0]
                 all_products = all_products.filter(price__gte=price_low)
-            filtered_by = ['price', f'{price_low}-{price_high}', f'£{price_low} - £{price_high}']
+            filtered_by = ['price',
+                           f'{price_low}-{price_high}',
+                           f'£{price_low} - £{price_high}']
             front_end_filters.append(filtered_by)
 
         if 'q' in request.GET:
@@ -166,12 +140,13 @@ def all_products(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    liked_products = ProductReview.objects.filter(user=request.user,
-                                                  liked=True)
     liked_products_list = []
 
-    for i in liked_products:
-        liked_products_list.append(i.product.friendly_name)
+    if request.user.is_authenticated:
+        liked_products = ProductReview.objects.filter(user=request.user,
+                                                      liked=True)
+        for i in liked_products:
+            liked_products_list.append(i.product.friendly_name)
 
     context = {
         'all_products': all_products,
@@ -181,11 +156,8 @@ def all_products(request):
         'search_query': search_query,
         'total_products': total_products,
         'current_filters': current_filters,
-        #'current_filter_queryset': querydict.items(),
-        #'friendly_filters': friendly_filters,
         'filtered_by': filtered_by,
         'front_end_filters': front_end_filters,
-        'liked_products': liked_products,
         'liked_list': liked_products_list,
     }
 
@@ -198,6 +170,8 @@ def product_detail(request, id):
 
     user = str(request.user)
     product = Product.objects.get(id=id)
+    recently_viewed = ""
+    product_reviews = ProductReview.objects.filter(product=product.id)
 
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
@@ -217,38 +191,33 @@ def product_detail(request, id):
         easy_products = ""
 
     # look for recently viewed products
-    product_reviews = ProductReview.objects.filter(product=product.id)
+    if request.user.is_authenticated:
 
-    current_user = User.objects.get(username=user)
+        current_user = User.objects.get(username=user)
 
-    if RecentlyViewed.objects.filter(
-                        user=current_user,
-                        product=product).exists():
-        print("do nothing")
-    else:
-        viewed_product = RecentlyViewed(
+        if RecentlyViewed.objects.filter(
                             user=current_user,
-                            viewed=datetime.now(),
-                            product=product
-                            )
-        viewed_product.save()
+                            product=product).exists():
+            print("do nothing")
+        else:
+            viewed_product = RecentlyViewed(
+                                user=current_user,
+                                viewed=datetime.now(),
+                                product=product
+                                )
+            viewed_product.save()
 
-    recently_viewed = RecentlyViewed.objects.filter(user=current_user)
-    recently_viewed_products = []
+        recently_viewed = RecentlyViewed.objects.filter(user=current_user)
+        recently_viewed_products = []
 
-    for i in recently_viewed:
-        product_name = i.product
-        recent = Product.objects.get(
-                                friendly_name=product_name)
-        recently_viewed_product = Product.objects.get(
-                                            friendly_name=product_name).name
-        # if recent in popular_products or recent in easy_products or recent in rare_products :
-        #     print("do nothing")
-        # else:
-        recently_viewed_products.append(recently_viewed_product)
+        for i in recently_viewed:
+            product_name = i.product
+            recently_viewed_product = Product.objects.get(
+                                                friendly_name=product_name).name
+            recently_viewed_products.append(recently_viewed_product)
 
-    recently_viewed = Product.objects.filter(
-                                    name__in=recently_viewed_products)[0:4]
+        recently_viewed = Product.objects.filter(
+                                        name__in=recently_viewed_products)[0:4]
 
     context = {
         'product': product,
