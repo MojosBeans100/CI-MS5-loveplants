@@ -68,7 +68,8 @@ def bag_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
         'free_delivery_products': free_delivery_products,
-        'products_not_in_bag': products_not_in_bag[0:4]
+        'products_not_in_bag': products_not_in_bag[0:4],
+        'all_products': Product.objects.all(),
     }
 
     return context

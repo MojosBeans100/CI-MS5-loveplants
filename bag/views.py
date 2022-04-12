@@ -31,6 +31,7 @@ def add_to_bag(request, item_id):
     items_in_stock = Product.objects.get(id=item_id).stock_quantity
     product = Product.objects.get(id=item_id)
     quantity = int(request.POST.get('quantity'))
+    print(quantity)
     redirect_url = request.POST.get('redirect_url')
     add_message = f'Added {quantity} of {product.friendly_name} to basket'
     bag = request.session.get('bag', {})
@@ -57,7 +58,9 @@ def edit_bag(request, item_id):
     """
 
     items_in_stock = Product.objects.get(id=item_id).stock_quantity
+    print(items_in_stock)
     product = Product.objects.get(id=item_id)
+    print(product)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
     edit_message = f'Updated quantity of {product.friendly_name} to {quantity}'
@@ -89,9 +92,11 @@ def delete_bag(request, item_id):
     bag = request.session.get('bag', {})
     bag.pop(item_id)
 
-    remove_product_message = (f"Removed {delete_product.friendly_name}")
+    remove_product_message = (f"Removed {delete_product.friendly_name}.")
 
-    messages.success(request, remove_product_message)
+    messages.success(request,
+                     remove_product_message,
+                     extra_tags=delete_product.name)
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))

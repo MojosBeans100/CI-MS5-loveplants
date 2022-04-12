@@ -2,6 +2,22 @@
 
   <div class="toast-header">
     <p><em>{{message}}</em></p>
+    <p>{{message.tags}}</p>
+    {% for product in all_products %}
+    {% if product.name in message.tags %}
+
+    <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+      {% csrf_token %}
+      <input type="hidden" value=1 name="quantity">
+      <input type="hidden" name="redirect_url" value="{{request.path}}">
+      <p>Didn't mean to remove this item?</p>
+      <button type="submit">Undo</button>
+    </form>
+
+    {% else %}
+    {% endif %}
+    {% endfor %}
+
     <button type="button" class="btn-close" data-bs-dismiss="toast hide" aria-label="Close"></button>
   </div>
 
