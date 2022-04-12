@@ -49,6 +49,13 @@ def bag_contents(request):
     else:
         free_delivery_products = ""
 
+    # look for products not already in the basket for recommendations
+    products_not_in_bag = Product.objects.all()
+
+    for item in bag_items:
+        print(item['item_id'])
+        products_not_in_bag.exclude(pk=item['item_id'])
+
     context = {
         'bag_items': bag_items,
         'total': total,
@@ -59,6 +66,7 @@ def bag_contents(request):
         'free_delivery_threshold': settings.FREE_DELIVERY_THRESHOLD,
         'grand_total': grand_total,
         'free_delivery_products': free_delivery_products,
+        'products_not_in_bag': products_not_in_bag[0:4]
     }
 
     return context
