@@ -104,8 +104,12 @@
               {% if product_count == 0 %}
               <img src="/static/media/bag-empty.png">
               {% else %}
-              <img src="/static/media/bag-full.png">
+              <div style="position: relative;">
+              <img style="position: absolute; top: 0; left: 0" src="/static/media/bag-full.png">
+              <p style="position: absolute; top: 0; right: 0"><small>{{product_count}}</small></p>
+              </div>
               {% endif %}
+              <br>
               {% if product_count != 0 %}£{{grand_total}}{% endif %}</a>
           </li>
         </ul>

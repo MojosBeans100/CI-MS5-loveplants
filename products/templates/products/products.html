@@ -312,13 +312,15 @@
 
                         <!-- product image -->
                         <div style="position: relative;">
+
+                            {% if user.is_authenticated %}
                             <form method="POST" action="{% url 'product_like' product.id %}" class="form">
                                 {% csrf_token %}
                                 <button id="product-like-button" type="submit">
                                     {% if product.friendly_name in liked_list %}
                                     <i class="fa-solid fa-heart"></i>
                                     {% else %}
-                                    <div style="position: relative; border: solid red 1px;">
+                                    <div style="position: relative; height: 24px; width:24px; padding: 0;">
                                         <i style="position: absolute; color: white; z-index: -99"
                                             class="fa-solid fa-heart"></i>
                                         <i style="position: absolute;" class="fa-regular fa-heart"></i>
@@ -328,6 +330,9 @@
                                 <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
                                     value="{{ request.path }}">
                             </form>
+                            {% else %}
+                            {% endif %}
+
 
                             <a href="{% url 'product_detail' product.id %}">
                                 <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"

@@ -44,7 +44,7 @@ def bag_contents(request):
     # look for products around the price of the free delivery delta
     if free_delivery_delta > 0:
         free_delivery_products = products.filter(price__gte=free_delivery_delta,
-        stock='in stock').order_by('price')
+        stock='in stock').order_by('price')[0:4]
 
     else:
         free_delivery_products = ""

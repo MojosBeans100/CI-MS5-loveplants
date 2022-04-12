@@ -245,6 +245,12 @@ input[type=submit] {
     top: 10px;
     right: 10px;
     z-index: 9999;
+    width: auto !important;
+    border-radius: 0 !important;
+    background-color: white !important;
+    color: black !important;
+    border: solid black 1px !important;
+    font-size: 13px !important;
 }
 
 .free-delivery-products {

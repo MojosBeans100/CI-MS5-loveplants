@@ -61,7 +61,8 @@ def all_products(request):
                 querydict.pop('remove')
                 querydict.pop(i[1])
 
-            current_filters = current_filters + "&" + i[0] + "=" + i[1]
+        for j in querydict.items():
+            current_filters = current_filters + "&" + j[0] + "=" + j[1]
 
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
