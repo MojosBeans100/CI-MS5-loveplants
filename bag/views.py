@@ -85,9 +85,13 @@ def delete_bag(request, item_id):
     A view to delete an item from the basket
     """
 
+    delete_product = Product.objects.get(pk=item_id)
     bag = request.session.get('bag', {})
-
     bag.pop(item_id)
+
+    remove_product_message = (f"Removed {delete_product.friendly_name}")
+
+    messages.success(request, remove_product_message)
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
