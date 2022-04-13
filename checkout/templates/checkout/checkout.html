@@ -2,25 +2,37 @@
 {% load static %}
 
 {% block content %}
-<div class="container bg-white border border-primary">
+<div class="container bg-white">
 
     <div class="row py-3">
 
-        <div class="col-12 col-md-8 order-first border">
+        <!-- order form delivery and billing details -->
+        <div class="col-12 col-md-8 order-first">
 
-            <h4 class="py-4">Your details</h4>
+            <div class="d-flex py-3 px-md-3 px-lg-5">
+                <hr class="flex-grow-1">
+                <h3 class="text-center px-2 px-md-3 px-xl-5">Your details</h3>
+                <hr class="flex-grow-1">
+            </div>
 
-            <form method="POST" action="#" class="form">
+            <form method="POST" action="#" class="form" id="checkout-form">
                 {% for field in order_form %}
                 <p>{{field}}</p>
                 {% endfor %}
+
+                <button id="checkout-form-save" class="black-button">Save</button>
             </form>
 
         </div>
 
-        <div class="col-12 col-md-4 order-last order-md-2 border fixed">
+        <!-- order summary and checkout button -->
+        <div class="col-12 col-md-4 order-last order-md-2 sticky-md-top">
 
-            <h4 class="py-4">Order Summary</h4>
+            <div class="d-flex py-3 px-1">
+                <hr class="flex-grow-1">
+                <h3 class="text-center px-3">Order Summary</h3>
+                <hr class="flex-grow-1">
+            </div>
 
             <table class="table table-borderless">
                 <tr>
@@ -48,7 +60,8 @@
                     By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
                 </small></p>
 
-            <button id="checkout-button" class="black-button">Secure Checkout &nbsp;<i class="fa-solid fa-lock"></i></button>
+            <button id="checkout-button" class="black-button">Secure Checkout &nbsp;<i
+                    class="fa-solid fa-lock"></i></button>
 
             <br>
             <br>
@@ -59,24 +72,32 @@
 
         </div>
 
+        <!-- list products in bag for reference -->
+        <div class="col-12 col-md-8 order-md-3">
 
-        <div class="col-12 col-md-8 order-md-3 border">
-            <h4 class="py-4">Products</h4>
+            <div class="d-flex py-3">
+                <hr class="flex-grow-1">
+                <h3 class="text-center px-2 px-md-3 px-xl-5">Bag</h3>
+                <hr class="flex-grow-1">
+            </div>
 
             {% for item in bag_items %}
             <div class="row py-2">
-                <div class="col-6 border">
-                    <img style="width: 150px; height: 150px;" src="{{item.product.image1_source_url}}">
+                <div class="col-6 col-lg-3">
+                    <a href="{% url 'product_detail' item.product.id %}"><img style="width: 150px; height: 150px;"
+                            src="{{item.product.image1_source_url}}"></a>
                 </div>
-                <div class="col-6 border">
-                    <p><small>{{item.product.friendly_name}}</small></p>
-                    <p><small>Quantity: {{item.quantity}}</small></p>
+                <div class="col-6 col-lg-9">
+                    <p class="fw-bold"><small>{{item.product.friendly_name}} &nbsp;<a
+                                href="{% url 'delete_bag' item.product.id %}"><i
+                                    class="fa-solid fa-trash-can"></i></a></small></p>
                     <p><small>Price: £ {{item.product.price}}</small></p>
+                    <p><small>Quantity: {{item.quantity}}</small></p>
+                    <p><small>Subtotal: £ {{item.product_subtotal}}</small>
                 </div>
             </div>
             {% endfor %}
         </div>
-
 
     </div>
     {% endblock content %}

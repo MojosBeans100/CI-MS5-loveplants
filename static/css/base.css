@@ -289,3 +289,31 @@ input[type=number] {
     margin-left: 10%;
     text-align: center !important;
 }
+
+#checkout-form-save {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center !important;
+}
+
+
+@media  (min-width: 756px) {
+    #checkout-button {
+        width: 100%;
+        margin-left: 0;
+        font-size: 15px;
+    }
+}
+
+@media  (min-width: 1200px) {
+    #checkout-button {
+        font-size: 20px;
+    }
+}
+
+@media  (min-width: 1400px) {
+    #checkout-form {
+        width: 70%;
+        margin-left: 15%;
+    }
+}
