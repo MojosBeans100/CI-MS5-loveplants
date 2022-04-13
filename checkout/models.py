@@ -60,6 +60,11 @@ class Order(models.Model):
         null=False,
         blank=True
         )
+    county = models.CharField(
+        max_length=80,
+        null=False,
+        blank=True,
+    )
     date = models.DateTimeField(
         auto_now=True
         )
