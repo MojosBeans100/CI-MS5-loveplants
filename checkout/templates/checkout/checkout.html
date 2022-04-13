@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container bg-white border border-primary">
+
+    <div class="row py-3">
+
+        <div class="col-12 col-md-8 order-first border">
+
+            <h4 class="py-4">Your details</h4>
+
+            <form method="POST" action="#" class="form">
+                {% for field in order_form %}
+                <p>{{field}}</p>
+                {% endfor %}
+            </form>
+
+        </div>
+
+        <div class="col-12 col-md-4 order-last order-md-2 border fixed">
+
+            <h4 class="py-4">Order Summary</h4>
+
+            <table class="table table-borderless">
+                <tr>
+                    <td class="text-start">Order value</td>
+                    <td class="text-end">£ {{total}}</td>
+                </tr>
+                <tr>
+                    <td class="text-start">Delivery</td>
+                    <td class="text-end">£ {{delivery}}</td>
+                </tr>
+            </table>
+
+            <hr>
+
+            <table class="table table-borderless fw-bold">
+                <tr>
+                    <td class="text-start">Total</td>
+                    <td class="text-end">£ {{grand_total}}</td>
+                </tr>
+            </table>
+
+            <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy Notice</u></a>
+                    <br>
+                    <br>
+                    By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
+                </small></p>
+
+            <button id="checkout-button" class="black-button">Secure Checkout &nbsp;<i class="fa-solid fa-lock"></i></button>
+
+            <br>
+            <br>
+
+            <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
+
+            <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for help</small></p>
+
+        </div>
+
+
+        <div class="col-12 col-md-8 order-md-3 border">
+            <h4 class="py-4">Products</h4>
+
+            {% for item in bag_items %}
+            <div class="row py-2">
+                <div class="col-6 border">
+                    <img style="width: 150px; height: 150px;" src="{{item.product.image1_source_url}}">
+                </div>
+                <div class="col-6 border">
+                    <p><small>{{item.product.friendly_name}}</small></p>
+                    <p><small>Quantity: {{item.quantity}}</small></p>
+                    <p><small>Price: £ {{item.product.price}}</small></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+    {% endblock content %}

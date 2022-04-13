@@ -281,3 +281,11 @@ input[type=number] {
     width: 80%;
     margin-left: 10%;
 }
+
+/* CHECKOUT */
+
+#checkout-button {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center !important;
+}

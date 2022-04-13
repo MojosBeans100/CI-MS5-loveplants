@@ -13,8 +13,8 @@ class OrderForm(forms.ModelForm):
 
     class Meta:
         model = Order
-        fields = ('full_name', 'email', 'phone_number',
-                  'street_address1', 'street_address2',
+        fields = ('full_name', 'email', 'phone_num',
+                  'street_address_1', 'street_address_2',
                   'town_or_city', 'county', 'postcode',
                   'country')
 
@@ -28,9 +28,9 @@ class OrderForm(forms.ModelForm):
         placeholders = {
             'full_name': 'Full Name',
             'email': 'Email Address',
-            'phone_number': 'Phone Number',
-            'street_address1': 'Street Address 1',
-            'street_address2': 'Street Address 2',
+            'phone_num': 'Phone Number',
+            'street_address_1': 'Street Address 1',
+            'street_address_2': 'Street Address 2',
             'town_or_city': 'Town or City',
             'county': 'County',
             'postcode': 'Postcode / Zip Code',
