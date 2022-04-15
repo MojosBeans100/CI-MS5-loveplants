@@ -1,10 +1,10 @@
-# Spaceport
-Spaceport is a full stack website which allows users to access satellite imagery of the Earth.  The website was developed for Milestone 4 as part of the Code Institute Diploma in Software Development. 
+# Love Plants
+Love Plants is a full stack ecommerce website which allows customers to view and purchase products related to plants. The website was developed for Milestone 5 as part of the Code Institute Diploma in Software Development. 
 
 ![Responsive website](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643885662/Spaceport/amiresponsive_mk6ufl.jpg)
 
 # Table of contents
-- [Spaceport](#spaceport)
+- [Love Plants](#love-plants)
 - [Project Overview](#project-overview)
 - [Technical Abstract](#technical-abstract)
 - [Access](#access)
@@ -67,38 +67,13 @@ Spaceport is a full stack website which allows users to access satellite imagery
 - [Acknowledgements](#acknowledgements)
 
 # Project Overview
-- This website was developed for submission as the Milestone 4 project of the Code Institute Diploma in Software Development.
-- The website is deployed using the Heroku pages at the following url: https://ms4spaceport.herokuapp.com/
-- The repository on Github that contains the website source code and assets is available at the following url: https://github.com/MojosBeans100/ms4-spaceport
-- The website was built with a responsive look and feel, designed to be enjoyable to use on all screen sizes.
+- This website was developed for submission as the Milestone 5 project of the Code Institute Diploma in Software Development.
+- The website is deployed using the Heroku pages at the following url: XXXX
+- The repository on Github that contains the website source code and assets is available at the following url: XXXX
+- The website was built with a responsive look and feel, designed to be enjoyable to use on all screen sizes. 
 
-## Technical Abstract
-This project has been designed to provide users with a platform to access satellite imagery through the Skywatch ‘Application Programming Interface’ (or ‘API’). The project idea was initially proposed by a company called Astrosat (Scotland) who specialise in data visualisation of satellite images to enhance our understanding of the challenges we face on Earth.
+[Back to top](#love-plants)
 
-Satellite imagery is becoming increasingly popular as a way of providing a different perspective on changing environments on the Earth's surface. For example, images taken by satellites can provide a more expansive view of rainforest deforestation in the Amazon, enabling more straightforward and accurate calculations of the proportion the total area that is felled, as well as the rate of destruction. Environmental organisations can thus utilise this technology to draw attention to decline in critical climactic environments.
-
-![NASA Image](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644412755/10-landsat_hf01dz.jpg)
-*Landsat 9 satellite image of the Coronation Islands of Western Australia*
-
-Satellite imagery is also becoming more accessible to the global citizenry, whose uses for it range from specific projects to simple curiosity. In recognition that there are many who are interested in, but hitherto unfamiliar with, satellite technology, the website attempts to provide a comprehensive and accessible guide through the process.
-
-The [Skywatch](https://www.skywatch.com/) ‘Application Programming Interface’ (or ‘API’) requires users to submit details of the satellite images they wish to access, defining within specific parameters. The API will then cross-reference these with the satellites available on its database, with the goal of straightforwardly delivering the desired images to the user.
-
-While Astrosat regularly use the Skywatch EarthCache console to retrieve images, the company has less experience in interacting with the API itself.  This project attempts to provide insight into the intricacies of the API and to provide a user-friendly, front-end platform to demonstrate its capabilities.  
-
-# Access
-The assessor can create their own account to test the functionality of the website, and/or can use the details provided in the project milestone submission form to view some example pipelines which have been created for convenience. 
-
-[Back to top](#spaceport)
-
-# Definitions
-This website is based on a technical concept of accessessing satellite imagery, therefore see below some useful definitions which may be used in this document. These definitions and more can also be found on the Discover website page.
-
-- Pipeline: a pipeline refers to the timeline, or projected plan or schedule, of receiving satellite images. Each object in the 'List' model represents a pipeline.  Pipelines are 'active' if they have not completed all intervals, and 'complete' if all intervals have been completed
-
-- Interval: the interval describes the time period in which to look for images.  An interval of 1 day will aim to deliver 1 image per day; an interval of bi-weekly will aim to deliver 1 image every 14 days.
-
-- AOI:  the Area of Interest, or AOI, is the area/coverage/footprint on Earth of which the user wishes to collect images
 
 # UX
 ## Strategy
