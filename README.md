@@ -95,33 +95,44 @@ The primary goals of the website owner or admin are as follows:
 [Back to top](#love-plants)
 
 ## Structure
+
+### Apps
+Love Plants consists of four apps
+- Home
+- Products
+- Bag
+- Checkout
+
 ### Pages
 The website has five main pages, with user authentication on three:
-- Homepage (all): to introduce users to the website and detail the purpose
-- Discover (all): to allow users to explore the uses of satellite imagery
-- My Pipelines (user): to list all pipelines created by the user
-- View of pipeline (user): to display all details of the pipeline instance
-- Create pipeline (user): to display an interactive form for creating a pipeline
+- Homepage (all users): to introduce users to the website and display purchasable products
+- Products (all users): to display all products available to purchase, with sorting and filtering facilities
+- Product Detail (all users): to provide additional detail about a specific product and facilities to add the product to the shopping basket
+- Shopping basket (authenticated user): to display all products in a user's shopping basket
+- Checkout (authenticated user): to display a form to submit payment for purchasing contents in shopping basket
 
 The additional pages are as follows:
-- Edit pipeline: for users to edit pipeline details
-- Delete pipeline: for users to delete pipelines
-- Confirmation of deleted pipeline: to confirm the deletion of a pipeline
-- Log in/log out/sign up pages: for user to be able to sign in/up/out
+- Checkout Confirmation: to display details of a successful checkout
+- Review/Rating: for users to delete pipelines
 
-The website was designed to be simple, clear and uncluttered, basic in structure, with attractive images of satellites and images captured by satellites.
-Bootstrap was used to aid responsiveness, as well as media queries in CSS.
+The website was designed to be simple, clear and uncluttered, basic in structure, and easy to navigate.
+Bootstrap was used to aid responsiveness, as well as media queries in CSS.  Javascript provides interactive features to enhance user experience.
 
 ### Database
 The database includes:
 
-- Spaceport App
+- Home app
+- Products app
+- Bag app
+- Checkout app
 - templates
-- static
-- README
-- manage.py
-- Procfile
-- Requirements.txt
+- static, to maintain media, CSS and JS files
+- README, to outline the developement and purpose of this project
+- manage.py, automatically created upon Django install, the command-line utility for administrative tasks
+- env.py, to store environment variables and secret keys hidden from the Github repository
+- .gitignore, to keep environment variables from being committed to Github
+- Procfile, to allow for deployment on Heroku
+- requirements.txt, to store the python packages required to run the project
 
 #### Database Model
 
@@ -209,28 +220,60 @@ The styling is kept clean and minimal throughout the site.  As the content of th
 Initial wireframes were designed during the project proposal stage.  During development, when more was learned about the API and it's capabilities and restrictions, the designs evolved to include more information. 
 
 #### Homepage
-![Landing page wireframe](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617075/Landing_page_ja2w79.png)
+![Homepage wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/homepage-desktop_gq7ele.png)
 
-#### My Pipelines
-![My pipelines wireframe](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617072/Account_landing_page_ucl4cj.png)
+![Homepage wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409738/LovePlants/ReadMe/Wireframes/homepage-mobile_znwctr.png)
+
+#### Products
+![Products wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-list-desktop_yq6xoh.png)
+
+![Products wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-list-mobile_apfu4a.png)
+
+#### Product Detail
+![Product detail wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-detail-desktop_blousk.png)
+
+![Product detail wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-detail-mobile_ujpi04.png)
+
+#### Shopping Basket
+![Shopping basket wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409738/LovePlants/ReadMe/Wireframes/bag-desktop_akbgpk.png)
+
+![Shopping basket wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409739/LovePlants/ReadMe/Wireframes/bag-mobile_jvlhka.png)
+
+#### Checkout
+![Checkout wireframe desktop]()
+
+![Checkout wireframe mobile]()
+
+#### Checkout Confirmation
+![Checkout confirmation wireframe desktop]()
+
+![Checkout confirmation wireframe mobile]()
+
+#### Liked Products
+![Liked products wireframe desktop]()
+
+![Liked products wireframe mobile]()
+
+#### Rate and Review products
+![Rate/review wireframe desktop]()
+
+![Rate/review wireframe mobile]()
+
+#### Purchase History
+![Purchase history wireframe desktop]()
+
+![Purchase history wireframe mobile]()
 
 #### Create Account
-![Create an account](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617073/Create_account_eyw7lv.png)
+![Create an account wireframe desktop]()
+
+![Create an account wireframe mobile]()
 
 #### Log In
-![Log in](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617072/Log_in_peayob.png)
+![Log in]()
 
-#### Create Pipeline
-![Create pipeline 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617074/New_pipeline_1_i8yggk.png)
+#### Sign Out
 
-![Create pipeline 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617072/New_pipeline_2_tlza0j.png)
-
-![Create pipeline 3](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617073/New_pipeline_3_apy4bx.png)
-
-![Create pipeline 4](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617075/New_pipeline_3_copy_f5ioqw.png)
-
-#### Pipeline Detail
-![Detail view](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644617075/Pipeline_detail_l3v95d.png)
 
 ### Font
 The font style is the default Bootstrap 5 native sans-serif font stack for cross platform usability. The font remains consistent throughout the website, aside from being rendered in italic or font style for emphasis.
