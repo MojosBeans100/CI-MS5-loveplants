@@ -21,6 +21,7 @@ stripe_sk = os.environ.get('STRIPE_SECRET_KEY')
 
 def view_checkout(request):
     """
+    A view to render the checkout page and handle payment
     """
 
     if request.method == 'POST':
@@ -48,7 +49,7 @@ def view_checkout(request):
             order = order_form.save(commit=False)
 
             for item_id, quantity in bag.items():
-                
+
                 product = Product.objects.get(id=item_id)
                 order_line_item = OrderLineItem(
                     order=order,
@@ -56,6 +57,9 @@ def view_checkout(request):
                     quantity=quantity,
                 )
                 order_line_item.save()
+
+                # product.stock_quantity = product.stock_quantity - quantity
+                # product.save()
 
             return redirect(reverse(
                             'checkout_success',
@@ -65,12 +69,11 @@ def view_checkout(request):
             messages.error(request, 'There is an error in the form')
 
     else:
-
         bag = request.session.get('bag', {})
 
         if not bag:
-            messages.error(request, f"There's nothing"
-                                    f" in your bag at the moment.")
+            messages.error(request, "There's nothing"
+                                    " in your bag at the moment.")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
@@ -81,8 +84,6 @@ def view_checkout(request):
             amount=stripe_total,
             currency='gbp',
         )
-
-        print(intent)
 
         order_form = OrderForm()
 
@@ -97,12 +98,11 @@ def view_checkout(request):
 
 def checkout_success(request, order_ref):
     """
+    A view to display order details when checkout is successful
     """
 
     order = get_object_or_404(Order, order_ref=order_ref)
     order_line_items = OrderLineItem.objects.filter(order=order)
-
-    print(order_line_items)
     messages.success(request, f'{order} has been successful')
 
     if 'bag' in request.session:

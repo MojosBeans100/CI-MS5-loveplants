@@ -1,6 +1,10 @@
-from django.db import models
-from cloudinary.models import CloudinaryField
+# 3rd party imports
+
+# Django imports
 from django.contrib.auth.models import User
+from django.db import models
+
+# Local imports
 
 sun_or_water = (
     ('low', 'low'),
