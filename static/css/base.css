@@ -296,11 +296,6 @@ input[type=number] {
     text-align: center !important;
 }
 
-/* #stripe-element {
-    border: solid black 1px;
-} */
-
-
 @media  (min-width: 756px) {
     #checkout-button {
         width: 100%;

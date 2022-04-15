@@ -2,9 +2,11 @@
 import stripe
 
 # Django imports
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import (render,
+                              redirect,
+                              reverse,
+                              get_object_or_404)
 from django.contrib import messages
-from django.conf import settings
 
 # Local imports
 import os
@@ -39,6 +41,9 @@ def view_checkout(request):
         order_form = OrderForm(form_info)
 
         if order_form.is_valid():
+
+            # remember to remove items from stock
+
             order_form.save()
             order = order_form.save(commit=False)
 
@@ -54,7 +59,7 @@ def view_checkout(request):
 
             return redirect(reverse(
                             'checkout_success',
-                            args=[order.order_number]))
+                            args=[order.order_ref]))
 
         else:
             messages.error(request, 'There is an error in the form')
@@ -63,9 +68,10 @@ def view_checkout(request):
 
         bag = request.session.get('bag', {})
 
-        # if not bag:
-        #     messages.error(request, "There's nothing in your bag at the moment.")
-            #return redirect(reverse('products'))
+        if not bag:
+            messages.error(request, f"There's nothing"
+                                    f"in your bag at the moment.")
+        return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         current_total = current_bag['grand_total']
@@ -87,3 +93,20 @@ def view_checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
+
+
+def checkout_success(request, order_ref):
+    """
+    """
+
+    order = get_object_or_404(Order, order_ref=order_ref)
+    messages.success(request, f'{order} has been successful')
+
+    if 'bag' in request.session:
+        del request.session['bag']
+
+    context = {
+        order: 'order'
+    }
+
+    return render(request, 'checkout_success.html', context)

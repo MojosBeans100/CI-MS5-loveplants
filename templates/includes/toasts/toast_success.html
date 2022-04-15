@@ -21,6 +21,8 @@
     <button type="button" class="btn-close" data-bs-dismiss="toast hide" aria-label="Close"></button>
   </div>
 
+  {% if product_count == 0 %}
+  {% else %}
   <div class="toast-body">
     <strong class="me-auto"><a href="{% url 'view_bag' %}">Your basket</a></strong>
   </div>
@@ -87,5 +89,6 @@
     </table>
 
   </div>
+  {% endif %}
 
 </div>
