@@ -1,7 +1,7 @@
 # Love Plants
-Love Plants is a full stack ecommerce website which allows customers to view and purchase products related to plants. The website was developed for Milestone 5 as part of the Code Institute Diploma in Software Development. 
+Love Plants is a Full Stack B2C (business to customer) ecommerce website which allows customers to view and purchase products related to plants. The website was developed for Milestone 5 as part of the Code Institute Diploma in Software Development. 
 
-![Responsive website](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643885662/Spaceport/amiresponsive_mk6ufl.jpg)
+![Responsive website](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650050038/LovePlants/ReadMe/amirespoinve_twskbo.jpg)
 
 # Table of contents
 - [Love Plants](#love-plants)
@@ -74,26 +74,25 @@ Love Plants is a full stack ecommerce website which allows customers to view and
 
 [Back to top](#love-plants)
 
-
 # UX
 ## Strategy
 ### Site User
 The primary goals of the website user are as follows:
-- To create an account on the website, which will allow them to create pipelines
-- To create, update, edit and delete pipelines 
-- To view the details of a pipeline they have created
-- To view the schedule of receiving images
-- To see a list of all their pipelines, ordered by status
-- To understand the applications and purposes of satellite imagery
+- To create an account on the website, which will allow them to purchase products
+- To view the details of all products
+- To add products to their shopping basket
+- To proceed to checkout items in their shopping basket and receive a confirmation of the payment
+- To view details relating to their account, such as order history
+- To 'like' products, and add ratings and reviews to products they have bought
 
 ### Admin User
 The primary goals of the website owner or admin are as follows:
-- To view a list of all pipelines created
-- To view a list of all results created
-- To delete pipelines (API restriction does not allow > 100 pipelines under the developer's account, therefore 'complete' pipelines would have to be deleted if the number of total pipelines was approaching 100)
-- No functionality is required to change user's values
+- To add, edit, view and delete products
+- To manage the stock quantity of products
+- To view, edit and delete customer orders
+- To encourage users to purchase more products
 
-[Back to top](#spaceport)
+[Back to top](#love-plants)
 
 ## Structure
 ### Pages
