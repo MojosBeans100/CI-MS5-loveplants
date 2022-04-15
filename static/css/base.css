@@ -296,6 +296,10 @@ input[type=number] {
     text-align: center !important;
 }
 
+/* #stripe-element {
+    border: solid black 1px;
+} */
+
 
 @media  (min-width: 756px) {
     #checkout-button {
@@ -306,9 +310,7 @@ input[type=number] {
 }
 
 @media  (min-width: 1200px) {
-    #checkout-button {
-        font-size: 20px;
-    }
+
 }
 
 @media  (min-width: 1400px) {
@@ -317,3 +319,4 @@ input[type=number] {
         margin-left: 15%;
     }
 }
+

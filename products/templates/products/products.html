@@ -318,7 +318,11 @@
                                 {% csrf_token %}
                                 <button id="product-like-button" type="submit">
                                     {% if product.friendly_name in liked_list %}
-                                    <i class="fa-solid fa-heart"></i>
+                                    <div style="position: relative; height: 24px; width:24px; padding: 0;">
+                                        <i style="position: absolute;  z-index: -99"
+                                            class="fa-solid fa-heart"></i>
+                                        <i style="position: absolute; color: white;" class="fa-regular fa-heart"></i>
+                                    </div>
                                     {% else %}
                                     <div style="position: relative; height: 24px; width:24px; padding: 0;">
                                         <i style="position: absolute; color: white; z-index: -99"

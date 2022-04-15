@@ -23,6 +23,8 @@ def view_checkout(request):
 
     context = {
         'order_form': order_form,
+        'stripe_pk': 'pk_test_51Ko6EeB14lLHI57ntV4KJo2kKcHQMViHAr0v0VRNpr2VY5k48TpoPwHKO2EuDvFV3GnY8YmNZCxcP7pFHyiqty7d005VcwizLi',
+        'client_secret': 'test secret',
     }
 
     return render(request, 'checkout/checkout.html', context)
