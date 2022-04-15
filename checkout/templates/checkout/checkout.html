@@ -16,6 +16,7 @@
             </div>
 
             <form method="POST" action="#" class="form" id="checkout-form">
+
                 {% for field in order_form %}
                 <p>{{field}}</p>
                 {% endfor %}
@@ -23,9 +24,10 @@
                 <button id="checkout-form-save" class="black-button">Save</button>
 
                 <div>
-                <p class="mt-4">Card information</p>
-                <div class="py-2 form-control" id="stripe-element"></div>
-            </div>
+                    <p class="mt-4">Card information</p>
+                    <div class="py-2 form-control" id="stripe-element"></div>
+                    <div id="card-error"></div>
+                </div>
 
             </form>
 
@@ -111,7 +113,7 @@
 
 
 {% block postloadjs %}
-  {{ block.super }}
+{{ block.super }}
 
 {{stripe_pk|json_script:"id_stripe_pk"}}
 {{client_secret|json_script:"id_client_secret"}}
@@ -129,6 +131,18 @@
     var card = elements.create('card')
     var stripe_div = document.getElementById('stripe-element')
     card.mount('#stripe-element')
+
+    // add error message if card details invalid
+    card.addEventListener('change', function (event) {
+        var cardError = document.getElementById('card-error');
+        if (event.error) {
+            var error_message = `${event.error.message}`
+            cardError.append(error_message)
+            cardError.style.color = "red";
+        } else {
+            cardError.textContent = "";
+        }
+    })
 
 </script>
 {% endblock %}
