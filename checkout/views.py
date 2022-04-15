@@ -100,13 +100,17 @@ def checkout_success(request, order_ref):
     """
 
     order = get_object_or_404(Order, order_ref=order_ref)
+    order_line_items = OrderLineItem.objects.filter(order=order)
+
+    print(order_line_items)
     messages.success(request, f'{order} has been successful')
 
     if 'bag' in request.session:
         del request.session['bag']
 
     context = {
-        order: 'order'
+        'order': order,
+        'line_items': order_line_items,
     }
 
-    return render(request, 'checkout_success.html', context)
+    return render(request, 'checkout/checkout_success.html', context)
