@@ -16,6 +16,7 @@
             </div>
 
             <form method="POST" action="#" class="form" id="checkout-form">
+                {% csrf_token %}
 
                 {% for field in order_form %}
                 <p>{{field}}</p>
@@ -28,6 +29,8 @@
                     <div class="py-2 form-control" id="stripe-element"></div>
                     <div id="card-error"></div>
                 </div>
+
+                <button id="checkout-form-submit" type="submit">Submit</button>
 
             </form>
 
@@ -116,12 +119,12 @@
 {{ block.super }}
 
 {{stripe_pk|json_script:"id_stripe_pk"}}
-{{client_secret|json_script:"id_client_secret"}}
+{{stripe_sk|json_script:"id_stripe_sk"}}
 
 <script>
     // get keys from template
     var stripe_pk = document.getElementById('id_stripe_pk').textContent.slice(1, -1);
-    var client_secret = document.getElementById('id_client_secret').textContent.slice(1, -1);
+    var stripe_sk = document.getElementById('id_stripe_sk').textContent.slice(1, -1);
 
     // set up stripe element
     var stripe = Stripe(stripe_pk)
@@ -144,5 +147,46 @@
         }
     })
 
+    // submit the form
+    var form = document.getElementById('checkout-form')
+    form.addEventListener('submit', function (ev) {
+
+        // prevent posting form
+        ev.preventDefault();
+
+        // disable card input and submit button
+        card.update({
+            'disabled': true
+        })
+        checkoutSubmit = document.getElementById('checkout-form-submit')
+        checkoutSubmit.disabled = true
+
+        // send payment to stripe
+        stripe.confirmCardPayment(stripe_sk, {
+                payment_method: {
+                    card: card,
+                },
+            })
+            .then(function (result) {
+
+                // if error in checkout to stripe
+                if (result.error) {
+                    var error_message = `${event.error.message}`
+                    cardError.append(error_message)
+                    cardError.style.color = "red";
+
+                    // re-enable submit and card
+                    card.update({
+                        'disabled': false
+                    })
+                    checkoutSubmit.disabled = false
+
+                } else {
+                    if (result.paymentIntent.status === 'succeeded') {
+                        form.submit();
+                    }
+                }
+            });
+    });
 </script>
 {% endblock %}
