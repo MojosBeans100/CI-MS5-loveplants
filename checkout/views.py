@@ -47,13 +47,13 @@ def view_checkout(request):
             order_form.save()
             order = order_form.save(commit=False)
 
-            for item_id, item_data in bag.items():
-
+            for item_id, quantity in bag.items():
+                
                 product = Product.objects.get(id=item_id)
                 order_line_item = OrderLineItem(
                     order=order,
                     product=product,
-                    quantity=item_data,
+                    quantity=quantity,
                 )
                 order_line_item.save()
 
@@ -70,8 +70,8 @@ def view_checkout(request):
 
         if not bag:
             messages.error(request, f"There's nothing"
-                                    f"in your bag at the moment.")
-        return redirect(reverse('products'))
+                                    f" in your bag at the moment.")
+            return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
         current_total = current_bag['grand_total']

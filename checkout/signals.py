@@ -35,4 +35,4 @@ def update_on_delete(sender, instance, **kwargs):
     """
 
     # ie OrderLineItem.order.update_total()
-    instance.order_ref.update_total()
+    instance.order.update_total()
