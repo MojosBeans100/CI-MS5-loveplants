@@ -1,5 +1,6 @@
 # 3rd party imports
 import stripe
+import json
 
 # Django imports
 from django.shortcuts import (render,
@@ -7,6 +8,8 @@ from django.shortcuts import (render,
                               reverse,
                               get_object_or_404)
 from django.contrib import messages
+from django.http import HttpResponse
+from django.views.decorators.http import require_POST
 
 # Local imports
 import os
@@ -17,6 +20,26 @@ from bag.contexts import bag_contents
 
 stripe_pk = os.environ.get('STRIPE_PUBLIC_KEY')
 stripe_sk = os.environ.get('STRIPE_SECRET_KEY')
+
+
+@require_POST
+def cache_checkout_data(request):
+    """
+    """
+
+    post_data = json.loads(request.body.decode("utf-8"))
+    try:
+        pid = post_data['stripe_sk'].split('_secret')[0]
+        stripe.api_key = stripe_sk
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry your payment could not be completed')
+        return HttpResponse(content=e, status=400)
 
 
 def view_checkout(request):

@@ -22,7 +22,8 @@
                 <p>{{field}}</p>
                 {% endfor %}
 
-                <button id="checkout-form-save" class="black-button">Save</button>
+                <label for="save_info">Save Information</label>
+                <input id="save_info" type="checkbox">
 
                 <div>
                     <p class="mt-4">Card information</p>
@@ -160,32 +161,74 @@
         checkoutSubmit = document.getElementById('checkout-form-submit')
         checkoutSubmit.disabled = true
 
-        // send payment to stripe
-        stripe.confirmCardPayment(stripe_sk, {
-                payment_method: {
-                    card: card,
-                },
-            })
-            .then(function (result) {
+        var saveInfo = document.getElementById('save_info').checked
+        var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+        var postData = {
+            'stripe_sk': stripe_sk,
+            'save_info': saveInfo,
+        }
+        
+        
+        var url = '/checkout/cache_checkout_data/';
 
-                // if error in checkout to stripe
-                if (result.error) {
-                    var error_message = `${event.error.message}`
-                    cardError.append(error_message)
-                    cardError.style.color = "red";
+        let response = fetch(url, {
+            method: 'POST',
+            body:JSON.stringify(postData), 
+            headers: {"X-CSRFToken": csrfToken}}).then(response => {
 
-                    // re-enable submit and card
-                    card.update({
-                        'disabled': false
-                    })
-                    checkoutSubmit.disabled = false
+            console.log("works")
+            // // send payment to stripe
+            // stripe.confirmCardPayment(stripe_sk, {
+            //         payment_method: {
+            //             card: card,
+            //             billing_details: {
+            //                 name: form.full_name.value.trim(),
+            //                 phone: form.phone_num.value.trim(),
+            //                 email: form.email.value.trim(),
+            //                 address: {
+            //                     street1: form.street_address_1.value.trim(),
+            //                     street2: form.street_address_2.value.trim(),
+            //                     city: form.town_or_city.value.trim(),
+            //                     county: form.county.value.trim(),
+            //                     country: form.country.value.trim(),
+            //                 }
+            //             }
+            //         },
+            //         shipping: {
+            //             name: form.full_name.value.trim(),
+            //             phone: form.phone_num.value.trim(),
+            //             email: form.email.value.trim(),
+            //             address: {
+            //                 street1: form.street_address_1.value.trim(),
+            //                 street2: form.street_address_2.value.trim(),
+            //                 city: form.town_or_city.value.trim(),
+            //                 county: form.county.value.trim(),
+            //                 country: form.country.value.trim(),
+            //                 postcode: form.postcode.value.trim(),
+            //             }
+            //         }
+            //     })
+            //     .then(function (result) {
 
-                } else {
-                    if (result.paymentIntent.status === 'succeeded') {
-                        form.submit();
-                    }
-                }
-            });
+            //         // if error in checkout to stripe
+            //         if (result.error) {
+            //             var error_message = `${event.error.message}`
+            //             cardError.append(error_message)
+            //             cardError.style.color = "red";
+
+            //             // re-enable submit and card
+            //             card.update({
+            //                 'disabled': false
+            //             })
+            //             checkoutSubmit.disabled = false
+
+            //         } else {
+            //             if (result.paymentIntent.status === 'succeeded') {
+            //                 form.submit();
+            //             }
+            //         }
+            //     });
+        })
     });
 </script>
 {% endblock %}
