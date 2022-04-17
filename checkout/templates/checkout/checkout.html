@@ -161,73 +161,81 @@
         checkoutSubmit = document.getElementById('checkout-form-submit')
         checkoutSubmit.disabled = true
 
+        // create variables to send to view
         var saveInfo = document.getElementById('save_info').checked
         var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+        var url = '/checkout/cache_checkout_data/';
         var postData = {
             'stripe_sk': stripe_sk,
             'save_info': saveInfo,
         }
         
-        
-        var url = '/checkout/cache_checkout_data/';
-
+        // post save info to cache checkout view
         let response = fetch(url, {
             method: 'POST',
-            body:JSON.stringify(postData), 
-            headers: {"X-CSRFToken": csrfToken}}).then(response => {
+            body: JSON.stringify(postData),
+            headers: {
+                "X-CSRFToken": csrfToken
+            }
 
-            console.log("works")
-            // // send payment to stripe
-            // stripe.confirmCardPayment(stripe_sk, {
-            //         payment_method: {
-            //             card: card,
-            //             billing_details: {
-            //                 name: form.full_name.value.trim(),
-            //                 phone: form.phone_num.value.trim(),
-            //                 email: form.email.value.trim(),
-            //                 address: {
-            //                     street1: form.street_address_1.value.trim(),
-            //                     street2: form.street_address_2.value.trim(),
-            //                     city: form.town_or_city.value.trim(),
-            //                     county: form.county.value.trim(),
-            //                     country: form.country.value.trim(),
-            //                 }
-            //             }
-            //         },
-            //         shipping: {
-            //             name: form.full_name.value.trim(),
-            //             phone: form.phone_num.value.trim(),
-            //             email: form.email.value.trim(),
-            //             address: {
-            //                 street1: form.street_address_1.value.trim(),
-            //                 street2: form.street_address_2.value.trim(),
-            //                 city: form.town_or_city.value.trim(),
-            //                 county: form.county.value.trim(),
-            //                 country: form.country.value.trim(),
-            //                 postcode: form.postcode.value.trim(),
-            //             }
-            //         }
-            //     })
-            //     .then(function (result) {
+        // if successful response    
+        }).then(response => {
 
-            //         // if error in checkout to stripe
-            //         if (result.error) {
-            //             var error_message = `${event.error.message}`
-            //             cardError.append(error_message)
-            //             cardError.style.color = "red";
+            // send payment to stripe
+            stripe.confirmCardPayment(stripe_sk, {
+                    payment_method: {
+                        card: card,
+                        billing_details: {
+                            name: form.full_name.value.trim(),
+                            phone: form.phone_num.value.trim(),
+                            email: form.email.value.trim(),
+                            address: {
+                                line1: form.street_address_1.value.trim(),
+                                line2: form.street_address_2.value.trim(),
+                                city: form.town_or_city.value.trim(),
+                                country: form.country.value.trim(),
+                                state: form.county.value.trim(),
+                            }
+                        }
+                    },
+                    shipping: {
+                        name: form.full_name.value.trim(),
+                        phone: form.phone_num.value.trim(),
+                        address: {
+                            line1: form.street_address_1.value.trim(),
+                            line2: form.street_address_2.value.trim(),
+                            city: form.town_or_city.value.trim(),
+                            country: form.country.value.trim(),
+                            postal_code: form.postcode.value.trim(),
+                            state: form.county.value.trim(),
+                        }
+                    }
+                })
+                .then(function (result) {
 
-            //             // re-enable submit and card
-            //             card.update({
-            //                 'disabled': false
-            //             })
-            //             checkoutSubmit.disabled = false
+                    // if error in checkout to stripe
+                    if (result.error) {
+                        console.log(event)
+                        var error_message = `${event.error.message}`
+                        cardError.append(error_message)
+                        cardError.style.color = "red";
 
-            //         } else {
-            //             if (result.paymentIntent.status === 'succeeded') {
-            //                 form.submit();
-            //             }
-            //         }
-            //     });
+                        // re-enable submit and card
+                        card.update({
+                            'disabled': false
+                        })
+                        checkoutSubmit.disabled = false
+                    
+                    // if no error in stripe checkout, submit form
+                    } else {
+                        if (result.paymentIntent.status === 'succeeded') {
+                            form.submit();
+                        }
+                    }
+                }).catch(error=> {
+                    console.log(error)
+                    location.reload();
+                }) ;
         })
     });
 </script>

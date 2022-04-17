@@ -33,7 +33,7 @@ def cache_checkout_data(request):
         stripe.api_key = stripe_sk
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
-            'save_info': request.POST.get('save_info'),
+            'save_info': post_data['save_info'],
             'username': request.user,
         })
         return HttpResponse(status=200)
