@@ -104,7 +104,7 @@ Love Plants consists of four apps
 - Checkout
 
 ### Pages
-The website has five main pages, with user authentication on three:
+The website has five main pages, with user authentication on XXXX:
 - Homepage (all users): to introduce users to the website and display purchasable products
 - Products (all users): to display all products available to purchase, with sorting and filtering facilities
 - Product Detail (all users): to provide additional detail about a specific product and facilities to add the product to the shopping basket

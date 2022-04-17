@@ -1,29 +1,55 @@
 
+# 3rd party imports
+import stripe
 
+# Django imports
+from django.http import HttpResponse
+from django.conf import settings
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+
+# Local imports
+from checkout.webhook_handler import StripeWH_Handler
+
+# Stripe uses webhooks to notify your application when an 
+# event happens in your account. Webhooks are particularly
+# useful for asynchronous events such as when a customer’s
+# bank confirms a payment, a customer disputes a charge, 
+# a recurring payment succeeds, or when collecting 
+# subscription payments.
+
+
+@require_POST
+@csrf_exempt
 def webhook(request):
+    """
+    Listen for webhooks from Stripe
+    """
 
-    payload = request.body
-    event = None
+    def my_webhook_view(request):
 
-    try:
-        event = stripe.Event.construct_from(
-        json.loads(payload), stripe.api_key
-        )
-    except ValueError as e:
-        # Invalid payload
-        return HttpResponse(status=400)
+        wh_secret = settings.STRIPE_WH_SECRET
+        stripe.api_key = settings.STRIPE_SECRET_KEY
 
-    # Handle the event
-    if event.type == 'payment_intent.succeeded':
-        payment_intent = event.data.object # contains a stripe.PaymentIntent
-        # Then define and call a method to handle the successful payment intent.
-        # handle_payment_intent_succeeded(payment_intent)
-    elif event.type == 'payment_method.attached':
-        payment_method = event.data.object # contains a stripe.PaymentMethod
-        # Then define and call a method to handle the successful attachment of a PaymentMethod.
-        # handle_payment_method_attached(payment_method)
-    # ... handle other event types
-    else:
-        print('Unhandled event type {}'.format(event.type))
+        # get webhook data and verify signature
+        payload = request.body
+        sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+        event = None
 
-    return HttpResponse(status=200)
+        try:
+            event = stripe.Webhook.construct_event(
+                                    payload,
+                                    sig_header,
+                                    wh_secret
+                                    )
+        except ValueError as e:
+            # Invalid payload
+            return HttpResponse(status=400)
+        except stripe.error.SignatureVerificationError as e:
+            # Invalid signature
+            return HttpResponse(status=400)
+        except Exception as e:
+            # Other exceptions
+            return HttpResponse(content=e, status=400)
+        print("Success!")
+        return HttpResponse(status=200)

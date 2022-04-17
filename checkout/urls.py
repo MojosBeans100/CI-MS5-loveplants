@@ -15,5 +15,5 @@ urlpatterns = [
     path('checkout_success/<order_ref>',
          views.checkout_success,
          name='checkout_success'),
-     path('wh/', webhook, name='webhook'),
+    path('wh/', webhook, name='webhook'),
 ]
