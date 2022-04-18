@@ -1,3 +1,13 @@
+# 3rd party imports
+# Django imports
 from django.shortcuts import render
 
-# Create your views here.
+# Local imports
+
+
+def profile(request):
+    """
+    """
+    context = {}
+
+    return render(request, 'profiles/profile.html', context)
