@@ -46,9 +46,9 @@
       <a class="navbar-brand" href="#">
         <div class="d-flex align-items-start">
           <img src="/static/media/green-tea.png">
-          <h3>Love  &nbsp;Plants</h3>
-          
-      </div>
+          <h3>Love &nbsp;Plants</h3>
+
+        </div>
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -90,13 +90,18 @@
                     class="fa-solid fa-magnifying-glass"></i></a></button>
             </li>
           </form>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a>
+          </li>
+          {% else %}
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'account_login' %}"><i
-                class="fa-solid fa-user"></i></a>
+                class="fa-solid fa-arrow-right-to-bracket"></i></a>
           </li>
+          {% endif %}
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#"><i
-                class="fa-solid fa-heart"></i></a>
+            <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-heart"></i></a>
           </li>
 
           <li class="nav-item">
@@ -105,15 +110,15 @@
               <img src="/static/media/bag-empty.png">
               {% else %}
               <div style="position: relative;">
-              <img style="position: absolute; top: 0; left: 0" src="/static/media/bag-full.png">
-              <p style="position: absolute; top: 0; right: 0"><small>{{product_count}}</small></p>
+                <img style="position: absolute; top: 0; left: 0" src="/static/media/bag-full.png">
+                <p style="position: absolute; top: 0; right: 0"><small>{{product_count}}</small></p>
               </div>
               {% endif %}
               <br>
               {% if product_count != 0 %}£{{grand_total}}{% endif %}</a>
           </li>
         </ul>
-    
+
       </div>
     </div>
   </nav>

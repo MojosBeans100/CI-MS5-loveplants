@@ -1,1 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div
+    style="
+        border: solid black 1px;
+        width:100%; 
+        height: 100vh;
+        background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;">
+    {% block inner_content %}
+    {% endblock %}
+</div>
+{% endblock %}

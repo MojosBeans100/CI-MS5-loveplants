@@ -314,3 +314,16 @@ input[type=number] {
         margin-left: 15%;
     }
 }
+
+/* ACCOUNTS */
+.account-container {
+    width: auto;
+    margin-left: calc(50% - 20%);
+    border-radius: 5px;
+}
+
+.account-container input {
+    width: 80%;
+    margin-top: 20px;
+    border: white;
+}
