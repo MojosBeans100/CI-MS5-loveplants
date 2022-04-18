@@ -1,6 +1,6 @@
 # 3rd party imports
 import json
-import time.sleep
+import time
 
 # Django imports
 from django.http import HttpResponse
@@ -60,13 +60,15 @@ class StripeWH_Handler:
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
                     phone_num__iexact=shipping_details.phone,
-                    town_or_city__iexact=shipping_details.city,
-                    country__iexact=shipping_details.country,
-                    street_address_1__iexact=shipping_details.line1,
-                    street_address_2__iexact=shipping_details.line2,
-                    postcode__iexact=shipping_details.postal_code,
-                    county__iexact=shipping_details.state,
+                    town_or_city__iexact=shipping_details.address.city,
+                    country__iexact=shipping_details.address.country,
+                    street_address_1__iexact=shipping_details.address.line1,
+                    street_address_2__iexact=shipping_details.address.line2,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
+                    stripe_pid=pid,
+                    original_bag=bag,
                 )
 
                 # if order exists, return and break out of while loop
@@ -85,7 +87,7 @@ class StripeWH_Handler:
                     status=200
                 )
 
-        # if order does not exist, create it 
+        # if order does not exist, create it
         else:
             order = None
             try:
@@ -95,12 +97,14 @@ class StripeWH_Handler:
                         full_name=shipping_details.name,
                         email=billing_details.email,
                         phone_num=shipping_details.phone,
-                        town_or_city=shipping_details.city,
-                        country=shipping_details.country,
-                        street_address_1=shipping_details.line1,
-                        street_address_2=shipping_details.line2,
-                        postcode=shipping_details.postal_code,
-                        county=shipping_details.state,
+                        town_or_city=shipping_details.address.city,
+                        country=shipping_details.address.country,
+                        street_address_1=shipping_details.address.line1,
+                        street_address_2=shipping_details.address.line2,
+                        postcode=shipping_details.address.postal_code,
+                        county=shipping_details.address.state,
+                        stripe_pid=pid,
+                        original_bag=bag,
                     )
 
                 # create line items

@@ -67,9 +67,15 @@ def view_checkout(request):
         if order_form.is_valid():
 
             # remember to remove items from stock
-
-            order_form.save()
             order = order_form.save(commit=False)
+
+            # does this work here too
+            #post_data = json.loads(request.body.decode("utf-8"))
+            #pid = post_data['stripe_sk'].split('_secret')[0]
+            pid = request.POST.get('stripe_sk').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_bag = json.dumps(bag)
+            order.save()
 
             for item_id, quantity in bag.items():
 

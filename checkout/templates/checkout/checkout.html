@@ -29,6 +29,7 @@
                     <p class="mt-4">Card information</p>
                     <div class="py-2 form-control" id="stripe-element"></div>
                     <div id="card-error"></div>
+                    <input type="hidden" value="{{ stripe_sk }}" name="stripe_sk">
                 </div>
 
                 <button id="checkout-form-submit" type="submit">Submit</button>
@@ -229,6 +230,7 @@
                     // if no error in stripe checkout, submit form
                     } else {
                         if (result.paymentIntent.status === 'succeeded') {
+                            console.log("Payment Intent succeeded")
                             form.submit();
                         }
                     }
