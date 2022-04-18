@@ -1,5 +1,6 @@
 # 3rd party imports
 import json
+import time.sleep
 
 # Django imports
 from django.http import HttpResponse
@@ -46,32 +47,50 @@ class StripeWH_Handler:
                 shipping_details.address[field] = None
 
         order_exists = False
+        attempt = 1
 
-        # see if this order has been created already
-        try:
-            order = Order.objects.get(
-                full_name__iexact=shipping_details.name,
-                email__iexact=billing_details.email,
-                phone_num__iexact=shipping_details.phone,
-                town_or_city__iexact=shipping_details.city,
-                country__iexact=shipping_details.country,
-                street_address_1__iexact=shipping_details.line1,
-                street_address_2__iexact=shipping_details.line2,
-                postcode__iexact=shipping_details.postal_code,
-                county__iexact=shipping_details.state,
-                grand_total=grand_total,
-            )
+        # during our five second loop
+        while attempt <= 5:
 
-            # if order exists, return
-            order_exists = True
-            return HttpResponse(
-                content=f'Webhook received: {event["type"]} | success: verified order already created',
-                status=200
-            )
-
-        # if order does not exist, create line items
-        except Order.DoesNotExist:
+            # see if this order has been created already
             try:
+
+                # look for order
+                order = Order.objects.get(
+                    full_name__iexact=shipping_details.name,
+                    email__iexact=billing_details.email,
+                    phone_num__iexact=shipping_details.phone,
+                    town_or_city__iexact=shipping_details.city,
+                    country__iexact=shipping_details.country,
+                    street_address_1__iexact=shipping_details.line1,
+                    street_address_2__iexact=shipping_details.line2,
+                    postcode__iexact=shipping_details.postal_code,
+                    county__iexact=shipping_details.state,
+                    grand_total=grand_total,
+                )
+
+                # if order exists, return and break out of while loop
+                order_exists = True
+                break
+
+            # if order does not exist yet, increment while loop
+            except Order.DoesNotExist:
+                attempt += 1
+                time.sleep(1)
+
+        # out of while loop, if order has been found, return response
+        if order_exists:
+            return HttpResponse(
+                    content=f'Webhook received: {event["type"]} | success: verified order already created',
+                    status=200
+                )
+
+        # if order does not exist, create it 
+        else:
+            order = None
+            try:
+
+                # create order
                 order = Order.objects.create(
                         full_name=shipping_details.name,
                         email=billing_details.email,
@@ -84,6 +103,7 @@ class StripeWH_Handler:
                         county=shipping_details.state,
                     )
 
+                # create line items
                 for item_id, quantity in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
                     order_line_item = OrderLineItem(
@@ -92,6 +112,8 @@ class StripeWH_Handler:
                         quantity=quantity,
                     )
                     order_line_item.save()
+
+            # exception if webhook not received
             except Exception as e:
                 if order:
                     order.delete()
@@ -99,7 +121,7 @@ class StripeWH_Handler:
                 status=500)
 
         return HttpResponse(
-            content=f"Webhook received: {event['type']}", status=200)
+            content=f"Webhook received: {event['type']} | Success: created order!", status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """
