@@ -42,15 +42,22 @@ button {
 }
 
 #index-banner {
-    height: calc(100vh - 50px);
+    height: 100vh;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648231068/LovePlants/Media/pexels-content-pixie-2736497_nahpep.jpg')
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg')
 }
 
 #navbar a{
-    color: black;
+    color: white;
 }
+
+#navbar {
+    box-shadow: 0 5px 3px -3px rgb(177, 177, 177);
+}
+
+
 
 .navbar {
     box-shadow: 0 0 1px rgb(177, 177, 177);
