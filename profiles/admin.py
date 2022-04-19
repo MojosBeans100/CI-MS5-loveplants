@@ -1,3 +1,9 @@
+# 3rd party imports
+
+# Django imports
 from django.contrib import admin
 
-# Register your models here.
+# Local imports
+from .models import UserProfile, User
+
+admin.site.register(UserProfile)

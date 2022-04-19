@@ -225,8 +225,8 @@
             <!-- number of products, products per page, sort  -->
             <div class="row align-items-center">
                 <hr>
-                
-                <div class="col-12 col-sm-4 p-2 text-center">
+
+                <div class="col-12 col-sm-4 col-md-6 p-2 text-center">
                     {% if all_products.count == 0 %}
                     <h3>No products found, try widening your search!</h3>
                     {% else %}
@@ -234,7 +234,7 @@
                     {% endif %}
                 </div>
 
-                <div class="col-12 col-sm-4 p-2 d-flex justify-content-center justify-content-md-end">
+                <div class="col-12 col-sm-4 col-md-6 p-2 d-flex justify-content-center justify-content-md-end">
                     <div class="dropdown border">
                         <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -316,8 +316,7 @@
                                 <button id="product-like-button" type="submit">
                                     {% if product.friendly_name in liked_list %}
                                     <div style="position: relative; height: 24px; width:24px; padding: 0;">
-                                        <i style="position: absolute;  z-index: -99"
-                                            class="fa-solid fa-heart"></i>
+                                        <i style="position: absolute;  z-index: -99" class="fa-solid fa-heart"></i>
                                         <i style="position: absolute; color: white;" class="fa-regular fa-heart"></i>
                                     </div>
                                     {% else %}
