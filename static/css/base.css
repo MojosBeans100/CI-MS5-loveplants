@@ -76,6 +76,7 @@ button {
 
 #navbar-main {
     box-shadow: 0 5px 3px -3px rgb(177, 177, 177);
+    z-index: 99999;
 }
 
 .navbar h3 {
@@ -154,7 +155,7 @@ button {
     position: absolute;
     top: 3%;
     right: 5%;
-    z-index: 9999;
+    z-index: 1000;
     font-size: 20px;
 }
 
@@ -356,6 +357,11 @@ input[type=number] {
 /* ACCOUNTS */
 .account-container {
     border-radius: 5px;
+}
+
+.account-row {
+
+    padding-top: 100px;
 }
 
 .account-container input {

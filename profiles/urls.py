@@ -12,4 +12,7 @@ urlpatterns = [
     path('profile.html',
          views.profile,
          name='profile'),
+    path('liked.html',
+         views.liked_products,
+         name='liked_products'),
 ]
