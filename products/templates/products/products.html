@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid" style="padding: 30px;">
+<div class="container-fluid" style="margin-top: 100px; padding: 30px;">
 
     <!-- product filters choice -->
     <div class="row m-md-4r">
@@ -223,13 +223,10 @@
         <div class="col">
 
             <!-- number of products, products per page, sort  -->
-            <div class="row">
-                <div class="col text-start">
-
-                    <!-- <a href="https://www.flaticon.com/free-icons/menu" title="menu icons">Menu icons created by Kiranshastry - Flaticon</a> -->
-
-                </div>
-                <div class="col p-2 text-center">
+            <div class="row align-items-center">
+                <hr>
+                
+                <div class="col-12 col-sm-4 p-2 text-center">
                     {% if all_products.count == 0 %}
                     <h3>No products found, try widening your search!</h3>
                     {% else %}
@@ -237,7 +234,7 @@
                     {% endif %}
                 </div>
 
-                <div class="col p-2 d-flex justify-content-end">
+                <div class="col-12 col-sm-4 p-2 d-flex justify-content-center justify-content-md-end">
                     <div class="dropdown border">
                         <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-bs-toggle="dropdown" aria-expanded="false">
