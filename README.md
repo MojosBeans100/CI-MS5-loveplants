@@ -905,105 +905,7 @@ The testing strategy is detailed in [this document](TESTING.md).
 # Additional Features
 This section details some additional features which could be added to further develop the website.
 
-## UX
-- Map zoom
-Additional code could be added to the map renders, to create a short zoom animation towards their AOI
 
-- Map layers
-Users could select which kind of terrain would be most useful to display on the map - ie street map, geographical, topology.
-
-- Map search
-Mapbox has features which would allow users to add into a search box a location (eg New York) and the map would zoom to that location.  Additionally, once the AOI has been selected, reverse Geocoding can find an approximate location.  This could be added as a field into the pipeline (List) object.
-
-## User Features
-
-### Default pipelines
-Several 'public' pipelines could be added which all users would have access to when they initially create an account  with Spaceport.  The developer feels it would be beneficial to see some 'live' examples of one active, complete, and pending pipeline, as well as an successful and unsuccessful pipeline.  
-
-This would allow them to peruse these pipelines in order to understand the concept better, before they create their own.  
-
-In reality this may be tricky to manage in terms of what access they have in terms of editing, updating and deleting, moreover there would be complexities with the API model being accessible by more than one person.  
-
-### Save incomplete pipeline
-A feature could be added within the code to allow users to save an incomplete pipeline form and return to it at a later date.  The developer feels this would be a useful feature, as the Create a Pipeline form is lengthy, and the user may want to refer back to the Discover page (Glossary, FAQs) during the completion of the form.
-
-### Copy pipeline
-This feature would allow users to copy an 'active' or 'complete' pipeline and render these details into a new form which could be submitted as a new object.  This may be useful for users whose pipeline was unsuccessful and they'd like to modify a few parameters, or if they want to create more than 10 intervals for that pipeline. 
-
-### Edit pipeline
-The Edit form for changing parameters of the pipeline can be extended. 
-
-The API does allow to 'patch' the AOI, ie add or remove from the AOI.  This is a complex function, and was not explored during the development of the project. 
-
-The pipeline status can also be changed to allow the user to 'deactivate' the pipeline, ie when it is 'active', set it to 'inactive'.  This is an insignificant function for the project, as it is only practical for purchased imagery.
-
-### Pipelines update automatically
-The code could be improved by updating pipelines automatically, either via a timed request every few hours to update all pipelines in the database, or updating automatically when the pipeline detail view is selected.  In order to limit the number of API calls and maintain a responsive website, users can update individual pipelines manually.  Furthermore, the details of pipelines do not change dramatically on an hour to hour basis, therefore while an automatic update may be more convenient, it is not a necessity.
-
-Similarly, when the user has created a new pipeline, there is a short period while the API gathers the information before the pipeline can be created.  In order to avoid the user being 'stuck' on a loading screen for five minutes, user experience is greater when they are directed straight to the detail view and instructed to wait a few minutes then update themselves.
-
-### Upload AOI in different format
-In order to provide an accessible, user friendly selection of the AOI, a map feature is rendered to allow the user to select their AOI in a polygon shape.  There are instances whereby this is not the most effective selection technique. The user may wish to select a very specific area which is based on geographical features which are not rendered in detail on a map. 
-
-For example: if the user would like to pick an AOI based on a very specific section of forest area, the forestry commision or land owner can provide a digital file containing the coordinates of the area, as opposed to what may be a very fiddly process of selecting this area on the map.  In this instance, a preferred method may be to upload a .KML or .geoJSON file. 
-
-The form could be improved by giving the user the choice to either select from the map, or upload a file.  The AOI file would have to be read, verified and validated in terms of AOI size and the JSON format before proceeding (this could be done with a separate API, DjangoJSON, or via Skywatch itself.)  
-
-### Additional model to include API key
-The API key used to create all pipelines references the developer's own account with Skywatch.  The Sign Up form could include a field to allow users to input their own API key.  This feature would be more practical for users who are already in the satellite imagery industry, and own an account with Skywatch.  For the purposes of this project, this feature did not seem necessary.
-
-## API
-The Skywatch API is very in-depth and there are many additional technical parameters which could be added to explore it further (dependent on the scope of the developer's account with Skywatch). See the [Skywatch API documentation](https://api-docs.skywatch.co/) for more information. 
-
-### Latency
-Latency describes the acceptable number of days between interval end date and delivery of the image.   The latency is currently set to the full interval period to increase the probability of image delivery. As an example: if the user chooses an interval of 1 week, and one of the interval start and end dates are 1st Jan 22 and 7th Jan 22 respectively,  images can be delivered in the week after that interval i.e. 8th Jan 22 to 15th Jan.  The images are still captured within the specified interval; the latency refers to the acceptable delivery dates. 
-
-Users may desire to change this, and only accept images if they can be delivered within the interval itself, but they would have to have specific reasons to do so, and this did not seem relevant for the purposes of the project.
-
-The technical understanding behind why there is this latent period of delivery is determined by how frequently satellites communicate with ground stations.  A satellite may capture an image of the AOI within the interval, but does not pass over a ground station for a few days afterwards.
-
-A simplistic representation of this is shown [here](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644147808/latency2_rbelk3.png).
-
-### Resolution
-The resolution for all images is set to 'low' (8 - 15 metres).  The Skywatch account of the developer is limited to this resolution so as to only allow delivery of free images.  A feature could be added to allow users to refine this (for example, to between 8 and 9 metres), but this did not seem advantageous or relevant for the website, and would further reduce the probability of receiving an image.
-
-### AOI Coverage
-For Spaceport users, the AOI coverage is set to a minimum of 50%, therefore only images which have covered at least 50% of the AOI selected will be delivered.  An additional tab on the Create a Pipeline form could allow for the user to control this parameter and accept images with lesser coverage, or only accept images with higher coverage.
-
-### Alternative Images
-Taking into account the AOI Coverage parameter as above, a feature could allow users to view alternative images with an AOI coverage of below their selected percentage.  For example, if the AOI coverage is set to 50%, there may be 10 images found which captured less than 50% of the AOI.  This feature would allow users to still view these images as they may still be of use.
-
-### Mosaicking
-Mosaicking is a term which essentially means 'stitching' together images taken at different times or from different satellites.  If this feature was allowed, this would increase the probability of an interval delivering an image.  This parameter is not permitted to be changed under the developer's account.
-
-[Moasicking image from Skywatch EarthCache](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644146972/mosacking_gvily9.jpg)
-
-### Calculate Probability
-See [User Story 6](#user-story-6).
-
-[Back to top](#spaceport)
-
-# Unfixed Bugs
-
-## Remove email address from Sign Up Form
-Users can sign up to the website using a username and password.  During deployment there was an error related to the email address field as this required some back-end settings to work properly.  
-
-The details about setting this up were not included in the course materials for the current project, nor was the email field specified in the user authentication project requirements, therefore the username input alone was deemed acceptable for the purposes of the project. 
-
-Users are strongly encouraged to note their sign-in details, as without email there is no password recovery available. 
-
-[Sign Up page](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644339726/Spaceport/Mobile/signup_qkurpp.jpg)
-
-## Dates on pipeline timeline
-The developer feels the timeline of the interval dates in the pipeline detail view would be improved only showing dates on the x axis where there is a data point, ie an interval start or end date, or image captured date.  This would appear cleaner and clearer to the user.  The 'autoskip' function on the ChartJS timeline should perform this function - to only render data points on the axis - but could not be displayed the way the developer desired.  After some tutor support, this bug was left unfixed and a max number of ticks is rendered instead, since although the timeline was a bit clunky, it did not show incorrect information.
-
-## Incomplete satellite images
-During development and testing of the project, several satellite images were delivered with 'blind spots' and/or squares with different colouration.  The developer is not certain of the cause of this (although blind spots could be attributed to 'secret' locations, such as naval bases).  As the image is delivered directly from Skywatch and stored in AWS, this is not a bug of the project itself.
-
-[Blind spot/discolouration on image](https://s3-us-west-2.amazonaws.com/aoi-processed-images-prod/f1bf1d28-8b6c-11ec-98ed-3a58c107bc02/8b4f58ca-c7fc-4801-a8bf-972bfc4aab8c/preview/SKYWATCH_S2_MS_20210218T0230_TC_Tile_0_0_fqhF_preview.png)
-
-## Mapbox not rendering full size
-In some occasions when the user scrolls back through the Create a Pipeline form, the Mapbox map renders in a size of around 300px x 300px, as opposed to the full size map set by the CSS.  This is a [known bug](https://github.com/mapbox/mapbox-gl-js/issues/3265) of Mapbox, and occurs infrequently.  Users can 'Inspect' the page which will render it full size, although it is still usable in the smaller box.
 
 [Back to top](#spaceport)
 
@@ -1082,7 +984,7 @@ To deploy this application to Heroku, run the following steps.
 
 
 # Media
-Images used on the site were sourced from the following sources.
+Images used on the site were sourced from the following sources.  Images which are free to use publicy were desirable, however when this was not possible the images are credited.
 
 - Pexels
     - SpaceX
@@ -1120,6 +1022,7 @@ Images as acknowledged above
 - [geoJSON.io](http://geojson.io/#map=2/20.0/0.0) for selecting an AOI and getting a geoJSON output before the map feature was introduced
 - [Patch Plants](https://www.patchplants.com/gb/en/) for website inspiration
 - [Am I Responsive](http://ami.responsivedesign.is/) to create the banner image for this ReadMe
+
 
 # Acknowledgements
 

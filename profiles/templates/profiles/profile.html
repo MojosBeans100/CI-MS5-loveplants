@@ -41,14 +41,14 @@
         {% for order in orders %}
         <a class="order-history-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample{{order.order_ref}}"
             role="button" aria-expanded="false" aria-controls="multiCollapseExample{{order.order_ref}}">
-            <div class="row text-center my-3 p-3">
+            <div class="row text-center  border border-dark my-3 p-3">
                 <div class="col-4">{{order.order_ref}}</div>
                 <div class="col-4">{{order.date|date:'d M Y'}}</div>
                 <div class="col-4">£ {{order.grand_total}}</div>
             </div>
         </a>
 
-        <div class="collapse multi-collapse border border-dark" id="multiCollapseExample{{order.order_ref}}">
+        <div class="collapse multi-collapse" id="multiCollapseExample{{order.order_ref}}">
             <div class="row text-center">
                 <div class="col"></div>
                 <div class="col">Product</div>
@@ -61,13 +61,29 @@
                 <div class="col">
                     <img style="height: 100px; width: 100px;" src="{{item.product.image1_source_url}}">
                 </div>
-                <div class="col">{{item.product.friendly_name}}</div>
+                <div class="col"><a href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}}</a></div>
                 <div class="col">{{item.quantity}}</div>
                 <div class="col">{{item.lineitem_total}}</div>
             </div>
             {% else %}
             {% endif %}
             {% endfor %}
+            <div class="row py-3">
+                <div class="col-6">
+                    <p>Delivery Information</p>
+                    <ul class="list-group border-0">
+                        <li class="list-group-item fw-bold border-0">{{order.full_name}}</li>
+                        <li class="list-group-item border-0">{{order.phone_num}}</li>
+                        <li class="list-group-item border-0">{{order.street_address_1}}</li>
+                        <li class="list-group-item border-0">{{order.street_address_2}}</li>
+                        <li class="list-group-item border-0">{{order.town_or_city}}</li>
+                        <li class="list-group-item border-0">{{order.county}}</li>
+                        <li class="list-group-item border-0">{{order.postcode}}</li>
+                        <li class="list-group-item border-0">{{order.country}}</li>
+                    </ul>
+                </div>
+                <div class="col-6"></div>
+            </div>
         </div>
         {% endfor %}
     </div>
