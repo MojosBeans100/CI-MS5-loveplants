@@ -4,18 +4,27 @@
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+{% block inner_content %}
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<div class="container">
+  <div class="row">
+    <div
+      class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4 account-container bg-white my-5 p-4">
+<h3 class="my-3 text-center">{% trans "Create Account" %}</h3>
 
 <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
   {% csrf_token %}
-  {{ form.as_p }}
+  {{ form.email }}
+  {{ form.email2 }}
+  {{ form.username }}
+  {{ form.password1 }}
+  {{ form.password2 }}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+  <br>
+  <button class="black-button w-100 text-center" type="submit">{% trans "Sign Up" %}</button>
+  <p class="text-center"><small>{% blocktrans %}Already have an account? <a href="{{ login_url }}">Sign in</a>.{% endblocktrans %}</small></p>
 </form>
 
 {% endblock %}

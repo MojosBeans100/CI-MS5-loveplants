@@ -31,6 +31,8 @@ button {
     padding-bottom: 5px !important;
     padding-left: 30px !important;
     padding-right: 30px !important;
+    box-shadow: none;
+    outline: none;
 }
 
 #add-to-bag:hover {
