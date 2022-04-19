@@ -317,13 +317,18 @@ input[type=number] {
 
 /* ACCOUNTS */
 .account-container {
-    width: auto;
-    margin-left: calc(50% - 20%);
     border-radius: 5px;
 }
 
 .account-container input {
-    width: 80%;
-    margin-top: 20px;
+    width: 100%;
+    margin-top: 10px;
     border: white;
+    padding: 15px;
 }
+
+.account-container input:focus {
+    outline: black 1px solid;
+}
+
+
