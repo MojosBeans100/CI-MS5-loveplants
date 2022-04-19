@@ -883,20 +883,6 @@ This was used frequently to copy in large JSON files from the API to view the co
 - Font Awesome (https://fontawesome.com/)
 Font awesome was used to provide the relevant fonts/icons for the website
 
-### Skywatch
-The Skywatch API provides access to satellite data.  The full scope of the API can be found [here](https://api-docs.skywatch.co/). 
-
-A secret key was required to access the API.  This secret key is found in the eny.py file, and therefore is never committed to Github.   The secret key was also input to the Confiv Vars in Heroku for the deployed site.  The same secret key is used for each user on the site. 
-
-The account was limited to a developer's account, and therefore only free data is accessible. This limits the parameters of the API to only return free images.  The form fields in the Create a Pipeline form validate the values strenuously to ensure users cannot access purchased imagery. 
-
-The API is very in-depth and there are many [additional features](#additional-features) which the developer could add to the project on another iteration.
-
-### Mapbox
-The Mapbox API was used to render the selectable map for the user to draw an AOI.  This uses a public key, as it is only the 'free' version.  This public key is also set in the env.py file and input to the Confiv Vars in Heroku. 
-
-There are also many [additional features](#additional-features) which could be added to this map feature.
-
 [Back to top](#spaceport)
 
 # Testing
