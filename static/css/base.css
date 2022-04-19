@@ -49,19 +49,33 @@ button {
     background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg')
 }
 
-#navbar a{
+#index-banner hr {
+    background: white;
+    height: 2px;
+    opacity: 1;
+}
+
+#index-banner p {
+    font-size: 70px;
+}
+
+#index-banner .row {
+    padding-top: 65%;
     color: white;
 }
 
-#navbar {
-    box-shadow: 0 5px 3px -3px rgb(177, 177, 177);
+@media (min-width: 768px) {
+    #index-banner .row {
+        padding-top: 30%;
+    }
 }
 
+#navbar-main a {
+    color: white;
+}
 
-
-.navbar {
-    box-shadow: 0 0 1px rgb(177, 177, 177);
-    font-family: 'Raleway', sans-serif;
+#navbar-main {
+    box-shadow: 0 5px 3px -3px rgb(177, 177, 177);
 }
 
 .navbar h3 {
@@ -73,13 +87,13 @@ button {
     width: 100%;
 }
 
-#nav-search-button{
+#nav-search-button {
     padding: 0 0 0 0;
 }
 
 .navbar-toggler {
-   
-    padding: 0 0 0 0 ;
+    color: white !important;
+    padding: 0 0 0 0;
 }
 
 /* IMAGES */
@@ -291,7 +305,7 @@ input[type=submit] {
 
 input[type=number] {
     border: black 1px;
-    background-color:rgb(255, 251, 251);
+    background-color: rgb(255, 251, 251);
 }
 
 /* TOASTS */
@@ -322,7 +336,7 @@ input[type=number] {
     text-align: center !important;
 }
 
-@media  (min-width: 756px) {
+@media (min-width: 756px) {
     #checkout-button {
         width: 100%;
         margin-left: 0;
@@ -330,11 +344,9 @@ input[type=number] {
     }
 }
 
-@media  (min-width: 1200px) {
+@media (min-width: 1200px) {}
 
-}
-
-@media  (min-width: 1400px) {
+@media (min-width: 1400px) {
     #checkout-form {
         width: 70%;
         margin-left: 15%;
@@ -356,5 +368,3 @@ input[type=number] {
 .account-container input:focus {
     outline: black 1px solid;
 }
-
-
