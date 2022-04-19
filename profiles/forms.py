@@ -12,11 +12,8 @@ class UserProfileForm(forms.ModelForm):
     """
 
     class Meta:
-        model = Order
-        fields = ('full_name', 'email', 'phone_num',
-                  'street_address_1', 'street_address_2',
-                  'town_or_city', 'county', 'postcode',
-                  'country')
+        model = UserProfile
+        exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
         """
@@ -26,15 +23,13 @@ class UserProfileForm(forms.ModelForm):
 
         super().__init__(*args, **kwargs)
         placeholders = {
-            'full_name': 'Full Name',
-            'email': 'Email Address',
-            'phone_num': 'Phone Number',
-            'street_address_1': 'Street Address 1',
-            'street_address_2': 'Street Address 2',
-            'town_or_city': 'Town or City',
-            'county': 'County',
-            'postcode': 'Postcode / Zip Code',
-            'country': 'Country',
+            'default_phone_num': 'Phone Number',
+            'default_street_address_1': 'Street Address 1',
+            'default_street_address_2': 'Street Address 2',
+            'default_town_or_city': 'Town or City',
+            'default_county': 'County',
+            'default_postcode': 'Postcode / Zip Code',
+            'default_country': 'Country',
         }
 
         for field in self.fields:
@@ -43,5 +38,5 @@ class UserProfileForm(forms.ModelForm):
             else:
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'form-control py-1'
+            self.fields[field].widget.attrs['class'] = 'form-control py-1 my-3'
             self.fields[field].label = False

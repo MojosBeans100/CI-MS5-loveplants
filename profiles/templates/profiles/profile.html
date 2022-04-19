@@ -5,6 +5,26 @@
 <div class="container my-5" style="padding-top: 100px;">
     <h2>My Profile</h2>
     <hr>
+
+    <h5 class="my-5">Account Details</h5>
+    <table class="table table-borderless w-50">
+        <tr>
+            <td class="fw-bold">Username</td>
+            <td>{{request.user}}</td>
+        </tr>
+        <tr>
+            <td class="fw-bold">Password</td>
+            <td>**********</td>
+            <td><a href="#">Change password</a></td>
+        </tr>
+    </table>
+  
+    <h5 class="my-5">Default Information</h5>
+    {{form.as_table}}
+
+    <h5 class="my-5">Order History</h5>
+    {{orders}}
+
 </div>
 
 {% endblock %}

@@ -17,6 +17,7 @@ from .models import Order, OrderLineItem
 from products.models import Product
 from .forms import OrderForm
 from bag.contexts import bag_contents
+from profiles.models import UserProfile
 
 stripe_pk = os.environ.get('STRIPE_PUBLIC_KEY')
 stripe_sk = os.environ.get('STRIPE_SECRET_KEY')
