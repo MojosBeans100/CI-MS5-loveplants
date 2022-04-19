@@ -806,48 +806,6 @@ The project uses [HTML](https://en.wikipedia.org/wiki/HTML) language to build th
 ## Javascript
 [Javascript](https://www.javascript.com/) is included on most pages.  The main functions are:
 
-### Display a 'Back to Top' button
-On pages which have a lot of content, the user is provided with a button to allow them to scroll back to the top of the page for convenience.  This is [external library code](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp).
-
-### Highlight the website active page
-The three selectable pages in the navigation bar display different styling when the page is active.
-
-### Create a map to draw the AOI
-*function createMap()*
-
-In the Create a Pipeline form, JS code renders a Mapbox map of the world and allows users to select points to form a polygon for choosing their AOI.
-
-The code is derived from the 'draw' function in [Mapbox](https://docs.mapbox.com/mapbox-gl-js/example/mapbox-gl-draw/).
-
-### Render the map to review the AOI
-*function reviewMap() & function detailMap()*
-
-Reviewing the map requires a reverse function of the above, collecting the user's selected AOI in geoJSON format and drawing this on the map.
-
-The code is derived from the 'addSource' function in [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/map/#map#addsource).
-
-### Create a progressive form to create a pipeline
-For improved UX, the Create a Pipeline form is seperated into relevant tabs to allow the user to move forwards and back as desired.  The form provides additional form field validation.
-
-The code is derived from [W3S](https://www.w3schools.com/howto/howto_js_form_steps.asp), adapted and enhanced to fit the requirements of the project.
-
-### Perform form field validation
-*function validateCloudCover(), function validateDate()*
-
-Additional validation methods are required for the form, aside from the above and Django Forms validation. The user is provided with inline feedback for their parameters, so they are aware if and why they are valid/invalid.  The two main uses of this are to validate the interval dates and the AOI size.
-
-### Create form review
-*function createReview()*
-
-This function renders the pipeline parameters as a final step for the user to review before submitting.  
-
-### Create a chart to shown a timeline of the pipeline
-*function timelineChart()*
-
-This function creates a ChartJS graph, displaying relevant pipeline dates in a more visually appealing manner.
-
-The code is derived from a simple example from the ChartJS [documentation](https://www.chartjs.org/docs/latest/charts/line.html).
-
 
 ## Python
 [Python]((https://www.python.org/)) was used for server side coding on the project.
