@@ -42,10 +42,14 @@ button {
 }
 
 #index-banner {
-    height: calc(100vh - 90px);
+    height: calc(100vh - 50px);
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648231068/LovePlants/Media/pexels-content-pixie-2736497_nahpep.jpg')
+}
+
+#navbar a{
+    color: black;
 }
 
 .navbar {
@@ -58,12 +62,17 @@ button {
 }
 
 #nav-search {
-    padding: 0 0 0 0;
+    padding-left: 10px;
     width: 100%;
 }
 
 #nav-search-button{
     padding: 0 0 0 0;
+}
+
+.navbar-toggler {
+   
+    padding: 0 0 0 0 ;
 }
 
 /* IMAGES */
