@@ -374,3 +374,9 @@ input[type=number] {
 .account-container input:focus {
     outline: black 1px solid;
 }
+
+/* PROFILES */
+
+.order-history-dropdown {
+    
+}

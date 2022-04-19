@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-5" style="padding-top: 100px;">
+<div class="container my-5" style="padding-top: 100px; padding-bottom: 100px;">
     <h2>My Profile</h2>
     <hr>
 
@@ -18,13 +18,59 @@
             <td><a href="#">Change password</a></td>
         </tr>
     </table>
-  
+
     <h5 class="my-5">Default Information</h5>
     {{form.as_table}}
 
     <h5 class="my-5">Order History</h5>
-    {{orders}}
 
+    <div class="row text-center">
+        <div class="col-4">
+            <p>Order Reference</p>
+        </div>
+        <div class="col-4">
+            <p>Order Date</p>
+        </div>
+        <div class="col-4">
+            <p>Order Total</p>
+        </div>
+    </div>
+
+
+    <div class="col">
+        {% for order in orders %}
+        <a class="order-history-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample{{order.order_ref}}"
+            role="button" aria-expanded="false" aria-controls="multiCollapseExample{{order.order_ref}}">
+            <div class="row text-center my-3 p-3">
+                <div class="col-4">{{order.order_ref}}</div>
+                <div class="col-4">{{order.date|date:'d M Y'}}</div>
+                <div class="col-4">£ {{order.grand_total}}</div>
+            </div>
+        </a>
+
+        <div class="collapse multi-collapse border border-dark" id="multiCollapseExample{{order.order_ref}}">
+            <div class="row text-center">
+                <div class="col"></div>
+                <div class="col">Product</div>
+                <div class="col">Quantity</div>
+                <div class="col">Subtotal</div>
+            </div>
+            {% for item in line_items %}
+            {% if item.order.order_ref == order.order_ref %}
+            <div class="row align-items-center py-2 text-center">
+                <div class="col">
+                    <img style="height: 100px; width: 100px;" src="{{item.product.image1_source_url}}">
+                </div>
+                <div class="col">{{item.product.friendly_name}}</div>
+                <div class="col">{{item.quantity}}</div>
+                <div class="col">{{item.lineitem_total}}</div>
+            </div>
+            {% else %}
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 {% endblock %}
