@@ -38,18 +38,12 @@
   {% endblock %}
 
   <title>Love Plants {% block extratitle %}{% endblock %}</title>
+  <link rel="shortcut icon" href="{%  static 'media/favicon.ico' %}">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <div class="d-flex align-items-start">
-          <img src="/static/media/green-tea.png">
-          <h3>Love &nbsp;Plants</h3>
-
-        </div>
-      </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,68 +51,86 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 border">
-          <li class="nav-item dropdown mx-4">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Shop
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="{% url 'products' %}?category=Plants">Plants</a></li>
-              <li><a class="dropdown-item" href="{% url 'products' %}?category=Pots">Pots</a></li>
-              <li><a class="dropdown-item" href="{% url 'products' %}?category=Accessories">Accessories</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Sale</a></li>
-            </ul>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link" aria-current="page" href="#">Plant Care</a>
-          </li>
-          <li class="nav-item mx-4">
-            <a class="nav-link" aria-current="page" href="#">Contact</a>
-          </li>
-        </ul>
 
-        <ul class="navbar-nav mb-lg-0">
-          <form method="GET" action="{% url 'products' %}" class="d-flex justify-content-start">
-            <input type="text" placeholder="Search" class="form-control form-control-sm" name="q">
-            <li class="nav-item">
-              <button class="btn btn-outline-none" type="submit">
-                <a class="nav-link" aria-current="page" href="#"><i
-                    class="fa-solid fa-magnifying-glass"></i></a></button>
-            </li>
-          </form>
-          {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'account_login' %}"><i
-                class="fa-solid fa-arrow-right-to-bracket"></i></a>
-          </li>
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-heart"></i></a>
-          </li>
+        <!-- second -->
+        <div class="row w-100 border align-items-center">
 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{% url 'view_bag' %}">
-              {% if product_count == 0 %}
-              <img src="/static/media/bag-empty.png">
-              {% else %}
-              <div style="position: relative;">
-                <img style="position: absolute; top: 0; left: 0" src="/static/media/bag-full.png">
-                <p style="position: absolute; top: 0; right: 0"><small>{{product_count}}</small></p>
+          <!-- first -->
+          <div class="col">
+            <a class="navbar-brand" href="#">
+              <div class="d-flex align-items-start">
+                <!-- <img src="/static/media/icon2.png"> -->
+                <h3>Love &nbsp;Plants</h3>
               </div>
-              {% endif %}
-              <br>
-              {% if product_count != 0 %}£{{grand_total}}{% endif %}</a>
-          </li>
-        </ul>
+            </a>
+          </div>
 
+          <div class="col border border-primary">
+            <ul class="navbar-nav">
+              <form method="GET" action="{% url 'products' %}" class="w-100 d-flex justify-content-center">
+                <input id="nav-search" type="text" placeholder="Search products" name="q">
+                <li class="nav-item">
+                  <button id="nav-search-button" class="btn btn-outline-none" type="submit">
+                    <a class="nav-link" aria-current="page" href="#"><i
+                        class="fa-solid fa-magnifying-glass"></i></a></button>
+                </li>
+              </form>
+              <!-- {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'account_login' %}"><i
+                  class="fa-solid fa-arrow-right-to-bracket"></i></a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-heart"></i></a>
+            </li>
+  
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'view_bag' %}">
+                {% if product_count == 0 %}
+                <img src="/static/media/bag-empty.png">
+                {% else %}
+                <div style="position: relative;">
+                  <img style="position: absolute; top: 0; left: 0" src="/static/media/bag-full.png">
+                  <p style="position: absolute; top: 0; right: 0"><small>{{product_count}}</small></p>
+                </div>
+                {% endif %}
+                <br>
+                {% if product_count != 0 %}£{{grand_total}}{% endif %}</a>
+            </li> -->
+            </ul>
+          </div>
+
+          <div class="col border border-primary">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 border">
+              <li class="nav-item dropdown mx-4">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Shop
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'products' %}?category=Plants">Plants</a></li>
+                  <li><a class="dropdown-item" href="{% url 'products' %}?category=Pots">Pots</a></li>
+                  <li><a class="dropdown-item" href="{% url 'products' %}?category=Accessories">Accessories</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Sale</a></li>
+                </ul>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" aria-current="page" href="#">Plant Care</a>
+              </li>
+              <li class="nav-item mx-4">
+                <a class="nav-link" aria-current="page" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </nav>

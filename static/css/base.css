@@ -54,8 +54,16 @@ button {
 }
 
 .navbar h3 {
-    font-size: 45px;
-    letter-spacing: -3px;
+    font-size: 30px;
+}
+
+#nav-search {
+    padding: 0 0 0 0;
+    width: 100%;
+}
+
+#nav-search-button{
+    padding: 0 0 0 0;
 }
 
 /* IMAGES */
