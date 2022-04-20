@@ -19,33 +19,22 @@ from .forms import UserProfileForm
 def profile(request):
     """
     """
-
     profile = get_object_or_404(UserProfile, user=request.user)
-    form = UserProfileForm(instance=profile)
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = UserProfileForm(instance=profile)
+
     orders = profile.orders.all()
     line_items = OrderLineItem.objects.all()
-    dropdowns = []
-    hrefs = []
-    i = 1
-
-    while i <= len(orders):
-        dropdown_label = f"multiCollapseExample{i}"
-        href = f"#multiCollapseExample{i}"
-        dropdowns.append(dropdown_label)
-        hrefs.append(href)
-        i += 1
-
-    for j in line_items:
-        print(type(j.order.order_ref))
-        
-    for k in orders:
-        print(type(k.order_ref))
 
     context = {
         'form': form,
         'orders': orders,
-        'dropdowns': dropdowns,
-        'hrefs': hrefs,
         'line_items': line_items,
     }
 

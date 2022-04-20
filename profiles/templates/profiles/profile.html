@@ -21,8 +21,11 @@
     </table>
 
     <h5 class="my-5">Default Information</h5>
+    <form action="" method="POST">
+    {% csrf_token %}
     {{form.as_table}}
-    <button type="submit"></button>
+    <button class="black-button" type="submit">Update Details</button>
+    </form>
 
     <h5 class="my-5">Order History</h5>
 
