@@ -134,47 +134,71 @@ The database includes:
 - Procfile, to allow for deployment on Heroku
 - requirements.txt, to store the python packages required to run the project
 
-#### Database Model
+#### User (Django context processor)
+- The User model contains information about the user, as part of the [Django allauth library](https://django-allauth.readthedocs.io/en/latest/installation.html)
+- No additional features are added to this model, as a basic username, email and password satisfy the requirements of the project
 
-*Database schema with custom models*
-![Schema](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643821929/Spaceport/SCHEMA_j2yy7r.jpg)
+#### Home App
+The Home App serves to display the homepage for the website.  
+It contains no models. 
 
-#### Models
-There are three models in this project.  As the project uses an API for a lot of the information stored in the databases, see the associated tables to understand how the data is created (whether by the User, the Spaceport app, or from the API).
+#### Profiles App
+(User Stories XXX)
+The Profiles App provides the user the ability to create their website profile, so they can purchase products and review their details and order history. 
 
-*Note: during development and testing, many pipelines were created under testing accounts.  Many of these no longer have a respective API model.*
+##### UserProfile
+- The UserProfile model allows users to hold their personal information when using the site, and has a One-To-One relationship with the [User](#user-django-context-processor) model.
+- The UserProfile model with be modified automatically upon the User model being modified
+
+| Field | Description | Field type|
+|-------|-------------|-----------|
+|id|primary key (Django auto created|Primary Key|
+|user|One-To-One field with User model|One-To-One (User)|
+|default_phone_num|user's default phone number|CharField|
+|default_street_address_1|user's default address|CharField|
+|default_street_address_1|user's default address|CharField|
+|default_town_or_city|user's default address|CharField|
+|default_county|user's default address|CharField|
+|default_postcode|user's default address|CharField|
+|default_country|user's default address|CountryField|
+
+#### Products App
+(User Stories XXX)
+- The Products App serves to hold a database of products available to purchase, details about them, their categories and any reviews/ratings. 
+- It contains 5 models.
+
+##### Product
+- The Product model holds information about specific products
+
+
+| Field | Description | Field type|
+|-------|-------------|-----------|
+|id|primary key (Django auto created|Primary Key|
+|category|||
+|plant_category|||
+|name|||
+|friendly_name|||
+|latin_name|||
+|description|||
+|description_source|||
+
+##### Category
+##### Plant Category
+##### Recently Viewed
+##### Product Review
+
+#### Bag App
+#### Checkout App
 
 ##### User
 - The User model contains information about the user, as part of the [Django allauth library](https://django-allauth.readthedocs.io/en/latest/installation.html)
-- No additional features are added to this model, as a basic username and password satisfy the requirements of the project
-- The 'email address' field was deemed not necessary for this project and was thus removed from the Sign Up form. See [Unfixed Bugs](#unfixed-bugs).
+- No additional features are added to this model, as a basic username, email and password satisfy the requirements of the project
 
-##### List
-- The List model contains information about the pipeline the user set up
-- The model fields are as below:
-
-| Field | Description | Created from | Field type|
-|-------|-------------|--------------|-----------|
-|id|the primary key for this model, used to cross reference Result objects|Django|Primary Key|
-|pipeline_name|the name the user gives to the pipeline|User|Charfield|
-|pipeline_des|the description the user inputs to identify the pipeline|User|Charfield|
-|start_date|what date the pipeline will start looking for images|User|Date|
-|end_date|what date the pipeline will stop looking for images|User|Date|
-|interval|the interval period set by the user|User|Charfield (choice of 5)|
-|aoi|the coordinates for the Area of Interest chosen by the user|User|JSON|
-|output_image|the type of images the pipeline should return|User|Charfield (choice of 6)|
-|cloud_cover|the maximum allowable cloud cover in returned images|User|Charfield|
-|num_intervals|the number of intervals between the start and end date|API|Charfield|
-|date_created|the date the pipeline was created|Spaceport|Date|
-|aoi_area|the area in km2 of the AOI|API|Charfield|
-|created_by|the user the pipeline was created by|Spaceport|Charfield|
-|status|whether the pipeline is active, complete, or pending|Spaceport|Charfield|
-|api_id|the unique id given to the pipeline by the API|API|Charfield|
-|num_results|the number of results associated with the pipeline (same as num_intervals)|Spaceport|Charfield|
-|num_images|the number of images successfully received by the pipeline|Spaceport|Charfield|
-|results_updated|when the pipeline was last refreshed from the API|API|Datetime|
-|featured_image|a url to display an image on My Pipelines page|API|Charfield|
-|time_edited|when the pipeline was last edited|Spaceport|Datetime|
+##### User Profile
+| Field | Description | Field type|
+|-------|-------------|-----------|
+|id|primary key (Django auto created|Primary Key|
+|||||
 
 ##### Result
 - The Result model contains information about results relating to the pipeline.  The number of results for a pipeline is directly linked to the number of intervals a pipeline has. Example: if a pipeline is 5 days in length, with an interval of 1 day, there will be 5 intervals (1 for each day), and thus 5 results.

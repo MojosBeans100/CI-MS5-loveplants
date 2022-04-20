@@ -32,7 +32,7 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
 
-    orders = profile.orders.all()
+    orders = profile.orders.filter(user_profile=profile)
     line_items = OrderLineItem.objects.all()
 
     context = {

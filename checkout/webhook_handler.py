@@ -34,9 +34,11 @@ class StripeWH_Handler:
         """
 
         intent = event.data.object
+        print(f"intent payment succeeded")
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
+        print(f"WH handler {save_info}")
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
         grand_total = round(intent.charges.data[0].amount/100, 2)

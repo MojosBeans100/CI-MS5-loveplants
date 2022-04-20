@@ -18,6 +18,7 @@ from products.models import Product
 from .forms import OrderForm
 from bag.contexts import bag_contents
 from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
 
 stripe_pk = os.environ.get('STRIPE_PUBLIC_KEY')
 stripe_sk = os.environ.get('STRIPE_SECRET_KEY')
@@ -31,6 +32,7 @@ def cache_checkout_data(request):
     post_data = json.loads(request.body.decode("utf-8"))
     try:
         pid = post_data['stripe_sk'].split('_secret')[0]
+        print(f"cache checkout {post_data['save_info']}")
         stripe.api_key = stripe_sk
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
@@ -131,15 +133,30 @@ def checkout_success(request, order_ref):
     A view to display order details when checkout is successful
     """
 
-    # does this work? 
+    # does this work?
     save_info = request.session.get('save_info')
+    print(save_info)
     order = get_object_or_404(Order, order_ref=order_ref)
     order_line_items = OrderLineItem.objects.filter(order=order)
 
-    if user.is_authenticated:
+    if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
+
+    if save_info:
+        profile_data = {
+            'default_phone_num': order.phone_num,
+            'default_country': order.country,
+            'default_county': order.county,
+            'default_street_address_1': order.street_address_1,
+            'default_street_address_2': order.street_address_2,
+            'default_postcode': order.postcode,
+            'default_town_or_city': order.town_or_city,
+        }
+        user_profile_form = UserProfileForm(profile_data, instance=profile)
+        if user_profile_form.is_valid():
+            user_profile_form.save()
 
     messages.success(request, f'{order} has been successful')
 

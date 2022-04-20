@@ -178,10 +178,10 @@
             headers: {
                 "X-CSRFToken": csrfToken
             }
-
+            
             // if successful response    
         }).then(response => {
-
+            console.log(response)
             // send payment to stripe
             stripe.confirmCardPayment(stripe_sk, {
                     payment_method: {
@@ -230,12 +230,10 @@
                         // if no error in stripe checkout, submit form
                     } else {
                         if (result.paymentIntent.status === 'succeeded') {
-                            console.log("Payment Intent succeeded")
                             form.submit();
                         }
                     }
                 }).catch(error => {
-                    console.log(error)
                     location.reload();
                 });
         })
