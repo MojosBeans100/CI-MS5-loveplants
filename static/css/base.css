@@ -377,3 +377,8 @@ input[type=number] {
 
 /* PROFILES */
 
+@media (max-width: 768px) {
+    #profile-collapse-headers {
+        display: none;
+    }
+}

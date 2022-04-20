@@ -20,6 +20,7 @@ def profile(request):
     """
     """
     profile = get_object_or_404(UserProfile, user=request.user)
+    user_profile = get_object_or_404(User, username=request.user)
 
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -36,6 +37,7 @@ def profile(request):
         'form': form,
         'orders': orders,
         'line_items': line_items,
+        'user_profile': user_profile,
     }
 
     return render(request, 'profiles/profile.html', context)
