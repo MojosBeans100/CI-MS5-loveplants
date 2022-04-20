@@ -81,7 +81,7 @@
                                 <div class="col-5">
                                     <form method="POST" action="{% url 'product_like' item.product.id %}" class="form">
                                         {% csrf_token %}
-                                        <button class="text-center white-button" style="height: 100%; width:100%">
+                                        <button title="Like product" class="text-center white-button" style="height: 100%; width:100%">
                                             {% if item.product.friendly_name in liked_list %}
                                             <i class="fa-solid fa-heart"></i>
                                             {% else %}
@@ -141,8 +141,6 @@
                                     class="black-button text-center">Continue to
                                     checkout</button></a>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -162,7 +160,7 @@
                     <input type="hidden" value=1 name="quantity">
                     <input type="hidden" name="redirect_url" value="{{request.path}}">
                     <div class="free-delivery-products">
-                        <button type="submit" class="add-button btn btn-outline-secondary">Quick Add</button>
+                        <button type="submit" class="add-button">Quick Add</button>
                         <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
                                 src="{{product.image1_source_url}}"></a>
                     </div>
@@ -187,7 +185,7 @@
                     <input type="hidden" value=1 name="quantity">
                     <input type="hidden" name="redirect_url" value="{{request.path}}">
                     <div class="free-delivery-products">
-                        <button type="submit" class="add-button btn btn-outline-secondary">Quick Add</button>
+                        <button type="submit" class="add-button">Quick Add</button>
                         <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
                                 src="{{product.image1_source_url}}"></a>
 

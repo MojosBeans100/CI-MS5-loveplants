@@ -19,14 +19,21 @@ a {
 }
 
 a:hover {
-    font-weight: bold;
     color: black;
 }
 
-#add-to-bag:hover {
+#add-to-bag:hover,
+.black-button:hover,
+.add-button:hover {
     background-color: white !important;
     color: black !important;
     border: solid 1px black !important;
+}
+
+.white-button:hover {
+    background-color: black;
+    color: white;
+
 }
 
 #index-banner {
@@ -275,12 +282,13 @@ input[type=submit] {
     top: 10px;
     right: 10px;
     z-index: 9999;
+    padding: 5px 20px;
     width: auto !important;
     border-radius: 0 !important;
-    background-color: white !important;
-    color: black !important;
+    background-color: black !important;
+    color: white !important;
     border: solid black 1px !important;
-    font-size: 13px !important;
+    font-size: 13px;
 }
 
 .free-delivery-products {
@@ -314,7 +322,7 @@ input[type=number] {
 
 /* CHECKOUT */
 
-#checkout-button {
+#checkout-form-submit {
     width: 80%;
     margin-left: 10%;
     text-align: center !important;

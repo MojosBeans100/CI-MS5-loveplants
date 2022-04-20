@@ -1,4 +1,4 @@
-<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="true">
+<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="autohide">
   <div class="container">
     <div class="toast-header">
       <p><em>{{message}}</em></p>
@@ -18,7 +18,7 @@
       {% endif %}
       {% endfor %}
 
-      <button type="button" class="btn-close" data-bs-dismiss="toast hide" aria-label="Close"></button>
+      <button type="button" onclick="closeToast();" class="btn-close" data-bs-dismiss="toast hide" aria-label="Close"></button>
     </div>
 
     {% if product_count == 0 %}
@@ -36,9 +36,7 @@
       <div class="col-6">
         <p>{{item.product.friendly_name}}<br>
           <em>{{item.product.latin_name}}</em><br>
-          quantity: {{item.quantity}}</p>
-        <br>
-        <br>
+          quantity: {{item.quantity}}</p><br>
         <p><strong>£{{item.product_subtotal}}</strong></p>
       </div>
       <div class="col-2">

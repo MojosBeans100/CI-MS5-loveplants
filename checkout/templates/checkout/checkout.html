@@ -25,17 +25,10 @@
                     <label for="save_info">Save Information</label>
                     <input id="save_info" type="checkbox">
 
-                    <div>
-                        <p class="mt-4">Card information</p>
-                        <div class="py-2 form-control" id="stripe-element"></div>
-                        <div id="card-error"></div>
-                        <input type="hidden" value="{{ stripe_sk }}" name="stripe_sk">
-                    </div>
+                    <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy
+                                    Notice</u></a></small></p>
 
-                    <button id="checkout-form-submit" type="submit">Submit</button>
-
-                </form>
-
+                    <!-- <button id="checkout-form-submit" type="submit">Submit</button> -->
             </div>
 
             <!-- order summary and checkout button -->
@@ -57,9 +50,6 @@
                         <td class="text-end">£ {{delivery}}</td>
                     </tr>
                 </table>
-
-                <hr>
-
                 <table class="table table-borderless fw-bold">
                     <tr>
                         <td class="text-start">Total</td>
@@ -67,22 +57,37 @@
                     </tr>
                 </table>
 
-                <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy Notice</u></a>
-                        <br>
-                        <br>
-                        By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
-                    </small></p>
+                <div class="d-flex py-3 px-1">
+                    <hr class="flex-grow-1">
+                    <h3 class="text-center px-3">Pay</h3>
+                    <hr class="flex-grow-1">
+                </div>
 
-                <button id="checkout-button" class="black-button">Secure Checkout &nbsp;<i
+                <div class="my-4">
+                    <p class="mt-1">Card information</p>
+                    <div class="py-2 form-control" id="stripe-element"></div>
+                    <div id="card-error"></div>
+                    <input type="hidden" value="{{ stripe_sk }}" name="stripe_sk">
+                </div>
+
+                <h4 class="text-center">
+                    <i title="Mastercard" class="fa-brands fa-cc-mastercard"></i>
+                     <i title="American Express" class="fa-brands fa-cc-amex"></i> 
+                     <i title="Visa Debit/Credit" class="fa-brands fa-cc-visa"></i> 
+                     <i title="Paypal" class="fa-brands fa-cc-paypal"></i>
+                    <i title="Amazon Pay" class="fa-brands fa-cc-amazon-pay"></i> 
+                    <i title="Apple Pay" class="fa-brands fa-cc-apple-pay"></i></h4><br>
+
+                <button id="checkout-form-submit" type="submit" class="black-button">Secure Checkout &nbsp;<i
                         class="fa-solid fa-lock"></i></button>
-
                 <br>
                 <br>
-
+                <p><small> By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
+                    </small></p>
+                </form>
+                <br>
                 <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
-
                 <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for help</small></p>
-
             </div>
 
             <!-- list products in bag for reference -->
@@ -178,7 +183,7 @@
             headers: {
                 "X-CSRFToken": csrfToken
             }
-            
+
             // if successful response    
         }).then(response => {
             console.log(response)
