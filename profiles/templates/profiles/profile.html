@@ -13,17 +13,16 @@
                 <tr>
                     <td class="fw-bold">Username</td>
                     <td>{{request.user}}</td>
-                    <td><a href="#">Log out</a></td>
+                    <td><a href="{% url 'account_logout' %}">Log out</a></td>
                 </tr>
                 <tr>
                     <td class="fw-bold">Password</td>
                     <td>**********</td>
-                    <td><a href="#">Change password</a></td>
+                    <td><a href="{% url 'account_change_password' %}">Change password</a></td>
                 </tr>
                 <tr>
                     <td class="fw-bold">Email</td>
                     <td>{{user_profile.email}}</td>
-                    <td><a href="#">Change email</a></td>
                 </tr>
                 <tr>
                     <td class="fw-bold">Account Created</td>
@@ -46,6 +45,9 @@
     </div>
 
     <h5 class="mt-5 mb-2">Order History</h5>
+    {% if orders.count == 0 %}
+    <p>You have no previous orders.</p>
+    {% else %}
     <p>{{orders.count}} orders</p>
 
     <div id="profile-collapse-headers" class="row text-center">
@@ -129,6 +131,7 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
 </div>
 
 {% endblock %}
