@@ -2,206 +2,208 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-5">
-
-    {% if product_count == 0 %}
-    {% else %}
-    <div class="row">
-        <p><i class="fa-solid fa-arrow-left-long"></i> <a href="{% url 'products' %}">Continue shopping</a></p>
-    </div>
-    {% endif %}
-
-    <div class="row">
-        <h2>Your basket ({{product_count}})</h2>
-
-        <!-- free delivery text -->
-        <div class="col-12 order-1">
-            {% if free_delivery_delta > 0 %}
-            <p class="text-center">Spend £{{free_delivery_delta}} more to qualify for free shipping!</p>
-            {% else %}
-            {% if product_count != 0 %}
-            <p class="text-center">You have qualified for free shipping!</p>
-            {% else %}
-            {% endif %}
-            {% endif %}
+<div class="container">
+    <div class="margin">
+        {% if product_count == 0 %}
+        {% else %}
+        <div class="row">
+            <p><i class="fa-solid fa-arrow-left-long"></i> <a href="{% url 'products' %}">Continue shopping</a></p>
         </div>
+        {% endif %}
 
-        <!-- list items -->
-        <div class="col-12 order-2 col-md-8">
+        <div class="row">
+            <h2>Your basket ({{product_count}})</h2>
 
-            {% if product_count == 0 %}
-            <p>Your basket is currently empty.</p>
-            {% else %}
+            <!-- free delivery text -->
+            <div class="col-12 order-1">
+                {% if free_delivery_delta > 0 %}
+                <p class="text-center">Spend £{{free_delivery_delta}} more to qualify for free shipping!</p>
+                {% else %}
+                {% if product_count != 0 %}
+                <p class="text-center">You have qualified for free shipping!</p>
+                {% else %}
+                {% endif %}
+                {% endif %}
+            </div>
 
-            <!-- product list table -->
-            <!-- for each product -->
+            <!-- list items -->
+            <div class="col-12 order-2 col-md-8">
 
-            {% for item in bag_items %}
-            <div class="row py-2">
+                {% if product_count == 0 %}
+                <p>Your basket is currently empty.   Shop for products <a href="{% url 'products' %}">here</a>.</p>
+                {% else %}
 
-                <!-- product image, like button -->
-                <div class="row">
-                    <div class="col">
-                        <div class="row py-2">
-                            <div class="col-5">
-                                <a href="{% url 'product_detail' item.product.id %}"><img class="bag-images"
-                                        src="{{item.product.image1_source_url}}"></a>
+                <!-- product list table -->
+                <!-- for each product -->
 
-                            </div>
+                {% for item in bag_items %}
+                <div class="row py-2">
 
-                            <!-- product detail -->
-                            <div class="col-7">
-                                <div class="row">
-                                    <div class="col-10">
-                                        <a href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}}
-                                            |
-                                            {{item.product.pot_size}}cm</a>
-                                        <p class="item_price">£{{item.product.price}}</p>
+                    <!-- product image, like button -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="row py-2">
+                                <div class="col-5">
+                                    <a href="{% url 'product_detail' item.product.id %}"><img class="bag-images"
+                                            src="{{item.product.image1_source_url}}"></a>
 
-                                        <table class="table table-borderless">
-                                            <tr>
-                                                <td class="text-start">Total:</td>
-                                                <td class="item_subtotal"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Pot size:</td>
-                                                <td>{{item.product.pot_size}} cm</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    <div class="col-2">
-                                        <a href="{% url 'delete_bag' item.product.id %}"><i
-                                                class="fa-solid fa-trash-can"></i></a>
+                                </div>
+
+                                <!-- product detail -->
+                                <div class="col-7">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <a href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}}
+                                                |
+                                                {{item.product.pot_size}}cm</a>
+                                            <p class="item_price">£{{item.product.price}}</p>
+
+                                            <table class="table table-borderless">
+                                                <tr>
+                                                    <td class="text-start">Total:</td>
+                                                    <td class="item_subtotal"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pot size:</td>
+                                                    <td>{{item.product.pot_size}} cm</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-2">
+                                            <a href="{% url 'delete_bag' item.product.id %}"><i
+                                                    class="fa-solid fa-trash-can"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="row py-2">
-                            <div class="col-5">
-                                <form method="POST" action="{% url 'product_like' item.product.id %}" class="form">
-                                    {% csrf_token %}
-                                    <button class="text-center white-button" style="height: 100%; width:100%">
-                                        {% if item.product.friendly_name in liked_list %}
-                                        <i class="fa-solid fa-heart"></i>
-                                        {% else %}
-                                        <i class="fa-regular fa-heart"></i>
-                                        {% endif %}
-                                    </button>
-                                    <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
-                                        value="{{ request.path }}">
-                                </form>
-                            </div>
-                            <div class="col-7">
-                                <form class="form update-basket border" method="POST"
-                                    action="{% url 'edit_bag' item.item_id %}">
-                                    {% csrf_token %}
-                                    <input style="width: 100%; border: black 1px solid;" type="number"
-                                        value={{item.quantity}} min=1 max={{item.product.stock_quantity}}
-                                        name="quantity" id="{{item.item_id}}" class="item_quantity text-center"
-                                        onchange="userUpdate();">
-                                </form>
+                            <div class="row py-2">
+                                <div class="col-5">
+                                    <form method="POST" action="{% url 'product_like' item.product.id %}" class="form">
+                                        {% csrf_token %}
+                                        <button class="text-center white-button" style="height: 100%; width:100%">
+                                            {% if item.product.friendly_name in liked_list %}
+                                            <i class="fa-solid fa-heart"></i>
+                                            {% else %}
+                                            <i class="fa-regular fa-heart"></i>
+                                            {% endif %}
+                                        </button>
+                                        <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                                            value="{{ request.path }}">
+                                    </form>
+                                </div>
+                                <div class="col-7">
+                                    <form class="form update-basket border" method="POST"
+                                        action="{% url 'edit_bag' item.item_id %}">
+                                        {% csrf_token %}
+                                        <input style="width: 100%; border: black 1px solid;" type="number"
+                                            value={{item.quantity}} min=1 max={{item.product.stock_quantity}}
+                                            name="quantity" id="{{item.item_id}}" class="item_quantity text-center"
+                                            onchange="userUpdate();">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
+                {% endif %}
             </div>
-            {% endfor %}
+
+            <hr>
+            {% if product_count == 0 %}
+            {% else %}
+            <div class="col py-4 order-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6 text-start">
+                            <p>Order value</p>
+                            <p>Delivery</p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <p>£{{total}}</p>
+                            {% if free_delivery_delta == 0 %}
+                            <p><del>£{{standard_delivery}}</del> &nbsp; £{{delivery}}</p>
+                            {% else %}
+                            <p>£{{delivery}}</p>
+                            {% endif %}
+                        </div>
+                        <hr>
+                        <div class="col-6">
+                            <p class="fw-bold">Total</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="fw-bold text-end">£{{grand_total}}</p>
+                        </div>
+                        <hr>
+                        <div class="col">
+                            <a href="{% url 'view_checkout' %}"><button style="height: 100%; width:100%;"
+                                    class="black-button text-center">Continue to
+                                    checkout</button></a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
             {% endif %}
         </div>
 
-        <hr>
-        {% if product_count == 0 %}
-        {% else %}
-        <div class="col py-4 order-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6 text-start">
-                        <p>Order value</p>
-                        <p>Delivery</p>
-                    </div>
-                    <div class="col-6 text-end">
-                        <p>£{{total}}</p>
-                        {% if free_delivery_delta == 0 %}
-                        <p><del>£{{standard_delivery}}</del> &nbsp; £{{delivery}}</p>
-                        {% else %}
-                        <p>£{{delivery}}</p>
-                        {% endif %}
-                    </div>
-                    <hr>
-                    <div class="col-6">
-                        <p class="fw-bold">Total</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="fw-bold text-end">£{{grand_total}}</p>
-                    </div>
-                    <hr>
-                    <div class="col">
-                        <a href="{% url 'view_checkout' %}"><button style="height: 100%; width:100%;" class="black-button text-center">Continue to
-                            checkout</button></a>
-                    </div>
+        <!-- suggest products around the price of the free delivery delta -->
+        {% if free_delivery_delta > 0 %}
+        <div class="row py-5">
+            <h4 class="py-3 text-center">Spend <strong>£{{free_delivery_delta}}</strong> more to qualify for free
+                delivery!</h4>
+            {% for product in free_delivery_products %}
+            <div class="col-sm-4 col-lg-3">
 
-
-                </div>
+                <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value=1 name="quantity">
+                    <input type="hidden" name="redirect_url" value="{{request.path}}">
+                    <div class="free-delivery-products">
+                        <button type="submit" class="add-button btn btn-outline-secondary">Quick Add</button>
+                        <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
+                                src="{{product.image1_source_url}}"></a>
+                    </div>
+                </form>
+                <a href="{% url 'product_detail' product.id %}">
+                    <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                    <p class="text-center">£{{product.price}}</p>
+                </a>
             </div>
+            {% endfor %}
         </div>
         {% endif %}
-    </div>
 
-    <!-- suggest products around the price of the free delivery delta -->
-    {% if free_delivery_delta > 0 %}
-    <div class="row py-5">
-        <h4 class="py-3 text-center">Spend <strong>£{{free_delivery_delta}}</strong> more to qualify for free delivery!</h4>
-        {% for product in free_delivery_products %}
-        <div class="col-sm-4 col-lg-3">
+        {% if product_count != 0 %}
+        <div class="row py-5">
+            <h4 class="py-3 text-center">Not finished shopping? See some more products we have!</h4>
+            {% for product in products_not_in_bag %}
+            <div class="col-sm-4 col-lg-3">
 
-            <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" value=1 name="quantity">
-                <input type="hidden" name="redirect_url" value="{{request.path}}">
-                <div class="free-delivery-products">
-                    <button type="submit" class="add-button btn btn-outline-secondary">Quick Add</button>
-                    <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
-                            src="{{product.image1_source_url}}"></a>
-                </div>
-            </form>
-            <a href="{% url 'product_detail' product.id %}">
-                <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
-                <p class="text-center">£{{product.price}}</p>
-            </a>
+                <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value=1 name="quantity">
+                    <input type="hidden" name="redirect_url" value="{{request.path}}">
+                    <div class="free-delivery-products">
+                        <button type="submit" class="add-button btn btn-outline-secondary">Quick Add</button>
+                        <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
+                                src="{{product.image1_source_url}}"></a>
+
+                    </div>
+                </form>
+                <a href="{% url 'product_detail' product.id %}">
+                    <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                    <p class="text-center">£{{product.price}}</p>
+                </a>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
+        {% else %}
+        {% endif %}
+
     </div>
-    {% endif %}
-
-    {% if product_count != 0 %}
-    <div class="row py-5">
-        <h4 class="py-3 text-center">Not finished shopping?  See some more products we have!</h4>
-        {% for product in products_not_in_bag %}
-        <div class="col-sm-4 col-lg-3">
-
-            <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" value=1 name="quantity">
-                <input type="hidden" name="redirect_url" value="{{request.path}}">
-                <div class="free-delivery-products">
-                    <button type="submit" class="add-button btn btn-outline-secondary">Quick Add</button>
-                    <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
-                            src="{{product.image1_source_url}}"></a>
-                            
-                </div>
-            </form>
-            <a href="{% url 'product_detail' product.id %}">
-                <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
-                <p class="text-center">£{{product.price}}</p>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
-    {% else %}
-    {% endif %}
-
-
 </div>
 {% endblock content %}
 

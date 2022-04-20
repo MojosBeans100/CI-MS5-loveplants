@@ -2,6 +2,7 @@
 
 # Django imports
 from django.shortcuts import render, get_object_or_404
+from django.contrib import messages
 
 # Local imports
 from products.models import (
@@ -26,6 +27,7 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
+            messages.success(request, "Updated profile details.")
 
     else:
         form = UserProfileForm(instance=profile)

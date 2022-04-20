@@ -131,8 +131,16 @@ def checkout_success(request, order_ref):
     A view to display order details when checkout is successful
     """
 
+    # does this work? 
+    save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_ref=order_ref)
     order_line_items = OrderLineItem.objects.filter(order=order)
+
+    if user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+
     messages.success(request, f'{order} has been successful')
 
     if 'bag' in request.session:

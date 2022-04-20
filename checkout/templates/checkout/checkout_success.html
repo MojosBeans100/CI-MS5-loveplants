@@ -4,133 +4,134 @@
 {% block content %}
 
 <div class="container">
+    <div class="margin">
+        <h4 class="pt-5">Order Confirmation</h4>
+        <p>We've received your order! You will receive a confirmation email at <strong>{{order.email}}</strong>.</p>
+        <p><small>Didn't receive an email? Contact <u><a>Customer Service</a></u>.</small></p>
+        <hr>
 
-    <h4 class="pt-5">Order Confirmation</h4>
-    <p>We've received your order! You will receive a confirmation email at <strong>{{order.email}}</strong>.</p>
-    <p><small>Didn't receive an email? Contact <u><a>Customer Service</a></u>.</small></p>
-    <hr>
+        <div class="row py-3">
+            <div class="col-7">
 
-    <div class="row py-3">
-        <div class="col-7">
+                <table class="table table-borderless table-responsive">
+                    <tr class="fw-bold">
+                        <td colspan="2">Order Details</td>
+                    </tr>
 
-            <table class="table table-borderless table-responsive">
-                <tr class="fw-bold">
-                    <td colspan="2">Order Details</td>
-                </tr>
+                    <tr>
+                        <td>Reference Number</td>
+                        <td>{{order}}</td>
+                    </tr>
 
-                <tr>
-                    <td>Reference Number</td>
-                    <td>{{order}}</td>
-                </tr>
-
-                <tr>
-                    <td>Order Date</td>
-                    <td>{{order.date}}</td>
-                </tr>
-
-
-                <tr>
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>
-
-                <tr class="fw-bold">
-                    <td colspan="2">Delivery Information</td>
-                </tr>
-
-                <tr>
-                    <td>Delivering To</td>
-                    <td>{{order.full_name}}</td>
-                </tr>
-
-                <tr>
-                    <td>Address</td>
-                    <td>{{order.street_address_1}}, <br>
-                        {% if order.street_address_2 %}
-                        {{order.street_address_2}}, <br>
-                        {% endif %}
-                        {{order.town_or_city}}, <br>
-                        {% if order.county %}
-                        {{order.county}}, <br>
-                        {% endif %}
-                        {% if order.postcode %}
-                        {{order.postcode}}, <br>
-                        {% endif %}
-                        {{order.country}}
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Email</td>
-                    <td>{{order.email}}</td>
-                </tr>
-
-                <tr>
-                    <td>Phone</td>
-                    <td>{{order.phone_num}}</td>
-                </tr>
+                    <tr>
+                        <td>Order Date</td>
+                        <td>{{order.date}}</td>
+                    </tr>
 
 
-                <tr>
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
 
-                <tr class="fw-bold">
-                    <td colspan="2">Purchase Summary</td>
-                </tr>
+                    <tr class="fw-bold">
+                        <td colspan="2">Delivery Information</td>
+                    </tr>
 
-                {% for item in line_items %}
-                <tr>
-                    <td><img style="width: 100px; height: 100px;" src="{{item.product.image1_source_url}}"><br>
-                        {{item.quantity}} x <a href="{% url 'product_detail' item.product.id %}">{{item.product}}</a>
-                    </td>
-                    <td>£ {{item.lineitem_total}}</td>
-                </tr>
-                {% endfor %}
+                    <tr>
+                        <td>Delivering To</td>
+                        <td>{{order.full_name}}</td>
+                    </tr>
 
-                <tr>
-                    <td colspan="2">
-                        <hr>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{order.street_address_1}}, <br>
+                            {% if order.street_address_2 %}
+                            {{order.street_address_2}}, <br>
+                            {% endif %}
+                            {{order.town_or_city}}, <br>
+                            {% if order.county %}
+                            {{order.county}}, <br>
+                            {% endif %}
+                            {% if order.postcode %}
+                            {{order.postcode}}, <br>
+                            {% endif %}
+                            {{order.country}}
+                        </td>
+                    </tr>
 
-                <tr class="fw-bold">
-                    <td colspan="2">Billing Information</td>
-                </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{order.email}}</td>
+                    </tr>
 
-                <tr>
-                    <td>Payment Method</td>
-                    <td>Card</td>
-                </tr>
-
-                <tr>
-                    <td>Card Information</td>
-                    <td>**** **** **** xxxx</td>
-                </tr>
-
-                <tr>
-                    <td>Total</td>
-                    <td>£ {{order.order_total}}</td>
-                </tr>
-
-                <tr>
-                    <td>Delivery</td>
-                    <td>£ {{order.delivery_cost}}</td>
-                </tr>
-
-                <tr class="fw-bold">
-                    <td>Grand Total</td>
-                    <td>£ {{order.grand_total}}</td>
-                </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>{{order.phone_num}}</td>
+                    </tr>
 
 
-            </table>
+                    <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+
+                    <tr class="fw-bold">
+                        <td colspan="2">Purchase Summary</td>
+                    </tr>
+
+                    {% for item in line_items %}
+                    <tr>
+                        <td><img style="width: 100px; height: 100px;" src="{{item.product.image1_source_url}}"><br>
+                            {{item.quantity}} x <a
+                                href="{% url 'product_detail' item.product.id %}">{{item.product}}</a>
+                        </td>
+                        <td>£ {{item.lineitem_total}}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+
+                    <tr class="fw-bold">
+                        <td colspan="2">Billing Information</td>
+                    </tr>
+
+                    <tr>
+                        <td>Payment Method</td>
+                        <td>Card</td>
+                    </tr>
+
+                    <tr>
+                        <td>Card Information</td>
+                        <td>**** **** **** xxxx</td>
+                    </tr>
+
+                    <tr>
+                        <td>Total</td>
+                        <td>£ {{order.order_total}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Delivery</td>
+                        <td>£ {{order.delivery_cost}}</td>
+                    </tr>
+
+                    <tr class="fw-bold">
+                        <td>Grand Total</td>
+                        <td>£ {{order.grand_total}}</td>
+                    </tr>
+
+
+                </table>
+            </div>
         </div>
     </div>
-
 </div>
 
 {% endblock %}

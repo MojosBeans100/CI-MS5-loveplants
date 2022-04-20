@@ -2,116 +2,116 @@
 {% load static %}
 
 {% block content %}
+<div class="container">
+    <div class="margin">
+        <div class="row py-3 pt-5">
 
-<div class="container bg-white">
-    <div class="row py-3 pt-5">
+            <!-- order form delivery and billing details -->
+            <div class="col-12 col-md-8 order-first">
 
-        <!-- order form delivery and billing details -->
-        <div class="col-12 col-md-8 order-first">
+                <div class="d-flex py-3 px-md-3 px-lg-5">
+                    <hr class="flex-grow-1">
+                    <h3 class="text-center px-2 px-md-3 px-xl-5">Your details</h3>
+                    <hr class="flex-grow-1">
+                </div>
 
-            <div class="d-flex py-3 px-md-3 px-lg-5">
-                <hr class="flex-grow-1">
-                <h3 class="text-center px-2 px-md-3 px-xl-5">Your details</h3>
-                <hr class="flex-grow-1">
+                <form method="POST" action="#" class="form" id="checkout-form">
+                    {% csrf_token %}
+
+                    {% for field in order_form %}
+                    <p>{{field}}</p>
+                    {% endfor %}
+
+                    <label for="save_info">Save Information</label>
+                    <input id="save_info" type="checkbox">
+
+                    <div>
+                        <p class="mt-4">Card information</p>
+                        <div class="py-2 form-control" id="stripe-element"></div>
+                        <div id="card-error"></div>
+                        <input type="hidden" value="{{ stripe_sk }}" name="stripe_sk">
+                    </div>
+
+                    <button id="checkout-form-submit" type="submit">Submit</button>
+
+                </form>
+
             </div>
 
-            <form method="POST" action="#" class="form" id="checkout-form">
-                {% csrf_token %}
+            <!-- order summary and checkout button -->
+            <div class="col-12 col-md-4 order-last order-md-2 sticky-md-top">
 
-                {% for field in order_form %}
-                <p>{{field}}</p>
+                <div class="d-flex py-3 px-1">
+                    <hr class="flex-grow-1">
+                    <h3 class="text-center px-3">Order Summary</h3>
+                    <hr class="flex-grow-1">
+                </div>
+
+                <table class="table table-borderless">
+                    <tr>
+                        <td class="text-start">Order value</td>
+                        <td class="text-end">£ {{total}}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-start">Delivery</td>
+                        <td class="text-end">£ {{delivery}}</td>
+                    </tr>
+                </table>
+
+                <hr>
+
+                <table class="table table-borderless fw-bold">
+                    <tr>
+                        <td class="text-start">Total</td>
+                        <td class="text-end">£ {{grand_total}}</td>
+                    </tr>
+                </table>
+
+                <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy Notice</u></a>
+                        <br>
+                        <br>
+                        By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
+                    </small></p>
+
+                <button id="checkout-button" class="black-button">Secure Checkout &nbsp;<i
+                        class="fa-solid fa-lock"></i></button>
+
+                <br>
+                <br>
+
+                <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
+
+                <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for help</small></p>
+
+            </div>
+
+            <!-- list products in bag for reference -->
+            <div class="col-12 col-md-8 order-md-3">
+
+                <div class="d-flex py-3">
+                    <hr class="flex-grow-1">
+                    <h3 class="text-center px-2 px-md-3 px-xl-5">Bag</h3>
+                    <hr class="flex-grow-1">
+                </div>
+
+                {% for item in bag_items %}
+                <div class="row py-2">
+                    <div class="col-6 col-lg-3">
+                        <a href="{% url 'product_detail' item.product.id %}"><img style="width: 150px; height: 150px;"
+                                src="{{item.product.image1_source_url}}"></a>
+                    </div>
+                    <div class="col-6 col-lg-9">
+                        <p class="fw-bold"><small>{{item.product.friendly_name}} &nbsp;<a
+                                    href="{% url 'delete_bag' item.product.id %}"><i
+                                        class="fa-solid fa-trash-can"></i></a></small></p>
+                        <p><small>Price: £ {{item.product.price}}</small></p>
+                        <p><small>Quantity: {{item.quantity}}</small></p>
+                        <p><small>Subtotal: £ {{item.product_subtotal}}</small>
+                    </div>
+                </div>
                 {% endfor %}
-
-                <label for="save_info">Save Information</label>
-                <input id="save_info" type="checkbox">
-
-                <div>
-                    <p class="mt-4">Card information</p>
-                    <div class="py-2 form-control" id="stripe-element"></div>
-                    <div id="card-error"></div>
-                    <input type="hidden" value="{{ stripe_sk }}" name="stripe_sk">
-                </div>
-
-                <button id="checkout-form-submit" type="submit">Submit</button>
-
-            </form>
-
-        </div>
-
-        <!-- order summary and checkout button -->
-        <div class="col-12 col-md-4 order-last order-md-2 sticky-md-top">
-
-            <div class="d-flex py-3 px-1">
-                <hr class="flex-grow-1">
-                <h3 class="text-center px-3">Order Summary</h3>
-                <hr class="flex-grow-1">
             </div>
-
-            <table class="table table-borderless">
-                <tr>
-                    <td class="text-start">Order value</td>
-                    <td class="text-end">£ {{total}}</td>
-                </tr>
-                <tr>
-                    <td class="text-start">Delivery</td>
-                    <td class="text-end">£ {{delivery}}</td>
-                </tr>
-            </table>
-
-            <hr>
-
-            <table class="table table-borderless fw-bold">
-                <tr>
-                    <td class="text-start">Total</td>
-                    <td class="text-end">£ {{grand_total}}</td>
-                </tr>
-            </table>
-
-            <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy Notice</u></a>
-                    <br>
-                    <br>
-                    By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
-                </small></p>
-
-            <button id="checkout-button" class="black-button">Secure Checkout &nbsp;<i
-                    class="fa-solid fa-lock"></i></button>
-
-            <br>
-            <br>
-
-            <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
-
-            <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for help</small></p>
-
         </div>
-
-        <!-- list products in bag for reference -->
-        <div class="col-12 col-md-8 order-md-3">
-
-            <div class="d-flex py-3">
-                <hr class="flex-grow-1">
-                <h3 class="text-center px-2 px-md-3 px-xl-5">Bag</h3>
-                <hr class="flex-grow-1">
-            </div>
-
-            {% for item in bag_items %}
-            <div class="row py-2">
-                <div class="col-6 col-lg-3">
-                    <a href="{% url 'product_detail' item.product.id %}"><img style="width: 150px; height: 150px;"
-                            src="{{item.product.image1_source_url}}"></a>
-                </div>
-                <div class="col-6 col-lg-9">
-                    <p class="fw-bold"><small>{{item.product.friendly_name}} &nbsp;<a
-                                href="{% url 'delete_bag' item.product.id %}"><i
-                                    class="fa-solid fa-trash-can"></i></a></small></p>
-                    <p><small>Price: £ {{item.product.price}}</small></p>
-                    <p><small>Quantity: {{item.quantity}}</small></p>
-                    <p><small>Subtotal: £ {{item.product_subtotal}}</small>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-
     </div>
 </div>
 {% endblock content %}
@@ -170,7 +170,7 @@
             'stripe_sk': stripe_sk,
             'save_info': saveInfo,
         }
-        
+
         // post save info to cache checkout view
         let response = fetch(url, {
             method: 'POST',
@@ -179,7 +179,7 @@
                 "X-CSRFToken": csrfToken
             }
 
-        // if successful response    
+            // if successful response    
         }).then(response => {
 
             // send payment to stripe
@@ -226,18 +226,18 @@
                             'disabled': false
                         })
                         checkoutSubmit.disabled = false
-                    
-                    // if no error in stripe checkout, submit form
+
+                        // if no error in stripe checkout, submit form
                     } else {
                         if (result.paymentIntent.status === 'succeeded') {
                             console.log("Payment Intent succeeded")
                             form.submit();
                         }
                     }
-                }).catch(error=> {
+                }).catch(error => {
                     console.log(error)
                     location.reload();
-                }) ;
+                });
         })
     });
 </script>

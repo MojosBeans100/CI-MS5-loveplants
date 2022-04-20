@@ -9,6 +9,10 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+.margin {
+    margin-top: 150px;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -17,22 +21,6 @@ a {
 a:hover {
     font-weight: bold;
     color: black;
-}
-
-button {
-    text-align: left !important;
-}
-
-.black-button {
-    border-radius: 0;
-    background-color: black;
-    color: white;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-    box-shadow: none;
-    outline: none;
 }
 
 #add-to-bag:hover {
@@ -168,7 +156,8 @@ button {
     border: solid black 1px;
 }
 
-#add-to-bag {
+#add-to-bag,
+.black-button {
     text-align: center !important;
     border-radius: 0 !important;
     padding-top: 5px !important;

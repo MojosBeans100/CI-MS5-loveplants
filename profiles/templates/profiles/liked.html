@@ -11,7 +11,11 @@
 
     <div class="row py-3">
         
-        <h3 >{{num_liked}} products</h3>
+        <h3 class="text-center">{{num_liked}} products</h3>
+        {% if num_liked == 0 %}
+        <p class="text-center py-4">You don't have any liked products.  Click the <i class="px-2 fa-solid fa-heart"></i> icon to like products.</p>
+        {% else %}
+        {% endif %}
 
         {% for product in products %}
         {% if product.friendly_name in liked %}
