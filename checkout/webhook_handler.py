@@ -34,7 +34,6 @@ class StripeWH_Handler:
         """
 
         intent = event.data.object
-        print(f"intent payment succeeded")
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info

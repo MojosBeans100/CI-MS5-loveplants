@@ -71,10 +71,6 @@ def view_checkout(request):
 
             # remember to remove items from stock
             order = order_form.save(commit=False)
-
-            # does this work here too
-            #post_data = json.loads(request.body.decode("utf-8"))
-            #pid = post_data['stripe_sk'].split('_secret')[0]
             pid = request.POST.get('stripe_sk').split('_secret')[0]
             order.stripe_pid = pid
             order.original_bag = json.dumps(bag)
@@ -117,7 +113,22 @@ def view_checkout(request):
             currency='gbp',
         )
 
-        order_form = OrderForm()
+        if request.user.is_authenticated:
+            profile = get_object_or_404(UserProfile, user=request.user)
+            order_form = OrderForm(initial={
+                    'full_name': profile.user.get_full_name(),
+                    'email': profile.user.email,
+                    'phone_num': profile.default_phone_num,
+                    'country': profile.default_country,
+                    'postcode': profile.default_postcode,
+                    'town_or_city': profile.default_town_or_city,
+                    'street_address_1': profile.default_street_address_1,
+                    'street_address_2': profile.default_street_address_2,
+                    'county': profile.default_county,
+                })
+
+        else:
+            order_form = OrderForm()
 
     context = {
         'order_form': order_form,
@@ -135,7 +146,7 @@ def checkout_success(request, order_ref):
 
     # does this work?
     save_info = request.session.get('save_info')
-    print(save_info)
+    print(request.session.items())
     order = get_object_or_404(Order, order_ref=order_ref)
     order_line_items = OrderLineItem.objects.filter(order=order)
 

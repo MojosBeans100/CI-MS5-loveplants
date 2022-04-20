@@ -30,7 +30,8 @@ a:hover {
     border: solid 1px black !important;
 }
 
-.white-button:hover {
+.white-button:hover,
+.hover-black:hover {
     background-color: black;
     color: white;
 

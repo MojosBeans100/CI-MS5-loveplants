@@ -64,7 +64,7 @@
         {% for order in orders %}
         <a class="order-history-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample{{order.order_ref}}"
             role="button" aria-expanded="false" aria-controls="multiCollapseExample{{order.order_ref}}">
-            <div class="row text-center border border-dark my-3 mx-2 p-3">
+            <div class="hover-black row text-center border border-dark my-3 mx-2 p-3">
                 <div class="col-12 col-md-6 fs-6 fs-md-3">{{order.order_ref}}</div>
                 <div class="col-12 col-md-3">{{order.date|date:'d M Y'}}</div>
                 <div class="col-12 col-md-3">£ {{order.grand_total}}</div>
