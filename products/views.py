@@ -1,11 +1,9 @@
 
 # import Django
-from django.shortcuts import render, reverse, redirect
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponseRedirect
 from datetime import datetime
-from django.http import QueryDict
 
 # import local
 from products.models import (
@@ -19,28 +17,26 @@ from products.models import (
 
 def all_products(request):
     """
+    Display all products to the user, allowing for
+    filtering and sorting
     """
 
     total_products = Product.objects.filter(stock='in stock')
     all_products = Product.objects.filter(stock='in stock')
     plant_categories = PlantCategory.objects.all()
     search_query = None
-    category = None
-    stock = None
-    plant_cats = None
     sort = None
     direction = None
     current_filters = ""
     querydict = ""
     front_end_filters = []
     filtered_by = ""
-    delete = []
 
     if request.GET:
 
         # copy the dictionary of filters in the front end
         querydict = request.GET.copy()
-        myDict = dict(request.GET.lists())
+        # myDict = dict(request.GET.lists())
 
         # for all items in the new request
         for i in request.GET.items():
@@ -133,7 +129,9 @@ def all_products(request):
 
         if 'q' in request.GET:
             search_query = request.GET['q']
-            search_queries = Q(name__icontains=search_query) | Q(description__icontains=search_query)
+            # check this still works with line broken up
+            search_queries = Q(name__icontains=search_query) \
+                | Q(description__icontains=search_query)
             all_products = all_products.filter(search_queries)
 
     current_sorting = f'{sort}_{direction}'
@@ -167,6 +165,7 @@ def all_products(request):
 
 def product_detail(request, id):
     """
+    Display details about a product
     """
 
     user = str(request.user)
@@ -214,7 +213,7 @@ def product_detail(request, id):
         for i in recently_viewed:
             product_name = i.product
             recently_viewed_product = Product.objects.get(
-                                                friendly_name=product_name).name
+                                            friendly_name=product_name).name
             recently_viewed_products.append(recently_viewed_product)
 
         recently_viewed = Product.objects.filter(
@@ -234,7 +233,7 @@ def product_detail(request, id):
 
 def product_like(request, id):
     """
-    A view for users to like/unlike products
+    Allows users to like or unlike products
     """
 
     product = Product.objects.get(id=id)
