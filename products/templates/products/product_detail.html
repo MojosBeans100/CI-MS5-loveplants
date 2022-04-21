@@ -121,8 +121,6 @@
                                     <input id="add-to-bag" type="submit" class="text-center" value="Add to bag">
                                 </div>
                             </div>
-
-
                             <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
                                 value="{{ request.path }}">
                         </form>
@@ -197,14 +195,12 @@
                                     <td colspan="5" class="text-center"><small>({{reviews.count}} reviews)</small></td>
                                 </tr>
                                 {% else %}
-                                <tr>
-                                    <td> <i class="fa-solid fa-star"></i></td>
-                                    <td> <i class="fa-solid fa-star"></i></td>
-                                    <td> <i class="fa-solid fa-star"></i></td>
-                                    <td><i class="fa-solid fa-star-half"></i></td>
-                                    <td>4.5/5</td>
+                                <tr id="append-star">
                                 </tr>
                                 <tr>
+                                    <td class="text-center" colspan="5" id="avg-rating">{{product.average_rating|floatformat:1 }}/5</td>
+                                </tr>
+                                <tr class="text-center">
                                     <td colspan="5" class="text-center"><small><a
                                                 href="#product-review-title">({{reviews.count}} reviews)</a></small>
                                     </td>
@@ -373,6 +369,24 @@
 
 {% block postloadjs %}
 <script>
+    displayRating();
+
+    function displayRating() {
+        row = document.getElementById('append-star');
+        avgRating = parseFloat(document.getElementById('avg-rating').innerHTML.slice(0, 3));
+        avgRating2 = avgRating
+        i = 0;
+        while (i < avgRating-1) {
+            var data = document.createElement('td');
+            data = document.createElement('td');
+            data.innerHTML = '<i class="fa-solid fa-star"></i>';
+            row.append(data);
+            avgRating2 -= i;
+            console.log(avgRating2)
+            i++;
+        }
+    }
+
     /**
     Change main image when sub images are clicked
     */

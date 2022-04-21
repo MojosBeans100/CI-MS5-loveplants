@@ -243,6 +243,20 @@ def product_detail(request, id):
         recently_viewed = Product.objects.filter(
                                         name__in=recently_viewed_products)[0:4]
 
+    # calculate average product rating
+    num_reviews = ProductReview.objects.filter(product=product).count()
+    ratings = []
+    count = 0
+    sum = 0
+    if num_reviews != 0:
+        for review in product_reviews:
+            ratings.append(review.rating)
+            sum += review.rating
+            count += 1
+        average_rating = sum/count
+        product.average_rating = average_rating
+        product.save()
+
     context = {
         'product': product,
         'rare_products': rare_products,
@@ -253,6 +267,7 @@ def product_detail(request, id):
         'has_purchased': has_purchased,
         'already_reviewed': already_reviewed,
         'form': form,
+        'num_reviews': num_reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
