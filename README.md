@@ -10,6 +10,13 @@ Love Plants is a Full Stack B2C (business to customer) ecommerce website which a
 - [Access](#access)
 - [Definitions](#definitions)
 - [UX](#ux)
+    * [Strategy]
+    * [Scope]
+    * [Structure]
+    * [Skeleton]
+    * [Surface]
+
+
     * [Strategy](#strategy)
         + [Site user](#site-user)
         + [Admin](#admin)
@@ -75,7 +82,11 @@ Love Plants is a Full Stack B2C (business to customer) ecommerce website which a
 [Back to top](#love-plants)
 
 # UX
+The Five Planes - strategy, scope, structure, skeleton, and surface - method was used during the project planning phase to provide a conceptual framework for designing this e-commerce website.  The methodology for each plane is provided below. 
+
 ## Strategy
+The strategy plane considers the website user's needs and the website admin's needs.
+
 ### Site User
 The primary goals of the website user are as follows:
 - To create an account on the website, which will allow them to purchase products
@@ -91,8 +102,25 @@ The primary goals of the website owner or admin are as follows:
 - To manage the stock quantity of products
 - To view, edit and delete customer orders
 - To encourage users to purchase more products
+- The view and moderate customer ratings and reviews
+
+### User Stories
+All user stories are detailed in [this document](), and in the [Issues](https://github.com/MojosBeans100/CI-MS5-loveplants/issues) subfolder in the Github repository for the project.
 
 [Back to top](#love-plants)
+
+## Scope
+To determine the scope of the project, the Issues were mapped to Sprints (or Milestones) to plan for the next phase of the project.  In general the Sprints were no longer than 2 weeks, and overall followed an organic order to developing an e-commerce website. 
+
+Sprint 1 - basic project set up: user authentication, create models, homepage templates, display products
+Sprint 2 - the 'Bag' and 'Checkout' apps: add, edit, delete products in bag and checkout the order
+Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products
+Sprint 4
+Sprint 5
+
+### Scope Creep
+### Requirements
+Functional, content
 
 ## Structure
 
@@ -282,45 +310,11 @@ The font style is the default Bootstrap 5 native sans-serif font stack for cross
 ![Bootstrap Native Font](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643901837/Spaceport/font_xbuoff.jpg)
 
 ### Colours
-- The colours of the website are kept to basic white, black and a light blue/grey background colour (rgb(177, 177, 177)).
-
-![Main background colour](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643900779/Spaceport/177177177_tt8ngq.jpg)
-
-- A similar blue/grey hue is used in table headings (#5c6885). 
-
-![Table headings](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643900779/Spaceport/92104133_v295zu.jpg)
-![Results table](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643902229/Spaceport/tableheadings_gulfv8.jpg)
-
-- Form field validation is noticeable against these similar colours with a pink/orange hue to raise attention. 
-![Form field invalid](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643900779/Spaceport/250209185_zrohcm.jpg) 
-![Form field not filled in](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643902229/Spaceport/invalidform_wrirn0.jpg)
-
-- The form progress panel uses an unremarkable turquoise (#04aa6d) to show the user's form progress.
-![Progress indicator](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643900779/Spaceport/4170109_euap9y.jpg)
-![Progress indicator](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643902228/Spaceport/progressindicator_ty89po.jpg)
-
-- The high definition photos provide splashes of colour against a simple background.
-
-![Image next to text](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643902011/Spaceport/images_yckrmm.jpg)
+- The colours of the website are kept to basic white and black to keep the style clean and minimalistic.  Images from the products provide splashes of colour in an otherwise greyscale website. 
 
 ### Layout
-- The informative pages, such as the Homepage and Discover page, remain consistent with attractive images alongside short sections of text.
 
-- Bootstrap cards are used to display information in a clear and concise manner along with a complementary image. 
 
-![Discover Card](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643900948/Spaceport/card2_ocaal8.jpg)
-
-- For several pages, the content is rendered in a section of white background with a box-shadow in front of the normal light blue background.
-
-![Form with box shadow](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643902342/Spaceport/boxshadow_owigi7.jpg)
-
-- Most pages offer a sub navigation list to easily jump to the relevant section of the page.
-
-![Sub navigation on Pipelines page](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643901899/Spaceport/nav1_nwz0ix.jpg)
-
-- For longer pages, a 'Back to Top' type button is fixed in the bottom right corner to allow users to scroll up to the top of the page.
-
-![Back to top button](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644618033/backtotop_molnpl.jpg)
 
 [Back to top](#spaceport)
 
