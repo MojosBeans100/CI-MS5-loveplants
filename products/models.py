@@ -278,5 +278,5 @@ class ProductReview(models.Model):
         default=False,
     )
 
-    # def __str__(self):
-    #     return self.product
+    class Meta:
+        get_latest_by = 'id'

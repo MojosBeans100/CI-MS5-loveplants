@@ -197,6 +197,7 @@ def product_detail(request, id):
 
         # product review
         has_purchased = False
+        already_reviewed = False
         user_profile = UserProfile.objects.get(user=request.user)
         users_orders = Order.objects.filter(user_profile=user_profile)
 
@@ -206,11 +207,15 @@ def product_detail(request, id):
                 if item.order.order_ref == order.order_ref:
                     has_purchased = True
 
-        if has_purchased is True:
+        users_reviews = ProductReview.objects.filter(product=product, user=request.user)
+        if len(users_reviews) != 0:
+            already_reviewed = True
+
+        if has_purchased is True and already_reviewed is not True:
             form = ProductReviewForm(initial={
                 'product': product.friendly_name,
             })
-        else: 
+        else:
             form = ""
 
         current_user = User.objects.get(username=user)
@@ -246,6 +251,7 @@ def product_detail(request, id):
         'reviews': product_reviews,
         'recently_viewed': recently_viewed,
         'has_purchased': has_purchased,
+        'already_reviewed': already_reviewed,
         'form': form,
     }
 
@@ -284,6 +290,22 @@ def product_review(request, id):
     Allow users to add review or rating to a product
     if they have previously purchased it
     """
+
+    if request.method == 'POST':
+        form_data = {
+            'review': request.POST['review'],
+            'rating': request.POST['rating'],
+            'product': Product.objects.get(id=id)
+        }
+
+        review_form = ProductReviewForm(form_data)
+        if review_form.is_valid:
+            review_form.save()
+
+        reviewed_product = ProductReview.objects.latest()
+        reviewed_product.user = request.user
+        reviewed_product.review_time = datetime.now()
+        reviewed_product.save()
 
     redirect_url = request.POST.get('redirect_url')
 
