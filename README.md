@@ -6,20 +6,22 @@ Love Plants is a Full Stack B2C (business to customer) ecommerce website which a
 # Table of contents
 - [Love Plants](#love-plants)
 - [Project Overview](#project-overview)
-- [Technical Abstract](#technical-abstract)
-- [Access](#access)
-- [Definitions](#definitions)
 - [UX](#ux)
-    * [Strategy]
-    * [Scope]
-    * [Structure]
+    * [Strategy](#strategy)
+        + [Site user goals](#site-user)
+        + [Admin user goals](#admin-user)
+        + [User stories](#user-stories)
+    * [Scope](#scope)
+        + [Sprints](#sprints)
+        + [Epics, Issues, Tasks](#sprints)
+        + [Scope Creep](#scope-creep)
+        + [Requirements](#requirements)
+    * [Structure](#structure)
+        + [Interaction Design (IXD)](#interaction-design)
+        + [Information Architecture (IA)](#information-architecture)
     * [Skeleton]
     * [Surface]
 
-
-    * [Strategy](#strategy)
-        + [Site user](#site-user)
-        + [Admin](#admin)
     * [Structure](#structure)
         + [Pages](#pages)
         + [Database](#database)
@@ -29,23 +31,7 @@ Love Plants is a Full Stack B2C (business to customer) ecommerce website which a
         + [Font](#font)
         + [Colours](#colours)
         + [Layout](#layout)
-    * [Scope](#scope)
-        + [User Stories](#user-stories)
-            - [Strategy](#user-stories-strategy)
-            - [User Stories](#user-stories)
-                * [User Story 1](#user-story-1)
-                * [User Story 2](#user-story-2)
-                * [User Story 3](#user-story-3)
-                * [User Story 4](#user-story-4)
-                * [User Story 5](#user-story-5)
-                * [User Story 6](#user-story-6)
-                * [User Story 7](#user-story-7)
-                * [User Story 8](#user-story-8)
-                * [User Story 9](#user-story-9)
-                * [User Story 10](#user-story-10)
-                * [User Story 11](#user-story-11)
-                * [User Story 12](#user-story-12)
-                * [User Story 13](#user-story-13)
+
 - [Features](#features)
     * [Homepage](#homepage)
     * [Discover](#discover)
@@ -110,19 +96,63 @@ All user stories are detailed in [this document](), and in the [Issues](https://
 [Back to top](#love-plants)
 
 ## Scope
-To determine the scope of the project, the Issues were mapped to Sprints (or Milestones) to plan for the next phase of the project.  In general the Sprints were no longer than 2 weeks, and overall followed an organic order to developing an e-commerce website. 
+The Scope plane determines the scope of the project
+User Stories/Issues were mapped to Sprints (or Milestones) to plan for the current and next phase of the project. In general the Sprints were no longer than 2 weeks, and overall followed an organic order to developing an e-commerce website. 
+The first sprints contained the higher priority features, providing basic website functionality to meet the project requirements (eg, allow users to checkout items).  The later sprints contained features which were not considered necessary but enhanced the project (eg, allow users to log in via social media accounts).
 
+### Sprints
 Sprint 1 - basic project set up: user authentication, create models, homepage templates, display products
 Sprint 2 - the 'Bag' and 'Checkout' apps: add, edit, delete products in bag and checkout the order
 Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products
 Sprint 4
 Sprint 5
 
+### Epics, User Stories, Tasks
+Epics were defined based on the main functions the website was expected to have, which mostly revolved around the main CRUD functions of the database. These Epics were refined into smaller User Stories, which could then be broken down into manageable tasks for the developer to complete within the current project iteration. User acceptance criteria was determined for each Epic/User Story
+
+### Priority
+Priority labels were assigned to each User Story/Issue, in order to determine which tasks to complete first in a Sprint. When the Issue was not completed, it could be included on another Sprint in order to complete it. 
+
 ### Scope Creep
 ### Requirements
 Functional, content
 
 ## Structure
+
+### Interaction Design
+
+#### Consistency
+Colours
+Font
+Buttons
+Image (size)
+
+
+#### Predictability
+Follow standard website conventions
+
+#### Learnability
+
+#### Visibility
+Nav always visible
+Checkout always visible
+
+#### Feedback
+Toasts
+Inline feedback
+
+### Information Architecture
+Products > Product Detail > BAg > Checkout >Rating Review
+
+#### Organising Principle
+
+## Skeleton
+Facilitate the structure
+Buttons, links, navs
+Icons
+Data at rest - database
+Data in motion - pulled from db
+Data as presented 
 
 ### Apps
 Love Plants consists of four apps
