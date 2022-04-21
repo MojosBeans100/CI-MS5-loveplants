@@ -2,7 +2,7 @@
 
 # Django imports
 from django import forms
-from django.forms import Textarea
+from django.forms import Textarea, RadioSelect
 
 # Local imports
 from .models import ProductReview
@@ -20,5 +20,8 @@ class ProductReviewForm(forms.ModelForm):
                 'class': 'form-control',
                 'rows': 3,
                 'placeholder': 'Leave your review for this product',
+            }),
+            'rating': RadioSelect(choices='rating', attrs={
+                'onchange': 'colorRating();'
             }),
         }

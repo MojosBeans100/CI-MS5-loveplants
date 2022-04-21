@@ -220,10 +220,22 @@
                     <div class="col-12">
                         <form class="px-4">
                             {{form.review}}
-                            {{form.rating}}
+
+                            <div class="row">
+                                {% for r in form.rating %}
+                                <div class="col">
+                                    <label onclick="colorRating(this);" class="user-rating" for="{{r.id_for_label}}"><i
+                                            class="fa-regular fa-star"></i></label>
+                                    <input type="radio" name="rating" value="{{r.data.value}}" required
+                                        id="{{r.id_for_label}}">
+                                </div>
+                                {% endfor %}
+
+                            </div>
+
                             <div class="row d-flex justify-content-center">
-                            <button class="my-3 w-50 black-button">Leave Review</button>
-                        </div>
+                                <button class="my-3 w-50 black-button">Leave Review</button>
+                            </div>
                         </form>
                     </div>
                     {% else %}
@@ -232,120 +244,122 @@
             </div>
         </div>
 
-        <!-- care instructions if product type is a plant -->
-        {% if product.plant_category %}
-        <div class="py-4 row">
-            <h4>Care Instructions</h4>
-            <p>"{{product.care_instructions}}" <small><a href="{{product.care_instructions_url}}"
-                        target="_blank">{{product.care_instructions_source}}</a></small></p>
-        </div>
-        {% else %}
-        {% endif %}
-        <hr>
-
-        <!-- similar products, other recommended products -->
         <div>
+            <!-- care instructions if product type is a plant -->
+            {% if product.plant_category %}
             <div class="py-4 row">
-                <h3 class="text-center">You may also like</h3>
-                <div class="row">
-                    <div class="col"></div>
+                <h4>Care Instructions</h4>
+                <p>"{{product.care_instructions}}" <small><a href="{{product.care_instructions_url}}"
+                            target="_blank">{{product.care_instructions_source}}</a></small></p>
+            </div>
+            {% else %}
+            {% endif %}
+            <hr>
+
+            <!-- similar products, other recommended products -->
+            <div>
+                <div class="py-4 row">
+                    <h3 class="text-center">You may also like</h3>
+                    <div class="row">
+                        <div class="col"></div>
+                    </div>
                 </div>
+
+                <!-- if product is rare, list other rare products -->
+                {% if product.rare == True %}
+                <div class="my-4 row">
+                    <h4>See other rare products</h4>
+                    {% for rare in rare_products %}
+                    <div class="col-sm-4 col-lg-3">
+                        <a href="{% url 'product_detail' rare.id %}"><img style="width:100%; height:80%" class="p-3"
+                                src="{{rare.image1_source_url}}"></a>
+                        <a href="{% url 'product_detail' rare.id %}">
+                            <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- if product is popular, list other popular products -->
+                {% if product.popular == True %}
+                <div class="my-4 row">
+                    <h4>See other popular products</h4>
+                    {% for popular in popular_products %}
+                    <div class="col-sm-4 col-lg-3">
+                        <a href="{% url 'product_detail' popular.id %}"><img style="width:100%; height:80%" class="p-3"
+                                src="{{popular.image1_source_url}}"></a>
+                        <a href="{% url 'product_detail' popular.id %}">
+                            <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- if product is easy care, list other easy care products -->
+                {% if product.care_required == 'low' %}
+                <div class="my-4 row">
+                    <h4>See other easy care products</h4>
+                    {% for easy in easy_care %}
+                    <div class="col-sm-4 col-lg-3">
+                        <a href="{% url 'product_detail' easy.id %}"><img style="width:100%; height:80%" class="p-3"
+                                src="{{easy.image1_source_url}}"></a>
+                        <a href="{% url 'product_detail' easy.id %}">
+                            <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <!-- list recently viewed products -->
+                {% if user.is_authenticated %}
+                {% if recently_viewed %}
+                <div class="row my-3">
+                    <h4>Recently viewed products</h4>
+                    {% for recent in recently_viewed %}
+                    <div class="col-sm-4 col-lg-3">
+                        <a href="{% url 'product_detail' recent.id %}"><img style="width:100%; height:60%" class="p-3"
+                                src="{{recent.image1_source_url}}"></a>
+                        <a href="{% url 'product_detail' recent.id %}">
+                            <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% else %}
+                {% endif %}
             </div>
 
-            <!-- if product is rare, list other rare products -->
-            {% if product.rare == True %}
-            <div class="my-4 row">
-                <h4>See other rare products</h4>
-                {% for rare in rare_products %}
-                <div class="col-sm-4 col-lg-3">
-                    <a href="{% url 'product_detail' rare.id %}"><img style="width:100%; height:80%" class="p-3"
-                            src="{{rare.image1_source_url}}"></a>
-                    <a href="{% url 'product_detail' rare.id %}">
-                        <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
-                    </a>
+            <!-- reviews of the product -->
+            {% if reviews %}
+            <div class="row">
+                <div class="col-2">
                 </div>
-                {% endfor %}
-            </div>
-            {% endif %}
+                <div class="col-8 py-3">
+                    <h2 class="text-center" id="product-review-title">Reviews</h2>
 
-            <!-- if product is popular, list other popular products -->
-            {% if product.popular == True %}
-            <div class="my-4 row">
-                <h4>See other popular products</h4>
-                {% for popular in popular_products %}
-                <div class="col-sm-4 col-lg-3">
-                    <a href="{% url 'product_detail' popular.id %}"><img style="width:100%; height:80%" class="p-3"
-                            src="{{popular.image1_source_url}}"></a>
-                    <a href="{% url 'product_detail' popular.id %}">
-                        <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
-                    </a>
+                    {% for review in reviews %}
+                    <div class="row">
+                        <div class="col">
+                            <p>{{review.review}}</p>
+                            <p><small><em>{{review.user}} | {{review.review_time}}</em></small></p>
+                        </div>
+                        <div class="col text-end">
+                            <p>{{review.rating}}</p>
+                        </div>
+                        <hr>
+                        {% endfor %}
+                    </div>
                 </div>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            <!-- if product is easy care, list other easy care products -->
-            {% if product.care_required == 'low' %}
-            <div class="my-4 row">
-                <h4>See other easy care products</h4>
-                {% for easy in easy_care %}
-                <div class="col-sm-4 col-lg-3">
-                    <a href="{% url 'product_detail' easy.id %}"><img style="width:100%; height:80%" class="p-3"
-                            src="{{easy.image1_source_url}}"></a>
-                    <a href="{% url 'product_detail' easy.id %}">
-                        <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
-                    </a>
+                <div class="col-2">
                 </div>
-                {% endfor %}
             </div>
-            {% endif %}
-
-            <!-- list recently viewed products -->
-            {% if user.is_authenticated %}
-            {% if recently_viewed %}
-            <div class="row my-3">
-                <h4>Recently viewed products</h4>
-                {% for recent in recently_viewed %}
-                <div class="col-sm-4 col-lg-3">
-                    <a href="{% url 'product_detail' recent.id %}"><img style="width:100%; height:60%" class="p-3"
-                            src="{{recent.image1_source_url}}"></a>
-                    <a href="{% url 'product_detail' recent.id %}">
-                        <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
-                    </a>
-                </div>
-                {% endfor %}
-            </div>
-            {% endif %}
             {% else %}
             {% endif %}
         </div>
-
-        <!-- reviews of the product -->
-        {% if reviews %}
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-8 py-3">
-                <h2 class="text-center" id="product-review-title">Reviews</h2>
-
-                {% for review in reviews %}
-                <div class="row">
-                    <div class="col">
-                        <p>{{review.review}}</p>
-                        <p><small><em>{{review.user}} | {{review.review_time}}</em></small></p>
-                    </div>
-                    <div class="col text-end">
-                        <p>{{review.rating}}</p>
-                    </div>
-                    <hr>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-2">
-            </div>
-        </div>
-        {% else %}
-        {% endif %}
     </div>
 </div>
 
@@ -357,8 +371,26 @@
     Change main image when sub images are clicked
     */
     function changeImage(element) {
-        main_image = document.getElementById('main-image')
-        main_image.src = element.src
+        var main_image = document.getElementById('main-image');
+        main_image.src = element.src;
+    }
+
+    /*
+    Fill in the rating stars when selected
+    */
+    function colorRating(element) {
+        var star_elements = document.getElementsByClassName('user-rating');
+        for (i=0; i<star_elements.length;i++) {
+            star_elements[i].innerHTML = '<i class="fa-regular fa-star"></i>'
+        }
+
+        var this_star = element;
+        var value_of_radio = this_star.nextElementSibling.value;
+        var i = 0
+        while (i < value_of_radio) {
+            star_elements[i].innerHTML = '<i class="fa-solid fa-star"></i>';
+            i++;
+        }
     }
 </script>
 {% endblock %}
