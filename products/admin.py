@@ -1,3 +1,4 @@
+# 3rd party imports 
 
 # Import Django
 from django.contrib import admin
@@ -25,7 +26,7 @@ class ProductReviewAdmin(admin.ModelAdmin):
         'rating',
         'review_time',
     )
-    
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
@@ -42,3 +43,5 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
     list_filter = ('category', 'stock')
+
+

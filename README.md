@@ -170,17 +170,40 @@ The Profiles App provides the user the ability to create their website profile, 
 ##### Product
 - The Product model holds information about specific products
 
-
 | Field | Description | Field type|
 |-------|-------------|-----------|
 |id|primary key (Django auto created|Primary Key|
-|category|||
-|plant_category|||
-|name|||
-|friendly_name|||
-|latin_name|||
-|description|||
-|description_source|||
+|category|product category|CharField|
+|plant_category|if product is plant, plant category|CharField|
+|name|name of the product|CharField|
+|friendly_name|name of the product to be used in templates|CharField|
+|latin_name|if product is plant, latin name|CharField|
+|description|description of the product|TextField|
+|description_source|source of the description|CharField|
+|description_url|url for the description source|URLField|
+|image1_source|source for the image|CharField|
+|image1_source_url|url for the image|URLField|
+|image2_source|source for the image|CharField|
+|image2_source_url|url for the image|URLField|
+|image3_source|source for the image|CharField|
+|image3_source_url|url for the image|URLField|
+|price|price of the product|DecimalField|
+|stock_quantity|quantity of the product in stock|PositiveIntegerField|
+|pot_size|diameter of the pot|PositiveIntegerField|
+|height|height of the product|PositiveIntegerField|
+|length|length of the product|PositiveIntegerField|
+|maturity_num|maturity of the product|PositiveIntegerField|
+|maturity_time|maturity of the product|CharField|
+|sunlight|sunlight required for the product|CharField (choices)|
+|watering|watering required for the product|CharField (choices)|
+|care_required|maintenance required|CharField (choices)|
+|care_instructions|any further care instructions|TextField|
+|care_instructions_source|source of the care instructions|CharField|
+|care_instructions_url|url of the source of the care instructions|URLField|
+|rare|whether or not the product is considered rare|BooleanField|
+|popular|whether or not the product is considered popular|BooleanField|
+|stock|string description of whether or not the product is in stock|CharField(choices)|
+|average_rating|average of all ratings the product has received|DecimalField|
 
 ##### Category
 ##### Plant Category
@@ -190,55 +213,9 @@ The Profiles App provides the user the ability to create their website profile, 
 #### Bag App
 #### Checkout App
 
-##### User
-- The User model contains information about the user, as part of the [Django allauth library](https://django-allauth.readthedocs.io/en/latest/installation.html)
-- No additional features are added to this model, as a basic username, email and password satisfy the requirements of the project
-
-##### User Profile
-| Field | Description | Field type|
-|-------|-------------|-----------|
-|id|primary key (Django auto created|Primary Key|
-|||||
-
-##### Result
-- The Result model contains information about results relating to the pipeline.  The number of results for a pipeline is directly linked to the number of intervals a pipeline has. Example: if a pipeline is 5 days in length, with an interval of 1 day, there will be 5 intervals (1 for each day), and thus 5 results.
-- It contains the List as the foreign key.
-- The model fields are as below: 
-
-| Field | Description | Created from | Field type|
-|-------|-------------|--------------|-----------|
-|id|the primary key for the results model0|Django|Primary Key|
-|pipeline_id|the id from the List model|Django|Foreign Key|
-|created_at|the time & date the result was created|API|Datetime|
-|updated_at|the time & date the result was updated from the API|Spaceport|Datetime|
-|api_pipeline_id|the unique API id of the pipeline|API|Charfield|
-|output_id|the id from the API given to reference each output type|API|Charfield|
-|status|the status of the result|Spaceport|Charfield|
-|message|the message from the API for the result|API|Charfield|
-|interval_start_date|the start date for this result|Spaceport|Date|
-|interval_end_date|the end date for this result|Spaceport|Date|
-|image_created_at|the time & date the image was captured by a satellite|API|Datetime|
-|image_updated_at|the time & date the image was last updated by the satellite|API|Datetime|
-|image_preview_url|the url for the preview of the image|API|Charfield|
-|image_visual_url|the url for the full size image|API|Charfield|
-|image_analytics_url|the url for for analytical image|API|Charfield|
-|image_metadata_url|the url for the metadata JSON associated with the image|API|Charfield|
-|image_size|the size of the image in megabytes|API|Charfield|
-|image_valid_pixels_per|the % of valid pixels in the image|API|Charfield|
-|image_source|the satellite the image was captured by|API|Charfield|
-|scene_height|the height the image was taken from|API|Charfield|
-|scene_width|the ground width of the image|API|Charfield|
-|filled_area|area in km2 of the AOI which was able to be captured|API|Charfield|
-|aoi_area_per|% of the AOI which was captured|API|Charfield|
-|cloud_cover_per|cloud cover % of the image|API|Charfield|
-|aoi_cloud_cover_per|cloud cover % of the AOI|API|Charfield|
-|visible_area|visible area in the image|API|Charfield|
-|aoi_visible_area_per|visible area as a % of the AOI|API|Charfield|
-
 [Back to top](#spaceport)
 
 ## Style
-The styling is kept clean and minimal throughout the site.  As the content of the site may appear technically complex to new users, there are no distracting fonts, colours or images to confound the user. Attractive images are used where relevant to pique the interest of the user and indicate, alongside the text, the purpose of the website.
 
 ### Wireframes
 Initial wireframes were designed during the project proposal stage.  During development, when more was learned about the API and it's capabilities and restrictions, the designs evolved to include more information. 
@@ -950,6 +927,9 @@ To deploy this application to Heroku, run the following steps.
 20. Click on the link provided to access the application
 21. If you encounter any issues accessing the build logs is a good way to troubleshoot the issue
 
+# Limitations
+## Products
+To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to source or owner of the image.
 
 # Media
 Images used on the site were sourced from the following sources.  Images which are free to use publicy were desirable, however when this was not possible the images are credited.

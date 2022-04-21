@@ -6,7 +6,7 @@
     <div class="margin">
         <!-- navigate back to all products -->
         <div class="row mt-5">
-            <pp class="text-start">
+            <p class="text-start">
                 <button class="black-button" onclick="history.back()">Go Back</button>
                 <br>
                 <br>
@@ -198,7 +198,8 @@
                                 <tr id="append-star">
                                 </tr>
                                 <tr>
-                                    <td class="text-center" colspan="5" id="avg-rating">{{product.average_rating|floatformat:1 }}/5</td>
+                                    <td class="text-center" colspan="5" id="avg-rating">
+                                        {{product.average_rating|floatformat:1 }}/5</td>
                                 </tr>
                                 <tr class="text-center">
                                     <td colspan="5" class="text-center"><small><a
@@ -338,8 +339,10 @@
             <!-- reviews of the product -->
             {% if reviews %}
             <div class="row">
+
                 <div class="col-2">
                 </div>
+
                 <div class="col-8 py-3">
                     <h2 class="text-center" id="product-review-title">Reviews</h2>
 
@@ -352,10 +355,11 @@
                         <div class="col text-end">
                             <p>{{review.rating}}</p>
                         </div>
-                        <hr>
-                        {% endfor %}
+                        <hr>  
                     </div>
+                    {% endfor %}
                 </div>
+
                 <div class="col-2">
                 </div>
             </div>
@@ -376,7 +380,7 @@
         avgRating = parseFloat(document.getElementById('avg-rating').innerHTML.slice(0, 3));
         avgRating2 = avgRating
         i = 0;
-        while (i < avgRating-1) {
+        while (i < avgRating - 1) {
             var data = document.createElement('td');
             data = document.createElement('td');
             data.innerHTML = '<i class="fa-solid fa-star"></i>';
