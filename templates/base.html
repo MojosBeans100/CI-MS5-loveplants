@@ -82,6 +82,10 @@
                 class="fa-solid fa-user"></i></a>
           </li>
           {% else %}
+          <li class="list-group-item bg-dark border-0 px-0">
+            <a class="nav-link" title="Log in" aria-current="page" href="{% url 'account_login' %}"><i
+                class="fa-solid fa-user"></i></a>
+          </li>
           {% endif %}
           <li class="list-group-item bg-dark border-0 px-0">
             <a class="nav-link" title="Favourites" aria-current="page" href="{% url 'liked_products' %}"><i
