@@ -13,7 +13,9 @@ from products.models import (
                     PlantCategory,
                     RecentlyViewed,
                     User)
-
+from .forms import ProductReviewForm
+from profiles.models import UserProfile
+from checkout.models import Order, OrderLineItem
 
 def all_products(request):
     """
@@ -193,8 +195,25 @@ def product_detail(request, id):
     # look for recently viewed products
     if request.user.is_authenticated:
 
-        current_user = User.objects.get(username=user)
+        # product review
+        has_purchased = False
+        user_profile = UserProfile.objects.get(user=request.user)
+        users_orders = Order.objects.filter(user_profile=user_profile)
 
+        for order in users_orders:
+            line_item = OrderLineItem.objects.filter(product=product)
+            for item in line_item:
+                if item.order.order_ref == order.order_ref:
+                    has_purchased = True
+
+        if has_purchased is True:
+            form = ProductReviewForm(initial={
+                'product': product.friendly_name,
+            })
+        else: 
+            form = ""
+
+        current_user = User.objects.get(username=user)
         if RecentlyViewed.objects.filter(
                             user=current_user,
                             product=product).exists():
@@ -226,6 +245,8 @@ def product_detail(request, id):
         'easy_care': easy_products,
         'reviews': product_reviews,
         'recently_viewed': recently_viewed,
+        'has_purchased': has_purchased,
+        'form': form,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -252,6 +273,17 @@ def product_like(request, id):
                                        user=request.user,
                                        liked=True)
         product_review.save()
+
+    redirect_url = request.POST.get('redirect_url')
+
+    return redirect(redirect_url)
+
+
+def product_review(request, id):
+    """
+    Allow users to add review or rating to a product
+    if they have previously purchased it
+    """
 
     redirect_url = request.POST.get('redirect_url')
 
