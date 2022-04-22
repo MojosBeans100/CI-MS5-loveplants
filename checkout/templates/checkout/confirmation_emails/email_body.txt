@@ -1,0 +1,29 @@
+Hello {{order.full_name}}
+
+Just to let you know we've received your order, and we'll start working on it right away.  We'll email
+you as soon as it dispatches. 
+
+Order Details
+Order reference: {{order.order_ref}}
+
+Delivery to:
+{{order.street_address_1}}
+{{order.street_address_2}}
+{{order.town_or_city}}
+{{order.county}}
+{{order.postcode}}
+{{order.country}}
+
+Order date: {{order.order_date}}
+Estimated delivery: XXXX
+
+Billing details:
+Order total: £{{order.order_total}}
+Delivery cost: £{{order.delivery_cost}}
+Grand total: £{{order.grand_total}}
+
+Thank you for your purchase.  Feel free to email us at {{contact_email}} or phone us on {{contact_phone}}
+if you have any issues. 
+
+LovePlants Team
+
