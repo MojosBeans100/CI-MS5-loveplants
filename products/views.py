@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.db.models import Q
-from datetime import datetime
+from datetime import datetime, timezone
 
 # import local
 from products.models import (
@@ -16,6 +16,7 @@ from products.models import (
 from .forms import ProductReviewForm
 from profiles.models import UserProfile
 from checkout.models import Order, OrderLineItem
+
 
 def all_products(request):
     """
@@ -175,6 +176,10 @@ def product_detail(request, id):
     recently_viewed = ""
     product_reviews = ProductReview.objects.filter(product=product.id)
 
+    for i in product_reviews:
+        i.review_time_ago = (datetime.now(timezone.utc)-i.review_time).days
+        i.save()
+
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
     else:
@@ -207,7 +212,9 @@ def product_detail(request, id):
                 if item.order.order_ref == order.order_ref:
                     has_purchased = True
 
-        users_reviews = ProductReview.objects.filter(product=product, user=request.user)
+        users_reviews = ProductReview.objects.filter(
+            product=product,
+            user=request.user)
         if len(users_reviews) != 0:
             already_reviewed = True
 
@@ -226,7 +233,7 @@ def product_detail(request, id):
         else:
             viewed_product = RecentlyViewed(
                                 user=current_user,
-                                viewed=datetime.now(),
+                                viewed=datetime.now(timezone.utc),
                                 product=product
                                 )
             viewed_product.save()
@@ -319,7 +326,8 @@ def product_review(request, id):
 
         reviewed_product = ProductReview.objects.latest()
         reviewed_product.user = request.user
-        reviewed_product.review_time = datetime.now()
+        reviewed_product.review_time = datetime.now(timezone.utc)
+        reviewed_product.review_time_ago = (datetime.now(timezone.utc)-datetime.now(timezone.utc)).days
         reviewed_product.save()
 
     redirect_url = request.POST.get('redirect_url')

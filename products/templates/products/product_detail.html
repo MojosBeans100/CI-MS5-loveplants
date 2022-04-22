@@ -259,6 +259,36 @@
             {% endif %}
             <hr>
 
+            <!-- reviews of the product -->
+            {% if reviews %}
+            <div class="row">
+
+                <div class="col-2">
+                </div>
+
+                <div class="col-8 py-3">
+                    <h2 class="text-center" id="product-review-title">Reviews</h2>
+
+                    {% for review in reviews %}
+                    <div class="row py-2">
+                        <div class="col">
+                            <p>{{review.review}}</p>
+                            <p><small><em>{{review.user}} | {{review.review_time_ago}} days ago</em></small></p>
+                        </div>
+                        <div class="col text-end">
+                            <p>{{review.rating}}</p>
+                        </div>
+                        <hr>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-2">
+                </div>
+            </div>
+            {% else %}
+            {% endif %}
+
             <!-- similar products, other recommended products -->
             <div>
                 <div class="py-4 row">
@@ -335,36 +365,6 @@
                 {% else %}
                 {% endif %}
             </div>
-
-            <!-- reviews of the product -->
-            {% if reviews %}
-            <div class="row">
-
-                <div class="col-2">
-                </div>
-
-                <div class="col-8 py-3">
-                    <h2 class="text-center" id="product-review-title">Reviews</h2>
-
-                    {% for review in reviews %}
-                    <div class="row">
-                        <div class="col">
-                            <p>{{review.review}}</p>
-                            <p><small><em>{{review.user}} | {{review.review_time}}</em></small></p>
-                        </div>
-                        <div class="col text-end">
-                            <p>{{review.rating}}</p>
-                        </div>
-                        <hr>
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <div class="col-2">
-                </div>
-            </div>
-            {% else %}
-            {% endif %}
         </div>
     </div>
 </div>
@@ -394,7 +394,7 @@
                 row.append(data);
             }
 
-        // if not, add a half star
+            // if not, add a half star
         } else {
             for (i = 0; i < avgRating - 1; i++) {
                 var data = document.createElement('td');

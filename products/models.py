@@ -252,28 +252,28 @@ class ProductReview(models.Model):
         on_delete=models.SET_NULL,
         null=True
         )
-
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE
         )
-
     review = models.TextField(
         max_length=250,
         null=False,
         blank=False
         )
-
     rating = models.IntegerField(
         choices=rating,
         default=5
         )
-
     review_time = models.DateTimeField(
         auto_now_add=True,
         null=True
     )
-
+    review_time_ago = models.CharField(
+        max_length=20,
+        null=False,
+        blank=False,
+    )
     liked = models.BooleanField(
         default=False,
     )
