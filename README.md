@@ -118,20 +118,38 @@ Priority labels were assigned to each User Story/Issue, in order to determine wh
 Functional, content
 
 ## Structure
+The Structure plane was used to plan the organisation of website functionality and navigation, to provide a clear pathway to desired user actions.  In order to facilitate the Structure plane, Interaction Design (ID) and Information Architecture (IA) were developed as below. 
 
 ### Interaction Design
+The five main concerns of ID and how they were used to facilitate the Structure plane are detailed below, to create meaningful relationships within the website content and information. 
 
 #### Consistency
-Colours
-Font
-Buttons
-Image (size)
+Elements maintained consistency, to enable users to feel familiar with the brand of Love Plants. 
 
+- **Colours** found on the site were deliberately minimised, since the product images provided a variety of colours. A wider variety of colours may confound the user. Therefore the main two colours of the website are white and black, and additional colours are only introduced in necessary circumstances, such as to highlight form field errors. Additionally, the white/black colour palette with splashes of colour from images maintains a clean, minimalistic website. 
+
+- the same **font** (XXX) was used throughout the website, chosen due to it's readability and cross-platform capabilities
+
+- **buttons** adhere to the colour consistency, with white text within a black button, with a hover effect providing the inverse style
+
+- where possible, **images** were kept to the same size and width to height ratio.  An example outwith this rule is on the product detail page, where it was deemed beneficial to provide a larger image
+
+- **products** are represented with an image, a price, a rating and a product title on all pages
 
 #### Predictability
-Follow standard website conventions
+To maintain predictability for the user, standard website conventions are followed.  For example:
+
+- the Love Plants logo is kept to the top left of the page, irregardless of the screen size
+- the main navigation menu is placed at the top of the page, and provides only a limited selection of options so as not to overwhelm the user
+- content hierarchy XXXX
+- anchor links are styled XXXXXX
+- buttons represent important calls to action, such as submitting a form and maintain consistent colours as described [above](#consistency)
+- as in most e-commerce sites, the top right of the page contains links to the user's profile, bag, and log in/log out facilities
 
 #### Learnability
+how easy can the product be learned
+keep it simple
+consistency in design elements
 
 #### Visibility
 Nav always visible
@@ -147,12 +165,19 @@ Products > Product Detail > BAg > Checkout >Rating Review
 #### Organising Principle
 
 ## Skeleton
-Facilitate the structure
+### Interface Design
+### Navigation Design
+### Information Design
+ 
+Facilitate the structure ie what form the structure will take
 Buttons, links, navs
 Icons
 Data at rest - database
 Data in motion - pulled from db
 Data as presented 
+
+## Style
+### Visual Design
 
 ### Apps
 Love Plants consists of four apps

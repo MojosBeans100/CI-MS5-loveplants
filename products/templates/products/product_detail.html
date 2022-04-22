@@ -276,7 +276,7 @@
                             <p><small><em>{{review.user}} | {{review.review_time_ago}} days ago</em></small></p>
                         </div>
                         <div class="col text-end">
-                            <p>{{review.rating}}</p>
+                            <p class="review-stars"></p>
                         </div>
                         <hr>
                     </div>
@@ -375,6 +375,7 @@
 {% block postloadjs %}
 <script>
     var avgRating = JSON.parse(document.getElementById('avg_rating').textContent)
+    var p = document.getElementsByClassName('review-stars')
     var int = Number.isInteger(avgRating)
     var row = document.getElementById('append-star');
 
@@ -394,7 +395,7 @@
                 row.append(data);
             }
 
-            // if not, add a half star
+        // if not, add a half star
         } else {
             for (i = 0; i < avgRating - 1; i++) {
                 var data = document.createElement('td');
@@ -402,6 +403,7 @@
                 data.innerHTML = '<i class="fa-solid fa-star"></i>';
                 row.append(data);
             }
+
             var data = document.createElement('td');
             data.innerHTML = '<i class="fa-solid fa-star-half"></i>';
             row.append(data);
