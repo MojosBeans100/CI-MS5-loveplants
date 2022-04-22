@@ -199,7 +199,7 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center" colspan="5" id="avg-rating">
-                                        {{product.average_rating|floatformat:1 }}/5</td>
+                                        {{product.average_rating}}/5</td>
                                 </tr>
                                 <tr class="text-center">
                                     <td colspan="5" class="text-center"><small><a
@@ -355,7 +355,7 @@
                         <div class="col text-end">
                             <p>{{review.rating}}</p>
                         </div>
-                        <hr>  
+                        <hr>
                     </div>
                     {% endfor %}
                 </div>
@@ -368,26 +368,43 @@
         </div>
     </div>
 </div>
+{{ product.average_rating|json_script:"avg_rating" }}
 
 {% endblock content %}
 
 {% block postloadjs %}
 <script>
+    var avgRating = JSON.parse(document.getElementById('avg_rating').textContent)
+    var int = Number.isInteger(avgRating)
+    var row = document.getElementById('append-star');
+
     displayRating();
 
+    /*
+    Display average rating of the product with star icons
+    */
     function displayRating() {
-        row = document.getElementById('append-star');
-        avgRating = parseFloat(document.getElementById('avg-rating').innerHTML.slice(0, 3));
-        avgRating2 = avgRating
-        i = 0;
-        while (i < avgRating - 1) {
+
+        // if the rating is an integer, display that number of stars
+        if (int) {
+            for (i = 0; i < avgRating; i++) {
+                var data = document.createElement('td');
+                data = document.createElement('td');
+                data.innerHTML = '<i class="fa-solid fa-star"></i>';
+                row.append(data);
+            }
+
+        // if not, add a half star
+        } else {
+            for (i = 0; i < avgRating - 1; i++) {
+                var data = document.createElement('td');
+                data = document.createElement('td');
+                data.innerHTML = '<i class="fa-solid fa-star"></i>';
+                row.append(data);
+            }
             var data = document.createElement('td');
-            data = document.createElement('td');
-            data.innerHTML = '<i class="fa-solid fa-star"></i>';
+            data.innerHTML = '<i class="fa-solid fa-star-half"></i>';
             row.append(data);
-            avgRating2 -= i;
-            console.log(avgRating2)
-            i++;
         }
     }
 
