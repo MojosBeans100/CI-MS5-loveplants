@@ -327,7 +327,8 @@ def product_review(request, id):
         reviewed_product = ProductReview.objects.latest()
         reviewed_product.user = request.user
         reviewed_product.review_time = datetime.now(timezone.utc)
-        reviewed_product.review_time_ago = (datetime.now(timezone.utc)-datetime.now(timezone.utc)).days
+        reviewed_product.review_time_ago = (datetime.now(timezone.utc)
+                                            - datetime.now(timezone.utc)).days
         reviewed_product.save()
 
     redirect_url = request.POST.get('redirect_url')
@@ -339,6 +340,11 @@ def admin_add_product(request):
     """
     Allow an admin user to add a product
     """
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid:
+            form.save()
 
     form = ProductForm()
 

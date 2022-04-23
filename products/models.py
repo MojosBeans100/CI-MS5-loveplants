@@ -213,12 +213,15 @@ class Product(models.Model):
     stock = models.CharField(
         choices=stock_options,
         max_length=100,
-        default='out of stock'
+        default='out of stock',
+        null=True,
+        blank=True,
     )
     average_rating = models.DecimalField(
         decimal_places=2,
         max_digits=6,
-        null=True
+        null=True,
+        blank=True
     )
 
     class Meta:
