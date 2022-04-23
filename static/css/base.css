@@ -24,7 +24,8 @@ a:hover {
 
 #add-to-bag:hover,
 .black-button:hover,
-.add-button:hover {
+.add-button:hover,
+.admin-button:hover {
     background-color: white !important;
     color: black !important;
     border: solid 1px black !important;
@@ -177,6 +178,18 @@ a:hover {
     border: 1px solid black;
 }
 
+.admin-button {
+    text-align: center !important;
+    border-radius: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    color: white;
+    background-color: rgb(1, 63, 1);
+    border: 1px solid black;
+}
+
 .btn-outline-secondary {
     width: 100%;
 }
@@ -310,8 +323,8 @@ input[type=submit] {
 }
 
 input[type=number] {
-    border: black 1px;
-    background-color: rgb(255, 251, 251);
+    border: 1px solid #ced4da;
+    background-color: rgb(255, 255, 255);
 }
 
 /* TOASTS */

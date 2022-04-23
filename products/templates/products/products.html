@@ -11,6 +11,15 @@
             <!-- plant type filters -->
             <div>
 
+                {% if user.is_superuser %}
+                <div class="row my-4">
+                    <div class="col-4 offset-4">
+                        <a href="{% url 'add_product' %}"><button class="w-100 admin-button">Add product</button></a>
+                    </div>
+                </div>
+                {% else %}
+                {% endif %}
+
                 <div class="d-flex">
                     <hr class="flex-grow-1">
                     <h2 class="text-center px-2 px-md-3 px-xl-5">PLANTS</h2>

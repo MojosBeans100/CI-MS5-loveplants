@@ -86,7 +86,10 @@ class Product(models.Model):
         blank=True
     )
     name = models.CharField(
-        max_length=100
+        max_length=100,
+        null=True,
+        blank=True,
+        editable=False,
         )
     friendly_name = models.CharField(
         max_length=100

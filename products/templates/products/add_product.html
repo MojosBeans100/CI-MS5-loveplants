@@ -12,7 +12,7 @@
 
             <div class="col-6">
                 <form method="POST" action="{% url 'add_product' %}">
-                {% csrf_token %}
+                    {% csrf_token %}
 
                     <!-- category -->
                     <fieldset>
@@ -33,7 +33,8 @@
                             </div>
 
                             <div class="col">
-                                <input type="checkbox" name="popular" value="true" id="{{form.popular.id_for_label}}"><br>
+                                <input type="checkbox" name="popular" value="true"
+                                    id="{{form.popular.id_for_label}}"><br>
                                 {{form.popular.label}} <i class="fa-solid fa-bolt-lightning"></i>
                             </div>
                         </div>
@@ -42,10 +43,7 @@
                     <!-- name, description -->
                     <fieldset>
                         <legend class="pt-5">General Information</legend>
-                        <!-- {{form.name.label}}
-                        <p><small><em>provide a name in the format of eg. 'chinese_money_plant'</em></small></p>
-                        {{form.name}} -->
-
+                       
                         <label>Name</label>
                         <p><small><em>provide a name to be used on the product page in the format of eg. 'Chinese Money
                                     Plant'</em></small></p>
@@ -75,14 +73,17 @@
 
                         <div class="row">
                             <div class="col-4">
-                                <img class="id_image1_source_url" style="height: 160px; width: 100%;" src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
+                                <img class="id_image1_source_url" style="height: 160px; width: 100%;"
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
                                 <p class="text-center"><em><small>main image</small></em></p>
                             </div>
                             <div class="col-4">
-                                <img class="id_image2_source_url" style="height: 160px; width: 100%;" src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                                <img class="id_image2_source_url" style="height: 160px; width: 100%;"
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>
                             <div class="col-4">
-                                <img class="id_image3_source_url" style="height: 160px; width: 100%;" src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                                <img class="id_image3_source_url" style="height: 160px; width: 100%;"
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>
                         </div>
                     </fieldset>
@@ -123,13 +124,13 @@
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i><br>
                                     <em>1 - 2 hours</em></label>
-                                    {{form.sunlight.1.tag}}
+                                {{form.sunlight.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.2.id_for_label}}"><i class="fa-solid fa-cloud-sun"></i><br>
                                     <em>4 - 7 hours</em></label>
-                                    {{form.sunlight.2.tag}}
+                                {{form.sunlight.2.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
@@ -153,14 +154,14 @@
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.2.id_for_label}}"><i class="fa-solid fa-droplet"></i><br>
                                     <em>water weekly</em></label>
-                                    {{form.watering.2.tag}}
+                                {{form.watering.2.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.3.id_for_label}}"><i class="fa-solid fa-droplet"></i><i
                                         class="fa-solid fa-droplet"></i><br>
                                     <em>water daily</em></label>
-                                    {{form.watering.3.tag}}
+                                {{form.watering.3.tag}}
                             </div>
                         </div>
                         <hr>
@@ -177,11 +178,10 @@
                             </div> -->
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
-                                    for="{{form.care_required.2.id_for_label}}"><i
-                                        class="fa-solid fa-heart"></i><br>
+                                    for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
                                     <em>can stand a little neglect</em></label>
                                 {{form.care_required.1.tag}}
-                            </div> 
+                            </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
                                     for="{{form.care_required.3.id_for_label}}">
@@ -190,7 +190,7 @@
                                     <br><em>requires regular care</em>
                                 </label>
                                 {{form.care_required.2.tag}}
-                            </div> 
+                            </div>
                         </div>
 
                         <div class="pt-4">
@@ -218,18 +218,19 @@
 
                         <!-- {{form.sale_price.label}}
                         {{form.sale_price}} -->
-                        
+
                         {{form.stock_quantity.label}}
                         {{form.stock_quantity}}
                     </fieldset>
 
                     <div class="row">
                         <div class="col">
-                            <button class="black-button w-100">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                            <button class="black-button w-100" name="save-form">Save <i class="fa-solid fa-floppy-disk"></i></button>
                             <p><em><small>product will be saved</small></em></p>
                         </div>
                         <div class="col">
-                            <button type="submit" class="black-button w-100">Add product <i class="fa-solid fa-plus"></i></button>
+                            <button type="submit" name="submit-form" class="black-button w-100">Add product <i
+                                    class="fa-solid fa-plus"></i></button>
                             <p><em><small>product will be live on the site and available to purchase</small></em></p>
                         </div>
                     </div>
@@ -262,11 +263,11 @@
         var pic = document.getElementsByClassName(element.id)[0]
 
         if (src == "") {
-            pic.src = 'https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg'
+            pic.src =
+                'https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg'
         } else {
             pic.src = src
-        }  
+        }
     }
-
 </script>
 {% endblock %}
