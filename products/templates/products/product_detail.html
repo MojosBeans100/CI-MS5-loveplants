@@ -374,9 +374,8 @@
 
 {% block postloadjs %}
 <script>
-    var avgRating = JSON.parse(document.getElementById('avg_rating').textContent)
-    var p = document.getElementsByClassName('review-stars')
-    var int = Number.isInteger(avgRating)
+    var avgRating = JSON.parse(document.getElementById('avg_rating').textContent);
+    var int = Number.isInteger(avgRating);
     var row = document.getElementById('append-star');
 
     displayRating();

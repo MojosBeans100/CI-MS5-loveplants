@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="margin">
+        <div class="row">
+
+            <h2>Add a product</h2>
+            <hr>
+
+            <div class="col-6">
+                <form>
+                    <fieldset>
+                        <legend>Category</legend>
+
+                        {{form.category.label}}
+                        {{form.category}}
+
+                        <div class="add-product-plant">
+                            {{form.plant_category.label}}
+                            {{form.plant_category}}
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>General Information</legend>
+                        {{form.name.label}}
+                        <p><small><em>provide a name in the format of eg. 'chinese_money_plant'</em></small></p>
+                        {{form.name}}
+
+                        {{form.friendly_name.label}}
+                        <p><small><em>provide a name to be used on the product page in the format of eg. 'Chinese Money Plant'</em></small></p>
+                        {{form.friendly_name}}
+
+                        {{form.latin_name.label}}
+                        {{form.latin_name}}
+
+                        {{form.description.label}}
+                        {{form.description}}
+
+                        {{form.description_source.label}}
+                        {{form.description_source}}
+
+                        {{form.description_url.label}}
+                        {{form.description_url}}
+                    </fieldset>
+
+                    
+
+                    <fieldset>
+                        <legend></legend>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

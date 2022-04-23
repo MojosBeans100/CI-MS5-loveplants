@@ -13,7 +13,7 @@ from products.models import (
                     PlantCategory,
                     RecentlyViewed,
                     User)
-from .forms import ProductReviewForm
+from .forms import ProductReviewForm, ProductForm
 from profiles.models import UserProfile
 from checkout.models import Order, OrderLineItem
 
@@ -333,3 +333,17 @@ def product_review(request, id):
     redirect_url = request.POST.get('redirect_url')
 
     return redirect(redirect_url)
+
+
+def admin_add_product(request):
+    """
+    Allow an admin user to add a product
+    """
+
+    form = ProductForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'products/add_product.html', context)
