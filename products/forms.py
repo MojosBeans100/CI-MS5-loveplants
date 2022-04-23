@@ -35,6 +35,8 @@ class ProductForm(forms.ModelForm):
 
         widgets = {
             'sunlight': RadioSelect(choices='sun_or_water'),
+            'watering': RadioSelect(choices='sun_or_water'),
+            'care_required': RadioSelect(choices='care_demand'),
         }
 
     def __init__(self, *args, **kwargs):

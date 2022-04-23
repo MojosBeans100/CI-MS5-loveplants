@@ -231,12 +231,12 @@ input[type=submit] {
     border: none;
 }
 
-/* [type=radio] {
+[type=radio] {
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
-} */
+}
 
 /* PRODUCT DETAIL MEDIA QUERIES */
 
