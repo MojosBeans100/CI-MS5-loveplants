@@ -15,7 +15,7 @@
 
                     <!-- category -->
                     <fieldset>
-                        <legend>Category</legend>
+                        <legend class="pt-5">Category</legend>
 
                         {{form.category.label}}
                         {{form.category}}
@@ -24,11 +24,23 @@
                             {{form.plant_category.label}}
                             {{form.plant_category}}
                         </div>
+
+                        <div class="row text-center">
+                            <div class="col">
+                                <input type="checkbox" value="true" id="{{form.rare.id_for_label}}"><br>
+                                {{form.rare.label}} <i class="fa-solid fa-gem"></i>
+                            </div>
+
+                            <div class="col">
+                                <input type="checkbox" value="true" id="{{form.popular.id_for_label}}"><br>
+                                {{form.popular.label}} <i class="fa-solid fa-bolt-lightning"></i>
+                            </div>
+                        </div>
                     </fieldset>
 
                     <!-- name, description -->
                     <fieldset>
-                        <legend>General Information</legend>
+                        <legend class="pt-5">General Information</legend>
                         {{form.name.label}}
                         <p><small><em>provide a name in the format of eg. 'chinese_money_plant'</em></small></p>
                         {{form.name}}
@@ -53,7 +65,7 @@
 
                     <!-- images -->
                     <fieldset>
-                        <legend>Images</legend>
+                        <legend class="pt-5">Images</legend>
 
                         <p><small><em>provide urls for up to 3 images from a cloud storage</em></small></p>
                         {{form.image1_source_url}}
@@ -63,7 +75,7 @@
 
                     <!-- details -->
                     <fieldset>
-                        <legend>Details</legend>
+                        <legend class="pt-5">Details</legend>
 
                         <i class="pe-2 fa-solid fa-ruler-horizontal"></i>{{form.pot_size.label}}
                         {{form.pot_size}}
@@ -88,24 +100,27 @@
 
                     <!-- care -->
                     <fieldset>
-                        <legend>Care</legend>
+                        <legend class="pt-5">Care</legend>
 
                         <!-- sunlight -->
                         <div class="row py-2 text-center">
                             <p class="text-center">Required sunlight</p>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-sun" onclick="boldSelection(this);" for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i><br>
-                                    Low</label>
+                                <label class="plant-sun" onclick="boldSelection(this);"
+                                    for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i><br>
+                                    <em>1 - 2 hours</em></label>
                                 <input type="radio" name="{{form.sunlight.name}}" id="{{form.sunlight.1.id_for_label}}">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-sun" onclick="boldSelection(this);" for="{{form.sunlight.2.id_for_label}}"><i class="fa-solid fa-cloud-sun"></i><br>
-                                    Medium</label>
+                                <label class="plant-sun" onclick="boldSelection(this);"
+                                    for="{{form.sunlight.2.id_for_label}}"><i class="fa-solid fa-cloud-sun"></i><br>
+                                    <em>4 - 7 hours</em></label>
                                 <input type="radio" name="{{form.sunlight.name}}" id="{{form.sunlight.2.id_for_label}}">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-sun" onclick="boldSelection(this);" for="{{form.sunlight.3.id_for_label}}"><i class="fa-solid fa-sun"></i><br>
-                                    High</label>
+                                <label class="plant-sun" onclick="boldSelection(this);"
+                                    for="{{form.sunlight.3.id_for_label}}"><i class="fa-solid fa-sun"></i><br>
+                                    <em>8 - 10 hours</em></label>
                                 <input type="radio" name="{{form.sunlight.name}}" id="{{form.sunlight.3.id_for_label}}">
                             </div>
                         </div>
@@ -115,20 +130,22 @@
                         <div class="row py-2 text-center">
                             <p class="text-center">Required water</p>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-water" onclick="boldSelection(this);" for="{{form.watering.1.id_for_label}}"><i
-                                        class="fa-solid fa-droplet-slash"></i><br>
-                                    Low</label>
+                                <label class="plant-water" onclick="boldSelection(this);"
+                                    for="{{form.watering.1.id_for_label}}"><i class="fa-solid fa-droplet-slash"></i><br>
+                                    <em>water monthly</em></label>
                                 <input type="radio" name="{{form.watering.name}}" id="{{form.watering.1.id_for_label}}">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-water" onclick="boldSelection(this);" for="{{form.watering.2.id_for_label}}"><i class="fa-solid fa-droplet"></i><br>
-                                    Medium</label>
+                                <label class="plant-water" onclick="boldSelection(this);"
+                                    for="{{form.watering.2.id_for_label}}"><i class="fa-solid fa-droplet"></i><br>
+                                    <em>water weekly</em></label>
                                 <input type="radio" name="{{form.watering.name}}" id="{{form.watering.2.id_for_label}}">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-water" onclick="boldSelection(this);" for="{{form.watering.3.id_for_label}}"><i class="fa-solid fa-droplet"></i><i
+                                <label class="plant-water" onclick="boldSelection(this);"
+                                    for="{{form.watering.3.id_for_label}}"><i class="fa-solid fa-droplet"></i><i
                                         class="fa-solid fa-droplet"></i><br>
-                                    High</label>
+                                    <em>water daily</em></label>
                                 <input type="radio" name="{{form.watering.name}}" id="{{form.watering.3.id_for_label}}">
                             </div>
                         </div>
@@ -138,39 +155,73 @@
                         <div class="row py-2 text-center">
                             <p class="text-center">Plant maintenance</p>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-care" onclick="boldSelection(this);" for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
-                                    Low</label>
+                                <label class="plant-care" onclick="boldSelection(this);"
+                                    for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
+                                    <em>largely self-sufficient</em></label>
                                 <input type="radio" name="{{form.care_required.name}}"
                                     id="{{form.care_required.1.id_for_label}}">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-care" onclick="boldSelection(this);" for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><i
+                                <label class="plant-care" onclick="boldSelection(this);"
+                                    for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><i
                                         class="fa-solid fa-heart"></i><br>
-                                    Medium</label>
+                                    <em>can stand a little neglect</em></label>
                                 <input type="radio" name="{{form.care_required.name}}"
                                     id="{{form.care_required.2.id_for_label}}">
                             </div>
                             <div class="col d-flex justify-content-center">
-                                <label class="plant-care" onclick="boldSelection(this);" for="{{form.care_required.3.id_for_label}}"><i class="fa-solid fa-heart"></i><i
-                                        class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><br>
-                                    High</label>
+                                <label class="plant-care" onclick="boldSelection(this);"
+                                    for="{{form.care_required.3.id_for_label}}">
+                                    <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i
+                                        class="fa-solid fa-heart"></i>
+                                    <br><em>requires regular care</em>
+                                </label>
                                 <input type="radio" name="{{form.care_required.name}}"
                                     id="{{form.care_required.3.id_for_label}}">
                             </div>
                         </div>
 
-                        {{form.care_instructions.label}}
-                        <p><small><em>provide further care instructions for this plant</em></small></p>
-                        {{form.care_instructions}}
-                        
-                        {{form.care_instructions_source.label}}
-                        <p><small><em>provide a source for the care instructions if required</em></small></p>
-                        {{form.care_instructions_source}}
+                        <div class="pt-4">
+                            {{form.care_instructions.label}}
+                            <p><small><em>provide further care instructions for this plant</em></small></p>
+                            {{form.care_instructions}}
 
-                        {{form.care_instructions_url.label}}
-                        <p><small><em>provide a source url for the care instructions if required</em></small></p>
-                        {{form.care_instructions_url}}
+                            {{form.care_instructions_source.label}}
+                            <p><small><em>provide a source for the care instructions if required</em></small></p>
+                            {{form.care_instructions_source}}
+
+                            {{form.care_instructions_url.label}}
+                            <p><small><em>provide a source url for the care instructions if required</em></small></p>
+                            {{form.care_instructions_url}}
+                        </div>
+
                     </fieldset>
+
+                    <!-- price, stock -->
+                    <fieldset>
+                        <legend>Price, Stock</legend>
+
+                        {{form.price.label}}
+                        {{form.price}}
+
+                        <!-- {{form.sale_price.label}}
+                        {{form.sale_price}} -->
+                        
+                        {{form.stock_quantity.label}}
+                        {{form.stock_quantity}}
+                    </fieldset>
+
+                    <div class="row">
+                        <div class="col">
+                            <button class="black-button w-100">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                            <p><em><small>product will be saved</small></em></p>
+                        </div>
+                        <div class="col">
+                            <button class="black-button w-100">Add product <i class="fa-solid fa-plus"></i></button>
+                            <p><em><small>product will be live on the site and available to purchase</small></em></p>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
@@ -181,13 +232,16 @@
 
 {% block postloadjs %}
 <script>
+    /*
+    Add style to form radio buttons when selected
+    */
     function boldSelection(element) {
         var labels = document.getElementsByClassName(element.className);
-        for (i=0; i<labels.length; i++) {
+        for (i = 0; i < labels.length; i++) {
             labels[i].style.color = 'black';
         }
 
-        element.style.color = 'green'
+        element.style.color = 'green';
     }
 </script>
 {% endblock %}
