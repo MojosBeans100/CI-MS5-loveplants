@@ -41,10 +41,17 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
-        
+
         for field_name, field in self.fields.items():
 
             if field_name != 'sunlight':
                 field.widget.attrs['class'] = 'form-control mb-4'
 
-    
+            if (field_name == 'image1_source_url'
+                or field_name == 'image2_source_url'
+                or field_name == 'image3_source_url'):
+
+                field.widget.attrs['onchange'] = 'uploadImage(this);'
+
+            if (field_name == 'image1_source_url'):
+                field.widget.attrs['placeholder'] = 'Main image'
