@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container" style="margin-bottom: 100px;">
     <div class="margin">
         <div class="row">
 
@@ -12,6 +12,8 @@
 
             <div class="col-6">
                 <form>
+
+                    <!-- category -->
                     <fieldset>
                         <legend>Category</legend>
 
@@ -24,6 +26,7 @@
                         </div>
                     </fieldset>
 
+                    <!-- name, description -->
                     <fieldset>
                         <legend>General Information</legend>
                         {{form.name.label}}
@@ -31,7 +34,8 @@
                         {{form.name}}
 
                         {{form.friendly_name.label}}
-                        <p><small><em>provide a name to be used on the product page in the format of eg. 'Chinese Money Plant'</em></small></p>
+                        <p><small><em>provide a name to be used on the product page in the format of eg. 'Chinese Money
+                                    Plant'</em></small></p>
                         {{form.friendly_name}}
 
                         {{form.latin_name.label}}
@@ -47,10 +51,63 @@
                         {{form.description_url}}
                     </fieldset>
 
-                    
-
+                    <!-- images -->
                     <fieldset>
-                        <legend></legend>
+                        <legend>Images</legend>
+
+                        <p><small><em>provide urls for up to 3 images from a cloud storage</em></small></p>
+                        {{form.image1_source_url}}
+                        {{form.image2_source_url}}
+                        {{form.image3_source_url}}
+                    </fieldset>
+
+                    <!-- details -->
+                    <fieldset>
+                        <legend>Details</legend>
+
+                        <i class="pe-2 fa-solid fa-ruler-horizontal"></i>{{form.pot_size.label}}
+                        {{form.pot_size}}
+
+                        <i class="pe-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
+                        {{form.height}}
+
+                        {{form.length.label}}
+                        {{form.length}}
+
+                        <div class="row">
+                            <div class="col">
+                                <i class="pe-3 fa-solid fa-seedling"></i> {{form.maturity_num.label}}
+                                {{form.maturity_num}}
+                            </div>
+                            <div class="col">
+                                {{form.maturity_time.label}}
+                                {{form.maturity_time}}
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- care -->
+                    <fieldset>
+                        <legend>Care</legend>
+
+                        <div class="row">
+                            <p class="text-center">Required sunlight</p>
+                            <div class="col  d-flex justify-content-center">
+                                <label for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i>
+                                    Low</label>
+                                <input type="radio" name="{{form.sunlight.name}}" id="{{form.sunlight.1.id_for_label}}">
+                            </div>
+                            <div class="col  d-flex justify-content-center">
+                                <label for="{{form.sunlight.2.id_for_label}}"><i class="fa-solid fa-cloud-sun"></i>
+                                    Medium</label>
+                                <input type="radio" name="{{form.sunlight.name}}" id="{{form.sunlight.2.id_for_label}}">
+                            </div>
+                            <div class="col  d-flex justify-content-center">
+                                <label for="{{form.sunlight.3.id_for_label}}"><i class="fa-solid fa-sun"></i>
+                                    High</label>
+                                <input type="radio" name="{{form.sunlight.name}}" id="{{form.sunlight.3.id_for_label}}">
+                            </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>
