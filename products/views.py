@@ -3,7 +3,7 @@
 from slugify import slugify
 
 # Django imports
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
 from django.db.models import Q
 from datetime import datetime, timezone
@@ -229,29 +229,29 @@ def product_detail(request, id):
             form = ""
 
         current_user = User.objects.get(username=user)
-        if RecentlyViewed.objects.filter(
-                            user=current_user,
-                            product=product).exists():
-            print("do nothing")
-        else:
-            viewed_product = RecentlyViewed(
-                                user=current_user,
-                                viewed=datetime.now(timezone.utc),
-                                product=product
-                                )
-            viewed_product.save()
+        # if RecentlyViewed.objects.filter(
+        #                     user=current_user,
+        #                     product=product).exists():
+        #     print("do nothing")
+        # else:
+        #     viewed_product = RecentlyViewed(
+        #                         user=current_user,
+        #                         viewed=datetime.now(timezone.utc),
+        #                         product=product
+        #                         )
+        #     viewed_product.save()
 
-        recently_viewed = RecentlyViewed.objects.filter(user=current_user)
-        recently_viewed_products = []
+        # recently_viewed = RecentlyViewed.objects.filter(user=current_user)
+        # recently_viewed_products = []
 
-        for i in recently_viewed:
-            product_name = i.product
-            recently_viewed_product = Product.objects.get(
-                                            friendly_name=product_name).name
-            recently_viewed_products.append(recently_viewed_product)
+        # for i in recently_viewed:
+        #     product_name = i.product
+        #     recently_viewed_product = Product.objects.get(
+        #                                     friendly_name=product_name).name
+        #     recently_viewed_products.append(recently_viewed_product)
 
-        recently_viewed = Product.objects.filter(
-                                        name__in=recently_viewed_products)[0:4]
+        # recently_viewed = Product.objects.filter(
+        #                                 name__in=recently_viewed_products)[0:4]
 
     # calculate average product rating
     num_reviews = ProductReview.objects.filter(product=product).count()
@@ -273,7 +273,7 @@ def product_detail(request, id):
         'popular_products': popular_products,
         'easy_care': easy_products,
         'reviews': product_reviews,
-        'recently_viewed': recently_viewed,
+        #'recently_viewed': recently_viewed,
         'has_purchased': has_purchased,
         'already_reviewed': already_reviewed,
         'form': form,
@@ -418,3 +418,32 @@ def admin_add_product(request):
     }
 
     return render(request, 'products/add_product.html', context)
+
+
+def admin_edit_product(request, id):
+    """
+    Allow admin users to edit product details
+    """
+
+    if request.user.is_superuser:
+        product = Product.objects.get(id=id)
+        form = ProductForm(instance=product)
+
+        if request.method == 'POST':
+
+            form = ProductForm(request.POST, instance=product)
+
+            if form.is_valid():
+                form.save()
+
+            return redirect(reverse('product_detail', args=[id]))
+
+        context = {
+            'form': form,
+            'product': product,
+        }
+
+    else:
+        return render('product/products.html')
+
+    return render(request, 'products/edit_product.html', context)

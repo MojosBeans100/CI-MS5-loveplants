@@ -1,0 +1,273 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container" style="margin-bottom: 100px;">
+    <div class="margin">
+        <div class="row">
+
+            <h2>Edit <strong>{{product.friendly_name}}</strong></h2>
+            <hr>
+
+            <div class="col-6">
+                <form method="POST" action="{% url 'edit_product' product.id %}">
+                    {% csrf_token %}
+
+                    <!-- category -->
+                    <fieldset>
+                        <legend class="pt-5">Category</legend>
+
+                        {{form.category.label}}
+                        {{form.category}}
+
+                        <div class="add-product-plant">
+                            {{form.plant_category.label}}
+                            {{form.plant_category}}
+                        </div>
+
+                        <div class="row text-center">
+                            <div class="col">
+                                <input type="checkbox" name="rare" value="true" id="{{form.rare.id_for_label}}"><br>
+                                {{form.rare.label}} <i class="fa-solid fa-gem"></i>
+                            </div>
+
+                            <div class="col">
+                                <input type="checkbox" name="popular" value="true"
+                                    id="{{form.popular.id_for_label}}"><br>
+                                {{form.popular.label}} <i class="fa-solid fa-bolt-lightning"></i>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- name, description -->
+                    <fieldset>
+                        <legend class="pt-5">General Information</legend>
+
+                        <label>Name</label>
+                        <p><small><em>provide a name to be used on the product page in the format of eg. 'Chinese Money
+                                    Plant'</em></small></p>
+                        {{form.friendly_name}}
+
+                        {{form.latin_name.label}}
+                        {{form.latin_name}}
+
+                        {{form.description.label}}
+                        {{form.description}}
+
+                        {{form.description_source.label}}
+                        {{form.description_source}}
+
+                        {{form.description_url.label}}
+                        {{form.description_url}}
+                    </fieldset>
+
+                    <!-- images -->
+                    <fieldset>
+                        <legend class="pt-5">Images</legend>
+
+                        <p><small><em>provide urls for up to 3 images from a cloud storage</em></small></p>
+                        {{form.image1_source_url}}
+                        {{form.image2_source_url}}
+                        {{form.image3_source_url}}
+
+                        <div class="row">
+                            <div class="col-4">
+                                <img class="id_image1_source_url" style="height: 160px; width: 100%;"
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
+                                <p class="text-center"><em><small>main image</small></em></p>
+                            </div>
+                            <div class="col-4">
+                                <img class="id_image2_source_url" style="height: 160px; width: 100%;"
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                            </div>
+                            <div class="col-4">
+                                <img class="id_image3_source_url" style="height: 160px; width: 100%;"
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- details -->
+                    <fieldset>
+                        <legend class="pt-5">Details</legend>
+
+                        <i class="pe-2 fa-solid fa-ruler-horizontal"></i>{{form.pot_size.label}}
+                        {{form.pot_size}}
+
+                        <i class="pe-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
+                        {{form.height}}
+
+                        {{form.length.label}}
+                        {{form.length}}
+
+                        <div class="row">
+                            <div class="col">
+                                <i class="pe-3 fa-solid fa-seedling"></i> {{form.maturity_num.label}}
+                                {{form.maturity_num}}
+                            </div>
+                            <div class="col">
+                                {{form.maturity_time.label}}
+                                {{form.maturity_time}}
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- care -->
+                    <fieldset>
+                        <legend class="pt-5">Care</legend>
+
+                        <!-- sunlight -->
+                        <div class="row py-2 text-center">
+                            <p class="text-center">Required sunlight</p>
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-sun" onclick="boldSelection(this);"
+                                    for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i><br>
+                                    <em>1 - 2 hours</em></label>
+                                {{form.sunlight.1.tag}}
+                            </div>
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-sun" onclick="boldSelection(this);"
+                                    for="{{form.sunlight.2.id_for_label}}"><i class="fa-solid fa-cloud-sun"></i><br>
+                                    <em>4 - 7 hours</em></label>
+                                {{form.sunlight.2.tag}}
+                            </div>
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-sun" onclick="boldSelection(this);"
+                                    for="{{form.sunlight.3.id_for_label}}"><i class="fa-solid fa-sun"></i><br>
+                                    <em>8 - 10 hours</em></label>
+                                {{form.sunlight.3.tag}}
+                            </div>
+                        </div>
+                        <hr>
+
+                        <!-- watering -->
+                        <div class="row py-2 text-center">
+                            <p class="text-center">Required water</p>
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-water" onclick="boldSelection(this);"
+                                    for="{{form.watering.1.id_for_label}}"><i class="fa-solid fa-droplet-slash"></i><br>
+                                    <em>water monthly</em></label>
+                                {{form.watering.1.tag}}
+                            </div>
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-water" onclick="boldSelection(this);"
+                                    for="{{form.watering.2.id_for_label}}"><i class="fa-solid fa-droplet"></i><br>
+                                    <em>water weekly</em></label>
+                                {{form.watering.2.tag}}
+                            </div>
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-water" onclick="boldSelection(this);"
+                                    for="{{form.watering.3.id_for_label}}"><i class="fa-solid fa-droplet"></i><i
+                                        class="fa-solid fa-droplet"></i><br>
+                                    <em>water daily</em></label>
+                                {{form.watering.3.tag}}
+                            </div>
+                        </div>
+                        <hr>
+
+                        <!-- care -->
+                        <div class="row py-2 text-center">
+                            <p class="text-center">Plant maintenance</p>
+                            <!-- <div class="col d-flex justify-content-center">
+                                <label class="plant-care" onclick="boldSelection(this);"
+                                    for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
+                                    <em>largely self-sufficient</em></label>
+                                <input type="radio" name="{{form.care_required.name}}"
+                                    id="{{form.care_required.1.id_for_label}}">
+                            </div> -->
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-care" onclick="boldSelection(this);"
+                                    for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
+                                    <em>can stand a little neglect</em></label>
+                                {{form.care_required.1.tag}}
+                            </div>
+                            <div class="col d-flex justify-content-center">
+                                <label class="plant-care" onclick="boldSelection(this);"
+                                    for="{{form.care_required.3.id_for_label}}">
+                                    <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i
+                                        class="fa-solid fa-heart"></i>
+                                    <br><em>requires regular care</em>
+                                </label>
+                                {{form.care_required.2.tag}}
+                            </div>
+                        </div>
+
+                        <div class="pt-4">
+                            {{form.care_instructions.label}}
+                            <p><small><em>provide further care instructions for this plant</em></small></p>
+                            {{form.care_instructions}}
+
+                            {{form.care_instructions_source.label}}
+                            <p><small><em>provide a source for the care instructions if required</em></small></p>
+                            {{form.care_instructions_source}}
+
+                            {{form.care_instructions_url.label}}
+                            <p><small><em>provide a source url for the care instructions if required</em></small></p>
+                            {{form.care_instructions_url}}
+                        </div>
+
+                    </fieldset>
+
+                    <!-- price, stock -->
+                    <fieldset>
+                        <legend>Price, Stock</legend>
+
+                        {{form.price.label}}
+                        {{form.price}}
+
+                        <!-- {{form.sale_price.label}}
+                        {{form.sale_price}} -->
+
+                        {{form.stock_quantity.label}}
+                        {{form.stock_quantity}}
+                    </fieldset>
+
+                    <div class="row">
+                        <!-- <div class="col">
+                            <button class="black-button w-100" name="save-form">Save <i
+                                    class="fa-solid fa-floppy-disk"></i></button>
+                            <p><em><small>product will be saved</small></em></p>
+                        </div> -->
+                        <div class="col">
+                            <button type="submit" class="black-button w-100">Save changes <i
+                                class="fa-solid fa-floppy-disk"></i></button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    /*
+    Add style to form radio buttons when selected
+    */
+    function boldSelection(element) {
+        var labels = document.getElementsByClassName(element.className);
+        for (i = 0; i < labels.length; i++) {
+            labels[i].style.color = 'black';
+        }
+
+        element.style.color = 'green';
+    }
+
+    function uploadImage(element) {
+        var src = element.value
+        var image_id = element.id
+        var pic = document.getElementsByClassName(element.id)[0]
+
+        if (src == "") {
+            pic.src =
+                'https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg'
+        } else {
+            pic.src = src
+        }
+    }
+</script>
+{% endblock %}
