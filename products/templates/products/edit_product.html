@@ -8,11 +8,18 @@
         <div class="row">
 
             <h2>Edit <strong>{{product.friendly_name}}</strong></h2>
+            <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
             <hr>
 
             <div class="col-6">
                 <form method="POST" action="{% url 'edit_product' product.id %}">
                     {% csrf_token %}
+
+                    <!-- on site -->
+                    <fieldset>
+                        <label>Live on site</label>
+                        {{form.live_on_site}}
+                    </fieldset>
 
                     <!-- category -->
                     <fieldset>

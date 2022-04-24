@@ -7,13 +7,10 @@
     <div class="margin">
         <div class="row">
 
-            <h2>Add a product</h2>
-            <hr>
-
             <div class="col-12">
-                <div class="row">
+                <div class="row my-3">
 
-                    <h4>Edit previously created products</h4>
+                    <h4 class="text-center">Edit previously created products</h4>
                     {% for product in saved %}
                     <div class="col-3">
                         <a href="{% url 'edit_product' product.id %}"><img style="width: 180px; height: 180px;" src="{{product.image1_source_url}}">
@@ -22,6 +19,9 @@
                     {% endfor %}
                 </div>
             </div>
+
+            <h2>Add a product</h2>
+            <hr>
 
             <div class="col-6">
                 <form method="POST" action="{% url 'add_product' %}">
@@ -58,8 +58,7 @@
                         <legend class="pt-5">General Information</legend>
                        
                         <label>Name*</label>
-                        <p><small><em>provide a name to be used on the product page in the format of eg. 'Chinese Money
-                                    Plant'</em></small></p>
+                        <p><small><em>if plant is a variegated species, follow this format: 'Chinese Money Plant | variegated'</em></small></p>
                         {{form.friendly_name}}
 
                         {{form.latin_name.label}}
@@ -267,7 +266,6 @@
         document.getElementById('id_care_required_2').checked = true
         document.getElementById('id_care_required_2').parentNode.style.color = 'orange'
     })
-
 
     /*
     Add style to form radio buttons when selected

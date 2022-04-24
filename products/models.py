@@ -23,12 +23,6 @@ maturity = (
     ('years', 'years'),
 )
 
-stock_options = (
-    ('in stock', 'In stock'),
-    ('out of stock', 'Out of stock'),
-    ('returning soon', 'Returning soon'),
-)
-
 rating = (
     (1, '1'),
     (2, '2'),
@@ -213,12 +207,8 @@ class Product(models.Model):
         null=True,
         blank=True
         )
-    stock = models.CharField(
-        choices=stock_options,
-        max_length=100,
-        default='out of stock',
-        null=True,
-        blank=True,
+    live_on_site = models.BooleanField(
+        default=False,
     )
     average_rating = models.DecimalField(
         decimal_places=2,

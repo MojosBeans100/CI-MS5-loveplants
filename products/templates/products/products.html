@@ -14,13 +14,13 @@
                 {% if user.is_superuser %}
                 <div class="row my-4">
                     <div class="col-4 offset-4">
-                        <a href="{% url 'add_product' %}"><button class="w-100 admin-button">Add product</button></a>
+                        <a href="{% url 'add_product' %}"><button class="w-100 btn btn-info text-white">Add product</button></a>
                     </div>
                 </div>
 
                 <div class="row my-4">
                     <div class="col-4 offset-4">
-                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 admin-button">View all products</button></a>
+                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn btn-info text-white">View all products</button></a>
                     </div>
                 </div>
                 {% else %}
@@ -304,7 +304,7 @@
 
                     <!-- product card -->
                     <div class="card text-center border-0 py-3" style="width: 20rem;">
-                        {% if product.stock == 'out of stock' %}
+                        {% if product.stock_quantity == 0 %}
                         <a href="{% url 'product_detail' product.id %}">
                             <div>
                                 <p id="oos-image-banner">Out of stock</p>

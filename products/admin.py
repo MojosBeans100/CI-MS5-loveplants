@@ -37,11 +37,11 @@ class ProductAdmin(admin.ModelAdmin):
         'plant_category',
         'stock_quantity',
         'price',
-        'stock',
+        'live_on_site',
         'popular',
         'average_rating',
     )
 
-    list_filter = ('category', 'stock')
+    list_filter = ('category', 'live_on_site')
 
 

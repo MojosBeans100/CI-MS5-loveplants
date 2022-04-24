@@ -27,8 +27,8 @@ def all_products(request):
     filtering and sorting
     """
 
-    total_products = Product.objects.filter(stock='in stock')
-    all_products = Product.objects.filter(stock='in stock')
+    total_products = Product.objects.filter(live_on_site=True)
+    all_products = Product.objects.filter(live_on_site=True)
     plant_categories = PlantCategory.objects.all()
     search_query = None
     sort = None
@@ -81,11 +81,11 @@ def all_products(request):
             category_id = Category.objects.get(name=categories)
             all_products = all_products.filter(category=category_id.id)
 
-        if 'stock' in request.GET:
-            all_products = Product.objects.all()
-            stock_opt = request.GET['stock'].replace('_', ' ')
-            all_products = all_products.filter(stock=stock_opt)
-            filtered_by = stock_opt
+        # if 'stock' in request.GET:
+        #     all_products = Product.objects.all()
+        #     stock_opt = request.GET['stock'].replace('_', ' ')
+        #     all_products = all_products.filter(stock=stock_opt)
+        #     filtered_by = stock_opt
 
         if 'plant_cats' in request.GET:
             plant_cat = request.GET['plant_cats']
@@ -370,11 +370,6 @@ def admin_add_product(request):
         # post the object
         else:
 
-            if int(request.POST['stock_quantity']) > 0:
-                stock = 'in stock'
-            else:
-                stock = 'out of stock'
-
             form_data = {
                 'category': request.POST['category'],
                 'plant_category': request.POST['plant_category'],
@@ -405,7 +400,7 @@ def admin_add_product(request):
                 'care_instructions_url': request.POST['care_instructions_url'],
                 'rare': rare,
                 'popular': popular,
-                'stock': stock,
+                'live_on_site': request.POST['live_on_site'],
                 'average_rating': 0,
             }
 
@@ -432,9 +427,11 @@ def admin_edit_product(request, id):
 
     if request.user.is_superuser:
         product = Product.objects.get(id=id)
+        print(product.live_on_site)
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
+            print(request.POST)
 
             form = ProductForm(request.POST, instance=product)
 

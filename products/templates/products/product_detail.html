@@ -56,9 +56,7 @@
 
             <!-- RH for detail -->
             <div class="px-3 col-sm-12 col-md-6">
-                <h2>{{product.friendly_name}} {% if product.stock == "out of stock" %}(out of
-                    stock){% else %}{% endif %}
-                </h2>
+                <h2>{{product.friendly_name}}</h2> {% if user.is_superuser %} <a href="{% url 'edit_product' product.id %}"><button class="btn btn-info text-white">Edit product</button></a> {% else %}{% endif %}
 
                 <!-- if the product is a plant, display plant detail -->
                 {% if product.plant_category %}
