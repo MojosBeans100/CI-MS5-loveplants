@@ -416,9 +416,10 @@ def admin_add_product(request):
             return redirect(reverse('products'))
 
     form = ProductForm()
-
+    saved_products = Product.objects.filter(stock_quantity=0)
     context = {
         'form': form,
+        'saved': saved_products,
     }
 
     return render(request, 'products/add_product.html', context)

@@ -231,7 +231,7 @@
                         </div> -->
                         <div class="col">
                             <button type="submit" class="black-button w-100">Save changes <i
-                                class="fa-solid fa-floppy-disk"></i></button>
+                                    class="fa-solid fa-floppy-disk"></i></button>
                         </div>
                     </div>
 
@@ -245,6 +245,15 @@
 
 {% block postloadjs %}
 <script>
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     document.getElementById('id_sunlight_2').checked = true
+    //     document.getElementById('id_sunlight_2').parentNode.style.color = 'orange'
+    //     document.getElementById('id_watering_2').checked = true
+    //     document.getElementById('id_watering_2').parentNode.style.color = 'orange'
+    //     document.getElementById('id_care_required_2').checked = true
+    //     document.getElementById('id_care_required_2').parentNode.style.color = 'orange'
+    // })
+
     /*
     Add style to form radio buttons when selected
     */
@@ -254,7 +263,7 @@
             labels[i].style.color = 'black';
         }
 
-        element.style.color = 'green';
+        element.style.color = 'orange';
     }
 
     function uploadImage(element) {
