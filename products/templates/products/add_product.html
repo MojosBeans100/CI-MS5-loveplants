@@ -13,8 +13,10 @@
                     <h4 class="text-center">Edit previously created products</h4>
                     {% for product in saved %}
                     <div class="col-3">
-                        <a href="{% url 'edit_product' product.id %}"><img style="width: 180px; height: 180px;" src="{{product.image1_source_url}}">
-                        <p>{{product.friendly_name}}</p></a>
+                        <a href="{% url 'edit_product' product.id %}"><img style="width: 180px; height: 180px;"
+                                src="{{product.image1_source_url}}">
+                            <p>{{product.friendly_name}}</p>
+                        </a>
                     </div>
                     {% endfor %}
                 </div>
@@ -56,9 +58,10 @@
                     <!-- name, description -->
                     <fieldset>
                         <legend class="pt-5">General Information</legend>
-                       
+
                         <label>Name*</label>
-                        <p><small><em>if plant is a variegated species, follow this format: 'Chinese Money Plant | variegated'</em></small></p>
+                        <p><small><em>if plant is a variegated species, follow this format: 'Chinese Money Plant |
+                                    variegated'</em></small></p>
                         {{form.friendly_name}}
 
                         {{form.latin_name.label}}
@@ -135,19 +138,19 @@
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i><br>
-                                    <em>1 - 2 hours</em></label>
+                                    1 - 2 h</label>
                                 {{form.sunlight.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.2.id_for_label}}"><i class="fa-solid fa-cloud-sun"></i><br>
-                                    <em>4 - 7 hours</em></label>
+                                    4 - 7 hours</label>
                                 {{form.sunlight.2.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.3.id_for_label}}"><i class="fa-solid fa-sun"></i><br>
-                                    <em>8 - 10 hours</em></label>
+                                    8 - 10 hours</label>
                                 {{form.sunlight.3.tag}}
                             </div>
                         </div>
@@ -159,28 +162,27 @@
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.1.id_for_label}}"><i class="fa-solid fa-droplet-slash"></i><br>
-                                    <em>water monthly</em></label>
+                                    water monthly</label>
                                 {{form.watering.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.2.id_for_label}}"><i class="fa-solid fa-droplet"></i><br>
-                                    <em>water weekly</em></label>
+                                    water weekly</label>
                                 {{form.watering.2.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.3.id_for_label}}"><i class="fa-solid fa-droplet"></i><i
                                         class="fa-solid fa-droplet"></i><br>
-                                    <em>water daily</em></label>
+                                    water daily</label>
                                 {{form.watering.3.tag}}
                             </div>
                         </div>
-                        <hr>
 
                         <!-- care -->
-                        <div class="row py-2 text-center">
-                            <p class="text-center">Plant maintenance</p>
+                        <div class="row my-4 text-center">
+                            <!-- <p class="text-center">Plant maintenance</p> -->
                             <!-- <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
                                     for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
@@ -191,7 +193,7 @@
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
                                     for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
-                                    <em>can stand a little neglect</em></label>
+                                    can stand a little neglect</label>
                                 {{form.care_required.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
@@ -199,7 +201,7 @@
                                     for="{{form.care_required.3.id_for_label}}">
                                     <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i
                                         class="fa-solid fa-heart"></i>
-                                    <br><em>requires regular care</em>
+                                    <br>requires regular care
                                 </label>
                                 {{form.care_required.2.tag}}
                             </div>
@@ -243,7 +245,8 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="black-button w-100" name="save-form">Save <i class="fa-solid fa-floppy-disk"></i></button>
+                            <button class="black-button w-100" name="save-form">Save <i
+                                    class="fa-solid fa-floppy-disk"></i></button>
                             <p><em><small>product will be saved</small></em></p>
                         </div>
                         <div class="col">
@@ -263,7 +266,6 @@
 
 {% block postloadjs %}
 <script>
-
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('id_sunlight_2').checked = true
         document.getElementById('id_sunlight_2').parentNode.style.color = 'orange'

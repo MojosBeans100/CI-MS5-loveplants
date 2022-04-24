@@ -9,6 +9,10 @@
     font-family: 'Raleway', sans-serif;
 } */
 
+.admin {
+    background-color: #069b8e;
+}
+
 .margin {
     margin-top: 150px;
 }
@@ -20,6 +24,11 @@ a {
 
 a:hover {
     color: black;
+}
+
+button {
+    border-radius: 0 !important;
+    border: white solid;
 }
 
 #add-to-bag:hover,

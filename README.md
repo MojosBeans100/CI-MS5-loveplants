@@ -126,15 +126,15 @@ The five main concerns of ID and how they were used to facilitate the Structure 
 #### Consistency
 Elements maintained consistency, to enable users to feel familiar with the brand of Love Plants. 
 
-- **Colours** found on the site were deliberately minimised, since the product images provided a variety of colours. A wider variety of colours may confound the user. Therefore the main two colours of the website are white and black, and additional colours are only introduced in necessary circumstances, such as to highlight form field errors. Additionally, the white/black colour palette with splashes of colour from images maintains a clean, minimalistic website. 
+- **Colours** found on the site were deliberately minimised, since the product images provided a variety of colours.  Therefore the main two colours of the website are white and black, and additional colours are only introduced in necessary circumstances, such as to highlight form field errors. Additionally, the white/black colour palette with splashes of colour from images maintains a clean, minimalistic website. Admin users can expect to see a teal (#069b8e) color to represent elements only visible to them
 
 - the same **font** (XXX) was used throughout the website, chosen due to it's readability and cross-platform capabilities
 
-- **buttons** adhere to the colour consistency, with white text within a black button, with a hover effect providing the inverse style
+- **buttons** adhere to the colour consistency, with white text within a black button, and a hover effect providing the inverse style. Buttons for admin users maintain a teal hue
 
 - where possible, **images** were kept to the same size and width to height ratio.  An example outwith this rule is on the product detail page, where it was deemed beneficial to provide a larger image
 
-- **products** are represented with an image, a price, a rating and a product title on all pages
+- **products** are represented with an image, a price, a rating and a product title on all pages, as this information is deemed the most appropriate to identify the product
 
 #### Predictability
 To maintain predictability for the user, standard website conventions are followed.  For example:

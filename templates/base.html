@@ -129,8 +129,8 @@
 
     {% if user.is_superuser %}
     <div class="row ">
-      <div class="col-12 p-0 bg-info text-white">
-        <p class="p-2 m-0 text-center"><i class="fa-solid fa-clipboard-user"></i> ADMIN</p>
+      <div class="col-12 p-0 admin text-white">
+        <p class="p-2 m-0 text-center"><i class="px-3 fa-solid fa-clipboard-user"></i> ADMIN PANEL: {{user}}</p>
       </div>
     </div>
     {% endif %}

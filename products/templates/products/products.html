@@ -14,13 +14,13 @@
                 {% if user.is_superuser %}
                 <div class="row my-4">
                     <div class="col-4 offset-4">
-                        <a href="{% url 'add_product' %}"><button class="w-100 btn btn-info text-white">Add product</button></a>
+                        <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add product <i class="px-3 fa-solid fa-plus"></i></button></a>
                     </div>
                 </div>
 
                 <div class="row my-4">
                     <div class="col-4 offset-4">
-                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn btn-info text-white">View all products</button></a>
+                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View all products <i class="px-3 fa-solid fa-list"></i></button></a>
                     </div>
                 </div>
                 {% else %}
@@ -303,25 +303,8 @@
                 <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
 
                     <!-- product card -->
-                    <div class="card text-center border-0 py-3" style="width: 20rem;">
-                        {% if product.stock_quantity == 0 %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <div>
-                                <p id="oos-image-banner">Out of stock</p>
-                                <img src="{{product.image1_source_url}}" id="product-out-of-stock"
-                                    class="card-img-top rounded-0" alt="{{product.friendly_name}} product image">
-                            </div>
-                        </a>
-                        <div class="card-body">
-                            <a href="{% url 'product_detail' product.id %}">
-                                <h5 class="card-title">{{product.friendly_name|upper}}</h5>
-                            </a>
-                            <p><em><small>{{product.latin_name}}</small></em></p>
-                            <p class="card-text">£{{product.price}}</p>
-                        </div>
-
-                        {% else %}
-
+                    <div class="card text-center border-0 py-5" style="width: 20rem;">
+                        
                         <!-- product image -->
                         <div style="position: relative;">
 
@@ -348,7 +331,6 @@
                             {% else %}
                             {% endif %}
 
-
                             <a href="{% url 'product_detail' product.id %}">
                                 <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
                                     id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
@@ -367,6 +349,17 @@
                             {% endif %}
                             <p class="card-text">£{{product.price}}</p>
                         </div>
+
+                        {% if user.is_superuser %}
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn w-100 admin text-white">Copy <i class="px-1 fa-solid fa-copy"></i></button>
+                            </div>
+                            <div class="col">
+                                <a href="{% url 'edit_product' product.id %}"><button class="btn w-100 admin text-white">Edit <i class="px-1 fa-solid fa-pen-to-square"></i></button></a>
+                            </div>
+                        </div>
+                        {% else %}
                         {% endif %}
                     </div>
                 </div>
