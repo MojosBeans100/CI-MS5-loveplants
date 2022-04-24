@@ -449,3 +449,14 @@ def admin_edit_product(request, id):
         return render('product/products.html')
 
     return render(request, 'products/edit_product.html', context)
+
+
+def admin_delete_product(request, id):
+    """
+    Allow admin users to delete products
+    """
+
+    product = Product.objects.get(id=id)
+    product.delete()
+
+    return redirect(reverse('products'))

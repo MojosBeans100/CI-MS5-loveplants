@@ -9,6 +9,7 @@
 
             <h2>Edit <strong>{{product.friendly_name}}</strong></h2>
             <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
+            <a href="{% url 'delete_product' product.id %}">Delete - are you sure</a>
             <hr>
 
             <div class="col-6">
@@ -176,27 +177,20 @@
                         <!-- care -->
                         <div class="row py-2 text-center">
                             <p class="text-center">Plant maintenance</p>
-                            <!-- <div class="col d-flex justify-content-center">
-                                <label class="plant-care" onclick="boldSelection(this);"
-                                    for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
-                                    <em>largely self-sufficient</em></label>
-                                <input type="radio" name="{{form.care_required.name}}"
-                                    id="{{form.care_required.1.id_for_label}}">
-                            </div> -->
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
                                     for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
                                     <em>can stand a little neglect</em></label>
-                                {{form.care_required.1.tag}}
+                                {{form.care_required.0.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
                                     for="{{form.care_required.3.id_for_label}}">
                                     <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i
                                         class="fa-solid fa-heart"></i>
-                                    <br><em>requires regular care</em>
+                                    <br><em>requires frequent care</em>
                                 </label>
-                                {{form.care_required.2.tag}}
+                                {{form.care_required.1.tag}}
                             </div>
                         </div>
 
@@ -252,14 +246,31 @@
 
 {% block postloadjs %}
 <script>
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     document.getElementById('id_sunlight_2').checked = true
-    //     document.getElementById('id_sunlight_2').parentNode.style.color = 'orange'
-    //     document.getElementById('id_watering_2').checked = true
-    //     document.getElementById('id_watering_2').parentNode.style.color = 'orange'
-    //     document.getElementById('id_care_required_2').checked = true
-    //     document.getElementById('id_care_required_2').parentNode.style.color = 'orange'
-    // })
+    document.addEventListener('DOMContentLoaded', () => {
+        var sunlight = document.getElementsByName('sunlight')
+        for (i=0; i<sunlight.length; i++) {
+            if (sunlight[i].checked) {
+                sunlight[i].parentNode.style.color = 'orange';
+            }
+        }
+        var watering = document.getElementsByName('watering')
+        for (i=0; i<watering.length; i++) {
+            if (watering[i].checked) {
+                watering[i].parentNode.style.color = 'orange';
+            }
+        }
+        var care_req = document.getElementsByName('care_required')
+        for (i=0; i<care_req.length; i++) {
+            if (care_req[i].checked) {
+                care_req[i].parentNode.style.color = 'orange';
+            }
+        }
+
+        uploadImage(document.getElementsByName('image1_source_url')[0])
+        uploadImage(document.getElementsByName('image2_source_url')[0])
+        uploadImage(document.getElementsByName('image3_source_url')[0])
+    })
+
 
     /*
     Add style to form radio buttons when selected
@@ -270,7 +281,7 @@
             labels[i].style.color = 'black';
         }
 
-        element.style.color = 'orange';
+        element.style.borderColor = 'orange';
     }
 
     function uploadImage(element) {
