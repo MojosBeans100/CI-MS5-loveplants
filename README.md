@@ -1,5 +1,5 @@
 # Love Plants
-Love Plants is a Full Stack B2C (business to customer) ecommerce website which allows customers to view and purchase products related to plants. The website was developed for Milestone 5 as part of the Code Institute Diploma in Software Development. 
+Love Plants is a Full Stack B2C (business to customer) e-commerce website which allows customers to view and purchase products related to plants. The website was developed for Milestone 5 as part of the Code Institute Diploma in Software Development. 
 
 ![Responsive website](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650050038/LovePlants/ReadMe/amirespoinve_twskbo.jpg)
 
@@ -137,32 +137,52 @@ Elements maintained consistency, to enable users to feel familiar with the brand
 - **products** are represented with an image, a price, a rating and a product title on all pages, as this information is deemed the most appropriate to identify the product
 
 #### Predictability
-To maintain predictability for the user, standard website conventions are followed.  For example:
+To maintain predictability for the user, standard website conventions are followed to meet users expectations, for example:
 
 - the Love Plants logo is kept to the top left of the page, irregardless of the screen size
 - the main navigation menu is placed at the top of the page, and provides only a limited selection of options so as not to overwhelm the user
 - content hierarchy XXXX
-- anchor links are styled XXXXXX
+- **anchor links** are styled with an underline feature on hover
 - buttons represent important calls to action, such as submitting a form and maintain consistent colours as described [above](#consistency)
 - as in most e-commerce sites, the top right of the page contains links to the user's profile, bag, and log in/log out facilities
 
 #### Learnability
-how easy can the product be learned
-keep it simple
-consistency in design elements
+See below some examples of how the developer considered UX learnability when presenting the Love Plants brand, to help users achieve their goals quickly and efficiently
+
+- use of **visuals**  as much as possible, such as icons to represent actions as opposed to text
+![Icon for XXX]()
+
+- **simplicity** in design, in effect minimising text, actions, colours.  The develop aims to only provide relevant information for the section or page, so as not cognitively overload the user with unnecessary information
+![eg the checkout page provides only 1 CTA]()
+
+- **predictable process** regarding e-commerce websites, ie look for products > select a product > add product to basket > checkout
+
+- **prioritising primary actions**, by providing the main call to action as a button, therefore more visual to users, even though there may be other links or actions on that page.  For example, on the checkout page, users can link back to other pages, but the priority action for that page is to checkout.
+![checkout button]()
 
 #### Visibility
-Nav always visible
-Checkout always visible
+Decent UX/UI visibility is achieved on the website by providing obvious prompts and cues, and ensuring users are aware of all opportunities, for example:
+
+- the navbar remains fixed to the top of the page, providing the user to opportunity to navigate to 
+- users can obtain free delivery with a minimum basket total, ie by purchasing more products, and can see products which would increase their basket to this total
+- 
 
 #### Feedback
-Toasts
-Inline feedback
+As users have significant interaction with the site, feedback on their actions was considered important.  This was provided by:
+
+- **in-line feedback** on forms, to emphasise invalid fields
+- **notifications** on notable actions, such as adding a product to their basket
+- **possible actions** available to them, 
+- **communicating the context**, such as
 
 ### Information Architecture
-Products > Product Detail > BAg > Checkout >Rating Review
+Information Architecture, or IA, was considered when creating the structure of the website, to allow users to understand where the information they want is in relation to their current position, and to deliver the right information at the right time.  Additionally:
 
-#### Organising Principle
+- the **MVC architecture pattern** provided by Django allows the website to collect, manipulate and deliver the data
+
+- a **database schema** was used to design the database models, and to understand how they communicate with one another. (See further information on the [database]())
+
+- **content inventory** was provided by the in-built Django Admin panel, to maintain a database of products.  This is effectively mirrored in the front-end, with a more user-friendly option for the admin to, for example, create a product
 
 ## Skeleton
 ### Interface Design

@@ -107,7 +107,7 @@
                     <fieldset>
                         <legend class="pt-5">Details</legend>
 
-                        <i class="pe-2 fa-solid fa-ruler-horizontal"></i>{{form.pot_size.label}}
+                        <i class="pe-2 fa-solid fa-whiskey-glass"></i>{{form.pot_size.label}}
                         {{form.pot_size}}
 
                         <i class="pe-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
@@ -245,12 +245,12 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="black-button w-100" name="save-form">Save <i
+                            <button class="btn admin w-100 text-white" name="save-form">Save <i
                                     class="fa-solid fa-floppy-disk"></i></button>
                             <p><em><small>product will be saved</small></em></p>
                         </div>
                         <div class="col">
-                            <button type="submit" name="submit-form" class="black-button w-100">Add product <i
+                            <button type="submit" name="submit-form" class="btn admin w-100 text-white">Add product <i
                                     class="fa-solid fa-plus"></i></button>
                             <p><em><small>product will be live on the site and available to purchase</small></em></p>
                         </div>
@@ -266,6 +266,9 @@
 
 {% block postloadjs %}
 <script>
+
+    
+
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('id_sunlight_2').checked = true
         document.getElementById('id_sunlight_2').parentNode.style.color = 'orange'

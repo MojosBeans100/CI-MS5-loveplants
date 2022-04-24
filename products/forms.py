@@ -2,7 +2,8 @@
 
 # Django imports
 from django import forms
-from django.forms import Textarea, RadioSelect, Select
+from django.forms import (Textarea, RadioSelect,
+                          Select, TextInput, NumberInput)
 
 # Local imports
 from .models import ProductReview, Product
@@ -37,6 +38,45 @@ class ProductForm(forms.ModelForm):
             'sunlight': RadioSelect(choices='sun_or_water'),
             'watering': RadioSelect(choices='sun_or_water'),
             'care_required': RadioSelect(choices='care_demand'),
+            'friendly_name': TextInput(attrs={
+                'placeholder': 'eg. Chinese Money Plant',
+            }),
+            'latin_name': TextInput(attrs={
+                'placeholder': 'eg. pilea peperomioides',
+            }),
+            'description': Textarea(attrs={
+                'placeholder': ('eg. Pilea peperomiodes, also known as '
+                                'the Chinese money plant, missionary plant,'
+                                ' pancake plant,'
+                                ' the pass-it-along plant and the UFO plant..')
+            }),
+            'description_source': TextInput(attrs={
+                'placeholder': 'eg. Happy House Plants',
+            }),
+            'description_url': TextInput(attrs={
+                'placeholder': 'eg. www.happyhouseplants.com',
+            }),
+            'image1_source_url': TextInput(attrs={
+                'placeholder': 'eg. https://res.cloudinary.com/...',
+            }),
+            'care_instructions': Textarea(attrs={
+                'placeholder': ('eg. Plant your Pilea peperomiodes in well  '
+                                'drained compost and place in a warm,'
+                                ' bright spot that is not too sunny. ')
+            }),
+            'care_instructions_source': TextInput(attrs={
+                'placeholder': 'eg. Happy House Plants',
+            }),
+            'care_instructions_url': TextInput(attrs={
+                'placeholder': 'eg. www.happyhouseplants.com',
+            }),
+            'price': TextInput(attrs={
+                'placeholder': 'eg. 10.99',
+            }),
+            'stock_quantity': NumberInput(attrs={
+                'placeholder': 'eg. 8',
+            }),
+
         }
 
     def __init__(self, *args, **kwargs):
@@ -52,6 +92,3 @@ class ProductForm(forms.ModelForm):
                 or field_name == 'image3_source_url'):
 
                 field.widget.attrs['onchange'] = 'uploadImage(this);'
-
-            if (field_name == 'image1_source_url'):
-                field.widget.attrs['placeholder'] = 'Main image'

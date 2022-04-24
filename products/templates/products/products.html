@@ -14,13 +14,13 @@
                 {% if user.is_superuser %}
                 <div class="row my-4">
                     <div class="col-4 offset-4">
-                        <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add product <i class="px-3 fa-solid fa-plus"></i></button></a>
+                        <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add product <i class="ps-3 fa-solid fa-plus"></i></button></a>
                     </div>
                 </div>
 
                 <div class="row my-4">
                     <div class="col-4 offset-4">
-                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View all products <i class="px-3 fa-solid fa-list"></i></button></a>
+                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View all products <i class="ps-3 fa-solid fa-list"></i></button></a>
                     </div>
                 </div>
                 {% else %}
@@ -31,6 +31,8 @@
                     <h2 class="text-center px-2 px-md-3 px-xl-5">PLANTS</h2>
                     <hr class="flex-grow-1">
                 </div>
+
+                <p class="text-center">Filter by plant type</p>
 
                 <!-- plant types list choice - images credit "https://www.flaticon.com/free-icons/plant" Plant icons created by Icongeek26 - Flaticon -->
                 <div class="row">
@@ -315,7 +317,7 @@
                                     {% if product.friendly_name in liked_list %}
                                     <div style="position: relative; height: 24px; width:24px; padding: 0;">
                                         <i style="position: absolute;  z-index: -99" class="fa-solid fa-heart"></i>
-                                        <i style="position: absolute; color: white;" class="fa-regular fa-heart"></i>
+                                        <!-- <i style="position: absolute; color: white;" class="fa-regular fa-heart"></i> -->
                                     </div>
                                     {% else %}
                                     <div style="position: relative; height: 24px; width:24px; padding: 0;">

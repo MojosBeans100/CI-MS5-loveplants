@@ -7,16 +7,14 @@
         <!-- navigate back to all products -->
         <div class="row mt-5">
             <p class="text-start">
-                <button class="black-button" onclick="history.back()">Go Back</button>
                 <br>
-                <br>
-                <a href="{% url 'products' %}">Products</a> /
+                <a href="{% url 'products' %}">Products</a> >
                 <a href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a>
-                {% if product.plant_category %}/
+                {% if product.plant_category %}>
                 <a href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}
                     {% else %}
                     {% endif %}</a>
-                / <strong><em>{{product.friendly_name}}</em></strong></p>
+                > <strong><em>{{product.friendly_name}}</em></strong></p>
         </div>
 
         <!-- main container for product detail -->
@@ -38,14 +36,14 @@
                     </div>
 
                     <div class="col">
-                        {% if product.image2_source %}
+                        {% if product.image2_source_url %}
                         <img class="product_detail_alt_img" style="width:100%; height:80%" onclick="changeImage(this)"
                             src="{{ product.image2_source_url }}" title="Image credit: {{product.image2_source}}">
                         {% endif %}
                     </div>
 
                     <div class="col">
-                        {% if product.image3_source %}
+                        {% if product.image3_source_url %}
                         <img class="product_detail_alt_img" style="width:100%; height:80%" onclick="changeImage(this)"
                             src="{{ product.image3_source_url }}" title="Image credit: {{product.image3_source}}">
                         {% endif %}
@@ -56,7 +54,9 @@
 
             <!-- RH for detail -->
             <div class="px-3 col-sm-12 col-md-6">
-                <h2>{{product.friendly_name}}</h2> {% if user.is_superuser %} <a href="{% url 'edit_product' product.id %}"><button class="btn btn-info text-white">Edit product</button></a> {% else %}{% endif %}
+                <h2>{{product.friendly_name}}</h2> {% if user.is_superuser %} <a
+                    href="{% url 'edit_product' product.id %}"><button class="btn admin text-white">Edit
+                        product</button></a> {% else %}{% endif %}
 
                 <!-- if the product is a plant, display plant detail -->
                 {% if product.plant_category %}
@@ -64,7 +64,7 @@
                     {% if product.latin_name %}
                     <div class="row">
                         <div class="col">
-                            
+
                             <p class="fst-italic">{{product.latin_name|lower}}</p>
                         </div>
                         <div class="col">
@@ -90,7 +90,7 @@
                 <hr>
 
                 <!-- price, add to basket -->
-                <div id="product-detail-add" class="row bg-white py-3">
+                <div id="product-detail-add" class="row w-100 bg-white py-3">
 
                     <div class="col-12 text-center">
                         <p>{{product.friendly_name}} £ {{product.price}}</p>
@@ -146,7 +146,7 @@
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
-                            <td class="text-end"><i class="px-3 fa-solid fa-ruler-horizontal" title="Pot diameter"></i>
+                            <td class="text-end"><i class="px-3 fa-solid fa-whiskey-glass" title="Pot diameter"></i>
                             </td>
                             <td class="text-start">{{product.pot_size}} cm</td>
                             {% if product.height %}
@@ -182,7 +182,7 @@
                 <!-- reviews form and rating display -->
                 <div class="row">
 
-                    <div class="col-12 col-md-4 offset-md-4">
+                    <div class="col-6 offset-3">
                         <table class="table table-borderless">
                             <tbody>
                                 {% if reviews.count == 0 %}
@@ -197,7 +197,7 @@
                                     <td colspan="5" class="text-center"><small>({{reviews.count}} reviews)</small></td>
                                 </tr>
                                 {% else %}
-                                <tr id="append-star">
+                                <tr class="text-center" id="append-star">
                                 </tr>
                                 <tr>
                                     <td class="text-center" colspan="5" id="avg-rating">
@@ -268,8 +268,14 @@
                 <div class="col-2">
                 </div>
 
-                <div class="col-8 py-3">
+                <div class="col-12 col-md-8 py-3">
                     <h2 class="text-center" id="product-review-title">Reviews</h2>
+                    <table>
+                        <tr class="text-center" id="append-star">
+                        </tr>
+                    </table>
+
+                    <p class="text-center">based on {{reviews.count}} reviews</p>
 
                     {% for review in reviews %}
                     <div class="row py-2">
@@ -396,7 +402,7 @@
                 row.append(data);
             }
 
-        // if not, add a half star
+            // if not, add a half star
         } else {
             for (i = 0; i < avgRating - 1; i++) {
                 var data = document.createElement('td');

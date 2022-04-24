@@ -13,6 +13,10 @@
     background-color: #069b8e;
 }
 
+.admin:hover {
+    background-color: #1caa9e;
+}
+
 .margin {
     margin-top: 150px;
 }
@@ -24,6 +28,7 @@ a {
 
 a:hover {
     color: black;
+    text-decoration: underline;
 }
 
 button {

@@ -177,6 +177,10 @@ def product_detail(request, id):
     Display details about a product
     """
 
+    has_purchased = None
+    already_reviewed = None
+    form = None
+
     user = str(request.user)
     product = Product.objects.get(id=id)
     recently_viewed = ""
@@ -229,7 +233,7 @@ def product_detail(request, id):
                 'product': product.friendly_name,
             })
         else:
-            form = ""
+            form = None
 
         current_user = User.objects.get(username=user)
         # if RecentlyViewed.objects.filter(
