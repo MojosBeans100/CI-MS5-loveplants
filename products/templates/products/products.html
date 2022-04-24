@@ -17,6 +17,12 @@
                         <a href="{% url 'add_product' %}"><button class="w-100 admin-button">Add product</button></a>
                     </div>
                 </div>
+
+                <div class="row my-4">
+                    <div class="col-4 offset-4">
+                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 admin-button">View all products</button></a>
+                    </div>
+                </div>
                 {% else %}
                 {% endif %}
 

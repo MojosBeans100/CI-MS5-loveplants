@@ -140,8 +140,11 @@ def all_products(request):
                 | Q(description__icontains=search_query)
             all_products = all_products.filter(search_queries)
 
+        if 'admin_view_all' in request.GET:
+            all_products = Product.objects.all()
+
     current_sorting = f'{sort}_{direction}'
-    paginator = Paginator(all_products, 10)
+    paginator = Paginator(all_products, 16)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
@@ -362,6 +365,7 @@ def admin_add_product(request):
             form = ProductForm(request.POST)
             if form.is_valid:
                 form.save()
+            return redirect(reverse('products'))
 
         # post the object
         else:
@@ -409,7 +413,7 @@ def admin_add_product(request):
             if form.is_valid:
                 form.save()
 
-        return redirect(reverse('all_products'))
+            return redirect(reverse('products'))
 
     form = ProductForm()
 
