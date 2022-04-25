@@ -165,7 +165,6 @@ Decent UX/UI visibility is achieved on the website by providing obvious prompts 
 
 - the navbar remains fixed to the top of the page, providing the user to opportunity to navigate to 
 - users can obtain free delivery with a minimum basket total, ie by purchasing more products, and can see products which would increase their basket to this total
-- 
 
 #### Feedback
 As users have significant interaction with the site, feedback on their actions was considered important.  This was provided by:
@@ -196,60 +195,49 @@ Data at rest - database
 Data in motion - pulled from db
 Data as presented 
 
-## Style
+## Surface
 ### Visual Design
 
-### Apps
-Love Plants consists of four apps
-- Home
-- Products
-- Bag
-- Checkout
+# Database
 
-### Pages
-The website has five main pages, with user authentication on XXXX:
-- Homepage (all users): to introduce users to the website and display purchasable products
-- Products (all users): to display all products available to purchase, with sorting and filtering facilities
-- Product Detail (all users): to provide additional detail about a specific product and facilities to add the product to the shopping basket
-- Shopping basket (authenticated user): to display all products in a user's shopping basket
-- Checkout (authenticated user): to display a form to submit payment for purchasing contents in shopping basket
-
-The additional pages are as follows:
-- Checkout Confirmation: to display details of a successful checkout
-- Review/Rating: for users to delete pipelines
-
-The website was designed to be simple, clear and uncluttered, basic in structure, and easy to navigate.
-Bootstrap was used to aid responsiveness, as well as media queries in CSS.  Javascript provides interactive features to enhance user experience.
-
-### Database
+## Database Structure
 The database includes:
-
 - Home app
 - Products app
 - Bag app
 - Checkout app
 - templates
+- db.sqlite3, the local database used in development
 - static, to maintain media, CSS and JS files
-- README, to outline the developement and purpose of this project
 - manage.py, automatically created upon Django install, the command-line utility for administrative tasks
 - env.py, to store environment variables and secret keys hidden from the Github repository
 - .gitignore, to keep environment variables from being committed to Github
 - Procfile, to allow for deployment on Heroku
 - requirements.txt, to store the python packages required to run the project
+- README.md, to outline the developement and purpose of this project
+- TESTING.md,to outline the testing strategy used during development
+- USER_STORIES.md, to list all user stories
 
-#### User (Django context processor)
+![structure schema]()
+
+## Models
+The models created to develop this e-commerce project are defined in this section. 
+
+![database schema]()
+
+### User (Django context processor)
 - The User model contains information about the user, as part of the [Django allauth library](https://django-allauth.readthedocs.io/en/latest/installation.html)
 - No additional features are added to this model, as a basic username, email and password satisfy the requirements of the project
 
-#### Home App
+### Home App
 The Home App serves to display the homepage for the website.  
 It contains no models. 
 
-#### Profiles App
+### Profiles App
 (User Stories XXX)
 The Profiles App provides the user the ability to create their website profile, so they can purchase products and review their details and order history. 
 
-##### UserProfile
+### UserProfile
 - The UserProfile model allows users to hold their personal information when using the site, and has a One-To-One relationship with the [User](#user-django-context-processor) model.
 - The UserProfile model with be modified automatically upon the User model being modified
 
@@ -265,12 +253,12 @@ The Profiles App provides the user the ability to create their website profile, 
 |default_postcode|user's default address|CharField|
 |default_country|user's default address|CountryField|
 
-#### Products App
+### Products App
 (User Stories XXX)
 - The Products App serves to hold a database of products available to purchase, details about them, their categories and any reviews/ratings. 
 - It contains 5 models.
 
-##### Product
+#### Product
 - The Product model holds information about specific products
 
 | Field | Description | Field type|
@@ -308,12 +296,10 @@ The Profiles App provides the user the ability to create their website profile, 
 |stock|string description of whether or not the product is in stock|CharField(choices)|
 |average_rating|average of all ratings the product has received|DecimalField|
 
-##### Category
+#### Category
+#### Plant Category
 
-##### Plant Category
-
-
-##### Recently Viewed
+#### Recently Viewed
 - The Recently Viewed model provides a short list of products the user has recently viewed (has visited the product detail page). 
 
 | Field | Description | Field type|
@@ -322,7 +308,7 @@ The Profiles App provides the user the ability to create their website profile, 
 |user|who recently viewed the product|Foreign Key (User)|
 |viewed|when the user viewed the product|DateTimeField|
 
-##### Product Review
+#### Product Review
 - The Product Review model provides customer reviews and ratings about a specific product.
 
 | Field | Description | Field type|
@@ -335,14 +321,14 @@ The Profiles App provides the user the ability to create their website profile, 
 |review_time_ago|how many days/weeks/months ago the user left the review|CharField|
 |liked|whether the user 'likes' the product|BooleanField|
 
-#### Bag App
+### Bag App
 The Bag App serves to provide a temporary session to allow users to add products to their bag.  
 It contains no models. 
 
-#### Checkout App
+### Checkout App
 The Checkout App provides the structure for users to create an order and purchase products.
 
-##### Order
+#### Order
 - The Order model provides details about orders which the user submitted.
 - This model contains several model methods to create the unique character order reference and update costs automatically.
 
@@ -366,7 +352,7 @@ The Checkout App provides the structure for users to create an order and purchas
 |original_bag|a dictionary of items in the bag and quantities|TextField|
 |stripe_pid|a unique character string to communicate with Stripe|CharField|
 
-##### OrderLineItem
+#### OrderLineItem
 - The OrderLineItem model represents details about each product in any given order (Order).
 - The model contains a model method to update the lineitem_total if the quantity is changed.
 
@@ -378,6 +364,24 @@ The Checkout App provides the structure for users to create an order and purchas
 |lineitem_total|the total cost of this line item|DecimalField|
 
 [Back to top](#spaceport)
+
+### Pages
+The website has five main pages, with user authentication on XXXX:
+- Homepage (all users): to introduce users to the website and display purchasable products
+- Products (all users): to display all products available to purchase, with sorting and filtering facilities
+- Product Detail (all users): to provide additional detail about a specific product and facilities to add the product to the shopping basket
+- Shopping basket (authenticated user): to display all products in a user's shopping basket
+- Checkout (authenticated user): to display a form to submit payment for purchasing contents in shopping basket
+
+The additional pages are as follows:
+- Checkout Confirmation: to display details of a successful checkout
+- Review/Rating: for users to delete pipelines
+
+The website was designed to be simple, clear and uncluttered, basic in structure, and easy to navigate.
+Bootstrap was used to aid responsiveness, as well as media queries in CSS.  Javascript provides interactive features to enhance user experience.
+
+
+
 
 ## Style
 
