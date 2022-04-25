@@ -2,147 +2,150 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-5" style="padding-top: 100px; padding-bottom: 100px;">
-    <h2>My Profile</h2>
-    <hr>
+<div class="container my-5">
+    <div class="margin">
+        <h2>My Profile</h2>
+        <hr>
 
-    <h5 class="mt-5 mb-2">Account Details</h5>
-    <div class="row">
-        <div class="col-12 col-md-6">
-            <table class="table table-borderless w-100">
-                <tr>
-                    <td class="fw-bold">Username</td>
-                    <td>{{request.user}}</td>
-                    <td><a href="{% url 'account_logout' %}">Log out</a></td>
-                </tr>
-                <tr>
-                    <td class="fw-bold">Password</td>
-                    <td>**********</td>
-                    <td><a href="{% url 'account_change_password' %}">Change password</a></td>
-                </tr>
-                <tr>
-                    <td class="fw-bold">Email</td>
-                    <td>{{user_profile.email}}</td>
-                </tr>
-                <tr>
-                    <td class="fw-bold">Account Created</td>
-                    <td>{{user_profile.date_joined|date:'d M Y'}}</td>
-                    <td><a href="#">Delete account</a></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <h5 class="mt-5 mb-2">Default Information</h5>
-    <div class="row">
-        <div class="col-12 col-md-8 col-lg-6">
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{form.as_table}}
-                <button class="black-button" type="submit">Update Details</button>
-            </form>
-        </div>
-    </div>
-
-    <h5 class="mt-5 mb-2">Order History</h5>
-    {% if orders.count == 0 %}
-    <p>You have no previous orders.</p>
-    {% else %}
-    <p>{{orders.count}} orders</p>
-
-    <div id="profile-collapse-headers" class="row text-center">
-        <div class="col-md-6">
-            <p>Order Reference</p>
-        </div>
-        <div class="col-md-3">
-            <p>Order Date</p>
-        </div>
-        <div class="col-md-3">
-            <p>Order Total</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            {% for order in orders %}
-            <a class="order-history-dropdown" data-bs-toggle="collapse" href="#multiCollapseExample{{order.order_ref}}"
-                role="button" aria-expanded="false" aria-controls="multiCollapseExample{{order.order_ref}}">
-                <div class="hover-black row text-center border border-dark my-3 mx-2 p-3">
-                    <div class="col-12 col-md-6 fs-6 fs-md-3">{{order.order_ref}}</div>
-                    <div class="col-12 col-md-3">{{order.date|date:'d M Y'}}</div>
-                    <div class="col-12 col-md-3">£ {{order.grand_total}}</div>
-                </div>
-            </a>
-
-            <div class="collapse multi-collapse mx-2 my-0 py-0" id="multiCollapseExample{{order.order_ref}}">
-                <div class="row text-center">
-                    <div class="col"></div>
-                    <div class="col">Product</div>
-                    <div class="col">Quantity</div>
-                    <div class="col">Subtotal</div>
-                </div>
-                {% for item in line_items %}
-                {% if item.order.order_ref == order.order_ref %}
-                <div class="row align-items-center py-2 text-center">
-                    <div class="col">
-                        <img style="height: 100px; width: 100px;" src="{{item.product.image1_source_url}}">
-                    </div>
-                    <div class="col"><a
-                            href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}}</a>
-                    </div>
-                    <div class="col">{{item.quantity}}</div>
-                    <div class="col">£ {{item.lineitem_total}}</div>
-                </div>
-                {% else %}
-                {% endif %}
-                {% endfor %}
-                <div class="row py-3">
-                    <div class="col-12 col-md-6 my-2">
-                        <p class="fw-bold text-center">Delivery Information</p>
-                        <ul class="list-group border-0">
-                            <li class="list-group-item border-0 py-1">{{order.full_name}}</li>
-                            <li class="list-group-item border-0 py-1">{{order.phone_num}}</li>
-                            <li class="list-group-item border-0 py-1">{{order.street_address_1}}</li>
-                            <li class="list-group-item border-0 py-1">{{order.street_address_2}}</li>
-                            <li class="list-group-item border-0 py-1">{{order.town_or_city}}</li>
-                            <li class="list-group-item border-0 py-1">{{order.county}}</li>
-                            <li class="list-group-item border-0 py-1">{{order.postcode}}</li>
-                            <li class="list-group-item border-0 py-1">{{order.country}}</li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-md-6 my-2">
-                        <p class="fw-bold text-center">Billing Details</p>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>Order total</td>
-                                    <td>£ {{order.order_total}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Delivery</td>
-                                    <td>£ {{order.delivery_cost}}</td>
-                                </tr>
-                                <tr class="fw-bold">
-                                    <td>Grand total</td>
-                                    <td>£ {{order.grand_total}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <h5 class="mt-5 mb-2">Account Details</h5>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <table class="table table-borderless w-100">
+                    <tr>
+                        <td class="fw-bold">Username</td>
+                        <td>{{request.user}}</td>
+                        <td><a href="{% url 'account_logout' %}">Log out</a></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Password</td>
+                        <td>**********</td>
+                        <td><a href="{% url 'account_change_password' %}">Change password</a></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Email</td>
+                        <td>{{user_profile.email}}</td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Account Created</td>
+                        <td>{{user_profile.date_joined|date:'d M Y'}}</td>
+                        <td><a href="#">Delete account</a></td>
+                    </tr>
+                </table>
             </div>
-            {% endfor %}
         </div>
-    </div>
 
-    <div class="row py-2">
-        <div class="col col-md-6 offset-md-3 d-flex">
-            <hr class="flex-grow-1">
-            <p class="text-center px-2 px-md-3 px-xl-5 fw-bold">End of order history</p>
-            <hr class="flex-grow-1">
+        <h5 class="mt-5 mb-2">Default Information</h5>
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form.as_table}}
+                    <button class="black-button" type="submit">Update Details</button>
+                </form>
+            </div>
         </div>
+
+        <h5 class="mt-5 mb-2">Order History</h5>
+        {% if orders.count == 0 %}
+        <p>You have no previous orders.</p>
+        {% else %}
+        <p>{{orders.count}} orders</p>
+
+        <div id="profile-collapse-headers" class="row text-center">
+            <div class="col-md-6">
+                <p>Order Reference</p>
+            </div>
+            <div class="col-md-3">
+                <p>Order Date</p>
+            </div>
+            <div class="col-md-3">
+                <p>Order Total</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                {% for order in orders %}
+                <a class="order-history-dropdown" data-bs-toggle="collapse"
+                    href="#multiCollapseExample{{order.order_ref}}" role="button" aria-expanded="false"
+                    aria-controls="multiCollapseExample{{order.order_ref}}">
+                    <div class="hover-black row text-center border border-dark my-3 mx-2 p-3">
+                        <div class="col-12 col-md-6 fs-6 fs-md-3">{{order.order_ref}}</div>
+                        <div class="col-12 col-md-3">{{order.date|date:'d M Y'}}</div>
+                        <div class="col-12 col-md-3">£ {{order.grand_total}}</div>
+                    </div>
+                </a>
+
+                <div class="collapse multi-collapse mx-2 my-0 py-0" id="multiCollapseExample{{order.order_ref}}">
+                    <div class="row text-center">
+                        <div class="col"></div>
+                        <div class="col">Product</div>
+                        <div class="col">Quantity</div>
+                        <div class="col">Subtotal</div>
+                    </div>
+                    {% for item in line_items %}
+                    {% if item.order.order_ref == order.order_ref %}
+                    <div class="row align-items-center py-2 text-center">
+                        <div class="col">
+                            <img style="height: 100px; width: 100px;" src="{{item.product.image1_source_url}}">
+                        </div>
+                        <div class="col"><a
+                                href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}}</a>
+                        </div>
+                        <div class="col">{{item.quantity}}</div>
+                        <div class="col">£ {{item.lineitem_total}}</div>
+                    </div>
+                    {% else %}
+                    {% endif %}
+                    {% endfor %}
+                    <div class="row py-3">
+                        <div class="col-12 col-md-6 my-2">
+                            <p class="fw-bold text-center">Delivery Information</p>
+                            <ul class="list-group border-0">
+                                <li class="list-group-item border-0 py-1">{{order.full_name}}</li>
+                                <li class="list-group-item border-0 py-1">{{order.phone_num}}</li>
+                                <li class="list-group-item border-0 py-1">{{order.street_address_1}}</li>
+                                <li class="list-group-item border-0 py-1">{{order.street_address_2}}</li>
+                                <li class="list-group-item border-0 py-1">{{order.town_or_city}}</li>
+                                <li class="list-group-item border-0 py-1">{{order.county}}</li>
+                                <li class="list-group-item border-0 py-1">{{order.postcode}}</li>
+                                <li class="list-group-item border-0 py-1">{{order.country}}</li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-6 my-2">
+                            <p class="fw-bold text-center">Billing Details</p>
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>Order total</td>
+                                        <td>£ {{order.order_total}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Delivery</td>
+                                        <td>£ {{order.delivery_cost}}</td>
+                                    </tr>
+                                    <tr class="fw-bold">
+                                        <td>Grand total</td>
+                                        <td>£ {{order.grand_total}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="row py-2">
+            <div class="col col-md-6 offset-md-3 d-flex">
+                <hr class="flex-grow-1">
+                <p class="text-center px-2 px-md-3 px-xl-5 fw-bold">End of order history</p>
+                <hr class="flex-grow-1">
+            </div>
+        </div>
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 
 {% endblock %}

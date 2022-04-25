@@ -51,10 +51,11 @@ def bag_contents(request):
     else:
         free_delivery_products = ""
 
-    products_not_in_bag = Product.objects.all()
-
+    excludes = []
     for item in bag_items:
-        products_not_in_bag.exclude(pk=item['item_id'])
+        excludes.append(int(item['item_id']))
+
+    products_not_in_bag = Product.objects.exclude(pk__in=excludes)
 
     context = {
         'bag_items': bag_items,

@@ -4,6 +4,8 @@
 {% block content %}
 <div class="container">
     <div class="margin">
+        <h2>Checkout</h2>
+
         <div class="row py-3 pt-5">
 
             <!-- order form delivery and billing details -->
@@ -94,7 +96,7 @@
             <!-- list products in bag for reference -->
             <div class="col-12 col-lg-8 order-lg-3">
 
-                <div class="d-flex py-3">
+                <div class="d-flex py-3 px-md-3 px-lg-5">
                     <hr class="flex-grow-1">
                     <h3 class="text-center px-2 px-md-3 px-xl-5">Bag</h3>
                     <hr class="flex-grow-1">
@@ -134,13 +136,13 @@
     var stripe_sk = document.getElementById('id_stripe_sk').textContent.slice(1, -1);
 
     // set up stripe element
-    var stripe = Stripe(stripe_pk)
+    var stripe = Stripe(stripe_pk);
     var elements = stripe.elements();
 
     // set up card and mount card to DOM
-    var card = elements.create('card')
-    var stripe_div = document.getElementById('stripe-element')
-    card.mount('#stripe-element')
+    var card = elements.create('card');
+    var stripe_div = document.getElementById('stripe-element');
+    card.mount('#stripe-element');
 
     // add error message if card details invalid
     card.addEventListener('change', function (event) {
@@ -155,7 +157,7 @@
     })
 
     // submit the form
-    var form = document.getElementById('checkout-form')
+    var form = document.getElementById('checkout-form');
     form.addEventListener('submit', function (ev) {
 
         // prevent posting form
@@ -163,19 +165,19 @@
 
         // disable card input and submit button
         card.update({
-            'disabled': true
+            'disabled': true;
         })
-        checkoutSubmit = document.getElementById('checkout-form-submit')
-        checkoutSubmit.disabled = true
+        checkoutSubmit = document.getElementById('checkout-form-submit');
+        checkoutSubmit.disabled = true;
 
         // create variables to send to view
-        var saveInfo = document.getElementById('save_info').checked
-        var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value
+        var saveInfo = document.getElementById('save_info').checked;
+        var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
         var url = '/checkout/cache_checkout_data/';
         var postData = {
             'stripe_sk': stripe_sk,
             'save_info': saveInfo,
-        }
+        };
 
         // post save info to cache checkout view
         let response = fetch(url, {
@@ -223,15 +225,15 @@
                     // if error in checkout to stripe
                     if (result.error) {
                         console.log(event)
-                        var error_message = `${event.error.message}`
-                        cardError.append(error_message)
+                        var error_message = `${event.error.message}`;
+                        cardError.append(error_message);
                         cardError.style.color = "red";
 
                         // re-enable submit and card
                         card.update({
-                            'disabled': false
+                            'disabled': false;
                         })
-                        checkoutSubmit.disabled = false
+                        checkoutSubmit.disabled = false;
 
                         // if no error in stripe checkout, submit form
                     } else {
