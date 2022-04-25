@@ -171,7 +171,7 @@ Decent UX/UI visibility is achieved on the website by providing obvious prompts 
 As users have significant interaction with the site, feedback on their actions was considered important.  This was provided by:
 
 - **in-line feedback** on forms, to emphasise invalid fields
-- **notifications** on notable actions, such as adding a product to their basket
+- **notifications** on notable actions, such as adding a product to their basket.  This was achieved with Bootstrap 'toasts'
 - **possible actions** available to them, 
 - **communicating the context**, such as
 
@@ -309,12 +309,73 @@ The Profiles App provides the user the ability to create their website profile, 
 |average_rating|average of all ratings the product has received|DecimalField|
 
 ##### Category
+
 ##### Plant Category
+
+
 ##### Recently Viewed
+- The Recently Viewed model provides a short list of products the user has recently viewed (has visited the product detail page). 
+
+| Field | Description | Field type|
+|-------|-------------|-----------|
+|product|the product which was recently viewed|Foreign Key (Product)|
+|user|who recently viewed the product|Foreign Key (User)|
+|viewed|when the user viewed the product|DateTimeField|
+
 ##### Product Review
+- The Product Review model provides customer reviews and ratings about a specific product.
+
+| Field | Description | Field type|
+|-------|-------------|-----------|
+|user|the authenticated user|Foreign Key (User)|
+|product|the product being reviewed|Foreign Key (Product)|
+|review|comments from the user who has purchased the product|TextField|
+|rating|the user's rating for the product between 1 and 5|IntegerField|
+|review_time|when the user left the review|DateTimeField|
+|review_time_ago|how many days/weeks/months ago the user left the review|CharField|
+|liked|whether the user 'likes' the product|BooleanField|
 
 #### Bag App
+The Bag App serves to provide a temporary session to allow users to add products to their bag.  
+It contains no models. 
+
 #### Checkout App
+The Checkout App provides the structure for users to create an order and purchase products.
+
+##### Order
+- The Order model provides details about orders which the user submitted.
+- This model contains several model methods to create the unique character order reference and update costs automatically.
+
+| Field | Description | Field type|
+|-------|-------------|-----------|
+|order_ref|a unique 32 digit character string to provide order reference to the user|CharField|
+|user_profile|the user who submitted the order|ForeignKey (UserProfile)|
+|full_name|the name *of the user who submitted the order|CharField|
+|email|the email *||
+|phone_num|the phone number *|CharField|
+|street_address_1|the street address *|CharField|
+|street_address_2|the street address *|CharField|
+|town_or_city|the town *|CharField|
+|county|the county *|CharField|
+|postcode|the postcode *|CharField|
+|country|the country *|CountryField|
+|date|the date and time the order was submitted|DateTimeField|
+|delivery_cost|the delivery cost of the order|DecimalField|
+|order_total|the total cost of all products|DecimalField|
+|grand_total|the sum of the delivery_cost and order_total|DecimalField|
+|original_bag|a dictionary of items in the bag and quantities|TextField|
+|stripe_pid|a unique character string to communicate with Stripe|CharField|
+
+##### OrderLineItem
+- The OrderLineItem model represents details about each product in any given order (Order).
+- The model contains a model method to update the lineitem_total if the quantity is changed.
+
+| Field | Description | Field type|
+|-------|-------------|-----------|
+|order|the order this line item is in reference to|ForeignKey (Order)|
+|product|the product on the order|ForeignKey (Product)|
+|quantity|the quantity of this item on the order|IntegerField|
+|lineitem_total|the total cost of this line item|DecimalField|
 
 [Back to top](#spaceport)
 
