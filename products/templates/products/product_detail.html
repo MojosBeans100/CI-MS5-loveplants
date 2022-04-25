@@ -381,6 +381,7 @@
 {% endblock content %}
 
 {% block postloadjs %}
+{{block.super}}
 <script>
     var avgRating = JSON.parse(document.getElementById('avg_rating').textContent);
     var int = Number.isInteger(avgRating);

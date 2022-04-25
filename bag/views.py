@@ -7,14 +7,13 @@ def view_bag(request):
     """
     A view to render the contents of the basket
     """
-
-    liked_products = ProductReview.objects.filter(user=request.user,
-                                                  liked=True)
-
     liked_products_list = []
+    if request.user.is_authenticated:
 
-    for i in liked_products:
-        liked_products_list.append(i.product.friendly_name)
+        liked_products = ProductReview.objects.filter(user=request.user,
+                                                      liked=True)
+        for i in liked_products:
+            liked_products_list.append(i.product.friendly_name)
 
     context = {
         'liked_list': liked_products_list

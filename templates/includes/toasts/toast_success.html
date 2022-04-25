@@ -1,4 +1,4 @@
-<div class="toast show" role="alert" aria-live="assertive" aria-atomic="true" data-bs-animation="autohide">
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="container">
     <div class="toast-header">
       <p><em>{{message}}</em></p>
@@ -18,7 +18,7 @@
       {% endif %}
       {% endfor %}
 
-      <button type="button" onclick="closeToast();" class="btn-close" data-bs-dismiss="toast hide" aria-label="Close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
 
     {% if product_count == 0 %}
