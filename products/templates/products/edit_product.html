@@ -9,10 +9,9 @@
 
             <h2>Edit <strong>{{product.friendly_name}}</strong></h2>
             <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
-            <a href="{% url 'delete_product' product.id %}">Delete - are you sure</a>
             <hr>
 
-            <div class="col-6">
+            <div class="col-12 col-lg-6">
                 <form method="POST" action="{% url 'edit_product' product.id %}">
                     {% csrf_token %}
 
@@ -36,14 +35,18 @@
 
                         <div class="row text-center">
                             <div class="col">
-                                <input type="checkbox" name="rare" value="true" id="{{form.rare.id_for_label}}"><br>
                                 {{form.rare.label}} <i class="fa-solid fa-gem"></i>
+                                {{form.rare}}
+                                <!-- <input type="checkbox" name="rare" value="true" id="{{form.rare.id_for_label}}"><br>
+                                {{form.rare.label}} <i class="fa-solid fa-gem"></i> -->
                             </div>
 
                             <div class="col">
-                                <input type="checkbox" name="popular" value="true"
-                                    id="{{form.popular.id_for_label}}"><br>
                                 {{form.popular.label}} <i class="fa-solid fa-bolt-lightning"></i>
+                                {{form.popular}}
+                                <!-- <input type="checkbox" name="popular" value="true"
+                                    id="{{form.popular.id_for_label}}"><br>
+                                {{form.popular.label}} <i class="fa-solid fa-bolt-lightning"></i> -->
                             </div>
                         </div>
                     </fieldset>
@@ -100,7 +103,7 @@
                     <fieldset>
                         <legend class="pt-5">Details</legend>
 
-                        <i class="pe-2 fa-solid fa-ruler-horizontal"></i>{{form.pot_size.label}}
+                        <i class="pe fa-solid fa-glass"></i>{{form.pot_size.label}}
                         {{form.pot_size}}
 
                         <i class="pe-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
@@ -179,18 +182,18 @@
                             <p class="text-center">Plant maintenance</p>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
-                                    for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
+                                    for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
                                     <em>can stand a little neglect</em></label>
-                                {{form.care_required.0.tag}}
+                                {{form.care_required.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
-                                    for="{{form.care_required.3.id_for_label}}">
+                                    for="{{form.care_required.2.id_for_label}}">
                                     <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i
                                         class="fa-solid fa-heart"></i>
                                     <br><em>requires frequent care</em>
                                 </label>
-                                {{form.care_required.1.tag}}
+                                {{form.care_required.2.tag}}
                             </div>
                         </div>
 
@@ -225,20 +228,48 @@
                     </fieldset>
 
                     <div class="row">
-                        <!-- <div class="col">
-                            <button class="black-button w-100" name="save-form">Save <i
-                                    class="fa-solid fa-floppy-disk"></i></button>
-                            <p><em><small>product will be saved</small></em></p>
-                        </div> -->
-                        <div class="col">
-                            <button type="submit" class="black-button w-100">Save changes <i
-                                    class="fa-solid fa-floppy-disk"></i></button>
+                        <div class="col d-flex justify-content-evenly">
+                            <button type="button" class="btn admin w-40 text-white" data-bs-toggle="modal" data-bs-target="#myModal">
+                                Delete product <i class="ps-2 fa-solid fa-trash-can"></i>
+                            </button>
+                            <button type="submit" class="btn admin w-40 text-white">Save changes <i
+                                    class="ps-2 fa-solid fa-floppy-disk"></i></button>
                         </div>
                     </div>
 
                 </form>
             </div>
+
+            <div class="col-12 border col-lg-6 sticky-lg-top">
+                <img class="id_image1_source_url" style="height: 350px; width: 100%;"
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
+                                <p class="text-center"><em><small>main image</small></em></p>
+            </div>
         </div>
+
+        <!-- delete modal -->
+        <div class="modal" id="myModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete product <i class="fa-solid fa-trash-can"></i></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirm deletion of {{product.friendly_name}}</p>
+                        <p>Products can be removed from the live website without deleting them</p>
+
+                        <img class="border" src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650908135/LovePlants/Products/liveonsite_kfqhzu.jpg">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn admin text-white" data-bs-dismiss="modal">Close</button>
+                        <a href="{% url 'delete_product' product.id %}"></a><button type="button"
+                            class="black-button"><i class="pe-3 fa-solid fa-exclamation"></i> Delete Product</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -246,30 +277,41 @@
 
 {% block postloadjs %}
 <script>
+    /*jshint esversion: 6 */
+
+    var myModal = document.getElementById('myModal');
+    var myInput = document.getElementById('myInput');
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
+
+    var i;
+
     document.addEventListener('DOMContentLoaded', () => {
-        var sunlight = document.getElementsByName('sunlight')
-        for (i=0; i<sunlight.length; i++) {
+        var sunlight = document.getElementsByName('sunlight');
+        for (i = 0; i < sunlight.length; i++) {
             if (sunlight[i].checked) {
                 sunlight[i].parentNode.style.color = 'orange';
             }
         }
-        var watering = document.getElementsByName('watering')
-        for (i=0; i<watering.length; i++) {
+        var watering = document.getElementsByName('watering');
+        for (i = 0; i < watering.length; i++) {
             if (watering[i].checked) {
                 watering[i].parentNode.style.color = 'orange';
             }
         }
-        var care_req = document.getElementsByName('care_required')
-        for (i=0; i<care_req.length; i++) {
+        var care_req = document.getElementsByName('care_required');
+        for (i = 0; i < care_req.length; i++) {
             if (care_req[i].checked) {
                 care_req[i].parentNode.style.color = 'orange';
             }
         }
 
-        uploadImage(document.getElementsByName('image1_source_url')[0])
-        uploadImage(document.getElementsByName('image2_source_url')[0])
-        uploadImage(document.getElementsByName('image3_source_url')[0])
-    })
+        uploadImage(document.getElementsByName('image1_source_url')[0]);
+        uploadImage(document.getElementsByName('image2_source_url')[0]);
+        uploadImage(document.getElementsByName('image3_source_url')[0]);
+    });
 
 
     /*
@@ -285,15 +327,15 @@
     }
 
     function uploadImage(element) {
-        var src = element.value
-        var image_id = element.id
-        var pic = document.getElementsByClassName(element.id)[0]
+        var src = element.value;
+        var image_id = element.id;
+        var pic = document.getElementsByClassName(element.id)[0];
 
         if (src == "") {
             pic.src =
-                'https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg'
+                'https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg';
         } else {
-            pic.src = src
+            pic.src = src;
         }
     }
 </script>

@@ -265,6 +265,10 @@ input[type=submit] {
     height: 0;
 }
 
+input[type=checkbox]:checked {
+    accent-color: #069b8e !important;
+}
+
 /* PRODUCT DETAIL MEDIA QUERIES */
 
 @media (min-width: 576px) {
@@ -349,7 +353,7 @@ input[type=number] {
     right: 10px;
     z-index: 9999;
     max-height: 80vh;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .toast-hr {

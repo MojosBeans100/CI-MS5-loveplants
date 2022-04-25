@@ -200,12 +200,12 @@ class Product(models.Model):
         blank=True
     )
     rare = models.BooleanField(
+        default=False,
         null=True,
-        blank=True
         )
     popular = models.BooleanField(
+        default=False,
         null=True,
-        blank=True
         )
     live_on_site = models.BooleanField(
         default=False,

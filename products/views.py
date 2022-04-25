@@ -427,10 +427,10 @@ def admin_edit_product(request, id):
     """
     Allow admin users to edit product details
     """
+    print(Product.objects.get(id=id).care_required)
 
     if request.user.is_superuser:
         product = Product.objects.get(id=id)
-        print(product.live_on_site)
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
