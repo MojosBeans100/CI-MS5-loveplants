@@ -345,9 +345,11 @@ input[type=number] {
 
 .toast {
     position: absolute;
-    top: 100px;
-    right: 15px;
+    top: 90px;
+    right: 10px;
     z-index: 9999;
+    max-height: 80vh;
+    overflow: scroll;
 }
 
 .toast-hr {

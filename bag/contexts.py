@@ -1,17 +1,17 @@
-
-
-from django.conf import settings
-from products.models import Product
-from django.shortcuts import get_object_or_404
+# 3rd party imports
 from decimal import Decimal
-# context processor
-# make context dictionary available to all templates across
-# application
-# 'request' is a built in context processor
+
+# Django imports
+from django.conf import settings
+from django.shortcuts import get_object_or_404
+
+# Local imports
+from products.models import Product
 
 
 def bag_contents(request):
     """
+    Create session of bag contents
     """
 
     bag_items = []
@@ -43,7 +43,6 @@ def bag_contents(request):
 
     grand_total = delivery + total
 
-    # look for products around the price of the free delivery delta
     if free_delivery_delta > 0:
         free_delivery_products = products.filter(
                                     price__gte=free_delivery_delta,
@@ -52,7 +51,6 @@ def bag_contents(request):
     else:
         free_delivery_products = ""
 
-    # look for products not already in the basket for recommendations
     products_not_in_bag = Product.objects.all()
 
     for item in bag_items:

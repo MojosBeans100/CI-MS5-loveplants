@@ -68,8 +68,6 @@ def view_checkout(request):
         order_form = OrderForm(form_info)
 
         if order_form.is_valid():
-
-            # remember to remove items from stock
             order = order_form.save(commit=False)
             pid = request.POST.get('stripe_sk').split('_secret')[0]
             order.stripe_pid = pid
@@ -77,7 +75,6 @@ def view_checkout(request):
             order.save()
 
             for item_id, quantity in bag.items():
-
                 product = Product.objects.get(id=item_id)
                 order_line_item = OrderLineItem(
                     order=order,
@@ -85,9 +82,6 @@ def view_checkout(request):
                     quantity=quantity,
                 )
                 order_line_item.save()
-
-                # product.stock_quantity = product.stock_quantity - quantity
-                # product.save()
 
             return redirect(reverse(
                             'checkout_success',
@@ -144,7 +138,6 @@ def checkout_success(request, order_ref):
     A view to display order details when checkout is successful
     """
 
-    # does this work?
     save_info = request.session.get('save_info')
     print(request.session.items())
     order = get_object_or_404(Order, order_ref=order_ref)

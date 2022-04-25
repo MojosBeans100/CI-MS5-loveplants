@@ -9,6 +9,7 @@ from .models import Order
 
 class OrderForm(forms.ModelForm):
     """
+    Create a form of the order model in the checkout template
     """
 
     class Meta:

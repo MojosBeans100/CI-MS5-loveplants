@@ -1,6 +1,11 @@
-from django.shortcuts import render, redirect, reverse
-from products.models import Product, ProductReview
+# 3rd party imports
+
+# Django imports
 from django.contrib import messages
+from django.shortcuts import render, redirect, reverse
+
+# Local imports
+from products.models import Product, ProductReview
 
 
 def view_bag(request):
@@ -88,7 +93,8 @@ def delete_bag(request, item_id):
     bag = request.session.get('bag', {})
     bag.pop(item_id)
 
-    remove_product_message = (f"Removed {delete_product.friendly_name}.")
+    remove_product_message = (f"Removed {delete_product.friendly_name} "
+                              f"from bag.")
 
     messages.success(request,
                      remove_product_message,

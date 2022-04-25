@@ -45,7 +45,7 @@
                             <div class="row py-2">
                                 <div class="col-5">
                                     <a href="{% url 'product_detail' item.product.id %}"><img class="bag-images"
-                                            src="{{item.product.image1_source_url}}"></a>
+                                            src="{{item.product.image1_source_url}}" alt="{{product.friendly_name}}"></a>
 
                                 </div>
 
@@ -139,7 +139,8 @@
                         <div class="col">
                             <a href="{% url 'view_checkout' %}"><button style="height: 100%; width:100%;"
                                     class="black-button text-center">Continue to
-                                    checkout</button></a>
+                                    checkout <i
+                                    class="ps-2 fa-solid fa-lock"></i></button></a>
                         </div>
                     </div>
                 </div>
@@ -162,7 +163,7 @@
                     <div class="free-delivery-products">
                         <button type="submit" class="add-button">Quick Add</button>
                         <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
-                                src="{{product.image1_source_url}}"></a>
+                                src="{{product.image1_source_url}}" alt="{{product.friendly_name}}"></a>
                     </div>
                 </form>
                 <a href="{% url 'product_detail' product.id %}">
@@ -187,7 +188,7 @@
                     <div class="free-delivery-products">
                         <button type="submit" class="add-button">Quick Add</button>
                         <a href="{% url 'product_detail' product.id %}"><img class="free-delivery-img"
-                                src="{{product.image1_source_url}}"></a>
+                                src="{{product.image1_source_url}}" alt="{{product.friendly_name}}"></a>
 
                     </div>
                 </form>
