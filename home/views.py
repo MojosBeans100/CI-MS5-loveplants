@@ -1,5 +1,9 @@
+# 3rd party imports
+
+# Django imports
 from django.shortcuts import render
-from products.models import Product
+
+# Local imports
 
 
 def index(request):

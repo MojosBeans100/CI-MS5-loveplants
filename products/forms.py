@@ -3,7 +3,7 @@
 # Django imports
 from django import forms
 from django.forms import (Textarea, RadioSelect,
-                          Select, TextInput, NumberInput)
+                          TextInput, NumberInput)
 
 # Local imports
 from .models import ProductReview, Product
@@ -87,8 +87,8 @@ class ProductForm(forms.ModelForm):
             if field_name != 'live_on_site':
                 field.widget.attrs['class'] = 'form-control mb-4'
 
-            if (field_name == 'image1_source_url'
-                or field_name == 'image2_source_url'
-                or field_name == 'image3_source_url'):
+            if (field_name == 'image1_source_url' or
+                    field_name == 'image2_source_url' or
+                    field_name == 'image3_source_url'):
 
                 field.widget.attrs['onchange'] = 'uploadImage(this);'

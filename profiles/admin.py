@@ -4,6 +4,6 @@
 from django.contrib import admin
 
 # Local imports
-from .models import UserProfile, User
+from .models import UserProfile
 
 admin.site.register(UserProfile)

@@ -12,6 +12,7 @@ from django.dispatch import receiver
 
 class UserProfile(models.Model):
     """
+    A class to allow users to create a profile
     """
 
     user = models.OneToOneField(
@@ -53,16 +54,15 @@ class UserProfile(models.Model):
         null=True,
         blank=True
         )
-    
+
     def __str__(self):
         return self.user.username
-
-# when User model saved, either create or update the related UserProfile model
 
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
+    Auto create/update user profile upon user creating/updating
     """
 
     if created:

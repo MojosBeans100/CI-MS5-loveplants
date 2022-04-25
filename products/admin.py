@@ -1,4 +1,4 @@
-# 3rd party imports 
+# 3rd party imports
 
 # Import Django
 from django.contrib import admin
@@ -43,5 +43,3 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
     list_filter = ('category', 'live_on_site')
-
-

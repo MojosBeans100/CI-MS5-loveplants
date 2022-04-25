@@ -9,6 +9,7 @@ from .models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     """
+    A class to allow users to update their default info
     """
 
     class Meta:

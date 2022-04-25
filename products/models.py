@@ -226,6 +226,7 @@ class Product(models.Model):
 
 class RecentlyViewed(models.Model):
     """
+    A models to allow users to see what they've recently viewed
     """
     product = models.ForeignKey(
         Product,
@@ -242,6 +243,7 @@ class RecentlyViewed(models.Model):
 
 class ProductReview(models.Model):
     """
+    A model to allow users to leave a review for a product
     """
     user = models.ForeignKey(
         User,

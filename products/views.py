@@ -14,7 +14,6 @@ from products.models import (
                     Category,
                     ProductReview,
                     PlantCategory,
-                    RecentlyViewed,
                     User)
 from .forms import ProductReviewForm, ProductForm
 from profiles.models import UserProfile
