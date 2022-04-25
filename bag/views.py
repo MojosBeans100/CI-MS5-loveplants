@@ -36,7 +36,7 @@ def add_to_bag(request, item_id):
     product = Product.objects.get(id=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    add_message = f'Added {quantity} of {product.friendly_name} to basket'
+    add_message = f'Added {quantity}x "{product.friendly_name}" to basket'
     bag = request.session.get('bag', {})
 
     if quantity > items_in_stock:
