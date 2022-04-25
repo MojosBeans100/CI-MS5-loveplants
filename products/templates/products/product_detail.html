@@ -383,9 +383,12 @@
 {% block postloadjs %}
 {{block.super}}
 <script>
+    var i;
     var avgRating = JSON.parse(document.getElementById('avg_rating').textContent);
     var int = Number.isInteger(avgRating);
     var row = document.getElementById('append-star');
+    var data = document.createElement('td');
+    
 
     displayRating();
 
@@ -397,8 +400,6 @@
         // if the rating is an integer, display that number of stars
         if (int) {
             for (i = 0; i < avgRating; i++) {
-                var data = document.createElement('td');
-                data = document.createElement('td');
                 data.innerHTML = '<i class="fa-solid fa-star"></i>';
                 row.append(data);
             }
@@ -406,13 +407,10 @@
             // if not, add a half star
         } else {
             for (i = 0; i < avgRating - 1; i++) {
-                var data = document.createElement('td');
                 data = document.createElement('td');
                 data.innerHTML = '<i class="fa-solid fa-star"></i>';
                 row.append(data);
             }
-
-            var data = document.createElement('td');
             data.innerHTML = '<i class="fa-solid fa-star-half"></i>';
             row.append(data);
         }
@@ -432,17 +430,17 @@
     function colorRating(element) {
         var star_elements = document.getElementsByClassName('user-rating');
         for (i = 0; i < star_elements.length; i++) {
-            star_elements[i].innerHTML = '<i class="fa-regular fa-star"></i>'
+            star_elements[i].innerHTML = '<i class="fa-regular fa-star"></i>';
         }
 
         var this_star = element;
         var value_of_radio = this_star.nextElementSibling.value;
-        var i = 0
+        var i = 0;
         while (i < value_of_radio) {
             star_elements[i].innerHTML = '<i class="fa-solid fa-star"></i>';
             i++;
         }
-        document.getElementById('users-rating').innerHTML = `${value_of_radio}/5`
+        document.getElementById('users-rating').innerHTML = `${value_of_radio}/5`;
     }
 </script>
 {% endblock %}
