@@ -266,17 +266,17 @@
 
 {% block postloadjs %}
 <script>
-
-    
+    /*jshint esversion: 6 */
+    var i;
 
     document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('id_sunlight_2').checked = true
-        document.getElementById('id_sunlight_2').parentNode.style.color = 'orange'
-        document.getElementById('id_watering_2').checked = true
-        document.getElementById('id_watering_2').parentNode.style.color = 'orange'
-        document.getElementById('id_care_required_2').checked = true
-        document.getElementById('id_care_required_2').parentNode.style.color = 'orange'
-    })
+        document.getElementById('id_sunlight_2').checked = true;
+        document.getElementById('id_sunlight_2').parentNode.style.color = 'orange';
+        document.getElementById('id_watering_2').checked = true;
+        document.getElementById('id_watering_2').parentNode.style.color = 'orange';
+        document.getElementById('id_care_required_2').checked = true;
+        document.getElementById('id_care_required_2').parentNode.style.color = 'orange';
+    });
 
     /*
     Add style to form radio buttons when selected
@@ -291,15 +291,15 @@
     }
 
     function uploadImage(element) {
-        var src = element.value
-        var image_id = element.id
-        var pic = document.getElementsByClassName(element.id)[0]
+        var src = element.value;
+        var image_id = element.id;
+        var pic = document.getElementsByClassName(element.id)[0];
 
         if (src == "") {
             pic.src =
-                'https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg'
+                'https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg';
         } else {
-            pic.src = src
+            pic.src = src;
         }
     }
 </script>
