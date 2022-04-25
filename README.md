@@ -5,56 +5,48 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
 
 # Table of contents
 - [Love Plants](#love-plants)
+- [Table of contents](#table-of-contents)
 - [Project Overview](#project-overview)
 - [UX](#ux)
-    * [Strategy](#strategy)
-        + [Site user goals](#site-user)
-        + [Admin user goals](#admin-user)
-        + [User stories](#user-stories)
-    * [Scope](#scope)
-        + [Sprints](#sprints)
-        + [Epics, Issues, Tasks](#sprints)
-        + [Scope Creep](#scope-creep)
-        + [Requirements](#requirements)
-    * [Structure](#structure)
-        + [Interaction Design (IXD)](#interaction-design)
-        + [Information Architecture (IA)](#information-architecture)
-    * [Skeleton]
-    * [Surface]
-
-    * [Structure](#structure)
-        + [Pages](#pages)
-        + [Database](#database)
-            - [Models](#models)
-    * [Style](#style)
-        + [Wireframes](#wireframes)
-        + [Font](#font)
-        + [Colours](#colours)
-        + [Layout](#layout)
-
+  - [Strategy](#strategy)
+  - [Scope](#scope)
+  - [Structure](#structure)
+  - [Skeleton](#skeleton)
+  - [Surface](#surface)
+- [Database](#database)
+  - [Database Structure](#database-structure)
+  - [Models](#models)
+  - [Style](#style)
+  - [Scope](#scope)
+  - [User Stories Strategy](#user-stories-strategy)
+  - [User Stories](#user-stories)
 - [Features](#features)
-    * [Homepage](#homepage)
-    * [Discover](#discover)
-    * [My Pipelines](#pipelines)
-    * [Detail view](#detail)
-    * [Create Pipeline](#create-a-pipeline)
-    * [Edit](#edit-pipeline)
-    * [Delete](#delete-pipeline)
-    * [Error pages](#error-pages)
-- [Technologies used](#technologies-used)
-    * [HTML/CSS](#htmlcss)
-    * [Javascript](#javascript)
-    * [Python](#python)
-    * [Django](#django)
-    * [Other libraries](#other-libraries)
-    * [APIs](#apis)
+  - [Homepage](#homepage)
+  - [Products](#products)
+  - [Product Detail](#product-detail)
+  - [Bag](#bag)
+  - [Checkout](#checkout)
+  - [Checkout Confirmation](#checkout-confirmation)
+  - [Profile](#profile)
+  - [Liked Products](#liked-products)
+  - [Add Product (admin)](#add-product-admin)
+  - [Edit Product (admin)](#edit-product-admin)
+  - [Copy/duplicate Product (admin)](#copyduplicate-product-admin)
+  - [Error Pages](#error-pages)
+  - [Notifications](#notifications)
+  - [Sign Up](#sign-up)
+  - [Sign In](#sign-in)
+  - [Log Out](#log-out)
+- [Technologies Used](#technologies-used)
+  - [HTML/CSS](#htmlcss)
+  - [Javascript](#javascript)
+  - [Python](#python)
+  - [Django](#django)
+  - [Other Libraries](#other-libraries)
 - [Testing](#testing)
-- [Additional Features](#additional-features)
-    * [UX](#ux-1)
-    * [User Features](#user-features)
-    * [API](#api)
-- [Unfixed Bugs](#unfixed-bugs)
 - [Deployment](#deployment)
+- [Limitations](#limitations)
+  - [Products](#products)
 - [Media](#media)
 - [Credits](#credits)
 - [Acknowledgements](#acknowledgements)
@@ -674,7 +666,6 @@ The project uses [HTML](https://en.wikipedia.org/wiki/HTML) language to build th
 ## Javascript
 [Javascript](https://www.javascript.com/) is included on most pages.  The main functions are:
 
-
 ## Python
 [Python]((https://www.python.org/)) was used for server side coding on the project.
 
@@ -684,14 +675,11 @@ The project uses [HTML](https://en.wikipedia.org/wiki/HTML) language to build th
 - The Django [unit test library](https://docs.djangoproject.com/en/3.2/topics/testing/overview/) was used for unit tests
 - The Django allauth library was used for user authentication.
 
-## APIs
-Two APIs were implemented into the project.
-
 ## Other Libraries
 - Bootstrap 5.0 (https://getbootstrap.com/docs/5.0)
-The project uses the bootstrap library for some UI components in the website (Buttons, Card, Carousel, Modal, Pagination, Navbar),
+The project uses the bootstrap library for some UI components in the website (Buttons, Card, Carousel, Modal, Pagination, Navbar)
 - Postgres (https://www.postgresql.org/)
-The deployed project on Heroku uses a Postgres database,
+The deployed project on Heroku uses a Postgres database
 - Gitpod (https://gitpod.io/)
 Gitpod was used as an IDE for the project.
 - Github (https://github.com/)
@@ -703,23 +691,17 @@ For troubleshooting and debugging of the project code
 - Responsive Design (http://ami.responsivedesign.is/)
 Website for generating the responsive image in this README
 - Python Online Editor (https://www.online-python.com/)
-This software was found useful to perform code without having to, for example, create a new form every time the developer wanted to change something
+This software was found useful to perform code in a practice environment
 - JS Beautifier (https://jsonformatter.org/jsbeautifier)
-This was used frequently to copy in large JSON files from the API to view the contents
+This was used to view large JSON files in a readable format, ie information from Stripe
 - Font Awesome (https://fontawesome.com/)
 Font awesome was used to provide the relevant fonts/icons for the website
+- XXXX other icons
 
-[Back to top](#spaceport)
+[Back to top](#love-plants)
 
 # Testing
 The testing strategy is detailed in [this document](TESTING.md).
-
-# Additional Features
-This section details some additional features which could be added to further develop the website.
-
-
-
-[Back to top](#spaceport)
 
 # Deployment
 ### Local Deployment
@@ -796,7 +778,7 @@ To deploy this application to Heroku, run the following steps.
 
 # Limitations
 ## Products
-To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to source or owner of the image.
+To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to source or owner of the image.  In a true e-commerce store, these URL source fields would not be necessary, as all content is expected to be original. 
 
 # Media
 Images used on the site were sourced from the following sources.  Images which are free to use publicy were desirable, however when this was not possible the images are credited.
@@ -828,25 +810,14 @@ Images used on the site were sourced from the following sources.  Images which a
 Images as acknowledged above
 - [Font Awesome](https://fontawesome.com/) for us of icons
 - [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) documentation for information about how to style the HTML 
-- [W3 Schools](https://www.w3schools.com/) for use of tabbed form and jump to top button
-- [Mapbox](https://www.mapbox.com/) for use of the map feature in Create Pipeline form and detail view
-- [ChartJS 3.7.0](https://www.chartjs.org/docs/latest/) for creation of pipeline timeline
-- [Skywatch](https://www.skywatch.com/) for use of their API
 - [Django 4.0](https://docs.djangoproject.com/en/4.0/) documentation for information about the framework and template syntax
 - [Stack Overflow](https://stackoverflow.com/) for help on a number of programming issues
-- [geoJSON.io](http://geojson.io/#map=2/20.0/0.0) for selecting an AOI and getting a geoJSON output before the map feature was introduced
-- [Patch Plants](https://www.patchplants.com/gb/en/) for website inspiration
-- [Am I Responsive](http://ami.responsivedesign.is/) to create the banner image for this ReadMe
 
 
 # Acknowledgements
 
 I'd like to thank my mentor, Mo Shami, for providing me support throughout the development of this project.
 
-I'd like to thank Paul (Github 'pmeeny'), for the inspiration for a great (although somewhat intimidating!) Readme format to follow.
-
 I'd like to thank tutor support at Code Institute for many hours of technical help.
-
-I'd like to thank Astrosat Ltd, who proposed the project idea and worked with Skywatch to get me access to their API.
 
 I'd like to thank my family for taking time to use my project website and providing me helpful feedback. 
