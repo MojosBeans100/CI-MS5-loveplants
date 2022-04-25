@@ -209,16 +209,23 @@
 {% block postloadjs %}
 {{block.super}}
 <script>
-    let original_quantities = [];
+    /*jshint esversion: 6 */
+
+    var original_quantities = [];
+    var i;
+    var max_values = document.getElementsByClassName('item_quantity');
+    var products_quantities = document.getElementsByClassName('item_quantity');
+    var products_subtotals = document.getElementsByClassName('item_subtotal');
+    var products_prices = document.getElementsByClassName('item_price');
 
     /**
     collect all original quantities for products
     */
     document.addEventListener('DOMContentLoaded', () => {
         updateSubtotals();
-        products_quantities = document.getElementsByClassName('item_quantity')
+        var products_quantities = document.getElementsByClassName('item_quantity');
         for (i = 0; i < products_quantities.length; i++) {
-            original_quantities.push(products_quantities[i].value)
+            original_quantities.push(products_quantities[i].value);
         }
     });
 
@@ -226,8 +233,7 @@
     if user updates an item quantity, update the form
     */
     function userUpdate() {
-        products_quantities = document.getElementsByClassName('item_quantity')
-        update_buttons = document.getElementsByClassName('update-item')
+        var products_quantities = document.getElementsByClassName('item_quantity');
 
         for (i = 0; i < products_quantities.length; i++) {
 
@@ -244,15 +250,15 @@
 
                     // update the subtotals
                     products_subtotals[i].innerHTML = `£ ${((parseInt(products_quantities[i].value)) * (parseFloat(
-                        products_prices[i].innerHTML))).toFixed(2)}`
+                        products_prices[i].innerHTML))).toFixed(2)}`;
 
                     // if quantity is outwith acceptable range
                 } else {
 
                     // remove subtotal and change quantity back to original value
                     products_subtotals[i].innerHTML = `£ ${(original_quantities[i] * (parseFloat(
-                        products_prices[i].innerHTML))).toFixed(2)}`
-                    products_quantities[i].value = original_quantities[i]
+                        products_prices[i].innerHTML))).toFixed(2)}`;
+                    products_quantities[i].value = original_quantities[i];
                 }
 
             }
@@ -263,22 +269,17 @@
     calculate original subtotals on page load
     */
     function updateSubtotals() {
-        products_prices = document.getElementsByClassName('item_price')
-        var products_prices_2 = []
-        products_quantities = document.getElementsByClassName('item_quantity')
-        products_subtotals = document.getElementsByClassName('item_subtotal')
-        max_values = document.getElementsByClassName('item_quantity')
-
+        
         for (i = 0; i < products_prices.length; i++) {
 
             if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <= parseInt(
                     max_values[i].max)) {
 
                 products_subtotals[i].innerHTML = `£ ${((parseInt(products_quantities[i].value)) * (parseFloat(
-                    products_prices[i].innerHTML.replace("£","")))).toFixed(2)}`
+                    products_prices[i].innerHTML.replace("£","")))).toFixed(2)}`;
             } else {
-                products_subtotals[i].innerHTML = ""
-                products_quantities[i].value = original_quantities[i]
+                products_subtotals[i].innerHTML = "";
+                products_quantities[i].value = original_quantities[i];
             }
         }
     }
@@ -287,24 +288,21 @@
     submit the relevant update form
     */
     function updateItem(item_num) {
-        form = document.getElementsByClassName('update-basket')[item_num]
-        form.submit()
+        var form = document.getElementsByClassName('update-basket')[item_num];
+        form.submit();
         updateSubtotals();
     }
 
     function removeItem(item_id) {
 
-        items_in_basket = document.getElementsByClassName('remove-item')
+        var items_in_basket = document.getElementsByClassName('remove-item');
 
         for (i = 0; i < items_in_basket.length; i++) {
             if (items_in_basket[i].id == item_id.id) {
-                item_to_remove = document.getElementById(item_id.id)
-                console.log(item_to_remove)
-                item_to_remove.setAttribute('value', 0)
-                console.log(item_to_remove.value)
-                form = document.getElementsByClassName('update-basket')[i]
-                console.log(form)
-                form.submit()
+                var item_to_remove = document.getElementById(item_id.id);
+                item_to_remove.setAttribute('value', 0);
+                var form = document.getElementsByClassName('update-basket')[i];
+                form.submit();
                 updateSubtotals();
             }
         }

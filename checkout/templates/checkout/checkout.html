@@ -131,6 +131,8 @@
 {{stripe_sk|json_script:"id_stripe_sk"}}
 
 <script>
+    /*jshint esversion: 6 */
+
     // get keys from template
     var stripe_pk = document.getElementById('id_stripe_pk').textContent.slice(1, -1);
     var stripe_sk = document.getElementById('id_stripe_sk').textContent.slice(1, -1);
@@ -141,20 +143,19 @@
 
     // set up card and mount card to DOM
     var card = elements.create('card');
-    var stripe_div = document.getElementById('stripe-element');
     card.mount('#stripe-element');
 
     // add error message if card details invalid
     card.addEventListener('change', function (event) {
         var cardError = document.getElementById('card-error');
         if (event.error) {
-            var error_message = `${event.error.message}`
-            cardError.append(error_message)
+            var error_message = `${event.error.message}`;
+            cardError.append(error_message);
             cardError.style.color = "red";
         } else {
             cardError.textContent = "";
         }
-    })
+    });
 
     // submit the form
     var form = document.getElementById('checkout-form');
@@ -165,9 +166,9 @@
 
         // disable card input and submit button
         card.update({
-            'disabled': true;
-        })
-        checkoutSubmit = document.getElementById('checkout-form-submit');
+            'disabled': true
+        });
+        var checkoutSubmit = document.getElementById('checkout-form-submit');
         checkoutSubmit.disabled = true;
 
         // create variables to send to view
@@ -180,7 +181,7 @@
         };
 
         // post save info to cache checkout view
-        let response = fetch(url, {
+        var response = fetch(url, {
             method: 'POST',
             body: JSON.stringify(postData),
             headers: {
@@ -189,7 +190,7 @@
 
             // if successful response    
         }).then(response => {
-            console.log(response)
+            
             // send payment to stripe
             stripe.confirmCardPayment(stripe_sk, {
                     payment_method: {
@@ -224,15 +225,15 @@
 
                     // if error in checkout to stripe
                     if (result.error) {
-                        console.log(event)
                         var error_message = `${event.error.message}`;
+                        var cardError = document.getElementById('card-error');
                         cardError.append(error_message);
                         cardError.style.color = "red";
 
                         // re-enable submit and card
                         card.update({
-                            'disabled': false;
-                        })
+                            'disabled': false
+                        });
                         checkoutSubmit.disabled = false;
 
                         // if no error in stripe checkout, submit form
@@ -244,7 +245,7 @@
                 }).catch(error => {
                     location.reload();
                 });
-        })
+        });
     });
 </script>
 {% endblock %}
