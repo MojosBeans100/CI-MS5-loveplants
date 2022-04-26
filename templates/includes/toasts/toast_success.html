@@ -52,7 +52,8 @@
               <td>Delivery:
               </td>
               <td class="text-end">
-                {% if delivery == 0 %} <span class="text-decoration-line-through pe-2">£{{standard_delivery}}</span> £0 {% else %}
+                {% if delivery == 0 %} <span class="text-decoration-line-through pe-2">£{{standard_delivery}}</span> £0
+                {% else %}
                 £{{standard_delivery}}{% endif %}
               </td>
             </tr>
@@ -67,8 +68,12 @@
 
       <!-- buttons -->
       <div class="row text-center py-2">
-        <div class="col"><button class="w-100 black-button">Basket <i class="fa-solid fa-bag-shopping"></i></button></div>
-        <div class="col"><button class="w-100 black-button">Checkout <i class="fa-solid fa-lock"></i></button></div>
+        <div class="col px-1">
+          <a href="{% url 'view_bag' %}"><button class="w-100 black-button">Basket <i class="fa-solid fa-bag-shopping"></i></button></a>
+        </div>
+        <div class="col px-1">
+          <a href="{% url 'view_checkout' %}"><button class="w-100 black-button">Checkout <i class="fa-solid fa-lock"></i></button></a>
+        </div>
       </div>
     </div>
     {% endif %}

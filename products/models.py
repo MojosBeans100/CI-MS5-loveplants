@@ -3,6 +3,8 @@
 # Django imports
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Local imports
 
@@ -278,3 +280,27 @@ class ProductReview(models.Model):
 
     class Meta:
         get_latest_by = 'id'
+
+
+@receiver(post_save, sender=ProductReview)
+def update_average_rating(sender, instance, created, **kwargs):
+    """
+    Update product average rating each time a new rating is added
+    """
+
+    if created:
+        product = Product.objects.get(pk=instance.product.pk)
+        product_reviews = ProductReview.objects.filter(product=product.id)
+        num_reviews = ProductReview.objects.filter(
+            product=instance.product.id).count()
+        ratings = []
+        count = 0
+        sum = 0
+        if num_reviews != 0:
+            for review in product_reviews:
+                ratings.append(review.rating)
+                sum += review.rating
+                count += 1
+            average_rating = sum/count
+            product.average_rating = average_rating
+            product.save()

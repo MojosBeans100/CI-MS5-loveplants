@@ -118,7 +118,7 @@
                         <!-- <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm">
                         <large>+</large>
                     </button> -->
-                        <button type="button" disabled class="btn btn-outline-secondary">Add to basket</button>
+                        <button type="button" disabled class="btn btn-outline-secondary">Add to basket </button>
 
 
                         {% else %}
@@ -293,7 +293,7 @@
                     {% for review in reviews %}
                     <div class="row py-2">
                         <div class="col">
-                            <p>{{review.review}}</p>
+                            <p>{{review.review}} ({{review.rating}})</p>
                             <p><small><em>{{review.user}} | {{review.review_time_ago}} days ago</em></small></p>
                         </div>
                         <div class="col text-end">
