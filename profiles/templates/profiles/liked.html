@@ -28,19 +28,18 @@
                 <div style="position: relative;">
 
                     {% if user.is_authenticated %}
-                    <form method="POST" action="{% url 'product_like' product.id %}" class="form">
-                        {% csrf_token %}
-                        <button id="product-like-button" type="submit">
-
-                            <div style="position: relative; height: 24px; width:24px; padding: 0;">
-                                <i style="position: absolute;  z-index: -99" class="fa-solid fa-heart"></i>
-                                <i style="position: absolute; color: white;" class="fa-regular fa-heart"></i>
+                        <button id="{{product.id}}" class="product-like-button">
+                            {% if product.friendly_name in liked_list %}
+                            <div class="like-icon">
+                                <i style="position: absolute; color: white; z-index: -99"
+                                    class="fa-solid fa-heart"></i>
                             </div>
-
+                            {% else %}
+                            <div class="like-icon">
+                                <i class="fa-solid fa-heart"></i>  
+                            </div>
+                            {% endif %}
                         </button>
-                        <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
-                            value="{{ request.path }}">
-                    </form>
                     {% else %}
                     {% endif %}
 

@@ -403,19 +403,28 @@
 
 {% block postloadjs %}
 <script>
-    var forms = document.getElementsByClassName('product-like')
+    /*jshint esversion: 6 */
 
+    // prevent form from refreshing the page
+    var i;
+    var forms = document.getElementsByClassName('product-like');
     for (i = 0; i < forms.length; i++) {
         forms[i].addEventListener('submit', function (ev) {
             ev.preventDefault();
         });
-
     }
 
+    /**
+     * Post 'like' form to view and color icons appropriately
+    */
     function likeProduct(element) {
+
+        // organise form variables
         var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
-        var id = parseInt(element.id)
+        var id = parseInt(element.id);
         var url = `/products/product_like/${id}`;
+
+        // post to the view
         var response = fetch(url, {
             method: 'POST',
             headers: {
@@ -423,6 +432,7 @@
             }
         });
         
+        // change the color of the product
         if (element.childNodes[1].childNodes[1].style.color == 'white') {
             element.childNodes[1].childNodes[1].style.color = 'black';
         } else {

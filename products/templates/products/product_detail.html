@@ -10,7 +10,7 @@
             <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-evenly">
                 <a href="{% url 'edit_product' product.id %}"><button class="btn admin text-white">Edit product <i
                             class="fa-solid fa-pen-to-square"></i>
-                        </button></a>
+                    </button></a>
                 <a href="{% url 'edit_product' product.id %}"><button class="btn admin text-white">Copy product <i
                             class="fa-solid fa-clone"></i>
                     </button></a>
@@ -106,7 +106,8 @@
                 <div id="product-detail-add" class="row w-100 bg-white py-3">
 
                     <div class="col-12 text-center">
-                        <p>{{product.friendly_name}} {% if product.sale_price %}<del>£ {{product.price}}</del> £ {{product.sale_price}}{% else %}£ {{product.price}}{% endif %} </p>
+                        <p>{{product.friendly_name}} {% if product.sale_price %}<del>£ {{product.price}}</del> £
+                            {{product.sale_price}}{% else %}£ {{product.price}}{% endif %} </p>
                     </div>
 
                     <div class="col-12">
@@ -196,7 +197,7 @@
                 <div class="row">
 
                     <div class="col-4 offset-4">
-                        <table class="table table-borderless">
+                        <table class="table table-borderless mb-0">
                             <tbody>
                                 {% if reviews.count == 0 %}
                                 <tr>
@@ -245,9 +246,11 @@
                                         id="{{r.id_for_label}}">
                                 </div>
                                 {% endfor %}
-                                <div class="col-2"><p class="text-center" id="users-rating">0/5</p></div> 
+                                <div class="col-2">
+                                    <p class="text-center" id="users-rating">0/5</p>
+                                </div>
                             </div>
-                            
+
                             <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
                                 value="{{ request.path }}">
 
@@ -284,17 +287,24 @@
 
                 <div class="col-12 col-md-8 py-3">
                     <h2 class="text-center" id="product-review-title">Reviews</h2>
-                    <table class="table table-borderless w-25 mx-auto">
+                    <table class="table table-borderless w-25 mx-auto mb-0">
                         <tr class="text-center" id="append-star2">
                         </tr>
                     </table>
-                    <p class="text-center">{{product.average_rating|floatformat:1}}/5<br>
-                    (based on {{reviews.count}} reviews)</p>
+                    <p class="text-center avg-rating">{{product.average_rating|floatformat:1}}/5<br>
+                        (based on {{reviews.count}} reviews)</p>
+
 
                     {% for review in reviews %}
                     <div class="row py-2">
                         <div class="col">
-                            <p>{{review.review}} ({{review.rating}})</p>
+                            <p>{{review.review}} </p>
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr class="ratings-tables"></tr>
+                                </tbody>
+                            </table>
+                            <p style="display: none;" class="review-rating">{{review.rating}}</p>
                             <p><small><em>{{review.user}} | {{review.review_time_ago}} days ago</em></small></p>
                         </div>
                         <div class="col text-end">
@@ -401,37 +411,66 @@
 
     // set variables
     var i;
+    var j;
     var avgRating = JSON.parse(document.getElementById('avg_rating').textContent);
     var int = Number.isInteger(avgRating);
     var row = document.getElementById('append-star');
     var row2 = document.getElementById('append-star2');
+    var data;
+    var data2;
     displayRating();
+    rateReviews();
+
+    /**
+    Display rating given by users
+    */
+    function rateReviews() {
+
+        // set/collect variables
+        var ratings = document.getElementsByClassName('review-rating');
+        var ratingsTables = document.getElementsByClassName('ratings-tables');
+        var rating;
+
+        // append a star based on rating given
+        for (i = 0; i < ratings.length; i++) {
+            rating = ratings[i].innerHTML;
+            for (j = 0; j < rating; j++) {
+                var td = document.createElement('td');
+                td.innerHTML = '<i class="fa-solid fa-star"></i>';
+                ratingsTables[i].append(td);
+            }
+        }
+    }
 
     /**
     Display average rating of the product with star icons
     */
     function displayRating() {
-        
+
         // if the rating is an integer, display that number of stars
         if (int) {
             for (i = 0; i < avgRating; i++) {
-                var data = document.createElement('td');
+                data = document.createElement('td');
                 data.innerHTML = '<i class="fa-solid fa-star"></i>';
-                row.append(data);
-                row2.append(data);        
-            }
-
-            // if not, add a half star
-        } else {
-            for (i = 0; i < avgRating; i++) {
-                var data = document.createElement('td');
-                data.innerHTML = '<i class="fa-solid fa-star"></i>';
+                data2 = document.createElement('td');
+                data2.innerHTML = '<i class="fa-solid fa-star"></i>';
                 row.append(data);
                 row2.append(data);
             }
+            // if not, add a half star
+        } else {
+            for (i = 0; i < avgRating; i++) {
+                data = document.createElement('td');
+                data2 = document.createElement('td');
+                data.innerHTML = '<i class="fa-solid fa-star"></i>';
+                data2.innerHTML = '<i class="fa-solid fa-star"></i>';
+                row.append(data);
+                row2.append(data2);
+            }
             data.innerHTML = '<i class="fa-solid fa-star-half"></i>';
+            data2.innerHTML = '<i class="fa-solid fa-star-half"></i>';
             row.append(data);
-            row2.append(data);
+            row2.append(data2);
         }
     }
 
@@ -461,6 +500,5 @@
         }
         document.getElementById('users-rating').innerHTML = `${value_of_radio}/5`;
     }
-
 </script>
 {% endblock %}

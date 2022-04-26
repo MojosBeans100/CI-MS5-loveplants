@@ -183,7 +183,6 @@ def product_detail(request, id):
 
     user = str(request.user)
     product = Product.objects.get(id=id)
-    print(id)
     recently_viewed = ""
     product_reviews = ProductReview.objects.filter(product=product.id)
 
@@ -302,7 +301,7 @@ def product_like(request, id):
                                            user=request.user,
                                            liked=True)
             product_review.save()
-
+ 
     return redirect(reverse('products'))
 
 
