@@ -416,14 +416,76 @@ def admin_edit_product(request, id):
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
-            print(request.POST)
+            if 'popular' in request.POST:
+                popular = True
+            else:
+                popular = False
 
-            form = ProductForm(request.POST, instance=product)
+            if 'rare' in request.POST:
+                rare = True
+            else:
+                rare = False
 
-            if form.is_valid():
-                form.save()
+            if 'save-as-new' in request.POST:
+                form_data = {
+                    'category': request.POST['category'],
+                    'plant_category': request.POST['plant_category'],
+                    'name': slugify(request.POST['friendly_name'], separator='_'),
+                    'friendly_name': request.POST['friendly_name'],
+                    'latin_name': request.POST['latin_name'],
+                    'description': request.POST['description'],
+                    'description_source': request.POST['description_source'],
+                    'description_url': request.POST['description_url'],
+                    #'image1_source': request.POST['image1_source'],
+                    'image1_source_url': request.POST['image1_source_url'],
+                    #'image2_source': request.POST['image2_source'],
+                    'image2_source_url': request.POST['image2_source_url'],
+                    #'image3_source': request.POST['image3_source'],
+                    'image3_source_url': request.POST['image3_source_url'],
+                    'pot_size': request.POST['pot_size'],
+                    'height': request.POST['height'],
+                    'price': request.POST['price'],
+                    'length': request.POST['length'],
+                    'stock_quantity': request.POST['stock_quantity'],
+                    'maturity_num': request.POST['maturity_num'],
+                    'maturity_time': request.POST['maturity_time'],
+                    'sunlight': request.POST['sunlight'],
+                    'watering': request.POST['watering'],
+                    'care_required': request.POST['care_required'],
+                    'care_instructions': request.POST['care_instructions'],
+                    'care_instructions_source': request.POST['care_instructions_source'],
+                    'care_instructions_url': request.POST['care_instructions_url'],
+                    'rare': rare,
+                    'popular': popular,
+                    'live_on_site': request.POST['live_on_site'],
+                    'average_rating': 0,
+                }
+            
+                form = ProductForm(form_data)
 
-            return redirect(reverse('product_detail', args=[id]))
+                if form.is_valid:
+                    # existing_products = Product.objects.all()
+                    # for product in existing_products:
+                    #     if form is product:
+                    #         print("two objects the same")
+                    #         unique = False
+                    #     else:
+                    #         unique = True
+                    # if unique is True:
+                    form.save()
+                else:
+                    print("form not valid")
+                    print(form.errors)
+
+                return redirect(reverse('products'))
+
+            else:
+                form = ProductForm(request.POST, instance=product)
+
+                if form.is_valid():
+                    form.save()
+
+                return redirect(reverse('product_detail', args=[id]))
 
         context = {
             'form': form,
@@ -445,3 +507,5 @@ def admin_delete_product(request, id):
     product.delete()
 
     return redirect(reverse('products'))
+
+

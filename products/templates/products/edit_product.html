@@ -227,13 +227,16 @@
                         {{form.stock_quantity}}
                     </fieldset>
 
+                    <!-- buttons -->
                     <div class="row">
                         <div class="col d-flex justify-content-evenly">
-                            <button type="button" class="btn admin w-40 text-white" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <button type="button" class="btn admin w-40 text-white" data-bs-toggle="modal"
+                                data-bs-target="#myModal">
                                 Delete product <i class="ps-2 fa-solid fa-trash-can"></i>
                             </button>
                             <button type="submit" class="btn admin w-40 text-white">Save changes <i
                                     class="ps-2 fa-solid fa-floppy-disk"></i></button>
+                            <button type="submit" class="btn admin w-40 text-white" name="save-as-new">Save as new <i class="ps-2 fa-solid fa-copy"></i></button>
                         </div>
                     </div>
 
@@ -242,8 +245,8 @@
 
             <div class="col-12 border col-lg-6">
                 <img class="id_image1_source_url" style="height: 350px; width: 100%;"
-                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
-                                <p class="text-center"><em><small>main image</small></em></p>
+                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
+                <p class="text-center"><em><small>main image</small></em></p>
             </div>
         </div>
 
@@ -259,7 +262,8 @@
                         <p>Confirm deletion of {{product.friendly_name}}</p>
                         <p>Products can be removed from the live website without deleting them</p>
 
-                        <img class="border" src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650908135/LovePlants/Products/liveonsite_kfqhzu.jpg">
+                        <img class="border"
+                            src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650908135/LovePlants/Products/liveonsite_kfqhzu.jpg">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn admin text-white" data-bs-dismiss="modal">Close</button>
