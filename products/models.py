@@ -87,10 +87,10 @@ class Product(models.Model):
         null=True,
         blank=True,
         editable=False,
-        unique=True,
         )
     friendly_name = models.CharField(
-        max_length=100
+        max_length=100,
+        unique=True
         )
     latin_name = models.CharField(
         max_length=100,
