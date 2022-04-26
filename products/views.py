@@ -6,7 +6,6 @@ from slugify import slugify
 from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
 from django.db.models import Q
-from datetime import datetime, timezone
 
 # Local imports
 from products.models import (
@@ -180,15 +179,12 @@ def product_detail(request, id):
     has_purchased = None
     already_reviewed = None
     form = None
+    purchase_date = None
 
     user = str(request.user)
     product = Product.objects.get(id=id)
     recently_viewed = ""
     product_reviews = ProductReview.objects.filter(product=product.id)
-
-    for i in product_reviews:
-        i.review_time_ago = (datetime.now(timezone.utc)-i.review_time).days
-        i.save()
 
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
@@ -324,9 +320,6 @@ def product_review(request, id):
 
         reviewed_product = ProductReview.objects.latest()
         reviewed_product.user = request.user
-        reviewed_product.review_time = datetime.now(timezone.utc)
-        reviewed_product.review_time_ago = (datetime.now(timezone.utc)
-                                            - datetime.now(timezone.utc)).days
         reviewed_product.save()
 
     redirect_url = request.POST.get('redirect_url')
