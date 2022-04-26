@@ -496,12 +496,145 @@ A list of products which match the filter and search criteria are displayed thro
 
 ![Products list]()
 
+Users can organise the list further by selection the number of products to view per page. 
+
+![Products per page]()
+
+[Back to top](#love-plants)
+
 ## Product Detail
+The product detail page provides further information about the product in question.
+
+### Breadcrumb Navigation
+(User Story X)
+This feature allows for users to see which category the plant belongs to, and also allows users to navigate back to the products page by clicking on any of the links provided. Users can also use the browser 'back' button to return to the previous page, which would maintain their chosen filter and sort criteria. 
+
+![Breadcrumb navigation]()
+
+### Images
+(User Story X)
+The main product image sits above three smaller images, any of which can be clicked for the user to view more images.  They decrease in opacity on hover so the user is aware they are clickable.
+
+![Product images]()
+
+### Additional Details
+(User Story X)
+Further details about the product are provided for the user to learn more about the product.  The information includes:
+- the pot size
+- the height or length of the plant
+- the maturity of the plant
+- the sunlight and watering requirements
+- the care maintenance
+- a description of the product
+- further care instructions
+- the average rating, based on user reviews
+
+### Reviews
+(User Story X)
+If any reviews have been left by users for the product, they are displayed in a set of rows beneath the care instructions.  Users can see the average rating, how many reviews have been given, comments written by users, and how long ago they were left. 
+
+![User reviews]()
+
+### Review Form
+(User Story X)
+If a user has purchased the product, and not previously left a review, they can leave a comment and provide a rating from 1 to 5 in a short form. 
+
+![Review form]()
+
+### Suggested Products
+(User Story X)
+To keep the user interested in browsing products, suggestions are made for additional products to view.  The list is kept brief, to only 4 products per category, and products are not duplicated between lists.  The categories are:
+- rare products (if the product is rare)
+- popular products (if the product is popular)
+- easy care products (if the product has low care maintance)
+
+![Suggested products]()
+
+### Add To Bag
+(User Story X)
+Users can add the product in question to their bag, by selecting the desired quantity and clicking 'Add to bag'.  The page does not redirect, but provides a notification for users to see if the action has been successful.  This section includes the price, or sale price, of the product. 
+
+![Add to bag]()
+
+[Back to top](#love-plants)
+
 ## Bag
+The Bag page displays the contents of a user's bag and a link to checkout.
+
+### Product List
+(User Story X)
+Identifying details are displayed for each product, namely the plant name, price or sale price, subtotal, quantity and pot size.  Users can click on either the image or the product name to redirect to the product detail page. Users can also 'like' or 'unlike' the product on this page. Users can adjust the product quantity in the bag, or remove it from the bag completely.  
+
+![Product list]()
+
+### Free Delivery
+(User Story X)
+Users are aware how much they would need to spend on top of what is already in their bag to qualify for free delivery.  Below the bag, a list of suggested products to reach this total are displayed, organised by lowest cost. 
+
+For example if the user would need to spend £37.00 further to qualify for free delivery, products more expensive than £37.00 are listed, organised by cheapest first. These products have a 'Quick Add' button to prevent the need for the user to visit the product detail page to add to the bag. 
+
+![Free delivery products]()
+
+### Price Breakdown
+(User Story X)
+The bag total, delivery cost and grand total are listed, as well as a link to checkout the bag. 
+
+![Price breakdown]()
+
+### Suggested Products
+Another list of suggested products are included on this page. This list is not organised or sorted by any particular criteria, and largely exists to encourage users to add more products.
+
+![Suggested products]()
+
 ## Checkout
+The checkout page requires users to input their delivery details and payment information.
+
+### User Details
+(User Story X)
+Form fields are displayed for the user to input their personal and delivery information in order to process the order. Users can save their information for later, so the next order they submit will not required inputting this information again. 
+
+![User details]()
+
+### Bag Contents
+(User Story X)
+Users are reminded of the contents in their bag on this page. 
+
+![Bag contents]()
+
+### Order Summary
+(User Story X)
+The same price breakdown from the bag page is displayed on this page. 
+
+![Price breakdown]()
+
+### Payment Section
+(User Story X)
+Users are required to input their card details into the card payment section provided by Stripe, which shows validation if the card details are incorrect.  Users can click 'Submit Payment' to complete the order. 
+
+![Submit order]()
+
+### Form Submitted
+(User Story X)
+Users have immediate feedback that their order is processing by displaying a 'loading' screen, which also prevents the user from clicking any other calls to action during order completion. 
+
+![Submitted order]()
+
 ## Checkout Confirmation
+(User Story X)
+The checkout confirmation/checkout success page displays details of the submitted order.  Users have confirmation it has been received.  All details about the order are provided for the user to verify.  There are no calls to action on this page.
+
+![Checkout confirmation]()
+
 ## Profile
+
+### Profile Details
+### Default Order Information
+### Order History
+
 ## Liked Products
+(User Story X)
+This brief page display products the user has 'liked', and links to the product detail for each product. 
+
 ## Add Product (admin)
 ## Edit Product (admin)
 ## Copy/duplicate Product (admin)
