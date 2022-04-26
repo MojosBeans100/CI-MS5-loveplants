@@ -298,7 +298,7 @@ def product_like(request, id):
                                            user=request.user,
                                            liked=True)
             product_review.save()
- 
+
     return redirect(reverse('products'))
 
 
@@ -502,5 +502,4 @@ def admin_delete_product(request, id):
     product.delete()
 
     return redirect(reverse('products'))
-
 

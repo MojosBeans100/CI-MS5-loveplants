@@ -11,9 +11,6 @@
                 <a href="{% url 'edit_product' product.id %}"><button class="btn admin text-white">Edit product <i
                             class="fa-solid fa-pen-to-square"></i>
                     </button></a>
-                <a href="{% url 'edit_product' product.id %}"><button class="btn admin text-white">Copy product <i
-                            class="fa-solid fa-clone"></i>
-                    </button></a>
             </div>
         </div>
         {% else %}
@@ -410,16 +407,17 @@
     /*jshint esversion: 6 */
 
     // set variables
-    var i;
-    var j;
-    var avgRating = JSON.parse(document.getElementById('avg_rating').textContent);
+    var i, j, x, y;
+    var avgRating = parseFloat(JSON.parse(document.getElementById('avg_rating').textContent));
     var int = Number.isInteger(avgRating);
     var row = document.getElementById('append-star');
     var row2 = document.getElementById('append-star2');
-    var data;
-    var data2;
-    displayRating();
-    rateReviews();
+    var ratings = document.getElementsByClassName('review-rating');
+
+    if (ratings.length>0) {
+        rateReviews();
+        displayRating();
+    }
 
     /**
     Display rating given by users
@@ -427,7 +425,6 @@
     function rateReviews() {
 
         // set/collect variables
-        var ratings = document.getElementsByClassName('review-rating');
         var ratingsTables = document.getElementsByClassName('ratings-tables');
         var rating;
 
@@ -435,9 +432,8 @@
         for (i = 0; i < ratings.length; i++) {
             rating = ratings[i].innerHTML;
             for (j = 0; j < rating; j++) {
-                var td = document.createElement('td');
-                td.innerHTML = '<i class="fa-solid fa-star"></i>';
-                ratingsTables[i].append(td);
+                x = ratingsTables[i].insertCell(0);
+                x.innerHTML = '<i class="fa-solid fa-star"></i>';
             }
         }
     }
@@ -450,27 +446,23 @@
         // if the rating is an integer, display that number of stars
         if (int) {
             for (i = 0; i < avgRating; i++) {
-                data = document.createElement('td');
-                data.innerHTML = '<i class="fa-solid fa-star"></i>';
-                data2 = document.createElement('td');
-                data2.innerHTML = '<i class="fa-solid fa-star"></i>';
-                row.append(data);
-                row2.append(data);
+                x = row.insertCell(0);
+                y = row2.insertCell(0);
+                x.innerHTML = '<i class="fa-solid fa-star"></i>';
+                y.innerHTML = '<i class="fa-solid fa-star"></i>';
             }
             // if not, add a half star
         } else {
             for (i = 0; i < avgRating; i++) {
-                data = document.createElement('td');
-                data2 = document.createElement('td');
-                data.innerHTML = '<i class="fa-solid fa-star"></i>';
-                data2.innerHTML = '<i class="fa-solid fa-star"></i>';
-                row.append(data);
-                row2.append(data2);
+                x = row.insertCell(0);
+                x.innerHTML = '<i class="fa-solid fa-star"></i>';
+                y = row2.insertCell(0);
+                y.innerHTML = '<i class="fa-solid fa-star"></i>';
             }
-            data.innerHTML = '<i class="fa-solid fa-star-half"></i>';
-            data2.innerHTML = '<i class="fa-solid fa-star-half"></i>';
-            row.append(data);
-            row2.append(data2);
+            x = row.insertCell(0);
+            x.innerHTML = '<i class="fa-solid fa-star-half"></i>';
+            y = row2.insertCell(0);
+            y.innerHTML = '<i class="fa-solid fa-star-half"></i>';
         }
     }
 

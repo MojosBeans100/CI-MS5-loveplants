@@ -3,7 +3,7 @@
 # Django imports
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from datetime import datetime, timezone
 
@@ -322,3 +322,25 @@ def update_average_rating(sender, instance, created, **kwargs):
             average_rating = sum/count
             product.average_rating = average_rating
             product.save()
+
+
+@receiver(post_delete, sender=ProductReview)
+def update_average_rating_deleted(sender, instance, **kwargs):
+    """
+    Update average rating on deletion of a review
+    """
+    product = Product.objects.get(pk=instance.product.pk)
+    product_reviews = ProductReview.objects.filter(product=product.id)
+    num_reviews = ProductReview.objects.filter(
+        product=instance.product.id).count()
+    ratings = []
+    count = 0
+    sum = 0
+    if num_reviews != 0:
+        for review in product_reviews:
+            ratings.append(review.rating)
+            sum += review.rating
+            count += 1
+        average_rating = sum/count
+        product.average_rating = average_rating
+        product.save()

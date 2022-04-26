@@ -227,6 +227,9 @@
                         <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View
                                 all products <i class="ps-3 fa-solid fa-list"></i></button></a>
                     </div>
+                    <div class="col-3">
+                        <a href="#"><button class="w-100 btn admin text-white">Create sale <i class="ps-3 fa-solid fa-bell"></i></button></a>
+                    </div>
                 </div>
                 {% else %}
                 {% endif %}
@@ -358,7 +361,7 @@
 
                     </div>
 
-                    {% if user.is_superuser %}
+                    <!-- {% if user.is_superuser %}
                     <div class="row">
                         <div class="col">
                             <button class="btn w-100 admin text-white">Copy <i
@@ -371,7 +374,7 @@
                         </div>
                     </div>
                     {% else %}
-                    {% endif %}
+                    {% endif %} -->
                 </div>
             </div>
 
