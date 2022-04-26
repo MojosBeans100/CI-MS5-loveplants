@@ -56,8 +56,12 @@
                                             <a href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}}
                                                 |
                                                 {{item.product.pot_size}}cm</a>
+                                            {% if item.product.sale_price %}
+                                            <p class="item_price"> £{{item.product.sale_price}}</p>
+                                            {% else %}
                                             <p class="item_price">£{{item.product.price}}</p>
-
+                                            {% endif %}
+                                            
                                             <table class="table table-borderless">
                                                 <tr>
                                                     <td class="text-start">Total:</td>
@@ -168,7 +172,11 @@
                 </form>
                 <a href="{% url 'product_detail' product.id %}">
                     <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                    {% if product.sale_price %}
+                    <p class="text-center"><del>£{{product.price}}</del> £{{product.sale_price}}</p>
+                    {% else %}
                     <p class="text-center">£{{product.price}}</p>
+                    {% endif %}
                 </a>
             </div>
             {% endfor %}
@@ -194,7 +202,11 @@
                 </form>
                 <a href="{% url 'product_detail' product.id %}">
                     <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                    {% if product.sale_price %}
+                    <p class="text-center"><del>£{{product.price}}</del> £{{product.sale_price}}</p>
+                    {% else %}
                     <p class="text-center">£{{product.price}}</p>
+                    {% endif %}
                 </a>
             </div>
             {% endfor %}

@@ -37,6 +37,7 @@ class ProductAdmin(admin.ModelAdmin):
         'plant_category',
         'stock_quantity',
         'price',
+        'sale_price',
         'live_on_site',
         'popular',
         'average_rating',

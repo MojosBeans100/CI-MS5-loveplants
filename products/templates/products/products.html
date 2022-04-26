@@ -349,7 +349,12 @@
                             <p><em><small>{{product.latin_name}}</small></em></p>
                             {% else %}
                             {% endif %}
+                            {% if product.sale_price %}
+                            <p class="card-text"><del>£{{product.price}}</del> £{{product.sale_price}}</p>
+                            {% else %}
                             <p class="card-text">£{{product.price}}</p>
+                            {% endif %}
+                            
                         </div>
 
                         {% if user.is_superuser %}

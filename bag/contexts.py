@@ -24,9 +24,14 @@ def bag_contents(request):
 
         product = get_object_or_404(Product, pk=item_id)
         products = Product.objects.all()
-        total += quantity * product.price
-        product_count += quantity
-        product_subtotal = product.price*quantity
+        if product.sale_price:
+            total += quantity * product.sale_price
+            product_count += quantity
+            product_subtotal = product.sale_price*quantity
+        else:
+            total += quantity * product.price
+            product_count += quantity
+            product_subtotal = product.price*quantity
         bag_items.append({
             'item_id': item_id,
             'quantity': quantity,
@@ -43,6 +48,7 @@ def bag_contents(request):
 
     grand_total = delivery + total
 
+    # change if sale_price
     if free_delivery_delta > 0:
         free_delivery_products = products.filter(
                                     price__gte=free_delivery_delta,

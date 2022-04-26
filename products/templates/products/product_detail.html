@@ -106,7 +106,7 @@
                 <div id="product-detail-add" class="row w-100 bg-white py-3">
 
                     <div class="col-12 text-center">
-                        <p>{{product.friendly_name}} £ {{product.price}}</p>
+                        <p>{{product.friendly_name}} {% if product.sale_price %}<del>£ {{product.price}}</del> £ {{product.sale_price}}{% else %}£ {{product.price}}{% endif %} </p>
                     </div>
 
                     <div class="col-12">

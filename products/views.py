@@ -115,6 +115,7 @@ def all_products(request):
             filtered_by = "Popular"
             front_end_filters.append(filtered_by)
 
+        # sale price
         if 'price' in request.GET:
             price = request.GET['price'].split(',')
             if len(price) > 1:

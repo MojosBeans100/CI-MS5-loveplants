@@ -247,11 +247,12 @@ The Profiles App provides the user the ability to create their website profile, 
 
 ### Products App
 (User Stories XXX)
-- The Products App serves to hold a database of products available to purchase, details about them, their categories and any reviews/ratings. 
-- It contains 5 models.
+- The Products App serves to hold a database of products available to purchase, details about them, their categories and any reviews/ratings
+- It contains 5 models (Product, ProductReview, Category, PlantCategory, RecentlyViewed)
 
 #### Product
 - The Product model holds information about specific products
+- It has a model method (update_average_rating) to automatically update the average rating when a new ProductReview object is created
 
 | Field | Description | Field type|
 |-------|-------------|-----------|
@@ -271,6 +272,7 @@ The Profiles App provides the user the ability to create their website profile, 
 |image3_source|source for the image|CharField|
 |image3_source_url|url for the image|URLField|
 |price|price of the product|DecimalField|
+|sale_price|sale price of product|DecimalField|
 |stock_quantity|quantity of the product in stock|PositiveIntegerField|
 |pot_size|diameter of the pot|PositiveIntegerField|
 |height|height of the product|PositiveIntegerField|

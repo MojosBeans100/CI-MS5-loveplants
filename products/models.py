@@ -140,6 +140,13 @@ class Product(models.Model):
         max_digits=6,
         verbose_name='Price (£)'
         )
+    sale_price = models.DecimalField(
+        decimal_places=2,
+        max_digits=6,
+        verbose_name='Sale Price (£)',
+        blank=True,
+        null=True
+    )
     stock_quantity = models.PositiveIntegerField(
         null=True,
         blank=True
