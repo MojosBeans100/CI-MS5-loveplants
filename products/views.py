@@ -183,6 +183,7 @@ def product_detail(request, id):
 
     user = str(request.user)
     product = Product.objects.get(id=id)
+    print(id)
     recently_viewed = ""
     product_reviews = ProductReview.objects.filter(product=product.id)
 
@@ -283,26 +284,26 @@ def product_like(request, id):
     Allows users to like or unlike products
     """
 
-    product = Product.objects.get(id=id)
-    if ProductReview.objects.filter(product=product,
-                                    user=request.user).exists():
-        product_review = ProductReview.objects.get(product=product,
-                                                   user=request.user)
-        if product_review.liked is True:
-            product_review.liked = False
-            product_review.save()
+    if request.method == 'POST':
+
+        product = Product.objects.get(id=id)
+        if ProductReview.objects.filter(product=product,
+                                        user=request.user).exists():
+            product_review = ProductReview.objects.get(product=product,
+                                                       user=request.user)
+            if product_review.liked is True:
+                product_review.liked = False
+                product_review.save()
+            else:
+                product_review.liked = True
+                product_review.save()
         else:
-            product_review.liked = True
+            product_review = ProductReview(product=product,
+                                           user=request.user,
+                                           liked=True)
             product_review.save()
-    else:
-        product_review = ProductReview(product=product,
-                                       user=request.user,
-                                       liked=True)
-        product_review.save()
 
-    redirect_url = request.POST.get('redirect_url')
-
-    return redirect(redirect_url)
+    return redirect(reverse('products'))
 
 
 def product_review(request, id):

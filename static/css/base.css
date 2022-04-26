@@ -160,7 +160,19 @@ button {
     font-size: 20px;
 }
 
-#product-like-button {
+.like-icon {
+    position: relative;
+    height: 24px;
+    width: 24px;
+    padding: 0;
+}
+
+.like-icon i {
+    position: absolute;
+    z-index: -99
+}
+
+.product-like-button {
     border: none;
     background: none;
     position: absolute;
