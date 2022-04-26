@@ -468,7 +468,34 @@ All User Stories which were not completed had a 'could-have' label assigned to t
 The section provides an overview of all features found in the website. 
 
 ## Homepage
+
 ## Products
+The products page displays products available to purchase on the website.  
+
+### Filter Products
+(User Story X)
+This section provides faceted searching to narrow down product searches.  Users can filter by the plant type, price ranges, sunlight/watering required, whether or not the product is rare, popular, low maintenace, whether they have 'liked' the product.
+
+![Faceted searching]()
+
+### Sort Products
+(User Story X)
+Users can also sort the products by price (low, high), rating (low, high) and name (alphabetically).
+
+![Sorting]()
+
+### Product List
+(User Stories XX)
+A list of products which match the filter and search criteria are displayed throughout the rest of the page.  Products are displayed with:
+- a Bootstrap card, providing an image of the product (which the second product image displayed upon hover of the original image).  The card links to the detailed view of the product when clicked
+- the name of the plant
+- the latin name
+- the price
+- the sale price (if relevant)  
+- the 'like' button (rendered in black if the product is 'liked' by the user, white if not)
+
+![Products list]()
+
 ## Product Detail
 ## Bag
 ## Checkout
