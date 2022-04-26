@@ -195,7 +195,7 @@
                 <!-- reviews form and rating display -->
                 <div class="row">
 
-                    <div class="col-6 offset-3">
+                    <div class="col-4 offset-4">
                         <table class="table table-borderless">
                             <tbody>
                                 {% if reviews.count == 0 %}
@@ -214,7 +214,7 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center" colspan="5" id="avg-rating">
-                                        {{product.average_rating}}/5</td>
+                                        {{product.average_rating|floatformat:1}}/5</td>
                                 </tr>
                                 <tr class="text-center">
                                     <td colspan="5" class="text-center"><small><a
@@ -230,7 +230,7 @@
                     {% if already_reviewed %}
                     {% else %}
                     {% if has_purchased %}
-                    <p class="text-center">Did you like this product?</p>
+                    <p class="text-center">You purchased this product on {{purchase_date|date:'d M Y'}}</p>
                     <div class="col-12">
                         <form class="px-4" method="POST" action="{% url 'product_review' product.id %}">
                             {% csrf_token %}
@@ -245,8 +245,9 @@
                                         id="{{r.id_for_label}}">
                                 </div>
                                 {% endfor %}
+                                <div class="col-2"><p class="text-center" id="users-rating">0/5</p></div> 
                             </div>
-                            <p class="text-center" id="users-rating"></p>
+                            
                             <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
                                 value="{{ request.path }}">
 
@@ -283,12 +284,12 @@
 
                 <div class="col-12 col-md-8 py-3">
                     <h2 class="text-center" id="product-review-title">Reviews</h2>
-                    <table>
-                        <tr class="text-center" id="append-star">
+                    <table class="table table-borderless w-25 mx-auto">
+                        <tr class="text-center" id="append-star2">
                         </tr>
                     </table>
-
-                    <p class="text-center">based on {{reviews.count}} reviews</p>
+                    <p class="text-center">{{product.average_rating|floatformat:1}}/5<br>
+                    (based on {{reviews.count}} reviews)</p>
 
                     {% for review in reviews %}
                     <div class="row py-2">
@@ -398,35 +399,39 @@
 <script>
     /*jshint esversion: 6 */
 
+    // set variables
     var i;
     var avgRating = JSON.parse(document.getElementById('avg_rating').textContent);
     var int = Number.isInteger(avgRating);
     var row = document.getElementById('append-star');
-
+    var row2 = document.getElementById('append-star2');
     displayRating();
 
     /**
     Display average rating of the product with star icons
     */
     function displayRating() {
-
+        
         // if the rating is an integer, display that number of stars
         if (int) {
             for (i = 0; i < avgRating; i++) {
                 var data = document.createElement('td');
                 data.innerHTML = '<i class="fa-solid fa-star"></i>';
                 row.append(data);
+                row2.append(data);        
             }
 
             // if not, add a half star
         } else {
-            for (i = 0; i < avgRating - 1; i++) {
+            for (i = 0; i < avgRating; i++) {
                 var data = document.createElement('td');
                 data.innerHTML = '<i class="fa-solid fa-star"></i>';
                 row.append(data);
+                row2.append(data);
             }
             data.innerHTML = '<i class="fa-solid fa-star-half"></i>';
             row.append(data);
+            row2.append(data);
         }
     }
 
@@ -456,5 +461,6 @@
         }
         document.getElementById('users-rating').innerHTML = `${value_of_radio}/5`;
     }
+
 </script>
 {% endblock %}

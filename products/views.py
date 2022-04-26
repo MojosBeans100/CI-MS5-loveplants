@@ -176,14 +176,6 @@ def product_detail(request, id):
     Display details about a product
     """
 
-    # ProductReview.objects.create(
-    #     user=request.user,
-    #     product=Product.objects.get(id=id),
-    #     review="this is my review",
-    #     rating=4,
-    #     liked=True,
-    # )
-
     has_purchased = None
     already_reviewed = None
     form = None
@@ -228,6 +220,7 @@ def product_detail(request, id):
             for item in line_item:
                 if item.order.order_ref == order.order_ref:
                     has_purchased = True
+                    purchase_date = order.date
 
         users_reviews = ProductReview.objects.filter(
             product=product,
@@ -267,19 +260,6 @@ def product_detail(request, id):
         # recently_viewed = Product.objects.filter(
         #                                 name__in=recently_viewed_products)[0:4]
 
-    # calculate average product rating
-    # num_reviews = ProductReview.objects.filter(product=product).count()
-    # ratings = []
-    # count = 0
-    # sum = 0
-    # if num_reviews != 0:
-    #     for review in product_reviews:
-    #         ratings.append(review.rating)
-    #         sum += review.rating
-    #         count += 1
-    #     average_rating = sum/count
-    #     product.average_rating = average_rating
-    #     product.save()
 
     context = {
         'product': product,
@@ -289,9 +269,9 @@ def product_detail(request, id):
         'reviews': product_reviews,
         #'recently_viewed': recently_viewed,
         'has_purchased': has_purchased,
+        'purchase_date': purchase_date,
         'already_reviewed': already_reviewed,
         'form': form,
-       # 'num_reviews': num_reviews,
     }
 
     return render(request, 'products/product_detail.html', context)
