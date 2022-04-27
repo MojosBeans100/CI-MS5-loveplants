@@ -626,21 +626,43 @@ The checkout confirmation/checkout success page displays details of the submitte
 ![Checkout confirmation]()
 
 ## Profile
+The profile page displays information about the user.
 
 ### Profile Details
 (User Story X)
+Users can see information about their account settings, which also provide links to logging out and resetting their password.
 
+![Profile details]()
 
 ### Default Order Information
+(User Story X)
+Users can save default delivery information, which will auto-fill in on the checkout form for convenience. 
+
+![Default delivery info]()
+
 ### Order History
+(User Story X)
+Users can see a list of previous orders they have submitted, expanded each item to see further information.
+
+![Order history]()
 
 ## Liked Products
 (User Story X)
 This brief page display products the user has 'liked', and links to the product detail for each product. 
 
 ## Add Product (admin)
+(User Story X)
+The Add Product page allows site administrators to add a new product on the website.  It contains a form to submit the details, and allows users to either add the product to the site or save it and return to it later. 
+
+![Add product]()
+
 ## Edit Product (admin)
-## Copy/duplicate Product (admin)
+(User Story X)
+Admin users can also edit the details of products.  This page also allows admin users to copy a product and save it as a new item.  This is useful for products which are similar, for example a variegated species of another plant. 
+
+![Edit product]()
+
+
 ## Error Pages
 ## Notifications
 ## Sign Up

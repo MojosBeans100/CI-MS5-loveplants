@@ -511,7 +511,7 @@ def admin_create_sale(request):
     sale_products = Product.objects.filter(sale_price__gte=0)
 
     if request.method == 'POST':
-  
+
         if 'apply-sale' in request.POST:
             per = None
             val = None
@@ -526,7 +526,7 @@ def admin_create_sale(request):
                     product_id = request.POST[f"{product.id}"]
                     change_price = Product.objects.get(id=product_id)
 
-                    if val is None:
+                    if val is None and per is not None:
                         change_price.sale_price = round(
                             ((100-per)/100)*change_price.price, 2
                             )
@@ -534,6 +534,9 @@ def admin_create_sale(request):
                         change_price.sale_price = change_price.price - val
                         print("here")
                     change_price.save()
+                    all_products = Product.objects.filter(sale_price=None)
+                    sale_products = Product.objects.filter(sale_price__gte=0)
+
                 except:
                     print("nah")
         else:
