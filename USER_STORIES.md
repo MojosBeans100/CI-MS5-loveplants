@@ -1,9 +1,49 @@
 
 # User Stories
-This document lists all user stories for the project.  Testing of these user stories can be found [here](TESTING.md).
+This document lists all user stories for the project.  
+Testing of these user stories can be found [here](TESTING.md).
+These user stories and associated milestones, sprints and project boards can be found [here](https://github.com/MojosBeans100/CI-MS5-loveplants).
 
 ## Table of Contents
-
+- [User Stories](#user-stories)
+  - [Table of Contents](#table-of-contents)
+  - [User Story 1](#user-story-1)
+    - [1.1](#11)
+    - [1.2](#12)
+    - [1.3](#13)
+    - [1.4](#14)
+    - [1.5](#15)
+    - [1.6](#16)
+  - [User Story 2](#user-story-2)
+    - [2.1](#21)
+    - [2.2](#22)
+    - [2.3](#23)
+    - [2.4](#24)
+    - [2.5](#25)
+    - [2.6](#26)
+  - [User Story 3](#user-story-3)
+    - [3.1](#31)
+    - [3.2](#32)
+    - [3.3](#33)
+    - [3.4](#34)
+    - [3.5](#35)
+    - [3.6](#36)
+  - [User Story 4](#user-story-4)
+    - [4.1](#41)
+    - [4.2](#42)
+    - [4.3](#43)
+    - [4.4](#44)
+    - [4.5](#45)
+  - [User Story 5](#user-story-5)
+    - [5.1](#51)
+    - [5.2](#52)
+    - [5.3](#53)
+  - [User Story 6](#user-story-6)
+    - [6.1](#61)
+    - [6.2](#62)
+    - [6.3](#63)
+    - [6.4](#64)
+    - [6.5](#65)
 
 ## User Story 1
 User Story 1 is based on allow users account authentication on the website. 
@@ -188,3 +228,96 @@ As a **site user** I can **verify the order information before I commit to buy**
 Acceptance Criteria:
 - Users can see all products in their bag when on the checkout page
 - Users can delete items from their bag on the checkout page
+
+### 4.3
+As a **site user** I can **see the total amount my card will be billed** so that **I know how much I am spending from my account**
+
+Acceptance Criteria:
+- User knows that pressing Secure Checkout/Submit will charge their card details
+- Users knows how much money will be taken from their card
+- User can see the charge updating as they edit their bag
+
+### 4.4
+As a **site user** I can **select whether to save the billing/delivery information for next time** so that **I do not have to repeat this step each time**
+
+Acceptance Criteria:
+- g
+- g
+- g
+
+### 4.5
+As a **site user** I can **see confirmation that the order has been successful** so that **I am aware the order went through the system**
+
+Acceptance Criteria:
+- g
+- g
+- g
+
+## User Story 5
+User Story 5 refers to features which allow users to leave a review and rating for products.
+
+### 5.1
+As a **site user** I can **I can rate products I have purchased** so that **other users can see customer feedback on the product**
+
+Acceptance Criteria:
+- User can rate products they have purchased
+- Users cannot rate products they have not purchased
+- Users cannot rate products more than once
+
+### 5.2
+As a **site user** I can **add a comment review to products I have purchased** so that **other users can see a comment from a previous buyer of the product**
+
+Acceptance Criteria:
+- Users can comment on products they have purchased
+- Users can review comments from other buys
+
+### 5.3
+As a **site user** I can **review ratings for products** so that **I can see previous customer's experience with this product**
+
+Acceptance Criteria:
+- Users can see a review/rating section on each product detail
+- Users can scroll through reviews for a product
+- Users can see when the reviews were left
+
+## User Story 6
+User Story 6 captures the admin requirements for using the website, to add, edit, delete products.
+
+### 6.1
+As a **site admin** I can **edit information about products, such as price, quantity remaining, picture** so that **product details can be adjusted as required**
+
+Acceptance Criteria:
+- p
+- p
+- p
+
+### 6.2
+As a **site admin** I can **add products to the LovePlants store** so that **site users can view and buy new products**
+
+Acceptance Criteria:
+- Admin users can click 'Add Product'
+- Admin users can fill in Add Product form
+- Admin users can submit the form
+
+### 6.3
+As a **site admin** I can **apply a discount to any/all products** so that **LovePlants can sell off old stock, or promote product for special calendar days**
+
+Acceptance Criteria:
+- A
+- A
+- a
+
+### 6.4
+As a **site admin** I can **delete products from the LovePlants store** so that **discontinued stock can be removed from the product list**
+
+Acceptance Criteria:
+- A
+- A
+- a
+
+### 6.5
+As a **site admin** I can **review, edit and delete customer orders** so that **orders can be adjusted accordingly**
+
+Acceptance Criteria:
+- A
+- A
+- a
