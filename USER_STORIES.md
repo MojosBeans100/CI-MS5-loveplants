@@ -113,3 +113,78 @@ Acceptance Criteria:
 - (optional) Users can save these products for later
 
 ## User Story 3
+User Story 3 captures the requirements for users to add products to their shopping bag and checkout. 
+
+### 3.1
+As a **site user** I can **add a product to my shopping bag** so that **I can purchase the item**
+
+Acceptance Criteria:
+- fd
+- fgd
+- fdg
+
+### 3.2
+As a **site user** I can **I can see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
+
+Acceptance Criteria:
+- f
+- f
+- f
+
+### 3.3
+As a **site user** I can **see the total cost of my shopping bag change when I have added a product** so that **I'm aware of the running cost as I add products**
+
+Acceptance Criteria:
+- User can see the total of their shopping bag in the nav bar
+- User can see the total including delivery in the bag view
+- User can see subtotals for individual items in their bag
+- User can see notification messages each time the bag total changes
+
+### 3.4
+As a **site user** I can **click on my shopping bag** so that **I can view a list of the products I have added**
+
+Acceptance Criteria:
+- Users can see all items in their shopping bag
+- Users can see information associated with the product ie price, quantity
+- Users can see the subtotal of items if there is more than 1
+- Users can see a total price of their bag
+- Users can see the delivery cost, and how much more is needed to spend in order to qualify for free delivery
+- Users are suggested products they could add to the bag which would quality them for free delivery
+
+### 3.5
+As a **site user** I can **edit the items in my shopping bag** so that **I can adjust the contents of my bag as needed**
+
+Acceptance Criteria:
+- Users can see how to update items in their bag
+- [x] Users can see the bag total change when items are updated
+- User can see a confirmation message that they edited their item
+
+### 3.6
+As a **site user** I can **delete items from my shopping bag** so that **I can remove items I no longer want**
+
+Acceptance Criteria:
+- User can see how to delete an item in their bag
+- User can no longer see the item in their bag once removed
+- User can see a confirmation message that item has been deleted
+- User can see updated totals of their bag
+- User can see how to re-add the item if deleting was an accident
+
+## User Story 4
+User Story 4 captures the full checkout process.
+
+### 4.1
+As a **site user** I can **select checkout from my shopping bag** so that **I can buy the products in my bag**
+
+Acceptance Criteria:
+- User can proceed to checkout from bag page and notification bar
+- User can enter their delivery/billing information and card details
+- User is aware when their billing/card details are not valid
+- User is directed to a confirmation page upon successful checkout, rendering relevant details
+- User is aware if and why their checkout was not successful
+
+### 4.2
+As a **site user** I can **verify the order information before I commit to buy** so that **I can check the contents of my bag**
+
+Acceptance Criteria:
+- Users can see all products in their bag when on the checkout page
+- Users can delete items from their bag on the checkout page
