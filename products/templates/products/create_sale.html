@@ -9,7 +9,7 @@
         <h2>Create Sale</h2>
         <hr>
         <div class="row">
-            <div class="col-8">
+            <div class="col-10">
                 <form method="POST" action="{% url 'create_sale' %}">
                     {% csrf_token %}
 
@@ -33,6 +33,15 @@
                         <table class="table table-borderless">
                             <thead>
                                 <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-end">Select/Deselect All</td>
+                                    <td class="text-center"><input type="checkbox" id="select-all" checked
+                                            onclick="selectAll(this);">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td>Product</td>
                                     <td>Price</td>
                                     <td class="text-center">Sale Price</td>
@@ -43,20 +52,16 @@
                             <tbody>
                                 {% for product in products %}
                                 <tr>
-                                    <td><label for="{{product.id}}">{{product.friendly_name}}</label></td>
+                                    <td><label for="{{product.id}}">{{product.friendly_name}}</label>
+                                    </td>
                                     <td class="product-price">£{{product.price}}</td>
-                                    {% if product.sale_price %}
-                                    <td class="text-center">£<input class="ms-2 w-50 sale-price" type="number" value="{{product.sale_price}}"
-                                            step="any"></td>
-                                    {% else %}
                                     <td class="text-center">£<input class="ms-2 w-50 sale-price" type="number"
-                                        step="any"></td>
-                                    {% endif %}
-                                    
+                                            step="any"></td>
                                     <td class="text-center">£<input class="ms-2 w-50 discount-price" type="number"
                                             step="any"></td>
-                                    <td><input type="checkbox" class="product-checks" name="{{product.id}}"
-                                            value="{{product.id}}" checked onchange="updatePrices();"><br></td>
+                                    <td class="text-center"><input type="checkbox" class="product-checks"
+                                            name="{{product.id}}" value="{{product.id}}" checked
+                                            onchange="updatePrices();"><br></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -65,7 +70,7 @@
 
                     <div class="row py-3">
                         <div class="col d-flex justify-content-center">
-                            <button class="mx-auto btn admin text-white" type="submit">Apply
+                            <button class="mx-auto btn admin text-white" type="submit" name="apply-sale">Apply
                                 discount</button>
                         </div>
                     </div>
@@ -74,6 +79,44 @@
             </div>
         </div>
 
+        <hr>
+
+        {% if sale_products.count == 0 %}
+        {% else %}
+        <h2>Products on Sale</h2>
+        <div class="row">
+            <form method="POST" action="{% url 'create_sale' %}">
+                {% csrf_token %}
+                <table class="w-75 table table-borderless">
+                    <thead>
+                        <tr>
+                            <td>Product</td>
+                            <td>Price</td>
+                            <td>Current Sale Price</td>
+                            <td>Remove From Sale</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in sale_products %}
+                        <tr>
+                            <td>{{product.friendly_name}}</td>
+                            <td>£ {{product.price}}</td>
+                            <td>£ {{product.sale_price}}</td>
+                            <td><input type="checkbox" class="off-sale-checks" name="{{product.id}}"
+                                    value="{{product.id}}" checked></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="row py-3">
+                    <div class="col d-flex justify-content-center">
+                        <button class="mx-auto btn admin text-white" type="submit">Remove items from sale</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endif %}
         {% else %}
         {% endif %}
     </div>
@@ -82,13 +125,28 @@
 
 {% block postloadjs %}
 <script>
+    var productChecks = document.getElementsByClassName('product-checks');
+
+    function selectAll(element) {
+
+        if (element.checked) {
+            for (k = 0; k < productChecks.length; k++) {
+                productChecks[k].checked = true
+            }
+        } else {
+            for (k = 0; k < productChecks.length; k++) {
+                productChecks[k].checked = false
+            }
+        }
+    }
+
     function calcDiscount(element) {
 
         var discountInputs = document.getElementsByClassName('discount-input');
         var salePrices = document.getElementsByClassName('sale-price');
         var discountPrices = document.getElementsByClassName('discount-price');
         var productPrices = document.getElementsByClassName('product-price');
-        var productChecks = document.getElementsByClassName('product-checks');
+
 
         if (discountInputs[0].value == "" & discountInputs[1].value == "") {
             for (i = 0; i < salePrices.length; i++) {

@@ -507,34 +507,52 @@ def admin_delete_product(request, id):
 
 def admin_create_sale(request):
 
-    all_products = Product.objects.all()[0:4]
+    all_products = Product.objects.filter(sale_price=None)
+    sale_products = Product.objects.filter(sale_price__gte=0)
 
     if request.method == 'POST':
   
-        per = None
-        val = None
+        if 'apply-sale' in request.POST:
+            per = None
+            val = None
+            print(request.POST)
+            if (request.POST['val']) != "":
+                val = decimal.Decimal(request.POST['val'])
+            if (request.POST['per']) != "":
+                per = decimal.Decimal(request.POST['per'])
 
-        if (request.POST['val']) != "":
-            val = decimal.Decimal(request.POST['val'])
-        if (request.POST['per']) != "":
-            per = decimal.Decimal(request.POST['per'])
+            for product in all_products:
+                try:
+                    product_id = request.POST[f"{product.id}"]
+                    change_price = Product.objects.get(id=product_id)
 
-        for product in all_products:
-            try:
-                product_id = request.POST[f"{product.id}"]
-                change_price = Product.objects.get(id=product_id)
-                if val == "":
-                    change_price.sale_price = round(
-                        ((100-per)/100)*change_price.price, 2
-                        )
-                else:
-                    change_price.sale_price = change_price.price - val
-                change_price.save()
-            except:
-                print("nah")
+                    if val is None:
+                        change_price.sale_price = round(
+                            ((100-per)/100)*change_price.price, 2
+                            )
+                    else:
+                        change_price.sale_price = change_price.price - val
+                        print("here")
+                    change_price.save()
+                except:
+                    print("nah")
+        else:
+            print(request.POST)
+            for product in sale_products:
+                try:
+                    product_id = request.POST[f"{product.id}"]
+                    print("here")
+                    remove_sale_price = Product.objects.get(id=product_id)
+                    remove_sale_price.sale_price = None
+                    remove_sale_price.save()
+                    all_products = Product.objects.filter(sale_price=None)
+                    sale_products = Product.objects.filter(sale_price__gte=0)
+                except:
+                    print("blah")
 
     context = {
         'products': all_products,
+        'sale_products': sale_products,
     }
 
     return render(request, 'products/create_sale.html', context)
