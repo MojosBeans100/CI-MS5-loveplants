@@ -9,29 +9,33 @@
         <h2>Create Sale</h2>
         <hr>
         <div class="row">
-            <div class="col-10">
-                <form method="POST" action="{% url 'create_sale' %}">
-                    {% csrf_token %}
 
-                    <fieldset>
-                        <legend>Add discount</legend>
+            {% if products.count == 0 %}
+            <p>All items are already on sale. Remove from sale below.</p>
+            {% else %}
+            <form method="POST" action="{% url 'create_sale' %}">
+                {% csrf_token %}
 
-                        <label>By percentage</label>
-                        <input class="form-control w-25 discount-input" type="number" placeholder="%"
-                            name="per{{product.id}}" onchange="calcDiscount(this);"><br>
+                <fieldset>
+                    <legend>Add discount</legend>
 
-                        <label>By value</label>
-                        <input class="form-control w-25 discount-input" type="number" placeholder="£"
-                            name="val{{product.id}}" onchange="calcDiscount(this);">
+                    <label>By percentage</label>
+                    <input class="form-control w-25 discount-input" type="number" placeholder="%"
+                        name="per{{product.id}}" onchange="calcDiscount(this);"><br>
 
-                    </fieldset>
-                    <hr>
-                    <br>
+                    <label>By value</label>
+                    <input class="form-control w-25 discount-input" type="number" placeholder="£"
+                        name="val{{product.id}}" onchange="calcDiscount(this);">
 
-                    <fieldset>
-                        <legend>Discount Products</legend>
+                </fieldset>
+                <hr>
+                <br>
+
+                <fieldset>
+                    <legend>Discount Products</legend>
+                    <div class="table-responsive">
                         <table class="table table-borderless">
-                            <thead>
+                            <thead class="fw-bold">
                                 <tr>
                                     <td></td>
                                     <td></td>
@@ -66,48 +70,51 @@
                                 {% endfor %}
                             </tbody>
                         </table>
-                    </fieldset>
-
-                    <div class="row py-3">
-                        <div class="col d-flex justify-content-center">
-                            <button class="mx-auto btn admin text-white" type="submit" name="apply-sale">Apply
-                                discount</button>
-                        </div>
                     </div>
+                </fieldset>
 
-                </form>
-            </div>
+                <div class="row py-3">
+                    <div class="col d-flex justify-content-center">
+                        <button class="mx-auto btn admin text-white" type="submit" name="apply-sale">Apply
+                            discount</button>
+                    </div>
+                </div>
+
+            </form>
+            {% endif %}
+
         </div>
-
         <hr>
 
         {% if sale_products.count == 0 %}
         {% else %}
-        <h2>Products on Sale</h2>
+        <h2>Remove products from sale</h2>
         <div class="row">
             <form method="POST" action="{% url 'create_sale' %}">
                 {% csrf_token %}
-                <table class="w-75 table table-borderless">
-                    <thead>
-                        <tr>
-                            <td>Product</td>
-                            <td>Price</td>
-                            <td>Current Sale Price</td>
-                            <td>Remove From Sale</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for product in sale_products %}
-                        <tr>
-                            <td>{{product.friendly_name}}</td>
-                            <td>£ {{product.price}}</td>
-                            <td>£ {{product.sale_price}}</td>
-                            <td><input type="checkbox" class="off-sale-checks" name="{{product.id}}"
-                                    value="{{product.id}}" checked></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <thead class="fw-bold">
+                            <tr>
+                                <td>Product</td>
+                                <td>Price</td>
+                                <td>Current Sale Price</td>
+                                <td>Remove From Sale</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in sale_products %}
+                            <tr>
+                                <td>{{product.friendly_name}}</td>
+                                <td>£ {{product.price}}</td>
+                                <td>£ {{product.sale_price}}</td>
+                                <td><input type="checkbox" class="off-sale-checks" name="{{product.id}}"
+                                        value="{{product.id}}" checked></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="row py-3">
                     <div class="col d-flex justify-content-center">
@@ -127,6 +134,9 @@
 <script>
     var productChecks = document.getElementsByClassName('product-checks');
 
+    /*
+    
+    **/
     function selectAll(element) {
 
         if (element.checked) {
