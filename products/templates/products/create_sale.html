@@ -9,16 +9,45 @@
         <h2>Create Sale</h2>
         <hr>
         <div class="row">
-            <div class="col-4">
+            <div class="col-6">
                 <form method="POST" action="{% url 'create_sale' %}">
                     {% csrf_token %}
+
+                    <fieldset>
+                        <legend>Add discount</legend>
+
+                        <label>By percentage</label>
+                        <input class="form-control w-25 discount-input" type="number" placeholder="%"
+                            onchange="calcDiscount(this);"><br>
+
+                        <label>By value</label>
+                        <input class="form-control w-25 discount-input" type="number" placeholder="£"
+                            onchange="calcDiscount(this);">
+
+                    </fieldset>
+                    <hr>
+                    <br>
+
                     <button type="submit">Submit</button>
                     <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Product</td>
+                                <td>Price</td>
+                                <td>Sale Price</td>
+                                <td>Discount</td>
+                                <td>Apply</td>
+                            </tr>
+                        </thead>
                         <tbody>
                             {% for product in products %}
                             <tr>
                                 <td><label for="{{product.id}}">{{product.friendly_name}}</label></td>
-                                <td><input type="checkbox" name="{{product.id}}" value="{{product.id}}" id="{{product.name}}{{ product.id}}" checked><br></td>
+                                <td class="product-price">£{{product.price}}</td>
+                                <td class="sale-price">-</td>
+                                <td class="discount-price">-</td>
+                                <td><input type="checkbox" class="product-checks" name="{{product.id}}"
+                                        value="{{product.id}}" id="{{product.name}}{{ product.id}}" checked onchange="updatePrices();"><br></td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -31,4 +60,68 @@
         {% endif %}
     </div>
 </div>
+{% endblock %}
+
+{% block postloadjs %}
+<script>
+    function calcDiscount(element) {
+        console.log(element)
+        var discountInputs = document.getElementsByClassName('discount-input');
+        var salePrices = document.getElementsByClassName('sale-price');
+        var discountPrices = document.getElementsByClassName('discount-price');
+        var productPrices = document.getElementsByClassName('product-price');
+        var productChecks = document.getElementsByClassName('product-checks');
+
+        if (discountInputs[0] == element & discountInputs[1] !== "") {
+            discountInputs[1].value = "";
+        } else {
+            discountInputs[0].value = "";
+        }
+
+        for (j = 0; j < salePrices.length; j++) {
+            price = productPrices[j].innerHTML.replace('£', "");
+
+            if (discountInputs[0].value == "") {
+                sale_price = (parseFloat(price) - parseFloat(element.value)).toFixed(2)
+                discount_price = parseFloat(element.value)
+            } else {
+                sale_price = (((100 - parseFloat(element.value))/100)*parseFloat(price)).toFixed(2)
+                discount_price = (parseFloat(price) - sale_price).toFixed(2)
+            }
+
+            if (productChecks[j].checked) {
+                salePrices[j].innerHTML = `£ ${sale_price}`
+                discountPrices[j].innerHTML = `£ ${discount_price}`
+            } else {
+                salePrices[j].innerHTML = ""
+                discountPrices[j].innerHTML = ""
+            }
+        }
+    }
+
+    function updatePrices(){
+        perc = document.getElementsByClassName('discount-input')[0]
+        val = document.getElementsByClassName('discount-input')[1]
+
+        if (perc.value) {
+            console.log("%")
+            calcDiscount(perc)
+        } else if (val.value) {
+            calcDiscount(val)
+            console.log("val")
+        } else {
+            
+        }
+        
+        // if (document.getElementsByClassName('discount-input')[0].value == "" & document.getElementsByClassName('discount-input')[1].value !== "") {
+        //    console.log("here value")
+        //     calcDiscount(document.getElementsByClassName('discount-input')[1])
+        // } else if (document.getElementsByClassName('discount-inputs')[1].value == "" & document.getElementsByClassName('discount-input')[0].value !== ""){
+        //     console.log("here %")
+        //     calcDiscount(document.getElementsByClassName('discount-input')[0])
+        // } else {
+        //     console.log("do nothing")
+        // }
+    }
+</script>
 {% endblock %}
