@@ -503,3 +503,16 @@ def admin_delete_product(request, id):
 
     return redirect(reverse('products'))
 
+
+def admin_create_sale(request):
+
+    all_products = Product.objects.all()
+
+    if request.method == 'POST':
+        print(request.POST)
+
+    context = {
+        'products': all_products,
+    }
+
+    return render(request, 'products/create_sale.html', context)

@@ -28,4 +28,7 @@ urlpatterns = [
     path('product_review/<int:id>',
          views.product_review,
          name='product_review'),
+    path('create_sale.html',
+         views.admin_create_sale,
+         name='create_sale'),
 ]

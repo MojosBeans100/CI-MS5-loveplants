@@ -628,6 +628,9 @@ The checkout confirmation/checkout success page displays details of the submitte
 ## Profile
 
 ### Profile Details
+(User Story X)
+
+
 ### Default Order Information
 ### Order History
 
