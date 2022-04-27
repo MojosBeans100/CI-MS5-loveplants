@@ -17,12 +17,12 @@
                         <legend>Add discount</legend>
 
                         <label>By percentage</label>
-                        <input class="form-control w-25 discount-input" type="number" placeholder="%" name="per{{product.id}}"
-                            onchange="calcDiscount(this);"><br>
+                        <input class="form-control w-25 discount-input" type="number" placeholder="%"
+                            name="per{{product.id}}" onchange="calcDiscount(this);"><br>
 
                         <label>By value</label>
-                        <input class="form-control w-25 discount-input" type="number" placeholder="£" name="val{{product.id}}"
-                            onchange="calcDiscount(this);">
+                        <input class="form-control w-25 discount-input" type="number" placeholder="£"
+                            name="val{{product.id}}" onchange="calcDiscount(this);">
 
                     </fieldset>
                     <hr>
@@ -45,11 +45,18 @@
                                 <tr>
                                     <td><label for="{{product.id}}">{{product.friendly_name}}</label></td>
                                     <td class="product-price">£{{product.price}}</td>
-                                    <td class="text-center">£<input class="ms-2 w-50 sale-price" type="number" step="any"></td>
-                                    <td class="text-center">£<input class="ms-2 w-50 discount-price" type="number" step="any"></td>
-                                    <td><input type="checkbox" class="product-checks" name="name{{product.id}}"
-                                            value="{{product.id}}" checked
-                                            onchange="updatePrices();"><br></td>
+                                    {% if product.sale_price %}
+                                    <td class="text-center">£<input class="ms-2 w-50 sale-price" type="number" value="{{product.sale_price}}"
+                                            step="any"></td>
+                                    {% else %}
+                                    <td class="text-center">£<input class="ms-2 w-50 sale-price" type="number"
+                                        step="any"></td>
+                                    {% endif %}
+                                    
+                                    <td class="text-center">£<input class="ms-2 w-50 discount-price" type="number"
+                                            step="any"></td>
+                                    <td><input type="checkbox" class="product-checks" name="{{product.id}}"
+                                            value="{{product.id}}" checked onchange="updatePrices();"><br></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -58,7 +65,7 @@
 
                     <div class="row py-3">
                         <div class="col d-flex justify-content-center">
-                            <button class="mx-auto btn admin text-white" type="submit" >Apply
+                            <button class="mx-auto btn admin text-white" type="submit">Apply
                                 discount</button>
                         </div>
                     </div>
@@ -109,8 +116,14 @@
                 }
 
                 if (productChecks[j].checked) {
-                    salePrices[j].value = sale_price
-                    discountPrices[j].value = discount_price
+                    if (sale_price > 0) {
+                        salePrices[j].value = sale_price
+                        discountPrices[j].value = discount_price
+                    } else {
+                        salePrices[j].value = ""
+                        discountPrices[j].value = ""
+                    }
+
                 } else {
                     salePrices[j].value = ""
                     discountPrices[j].value = ""

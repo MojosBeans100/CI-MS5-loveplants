@@ -1,6 +1,7 @@
 
 # 3rd party imports
 from slugify import slugify
+import decimal
 
 # Django imports
 from django.shortcuts import render, redirect, reverse
@@ -506,10 +507,31 @@ def admin_delete_product(request, id):
 
 def admin_create_sale(request):
 
-    all_products = Product.objects.all()
+    all_products = Product.objects.all()[0:4]
 
     if request.method == 'POST':
-        print(request.POST)
+  
+        per = None
+        val = None
+
+        if (request.POST['val']) != "":
+            val = decimal.Decimal(request.POST['val'])
+        if (request.POST['per']) != "":
+            per = decimal.Decimal(request.POST['per'])
+
+        for product in all_products:
+            try:
+                product_id = request.POST[f"{product.id}"]
+                change_price = Product.objects.get(id=product_id)
+                if val == "":
+                    change_price.sale_price = round(
+                        ((100-per)/100)*change_price.price, 2
+                        )
+                else:
+                    change_price.sale_price = change_price.price - val
+                change_price.save()
+            except:
+                print("nah")
 
     context = {
         'products': all_products,
