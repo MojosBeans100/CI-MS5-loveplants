@@ -16,6 +16,16 @@
         {% else %}
         {% endif %}
 
+        {% if user.is_superuser %}
+        {% if product.live_on_site == False %}
+        <div class="pt-3 row">
+            <p class="text-danger text-center">This product is not live on the website</p>
+        </div>
+        {% else %}
+        {% endif %}
+        {% else %}
+        {% endif %}
+
         <!-- navigate back to all products -->
         <div class="row mt-2">
             <p class="text-start">
@@ -117,7 +127,6 @@
                         <large>+</large>
                     </button> -->
                         <button type="button" disabled class="btn btn-outline-secondary">Add to basket </button>
-
 
                         {% else %}
                         <!-- add product to bag -->

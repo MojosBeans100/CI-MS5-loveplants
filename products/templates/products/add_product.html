@@ -26,7 +26,7 @@
             <hr>
 
             <div class="col-6">
-                <form method="POST" action="{% url 'add_product' %}">
+                <form method="POST" action="{% url 'add_product' %}" id="add-form">
                     {% csrf_token %}
 
                     <!-- category -->
@@ -237,12 +237,6 @@
                         {{form.stock_quantity}}
                     </fieldset>
 
-                    <!-- on site -->
-                    <fieldset>
-                        <label>Live on site</label>
-                        {{form.live_on_site}}
-                    </fieldset>
-
                     <div class="row">
                         <div class="col">
                             <button class="btn admin w-100 text-white" name="save-form">Save <i
@@ -250,7 +244,7 @@
                             <p><em><small>product will be saved</small></em></p>
                         </div>
                         <div class="col">
-                            <button type="submit" name="submit-form" class="btn admin w-100 text-white">Add product <i
+                            <button name="submit-form" class="btn admin w-100 text-white">Add product <i
                                     class="fa-solid fa-plus"></i></button>
                             <p><em><small>product will be live on the site and available to purchase</small></em></p>
                         </div>
@@ -259,6 +253,25 @@
                 </form>
             </div>
         </div>
+
+        <!-- modal -->
+        <div class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-danger">Form not valid</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>In order to create a product, all fields must be filled in</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -268,6 +281,29 @@
 <script>
     /*jshint esversion: 6 */
     var i;
+    var valid = true
+    var form = document.getElementById('add-form');
+    form.addEventListener('submit', function (ev) {
+
+        // prevent posting form
+        ev.preventDefault();
+
+        all_inputs = document.getElementsByTagName('input');
+
+        for (i = 0; i < all_inputs.length; i++) {
+            if (all_inputs[i].value == "") {
+                valid = false;
+            } else {
+                valid = true;
+            }
+        }
+
+        if (valid == true) {
+            form.submit();
+        } else {
+            document.getElementsByClassName('modal')[0].style.display = 'block'
+        }
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('id_sunlight_2').checked = true;

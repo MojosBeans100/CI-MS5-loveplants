@@ -362,6 +362,14 @@
 
                     </div>
 
+                    {% if user.is_superuser %}
+                    {% if product.live_on_site == False %}
+                    <p class="text-danger">Not live on site</p>
+                    {% else %}
+                    {% endif %}
+                    {% else %}
+                    {% endif %}
+
                     <!-- {% if user.is_superuser %}
                     <div class="row">
                         <div class="col">

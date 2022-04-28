@@ -27,8 +27,6 @@ def all_products(request):
     filtering and sorting
     """
 
-    max_id = Product.objects.aggregate(Max('id'))['id__max']
-    print(max_id)
     total_products = Product.objects.filter(live_on_site=True)
     all_products = Product.objects.filter(live_on_site=True)
     plant_categories = PlantCategory.objects.all()
@@ -189,7 +187,6 @@ def product_detail(request, id):
     product = Product.objects.get(id=id)
     recently_viewed = ""
     product_reviews = ProductReview.objects.filter(product=product.id)
-    print(product.average_rating)
 
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
@@ -359,7 +356,6 @@ def admin_add_product(request):
 
         # post the object
         else:
-
             form_data = {
                 'category': request.POST['category'],
                 'plant_category': request.POST['plant_category'],
@@ -390,7 +386,7 @@ def admin_add_product(request):
                 'care_instructions_url': request.POST['care_instructions_url'],
                 'rare': rare,
                 'popular': popular,
-                'live_on_site': request.POST['live_on_site'],
+                'live_on_site': True,
                 'average_rating': 0,
             }
 
@@ -498,6 +494,8 @@ def admin_edit_product(request, id):
                     x = (f"{request.POST['friendly_name']}"
                          " has been edited.")
                     messages.success(request, x)
+                else:
+                    print("errors")
 
                 return redirect(reverse('product_detail', args=[id]))
 
@@ -534,7 +532,6 @@ def admin_create_sale(request):
         if 'apply-sale' in request.POST:
             per = None
             val = None
-            print(request.POST)
             if (request.POST['val']) != "":
                 val = decimal.Decimal(request.POST['val'])
             if (request.POST['per']) != "":
@@ -551,7 +548,6 @@ def admin_create_sale(request):
                             )
                     else:
                         change_price.sale_price = change_price.price - val
-                        print("here")
                     change_price.save()
                     all_products = Product.objects.filter(sale_price=None)
                     sale_products = Product.objects.filter(sale_price__gte=0)
@@ -559,11 +555,9 @@ def admin_create_sale(request):
                 except:
                     print("nah")
         else:
-            print(request.POST)
             for product in sale_products:
                 try:
                     product_id = request.POST[f"{product.id}"]
-                    print("here")
                     remove_sale_price = Product.objects.get(id=product_id)
                     remove_sale_price.sale_price = None
                     remove_sale_price.save()
