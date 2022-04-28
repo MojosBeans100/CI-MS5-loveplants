@@ -187,6 +187,7 @@ def product_detail(request, id):
     product = Product.objects.get(id=id)
     recently_viewed = ""
     product_reviews = ProductReview.objects.filter(product=product.id)
+    print(product.average_rating)
 
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
@@ -494,15 +495,16 @@ def admin_edit_product(request, id):
     return render(request, 'products/edit_product.html', context)
 
 
-def admin_delete_product(request, id):
-    """
-    Allow admin users to delete products
-    """
+# def admin_delete_product(request, id):
+#     """
+#     Allow admin users to delete products
+#     """
 
-    product = Product.objects.get(id=id)
-    product.delete()
+#     product = Product.objects.get(id=id)
+#     product.delete()
+#     messages.success(request, f"{product.friendly_name} has been deleted.")
 
-    return redirect(reverse('products'))
+#     return redirect(reverse('products'))
 
 
 def admin_create_sale(request):

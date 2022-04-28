@@ -480,15 +480,15 @@
             }
             // if not, add a half star
         } else {
-            for (i = 0; i < avgRating; i++) {
+            for (i = 0; i < avgRating-1; i++) {
                 x = row.insertCell(0);
                 x.innerHTML = '<i class="fa-solid fa-star"></i>';
                 y = row2.insertCell(0);
                 y.innerHTML = '<i class="fa-solid fa-star"></i>';
             }
-            x = row.insertCell(0);
+            x = row.insertCell(-1);
             x.innerHTML = '<i class="fa-solid fa-star-half"></i>';
-            y = row2.insertCell(0);
+            y = row2.insertCell(-1);
             y.innerHTML = '<i class="fa-solid fa-star-half"></i>';
         }
     }

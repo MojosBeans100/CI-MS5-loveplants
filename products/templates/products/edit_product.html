@@ -11,15 +11,9 @@
             <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
             <hr>
 
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-8">
                 <form method="POST" action="{% url 'edit_product' product.id %}">
                     {% csrf_token %}
-
-                    <!-- on site -->
-                    <fieldset>
-                        <label>Live on site</label>
-                        {{form.live_on_site}}
-                    </fieldset>
 
                     <!-- category -->
                     <fieldset>
@@ -228,53 +222,68 @@
                     </fieldset>
 
                     <!-- buttons -->
-                    <div class="row">
-                        <div class="col d-flex justify-content-evenly">
-                            <button type="button" class="btn admin w-40 text-white" data-bs-toggle="modal"
+                    <!-- on site -->
+                    <fieldset>
+                        <label>Live on site</label>
+                        {{form.live_on_site}}
+                    </fieldset>
+
+                    <div class="row pt-5">
+                        <div class="col-12 col-md-4 d-flex justify-content-evenly py-2">
+                            <button type="button" class="btn admin w-100 text-white" data-bs-toggle="modal"
                                 data-bs-target="#myModal">
                                 Delete product <i class="ps-2 fa-solid fa-trash-can"></i>
                             </button>
-                            <button type="submit" class="btn admin w-40 text-white">Save changes <i
+                        </div>
+                        <div class="col-12 col-md-4 d-flex justify-content-evenly py-2">
+                            <button type="submit" class="btn admin w-100 text-white">Save changes <i
                                     class="ps-2 fa-solid fa-floppy-disk"></i></button>
-                            <button type="submit" class="btn admin w-40 text-white" name="save-as-new">Save as new <i class="ps-2 fa-solid fa-copy"></i></button>
+                        </div>
+                        <div class="col-12 col-md-4 d-flex justify-content-evenly py-2">
+                            <button type="submit" class="btn admin w-100 text-white" name="save-as-new">Save as new <i
+                                    class="ps-2 fa-solid fa-copy"></i></button>
                         </div>
                     </div>
-
-                </form>
             </div>
 
-            <div class="col-12 border col-lg-6">
-                <img class="id_image1_source_url" style="height: 350px; width: 100%;"
-                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
-                <p class="text-center"><em><small>main image</small></em></p>
-            </div>
+            </form>
         </div>
 
-        <!-- delete modal -->
-        <div class="modal" id="myModal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Delete product <i class="fa-solid fa-trash-can"></i></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Confirm deletion of {{product.friendly_name}}</p>
-                        <p>Products can be removed from the live website without deleting them</p>
+        <!-- <div class="col-12 border col-lg-6">
+            <img class="id_image1_source_url" style="height: 350px; width: 100%;"
+                src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
+            <p class="text-center"><em><small>main image</small></em></p>
+        </div> -->
+    </div>
 
-                        <img class="border"
-                            src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650908135/LovePlants/Products/liveonsite_kfqhzu.jpg">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn admin text-white" data-bs-dismiss="modal">Close</button>
-                        <a href="{% url 'delete_product' product.id %}"></a><button type="button"
-                            class="black-button"><i class="pe-3 fa-solid fa-exclamation"></i> Delete Product</button>
-                    </div>
+    <!-- delete modal -->
+    <div class="modal" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> Delete product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                    <br>
+                    <p><i class="fa-solid fa-circle-info"></i> Products can be removed from the live website without
+                        deleting them by unchecking the 'Live on site' box</p>
+
+                    <img
+                        src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651145626/LovePlants/Products/liveonsite_dgnvzi.jpg">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn admin text-white" data-bs-dismiss="modal"><i
+                            class="fa-solid fa-xmark"></i> Close</button>
+                    <a href="{% url 'delete_product' product.id %}"><button type="button" class="black-button"><i
+                            class="p1-3 fa-solid fa-exclamation"></i> Delete Product</button></a>
                 </div>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 
 {% endblock %}

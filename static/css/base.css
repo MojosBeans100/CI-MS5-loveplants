@@ -9,6 +9,23 @@
     font-family: 'Raleway', sans-serif;
 } */
 
+#nav-image {
+    width: 60px;
+    height: 60px;
+}
+
+@media (max-width: 1200px) {
+    #nav-icon {
+        display: none;
+    }
+
+    /* #nav-image {
+        width: 50px;
+        height: 50px;
+    } */
+}
+
+
 .admin {
     background-color: #069b8e;
 }
