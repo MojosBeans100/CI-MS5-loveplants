@@ -662,6 +662,11 @@ Admin users can also edit the details of products.  This page also allows admin 
 
 ![Edit product]()
 
+## Create Sale (admin)
+(User Story X)
+Admin users can put items on sale with this page.  They can apply a discount to all products or individual products, either by a percentage or a fixed amount.  They can also remove the sale price on this page, to revert products back to their original prices. 
+
+![Create sale]()
 
 ## Error Pages
 ## Notifications
@@ -674,13 +679,13 @@ Admin users can also edit the details of products.  This page also allows admin 
 
 ## HTML/CSS
 The project uses [HTML](https://en.wikipedia.org/wiki/HTML) language to build the website pages.
-[CSS](https://en.wikipedia.org/wiki/CSS) is used to style the pages.
+[CSS](https://en.wikipedia.org/wiki/CSS) is used to style the pages, along with [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
 
 ## Javascript
 [Javascript](https://www.javascript.com/) is included on most pages.  The main functions are:
 
 ## Python
-[Python]((https://www.python.org/)) was used for server side coding on the project.
+[Python 3.8]((https://www.python.org/)) was used for server side coding on the project.
 
 ## Django
 - [Django](https://www.djangoproject.com/) is the framework used in this project

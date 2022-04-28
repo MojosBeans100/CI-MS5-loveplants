@@ -26,6 +26,10 @@ a {
     color: black;
 }
 
+.anchor-no-decoration:hover {
+    text-decoration: none !important;
+}
+
 a:hover {
     color: black;
     text-decoration: underline;
