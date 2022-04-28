@@ -6,7 +6,7 @@ import decimal
 # Django imports
 from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q, Max
 from django.contrib import messages
 
 # Local imports
@@ -27,6 +27,8 @@ def all_products(request):
     filtering and sorting
     """
 
+    max_id = Product.objects.aggregate(Max('id'))['id__max']
+    print(max_id)
     total_products = Product.objects.filter(live_on_site=True)
     all_products = Product.objects.filter(live_on_site=True)
     plant_categories = PlantCategory.objects.all()
@@ -411,6 +413,7 @@ def admin_add_product(request):
 def admin_edit_product(request, id):
     """
     Allow admin users to edit product details
+    or create a new object with similar fields
     """
 
     if request.user.is_superuser:
@@ -418,6 +421,7 @@ def admin_edit_product(request, id):
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
+            # check this
             if 'popular' in request.POST:
                 popular = True
             else:
@@ -430,9 +434,11 @@ def admin_edit_product(request, id):
 
             if 'save-as-new' in request.POST:
                 try:
-                    object = Product.objects.get(friendly_name=request.POST['friendly_name'])
-                    # why does this not work
-                    messages.success(request, "adlready exists")
+                    Product.objects.get(
+                        friendly_name=request.POST['friendly_name'])
+                    messages.success(request, ("This product already exists:"
+                                               " the name of the plant "
+                                               "must be unique."))
                     return redirect(reverse('edit_product', args=[id]))
                 except Product.DoesNotExist:
                     form_data = {
@@ -471,6 +477,14 @@ def admin_edit_product(request, id):
                     form = ProductForm(form_data)
                     if form.is_valid:
                         form.save()
+                        x = (f"{request.POST['friendly_name']}"
+                             " has been created")
+                        messages.success(request, x)
+                        latestid = Product.objects.aggregate(
+                            Max('id'))['id__max']
+                        return redirect(reverse(
+                            'product_detail',
+                            args=[latestid]))
                     else:
                         print("errors")
 
@@ -481,6 +495,9 @@ def admin_edit_product(request, id):
 
                 if form.is_valid():
                     form.save()
+                    x = (f"{request.POST['friendly_name']}"
+                         " has been edited.")
+                    messages.success(request, x)
 
                 return redirect(reverse('product_detail', args=[id]))
 
@@ -495,16 +512,16 @@ def admin_edit_product(request, id):
     return render(request, 'products/edit_product.html', context)
 
 
-# def admin_delete_product(request, id):
-#     """
-#     Allow admin users to delete products
-#     """
+def admin_delete_product(request, id):
+    """
+    Allow admin users to delete products
+    """
 
-#     product = Product.objects.get(id=id)
-#     product.delete()
-#     messages.success(request, f"{product.friendly_name} has been deleted.")
+    product = Product.objects.get(id=id)
+    product.delete()
+    messages.success(request, f"{product.friendly_name} has been deleted.")
 
-#     return redirect(reverse('products'))
+    return redirect(reverse('products'))
 
 
 def admin_create_sale(request):

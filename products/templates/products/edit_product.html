@@ -289,7 +289,10 @@
 {% endblock %}
 
 {% block postloadjs %}
+{{block.super}}
 <script>
+
+
     /*jshint esversion: 6 */
 
     var myModal = document.getElementById('myModal');
