@@ -246,13 +246,15 @@
                                 <div class="col-2">
                                     <p class="text-center" id="users-rating">0/5</p>
                                 </div>
+                                <p id="append-error" class="text-center" style="display:none;">Be sure to leave a rating between 1 and 5</p>
                             </div>
 
                             <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
                                 value="{{ request.path }}">
 
                             <div class="row d-flex justify-content-center">
-                                <button type="submit" class="my-3 w-50 black-button">Leave Review</button>
+                                <button type="submit" id="product-review-submit" class="my-3 w-50 black-button"
+                                    onclick="validateForm();">Leave Review</button>
                             </div>
                         </form>
                     </div>
@@ -414,9 +416,34 @@
     var row2 = document.getElementById('append-star2');
     var ratings = document.getElementsByClassName('review-rating');
 
-    if (ratings.length>0) {
+    if (ratings.length > 0) {
         rateReviews();
         displayRating();
+    }
+
+    function validateForm() {
+
+        var appendError = document.getElementById('append-error');
+
+        if (appendError.innerHTML.length > 0) {
+            appendError.style.display = "block";
+        }
+
+        var usersRating = document.getElementsByName('rating');
+        var checked = false;
+
+        for (i = 0; i < usersRating.length; i++) {
+            if (usersRating[i].checked) {
+                checked = true;
+            }
+        }
+        console.log(checked)
+
+        if (checked == false) {
+            appendError.style.display = "block"
+        } else {
+            appendError.style.display = "none";
+        }
     }
 
     /**

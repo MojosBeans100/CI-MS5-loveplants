@@ -30,7 +30,7 @@
             <div class="col-12 order-2 col-md-8">
 
                 {% if product_count == 0 %}
-                <p>Your basket is currently empty.   Shop for products <a href="{% url 'products' %}">here</a>.</p>
+                <p>Your basket is currently empty. Shop for products <a href="{% url 'products' %}">here</a>.</p>
                 {% else %}
 
                 <!-- product list table -->
@@ -45,7 +45,8 @@
                             <div class="row py-2">
                                 <div class="col-5">
                                     <a href="{% url 'product_detail' item.product.id %}"><img class="bag-images"
-                                            src="{{item.product.image1_source_url}}" alt="{{product.friendly_name}}"></a>
+                                            src="{{item.product.image1_source_url}}"
+                                            alt="{{product.friendly_name}}"></a>
 
                                 </div>
 
@@ -61,7 +62,7 @@
                                             {% else %}
                                             <p class="item_price">£{{item.product.price}}</p>
                                             {% endif %}
-                                            
+
                                             <table class="table table-borderless">
                                                 <tr>
                                                     <td class="text-start">Total:</td>
@@ -85,7 +86,8 @@
                                 <div class="col-5">
                                     <form method="POST" action="{% url 'product_like' item.product.id %}" class="form">
                                         {% csrf_token %}
-                                        <button title="Like product" class="text-center white-button" style="height: 100%; width:100%">
+                                        <button title="Like product" class="text-center white-button"
+                                            style="height: 100%; width:100%">
                                             {% if item.product.friendly_name in liked_list %}
                                             <i class="fa-solid fa-heart"></i>
                                             {% else %}
@@ -143,8 +145,7 @@
                         <div class="col">
                             <a href="{% url 'view_checkout' %}"><button style="height: 100%; width:100%;"
                                     class="black-button text-center">Continue to
-                                    checkout <i
-                                    class="ps-2 fa-solid fa-lock"></i></button></a>
+                                    checkout <i class="ps-2 fa-solid fa-lock"></i></button></a>
                         </div>
                     </div>
                 </div>
@@ -248,31 +249,34 @@
         var products_quantities = document.getElementsByClassName('item_quantity');
 
         for (i = 0; i < products_quantities.length; i++) {
+            if (products_quantities[i].value) {
+                // if user has changed the original quantity
+                if (parseInt(products_quantities[i].value) != original_quantities[i]) {
 
-            // if user has changed the original quantity
-            if (parseInt(products_quantities[i].value) != original_quantities[i]) {
+                    // if the quantity is between 1 and max items in stock
+                    if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <=
+                        parseInt(
+                            max_values[i].max)) {
 
-                // if the quantity is between 1 and max items in stock
-                if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <=
-                    parseInt(
-                        max_values[i].max)) {
+                        // submit the update form
+                        updateItem(i);
 
-                    // submit the update form
-                    updateItem(i);
-
-                    // update the subtotals
-                    products_subtotals[i].innerHTML = `£ ${((parseInt(products_quantities[i].value)) * (parseFloat(
+                        // update the subtotals
+                        products_subtotals[i].innerHTML = `£ ${((parseInt(products_quantities[i].value)) * (parseFloat(
                         products_prices[i].innerHTML))).toFixed(2)}`;
 
-                    // if quantity is outwith acceptable range
-                } else {
+                        // if quantity is outwith acceptable range
+                    } else {
 
-                    // remove subtotal and change quantity back to original value
-                    products_subtotals[i].innerHTML = `£ ${(original_quantities[i] * (parseFloat(
+                        // remove subtotal and change quantity back to original value
+                        products_subtotals[i].innerHTML = `£ ${(original_quantities[i] * (parseFloat(
                         products_prices[i].innerHTML))).toFixed(2)}`;
-                    products_quantities[i].value = original_quantities[i];
+                        products_quantities[i].value = original_quantities[i];
+                    }
+
                 }
-
+            } else {
+                products_quantities[i].value = original_quantities[i]
             }
         }
     }
@@ -281,17 +285,21 @@
     calculate original subtotals on page load
     */
     function updateSubtotals() {
-        
+
         for (i = 0; i < products_prices.length; i++) {
+            if (products_quantities[i].value) {
+                if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <=
+                    parseInt(
+                        max_values[i].max)) {
 
-            if ((parseInt(products_quantities[i].value)) > 0 && (parseInt(products_quantities[i].value)) <= parseInt(
-                    max_values[i].max)) {
-
-                products_subtotals[i].innerHTML = `£ ${((parseInt(products_quantities[i].value)) * (parseFloat(
+                    products_subtotals[i].innerHTML = `£ ${((parseInt(products_quantities[i].value)) * (parseFloat(
                     products_prices[i].innerHTML.replace("£","")))).toFixed(2)}`;
+                } else {
+                    products_subtotals[i].innerHTML = "";
+                    products_quantities[i].value = original_quantities[i];
+                }
             } else {
-                products_subtotals[i].innerHTML = "";
-                products_quantities[i].value = original_quantities[i];
+                products_quantities[i].value = original_quantities[i]
             }
         }
     }

@@ -19,14 +19,20 @@
                 <fieldset>
                     <legend>Add discount</legend>
 
-                    <label>By percentage</label>
-                    <input class="form-control w-25 discount-input" type="number" placeholder="%"
-                        name="per{{product.id}}" onchange="calcDiscount(this);"><br>
+                    <div class="row">
+                        <div class="col-3">
+                            <label>By percentage</label>
+                            <input class="form-control w-100 discount-input" type="number" placeholder="%"
+                                name="per{{product.id}}" onchange="calcDiscount(this);">
+                        </div>
 
-                    <label>By value</label>
-                    <input class="form-control w-25 discount-input" type="number" placeholder="£"
-                        name="val{{product.id}}" onchange="calcDiscount(this);">
 
+                        <div class="col-3">
+                            <label>By value</label>
+                            <input class="form-control w-100 discount-input" type="number" placeholder="£"
+                                name="val{{product.id}}" onchange="calcDiscount(this);">
+                        </div>
+                    </div>
                 </fieldset>
                 <hr>
                 <br>
@@ -34,7 +40,7 @@
                 <fieldset>
                     <legend>Discount Products</legend>
                     <div class="table-responsive">
-                        <table class="table table-borderless">
+                        <table class="table table-bordered">
                             <thead class="fw-bold">
                                 <tr>
                                     <td></td>
@@ -88,41 +94,46 @@
 
         {% if sale_products.count == 0 %}
         {% else %}
-        <h2>Remove products from sale</h2>
         <div class="row">
             <form method="POST" action="{% url 'create_sale' %}">
                 {% csrf_token %}
-                <div class="table-responsive">
-                    <table class="table table-borderless">
-                        <thead class="fw-bold">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td class="text-end">Select/Deselect All</td>
-                                <td class="text-center"><input type="checkbox" id="select-all2" checked
-                                        onclick="selectAll2(this);">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Product</td>
-                                <td>Price</td>
-                                <td>Current Sale Price</td>
-                                <td>Remove From Sale</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for product in sale_products %}
-                            <tr>
-                                <td>{{product.friendly_name}}</td>
-                                <td>£ {{product.price}}</td>
-                                <td>£ {{product.sale_price}}</td>
-                                <td class="text-center"><input type="checkbox" class="off-sale-checks"
-                                        name="{{product.id}}" value="{{product.id}}" checked></td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
+                <fieldset>
+                    <legend>Remove sale</legend>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="fw-bold">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-end">Select/Deselect All</td>
+                                    <td class="text-center"><input type="checkbox" id="select-all2" checked
+                                            onclick="selectAll2(this);">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Product</td>
+                                    <td>Price</td>
+                                    <td>Current Sale Price</td>
+                                    <td>Discount</td>
+                                    <td>Remove From Sale</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for product in sale_products %}
+                                <tr>
+                                    <td>{{product.friendly_name}}</td>
+                                    <td>£ {{product.price}}</td>
+                                    <td class="text-center">£ {{product.sale_price}}</td>
+                                    <td class="text-center"></td>
+                                    <td class="text-center"><input type="checkbox" class="off-sale-checks"
+                                            name="{{product.id}}" value="{{product.id}}" checked></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
 
                 <div class="row py-3">
                     <div class="col d-flex justify-content-center">
