@@ -1,7 +1,84 @@
 
+
+## User Story 1
+User Story 1 is based on allow users account authentication on the website. 
+
+### 1.1 
+As a **site user** I can **create an account to LovePlants with a username, email address and password** so that **I can access personal information and historic orders**
+
 Testing Structure
 
 |User action|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||||||
+
+Acceptance Criteria:
+- New users can create a new account to LovePlants
+- Returning users can return to their account to LovePlants
+- Users can log out of their account
+- Users must confirm their email address to access their new account
+
+### 1.2
+As a **site user** I can **see my current login status on all pages** so that **I am aware if my account is active or if I need to log in**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|on any given page, users can see the checkmark next to the profile icon in the navbar|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/desktop1_ufsqle.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/tablet1_ksnrzk.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/mobile1_veelj5.jpg)|Pass|
+|upon hover of the profile icon in the navbar, the logged in user's username is displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/desktop2_qmjfls.png)|N/A|N/A|Pass|
+|if the user is not logged in, upon hover of profile icon users are instructed to log in|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237643/LovePlants/Testing/US1/desktop3_mu4nh9.png)|N/A|N/A|Pass|
+|if the user is not logged in, upon clicking the profile icon users are directed to the log in page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237680/LovePlants/Testing/US1/desktop4_m1qkur.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237883/LovePlants/Testing/US1/tablet4_zfk6tq.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237883/LovePlants/Testing/US1/mobile4_kjtera.jpg)|Pass|
+
+Acceptance Criteria:
+- [x] Users can clearly see how to log in
+- [x] Users can see their log in status in the navigation bar on all pages
+
+### 1.3
+As a **site user** I can **navigate to a page which details my personal information** so that **I can see my details pertaining to my personal account on LovePlants**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|upon navigating to the users profile, their identifying and account info is displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/desktop1_cymipd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/tablet1_dxupzx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/mobile1_ebhzgp.jpg)|Pass|
+
+Acceptance Criteria:
+- [x] Users are aware how to reach the page for their personal account
+- [x] Users can see relevant information about their account on their account page
+- [x] Only the active user can access their account page
+
+### 1.4
+As a **site user** I can **access information of my previous orders** so that **I can see when I last ordered, how many orders I have, see the details of previous orders**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+
+Acceptance Criteria:
+- Users can see a list of their previous orders in their account page
+- Users are aware of the relevant details of previous orders (total, quantity items, date ordered)
+- Users can click on each order to view the details of the order
+
+### 1.5
+As a **site user** I can **update my personal information such as delivery information** so that **I can change details as needed, and save default information**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+
+Acceptance Criteria:
+- Users can access details about their account to be updated, and adjust as needed
+- Users cannot access details which cannot be changed
+- Users are immediately aware when their details have been changed
+
+### 1.6
+As a **site user** I can **I can delete my account when I no longer need it** so that **I am removed from the LovePlants website**
+
+Acceptance Criteria:
+- Users can delete their account from LovePlants
+- Users are aware when their account has been deleted
+- Users are given a chance to change their mind before deleting their account
+- Users are aware of the consequences of deleting their account
+
+
+
 
 ## Validation
 All files were checked for format validation.

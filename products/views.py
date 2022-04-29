@@ -419,7 +419,10 @@ def admin_edit_product(request, id):
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
-            print(request.POST)
+            valid_array = []
+            for i in request.POST:
+                if request.POST[i] == "" and i != 'save-as-new':
+                    valid_array.append('false')
 
             # check this
             if 'popular' in request.POST:
@@ -433,12 +436,7 @@ def admin_edit_product(request, id):
                 rare = False
 
             if 'save-as-new' in request.POST:
-                print(request.POST)
-                valid_array = []
-                for i in request.POST:
-                    if request.POST[i] == "" and i != 'save-as-new':
-                        valid_array.append('false')
-
+            
                 try:
                     x = request.POST['friendly_name']
                     Product.objects.get(
@@ -452,7 +450,7 @@ def admin_edit_product(request, id):
 
                     if 'live_on_site' in request.POST:
                         if len(valid_array) > 0:
-                            messages.error(request, ('Cannot add product to'
+                            messages.success(request, ('Cannot add product to'
                                                      ' live website due to'
                                                      ' empty'
                                                      ' fields.  Fill in entire'
@@ -515,6 +513,16 @@ def admin_edit_product(request, id):
 
             else:
                 form = ProductForm(request.POST, instance=product)
+
+                if 'live_on_site' in request.POST:
+                    if len(valid_array) > 0:
+                        messages.success(request, ('Cannot add product to'
+                                                 ' live website due to'
+                                                 ' empty'
+                                                 ' fields.  Fill in entire'
+                                                 ' form or uncheck '
+                                                 '"live on site"'))
+                        return redirect(reverse('edit_product', args=[id]))
 
                 if form.is_valid():
                     form.save()

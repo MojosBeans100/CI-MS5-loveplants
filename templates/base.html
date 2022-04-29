@@ -46,7 +46,8 @@
 
     <div id="navbar-main" class="row bg-dark align-items-center py-2">
       <div class="col-2 col-sm-1">
-        <a><img id="nav-image" src="/static/media/web.png"><sup><i id="nav-icon" class="fa-regular fa-heart"></i></sup></a>
+        <a><img id="nav-image" src="/static/media/web.png"><sup><i id="nav-icon"
+              class="fa-regular fa-heart"></i></sup></a>
       </div>
 
       <div class="col-4 col-sm-5 col-md-8 d-flex flex-row">
@@ -87,8 +88,7 @@
         <ul class="list-group  list-group-horizontal me-md-3">
           {% if user.is_authenticated %}
           <li class="list-group-item bg-dark border-0 px-0">
-            <a class="nav-link" title="Logged in as {{request.user}}" aria-current="page" href="{% url 'profile' %}"><i
-                class="fa-solid fa-user"></i></a>
+            <a class="nav-link" title="Logged in as {{request.user}}" aria-current="page" href="{% url 'profile' %}"><i class="fa-solid fa-user-check"></i></a>
           </li>
           {% else %}
           <li class="list-group-item bg-dark border-0 px-0">
@@ -137,17 +137,17 @@
   <div class="message-container">
     {% for message in messages %}
     {% with message.level as level %}
-        {% if level == 40 %}
-            {% include 'includes/toasts/toast_error.html' %}
-        <!-- {% elif level == 30 %}
+    {% if level == 40 %}
+    {% include 'includes/toasts/toast_error.html' %}
+    <!-- {% elif level == 30 %}
             {% include 'includes/toasts/toast_warning.html' %}
         {% elif level == 25 %}
             {% include 'includes/toasts/toast_success.html' %} -->
-        {% else %}
-            {% include 'includes/toasts/toast_info.html' %}
-        {% endif %}
+    {% else %}
+    {% include 'includes/toasts/toast_success.html' %}
+    {% endif %}
     {% endwith %}
-{% endfor %}
+    {% endfor %}
   </div>
   {% endif %}
 
