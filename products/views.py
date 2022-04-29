@@ -27,8 +27,11 @@ def all_products(request):
     filtering and sorting
     """
 
-    total_products = Product.objects.filter(live_on_site=True)
-    all_products = Product.objects.filter(live_on_site=True)
+    if request.user.is_superuser:
+        all_products = Product.objects.all()
+    else:
+        all_products = Product.objects.filter(live_on_site=True)
+
     plant_categories = PlantCategory.objects.all()
     search_query = None
     sort = None
@@ -141,8 +144,8 @@ def all_products(request):
                 | Q(description__icontains=search_query)
             all_products = all_products.filter(search_queries)
 
-        if 'admin_view_all' in request.GET:
-            all_products = Product.objects.all()
+        if 'liveonsite' in request.GET:
+            all_products = all_products.filter(live_on_site=True)
 
     current_sorting = f'{sort}_{direction}'
     paginator = Paginator(all_products, 16)
@@ -163,7 +166,6 @@ def all_products(request):
         'current_sorting': current_sorting,
         'page_obj': page_obj,
         'search_query': search_query,
-        'total_products': total_products,
         'current_filters': current_filters,
         'filtered_by': filtered_by,
         'front_end_filters': front_end_filters,

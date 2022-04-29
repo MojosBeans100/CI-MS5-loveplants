@@ -213,6 +213,20 @@
                             {% endfor %}
                         </div>
                     </div>
+
+                    {% if user.is_superuser %}
+                    <div class="col-12 col-sm-6 col-xl-4  d-flex justify-content-center py-1">
+                        <div class="extra-filter">
+                            <a href="{% url 'products' %}?{{current_filters}}&liveonsite"><button
+                                    class="btn btn-outline-secondary">Live on site</button></a>
+                            <!-- {% for filter in front_end_filters %}
+                            {% if filter == 'Popular' %}
+                            <p class="text-center filter"><i class="fa-solid fa-bolt"></i></p>
+                            {% endif %}
+                            {% endfor %} -->
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
 
                 <p class="text-center"><a href="{% url 'products' %}"><em>Clear all filters</em></a></p>
@@ -223,10 +237,11 @@
                         <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add product <i
                                     class="ps-3 fa-solid fa-plus"></i></button></a>
                     </div>
-                    <div class="col-3">
+                   
+                    <!-- <div class="col-3">
                         <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View
                                 all products <i class="ps-3 fa-solid fa-list"></i></button></a>
-                    </div>
+                    </div> -->
                     <div class="col-3">
                         <a href="{% url 'create_sale' %}"><button class="w-100 btn admin text-white">Create sale <i
                                     class="ps-3 fa-solid fa-bell"></i></button></a>
