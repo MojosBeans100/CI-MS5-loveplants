@@ -4,8 +4,17 @@
 {% block content %}
 
 <div class="container" style="margin-bottom: 100px;">
+
     <div class="margin">
+
         <div class="row">
+            <div class="col-2 offset-5">
+                <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add new product <i
+                            class="ps-3 fa-solid fa-plus"></i></button></a>
+            </div>
+        </div>
+
+        <div class="row pt-4">
 
             <h2>Edit <strong>{{product.friendly_name}}</strong></h2>
             <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
@@ -244,9 +253,9 @@
                                     class="ps-2 fa-solid fa-floppy-disk"></i></button>
                         </div>
                     </div>
-            </div>
 
-            </form>
+                </form>
+            </div>
         </div>
 
         <!-- <div class="col-12 border col-lg-6">
@@ -277,7 +286,7 @@
                     <button type="button" class="btn admin text-white" data-bs-dismiss="modal"><i
                             class="fa-solid fa-xmark"></i> Close</button>
                     <a href="{% url 'delete_product' product.id %}"><button type="button" class="black-button"><i
-                            class="p1-3 fa-solid fa-exclamation"></i> Delete Product</button></a>
+                                class="p1-3 fa-solid fa-exclamation"></i> Delete Product</button></a>
                 </div>
             </div>
         </div>
@@ -291,18 +300,53 @@
 {% block postloadjs %}
 {{block.super}}
 <script>
-
-
     /*jshint esversion: 6 */
 
     var myModal = document.getElementById('myModal');
     var myInput = document.getElementById('myInput');
+    var i;
+    var form = document.getElementsByTagName('form')[1];
+    var liveOnSite = document.getElementById('id_live_on_site');
+    var saveAsNew = document.getElementsByName('save-as-new')[0];
 
     myModal.addEventListener('shown.bs.modal', function () {
-        myInput.focus()
+        myInput.focus();
     })
 
-    var i;
+    /**
+     * If user is saving object as a new object
+     */
+
+ 
+
+    // function saveNewValidation(ev) {
+
+    //     var validArray = []
+    //     event.preventDefault();
+
+    //     if (liveOnSite.checked) {
+    //         var valid = true;
+    //         all_inputs = document.getElementsByTagName('input');
+
+    //         for (i = 0; i < all_inputs.length; i++) {
+    //             if (all_inputs[i].value == "") {
+    //                 valid = false;
+    //                 validArray.push(valid)
+    //             } else {
+    //                 valid = true;
+    //                 validArray.push(valid)
+    //             }
+    //         }
+    //     } else {
+    //         form.submit(); 
+    //     }
+
+    //     if (validArray.includes('false')) {
+    //         modal.style.display = "block";
+    //     } else {
+    //         form.submit();
+    //     }
+    // }
 
     document.addEventListener('DOMContentLoaded', () => {
         var sunlight = document.getElementsByName('sunlight');

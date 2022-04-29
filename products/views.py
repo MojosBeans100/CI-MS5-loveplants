@@ -417,6 +417,8 @@ def admin_edit_product(request, id):
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
+            print(request.POST)
+
             # check this
             if 'popular' in request.POST:
                 popular = True
@@ -429,22 +431,46 @@ def admin_edit_product(request, id):
                 rare = False
 
             if 'save-as-new' in request.POST:
+                print(request.POST)
+                valid_array = []
+                for i in request.POST:
+                    if request.POST[i] == "" and i != 'save-as-new':
+                        valid_array.append('false')
+
                 try:
+                    x = request.POST['friendly_name']
                     Product.objects.get(
-                        friendly_name=request.POST['friendly_name'])
-                    messages.success(request, ("This product already exists:"
+                        friendly_name=x)
+                    messages.success(request, (f"{x} "
+                                               "already exists:"
                                                " the name of the plant "
                                                "must be unique."))
                     return redirect(reverse('edit_product', args=[id]))
                 except Product.DoesNotExist:
+
+                    if 'live_on_site' in request.POST:
+                        if len(valid_array) > 0:
+                            messages.error(request, ('Cannot add product to'
+                                                     ' live website due to'
+                                                     ' empty'
+                                                     ' fields.  Fill in entire'
+                                                     ' form or uncheck '
+                                                     '"live on site"'))
+                            return redirect(reverse('edit_product', args=[id]))
+
+                    x = request.POST['friendly_name']
+                    des = request.POST['description_source']
+                    care_source = request.POST['care_instructions_source']
+                    care_url = request.POST['care_instructions_url']
+
                     form_data = {
                         'category': request.POST['category'],
                         'plant_category': request.POST['plant_category'],
-                        'name': slugify(request.POST['friendly_name'], separator='_'),
+                        'name': slugify(x, separator='_'),
                         'friendly_name': request.POST['friendly_name'],
                         'latin_name': request.POST['latin_name'],
                         'description': request.POST['description'],
-                        'description_source': request.POST['description_source'],
+                        'description_source': des,
                         'description_url': request.POST['description_url'],
                         #'image1_source': request.POST['image1_source'],
                         'image1_source_url': request.POST['image1_source_url'],
@@ -463,11 +489,10 @@ def admin_edit_product(request, id):
                         'watering': request.POST['watering'],
                         'care_required': request.POST['care_required'],
                         'care_instructions': request.POST['care_instructions'],
-                        'care_instructions_source': request.POST['care_instructions_source'],
-                        'care_instructions_url': request.POST['care_instructions_url'],
+                        'care_instructions_source': care_source,
+                        'care_instructions_url': care_url,
                         'rare': rare,
                         'popular': popular,
-                        'live_on_site': request.POST['live_on_site'],
                         'average_rating': 0,
                     }
                     form = ProductForm(form_data)
