@@ -551,8 +551,13 @@ def admin_delete_product(request, id):
 
 def admin_create_sale(request):
 
-    all_products = Product.objects.filter(sale_price=None)
-    sale_products = Product.objects.filter(sale_price__gte=0)
+    all_products = Product.objects.filter(
+                                    sale_price=None
+                                    ).order_by(
+                                        'plant_category')
+    sale_products = Product.objects.filter(
+        sale_price__gte=0).order_by(
+                                        'plant_category')
 
     if request.method == 'POST':
 

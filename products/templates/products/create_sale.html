@@ -40,9 +40,10 @@
                 <fieldset>
                     <legend>Discount Products</legend>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table">
                             <thead class="fw-bold">
                                 <tr>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -53,6 +54,7 @@
                                 </tr>
                                 <tr>
                                     <td>Product</td>
+                                    <td>Category</td>
                                     <td>Price</td>
                                     <td class="text-center">Sale Price</td>
                                     <td class="text-center">Discount</td>
@@ -64,11 +66,12 @@
                                 <tr>
                                     <td><label for="{{product.id}}">{{product.friendly_name}}</label>
                                     </td>
+                                    <td>{{product.plant_category}}</td>
                                     <td class="product-price">£{{product.price}}</td>
                                     <td class="text-center">£<input class="ms-2 w-50 sale-price" type="number"
-                                            step="any"></td>
+                                            step="any" disabled></td>
                                     <td class="text-center">£<input class="ms-2 w-50 discount-price" type="number"
-                                            step="any"></td>
+                                            step="any" disabled></td>
                                     <td class="text-center"><input type="checkbox" class="product-checks"
                                             name="{{product.id}}" value="{{product.id}}" checked
                                             onchange="updatePrices();"><br></td>
@@ -101,9 +104,11 @@
                     <legend>Remove sale</legend>
 
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table">
                             <thead class="fw-bold">
                                 <tr>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td class="text-end">Select/Deselect All</td>
@@ -113,9 +118,10 @@
                                 </tr>
                                 <tr>
                                     <td>Product</td>
+                                    <td>Category</td>
                                     <td>Price</td>
                                     <td>Current Sale Price</td>
-                                    <td>Discount</td>
+                                    <td>Current Discount</td>
                                     <td>Remove From Sale</td>
                                 </tr>
                             </thead>
@@ -123,9 +129,10 @@
                                 {% for product in sale_products %}
                                 <tr>
                                     <td>{{product.friendly_name}}</td>
+                                    <td>{{product.plant_category}}</td>
                                     <td>£ {{product.price}}</td>
                                     <td class="text-center">£ {{product.sale_price}}</td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center discount-price2"></td>
                                     <td class="text-center"><input type="checkbox" class="off-sale-checks"
                                             name="{{product.id}}" value="{{product.id}}" checked></td>
                                 </tr>
@@ -194,6 +201,7 @@
         var discountInputs = document.getElementsByClassName('discount-input');
         var salePrices = document.getElementsByClassName('sale-price');
         var discountPrices = document.getElementsByClassName('discount-price');
+        var discountPrices2 = document.getElementsByClassName('discount-price2');
         var productPrices = document.getElementsByClassName('product-price');
 
 
