@@ -88,16 +88,16 @@
 
                         <div class="row">
                             <div class="col-4">
-                                <img class="id_image1_source_url" style="height: 160px; width: 100%;"
+                                <img class="id_image1_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
                                 <p class="text-center"><em><small>main image</small></em></p>
                             </div>
                             <div class="col-4">
-                                <img class="id_image2_source_url" style="height: 160px; width: 100%;"
+                                <img class="id_image2_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>
                             <div class="col-4">
-                                <img class="id_image3_source_url" style="height: 160px; width: 100%;"
+                                <img class="id_image3_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>
                         </div>
@@ -106,15 +106,17 @@
                     <!-- details -->
                     <fieldset>
                         <legend class="pt-5">Details</legend>
-
-                        <i class="pe-2 fa-solid fa-whiskey-glass"></i>{{form.pot_size.label}}
+                         
+                        <div class="w-25">
+                        <i class="pe-2 pb-3 fa-solid fa-whiskey-glass"></i>{{form.pot_size.label}}
                         {{form.pot_size}}
 
-                        <i class="pe-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
+                        <i class="pe-3 pb-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
                         {{form.height}}
 
-                        {{form.length.label}}
-                        {{form.length}}
+                        <!-- {{form.length.label}}
+                        {{form.length}} -->
+                    </div>
 
                         <div class="row">
                             <div class="col">
@@ -130,10 +132,10 @@
 
                     <!-- care -->
                     <fieldset>
-                        <legend class="pt-5">Care</legend>
+                        <legend class="py-5">Care</legend>
 
                         <!-- sunlight -->
-                        <div class="row py-2 text-center">
+                        <div class="row pb-5 text-center">
                             <p class="text-center">Required sunlight</p>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
@@ -154,10 +156,10 @@
                                 {{form.sunlight.3.tag}}
                             </div>
                         </div>
-                        <hr>
+                        
 
                         <!-- watering -->
-                        <div class="row py-2 text-center">
+                        <div class="row pb-5 text-center">
                             <p class="text-center">Required water</p>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
@@ -181,7 +183,7 @@
                         </div>
 
                         <!-- care -->
-                        <div class="row my-4 text-center">
+                        <div class="row pb-5 text-center">
                             <!-- <p class="text-center">Plant maintenance</p> -->
                             <!-- <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
@@ -255,21 +257,22 @@
         </div>
 
         <!-- modal -->
-        <div class="modal" tabindex="-1">
+        <div class="modal" tabindex="-1" style="margin-top: 200px;">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title text-danger">Form not valid</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" id="close-modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <p>In order to create a product, all fields must be filled in</p>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
                 </div>
             </div>
+        </div>
+
+        <div id="overlay">
+
         </div>
 
     </div>
@@ -280,13 +283,28 @@
 {% block postloadjs %}
 <script>
     /*jshint esversion: 6 */
+
     var i;
-    var valid = true
+
     var form = document.getElementById('add-form');
+    var modal = document.getElementsByClassName('modal')[0];
+    var closeModal = document.getElementById('close-modal');
+
+    closeModal.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
     form.addEventListener('submit', function (ev) {
 
         // prevent posting form
         ev.preventDefault();
+        var valid = true;
 
         all_inputs = document.getElementsByTagName('input');
 
@@ -301,17 +319,17 @@
         if (valid == true) {
             form.submit();
         } else {
-            document.getElementsByClassName('modal')[0].style.display = 'block'
+            modal.style.display = "block";
         }
     });
 
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('id_sunlight_2').checked = true;
-        document.getElementById('id_sunlight_2').parentNode.style.color = 'orange';
+        document.getElementById('id_sunlight_2').parentNode.style.color = '#069b8e';
         document.getElementById('id_watering_2').checked = true;
-        document.getElementById('id_watering_2').parentNode.style.color = 'orange';
+        document.getElementById('id_watering_2').parentNode.style.color = '#069b8e';
         document.getElementById('id_care_required_2').checked = true;
-        document.getElementById('id_care_required_2').parentNode.style.color = 'orange';
+        document.getElementById('id_care_required_2').parentNode.style.color = '#069b8e';
     });
 
     /*
@@ -323,7 +341,7 @@
             labels[i].style.color = 'black';
         }
 
-        element.style.color = 'orange';
+        element.style.color = '#069b8e';
     }
 
     function uploadImage(element) {

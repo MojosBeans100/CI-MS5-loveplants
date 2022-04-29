@@ -78,16 +78,16 @@
 
                         <div class="row">
                             <div class="col-4">
-                                <img class="id_image1_source_url" style="height: 160px; width: 100%;"
+                                <img class="id_image1_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
                                 <p class="text-center"><em><small>main image</small></em></p>
                             </div>
                             <div class="col-4">
-                                <img class="id_image2_source_url" style="height: 160px; width: 100%;"
+                                <img class="id_image2_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>
                             <div class="col-4">
-                                <img class="id_image3_source_url" style="height: 160px; width: 100%;"
+                                <img class="id_image3_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>
                         </div>
@@ -97,18 +97,18 @@
                     <fieldset>
                         <legend class="pt-5">Details</legend>
 
-                        <i class="pe fa-solid fa-glass"></i>{{form.pot_size.label}}
+                        <i class="pe-2 pb-3 fa-solid fa-whiskey-glass"></i>{{form.pot_size.label}}
                         {{form.pot_size}}
 
-                        <i class="pe-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
+                        <i class="pe-3 pb-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
                         {{form.height}}
 
-                        {{form.length.label}}
-                        {{form.length}}
+                        <!-- {{form.length.label}}
+                        {{form.length}} -->
 
                         <div class="row">
                             <div class="col">
-                                <i class="pe-3 fa-solid fa-seedling"></i> {{form.maturity_num.label}}
+                                <i class="pe-3 pb-3 fa-solid fa-seedling"></i> {{form.maturity_num.label}}
                                 {{form.maturity_num}}
                             </div>
                             <div class="col">
@@ -236,12 +236,12 @@
                             </button>
                         </div>
                         <div class="col-12 col-md-4 d-flex justify-content-evenly py-2">
-                            <button type="submit" class="btn admin w-100 text-white">Save changes <i
-                                    class="ps-2 fa-solid fa-floppy-disk"></i></button>
-                        </div>
-                        <div class="col-12 col-md-4 d-flex justify-content-evenly py-2">
                             <button type="submit" class="btn admin w-100 text-white" name="save-as-new">Save as new <i
                                     class="ps-2 fa-solid fa-copy"></i></button>
+                        </div>
+                        <div class="col-12 col-md-4 d-flex justify-content-evenly py-2">
+                            <button type="submit" class="btn admin w-100 text-white">Save changes <i
+                                    class="ps-2 fa-solid fa-floppy-disk"></i></button>
                         </div>
                     </div>
             </div>
@@ -308,19 +308,19 @@
         var sunlight = document.getElementsByName('sunlight');
         for (i = 0; i < sunlight.length; i++) {
             if (sunlight[i].checked) {
-                sunlight[i].parentNode.style.color = 'orange';
+                sunlight[i].parentNode.style.color = '#069b8e';
             }
         }
         var watering = document.getElementsByName('watering');
         for (i = 0; i < watering.length; i++) {
             if (watering[i].checked) {
-                watering[i].parentNode.style.color = 'orange';
+                watering[i].parentNode.style.color = '#069b8e';
             }
         }
         var care_req = document.getElementsByName('care_required');
         for (i = 0; i < care_req.length; i++) {
             if (care_req[i].checked) {
-                care_req[i].parentNode.style.color = 'orange';
+                care_req[i].parentNode.style.color = '#069b8e';
             }
         }
 
@@ -339,7 +339,7 @@
             labels[i].style.color = 'black';
         }
 
-        element.style.borderColor = 'orange';
+        element.style.color = '#069b8e';
     }
 
     function uploadImage(element) {
