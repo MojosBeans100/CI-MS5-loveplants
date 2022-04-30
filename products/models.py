@@ -43,53 +43,11 @@ rating = (
 )
 
 
-# class Category(models.Model):
-#     """
-#     A class to define product categories
-#     """
-
-#     name = models.CharField(
-#         max_length=40
-#         )
-
-#     class Meta:
-#         verbose_name_plural = 'Categories'
-
-#     def __str__(self):
-#         return self.name
-
-
-# class PlantCategory(models.Model):
-#     """
-#     A class to define plant categories
-#     """
-#     name = models.CharField(
-#         max_length=50
-#     )
-
-#     class Meta:
-#         verbose_name_plural = 'Plant Categories'
-
-#     def __str__(self):
-#         return self.name
-
-
 class Product(models.Model):
     """
     A class to define product information
     """
 
-    # category = models.ForeignKey(
-    #     'Category',
-    #     on_delete=models.SET_NULL,
-    #     null=True
-    #     )
-    # plant_category = models.ForeignKey(
-    #     'PlantCategory',
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True
-    # )
     plant_category = models.CharField(
         choices=plant_cats,
         max_length=30,
@@ -320,22 +278,23 @@ def update_average_rating(sender, instance, created, **kwargs):
     Update product average rating each time a new rating is added
     """
 
-    if created:
-        product = Product.objects.get(pk=instance.product.pk)
-        product_reviews = ProductReview.objects.filter(product=product.id)
-        num_reviews = ProductReview.objects.filter(
-            product=instance.product.id).count()
-        ratings = []
-        count = 0
-        sum = 0
-        if num_reviews != 0:
-            for review in product_reviews:
-                ratings.append(review.rating)
-                sum += review.rating
-                count += 1
-            average_rating = sum/count
-            product.average_rating = average_rating
-            product.save()
+    product = Product.objects.get(pk=instance.product.pk)
+    product_reviews = ProductReview.objects.filter(product=product.id)
+    num_reviews = ProductReview.objects.filter(
+        product=instance.product.id).count()
+    ratings = []
+    count = 0
+    sum = 0
+    if num_reviews != 0:
+        for review in product_reviews:
+            ratings.append(review.rating)
+            sum += review.rating
+            count += 1
+        average_rating = sum/count
+        product.average_rating = average_rating
+        product.save()
+    else:
+        product.average_rating = 5
 
 
 @receiver(post_delete, sender=ProductReview)
@@ -358,3 +317,5 @@ def update_average_rating_deleted(sender, instance, **kwargs):
         average_rating = sum/count
         product.average_rating = average_rating
         product.save()
+    else:
+        product.average_rating = 5

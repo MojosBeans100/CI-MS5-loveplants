@@ -233,7 +233,7 @@
 
                 {% if user.is_superuser %}
                 <div class="row my-4 d-flex justify-content-evenly">
-                    <div class="col-3">
+                    <div class="col col-md-6 col-xxl-3">
                         <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add product <i
                                     class="ps-3 fa-solid fa-plus"></i></button></a>
                     </div>
@@ -242,7 +242,7 @@
                         <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View
                                 all products <i class="ps-3 fa-solid fa-list"></i></button></a>
                     </div> -->
-                    <div class="col-3">
+                    <div class="col col-md-6 col-xxl-3">
                         <a href="{% url 'create_sale' %}"><button class="w-100 btn admin text-white">Create sale <i
                                     class="ps-3 fa-solid fa-bell"></i></button></a>
                     </div>

@@ -182,6 +182,7 @@ def product_detail(request, id):
     form = None
     purchase_date = None
     product = get_object_or_404(Product, pk=id)
+    print(product.average_rating)
     product_reviews = ProductReview.objects.filter(product=product.id)
 
     if product.rare is True:
@@ -204,6 +205,13 @@ def product_detail(request, id):
     # look for recently viewed products
     if request.user.is_authenticated:
 
+        try:
+            liked_product = ProductReview.objects.get(
+                product=product.id, user=request.user)
+            liked = liked_product.liked
+        except:
+            liked = None
+
         # product review
         has_purchased = False
         already_reviewed = False
@@ -217,11 +225,14 @@ def product_detail(request, id):
                     has_purchased = True
                     purchase_date = order.date
 
-        users_reviews = ProductReview.objects.filter(
-            product=product,
-            user=request.user)
-        if len(users_reviews) != 0:
-            already_reviewed = True
+        try:
+            users_reviews = ProductReview.objects.get(
+                product=product,
+                user=request.user)
+            if users_reviews.review != "":
+                already_reviewed = True
+        except:
+            already_reviewed = False
 
         if has_purchased is True and already_reviewed is not True:
             form = ProductReviewForm(initial={
@@ -254,7 +265,7 @@ def product_detail(request, id):
 
         # recently_viewed = Product.objects.filter(
         #                                 name__in=recently_viewed_products)[0:4]
-
+  
     context = {
         'product': product,
         'rare_products': rare_products,
@@ -266,6 +277,7 @@ def product_detail(request, id):
         'purchase_date': purchase_date,
         'already_reviewed': already_reviewed,
         'form': form,
+        'liked': liked,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -295,7 +307,9 @@ def product_like(request, id):
                                            liked=True)
             product_review.save()
 
-    return redirect(reverse('products'))
+    redirect_url = request.POST.get('redirect_url')
+
+    return redirect(redirect_url)
 
 
 def product_review(request, id):

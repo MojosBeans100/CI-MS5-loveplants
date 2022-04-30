@@ -203,6 +203,11 @@ button {
     font-size: 20px;
 }
 
+.product-like-button2 {
+    border: none;
+    background: none;
+}
+
 .extra-filter {
     width: 60%;
 }

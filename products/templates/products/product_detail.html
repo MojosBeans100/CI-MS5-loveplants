@@ -32,7 +32,7 @@
                 <br>
                 <a href="{% url 'products' %}">All plants</a> >
                 <a href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}
-                    </a>
+                </a>
                 > <strong><em>{{product.friendly_name}}</em></strong></p>
         </div>
 
@@ -74,14 +74,11 @@
             <!-- RH for detail -->
             <div class="px-3 col-sm-12 col-md-6">
                 <h2>{{product.friendly_name}}</h2>
-
-                <!-- if the product is a plant, display plant detail -->
-                {% if product.plant_category %}
+                <!-- display plant detail -->
                 <div>
                     {% if product.latin_name %}
                     <div class="row">
                         <div class="col">
-
                             <p class="fst-italic">{{product.latin_name|lower}}</p>
                         </div>
                         <div class="col">
@@ -89,29 +86,54 @@
                     </div>
                     {% else %}
                     {% endif %}
-
-                    <!-- rare, popular, easy care -->
-                    <p class="text-center">
-                        {% if product.rare == True %}
-                        <i class="ps-4 pe-2 fa-solid fa-gem"></i>Rare
-                        {% endif %}
-                        {% if product.popular == True %}
-                        <i class="ps-4 pe-2 fa-solid fa-bolt"></i>Popular
-                        {% endif %}
-                        {% if product.care_required == 'low' %}
-                        <i class="ps-4 pe-2 fa-solid fa-face-smile"></i>Easy care
-                        {% endif %}</p>
-                    {% else %}
                 </div>
-                {% endif %}
+
+                <div class="row d-flex justify-content-center">
+                    {% if user.is_authenticated %}
+                    <div class="col text-center">
+                        <form method="POST" action="{% url 'product_like' product.id %}" style="width:auto;">
+                            {% csrf_token %}
+                            <button id="{{product.id}}" class="product-like-button2" onclick="likeProduct(this);">
+                                {% if liked == True %}
+                                <i class="fa-solid fa-heart"></i> You like this product
+                                {% else %}
+                                <i class="fa-regular fa-heart"></i> Like this product
+                                {% endif %}
+                            </button>
+                            <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                                value="{{ request.path }}">
+                        </form>
+                    </div>
+                    {% endif %}
+                    <div class="col text-center">
+                        <p>
+                            <i class="pe-2 fa-solid fa-tag"></i>{{product.plant_category}} plants</p>
+                    </div>
+                    {% if product.rare == True %}
+                    <div class="col text-center">
+                        <p><i class="ps-4 pe-2 fa-solid fa-gem"></i>Rare</p>
+                    </div>
+                    {% endif %}
+                    {% if product.popular == True %}
+                    <div class="col text-center">
+                        <p>
+                            <i class="ps-4 pe-2 fa-solid fa-bolt"></i>Popular</p>
+                    </div>
+                    {% endif %}
+                    {% if product.care_required == 'low' %}
+                    <div class="col text-center">
+                        <p>
+                            <i class="ps-4 pe-2 fa-solid fa-face-smile"></i>Easy care</p>
+                    </div>
+                    {% endif %}
+                </div>
                 <hr>
 
                 <!-- price, add to basket -->
                 <div id="product-detail-add" class="row w-100 bg-white py-3">
-
                     <div class="col-12 text-center">
-                        <p>{{product.friendly_name}} {% if product.sale_price %}<del>£ {{product.price}}</del> £
-                            {{product.sale_price}}{% else %}£ {{product.price}}{% endif %} </p>
+                        <h4><strong>{% if product.sale_price %}<del>£ {{product.price}}</del> £
+                                {{product.sale_price}}{% else %}£ {{product.price}}{% endif %}</strong></h4>
                     </div>
 
                     <div class="col-12">
@@ -159,7 +181,6 @@
                 <hr>
 
                 <!-- if product is plant, display plant detail -->
-                {% if product.plant_category %}
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
@@ -193,8 +214,6 @@
                         </tr>
                     </tbody>
                 </table>
-                {% else %}
-                {% endif %}
 
                 <!-- reviews form and rating display -->
                 <div class="row">
@@ -218,7 +237,7 @@
                                 </tr>
                                 <tr>
                                     <td class="text-center" colspan="5" id="avg-rating">
-                                      
+
                                         {{product.average_rating|floatformat:1}}/5</td>
                                 </tr>
                                 <tr class="text-center">
@@ -253,7 +272,8 @@
                                 <div class="col-2">
                                     <p class="text-center" id="users-rating">0/5</p>
                                 </div>
-                                <p id="append-error" class="text-center" style="display:none;">Be sure to leave a rating between 1 and 5</p>
+                                <p id="append-error" class="text-center" style="display:none;">Be sure to leave a rating
+                                    between 1 and 5</p>
                             </div>
 
                             <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
@@ -302,6 +322,7 @@
 
 
                     {% for review in reviews %}
+                    {% if review.review %}
                     <div class="row py-2">
                         <div class="col">
                             <p>{{review.review}} </p>
@@ -318,6 +339,7 @@
                         </div>
                         <hr>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
 
@@ -423,6 +445,25 @@
     var row2 = document.getElementById('append-star2');
     var ratings = document.getElementsByClassName('review-rating');
 
+    function likeProduct(element) {
+        preventDefault();
+        console.log(element)
+        // organise form variables
+        var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+        var id = parseInt(element.id);
+        var url = `/products/product_like/${id}`;
+
+        // post to the view
+        var response = fetch(url, {
+            method: 'POST',
+            headers: {
+                "X-CSRFToken": csrfToken
+            }
+        });
+
+    }
+
+
     if (ratings.length > 0) {
         rateReviews();
         displayRating();
@@ -487,7 +528,7 @@
             }
             // if not, add a half star
         } else {
-            for (i = 0; i < avgRating-1; i++) {
+            for (i = 0; i < avgRating - 1; i++) {
                 x = row.insertCell(0);
                 x.innerHTML = '<i class="fa-solid fa-star"></i>';
                 y = row2.insertCell(0);
