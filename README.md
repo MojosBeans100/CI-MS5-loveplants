@@ -794,18 +794,27 @@ Ensure quality of media is high
 # Marketing
 1. SEO
 2. Content marketing - useful, engaging content, blog posts, videos, podcasts
+- g
+- g
+- g
+3. Social media marketing
+Facebook page
 - build the brand
 - connect and interact with potential or existing customers
 - improve customer service and support
 - share content to attract new customers
 - keep in touch with how customers feel about the brand
-
-
-3. Social media marketing
 4. Email marketing
+Mailchimp
+
+
+
 5. Paid advertising
 6. Influence marketing
 7. Affiliate marketing
+
+## Further Steps
+paid for social media marketing
 
 
 # Deployment
