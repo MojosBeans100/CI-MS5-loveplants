@@ -13,9 +13,9 @@ from django.shortcuts import get_object_or_404
 # Local imports
 from products.models import (
                     Product,
-                    Category,
+                    #Category,
                     ProductReview,
-                    PlantCategory,
+                   # PlantCategory,
                     # User)
                     )
 from .forms import ProductReviewForm, ProductForm
@@ -34,7 +34,7 @@ def all_products(request):
     else:
         all_products = Product.objects.filter(live_on_site=True)
 
-    plant_categories = PlantCategory.objects.all()
+    #plant_categories = PlantCategory.objects.all()
     search_query = None
     sort = None
     direction = None
@@ -81,10 +81,10 @@ def all_products(request):
                     sortkey = f'-{sortkey}'
             all_products = all_products.order_by(sortkey)
 
-        if 'category' in request.GET:
-            categories = request.GET['category']
-            category_id = Category.objects.get(name=categories)
-            all_products = all_products.filter(category=category_id.id)
+        # if 'category' in request.GET:
+        #     categories = request.GET['category']
+        #     category_id = Category.objects.get(name=categories)
+        #     all_products = all_products.filter(category=category_id.id)
 
         # if 'stock' in request.GET:
         #     all_products = Product.objects.all()
@@ -92,12 +92,12 @@ def all_products(request):
         #     all_products = all_products.filter(stock=stock_opt)
         #     filtered_by = stock_opt
 
-        if 'plant_cats' in request.GET:
-            plant_cat = request.GET['plant_cats']
-            plant_cat_id = PlantCategory.objects.get(name=plant_cat)
-            all_products = all_products.filter(plant_category=plant_cat_id)
-            filtered_by = ['plant_cats', plant_cat, f'{plant_cat} plants']
-            front_end_filters.append(filtered_by)
+        # if 'plant_cats' in request.GET:
+        #     plant_cat = request.GET['plant_cats']
+        #     plant_cat_id = PlantCategory.objects.get(name=plant_cat)
+        #     all_products = all_products.filter(plant_category=plant_cat_id)
+        #     filtered_by = ['plant_cats', plant_cat, f'{plant_cat} plants']
+        #     front_end_filters.append(filtered_by)
 
         if 'sunlight' in request.GET:
             sunlight = request.GET['sunlight']
@@ -164,7 +164,7 @@ def all_products(request):
 
     context = {
         'all_products': all_products,
-        'plant_cats': plant_categories,
+        #'plant_cats': plant_categories,
         'current_sorting': current_sorting,
         'page_obj': page_obj,
         'search_query': search_query,

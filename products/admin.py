@@ -5,15 +5,15 @@ from django.contrib import admin
 
 # Import local
 from .models import (
-                Category,
+                #Category,
                 Product,
-                PlantCategory,
+                #PlantCategory,
                 RecentlyViewed,
                 ProductReview)
 
 
-admin.site.register(Category)
-admin.site.register(PlantCategory)
+#admin.site.register(Category)
+#admin.site.register(PlantCategory)
 admin.site.register(RecentlyViewed)
 
 
@@ -33,7 +33,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     list_display = (
         'friendly_name',
-        'category',
+        #'category',
         'plant_category',
         'stock_quantity',
         'price',
@@ -43,4 +43,4 @@ class ProductAdmin(admin.ModelAdmin):
         'average_rating',
     )
 
-    list_filter = ('category', 'live_on_site')
+    list_filter = ('plant_category', 'live_on_site')

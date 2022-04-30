@@ -9,6 +9,14 @@ from datetime import datetime, timezone
 
 # Local imports
 
+plant_cats = (
+    ('Potted', 'potted'),
+    ('Hanging', 'hanging'),
+    ('Floor', 'floor'),
+    ('Flowers', 'flowers'),
+    ('Succulents', 'succulents'),
+)
+
 sun_or_water = (
     ('low', 'low'),
     ('med', 'med'),
@@ -35,35 +43,35 @@ rating = (
 )
 
 
-class Category(models.Model):
-    """
-    A class to define product categories
-    """
+# class Category(models.Model):
+#     """
+#     A class to define product categories
+#     """
 
-    name = models.CharField(
-        max_length=40
-        )
+#     name = models.CharField(
+#         max_length=40
+#         )
 
-    class Meta:
-        verbose_name_plural = 'Categories'
+#     class Meta:
+#         verbose_name_plural = 'Categories'
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
-class PlantCategory(models.Model):
-    """
-    A class to define plant categories
-    """
-    name = models.CharField(
-        max_length=50
-    )
+# class PlantCategory(models.Model):
+#     """
+#     A class to define plant categories
+#     """
+#     name = models.CharField(
+#         max_length=50
+#     )
 
-    class Meta:
-        verbose_name_plural = 'Plant Categories'
+#     class Meta:
+#         verbose_name_plural = 'Plant Categories'
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
 
 class Product(models.Model):
@@ -71,14 +79,20 @@ class Product(models.Model):
     A class to define product information
     """
 
-    category = models.ForeignKey(
-        'Category',
-        on_delete=models.SET_NULL,
-        null=True
-        )
-    plant_category = models.ForeignKey(
-        'PlantCategory',
-        on_delete=models.SET_NULL,
+    # category = models.ForeignKey(
+    #     'Category',
+    #     on_delete=models.SET_NULL,
+    #     null=True
+    #     )
+    # plant_category = models.ForeignKey(
+    #     'PlantCategory',
+    #     on_delete=models.SET_NULL,
+    #     null=True,
+    #     blank=True
+    # )
+    plant_category = models.CharField(
+        choices=plant_cats,
+        max_length=30,
         null=True,
         blank=True
     )

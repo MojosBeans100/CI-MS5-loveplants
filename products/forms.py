@@ -3,8 +3,7 @@
 # Django imports
 from django import forms
 from django.forms import (Textarea, RadioSelect,
-                          TextInput, NumberInput,
-                          BooleanField)
+                          TextInput, NumberInput)
 
 # Local imports
 from .models import ProductReview, Product
