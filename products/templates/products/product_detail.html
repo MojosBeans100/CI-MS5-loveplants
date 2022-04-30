@@ -30,12 +30,9 @@
         <div class="row mt-2">
             <p class="text-start">
                 <br>
-                <a href="{% url 'products' %}">Products</a> >
-                <a href="{% url 'products' %}?category={{product.category}}">{{product.category}}</a>
-                {% if product.plant_category %}>
+                <a href="{% url 'products' %}">All plants</a> >
                 <a href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}
-                    {% else %}
-                    {% endif %}</a>
+                    </a>
                 > <strong><em>{{product.friendly_name}}</em></strong></p>
         </div>
 

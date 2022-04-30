@@ -13,10 +13,7 @@ from django.shortcuts import get_object_or_404
 # Local imports
 from products.models import (
                     Product,
-                    #Category,
                     ProductReview,
-                   # PlantCategory,
-                    # User)
                     )
 from .forms import ProductReviewForm, ProductForm
 from profiles.models import UserProfile
@@ -34,7 +31,6 @@ def all_products(request):
     else:
         all_products = Product.objects.filter(live_on_site=True)
 
-    #plant_categories = PlantCategory.objects.all()
     search_query = None
     sort = None
     direction = None
@@ -92,12 +88,11 @@ def all_products(request):
         #     all_products = all_products.filter(stock=stock_opt)
         #     filtered_by = stock_opt
 
-        # if 'plant_cats' in request.GET:
-        #     plant_cat = request.GET['plant_cats']
-        #     plant_cat_id = PlantCategory.objects.get(name=plant_cat)
-        #     all_products = all_products.filter(plant_category=plant_cat_id)
-        #     filtered_by = ['plant_cats', plant_cat, f'{plant_cat} plants']
-        #     front_end_filters.append(filtered_by)
+        if 'plant_cats' in request.GET:
+            plant_cat = request.GET['plant_cats']
+            all_products = all_products.filter(plant_category=plant_cat)
+            filtered_by = ['plant_cats', plant_cat, f'{plant_cat} plants']
+            front_end_filters.append(filtered_by)
 
         if 'sunlight' in request.GET:
             sunlight = request.GET['sunlight']
@@ -359,7 +354,7 @@ def admin_add_product(request):
             x = request.POST['care_instructions_source']
 
             form_data = {
-                'category': request.POST['category'],
+                #'category': request.POST['category'],
                 'plant_category': request.POST['plant_category'],
                 'name': slugify(request.POST['friendly_name'], separator='_'),
                 'friendly_name': request.POST['friendly_name'],
@@ -464,7 +459,7 @@ def admin_edit_product(request, id):
                     care_url = request.POST['care_instructions_url']
 
                     form_data = {
-                        'category': request.POST['category'],
+                        #'category': request.POST['category'],
                         'plant_category': request.POST['plant_category'],
                         'name': slugify(x, separator='_'),
                         'friendly_name': request.POST['friendly_name'],
