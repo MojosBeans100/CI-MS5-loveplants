@@ -38,6 +38,7 @@ As a **site user** I can **navigate to a page which details my personal informat
 |Critera|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |upon navigating to the users profile, their identifying and account info is displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/desktop1_cymipd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/tablet1_dxupzx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/mobile1_ebhzgp.jpg)|Pass|
+|non authenticated users are redirected to the home page when attempted to navigated to the profile page via the URL|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651244363/LovePlants/Testing/US1/US%201.3/desktopurl_q32r22.jpg)|N/A|N/A|Pass|
 
 Acceptance Criteria:
 - [x] Users are aware how to reach the page for their personal account
@@ -81,6 +82,7 @@ Acceptance Criteria:
 - Users are aware when their account has been deleted
 - Users are given a chance to change their mind before deleting their account
 - Users are aware of the consequences of deleting their account
+
 
 ## Validation
 All files were checked for format validation.

@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
 from django.db.models import Q, Max
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 
 # Local imports
 from products.models import (
@@ -15,7 +16,8 @@ from products.models import (
                     Category,
                     ProductReview,
                     PlantCategory,
-                    User)
+                    # User)
+                    )
 from .forms import ProductReviewForm, ProductForm
 from profiles.models import UserProfile
 from checkout.models import Order, OrderLineItem
@@ -184,10 +186,7 @@ def product_detail(request, id):
     already_reviewed = None
     form = None
     purchase_date = None
-
-    user = str(request.user)
-    product = Product.objects.get(id=id)
-    recently_viewed = ""
+    product = get_object_or_404(Product, pk=id)
     product_reviews = ProductReview.objects.filter(product=product.id)
 
     if product.rare is True:
@@ -236,7 +235,7 @@ def product_detail(request, id):
         else:
             form = None
 
-        current_user = User.objects.get(username=user)
+        # current_user = User.objects.get(username=user)
         # if RecentlyViewed.objects.filter(
         #                     user=current_user,
         #                     product=product).exists():
@@ -261,14 +260,13 @@ def product_detail(request, id):
         # recently_viewed = Product.objects.filter(
         #                                 name__in=recently_viewed_products)[0:4]
 
-
     context = {
         'product': product,
         'rare_products': rare_products,
         'popular_products': popular_products,
         'easy_care': easy_products,
         'reviews': product_reviews,
-        #'recently_viewed': recently_viewed,
+        # 'recently_viewed': recently_viewed,
         'has_purchased': has_purchased,
         'purchase_date': purchase_date,
         'already_reviewed': already_reviewed,
@@ -358,6 +356,8 @@ def admin_add_product(request):
 
         # post the object
         else:
+            x = request.POST['care_instructions_source']
+
             form_data = {
                 'category': request.POST['category'],
                 'plant_category': request.POST['plant_category'],
@@ -367,16 +367,16 @@ def admin_add_product(request):
                 'description': request.POST['description'],
                 'description_source': request.POST['description_source'],
                 'description_url': request.POST['description_url'],
-                #'image1_source': request.POST['image1_source'],
+                # 'image1_source': request.POST['image1_source'],
                 'image1_source_url': request.POST['image1_source_url'],
-                #'image2_source': request.POST['image2_source'],
+                # 'image2_source': request.POST['image2_source'],
                 'image2_source_url': request.POST['image2_source_url'],
-                #'image3_source': request.POST['image3_source'],
+                # 'image3_source': request.POST['image3_source'],
                 'image3_source_url': request.POST['image3_source_url'],
                 'pot_size': request.POST['pot_size'],
                 'height': request.POST['height'],
                 'price': request.POST['price'],
-                #'length': request.POST['length'],
+                # 'length': request.POST['length'],
                 'stock_quantity': request.POST['stock_quantity'],
                 'maturity_num': request.POST['maturity_num'],
                 'maturity_time': request.POST['maturity_time'],
@@ -384,7 +384,7 @@ def admin_add_product(request):
                 'watering': request.POST['watering'],
                 'care_required': request.POST['care_required'],
                 'care_instructions': request.POST['care_instructions'],
-                'care_instructions_source': request.POST['care_instructions_source'],
+                'care_instructions_source': x,
                 'care_instructions_url': request.POST['care_instructions_url'],
                 'rare': rare,
                 'popular': popular,
@@ -436,7 +436,7 @@ def admin_edit_product(request, id):
                 rare = False
 
             if 'save-as-new' in request.POST:
-            
+
                 try:
                     x = request.POST['friendly_name']
                     Product.objects.get(
@@ -451,11 +451,11 @@ def admin_edit_product(request, id):
                     if 'live_on_site' in request.POST:
                         if len(valid_array) > 0:
                             messages.success(request, ('Cannot add product to'
-                                                     ' live website due to'
-                                                     ' empty'
-                                                     ' fields.  Fill in entire'
-                                                     ' form or uncheck '
-                                                     '"live on site"'))
+                                                       ' live website due to'
+                                                       ' empty fields.'
+                                                       ' Fill in entire'
+                                                       ' form or uncheck '
+                                                       '"live on site"'))
                             return redirect(reverse('edit_product', args=[id]))
 
                     x = request.POST['friendly_name']
@@ -517,11 +517,11 @@ def admin_edit_product(request, id):
                 if 'live_on_site' in request.POST:
                     if len(valid_array) > 0:
                         messages.success(request, ('Cannot add product to'
-                                                 ' live website due to'
-                                                 ' empty'
-                                                 ' fields.  Fill in entire'
-                                                 ' form or uncheck '
-                                                 '"live on site"'))
+                                                   ' live website due to'
+                                                   ' empty'
+                                                   ' fields.  Fill in entire'
+                                                   ' form or uncheck '
+                                                   '"live on site"'))
                         return redirect(reverse('edit_product', args=[id]))
 
                 if form.is_valid():
@@ -550,65 +550,77 @@ def admin_delete_product(request, id):
     Allow admin users to delete products
     """
 
-    product = Product.objects.get(id=id)
-    product.delete()
-    messages.success(request, f"{product.friendly_name} has been deleted.")
+    if request.user.is_superuser:
+        product = Product.objects.get(id=id)
+        product.delete()
+        messages.success(request, f"{product.friendly_name} has been deleted.")
+    else:
+        return render('product/products.html')
 
     return redirect(reverse('products'))
 
 
 def admin_create_sale(request):
 
-    all_products = Product.objects.filter(
-                                    sale_price=None
-                                    ).order_by(
-                                        'plant_category')
-    sale_products = Product.objects.filter(
-        sale_price__gte=0).order_by(
-                                        'plant_category')
+    if request.user.is_superuser:
+        all_products = Product.objects.filter(
+                                        sale_price=None
+                                        ).order_by(
+                                            'plant_category')
+        sale_products = Product.objects.filter(
+            sale_price__gte=0).order_by(
+                                            'plant_category')
 
-    if request.method == 'POST':
+        if request.method == 'POST':
 
-        if 'apply-sale' in request.POST:
-            per = None
-            val = None
-            if (request.POST['val']) != "":
-                val = decimal.Decimal(request.POST['val'])
-            if (request.POST['per']) != "":
-                per = decimal.Decimal(request.POST['per'])
+            if 'apply-sale' in request.POST:
+                per = None
+                val = None
+                if (request.POST['val']) != "":
+                    val = decimal.Decimal(request.POST['val'])
+                if (request.POST['per']) != "":
+                    per = decimal.Decimal(request.POST['per'])
 
-            for product in all_products:
-                try:
+                for product in all_products:
+
                     product_id = request.POST[f"{product.id}"]
-                    change_price = Product.objects.get(id=product_id)
 
-                    if val is None and per is not None:
-                        change_price.sale_price = round(
-                            ((100-per)/100)*change_price.price, 2
-                            )
-                    else:
-                        change_price.sale_price = change_price.price - val
-                    change_price.save()
-                    all_products = Product.objects.filter(sale_price=None)
-                    sale_products = Product.objects.filter(sale_price__gte=0)
+                    try:
+                        change_price = Product.objects.get(id=product_id)
+                        if val is None and per is not None:
+                            change_price.sale_price = round(
+                                ((100-per)/100)*change_price.price, 2
+                                )
+                        else:
+                            change_price.sale_price = change_price.price - val
+                        change_price.save()
+                        all_products = Product.objects.filter(sale_price=None)
+                        sale_products = Product.objects.filter(
+                                                        sale_price__gte=0
+                                                        )
+                    except:
+                        ...
 
-                except:
-                    print("nah")
-        else:
-            for product in sale_products:
-                try:
-                    product_id = request.POST[f"{product.id}"]
-                    remove_sale_price = Product.objects.get(id=product_id)
-                    remove_sale_price.sale_price = None
-                    remove_sale_price.save()
-                    all_products = Product.objects.filter(sale_price=None)
-                    sale_products = Product.objects.filter(sale_price__gte=0)
-                except:
-                    print("blah")
+            else:
+                for product in sale_products:
+                    try:
+                        product_id = request.POST[f"{product.id}"]
+                        remove_sale_price = Product.objects.get(id=product_id)
+                        remove_sale_price.sale_price = None
+                        remove_sale_price.save()
+                        all_products = Product.objects.filter(sale_price=None)
+                        sale_products = Product.objects.filter(
+                                                        sale_price__gte=0
+                                                        )
+                    except:
+                        ...
 
-    context = {
-        'products': all_products,
-        'sale_products': sale_products,
-    }
+        context = {
+            'products': all_products,
+            'sale_products': sale_products,
+        }
+
+    else:
+        return render('product/products.html')
 
     return render(request, 'products/create_sale.html', context)

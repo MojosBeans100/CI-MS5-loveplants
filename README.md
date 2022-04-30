@@ -195,6 +195,8 @@ Data as presented
 ## Database Structure
 The database includes:
 - Home app
+  - admin.py
+  
 - Products app
 - Bag app
 - Checkout app
@@ -215,7 +217,7 @@ The database includes:
 ## Models
 The models created to develop this e-commerce project are defined in this section. 
 
-![database schema]()
+![database schema](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651259312/LovePlants/QuickDBD-export_wuephp.png)
 
 ### User (Django context processor)
 - The User model contains information about the user, as part of the [Django allauth library](https://django-allauth.readthedocs.io/en/latest/installation.html)
@@ -720,6 +722,58 @@ Font awesome was used to provide the relevant fonts/icons for the website
 
 # Testing
 The testing strategy is detailed in [this document](TESTING.md).
+
+# SEO
+https://www.canva.com/
+https://www.wordtracker.com/
+https://www.xml-sitemaps.com/
+
+
+
+## Keywords
+
+1. Create list of long-tail and short-tail keywords
+2. Remove items which LovePlants does not provide a solution to
+3. Look for keywords which are high volume but low competition
+
+### Long-tail keywords
+Phrase or sentence
+More specific
+Intention behind search is clearer
+Competition is lower
+
+### Short-tail keywords (head terms)
+1 or 2 words long
+High competition
+Wide array of users
+Attract wider array of users who aren't necessarily target audience
+
+### Links to useful pages
+
+### Images
+Descriptions
+Alts
+Keywords
+
+### Metadata
+Name, content
+
+
+### Sitemap.xml
+List a websites important URLs
+
+### Robots.txt
+Tells a search engine where they are not allowed to go on the website
+Having this files shows acknowledgement that search engines are allowed on the site and have free access to it
+Having this improves SEO quality
+
+### Further Steps
+Register sitemap with Google
+https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap
+
+Test robots.txt file
+https://support.google.com/webmasters/answer/6062598?hl=en
+
 
 # Deployment
 ### Local Deployment
