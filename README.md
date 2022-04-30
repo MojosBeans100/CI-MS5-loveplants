@@ -723,15 +723,12 @@ Font awesome was used to provide the relevant fonts/icons for the website
 # Testing
 The testing strategy is detailed in [this document](TESTING.md).
 
-# SEO
+# Search Engine Optimisation (SEO)
 https://www.canva.com/
 https://www.wordtracker.com/
 https://www.xml-sitemaps.com/
 
-
-
 ## Keywords
-
 1. Create list of long-tail and short-tail keywords
 2. Remove items which LovePlants does not provide a solution to
 3. Look for keywords which are high volume but low competition
@@ -758,7 +755,6 @@ Keywords
 ### Metadata
 Name, content
 
-
 ### Sitemap.xml
 List a websites important URLs
 
@@ -773,6 +769,43 @@ https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap
 
 Test robots.txt file
 https://support.google.com/webmasters/answer/6062598?hl=en
+
+### Google Raters
+Expertise
+Authoritativeness
+Trustworthiness
+Click through rate (CTR) - how ofter users click the page link in Google search
+Bounce rate - how likely a user is to click the back button as soon as they land on your site
+Dwell time - how long user stays on page before click back through search results
+Session time - how long user spend on site as a whole
+Pagers per session - how many pages users visited before moving on
+
+### Improve expertise, authoritativeness, trustworthiness
+Understand users need and create engaging content that meets the needs
+Professional content, avoid typos and spelling mistakes
+Answer user's questions ie FAQ
+Ensure info is correct, provide citations and show research
+Include well explained examples
+Add relevant links to other parts of the site to keep users exploring more content
+Provide links to privacy statements, T&Cs
+Include testimonials, reviews, ratings
+Ensure quality of media is high
+
+# Marketing
+1. SEO
+2. Content marketing - useful, engaging content, blog posts, videos, podcasts
+- build the brand
+- connect and interact with potential or existing customers
+- improve customer service and support
+- share content to attract new customers
+- keep in touch with how customers feel about the brand
+
+
+3. Social media marketing
+4. Email marketing
+5. Paid advertising
+6. Influence marketing
+7. Affiliate marketing
 
 
 # Deployment
