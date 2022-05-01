@@ -10,7 +10,6 @@
 
                 <!-- plant type filters -->
                 <div>
-
                     <div class="d-flex">
                         <hr class="flex-grow-1">
                         <h2 class="text-center px-2 px-md-3 px-xl-5">PLANTS</h2>
@@ -22,87 +21,102 @@
                     <!-- plant types list choice - images credit "https://www.flaticon.com/free-icons/plant" Plant icons created by Icongeek26 - Flaticon -->
                     <div class="row">
                         <div class="text-center col-md col-4 d-flex justify-content-around py-2">
-                            <a class="anchor-no-decoration" href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging">
+                            <a class="anchor-no-decoration"
+                                href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging">
                                 {% if front_end_filters|length > 0 %}
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Hanging' %}
                                 <img src="/static/media/hanging_bold.png" title="Hanging plants">
                                 {% else %}
-                                <img src="/static/media/hanging.png" title="Hanging plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/hanging.png" title="Hanging plants"
+                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/hanging.png" title="Hanging plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/hanging.png" title="Hanging plants"
+                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
                                 {% endif %}
                                 <br><br><small>Hanging</small></a>
                         </div>
                         <div class="text-center col-md col-4 d-flex justify-content-around py-2">
-                            <a class="anchor-no-decoration" href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor">
+                            <a class="anchor-no-decoration"
+                                href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor">
                                 {% if front_end_filters|length > 0 %}
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Floor' %}
                                 <img src="/static/media/floor_bold.png" title="Floor plants">
                                 {% else %}
-                                <img src="/static/media/floor.png" title="Floor plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/floor.png" title="Floor plants" onmouseover="boldImage(this);"
+                                    onmouseout="unboldImage(this);">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/floor.png" title="Floor plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/floor.png" title="Floor plants" onmouseover="boldImage(this);"
+                                    onmouseout="unboldImage(this);">
                                 {% endif %}
                                 <br><br><small>Floor</small></a>
                         </div>
                         <div class="text-center col-md col-4 d-flex justify-content-around py-2">
-                            <a class="anchor-no-decoration" href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted">
+                            <a class="anchor-no-decoration"
+                                href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted">
                                 {% if front_end_filters|length > 0 %}
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Potted' %}
                                 <img src="/static/media/potted_bold.png" title="Potted plants">
                                 {% else %}
-                                <img src="/static/media/potted.png" title="Potted plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/potted.png" title="Potted plants" onmouseover="boldImage(this);"
+                                    onmouseout="unboldImage(this);">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/potted.png" title="Potted plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/potted.png" title="Potted plants" onmouseover="boldImage(this);"
+                                    onmouseout="unboldImage(this);">
                                 {% endif %}
                                 <br><br><small>Potted</small></a>
                         </div>
                         <div class="text-center col-md col-6 d-flex justify-content-around py-2">
-                            <a class="anchor-no-decoration" href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers">
+                            <a class="anchor-no-decoration"
+                                href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers">
                                 {% if front_end_filters|length > 0 %}
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Flowers' %}
                                 <img src="/static/media/flowers_bold.png" title="Plants with flowers">
                                 {% else %}
-                                <img src="/static/media/flowers.png" title="Plants with flowers" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/flowers.png" title="Plants with flowers"
+                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/flowers.png" title="Plants with flowers" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/flowers.png" title="Plants with flowers"
+                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
                                 {% endif %}
                                 <br><br><small>Flowers</small></a>
                         </div>
                         <div class="text-center col-md col-6 d-flex justify-content-around py-2">
-                            <a class="anchor-no-decoration" href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents">
+                            <a class="anchor-no-decoration"
+                                href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents">
                                 {% if front_end_filters|length > 0 %}
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Succulents' %}<img src="/static/media/succulent_bold.png"
                                     title="Succulents">
                                 {% else %}
-                                <img src="/static/media/succulent.png" title="Succulent plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/succulent.png" title="Succulent plants"
+                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/succulent.png" title="Succulent plants" onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="/static/media/succulent.png" title="Succulent plants"
+                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
                                 {% endif %}
                                 <br><br><small>Succulents</small></a>
                         </div>
@@ -237,7 +251,7 @@
                         <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add product <i
                                     class="ps-3 fa-solid fa-plus"></i></button></a>
                     </div>
-                   
+
                     <!-- <div class="col-3">
                         <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View
                                 all products <i class="ps-3 fa-solid fa-list"></i></button></a>
@@ -249,6 +263,23 @@
                 </div>
                 {% else %}
                 {% endif %}
+
+                <form method="GET" class="ms-5 ms-md-2 p-0" action="{% url 'products' %}">
+                    <div class="row">
+                        <div class="col-11"><input type="text" class="p-0 ps-2 w-100" placeholder="Search for products" name="q"></div>
+                        <div class="col-1"><button class="btn p-0" type="submit">
+                            <a aria-current="page" href="#"><i
+                                    class="ps-2 fa-solid fa-magnifying-glass"></i></a></button></div>
+                    </div>
+                </form>
+
+                <div class="p-2 text-center">
+                    {% if all_products.count == 0 %}
+                    <h3>No products found, try widening your search!</h3>
+                    {% else %}
+                    <h3>{{all_products.count}} products</h3>
+                    {% endif %}
+                </div>
             </div>
         </div>
 
@@ -259,16 +290,7 @@
                 <!-- number of products, products per page, sort  -->
                 <div class="row align-items-center">
                     <hr>
-
-                    <div class="col-12 col-sm-4 col-md-6 p-2 text-center">
-                        {% if all_products.count == 0 %}
-                        <h3>No products found, try widening your search!</h3>
-                        {% else %}
-                        <h3>{{all_products.count}} products</h3>
-                        {% endif %}
-                    </div>
-
-                    <div class="col-12 col-sm-4 col-md-6 p-2 d-flex justify-content-center justify-content-md-end">
+                    <div class="p-2 d-flex justify-content-end">
                         <div class="dropdown border">
                             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -434,11 +456,11 @@
     /*jshint esversion: 6 */
 
     function boldImage(element) {
-        element.src = element.src.split('.png')[0]+'_bold'+'.png';
+        element.src = element.src.split('.png')[0] + '_bold' + '.png';
     }
 
     function unboldImage(element) {
-        element.src = element.src.replace('_bold',"");
+        element.src = element.src.replace('_bold', "");
         console.log(element.src)
     }
 

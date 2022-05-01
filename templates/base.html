@@ -45,7 +45,7 @@
   <header class="container-fluid fixed-top">
 
     <div id="navbar-main" class="row bg-dark align-items-center py-2">
-      <div class="col-2 col-sm-1">
+      <div class="col-1 col-sm-1">
         <a><img id="nav-image" src="/static/media/web.png"><sup><i id="nav-icon"
               class="fa-regular fa-heart"></i></sup></a>
       </div>
@@ -69,16 +69,6 @@
               <li class="list-group-item p-0 bg-dark border-0">
                 <a class="nav-link" aria-current="page" href="{% url 'profile' %}">Care</a>
               </li>
-
-              <li class="list-group-item bg-dark p-0 border-0">
-                <form method="GET" class="ms-5 p-0" action="{% url 'products' %}">
-                  <input type="text" style="width: 300px;" class="p-0 ps-2" placeholder="Search" name="q">
-                  <button class="btn btn-dark p-0" type="submit">
-                    <a class="nav-link" aria-current="page" href="#"><i
-                        class="fa-solid fa-magnifying-glass"></i></a></button>
-              </li>
-              </form>
-
             </ul>
           </div>
         </nav>

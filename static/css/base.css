@@ -14,15 +14,27 @@
     height: 60px;
 }
 
+/* .dropdown-menu {
+    border-radius: 0;
+    text-align: center;
+    min-width: 30rem;
+    border: 0;
+    padding-top: 0;
+    background-color: none;
+} */
+
 @media (max-width: 1200px) {
     #nav-icon {
         display: none;
     }
 
-    /* #nav-image {
-        width: 50px;
-        height: 50px;
-    } */
+    
+}
+
+@media (max-width: 756px) {
+    #nav-image {
+        display: none;
+    }
 }
 
 

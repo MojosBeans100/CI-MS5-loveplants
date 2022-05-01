@@ -91,14 +91,22 @@ As a **site user** I can **I can view a list of all available products to buy** 
 
 |Critera|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
+|when user navigates to the products page, a list of projects are displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393182/LovePlants/Testing/US%202/2.1/desktop1_znk5tv.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/tablet1_dqemdj.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/mobile1_ild73b.jpg)|Pass|
+|a Bootstrap card is used to identify the product with identifying information|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/desktop2_frirqa.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/tablet2_kf4di0.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/mobile2_ii5ogv.jpg)|Pass|
 
 Acceptance Criteria:
-- Users can view products available to buy
-- Users can see a picture, product name, price for the product
-- Users can see how many products they are viewing
+- [x] Users can view products available to buy
+- [x] Users can see a picture, product name, price for the product
+- [x] Users can see how many products they are viewing
 
 ### 2.2
-As a **site user** I can ** I can use a search bar to input product details** so that **I can search for a specific product**
+As a **site user** I can **use a search bar to input product details** so that **I can search for a specific product**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - Users can see a search bar at the top of the product list page
