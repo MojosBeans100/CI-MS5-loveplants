@@ -119,14 +119,27 @@ Acceptance Criteria:
 ### 2.3
 As a **site user** I can **I can filter the available products by category etc** so that **the product list contains only products I am interested in**
 
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users can click on any of the plant icons to filter by plant type|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/desktop1_atoojj.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet1_qngtma.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile1_covii9.jpg)|Pass|
+|once filtered by plant type, the list narrows down to include only products of that plant type|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406084/LovePlants/Testing/US%202/2.3/desktop2_fchhqk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet2_lyxnd2.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet2_lyxnd2.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile2_zivpet.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile3_tyc1kj.jpg)|Pass|
+|users can further narrow the list by filtering by other criteria, such as price|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/desktop3_de8i8z.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/tablet3_faqngx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/mobile4_htvyej.jpg) []Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/mobile5_i5l5k3.jpg)|Pass|
+
+
 Acceptance Criteria:
-- Users can see categories on buttons on product list page
-- When buttons are clicked, only products in that category are displayed
-- Users can remove this filter to revert to viewing all products
-- Users can see how many products are left in the list after filtering
+- [x] Users can see categories on buttons on product list page
+- [x] When buttons are clicked, only products in that category are displayed
+- [x] Users can remove this filter to revert to viewing all products
+- [x] Users can see how many products are left in the list after filtering
 
 ### 2.4
 As a **site user** I can **sort the available products by price and other features** so that **the product list is a more accessible and relevant order to view**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - Users can access 'sort by' buttons in the product list page
