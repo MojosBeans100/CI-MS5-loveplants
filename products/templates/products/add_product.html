@@ -78,10 +78,40 @@
                     <fieldset>
                         <legend class="pt-5">Images</legend>
 
-                        <p><small><em>provide urls for up to 3 images from a cloud storage</em></small></p>
-                        {{form.image1_source_url}}
-                        {{form.image2_source_url}}
-                        {{form.image3_source_url}}
+                        <p><small><em>provide urls for up to 3 images from a cloud storage and the source of the image</em></small></p>
+
+                        <div class="row">
+                            <div class="col">
+                                <p>Image 1</p>
+                                {{form.image1_source_url}}
+                            </div>
+                            <div class="col">
+                                <p>Source</p>
+                                {{form.image1_source}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <p>Image 2</p>
+                                {{form.image2_source_url}}
+                            </div>
+                            <div class="col">
+                                <p>Source</p>
+                                {{form.image2_source}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <p>Image 3</p>
+                                {{form.image3_source_url}}
+                            </div>
+                            <div class="col">
+                                <p>Source</p>
+                                {{form.image3_source}}
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-4">
@@ -103,17 +133,13 @@
                     <!-- details -->
                     <fieldset>
                         <legend class="pt-5">Details</legend>
-                         
-                        <div class="w-25">
-                        <i class="pe-2 pb-3 fa-solid fa-whiskey-glass"></i>{{form.pot_size.label}}
-                        {{form.pot_size}}
 
-                        <i class="pe-3 pb-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
-                        {{form.height}}
-
-                        <!-- {{form.length.label}}
-                        {{form.length}} -->
-                    </div>
+                        <div class="row">
+                            <div class="col"><i class="pe-2 pb-3 fa-solid fa-whiskey-glass"></i>{{form.pot_size.label}}
+                                {{form.pot_size}}</div>
+                            <div class="col"><i class="pe-3 pb-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
+                                {{form.height}}</div>
+                        </div>
 
                         <div class="row">
                             <div class="col">
@@ -153,7 +179,7 @@
                                 {{form.sunlight.3.tag}}
                             </div>
                         </div>
-                        
+
 
                         <!-- watering -->
                         <div class="row pb-5 text-center">

@@ -369,7 +369,6 @@ def admin_add_product(request):
             x = request.POST['care_instructions_source']
 
             form_data = {
-                #'category': request.POST['category'],
                 'plant_category': request.POST['plant_category'],
                 'name': slugify(request.POST['friendly_name'], separator='_'),
                 'friendly_name': request.POST['friendly_name'],
@@ -377,16 +376,15 @@ def admin_add_product(request):
                 'description': request.POST['description'],
                 'description_source': request.POST['description_source'],
                 'description_url': request.POST['description_url'],
-                # 'image1_source': request.POST['image1_source'],
+                'image1_source': request.POST['image1_source'],
                 'image1_source_url': request.POST['image1_source_url'],
-                # 'image2_source': request.POST['image2_source'],
+                'image2_source': request.POST['image2_source'],
                 'image2_source_url': request.POST['image2_source_url'],
-                # 'image3_source': request.POST['image3_source'],
+                'image3_source': request.POST['image3_source'],
                 'image3_source_url': request.POST['image3_source_url'],
                 'pot_size': request.POST['pot_size'],
                 'height': request.POST['height'],
                 'price': request.POST['price'],
-                # 'length': request.POST['length'],
                 'stock_quantity': request.POST['stock_quantity'],
                 'maturity_num': request.POST['maturity_num'],
                 'maturity_time': request.POST['maturity_time'],
@@ -409,7 +407,7 @@ def admin_add_product(request):
             return redirect(reverse('products'))
 
     form = ProductForm()
-    saved_products = Product.objects.filter(stock_quantity=0)
+    saved_products = Product.objects.filter(live_on_site=False)
     context = {
         'form': form,
         'saved': saved_products,

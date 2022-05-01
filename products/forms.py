@@ -3,7 +3,7 @@
 # Django imports
 from django import forms
 from django.forms import (Textarea, RadioSelect,
-                          TextInput, NumberInput)
+                          TextInput, NumberInput, Select)
 
 # Local imports
 from .models import ProductReview, Product
@@ -58,6 +58,9 @@ class ProductForm(forms.ModelForm):
             }),
             'image1_source_url': TextInput(attrs={
                 'placeholder': 'eg. https://res.cloudinary.com/...',
+            }),
+            'image1_source': TextInput(attrs={
+                'placeholder': 'eg. The Spruce',
             }),
             'care_instructions': Textarea(attrs={
                 'placeholder': ('eg. Plant your Pilea peperomiodes in well  '

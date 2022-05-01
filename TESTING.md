@@ -83,7 +83,63 @@ Acceptance Criteria:
 - Users are given a chance to change their mind before deleting their account
 - Users are aware of the consequences of deleting their account
 
+## User Story 2
+User Story 2 involves allowing users to view, filter and search for products.
 
+### 2.1
+As a **site user** I can **I can view a list of all available products to buy** so that **I can see the selection of products on the website**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+
+Acceptance Criteria:
+- Users can view products available to buy
+- Users can see a picture, product name, price for the product
+- Users can see how many products they are viewing
+
+### 2.2
+As a **site user** I can ** I can use a search bar to input product details** so that **I can search for a specific product**
+
+Acceptance Criteria:
+- Users can see a search bar at the top of the product list page
+- Users can input text into the search bar and press the 'search' button
+- Products are filtered by the search text criteria, all other products are not displayed
+- Users can see how many products are left in the list after searching
+- Users can remove the search functionality to return to all products
+
+### 2.3
+As a **site user** I can **I can filter the available products by category etc** so that **the product list contains only products I am interested in**
+
+Acceptance Criteria:
+- Users can see categories on buttons on product list page
+- When buttons are clicked, only products in that category are displayed
+- Users can remove this filter to revert to viewing all products
+- Users can see how many products are left in the list after filtering
+
+### 2.4
+As a **site user** I can **sort the available products by price and other features** so that **the product list is a more accessible and relevant order to view**
+
+Acceptance Criteria:
+- Users can access 'sort by' buttons in the product list page
+- Users can change the order of the product list by sorting
+- Users can sort by price, name A-Z, rating, popularity
+- Users can remove the sorting criteria
+
+### 2.5
+As a **site user** I can **view the specific details of a product** so that **I can learn more about products I may wish to purchase**
+
+Acceptance Criteria:
+- User can click on product cards in products view to see detail about the product
+- User is clearly aware which product they are looking at
+- User can see price of product
+- User can see how to add this product to their shopping bag
+
+### 2.6
+As a **site user** I can **see products which are out of stock** so that **I can see which products may be available in the future**
+
+Acceptance Criteria:
+- Users can see which products are out of stock/back soon
+- (optional) Users can save these products for later
 
 
 ## Validation
