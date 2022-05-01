@@ -159,17 +159,17 @@ User Story 3 captures the requirements for users to add products to their shoppi
 As a **site user** I can **add a product to my shopping bag** so that **I can purchase the item**
 
 Acceptance Criteria:
-- fd
-- fgd
-- fdg
+- User can click on 'Add to Bag' to add the product
+- User can determine the quantity of this product they want to add to their bag
 
 ### 3.2
 As a **site user** I can **I can see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
 
 Acceptance Criteria:
-- f
-- f
-- f
+- User received a notification that an item was added to their bag
+- User can see the contents of their bag
+- User can dismiss the notification
+- User can see their shopping bag contents change in the nav bar 
 
 ### 3.3
 As a **site user** I can **see the total cost of my shopping bag change when I have added a product** so that **I'm aware of the running cost as I add products**

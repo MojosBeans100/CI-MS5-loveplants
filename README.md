@@ -892,7 +892,25 @@ To deploy this application to Heroku, run the following steps.
 
 # Limitations
 ## Products
-To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to source or owner of the image.  In a true e-commerce store, these URL source fields would not be necessary, as all content is expected to be original. 
+To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to source or owner of the image.  
+
+In a true e-commerce store, these URL source fields would not be necessary, as all content is expected to be original. 
+
+## Description/ Care Instructions
+Upon research of other houseplant websites, it was noted that most included a brief paragraph description about the plant and some basic care instructions.  The developer saw the merit in including this information, and so included fields to represent these in the Product model.  
+
+In a similar vein to the point above, while these were included in the model, these sections of text were sourced from other websites to reduce the time consuming task of writing these details for every product (furthermore, the developer would need to have extensive knowledge about botanicals to create this information).  The sources for these sections of text are attributed with a source and source url field in the model. On the product detail page, at the end of each section of text it provides an anchor link to the source itself, so there is no ambiguity as to where this information was sourced from. 
+
+In reality, an e-commerce store would only include original information about the product. 
+
+# Unfixed Bugs
+
+## Product Images
+As all images are sourced from 3rd party sites (all images are attributed to the source), they are downloaded with different width:height ratios.  As the developer felt the site appeared more attractive with all images of a constant , for example, in the products page, some of the images appear 'squashed' and of lower quality due to being resized to the same size as all other images.  
+
+The images are also highly varying in terms of the way the plant is style, presented, and the background colours and contents. 
+
+While this is unfortunate, the developer felt it was important to build up a reasonable database of products and thus these images were deemed acceptable for the purpose of creating this e-commerce project.  In reality, a true e-commerce store would most likely have original photos which aligned better in terms of content and size. 
 
 # Media
 Images used on the site were sourced from the following sources.  Images which are free to use publicy were desirable, however when this was not possible the images are credited.

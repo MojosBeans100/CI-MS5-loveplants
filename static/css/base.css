@@ -417,6 +417,8 @@ input[type=number] {
     z-index: 9999;
     max-height: 80vh;
     overflow-y: scroll;
+    background-color: white;
+    opacity: 1;
 }
 
 .toast-hr {
