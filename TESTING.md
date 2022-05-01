@@ -220,7 +220,8 @@ As a **site user** I can **add a product to my shopping bag** so that **I can pu
 
 |Critera|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-|users can change the quantity of the product to add|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can see an 'Add to bag' button on the product page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can change the quantity of the product to add|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop2_yicahh.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/tablet2_jzipkm.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/mobile2_eyoqtb.jpg)|Pass|
 |users can see a notification that the product was added to their bag|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 |in the bag itself, users can click 'Quick Add' to add further items to their bag|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 

@@ -9,6 +9,14 @@
     font-family: 'Raleway', sans-serif;
 } */
 
+#index-image {
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651424219/LovePlants/pexels-mentatdgt-2535212_qnlt7q.jpg');
+    height: 90vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #nav-image {
     width: 60px;
     height: 60px;
@@ -28,7 +36,7 @@
         display: none;
     }
 
-    
+
 }
 
 @media (max-width: 756px) {
@@ -164,7 +172,7 @@ button {
     .products-container {
         width: 75%;
     }
-    
+
 }
 
 
