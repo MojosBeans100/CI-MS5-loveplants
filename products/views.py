@@ -177,6 +177,7 @@ def product_detail(request, id):
     Display details about a product
     """
 
+    liked = None
     has_purchased = None
     already_reviewed = None
     form = None

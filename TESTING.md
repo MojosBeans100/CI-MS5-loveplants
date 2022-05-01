@@ -137,15 +137,15 @@ As a **site user** I can **sort the available products by price and other featur
 
 |Critera|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can click on the drop down to sort by criteria|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/desktop1_z95qcr.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/tablet1_bwrv0x.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/mobile1_ba5ced.jpg)|Pass|
+|when sorting criteria is chosen, the products rearrange to adhere to that criteria|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/desktop3_vd636u.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/tablet2_bgyoyp.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/mobile2_jvez0y.jpg)|Pass|
+|clicking 'Clear all' removes the sorting criteria|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407297/LovePlants/Testing/US%202/2.4/desktop2_k2szzq.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407297/LovePlants/Testing/US%202/2.4/tablet3_dqtbpu.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407297/LovePlants/Testing/US%202/2.4/mobile3_wfjjd6.jpg)|Pass|
 
 Acceptance Criteria:
-- Users can access 'sort by' buttons in the product list page
-- Users can change the order of the product list by sorting
-- Users can sort by price, name A-Z, rating, popularity
-- Users can remove the sorting criteria
+- [x] Users can access 'sort by' buttons in the product list page
+- [x] Users can change the order of the product list by sorting
+- [x] Users can sort by price, name A-Z, rating, popularity
+- [x] Users can remove the sorting criteria
 
 ### 2.5
 As a **site user** I can **view the specific details of a product** so that **I can learn more about products I may wish to purchase**
