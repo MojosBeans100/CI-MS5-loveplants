@@ -243,7 +243,8 @@
                     {% endif %}
                 </div>
 
-                <p class="text-center"><a href="{% url 'products' %}"><em>Clear all filters</em></a></p>
+                <p class="text-center"><a href="{% url 'products' %}"><em>Clear all <i
+                                class="ps-2 fa-solid fa-xmark"></i></em></a></p>
 
                 {% if user.is_superuser %}
                 <div class="row my-4 d-flex justify-content-evenly">
@@ -264,34 +265,37 @@
                 {% else %}
                 {% endif %}
 
-                <form method="GET" class="ms-5 ms-md-2 p-0" action="{% url 'products' %}">
-                    <div class="row">
-                        <div class="col-11"><input type="text" class="p-0 ps-2 w-100" placeholder="Search for products" name="q"></div>
-                        <div class="col-1"><button class="btn p-0" type="submit">
-                            <a aria-current="page" href="#"><i
-                                    class="ps-2 fa-solid fa-magnifying-glass"></i></a></button></div>
-                    </div>
-                </form>
-
-                <div class="p-2 text-center">
-                    {% if all_products.count == 0 %}
-                    <h3>No products found, try widening your search!</h3>
-                    {% else %}
-                    <h3>{{all_products.count}} products</h3>
-                    {% endif %}
-                </div>
             </div>
         </div>
-
+        <hr>
         <!-- products list -->
         <div class="row">
             <div class="col">
 
                 <!-- number of products, products per page, sort  -->
                 <div class="row align-items-center">
-                    <hr>
-                    <div class="p-2 d-flex justify-content-end">
-                        <div class="dropdown border">
+
+                    <div class="col">
+                        <div class="p-2">
+                            <p>{{all_products.count}} products</p>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <form method="GET" class="ms-5 ms-md-2 p-0 w-100" action="{% url 'products' %}">
+                            <div class="row">
+                                <div class="col-11"><input type="text" class="p-0 ps-2 border-0 border-bottom w-100"
+                                        placeholder="Search for products" name="q"></div>
+                                <div class="col-1"><button class="btn p-0" type="submit">
+                                        <a aria-current="page" href="#"><i
+                                                class="ps-2 fa-solid fa-magnifying-glass"></i></a></button></div>
+                            </div>
+                        </form><br>
+                 
+                    </div>
+
+                    <div class="col p-2 d-flex justify-content-end">
+                        <div class="dropdown">
                             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {% if current_sorting == 'None_None' %}Sort products:{% endif %}
@@ -328,86 +332,88 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- the users search query -->
-                {% if search_query != None %}
-                <div class="row text-center">
-                    <h4>{{all_products.count}} results for "{{search_query}}"</h4>
-
-                    {% if all_products.count == 0 %}
-                    <p>Try searching by a different term</p>
-                    {% endif %}
-                </div>
-                {% endif %}
+                       <!-- the users search query -->
+                       {% if search_query != None %}
+                       <div class="row text-center">
+                           <h4>"{{search_query}}"</h4>
+       
+                           {% if all_products.count == 0 %}
+                           <p>No products found: try searching by a different term
+                        </p>
+                        <p class="text-center"><a href="{% url 'products' %}"><em>Clear<i
+                            class="ps-2 fa-solid fa-xmark"></i></em></a></p>
+                           {% endif %}
+                       </div>
+                       {% endif %}
             </div>
         </div>
+    </div>
 
-        <!-- list the products -->
-        <div class="row">
-            {% for product in page_obj %}
-            <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
+    <!-- list the products -->
+    <div class="row">
+        {% for product in page_obj %}
+        <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
 
-                <!-- product card -->
-                <div class="card text-center border-0 py-3" style="width: 20rem;">
+            <!-- product card -->
+            <div class="card text-center border-0 py-3" style="width: 20rem;">
 
-                    <!-- product image -->
-                    <div style="position: relative;">
+                <!-- product image -->
+                <div style="position: relative;">
 
-                        {% if user.is_authenticated %}
-                        <form method="POST" action="{% url 'product_like' product.id %}" class="form product-like">
-                            {% csrf_token %}
-                            <button id="{{product.id}}" class="product-like-button" onclick="likeProduct(this);">
-                                {% if product.friendly_name in liked_list %}
-                                <div class="like-icon">
-                                    <i class="fa-solid fa-heart"></i>
+                    {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'product_like' product.id %}" class="form product-like">
+                        {% csrf_token %}
+                        <button id="{{product.id}}" class="product-like-button" onclick="likeProduct(this);">
+                            {% if product.friendly_name in liked_list %}
+                            <div class="like-icon">
+                                <i class="fa-solid fa-heart"></i>
 
-                                </div>
-                                {% else %}
-                                <div class="like-icon">
-                                    <i style="position: absolute; color: white; z-index: -99"
-                                        class="fa-solid fa-heart"></i>
-                                </div>
-                                {% endif %}
-                            </button>
-                            <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
-                                value="{{ request.path }}">
-                        </form>
-                        {% else %}
-                        {% endif %}
-
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
-                                id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
-                                src="{{product.image1_source_url}}" class="card-img-top rounded-0"
-                                alt="{{product.friendly_name}} product image"></a>
-                    </div>
-
-                    <!-- product name and price -->
-                    <div class="card-body text-start">
-                        <a href="{% url 'product_detail' product.id %}">
-                            <h5 class="card-title">{{product.friendly_name|upper}}</h5>
-                        </a>
-                        {% if product.latin_name %}
-                        <p><em><small>{{product.latin_name}}</small></em></p>
-                        {% else %}
-                        {% endif %}
-                        {% if product.sale_price %}
-                        <p class="card-text"><del>£{{product.price}}</del> £{{product.sale_price}}</p>
-                        {% else %}
-                        <p class="card-text">£{{product.price}}</p>
-                        {% endif %}
-
-                    </div>
-
-                    {% if user.is_superuser %}
-                    {% if product.live_on_site == False %}
-                    <p class="text-danger">Not live on site</p>
-                    {% else %}
-                    {% endif %}
+                            </div>
+                            {% else %}
+                            <div class="like-icon">
+                                <i style="position: absolute; color: white; z-index: -99" class="fa-solid fa-heart"></i>
+                            </div>
+                            {% endif %}
+                        </button>
+                        <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                            value="{{ request.path }}">
+                    </form>
                     {% else %}
                     {% endif %}
 
-                    <!-- {% if user.is_superuser %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
+                            id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
+                            src="{{product.image1_source_url}}" class="card-img-top rounded-0"
+                            alt="{{product.friendly_name}} product image"></a>
+                </div>
+
+                <!-- product name and price -->
+                <div class="card-body text-start">
+                    <a href="{% url 'product_detail' product.id %}">
+                        <h5 class="card-title">{{product.friendly_name|upper}}</h5>
+                    </a>
+                    {% if product.latin_name %}
+                    <p><em><small>{{product.latin_name}}</small></em></p>
+                    {% else %}
+                    {% endif %}
+                    {% if product.sale_price %}
+                    <p class="card-text"><del>£{{product.price}}</del> £{{product.sale_price}}</p>
+                    {% else %}
+                    <p class="card-text">£{{product.price}}</p>
+                    {% endif %}
+
+                </div>
+
+                {% if user.is_superuser %}
+                {% if product.live_on_site == False %}
+                <p class="text-danger">Not live on site</p>
+                {% else %}
+                {% endif %}
+                {% else %}
+                {% endif %}
+
+                <!-- {% if user.is_superuser %}
                     <div class="row">
                         <div class="col">
                             <button class="btn w-100 admin text-white">Copy <i
@@ -421,31 +427,31 @@
                     </div>
                     {% else %}
                     {% endif %} -->
-                </div>
             </div>
-
-            {% endfor %}
         </div>
 
-        <!-- pagination -->
-        <div class="pagination">
-            <span class="step-links">
-                {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                {% endif %}
-
-                <span class="current">
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-
-                {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
+        {% endfor %}
     </div>
+
+    <!-- pagination -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
 </div>
 
 {% endblock %}
