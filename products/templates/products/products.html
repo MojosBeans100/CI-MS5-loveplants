@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="container-fluid">
+<div class="container-fluid products-container">
     <div class="margin">
         <!-- product filters choice -->
         <div class="row m-md-4r">
@@ -326,7 +326,7 @@
             <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
 
                 <!-- product card -->
-                <div class="card text-center border-0 py-5" style="width: 20rem;">
+                <div class="card text-center border-0 py-3" style="width: 20rem;">
 
                     <!-- product image -->
                     <div style="position: relative;">
@@ -460,6 +460,7 @@
         var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
         var id = parseInt(element.id);
         var url = `/products/product_like/${id}`;
+        var redirect_url = '/products/products.html'
 
         // post to the view
         var response = fetch(url, {

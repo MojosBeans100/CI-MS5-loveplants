@@ -33,7 +33,6 @@ class ProductAdmin(admin.ModelAdmin):
 
     list_display = (
         'friendly_name',
-        #'category',
         'plant_category',
         'stock_quantity',
         'price',

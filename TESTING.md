@@ -84,6 +84,8 @@ Acceptance Criteria:
 - Users are aware of the consequences of deleting their account
 
 
+
+
 ## Validation
 All files were checked for format validation.
 

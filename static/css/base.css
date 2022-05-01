@@ -148,6 +148,14 @@ button {
 }
 
 /* ALL PRODUCTS */
+@media (min-width: 1400px) {
+    .products-container {
+        width: 75%;
+    }
+    
+}
+
+
 .card-img-top {
     height: 320px;
     image-rendering: -moz-crisp-edges;
@@ -273,6 +281,11 @@ button {
 .detail_image {
     height: 400px;
     width: 100%;
+}
+
+.product_detail_alt_img {
+    width: 100%;
+    height: 150px;
 }
 
 .product_detail_alt_img:hover {

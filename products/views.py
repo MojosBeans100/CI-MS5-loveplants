@@ -182,6 +182,7 @@ def product_detail(request, id):
     form = None
     purchase_date = None
     product = get_object_or_404(Product, pk=id)
+    print(product.name)
     print(product.average_rating)
     product_reviews = ProductReview.objects.filter(product=product.id)
 
