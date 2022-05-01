@@ -63,7 +63,7 @@
 
                     <div class="col">
                         {% if product.image3_source_url %}
-                        <img class="product_detail_alt_img" style="width:100%; height:80%" onclick="changeImage(this)"
+                        <img class="product_detail_alt_img" onclick="changeImage(this)"
                             src="{{ product.image3_source_url }}" title="Image credit: {{product.image3_source}}">
                         {% endif %}
                     </div>
@@ -72,7 +72,7 @@
             </div>
 
             <!-- RH for detail -->
-            <div class="px-3 col-sm-12 col-md-6">
+            <div class="col-sm-12 col-md-6">
                 <h2>{{product.friendly_name}}</h2>
                 <!-- display plant detail -->
                 <div>
@@ -184,7 +184,7 @@
                 <table class="table table-borderless">
                     <tbody>
                         <tr>
-                            <td class="text-end"><i class="px-3 fa-solid fa-whiskey-glass" title="Pot diameter"></i>
+                            <td class="text-end"><i class="px-2 fa-solid fa-whiskey-glass" title="Pot diameter"></i>
                             </td>
                             <td class="text-start">{{product.pot_size}} cm</td>
                             {% if product.height %}
@@ -192,22 +192,22 @@
                             </td>
                             <td title="Plant height" class="text-start">{{product.height}} cm</td>
                             {% else %}
-                            <td class="text-end"><i class="px-3 fa-solid fa-ruler-vertical" title="Plant length"></i>
+                            <td class="text-end"><i class="px-2 fa-solid fa-ruler-vertical" title="Plant length"></i>
                             </td>
                             <td class="text-start">{{product.length}} cm</td>
                             {% endif %}
                         </tr>
                         <tr>
-                            <td class="text-end"><i class="px-3 fa-solid fa-seedling" title="Plant maturity"></i></td>
+                            <td class="text-end"><i class="px-2 fa-solid fa-seedling" title="Plant maturity"></i></td>
                             <td class="text-start">{{product.maturity_num}} {{product.maturity_time}}</td>
-                            <td class="text-end"><i class="px-3 fa-solid fa-droplet" title="Watering frequency"></i>
+                            <td class="text-end"><i class="px-2 fa-solid fa-droplet" title="Watering frequency"></i>
                             </td>
                             <td class="text-start">{{product.watering}}</td>
                         </tr>
                         <tr>
-                            <td class="text-end"><i class="px-3 fa-solid fa-sun" title="Sunlight required"></i></td>
+                            <td class="text-end"><i class="px-2 fa-solid fa-sun" title="Sunlight required"></i></td>
                             <td class="text-start">{{product.sunlight}}</td>
-                            <td class="text-end"><i class="px-3 fa-solid fa-hand-holding-heart"
+                            <td class="text-end"><i class="px-2 fa-solid fa-hand-holding-heart"
                                     title="Care difficulty"></i>
                             </td>
                             <td class="text-start">{{product.care_required}}</td>
@@ -444,6 +444,8 @@
     var row = document.getElementById('append-star');
     var row2 = document.getElementById('append-star2');
     var ratings = document.getElementsByClassName('review-rating');
+    rateReviews();
+    displayRating();
 
     function likeProduct(element) {
         preventDefault();
@@ -461,12 +463,6 @@
             }
         });
 
-    }
-
-
-    if (ratings.length > 0) {
-        rateReviews();
-        displayRating();
     }
 
     function validateForm() {
