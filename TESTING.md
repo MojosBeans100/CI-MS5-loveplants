@@ -104,16 +104,17 @@ As a **site user** I can **use a search bar to input product details** so that *
 
 |Critera|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|the search bar is displayed above the products|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402726/LovePlants/Testing/US%202/2.2/desktop1_ingfer.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402726/LovePlants/Testing/US%202/2.2/tablet1_stcqri.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402725/LovePlants/Testing/US%202/2.2/mobile1_exu3m3.jpg)|Pass|
+|users can input a search term and press the magnifying glass button|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402810/LovePlants/Testing/US%202/2.2/desktop3_l9qb7y.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402810/LovePlants/Testing/US%202/2.2/tablet3_jdrqjk.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402810/LovePlants/Testing/US%202/2.2/mobile3_tan3ue.jpg)|Pass|
+|the product list will narrow down products to only those that contain the search term, which is displayed above the list of products|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402725/LovePlants/Testing/US%202/2.2/desktop2_sqlno9.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402726/LovePlants/Testing/US%202/2.2/tablet2_jz5yqq.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402725/LovePlants/Testing/US%202/2.2/mobile2_lt2rtl.jpg)|Pass|
+|upon clicking 'clear all filters' the page is displayed with all products|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402726/LovePlants/Testing/US%202/2.2/desktop1_ingfer.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402726/LovePlants/Testing/US%202/2.2/tablet1_stcqri.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402725/LovePlants/Testing/US%202/2.2/mobile1_exu3m3.jpg)|Pass|
 
 Acceptance Criteria:
-- Users can see a search bar at the top of the product list page
-- Users can input text into the search bar and press the 'search' button
-- Products are filtered by the search text criteria, all other products are not displayed
-- Users can see how many products are left in the list after searching
-- Users can remove the search functionality to return to all products
+- [x] Users can see a search bar at the top of the product list page
+- [x] Users can input text into the search bar and press the 'search' button
+- [x] Products are filtered by the search text criteria, all other products are not displayed
+- [x] Users can see how many products are left in the list after searching
+- [x] Users can remove the search functionality to return to all products
 
 ### 2.3
 As a **site user** I can **I can filter the available products by category etc** so that **the product list contains only products I am interested in**

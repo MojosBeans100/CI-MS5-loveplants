@@ -273,28 +273,28 @@
             <div class="col">
 
                 <!-- number of products, products per page, sort  -->
-                <div class="row align-items-center">
+                <div class="row px-1 align-items-center">
 
-                    <div class="col">
+                    <div class="col-12 col-sm-4 align-items-center d-flex order-2 order-sm-1 justify-content-sm-start justify-content-center">
                         <div class="p-2">
                             <p>{{all_products.count}} products</p>
                         </div>
                     </div>
 
-                    <div class="col">
-                        <form method="GET" class="ms-5 ms-md-2 p-0 w-100" action="{% url 'products' %}">
+                    <div class="col-12 col-sm-4 align-items-center order-3 order-sm-2 justify-content-center">
+                        <form method="GET" class="p-0 w-100" action="{% url 'products' %}">
                             <div class="row">
-                                <div class="col-11"><input type="text" class="p-0 ps-2 border-0 border-bottom w-100"
+                                <div class="col-10"><input type="text" class="p-0 ps-2 border-0 border-bottom w-100"
                                         placeholder="Search for products" name="q"></div>
-                                <div class="col-1"><button class="btn p-0" type="submit">
+                                <div class="col-2"><button class="btn p-0" type="submit">
                                         <a aria-current="page" href="#"><i
                                                 class="ps-2 fa-solid fa-magnifying-glass"></i></a></button></div>
                             </div>
                         </form><br>
-                 
+
                     </div>
 
-                    <div class="col p-2 d-flex justify-content-end">
+                    <div class="col-12 col-sm-4 align-items-center p-2 d-flex order-sm-3 justify-content-center order-1 justify-content-sm-end">
                         <div class="dropdown">
                             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -332,19 +332,19 @@
                         </div>
                     </div>
                 </div>
-                       <!-- the users search query -->
-                       {% if search_query != None %}
-                       <div class="row text-center">
-                           <h4>"{{search_query}}"</h4>
-       
-                           {% if all_products.count == 0 %}
-                           <p>No products found: try searching by a different term
-                        </p>
-                        <p class="text-center"><a href="{% url 'products' %}"><em>Clear<i
-                            class="ps-2 fa-solid fa-xmark"></i></em></a></p>
-                           {% endif %}
-                       </div>
-                       {% endif %}
+                <!-- the users search query -->
+                {% if search_query != None %}
+                <div class="row text-center">
+                    <h4>"{{search_query}}"</h4>
+
+                    {% if all_products.count == 0 %}
+                    <p>No products found: try searching by a different term
+                    </p>
+                    <p class="text-center"><a href="{% url 'products' %}"><em>Clear<i
+                                    class="ps-2 fa-solid fa-xmark"></i></em></a></p>
+                    {% endif %}
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
