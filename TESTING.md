@@ -311,6 +311,51 @@ Acceptance Criteria:
 - [x] User can see updated totals of their bag
 - [x] User can see how to re-add the item if deleting was an accident
 
+## User Story 4 Testing
+User Story 4 captures the full checkout process.
+
+### 4.1
+As a **site user** I can **select checkout from my shopping bag** so that **I can buy the products in my bag**
+
+Acceptance Criteria:
+- User can proceed to checkout from bag page and notification bar
+- User can enter their delivery/billing information and card details
+- User is aware when their billing/card details are not valid
+- User is directed to a confirmation page upon successful checkout, rendering relevant details
+- User is aware if and why their checkout was not successful
+
+### 4.2
+As a **site user** I can **verify the order information before I commit to buy** so that **I can check the contents of my bag**
+
+Acceptance Criteria:
+- Users can see all products in their bag when on the checkout page
+- Users can delete items from their bag on the checkout page
+
+### 4.3
+As a **site user** I can **see the total amount my card will be billed** so that **I know how much I am spending from my account**
+
+Acceptance Criteria:
+- User knows that pressing Secure Checkout/Submit will charge their card details
+- Users knows how much money will be taken from their card
+- User can see the charge updating as they edit their bag
+
+### 4.4
+As a **site user** I can **select whether to save the billing/delivery information for next time** so that **I do not have to repeat this step each time**
+
+Acceptance Criteria:
+- g
+- g
+- g
+
+### 4.5
+As a **site user** I can **see confirmation that the order has been successful** so that **I am aware the order went through the system**
+
+Acceptance Criteria:
+- g
+- g
+- g
+
+
 ## Validation
 All files were checked for format validation.
 
