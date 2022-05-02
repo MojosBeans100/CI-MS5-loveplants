@@ -55,7 +55,7 @@ def bag_contents(request):
                                     live_on_site=True).order_by('price')[0:4]
 
     else:
-        free_delivery_products = ""
+        free_delivery_products = None
 
     excludes = []
     for item in bag_items:

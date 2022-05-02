@@ -264,20 +264,17 @@ Acceptance Criteria:
 ### 3.4
 As a **site user** I can **click on my shopping bag** so that **I can view a list of the products I have added**
 
-|in the navbar, the number of items in the bag is displayed|[Destop]()|[Tablet]()|[Mobile]()|Pass|
-||[Destop]()|[Tablet]()|[Mobile]()|Pass|
-|the total of the bag is itemised|[Destop]()|[Tablet]()|[Mobile]()|Pass|
-|subtotals for each item are displayed|[Destop]()|[Tablet]()|[Mobile]()|Pass|
-|subtotals update as quantities are changed|[Destop]()|[Tablet]()|[Mobile]()|Pass|
-|the total for the shopping bag is displayed in the notification as it changes|[Destop]()|[Tablet]()|[Mobile]()|Pass|
+|in the bag page, user can see items, quantities, subtotals|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/desktop12345_o5rtyp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet_gyotqu.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile1_u5zncg.jpg)|Pass|
+|users are suggested products which, by adding, would reduce delivery charge to £0|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485183/LovePlants/Testing/US%203/3.4/desktop6_qg1c2t.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet2_zdmccf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile2_gasahr.jpg)|Pass|
+|by adding one of these products, delivery is reduced to £0|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485183/LovePlants/Testing/US%203/3.4/desktop3_u7dilg.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet3_ulvx6x.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile3_shf2ul.jpg)|Pass|
 
 Acceptance Criteria:
-- Users can see all items in their shopping bag
-- Users can see information associated with the product ie price, quantity
-- Users can see the subtotal of items if there is more than 1
-- Users can see a total price of their bag
-- Users can see the delivery cost, and how much more is needed to spend in order to qualify for free delivery
-- Users are suggested products they could add to the bag which would quality them for free delivery
+- [x] Users can see all items in their shopping bag
+- [x] Users can see information associated with the product ie price, quantity
+- [x] Users can see the subtotal of items if there is more than 1
+- [x] Users can see a total price of their bag
+- [x] Users can see the delivery cost, and how much more is needed to spend in order to qualify for free delivery
+- [x] Users are suggested products they could add to the bag which would quality them for free delivery
 
 ### 3.5
 As a **site user** I can **edit the items in my shopping bag** so that **I can adjust the contents of my bag as needed**

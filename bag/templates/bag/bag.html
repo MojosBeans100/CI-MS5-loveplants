@@ -155,6 +155,7 @@
 
         <!-- suggest products around the price of the free delivery delta -->
         {% if free_delivery_delta > 0 %}
+        {% if free_delivery_products%}
         <div class="row py-5">
             <h4 class="py-3 text-center">Spend <strong>£{{free_delivery_delta}}</strong> more to qualify for free
                 delivery!</h4>
@@ -182,6 +183,7 @@
             </div>
             {% endfor %}
         </div>
+        {% endif %}
         {% endif %}
 
         {% if product_count != 0 %}
