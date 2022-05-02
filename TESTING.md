@@ -250,20 +250,26 @@ As a **site user** I can **see the total cost of my shopping bag change when I h
 
 |Critera|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Destop]()|[Tablet]()|[Mobile]()|Pass|
+|the navbar displays the number of items in the user's bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/dekstop1_hljbch.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/desktop12_qnh2wt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/tablet1_i1jsvd.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/mobile123_vt208m.jpg)|Pass|
+|the bag total is itemised|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/desktop2_ko7zbs.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/tablet2_urkfuf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/mobile123_vt208m.jpg)|Pass|
+|subtotals are displayed for each product|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/desktop3_wnqnxc.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/tablet2_urkfuf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/mobile123_vt208m.jpg)|Pass|
+|notifications provide updated bag total|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/desktop4_ka3kec.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/tablet4_na3pkf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/mobile4_ansrs3.jpg)|Pass|
 
 Acceptance Criteria:
-- User can see the total of their shopping bag in the nav bar
-- User can see the total including delivery in the bag view
-- User can see subtotals for individual items in their bag
-- User can see notification messages each time the bag total changes
+- [x] User can see the total number of products of their shopping bag in the nav bar
+- [x] User can see the total including delivery in the bag view
+- [x] User can see subtotals for individual items in their bag
+- [x] User can see notification messages each time the bag total changes
 
 ### 3.4
 As a **site user** I can **click on my shopping bag** so that **I can view a list of the products I have added**
 
-|Critera|Desktop|Tablet|Mobile|Status|
-|-----------|-------|------|------|------|
+|in the navbar, the number of items in the bag is displayed|[Destop]()|[Tablet]()|[Mobile]()|Pass|
 ||[Destop]()|[Tablet]()|[Mobile]()|Pass|
+|the total of the bag is itemised|[Destop]()|[Tablet]()|[Mobile]()|Pass|
+|subtotals for each item are displayed|[Destop]()|[Tablet]()|[Mobile]()|Pass|
+|subtotals update as quantities are changed|[Destop]()|[Tablet]()|[Mobile]()|Pass|
+|the total for the shopping bag is displayed in the notification as it changes|[Destop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - Users can see all items in their shopping bag

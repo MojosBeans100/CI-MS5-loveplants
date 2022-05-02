@@ -1,4 +1,5 @@
 # 3rd party imports
+from slugify import slugify
 
 # Django imports
 from django.contrib.auth.models import User
@@ -205,6 +206,16 @@ class Product(models.Model):
 
     def __str__(self):
         return self.friendly_name
+
+    def save(self, *args, **kwargs):
+        """
+        Override original save method to add the name based on
+        friendly name
+        """
+
+        if not self.name:
+            self.name = slugify(self.friendly_name, separator='_')
+        super().save(*args, **kwargs)
 
 
 class RecentlyViewed(models.Model):
