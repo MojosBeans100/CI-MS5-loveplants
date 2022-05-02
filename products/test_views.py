@@ -94,6 +94,17 @@ class TestProductViews(TestCase):
             review='I love this product',
             review_time=datetime.date.today(),
             review_time_ago='5',
+            liked=True
+        )
+
+        productreview2 = ProductReview.objects.create(
+            rating=3,
+            product=product2,
+            user=test_user,
+            review='I love this product yay',
+            review_time=datetime.date.today(),
+            review_time_ago='0',
+            liked=False
         )
 
     def test_get_products_page(self):
@@ -165,3 +176,31 @@ class TestProductViews(TestCase):
         self.assertIsNone(response2.context['rare_products'])
         self.assertIsNone(response2.context['popular_products'])
         self.assertIsNone(response2.context['easy_care'])
+
+    def test_product_liked(self):
+        """
+        views.product_detail returns liked = true
+        if user has liked product
+        """
+
+        # user liked product
+        self.client.force_login(User.objects.get(id=1))
+        product1 = Product.objects.get(id=1)
+        response1 = self.client.get(f'/products/product_detail/{product1.id}')
+        self.assertEqual(response1.context['reviews'][0].liked, True)
+        self.assertEqual(True, response1.context['liked'])
+        self.assertEqual(
+            response1.context['reviews'][0].liked,
+            response1.context['liked']
+            )
+
+        # user does not like product
+        product2 = Product.objects.get(id=2)
+        response2 = self.client.get(f'/products/product_detail/{product2.id}')
+        self.assertEqual(response2.context['reviews'][0].liked, False)
+        self.assertEqual(False, response2.context['liked'])
+        self.assertEqual(
+            response2.context['reviews'][0].liked,
+            response2.context['liked']
+            )
+

@@ -282,6 +282,7 @@ def product_detail(request, id):
         'already_reviewed': already_reviewed,
         'form': form,
         'liked': liked,
+        'user': request.user
     }
 
     return render(request, 'products/product_detail.html', context)
