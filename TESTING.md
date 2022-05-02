@@ -296,14 +296,20 @@ Acceptance Criteria:
 ### 3.6
 As a **site user** I can **delete items from my shopping bag** so that **I can remove items I no longer want**
 
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users can see a trash can icon in the bag page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/desktop1_jpo6qr.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490419/LovePlants/Testing/US%203/3.6/tablet1_vw9s7t.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/mobile1_p6klgt.jpg)|Pass|
+|users can see that the item was removed from their bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/desktop23_qwab1i.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490419/LovePlants/Testing/US%203/3.6/tablet234_bscd3c.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/mobile2_fbyzko.jpg)|Pass|
+|users can see a notification that the item was removed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/desktop23_qwab1i.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490419/LovePlants/Testing/US%203/3.6/tablet234_bscd3c.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/mobile3_uygxxj.jpg)|Pass|
+|users can see a trash can icon in the bag notification|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/desktop23_qwab1i.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490419/LovePlants/Testing/US%203/3.6/tablet234_bscd3c.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490419/LovePlants/Testing/US%203/3.6/mobile4_yimfeo.jpg)|Pass|
+|users can click the trash can in the notification to delete the item|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490418/LovePlants/Testing/US%203/3.6/desktop5_pkm4ad.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490419/LovePlants/Testing/US%203/3.6/tablet5_j6mhz7.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651490512/LovePlants/Testing/US%203/3.6/mobile5_ojewze.jpg)|Pass|
+
 Acceptance Criteria:
-- User can see how to delete an item in their bag
-- User can no longer see the item in their bag once removed
-- User can see a confirmation message that item has been deleted
-- User can see updated totals of their bag
-- User can see how to re-add the item if deleting was an accident
-
-
+- [x] User can see how to delete an item in their bag
+- [x] User can no longer see the item in their bag once removed
+- [x] User can see a confirmation message that item has been deleted
+- [x] User can see updated totals of their bag
+- [x] User can see how to re-add the item if deleting was an accident
 
 ## Validation
 All files were checked for format validation.
