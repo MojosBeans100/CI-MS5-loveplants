@@ -9,7 +9,6 @@ from django.contrib.auth.models import User
 from .models import Product, ProductReview
 from checkout.models import Order, OrderLineItem
 from profiles.models import UserProfile
-from .forms import ProductForm, ProductReviewForm
 
 
 class TestProductsView(TestCase):
