@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 
 # Local imports
 from .models import Product, ProductReview
+from checkout.models import Order, OrderLineItem
+from profiles.models import UserProfile
 from .forms import ProductForm, ProductReviewForm
+
 
 class TestProductViews(TestCase):
     """
@@ -85,6 +88,91 @@ class TestProductViews(TestCase):
             popular=False,
             live_on_site=False,
             average_rating=0
+        )
+
+        product3 = Product.objects.create(
+            name='test2_product',
+            friendly_name='Test3 product',
+            latin_name='test_latin_name',
+            description='description',
+            description_source='description source',
+            description_url='description.com',
+            image1_source='image1_source',
+            image1_source_url='image1.com',
+            image2_source='image2_source',
+            image2_source_url='image2.com',
+            image3_source='image3_source',
+            image3_source_url='image3.com',
+            price=20.00,
+            sale_price=0,
+            stock_quantity=5,
+            pot_size=10,
+            height=10,
+            length=10,
+            maturity_num=2,
+            maturity_time='months',
+            sunlight='med',
+            watering='med',
+            care_required='high',
+            care_instructions='care instruct',
+            care_instructions_source='care source',
+            care_instructions_url='care.com',
+            rare=False,
+            popular=False,
+            live_on_site=False,
+            average_rating=0
+        )
+
+        order = Order.objects.create(
+            order_ref='12345',
+            user_profile=UserProfile.objects.get(id=1),
+            full_name='Lucy',
+            email='lucybabucy.com',
+            street_address_1='1',
+            street_address_2='2',
+            phone_num='06949',
+            town_or_city='3',
+            county='4',
+            postcode='5',
+            date=datetime.date.today(),
+            delivery_cost=0,
+            order_total=0,
+            grand_total=0,
+            original_bag='bag',
+            stripe_pid='6745645'
+        )
+
+        orderlineitem = OrderLineItem.objects.create(
+            order=order,
+            product=product1,
+            quantity=5,
+            lineitem_total=50,
+        )
+
+        order3 = Order.objects.create(
+            order_ref='43545',
+            user_profile=UserProfile.objects.get(id=1),
+            full_name='Lucy',
+            email='lucybabucy.com',
+            street_address_1='1',
+            street_address_2='2',
+            phone_num='06949',
+            town_or_city='3',
+            county='4',
+            postcode='5',
+            date=datetime.date.today(),
+            delivery_cost=0,
+            order_total=0,
+            grand_total=0,
+            original_bag='bag',
+            stripe_pid='6745645'
+        )
+
+        orderlineitem3 = OrderLineItem.objects.create(
+            order=order,
+            product=product3,
+            quantity=5,
+            lineitem_total=50,
         )
 
         productreview = ProductReview.objects.create(
@@ -180,10 +268,9 @@ class TestProductViews(TestCase):
     def test_product_liked(self):
         """
         views.product_detail returns liked = true
-        if user has liked product
+        if user has liked or not liked product
         """
 
-        # user liked product
         self.client.force_login(User.objects.get(id=1))
         product1 = Product.objects.get(id=1)
         response1 = self.client.get(f'/products/product_detail/{product1.id}')
@@ -194,7 +281,6 @@ class TestProductViews(TestCase):
             response1.context['liked']
             )
 
-        # user does not like product
         product2 = Product.objects.get(id=2)
         response2 = self.client.get(f'/products/product_detail/{product2.id}')
         self.assertEqual(response2.context['reviews'][0].liked, False)
@@ -204,3 +290,31 @@ class TestProductViews(TestCase):
             response2.context['liked']
             )
 
+    def test_view_renders_form(self):
+        """
+        view.product_detail renders form if the user
+        has purchased the product, form is None if user
+        has already reviewed or has not purchased
+        """
+
+        self.client.force_login(User.objects.get(id=1))
+        product1 = Product.objects.get(id=1)
+        product2 = Product.objects.get(id=2)
+        product3 = Product.objects.get(id=3)
+
+        # has purchased, has reviewed ie don't display form
+        response1 = self.client.get(f'/products/product_detail/{product1.id}')
+        self.assertIsNone(response1.context['form'])
+        self.assertEqual(response1.context['has_purchased'], True)
+        self.assertEqual(response1.context['already_reviewed'], True)
+
+        # has NOT purchased, do not display form
+        response2 = self.client.get(f'/products/product_detail/{product2.id}')
+        self.assertIsNone(response2.context['form'])
+        self.assertEqual(response2.context['has_purchased'], False)
+
+        # has purchased, has NOT reviewed ie display form
+        response3 = self.client.get(f'/products/product_detail/{product3.id}')
+        self.assertIsNotNone(response3.context['form'])
+        self.assertEqual(response3.context['has_purchased'], True)
+        self.assertEqual(response3.context['already_reviewed'], False)

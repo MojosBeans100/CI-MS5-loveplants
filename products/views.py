@@ -269,7 +269,7 @@ def product_detail(request, id):
 
         # recently_viewed = Product.objects.filter(
         #                                 name__in=recently_viewed_products)[0:4]
-  
+
     context = {
         'product': product,
         'rare_products': rare_products,
@@ -282,7 +282,6 @@ def product_detail(request, id):
         'already_reviewed': already_reviewed,
         'form': form,
         'liked': liked,
-        'user': request.user
     }
 
     return render(request, 'products/product_detail.html', context)
