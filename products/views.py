@@ -346,77 +346,83 @@ def admin_add_product(request):
     Allow an admin user to add a product
     """
 
-    if request.method == 'POST':
+    if request.user.is_superuser:
+        if request.method == 'POST':
 
-        if 'popular' in request.POST:
-            popular = True
-        else:
-            popular = False
+            if 'popular' in request.POST:
+                popular = True
+            else:
+                popular = False
 
-        if 'rare' in request.POST:
-            rare = True
-        else:
-            rare = False
+            if 'rare' in request.POST:
+                rare = True
+            else:
+                rare = False
 
-        # save the object
-        if 'save-form' in request.POST:
+            # save the object
+            if 'save-form' in request.POST:
 
-            form = ProductForm(request.POST)
-            print(form.errors)
-            if form.is_valid:
-                form.save()
-            
-            return redirect(reverse('products'))
+                form = ProductForm(request.POST)
+                print(form.errors)
+                # add is not valid
+                if form.is_valid:
+                    form.save()
+                
+                return redirect(reverse('products'))
 
-        # post the object
-        else:
-            x = request.POST['care_instructions_source']
+            # post the object
+            else:
+                x = request.POST['care_instructions_source']
 
-            form_data = {
-                'plant_category': request.POST['plant_category'],
-                'name': slugify(request.POST['friendly_name'], separator='_'),
-                'friendly_name': request.POST['friendly_name'],
-                'latin_name': request.POST['latin_name'],
-                'description': request.POST['description'],
-                'description_source': request.POST['description_source'],
-                'description_url': request.POST['description_url'],
-                'image1_source': request.POST['image1_source'],
-                'image1_source_url': request.POST['image1_source_url'],
-                'image2_source': request.POST['image2_source'],
-                'image2_source_url': request.POST['image2_source_url'],
-                'image3_source': request.POST['image3_source'],
-                'image3_source_url': request.POST['image3_source_url'],
-                'pot_size': request.POST['pot_size'],
-                'height': request.POST['height'],
-                'price': request.POST['price'],
-                'stock_quantity': request.POST['stock_quantity'],
-                'maturity_num': request.POST['maturity_num'],
-                'maturity_time': request.POST['maturity_time'],
-                'sunlight': request.POST['sunlight'],
-                'watering': request.POST['watering'],
-                'care_required': request.POST['care_required'],
-                'care_instructions': request.POST['care_instructions'],
-                'care_instructions_source': x,
-                'care_instructions_url': request.POST['care_instructions_url'],
-                'rare': rare,
-                'popular': popular,
-                'live_on_site': True,
-                'average_rating': 0,
-            }
+                form_data = {
+                    'plant_category': request.POST['plant_category'],
+                    'name': slugify(request.POST['friendly_name'], separator='_'),
+                    'friendly_name': request.POST['friendly_name'],
+                    'latin_name': request.POST['latin_name'],
+                    'description': request.POST['description'],
+                    'description_source': request.POST['description_source'],
+                    'description_url': request.POST['description_url'],
+                    'image1_source': request.POST['image1_source'],
+                    'image1_source_url': request.POST['image1_source_url'],
+                    'image2_source': request.POST['image2_source'],
+                    'image2_source_url': request.POST['image2_source_url'],
+                    'image3_source': request.POST['image3_source'],
+                    'image3_source_url': request.POST['image3_source_url'],
+                    'pot_size': request.POST['pot_size'],
+                    'height': request.POST['height'],
+                    'price': request.POST['price'],
+                    'stock_quantity': request.POST['stock_quantity'],
+                    'maturity_num': request.POST['maturity_num'],
+                    'maturity_time': request.POST['maturity_time'],
+                    'sunlight': request.POST['sunlight'],
+                    'watering': request.POST['watering'],
+                    'care_required': request.POST['care_required'],
+                    'care_instructions': request.POST['care_instructions'],
+                    'care_instructions_source': x,
+                    'care_instructions_url': request.POST['care_instructions_url'],
+                    'rare': rare,
+                    'popular': popular,
+                    'live_on_site': True,
+                    'average_rating': 0,
+                }
 
-            form = ProductForm(form_data)
-            print(form.errors)
-            if form.is_valid:
-                form.save()
+                form = ProductForm(form_data)
+                print(form.errors)
+                # add if not valid
+                if form.is_valid:
+                    form.save()
 
-            return redirect(reverse('products'))
+                return redirect(reverse('products'))
 
-    form = ProductForm()
-    saved_products = Product.objects.filter(live_on_site=False)
-    context = {
-        'form': form,
-        'saved': saved_products,
-    }
+        form = ProductForm()
+        saved_products = Product.objects.filter(live_on_site=False)
+        context = {
+            'form': form,
+            'saved': saved_products,
+        }
+    else:
+        ## add 404 or summin
+        return render(request, 'products/products.html')
 
     return render(request, 'products/add_product.html', context)
 
@@ -553,6 +559,7 @@ def admin_edit_product(request, id):
         }
 
     else:
+        messages.success(request, "Only admin users are allowed to access that page. ")
         return render('product/products.html')
 
     return render(request, 'products/edit_product.html', context)
@@ -568,7 +575,7 @@ def admin_delete_product(request, id):
         product.delete()
         messages.success(request, f"{product.friendly_name} has been deleted.")
     else:
-        return render('product/products.html')
+        return render(request, 'products/products.html')
 
     return redirect(reverse('products'))
 
