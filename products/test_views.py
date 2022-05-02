@@ -1,4 +1,5 @@
 # 3rd party imports
+import datetime
 
 # Django imports
 from django.test import TestCase
@@ -14,6 +15,12 @@ class TestProductViews(TestCase):
     """
 
     def setUp(self):
+
+        test_user = User.objects.create(
+            username='Hello',
+            password='12345',
+        )
+
         product1 = Product.objects.create(
             name='test_product',
             friendly_name='Test product',
@@ -70,20 +77,23 @@ class TestProductViews(TestCase):
             maturity_time='months',
             sunlight='med',
             watering='med',
-            care_required='low',
+            care_required='high',
             care_instructions='care instruct',
             care_instructions_source='care source',
             care_instructions_url='care.com',
-            rare=True,
-            popular=True,
+            rare=False,
+            popular=False,
             live_on_site=False,
             average_rating=0
         )
 
-        superuser = User.objects.create(
-            is_superuser=True,
-            username='Superuser',
-            password='54321',
+        productreview = ProductReview.objects.create(
+            rating=5,
+            product=product1,
+            user=test_user,
+            review='I love this product',
+            review_time=datetime.date.today(),
+            review_time_ago='5',
         )
 
     def test_get_products_page(self):
@@ -115,23 +125,43 @@ class TestProductViews(TestCase):
             len(response.context['all_products'].filter(
                 friendly_name='Test2 product')), 0)
 
-    def test_products_renders_all_products(self):
-         """
-        product/views.all_products only displays live products
-        to non superuser
+    def test_product_detail_returns_correct_product(self):
+        """
+        views.product_detail renders product_detail/id
+        """
+        product = Product.objects.get(id=1)
+        response = self.client.get(f'/products/product_detail/{product.id}')
+        self.assertEqual(response.status_code, 200)
+        self.assertIsInstance(response.context['product'], Product)
+        self.assertTemplateUsed(response, 'products/product_detail.html')
+
+    def test_product_detail_returns_correct_product_reviews(self):
+        """
+        views.product_detail returns only related product reviews
         """
 
-        self.user = User.objects.create(
-            is_superuser=False,
-            username='Non super',
-            password='12345',
-        )
-        self.client.login(username='Non super', password='12345')
-        response = self.client.get('/products/products.html')
-        self.assertEqual(len(response.context['all_products']), 1)
-        self.assertEqual(
-            response.context['all_products'][0].friendly_name, 'Test product'
+        product = Product.objects.get(id=1)
+        response = self.client.get(f'/products/product_detail/{product.id}')
+        self.assertEquals(
+            response.context['reviews'][0].product, response.context['product']
             )
-        self.assertEqual(
-            len(response.context['all_products'].filter(
-                friendly_name='Test2 product')), 0)
+
+    def test_if_critera_render_criteria_products(self):
+        """
+        views.product_detail returns other rare, popular or easy
+        care products if product is rare
+        """
+
+        # product is rare, popular, easy care
+        product1 = Product.objects.get(id=1)
+        response1 = self.client.get(f'/products/product_detail/{product1.id}')
+        self.assertIsNotNone(response1.context['rare_products'])
+        self.assertIsNotNone(response1.context['popular_products'])
+        self.assertIsNotNone(response1.context['easy_care'])
+
+        # product is NOT rare, popular, or easy care
+        product2 = Product.objects.get(id=2)
+        response2 = self.client.get(f'/products/product_detail/{product2.id}')
+        self.assertIsNone(response2.context['rare_products'])
+        self.assertIsNone(response2.context['popular_products'])
+        self.assertIsNone(response2.context['easy_care'])
