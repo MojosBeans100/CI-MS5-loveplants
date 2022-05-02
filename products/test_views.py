@@ -441,11 +441,24 @@ class TestProductLikeView(TestCase):
         product1 = Product.objects.get(id=1)
         product_review1 = ProductReview.objects.get(product=product1)
         self.assertEqual(product_review1.liked, True)
-        redirect_url = '/'
-        response1 = self.client.post(
+        response = self.client.post(
             f'/products/product_like/{product1.id}',
-            data={'redirect_url': redirect_url})
-        #self.assertEqual(product_review1.liked, False)
+            data={'redirect_url': f'/products/product_detail/{product1.id}'})
+        product_review1_edited = ProductReview.objects.get(product=product1)
+        self.assertEqual(product_review1_edited.liked, False)
+        self.assertRedirects(
+            response,
+            f'/products/product_detail/{product1.id}')
 
         # user does not like product
-        product2 = Product.objects.get(id=2)
+        product2 = Product.objects.get(id=1)
+        product_review2 = ProductReview.objects.get(product=product2)
+        self.assertEqual(product_review2.liked, False)
+        response = self.client.post(
+            f'/products/product_like/{product2.id}',
+            data={'redirect_url': f'/products/product_detail/{product2.id}'})
+        product_review2_edited = ProductReview.objects.get(product=product2)
+        self.assertEqual(product_review2_edited.liked, True)
+        self.assertRedirects(
+            response,
+            f'/products/product_detail/{product2.id}')
