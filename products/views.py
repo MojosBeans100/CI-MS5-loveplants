@@ -362,8 +362,10 @@ def admin_add_product(request):
         if 'save-form' in request.POST:
 
             form = ProductForm(request.POST)
+            print(form.errors)
             if form.is_valid:
                 form.save()
+            
             return redirect(reverse('products'))
 
         # post the object
@@ -403,6 +405,7 @@ def admin_add_product(request):
             }
 
             form = ProductForm(form_data)
+            print(form.errors)
             if form.is_valid:
                 form.save()
 

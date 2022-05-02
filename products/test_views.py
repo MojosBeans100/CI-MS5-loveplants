@@ -507,4 +507,96 @@ class TestProductReview(TestCase):
         self.assertRedirects(response, f'/products/product_detail/{product.id}')
 
 
+class TestAdminAddProduct(TestCase):
+
+    def setUp(self):
+
+        admin_user = User.objects.create(
+            username="admin",
+            password='12345',
+            is_superuser=True
+        )
+
+        non_admin_user = User.objects.create(
+            username="non admin",
+            password='54321',
+            is_superuser=False
+        )
+
+    def test_add_product_page_renders(self):
+        """
+        views.admin_add_product renders add_product. html
+        """
+
+        response = self.client.get('/products/add_product.html')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'products/add_product.html')
+
+    def test_admin_can_add_new_product(self):
+        """
+        test admin users can add a new product
+        """
+
+        self.client.force_login(User.objects.get(id=1))
+        data = {
+            'plant_category': 'Potted',
+            'name': 'test_name',
+            'friendly_name': 'Testing',
+            'latin_name': 'latin name',
+            'description': 'text',
+            'description_source': 'text',
+            'description_url': 'url.com',
+            'image1_source': 'text',
+            'image1_source_url': 'url.com',
+            'image2_source': 'text',
+            'image2_source_url': 'url.com',
+            'image3_source': 'text',
+            'image3_source_url': 'url.com',
+            'pot_size': 10,
+            'height': 10,
+            'price': 10,
+            'stock_quantity': 10,
+            'maturity_num': 10,
+            'maturity_time': 'months',
+            'sunlight': 'low',
+            'watering': 'low',
+            'care_required': 'can stand a little neglect',
+            'care_instructions': 'text',
+            'care_instructions_source': 'text',
+            'care_instructions_url': 'url.com',
+            'rare': True,
+            'popular': True,
+            'live_on_site': True,
+            'average_rating': 0,
+            'save-form': True
+            }
+
+        response = self.client.post('/products/add_product.html', data)
+        new_product = Product.objects.get()
+
+        self.assertEqual(new_product.friendly_name, 'Testing')
+        self.assertEqual(new_product.plant_category, 'Potted')
+        self.assertEqual(new_product.live_on_site, True)
+        self.assertRedirects(response, '/products/products.html')
+
+    def test_admin_can_save_product(self):
+        """
+        admin users can save a partially created
+        product form
+        """
+
+        self.client.force_login(User.objects.get(id=1))
+        data = {
+            'friendly_name': 'Purple Socks',
+            'description': 'Cool plant',
+            'price': 20,
+            'save-form': True
+            }
+
+        response = self.client.post('/products/add_product.html', data)
+        saved_product = Product.objects.get()
+
+        self.assertEqual(saved_product.friendly_name, 'Purple Socks')
+        self.assertEqual(saved_product.live_on_site, False)
+        self.assertRedirects(response, '/products/products.html')
 
