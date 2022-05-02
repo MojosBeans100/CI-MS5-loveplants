@@ -462,3 +462,49 @@ class TestProductLikeView(TestCase):
         self.assertRedirects(
             response,
             f'/products/product_detail/{product2.id}')
+
+
+class TestProductReview(TestCase):
+
+    def setUp(self):
+
+        test_user = User.objects.create(
+            username='Hello',
+            password='12345',
+        )
+
+        product = Product.objects.create(
+            friendly_name='Test4 product',
+            price=20.00,
+        )
+
+    def test_product_review_posted(self):
+        """
+        views.product_review creates a review of the product
+        """
+
+        self.client.force_login(User.objects.get(id=1))
+        product = Product.objects.get(id=1)
+        data = {
+            'redirect_url': f'/products/product_detail/{product.id}',
+            'review': "Oh yes, this will do quite nicely",
+            'rating': 5,
+        }
+
+        response = self.client.post(
+            f'/products/product_review/{product.id}',
+            data)
+        product_review1_created = ProductReview.objects.get(id=1)
+
+        self.assertEqual(product_review1_created.product, product)
+        self.assertEqual(
+            product_review1_created.review,
+            "Oh yes, this will do quite nicely")
+        self.assertEqual(
+            product_review1_created.rating,
+            5
+        )
+        self.assertRedirects(response, f'/products/product_detail/{product.id}')
+
+
+
