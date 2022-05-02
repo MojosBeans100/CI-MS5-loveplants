@@ -45,6 +45,34 @@ These user stories and associated milestones, sprints and project boards can be 
     - [6.4](#64)
     - [6.5](#65)
 
+## User Story Strategy
+
+### EPICS > User Stories > Tasks
+User stories were derived from the determined EPICS for an e-commerce store, which were:
+
+ - Account authentication, to allow users to create an account
+ - List/view products, to display all products availabe for sale
+ - Add products to shopping bag, to allow users to create a record of items they wish to purchase
+ - Checkout bag, to allow users to buy products
+ - Ratings and reviews, to allow users to have their opinion about products
+ - Admin accessibility, to allow admin users to modify the database of products
+
+These EPICS were refined into shorter User Stories, which could be broken down into tasks for the developer to complete within the defined sprint or milestone.  
+
+### User Story Priority Labels
+User Stories were assigned labels, based on the anticipated priority of completion.  
+
+- User Stories deemed crucial to meet the requirements of the sprint were labelled 'Must Have'.
+- User Stories deemed important but not necessary were labelled 'Should Have'.
+- User Stories deemed worthwhile but could be completed at a later date were labelled 'Could Have'.
+- User Stories which were determined could not be completed in the sprint were labelled 'Won't Have'.
+- User Stories which could only be partially completed (for example, they required other aspects of the site to be up and running in order to complete), generally had a 'Should Have' or 'Could Have' label, with a secondary 'Won't Have' label added later.  These User Stories were then featured on a later sprint in order to complete. 
+
+Any User Stories which did not feature in the final deployed project were always either 'Should Have' or more likely 'Could Have', thus did not affect the integrity of the website by being omitted. 
+
+### Acceptance Criteria
+Clear acceptance criteria for all User Stories were defined, and were not marked as complete until all criteria were met.  The acceptance criteria also determined the strategy for testing.
+
 ## User Story 1
 User Story 1 is based on allow users account authentication on the website. 
 

@@ -40,7 +40,7 @@ Each user story is tested for large, medium and small screen sizes to ensure the
 |Tablets (iPad Air)|1180px|Chrome Devtools|
 |Mobile (iPhone SE)|375px|Chrome Devtools|
 
-Note: since performing manual testing, some minor adjustments may have been made to small styling details, which would result in slight differences between images on the deployed site and images of the site contained in this document.  It was ensured any changes did not affect the outcome of the testing.
+Note: since performing manual testing, some minor adjustments may have been made to improve small styling details, which would result in slight differences between images on the deployed site and images of the site contained in this document.  It was ensured any changes did not affect the outcome of the testing.
 
 ## User Story 1 Testing
 User Story 1 is based on allow users account authentication on the website. 
