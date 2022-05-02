@@ -222,8 +222,8 @@ As a **site user** I can **add a product to my shopping bag** so that **I can pu
 |-----------|-------|------|------|------|
 |users can see an 'Add to bag' button on the product page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 |users can change the quantity of the product to add|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop2_yicahh.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/tablet2_jzipkm.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/mobile2_eyoqtb.jpg)|Pass|
-|users can see a notification that the product was added to their bag|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|in the bag itself, users can click 'Quick Add' to add further items to their bag|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can see a notification that the product was added to their bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop1_xtuvsa.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/tablet1_tmoe9i.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/mobile1_w3mh7l.jpg)|Pass|
+|in the bag itself, users can click 'Quick Add' to add further items to their bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop3_otomoj.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414943/LovePlants/Testing/US%203/3.1/tablet3_m8h2tk.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/mobile3_rcv0aj.jpg)|Pass|
 
 Acceptance Criteria:
 - User can click on 'Add to Bag' to add the product
@@ -232,14 +232,25 @@ Acceptance Criteria:
 ### 3.2
 As a **site user** I can **I can see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
 
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users receive a notification|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop12_p1wqyw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet12_a83l3r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile12_wyq7f2.jpg)|Pass|
+|users see the contents of their shopping bag|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop12_p1wqyw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet12_a83l3r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile12_wyq7f2.jpg)|Pass|
+|users can click the 'X' to dimiss the notification and continue shopping|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop3_hsjnnd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet3_ouccyf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile3_yfaq5d.jpg)|Pass|
+|users see the number of items in their bag change|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/desktop4_fhemvp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet4_qpmxyn.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile3_yfaq5d.jpg)|Pass|
+
 Acceptance Criteria:
-- User received a notification that an item was added to their bag
-- User can see the contents of their bag
-- User can dismiss the notification
-- User can see their shopping bag contents change in the nav bar 
+- [x] User received a notification that an item was added to their bag
+- [x] User can see the contents of their bag
+- [x] User can dismiss the notification
+- [x] User can see their shopping bag contents change in the nav bar 
 
 ### 3.3
 As a **site user** I can **see the total cost of my shopping bag change when I have added a product** so that **I'm aware of the running cost as I add products**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Destop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - User can see the total of their shopping bag in the nav bar
@@ -249,6 +260,10 @@ Acceptance Criteria:
 
 ### 3.4
 As a **site user** I can **click on my shopping bag** so that **I can view a list of the products I have added**
+
+|Critera|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Destop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - Users can see all items in their shopping bag

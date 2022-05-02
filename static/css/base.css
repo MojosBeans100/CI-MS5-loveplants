@@ -87,10 +87,10 @@ button {
 }
 
 .white-button:hover,
-.hover-black:hover {
-    background-color: black;
+.hover-black:hover,
+.index-button:hover {
+    background-color: black !important;
     color: white;
-
 }
 
 #index-banner {
@@ -242,6 +242,10 @@ button {
 
 .white-button {
     background-color: white;
+    border: solid black 1px;
+}
+
+.index-button {
     border: solid black 1px;
 }
 

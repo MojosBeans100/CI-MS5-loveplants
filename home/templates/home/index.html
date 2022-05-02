@@ -3,25 +3,33 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-12 col-md-6 bg-light m-0 p-5">
-        <div class="margin">
-            <div class="m-5 p-5">
-                <div class="mb-5">
-                    <h1>Love Plants</h1>
-                    <h5><strong>We sell a large selection of houseplants to help make your home beautiful.
-                            From popular, easy to care for plants to exotic and unique plants which stand out from the
-                            crowd.</strong>
-                    </h5>
-                </div>
+    <div class="order-md-first order-last col-12 col-md-6 bg-light m-0 p-5">
+        <div class="p-5" style="font-family: Raleway; margin-top: 100px; max-height: 90vh; overflow: hidden;">
+            <div class="mb-5">
+                <h1 class="py-4">Love Plants</h1>
+                <h5>We sell a large selection of houseplants to help <strong>make your home beautiful</strong>.
+                    &nbsp; From popular, easy to care for plants, to <strong>exotic</strong> and <strong>unique</strong>
+                    plants which stand out from the
+                    crowd. &nbsp; <strong>Variegated species</strong> are our speciality, we guarantee you'll find your
+                    next obsession here.
+                </h5>
+            </div>
 
-                <div class="mt-3 py-4 d-flex justify-content-center">
-                    <button class="mx-5 px-3 py-1 black-button">Popular plants</button>
-                    <button class="mx-5 px-3 py-1 black-button">Rare plants</button>
+            <div class="mt-4 py-4 d-flex justify-content-center">
+                <div class="col-12 col-md-6">
+                    <a href="{% url 'products' %}?popular"><button
+                            class="w-75 mx-5 px-5 py-3 index-button bg-light">Popular
+                            plants</button></a>
+                </div>
+                <div class="col-12 col-md-6">
+                    <a href="{% url 'products' %}?rare"><button class="w-75 mx-5 px-5 py-3 index-button bg-light">Rare
+                            plants</button></a>
                 </div>
             </div>
+
         </div>
     </div>
-    <div class="col-12 col-md-6 m-0 p-0" id="index-image">
+    <div class="order-md-last order-first col-12 col-md-6 m-0 p-0" id="index-image">
     </div>
 </div>
 

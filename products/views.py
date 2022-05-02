@@ -183,26 +183,28 @@ def product_detail(request, id):
     form = None
     purchase_date = None
     product = get_object_or_404(Product, pk=id)
-    print(product.name)
-    print(product.average_rating)
     product_reviews = ProductReview.objects.filter(product=product.id)
 
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
     else:
-        rare_products = ""
+        rare_products = None
 
     if product.popular is True:
         popular_products = Product.objects.filter(popular=True)
         popular_products = popular_products.exclude(id=id)[0:4]
     else:
-        popular_products = ""
+        popular_products = None
 
     if product.care_required == 'low':
         easy_products = Product.objects.filter(care_required='low')
         easy_products = easy_products.exclude(id=id)[0:4]
     else:
-        easy_products = ""
+        easy_products = None
+
+    # if rare_products is None and popular_products is None and easy_products is None:
+    #     other_products = Product.objects.all().exclude(id__in=rare_products)
+
 
     # look for recently viewed products
     if request.user.is_authenticated:

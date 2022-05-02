@@ -40,11 +40,12 @@
         <form class="login" method="POST" action="{% url 'account_login' %}">
           {% csrf_token %}
           <table class="account-table">
-            {{ form.login }}<br>
+            {{form.as_table}}
+            <!-- {{ form.login }}<br>
             <hr>
             {{ form.password }}<br>
             <hr>
-          </table>
+          </table> -->
           <!-- {{form.remember.label}} {{ form.remember }} -->
           <br>
           {% if redirect_field_value %}
