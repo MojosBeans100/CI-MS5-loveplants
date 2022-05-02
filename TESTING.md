@@ -63,7 +63,7 @@ Acceptance Criteria:
 ### 1.2
 As a **site user** I can **see my current login status on all pages** so that **I am aware if my account is active or if I need to log in**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |on any given page, users can see the checkmark next to the profile icon in the navbar|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/desktop1_ufsqle.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/tablet1_ksnrzk.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/mobile1_veelj5.jpg)|Pass|
 |upon hover of the profile icon in the navbar, the logged in user's username is displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651237432/LovePlants/Testing/US1/desktop2_qmjfls.png)|N/A|N/A|Pass|
@@ -77,7 +77,7 @@ Acceptance Criteria:
 ### 1.3
 As a **site user** I can **navigate to a page which details my personal information** so that **I can see my details pertaining to my personal account on LovePlants**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |upon navigating to the users profile, their identifying and account info is displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/desktop1_cymipd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/tablet1_dxupzx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/mobile1_ebhzgp.jpg)|Pass|
 |non authenticated users are redirected to the home page when attempted to navigated to the profile page via the URL|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651244363/LovePlants/Testing/US1/US%201.3/desktopurl_q32r22.jpg)|N/A|N/A|Pass|
@@ -90,7 +90,7 @@ Acceptance Criteria:
 ### 1.4
 As a **site user** I can **access information of my previous orders** so that **I can see when I last ordered, how many orders I have, see the details of previous orders**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |users can see how many orders they have submitted|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241306/LovePlants/Testing/US1/US%201.4/desktop1_zkhjdl.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241308/LovePlants/Testing/US1/US%201.4/tablet1_dwweew.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241307/LovePlants/Testing/US1/US%201.4/mobile1_et6ucy.jpg)|Pass|
 |users can see a dropdown with the order reference, date and total price|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241307/LovePlants/Testing/US1/US%201.4/desktop2_gwuc7p.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241307/LovePlants/Testing/US1/US%201.4/tablet2_c9l59t.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241307/LovePlants/Testing/US1/US%201.4/mobile2_bbauh9.jpg)|Pass|
@@ -104,7 +104,7 @@ Acceptance Criteria:
 ### 1.5
 As a **site user** I can **update my personal information such as delivery information** so that **I can change details as needed, and save default information**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |users can fill in, or edit their default delivery information|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241953/LovePlants/Testing/US1/1.5/desktop1_oqbyam.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241953/LovePlants/Testing/US1/1.5/tablet1_ijrfl9.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241953/LovePlants/Testing/US1/1.5/mobile1_pap57s.jpg)|Pass|
 |placeholders are provided in place of field input labels|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241954/LovePlants/Testing/US1/1.5/desktop12_xoqzcs.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241953/LovePlants/Testing/US1/1.5/tablet12_mqnxkj.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651241953/LovePlants/Testing/US1/1.5/mobile12_gwwqre.jpg)|Pass|
@@ -131,7 +131,7 @@ User Story 2 involves allowing users to view, filter and search for products.
 ### 2.1
 As a **site user** I can **I can view a list of all available products to buy** so that **I can see the selection of products on the website**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |when user navigates to the products page, a list of projects are displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393182/LovePlants/Testing/US%202/2.1/desktop1_znk5tv.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/tablet1_dqemdj.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/mobile1_ild73b.jpg)|Pass|
 |a Bootstrap card is used to identify the product with identifying information|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/desktop2_frirqa.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/tablet2_kf4di0.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651393176/LovePlants/Testing/US%202/2.1/mobile2_ii5ogv.jpg)|Pass|
@@ -144,7 +144,7 @@ Acceptance Criteria:
 ### 2.2
 As a **site user** I can **use a search bar to input product details** so that **I can search for a specific product**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |the search bar is displayed above the products|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402726/LovePlants/Testing/US%202/2.2/desktop1_ingfer.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402726/LovePlants/Testing/US%202/2.2/tablet1_stcqri.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402725/LovePlants/Testing/US%202/2.2/mobile1_exu3m3.jpg)|Pass|
 |users can input a search term and press the magnifying glass button|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402810/LovePlants/Testing/US%202/2.2/desktop3_l9qb7y.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402810/LovePlants/Testing/US%202/2.2/tablet3_jdrqjk.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651402810/LovePlants/Testing/US%202/2.2/mobile3_tan3ue.jpg)|Pass|
@@ -161,7 +161,7 @@ Acceptance Criteria:
 ### 2.3
 As a **site user** I can **I can filter the available products by category etc** so that **the product list contains only products I am interested in**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |users can click on any of the plant icons to filter by plant type|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/desktop1_atoojj.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet1_qngtma.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile1_covii9.jpg)|Pass|
 |once filtered by plant type, the list narrows down to include only products of that plant type|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406084/LovePlants/Testing/US%202/2.3/desktop2_fchhqk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet2_lyxnd2.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet2_lyxnd2.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile2_zivpet.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile3_tyc1kj.jpg)|Pass|
@@ -177,7 +177,7 @@ Acceptance Criteria:
 ### 2.4
 As a **site user** I can **sort the available products by price and other features** so that **the product list is a more accessible and relevant order to view**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |users can click on the drop down to sort by criteria|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/desktop1_z95qcr.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/tablet1_bwrv0x.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/mobile1_ba5ced.jpg)|Pass|
 |when sorting criteria is chosen, the products rearrange to adhere to that criteria|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/desktop3_vd636u.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/tablet2_bgyoyp.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651407179/LovePlants/Testing/US%202/2.4/mobile2_jvez0y.jpg)|Pass|
@@ -192,7 +192,7 @@ Acceptance Criteria:
 ### 2.5
 As a **site user** I can **view the specific details of a product** so that **I can learn more about products I may wish to purchase**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |users can click on any product which will direct them to the detail page.  Upon hover, a second image is displayed|||||
 |upon navigating to the product detail, the user can see the name, category, price and images of the product|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/desktop1_zln4j8.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/tablet1_sl43ri.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410245/LovePlants/Testing/US%202/2.5/mobile1_ujfz0e.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/mobile2_wfb6kn.jpg)|Pass|
@@ -218,7 +218,7 @@ User Story 3 captures the requirements for users to add products to their shoppi
 ### 3.1
 As a **site user** I can **add a product to my shopping bag** so that **I can purchase the item**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |users can see an 'Add to bag' button on the product page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 |users can change the quantity of the product to add|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop2_yicahh.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/tablet2_jzipkm.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/mobile2_eyoqtb.jpg)|Pass|
@@ -232,12 +232,12 @@ Acceptance Criteria:
 ### 3.2
 As a **site user** I can **I can see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-|users receive a notification|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop12_p1wqyw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet12_a83l3r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile12_wyq7f2.jpg)|Pass|
-|users see the contents of their shopping bag|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop12_p1wqyw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet12_a83l3r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile12_wyq7f2.jpg)|Pass|
-|users can click the 'X' to dimiss the notification and continue shopping|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop3_hsjnnd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet3_ouccyf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile3_yfaq5d.jpg)|Pass|
-|users see the number of items in their bag change|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/desktop4_fhemvp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet4_qpmxyn.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile3_yfaq5d.jpg)|Pass|
+|users receive a notification|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop12_p1wqyw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet12_a83l3r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile12_wyq7f2.jpg)|Pass|
+|users see the contents of their shopping bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop12_p1wqyw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet12_a83l3r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile12_wyq7f2.jpg)|Pass|
+|users can click the 'X' to dimiss the notification and continue shopping|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479335/LovePlants/Testing/US%203/3.2%20/desktop3_hsjnnd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet3_ouccyf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile3_yfaq5d.jpg)|Pass|
+|users see the number of items in their bag change|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/desktop4_fhemvp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/tablet4_qpmxyn.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651479334/LovePlants/Testing/US%203/3.2%20/mobile3_yfaq5d.jpg)|Pass|
 
 Acceptance Criteria:
 - [x] User received a notification that an item was added to their bag
@@ -248,7 +248,7 @@ Acceptance Criteria:
 ### 3.3
 As a **site user** I can **see the total cost of my shopping bag change when I have added a product** so that **I'm aware of the running cost as I add products**
 
-|Critera|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |the navbar displays the number of items in the user's bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/dekstop1_hljbch.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/desktop12_qnh2wt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/tablet1_i1jsvd.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/mobile123_vt208m.jpg)|Pass|
 |the bag total is itemised|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482531/LovePlants/Testing/US%203/3.3/desktop2_ko7zbs.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/tablet2_urkfuf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651482708/LovePlants/Testing/US%203/3.3/mobile123_vt208m.jpg)|Pass|
@@ -264,9 +264,11 @@ Acceptance Criteria:
 ### 3.4
 As a **site user** I can **click on my shopping bag** so that **I can view a list of the products I have added**
 
-|in the bag page, user can see items, quantities, subtotals|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/desktop12345_o5rtyp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet_gyotqu.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile1_u5zncg.jpg)|Pass|
-|users are suggested products which, by adding, would reduce delivery charge to £0|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485183/LovePlants/Testing/US%203/3.4/desktop6_qg1c2t.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet2_zdmccf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile2_gasahr.jpg)|Pass|
-|by adding one of these products, delivery is reduced to £0|[Destop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485183/LovePlants/Testing/US%203/3.4/desktop3_u7dilg.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet3_ulvx6x.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile3_shf2ul.jpg)|Pass|
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|in the bag page, user can see items, quantities, subtotals|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/desktop12345_o5rtyp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet_gyotqu.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile1_u5zncg.jpg)|Pass|
+|users are suggested products which, by adding, would reduce delivery charge to £0|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485183/LovePlants/Testing/US%203/3.4/desktop6_qg1c2t.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet2_zdmccf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile2_gasahr.jpg)|Pass|
+|by adding one of these products, delivery is reduced to £0|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485183/LovePlants/Testing/US%203/3.4/desktop3_u7dilg.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/tablet3_ulvx6x.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651485184/LovePlants/Testing/US%203/3.4/mobile3_shf2ul.jpg)|Pass|
 
 Acceptance Criteria:
 - [x] Users can see all items in their shopping bag
@@ -279,10 +281,17 @@ Acceptance Criteria:
 ### 3.5
 As a **site user** I can **edit the items in my shopping bag** so that **I can adjust the contents of my bag as needed**
 
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users can see the current quantity in their bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/desktop1_yaotvt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489085/LovePlants/Testing/US%203/3.5/tablet1_okslse.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/mobile1_i2ytkh.jpg)|Pass|
+|users can input a new quantity|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/desktop2_cuil3t.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489085/LovePlants/Testing/US%203/3.5/tablet3_bjerdr.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/mobile2_nwkuxi.jpg)|Pass|
+|users can see the updated quantity in their bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/desktop3_lfmaev.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489085/LovePlants/Testing/US%203/3.5/tablet3_bjerdr.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/mobile3_k7qr4s.jpg)|Pass|
+|a notification is shown that the item has been updated|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/desktop4_vqqmak.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489085/LovePlants/Testing/US%203/3.5/tablet4_af8q8z.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/mobile4_mtzb4v.jpg)|Pass|
+
 Acceptance Criteria:
-- Users can see how to update items in their bag
+- [x] Users can see how to update items in their bag
 - [x] Users can see the bag total change when items are updated
-- User can see a confirmation message that they edited their item
+- [x] User can see a confirmation message that they edited their item
 
 ### 3.6
 As a **site user** I can **delete items from my shopping bag** so that **I can remove items I no longer want**
