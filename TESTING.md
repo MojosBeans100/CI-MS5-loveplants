@@ -356,6 +356,70 @@ Acceptance Criteria:
 - g
 
 
+## Automated Testing
+
+### Coverage Report
+|Module|statements|missing|excluded|coverage|
+|------|----------|-------|--------|--------|
+bag/__init__.py|	0|	0	0	100%
+bag/admin.py|	1|	0	0	100%
+bag/apps.py|	4|	0	0	100%
+bag/contexts.py|	36|	14	0	61%
+bag/migrations/__init__.py|	0|	0	0	100%
+bag/models.py|	1|	0	0	100%
+bag/test_views.py|	6|	6	0	0%
+bag/tests.py|	1|	1	0	0%
+bag/urls.py|	3|	0	0	100%
+bag/views.py|	56|	49	0	12%
+checkout/__init__.py|	1|	0	0	100%
+checkout/admin.py|	11|	0	0	100%
+checkout/apps.py|	6|	0	0	100%
+checkout/forms.py|	16|	9	0	44%
+checkout/models.py|	53|	6	0	89%
+checkout/signals.py|	9|	1	0	89%
+checkout/tests.py|	1|	1	0	0%
+checkout/urls.py|	4|	0	0	100%
+checkout/views.py|	78|	59	0	24%
+checkout/webhook_handler.py|	74|	59	0	20%
+checkout/webhooks.py|	28|	19	0	32%
+env.py|	7|	0	0	100%
+home/__init__.py|	0|	0	0	100%
+home/admin.py|	1|	0	0	100%
+home/apps.py|	4|	0	0	100%
+home/migrations/__init__.py|	0|	0	0	100%
+home/models.py|	1|	0	0	100%
+home/test_views.py|	6|	6	0	0%
+home/tests.py|	1|	1	0	0%
+home/urls.py|	3|	0	0	100%
+home/views.py|	3|	1	0	67%
+loveplants/__init__.py|	0|	0	0	100%
+loveplants/asgi.py|	4|	4	0	0%
+loveplants/settings.py|	45|	0	0	100%
+loveplants/urls.py|	3|	0	0	100%
+loveplants/wsgi.py|	4|	4	0	0%
+manage.py|	12|	2	0	83%
+products/__init__.py|	0|	0	0	100%
+products/admin.py|	10|	0	0	100%
+products/apps.py|	4|	0	0	100%
+products/forms.py|	20|	0	0	100%
+products/models.py|	103|	16	0	84%
+products/test_models.py|	14|	0	0	100%
+products/test_views.py|	208|	4	0	98%
+products/tests.py|	1|	0	0	100%
+products/urls.py|	3|	0	0	100%
+products/views.py|	288|	120	0	58%
+profiles/__init__.py|	0|	0	0	100%
+profiles/admin.py|	3|	0	0	100%
+profiles/apps.py|	4|	0	0	100%
+profiles/forms.py|	16|	9	0	44%
+profiles/models.py|	21|	1	0	95%
+profiles/test_views.py|	57|	57	0	0%
+profiles/tests.py|	1|	1	0	0%
+profiles/urls.py|	3|	0	0	100%
+profiles/views.py|	31|	23	0	26%
+Total|	1412|	473	0	67%
+coverage.py v6.3.2, created at 2022-05-03 11:12 +0000
+
 ## Validation
 All files were checked for format validation.
 
