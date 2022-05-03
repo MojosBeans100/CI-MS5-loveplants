@@ -346,24 +346,25 @@ As a **site user** I can **see the total amount my card will be billed** so that
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can see the grand total of their shopping bag on the checkout page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590013/LovePlants/Testing/US%204/4.3/desktop_jnb6w4.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590013/LovePlants/Testing/US%204/4.3/tablet_ceov09.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590013/LovePlants/Testing/US%204/4.3/mobile_f0lptu.jpg)|Pass|
+|users can see the 'your card will be charged' prompt beneath the 'Secure Checkout' button|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590013/LovePlants/Testing/US%204/4.3/desktop_jnb6w4.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590013/LovePlants/Testing/US%204/4.3/tablet_ceov09.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590013/LovePlants/Testing/US%204/4.3/mobile_f0lptu.jpg)|Pass|
+|when the bag contents change, the grand total value changes|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590180/LovePlants/Testing/US%204/4.3/desktop2_p30zmr.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590180/LovePlants/Testing/US%204/4.3/tablet2_upmyn0.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590180/LovePlants/Testing/US%204/4.3/mobile3_xbcrr1.jpg)|Pass|
 
 Acceptance Criteria:
-- User knows that pressing Secure Checkout/Submit will charge their card details
-- Users knows how much money will be taken from their card
-- User can see the charge updating as they edit their bag
+- [x] User knows that pressing Secure Checkout/Submit will charge their card details
+- [x] Users knows how much money will be taken from their card
+- [x] User can see the charge updating as they edit their bag
 
 ### 4.4
 As a **site user** I can **select whether to save the billing/delivery information for next time** so that **I do not have to repeat this step each time**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can select 'save information' on the checkout page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|the information is saved for next time they checkout|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
-- g
-- g
-- g
+- 
 
 ### 4.5
 As a **site user** I can **see confirmation that the order has been successful** so that **I am aware the order went through the system**
@@ -371,12 +372,13 @@ As a **site user** I can **see confirmation that the order has been successful**
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 ||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|the user can see their order details on the confirmation page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop5_p41mil.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop6_bh5qmt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet5_z3mgay.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet6_rnhjsc.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/mobile5_ao2gj3.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590816/LovePlants/Testing/US%204/4.4/mobile2_zdi3c0.jpg)|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - User sees a loading screen for confirmation that their order is being processed
 - User is directed to a confirmation page upon successful checkout, rendering relevant details
 - User is aware if and why their checkout was not successful
-
 
 ## Automated Testing
 

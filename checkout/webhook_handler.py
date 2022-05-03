@@ -54,7 +54,6 @@ class StripeWH_Handler:
         pid = intent.id
         bag = intent.metadata.bag
         save_info = intent.metadata.save_info
-        print(f"WH handler {save_info}")
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
         grand_total = round(intent.charges.data[0].amount/100, 2)
@@ -78,6 +77,8 @@ class StripeWH_Handler:
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_county = shipping_details.address.state
                 profile.save()
+
+                print(profile.default_street_address_1)
 
         order_exists = False
         attempt = 1

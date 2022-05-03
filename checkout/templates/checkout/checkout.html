@@ -2,130 +2,141 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <div class="margin">
-        <h2>Checkout</h2>
+<div id="window-div">
+    <div id="overlay">
+        <div id="loader-icon"></div>
+        <br>
+        <h4 class="text-center">LovePlants is processing your order.<br> Please wait momentarily..</h4>
+    </div>
+    <div class="container">
+        <div class="margin">
+            <h2>Checkout</h2>
 
-        <div class="row py-3 pt-5">
+            <div class="row py-3 pt-5">
 
-            <!-- order form delivery and billing details -->
-            <div class="col-12 col-lg-8 order-first">
+                <!-- order form delivery and billing details -->
+                <div class="col-12 col-lg-8 order-first">
 
-                <div class="d-flex py-3 px-md-3 px-lg-5">
-                    <hr class="flex-grow-1">
-                    <h3 class="text-center px-2 px-md-3 px-xl-5">Your details</h3>
-                    <hr class="flex-grow-1">
+                    <div class="d-flex py-3 px-md-3 px-lg-5">
+                        <hr class="flex-grow-1">
+                        <h3 class="text-center px-2 px-md-3 px-xl-5">Your details</h3>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    <form method="POST" action="#" class="form" id="checkout-form">
+                        {% csrf_token %}
+
+                        {% for field in order_form %}
+                        <p>{{field}}</p>
+                        {% endfor %}
+
+                        <label for="save_info">Save Information</label>
+                        <input id="save_info" type="checkbox">
+
+                        <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy
+                                        Notice</u></a></small></p>
+
+                        <!-- <button id="checkout-form-submit" type="submit">Submit</button> -->
                 </div>
 
-                <form method="POST" action="#" class="form" id="checkout-form">
-                    {% csrf_token %}
+                <!-- order summary and checkout button -->
+                <div class="col-12 col-lg-4 order-last order-lg-2 sticky-lg-top">
 
-                    {% for field in order_form %}
-                    <p>{{field}}</p>
+                    <div class="d-flex py-3 px-1">
+                        <hr class="flex-grow-1">
+                        <h3 class="text-center px-3">Order Summary</h3>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    <table class="table table-borderless">
+                        <tr>
+                            <td class="text-start">Order value</td>
+                            <td class="text-end">£ {{total}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-start">Delivery</td>
+                            <td class="text-end">£ {{delivery}}</td>
+                        </tr>
+                    </table>
+                    <table class="table table-borderless fw-bold">
+                        <tr>
+                            <td class="text-start">Total</td>
+                            <td class="text-end">£ {{grand_total}}</td>
+                        </tr>
+                    </table>
+
+                    <div class="d-flex py-3 px-1">
+                        <hr class="flex-grow-1">
+                        <h3 class="text-center px-3">Pay</h3>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    <div class="my-4">
+                        <p class="mt-1">Card information</p>
+                        <div class="py-2 form-control" id="stripe-element"></div>
+                        <div id="card-error"></div>
+                        <input type="hidden" value="{{ stripe_sk }}" name="stripe_sk">
+                    </div>
+
+                    <p class="text-center">We accept:</p>
+                    <h4 class="text-center">
+                        <i title="Mastercard" class="fa-brands fa-cc-mastercard"></i>
+                        <i title="American Express" class="fa-brands fa-cc-amex"></i>
+                        <i title="Visa Debit/Credit" class="fa-brands fa-cc-visa"></i>
+                        <i title="Paypal" class="fa-brands fa-cc-paypal"></i>
+                        <i title="Amazon Pay" class="fa-brands fa-cc-amazon-pay"></i>
+                        <i title="Apple Pay" class="fa-brands fa-cc-apple-pay"></i></h4><br>
+
+                    <button id="checkout-form-submit" type="submit" class="black-button">Secure Checkout &nbsp;<i
+                            class="fa-solid fa-lock"></i></button>
+                    <p class="text-center"><strong>You card will be charged £{{grand_total}}</strong></p>
+                    <br>
+                    <br>
+                    <p><small> By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
+                        </small></p>
+                    </form>
+                    <br>
+                    <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
+                    <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for help</small>
+                    </p>
+                </div>
+
+                <!-- list products in bag for reference -->
+                <div class="col-12 col-lg-8 order-lg-3">
+
+                    <div class="d-flex py-3 px-md-3 px-lg-5">
+                        <hr class="flex-grow-1">
+                        <h3 class="text-center px-2 px-md-3 px-xl-5">Bag</h3>
+                        <hr class="flex-grow-1">
+                    </div>
+
+                    {% for item in bag_items %}
+                    <div class="row py-2">
+                        <div class="col-6 col-lg-3">
+                            <a href="{% url 'product_detail' item.product.id %}"><img
+                                    style="width: 150px; height: 150px;" src="{{item.product.image1_source_url}}"></a>
+                        </div>
+                        <div class="col-6 col-lg-9">
+                            <p class="fw-bold"><small>{{item.product.friendly_name}} &nbsp;<a
+                                        href="{% url 'delete_bag' item.product.id %}"><i
+                                            class="fa-solid fa-trash-can"></i></a></small></p>
+                            {% if item.product.sale_price %}
+                            <p><small>Price: <del>£ {{item.product.price}}</del> £ {{item.product.sale_price}}</small>
+                            </p>
+                            {% else %}
+                            <p><small>Price: £ {{item.product.price}}</small></p>
+                            {% endif %}
+                            <p><small>Quantity: {{item.quantity}}</small></p>
+                            <p><small>Subtotal: £ {{item.product_subtotal}}</small>
+                        </div>
+                    </div>
                     {% endfor %}
-
-                    <label for="save_info">Save Information</label>
-                    <input id="save_info" type="checkbox">
-
-                    <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy
-                                    Notice</u></a></small></p>
-
-                    <!-- <button id="checkout-form-submit" type="submit">Submit</button> -->
-            </div>
-
-            <!-- order summary and checkout button -->
-            <div class="col-12 col-lg-4 order-last order-lg-2 sticky-lg-top">
-
-                <div class="d-flex py-3 px-1">
-                    <hr class="flex-grow-1">
-                    <h3 class="text-center px-3">Order Summary</h3>
-                    <hr class="flex-grow-1">
                 </div>
-
-                <table class="table table-borderless">
-                    <tr>
-                        <td class="text-start">Order value</td>
-                        <td class="text-end">£ {{total}}</td>
-                    </tr>
-                    <tr>
-                        <td class="text-start">Delivery</td>
-                        <td class="text-end">£ {{delivery}}</td>
-                    </tr>
-                </table>
-                <table class="table table-borderless fw-bold">
-                    <tr>
-                        <td class="text-start">Total</td>
-                        <td class="text-end">£ {{grand_total}}</td>
-                    </tr>
-                </table>
-
-                <div class="d-flex py-3 px-1">
-                    <hr class="flex-grow-1">
-                    <h3 class="text-center px-3">Pay</h3>
-                    <hr class="flex-grow-1">
-                </div>
-
-                <div class="my-4">
-                    <p class="mt-1">Card information</p>
-                    <div class="py-2 form-control" id="stripe-element"></div>
-                    <div id="card-error"></div>
-                    <input type="hidden" value="{{ stripe_sk }}" name="stripe_sk">
-                </div>
-
-                <p class="text-center">We accept:</p>
-                <h4 class="text-center">
-                    <i title="Mastercard" class="fa-brands fa-cc-mastercard"></i>
-                     <i title="American Express" class="fa-brands fa-cc-amex"></i> 
-                     <i title="Visa Debit/Credit" class="fa-brands fa-cc-visa"></i> 
-                     <i title="Paypal" class="fa-brands fa-cc-paypal"></i>
-                    <i title="Amazon Pay" class="fa-brands fa-cc-amazon-pay"></i> 
-                    <i title="Apple Pay" class="fa-brands fa-cc-apple-pay"></i></h4><br>
-
-                <button id="checkout-form-submit" type="submit" class="black-button">Secure Checkout &nbsp;<i
-                        class="fa-solid fa-lock"></i></button>
-                <br>
-                <br>
-                <p><small> By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
-                    </small></p>
-                </form>
-                <br>
-                <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
-                <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for help</small></p>
-            </div>
-
-            <!-- list products in bag for reference -->
-            <div class="col-12 col-lg-8 order-lg-3">
-
-                <div class="d-flex py-3 px-md-3 px-lg-5">
-                    <hr class="flex-grow-1">
-                    <h3 class="text-center px-2 px-md-3 px-xl-5">Bag</h3>
-                    <hr class="flex-grow-1">
-                </div>
-
-                {% for item in bag_items %}
-                <div class="row py-2">
-                    <div class="col-6 col-lg-3">
-                        <a href="{% url 'product_detail' item.product.id %}"><img style="width: 150px; height: 150px;"
-                                src="{{item.product.image1_source_url}}"></a>
-                    </div>
-                    <div class="col-6 col-lg-9">
-                        <p class="fw-bold"><small>{{item.product.friendly_name}} &nbsp;<a
-                                    href="{% url 'delete_bag' item.product.id %}"><i
-                                        class="fa-solid fa-trash-can"></i></a></small></p>
-                        {% if item.product.sale_price %}
-                        <p><small>Price: <del>£ {{item.product.price}}</del> £ {{item.product.sale_price}}</small></p>
-                        {% else %}
-                        <p><small>Price: £ {{item.product.price}}</small></p>
-                        {% endif %}
-                        <p><small>Quantity: {{item.quantity}}</small></p>
-                        <p><small>Subtotal: £ {{item.product_subtotal}}</small>
-                    </div>
-                </div>
-                {% endfor %}
             </div>
         </div>
     </div>
 </div>
+
 {% endblock content %}
 
 {% block postloadjs %}
@@ -139,9 +150,9 @@
 
     /**
      * check that the phone number entered is a number
-    */
+     */
     var valid_phone = document.getElementById('id_phone_num')
-    valid_phone.addEventListener('change', function(ev) {
+    valid_phone.addEventListener('change', function (ev) {
         if (isNaN(Number(valid_phone.value))) {
             valid_phone.style.color = 'red';
             document.getElementById('checkout-form-submit').disabled = true
@@ -179,6 +190,12 @@
     var form = document.getElementById('checkout-form');
     form.addEventListener('submit', function (ev) {
 
+        // create loading screen
+        document.getElementById('overlay').className = 'loader-div';
+        document.getElementById('loader-icon').className = 'loader';
+        document.getElementById('window-div').style.height = '100vh';
+        document.getElementById('window-div').style.overflow = 'hidden';
+
         // prevent posting form
         ev.preventDefault();
 
@@ -208,7 +225,7 @@
 
             // if successful response    
         }).then(response => {
-            
+
             // send payment to stripe
             stripe.confirmCardPayment(stripe_sk, {
                     payment_method: {

@@ -32,7 +32,6 @@ def cache_checkout_data(request):
     post_data = json.loads(request.body.decode("utf-8"))
     try:
         pid = post_data['stripe_sk'].split('_secret')[0]
-        print(f"cache checkout {post_data['save_info']}")
         stripe.api_key = stripe_sk
         stripe.PaymentIntent.modify(pid, metadata={
             'bag': json.dumps(request.session.get('bag', {})),
@@ -51,7 +50,6 @@ def view_checkout(request):
     """
 
     if request.method == 'POST':
-
         bag = request.session.get('bag', {})
         form_info = {
             'full_name': request.POST['full_name'],
@@ -83,6 +81,7 @@ def view_checkout(request):
                 )
                 order_line_item.save()
 
+            request.session['save_info'] = 'save_info' in request.POST
             return redirect(reverse(
                             'checkout_success',
                             args=[order.order_ref]))
@@ -139,7 +138,6 @@ def checkout_success(request, order_ref):
     """
 
     save_info = request.session.get('save_info')
-    print(request.session.items())
     order = get_object_or_404(Order, order_ref=order_ref)
     order_line_items = OrderLineItem.objects.filter(order=order)
 
@@ -162,7 +160,7 @@ def checkout_success(request, order_ref):
         if user_profile_form.is_valid():
             user_profile_form.save()
 
-    messages.success(request, f'{order} has been successful')
+    messages.success(request, f' Order reference {order} has been successful')
 
     if 'bag' in request.session:
         del request.session['bag']
