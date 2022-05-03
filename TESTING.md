@@ -360,11 +360,14 @@ As a **site user** I can **select whether to save the billing/delivery informati
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-|users can select 'save information' on the checkout page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|the information is saved for next time they checkout|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can select 'save information' on the checkout page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600012/LovePlants/Testing/US%204/4.4/desktop2_kpl5ve.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600012/LovePlants/Testing/US%204/4.4/tablet2_ycdqf8.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600011/LovePlants/Testing/US%204/4.4/mobile3_lcqda9.jpg)|Pass|
+|the information is saved for next time they checkout|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600012/LovePlants/Testing/US%204/4.4/desktop3_xhjqla.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600012/LovePlants/Testing/US%204/4.4/tablet3_vtui5e.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600012/LovePlants/Testing/US%204/4.4/mobile4_egsmif.jpg)|Pass|
+|the checkout form is pre-filled in with this default info|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600250/LovePlants/Testing/US%204/4.4/dekstop5_v8jhgf.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600250/LovePlants/Testing/US%204/4.4/tablet5_v6exkr.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600249/LovePlants/Testing/US%204/4.4/mobile5_hngnqa.jpg)|Pass|
 
 Acceptance Criteria:
-- 
+- [x] Users can see a 'save info' check box
+- [x] Users can see their information saved to their profile page
+- [x] Users can see this information pre-filled into the checkout form on the next order
 
 ### 4.5
 As a **site user** I can **see confirmation that the order has been successful** so that **I am aware the order went through the system**
