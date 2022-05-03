@@ -1,4 +1,6 @@
 # 3rd party imports
+# import mock
+# from unittest.mock import patch
 
 # Django imports
 from django.test import TestCase
@@ -16,3 +18,7 @@ class TestViewBag(TestCase):
         response = self.client.get('/bag/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'bag/bag.html')
+
+
+# class TestAddToBag(TestCase):
+
