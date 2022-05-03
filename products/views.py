@@ -560,7 +560,7 @@ def admin_edit_product(request, id):
 
     else:
         messages.success(request, "Only admin users are allowed to access that page. ")
-        return render('product/products.html')
+        return render(request, 'products/products.html')
 
     return render(request, 'products/edit_product.html', context)
 

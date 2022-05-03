@@ -1,6 +1,4 @@
 # 3rd party imports
-# import mock
-# from unittest.mock import patch
 
 # Django imports
 from django.test import TestCase

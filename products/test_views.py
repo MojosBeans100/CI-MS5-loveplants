@@ -648,4 +648,134 @@ class TestAdminDeleteProduct(TestCase):
         self.assertNotEqual(num_original_products, num_products_now)
 
 
-#class TestAdminCreateSale(TestCase):
+class TestAdminCreateSale(TestCase):
+    """
+    admin users can edit product details
+    """
+
+    def setUp(self):
+
+        admin_user = User.objects.create(
+            username="admin",
+            password='12345',
+            is_superuser=True
+        )
+
+        non_admin_user = User.objects.create(
+            username="non_admin",
+            password='54321',
+            is_superuser=False
+        )
+
+        product = Product.objects.create(
+            plant_category='Potted',
+            name='test_name',
+            friendly_name='Testing',
+            latin_name='latin name',
+            description='this is the description',
+            description_source='text',
+            description_url='url.com',
+            image1_source='text',
+            image1_source_url='url.com',
+            image2_source='text',
+            image2_source_url='url.com',
+            image3_source='text',
+            image3_source_url='url.com',
+            pot_size=10,
+            height=10,
+            price=10,
+            stock_quantity=10,
+            maturity_num=10,
+            maturity_time='months',
+            sunlight='low',
+            watering='low',
+            care_required='can stand a little neglect',
+            care_instructions='text',
+            care_instructions_source='text',
+            care_instructions_url='url.com',
+            rare=True,
+            popular=True,
+            live_on_site=True,
+            average_rating=0,
+        )
+
+
+    def test_admin_can_see_edit_form(self):
+        """
+        admin users can see edit form with
+        product values
+        """
+
+        self.client.force_login(User.objects.get(id=1))
+        product = Product.objects.get()
+        response = self.client.get(f'/products/edit_product/{product.id}')
+        self.assertEqual(
+            product.friendly_name,
+            response.context['form'].initial['friendly_name']
+            )
+        self.assertEqual(
+            product.description,
+            response.context['form'].initial['description']
+        )
+        self.assertTemplateUsed(response, 'products/edit_product.html')
+
+    def non_admins_cannot_access_edit_form(self):
+
+        self.client.force_login(User.objects.get(id=2))
+        product = Product.objects.get()
+        response = self.client.get(f'/products/edit_product/{product.id}')
+        self.assertRedirects(response, 'products/products.html')
+
+    def test_admin_can_edit_product_details(self):
+        """
+        test admin users can edit product and submit
+        form
+        """
+
+        data = {
+            'plant_category': 'Potted',
+            'name': 'test_name',
+            'friendly_name': 'edited name',
+            'latin_name': 'latin name',
+            'description': 'edited description',
+            'description_source': 'text',
+            'description_url': 'url.com',
+            'image1_source': 'text',
+            'image1_source_url': 'url.com',
+            'image2_source': 'text',
+            'image2_source_url': 'url.com',
+            'image3_source': 'text',
+            'image3_source_url': 'url.com',
+            'pot_size': 10,
+            'height': 10,
+            'price': 50,
+            'stock_quantity': 10,
+            'maturity_num': 10,
+            'maturity_time': 'months',
+            'sunlight': 'low',
+            'watering': 'low',
+            'care_required': 'can stand a little neglect',
+            'care_instructions': 'text',
+            'care_instructions_source': 'text',
+            'care_instructions_url': 'url.com',
+            'rare': True,
+            'popular': True,
+            'live_on_site': True,
+            'average_rating': 0,
+            'save-form': True
+            }
+
+        self.client.force_login(User.objects.get(id=1))
+        initial_product = Product.objects.get()
+        response = self.client.post(
+            f'/products/edit_product/{initial_product.id}',
+            data)
+        edited_product = Product.objects.get()
+
+        self.assertEqual(data['friendly_name'], edited_product.friendly_name)
+        self.assertEqual(data['description'], edited_product.description)
+        self.assertEqual(data['price'], edited_product.price)
+
+
+
+    
