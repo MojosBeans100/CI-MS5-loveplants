@@ -648,7 +648,7 @@ class TestAdminDeleteProduct(TestCase):
         self.assertNotEqual(num_original_products, num_products_now)
 
 
-class TestAdminCreateSale(TestCase):
+class TestAdminEditProducts(TestCase):
     """
     admin users can edit product details
     """
@@ -698,7 +698,6 @@ class TestAdminCreateSale(TestCase):
             live_on_site=True,
             average_rating=0,
         )
-
 
     def test_admin_can_see_edit_form(self):
         """
@@ -775,7 +774,119 @@ class TestAdminCreateSale(TestCase):
         self.assertEqual(data['friendly_name'], edited_product.friendly_name)
         self.assertEqual(data['description'], edited_product.description)
         self.assertEqual(data['price'], edited_product.price)
+        self.assertRedirects(
+            response,
+            f'/products/product_detail/{initial_product.id}'
+            )
 
+    def test_admin_can_copy_product(self):
+        """
+        test admins can copy products to create a
+        new product
+        """
 
+        initial_product = Product.objects.get(id=1)
+        self.client.force_login(User.objects.get(id=1))
+        
+        data = {
+            'plant_category': 'Potted',
+            'name': 'test_name',
+            'friendly_name': 'New unique name',
+            'latin_name': 'latin name',
+            'description': 'edited description',
+            'description_source': 'text',
+            'description_url': 'url.com',
+            'image1_source': 'text',
+            'image1_source_url': 'url.com',
+            'image2_source': 'text',
+            'image2_source_url': 'url.com',
+            'image3_source': 'text',
+            'image3_source_url': 'url.com',
+            'pot_size': 10,
+            'height': 10,
+            'price': 50,
+            'stock_quantity': 10,
+            'maturity_num': 10,
+            'maturity_time': 'months',
+            'sunlight': 'low',
+            'watering': 'low',
+            'care_required': 'can stand a little neglect',
+            'care_instructions': 'text',
+            'care_instructions_source': 'text',
+            'care_instructions_url': 'url.com',
+            'rare': True,
+            'popular': True,
+            'average_rating': 0,
+            'save-as-new': True
+        }
 
-    
+        response = self.client.post(
+            f'/products/edit_product/{initial_product.id}',
+            data
+        )
+
+        products = Product.objects.all()
+        copied_product = Product.objects.get(id=2)
+        self.assertTrue(len(products), 2)
+        self.assertTrue(
+            copied_product.friendly_name,
+            data['friendly_name']
+        )
+        self.assertTrue(
+            initial_product.friendly_name,
+            Product.objects.get(id=1)
+        )
+        self.assertRedirects(
+            response,
+            f'/products/product_detail/{copied_product.id}'
+        )
+
+    def test_copied_product_must_be_unique(self):
+        """
+        test that copied object is not saved if the object is
+        not unique ie do not duplicated products
+        """
+
+        product = Product.objects.get()
+        self.client.force_login(User.objects.get(id=1))
+        data = {
+                'plant_category': 'Potted',
+                'name': 'test_name',
+                'friendly_name': 'Testing',
+                'latin_name': 'latin name',
+                'description': 'edited description',
+                'description_source': 'text',
+                'description_url': 'url.com',
+                'image1_source': 'text',
+                'image1_source_url': 'url.com',
+                'image2_source': 'text',
+                'image2_source_url': 'url.com',
+                'image3_source': 'text',
+                'image3_source_url': 'url.com',
+                'pot_size': 10,
+                'height': 10,
+                'price': 50,
+                'stock_quantity': 10,
+                'maturity_num': 10,
+                'maturity_time': 'months',
+                'sunlight': 'low',
+                'watering': 'low',
+                'care_required': 'can stand a little neglect',
+                'care_instructions': 'text',
+                'care_instructions_source': 'text',
+                'care_instructions_url': 'url.com',
+                'rare': True,
+                'popular': True,
+                'average_rating': 0,
+                'save-as-new': True
+            }
+
+        response = self.client.post(
+            f'/products/edit_product/{product.id}',
+            data
+        )
+
+        self.assertTrue(len(Product.objects.all()), 1)
+        self.assertRedirects(
+            response,
+            f'/products/edit_product/{product.id}')

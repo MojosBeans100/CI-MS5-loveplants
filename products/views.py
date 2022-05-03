@@ -455,7 +455,7 @@ def admin_edit_product(request, id):
                 rare = False
 
             if 'save-as-new' in request.POST:
-
+                
                 try:
                     x = request.POST['friendly_name']
                     Product.objects.get(
@@ -464,6 +464,7 @@ def admin_edit_product(request, id):
                                                "already exists:"
                                                " the name of the plant "
                                                "must be unique."))
+                    print("here")
                     return redirect(reverse('edit_product', args=[id]))
                 except Product.DoesNotExist:
 
