@@ -165,8 +165,7 @@ As a **site user** I can **I can filter the available products by category etc**
 |-----------|-------|------|------|------|
 |users can click on any of the plant icons to filter by plant type|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/desktop1_atoojj.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet1_qngtma.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile1_covii9.jpg)|Pass|
 |once filtered by plant type, the list narrows down to include only products of that plant type|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406084/LovePlants/Testing/US%202/2.3/desktop2_fchhqk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet2_lyxnd2.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/tablet2_lyxnd2.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile2_zivpet.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651405964/LovePlants/Testing/US%202/2.3/mobile3_tyc1kj.jpg)|Pass|
-|users can further narrow the list by filtering by other criteria, such as price|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/desktop3_de8i8z.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/tablet3_faqngx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/mobile4_htvyej.jpg) []Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/mobile5_i5l5k3.jpg)|Pass|
-
+|users can further narrow the list by filtering by other criteria, such as price|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/desktop3_de8i8z.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/tablet3_faqngx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/mobile4_htvyej.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651406430/LovePlants/Testing/US%202/2.3/mobile5_i5l5k3.jpg)|Pass|
 
 Acceptance Criteria:
 - [x] Users can see categories on buttons on product list page
@@ -374,13 +373,13 @@ As a **site user** I can **see confirmation that the order has been successful**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|a loading screen is displayed when the order has been submitted|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/desktop_yqyx3x.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/tablet_hmjipb.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/mobile_xu7hmh.jpg)|Pass|
 |the user can see their order details on the confirmation page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop5_p41mil.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop6_bh5qmt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet5_z3mgay.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet6_rnhjsc.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/mobile5_ao2gj3.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590816/LovePlants/Testing/US%204/4.4/mobile2_zdi3c0.jpg)|Pass|
 ||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
-- User sees a loading screen for confirmation that their order is being processed
-- User is directed to a confirmation page upon successful checkout, rendering relevant details
+- [x] User sees a loading screen for confirmation that their order is being processed
+- [x] User is directed to a confirmation page upon successful checkout, rendering relevant details
 - User is aware if and why their checkout was not successful
 
 ## Automated Testing
@@ -388,64 +387,70 @@ Acceptance Criteria:
 ### Coverage Report
 |Module|statements|missing|excluded|coverage|
 |------|----------|-------|--------|--------|
-bag/__init__.py|	0|	0	0	100%
-bag/admin.py|	1|	0	0	100%
-bag/apps.py|	4|	0	0	100%
-bag/contexts.py|	36|	14	0	61%
-bag/migrations/__init__.py|	0|	0	0	100%
-bag/models.py|	1|	0	0	100%
-bag/test_views.py|	6|	6	0	0%
-bag/tests.py|	1|	1	0	0%
-bag/urls.py|	3|	0	0	100%
-bag/views.py|	56|	49	0	12%
-checkout/__init__.py|	1|	0	0	100%
-checkout/admin.py|	11|	0	0	100%
-checkout/apps.py|	6|	0	0	100%
-checkout/forms.py|	16|	9	0	44%
-checkout/models.py|	53|	6	0	89%
-checkout/signals.py|	9|	1	0	89%
-checkout/tests.py|	1|	1	0	0%
-checkout/urls.py|	4|	0	0	100%
-checkout/views.py|	78|	59	0	24%
-checkout/webhook_handler.py|	74|	59	0	20%
-checkout/webhooks.py|	28|	19	0	32%
-env.py|	7|	0	0	100%
-home/__init__.py|	0|	0	0	100%
-home/admin.py|	1|	0	0	100%
-home/apps.py|	4|	0	0	100%
-home/migrations/__init__.py|	0|	0	0	100%
-home/models.py|	1|	0	0	100%
-home/test_views.py|	6|	6	0	0%
-home/tests.py|	1|	1	0	0%
-home/urls.py|	3|	0	0	100%
-home/views.py|	3|	1	0	67%
-loveplants/__init__.py|	0|	0	0	100%
-loveplants/asgi.py|	4|	4	0	0%
-loveplants/settings.py|	45|	0	0	100%
-loveplants/urls.py|	3|	0	0	100%
-loveplants/wsgi.py|	4|	4	0	0%
-manage.py|	12|	2	0	83%
-products/__init__.py|	0|	0	0	100%
-products/admin.py|	10|	0	0	100%
-products/apps.py|	4|	0	0	100%
-products/forms.py|	20|	0	0	100%
-products/models.py|	103|	16	0	84%
-products/test_models.py|	14|	0	0	100%
-products/test_views.py|	208|	4	0	98%
-products/tests.py|	1|	0	0	100%
-products/urls.py|	3|	0	0	100%
-products/views.py|	288|	120	0	58%
-profiles/__init__.py|	0|	0	0	100%
-profiles/admin.py|	3|	0	0	100%
-profiles/apps.py|	4|	0	0	100%
-profiles/forms.py|	16|	9	0	44%
-profiles/models.py|	21|	1	0	95%
-profiles/test_views.py|	57|	57	0	0%
-profiles/tests.py|	1|	1	0	0%
-profiles/urls.py|	3|	0	0	100%
-profiles/views.py|	31|	23	0	26%
-Total|	1412|	473	0	67%
-coverage.py v6.3.2, created at 2022-05-03 11:12 +0000
+|BAG APP|
+bag/__init__.py|	0|	0|	0|	100%|
+bag/admin.py|	1|	0|	0|	100%|
+bag/apps.py|	4|	0|	0|	100%|
+bag/contexts.py|	36|	14|	0|	61%|
+bag/migrations/__init__.py|	0|	0|	0|	100%|
+bag/models.py|	1|	0|	0|	100%|
+bag/test_views.py|	6|	6|	0|	0%|
+bag/tests.py|	1|	1|	0|	0%|
+bag/urls.py|	3|	0|	0|	100%|
+bag/views.py|	56|	49|	0|	12%|
+|CHECKOUT APP|
+checkout/__init__.py|	1|	0|	0|	100%|
+checkout/admin.py|	11|	0|	0|	100%|
+checkout/apps.py|	6|	0|	0|	100%|
+checkout/forms.py|	16|	9|	0|	44%|
+checkout/models.py|	53|	6|	0|	89%|
+checkout/signals.py|	9|	1|	0|	89%|
+checkout/tests.py|	1|	1|	0|	0%|
+checkout/urls.py|	4|	0|	0|	100%|
+checkout/views.py|	78|	59|	0|	24%|
+checkout/webhook_handler.py|	74|	59|	0|	20%|
+checkout/webhooks.py|	28|	19|	0|	32%|
+|HOME APP|
+home/__init__.py|	0|	0|	0|	100%|
+home/admin.py|	1|	0|	0|	100%|
+home/apps.py|	4|	0|	0|	100%|
+home/migrations/__init__.py|	0|	0|	0|	100%|
+home/models.py|	1|	0|	0|	100%|
+home/test_views.py|	6|	6|	0|	0%|
+home/tests.py|	1|	1|	0|	0%|
+home/urls.py|	3|	0|	0|	100%|
+home/views.py|	3|	1|	0|	67%|
+|LOVE PLANTS|
+loveplants/__init__.py|	0|	0|	0|	100%|
+loveplants/asgi.py|	4|	4|	0|	0%|
+loveplants/settings.py|	45|	0|	0|	100%|
+loveplants/urls.py|	3|	0|	0|	100%|
+loveplants/wsgi.py|	4|	4|	0|	0%|
+manage.py|	12|	2|	0|	83%|
+env.py|	7|	0|	0|	100%|
+|PRODUCTS APP|
+products/__init__.py|	0|	0|	0|	100%|
+products/admin.py|	10|	0|	0|	100%|
+products/apps.py|	4|	0|	0|	100%|
+products/forms.py|	20|	0|	0|	100%|
+products/models.py|	103|	16|	0|	84%|
+products/test_models.py|	14|	0|	0|	100%|
+products/test_views.py|	208|	4|	0|	98%|
+products/tests.py|	1|	0|	0|	100%|
+products/urls.py|	3|	0|	0|	100%|
+products/views.py|	288|	120|	0|	58%|
+|PROFILES APP|
+profiles/__init__.py|	0|	0|	0|	100%|
+profiles/admin.py|	3|	0|	0|	100%|
+profiles/apps.py|	4|	0|	0|	100%|
+profiles/forms.py|	16|	9|	0|	44%|
+profiles/models.py|	21|	1|	0|	95%|
+profiles/test_views.py|	57|	57|	0|	0%|
+profiles/tests.py|	1|	1|	0|	0%|
+profiles/urls.py|	3|	0|	0|	100%|
+profiles/views.py|	31|	23|	0|	26%|
+||||||
+Total|	1412|	473|	0|	67%|
 
 ## Validation
 All files were checked for format validation.

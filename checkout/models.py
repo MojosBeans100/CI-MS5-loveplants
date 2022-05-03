@@ -114,7 +114,8 @@ class Order(models.Model):
         and calc delivery costs
         """
 
-        self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0
+        self.order_total = self.lineitems.aggregate(
+            Sum('lineitem_total'))['lineitem_total__sum'] or 0
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
             self.delivery_cost = decimal.Decimal(8.99)
         else:
@@ -188,7 +189,19 @@ class OrderLineItem(models.Model):
             self.lineitem_total = self.product.sale_price * self.quantity
         else:
             self.lineitem_total = self.product.price * self.quantity
+        #self.product.stock_quantity = self.product.stock_quantity - self.quantity
+        self.product.save()
         super().save(*args, **kwargs)
+
+    # def delete(self, *args, **kwargs):
+    #     """
+    #     Override original delete method to re-add
+    #     stock quantity to products
+    #     """
+
+    #     self.product.stock_quantity = self.product.stock_quantity + self.quantity
+    #     print("here")
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         """

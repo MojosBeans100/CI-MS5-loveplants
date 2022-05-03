@@ -141,6 +141,11 @@ def checkout_success(request, order_ref):
     order = get_object_or_404(Order, order_ref=order_ref)
     order_line_items = OrderLineItem.objects.filter(order=order)
 
+    for lineitem in order_line_items:
+        product = lineitem.product
+        product.stock_quantity = product.stock_quantity - lineitem.quantity
+        product.save()
+
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
