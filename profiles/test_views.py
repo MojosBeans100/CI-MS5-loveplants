@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 # Local imports
 from products.models import Product, ProductReview
-from checkout.models import Order, OrderLineItem
+from checkout.models import Order
 from profiles.models import UserProfile
 
 
@@ -147,3 +147,58 @@ class TestProfileView(TestCase):
             )
         self.assertTemplateUsed(response, 'home/index.html')
         self.assertEqual(response.status_code, 200)
+
+
+class TestLikedProducts(TestCase):
+
+    def setUp(self):
+
+        user = User.objects.create(
+            username='Mojo',
+            password='ilovetennisballs',
+            is_superuser=False
+        )
+
+        product1 = Product.objects.create(
+            friendly_name='Product1',
+            price=10,
+        )
+
+        product2 = Product.objects.create(
+            friendly_name='Product2',
+            price=100,
+        )
+
+        product_review1 = ProductReview.objects.create(
+            product=product1,
+            liked=True,
+            user=user
+        )
+
+        product_review2 = ProductReview.objects.create(
+            product=product2,
+            liked=False,
+            user=user
+        )
+
+    def test_product_like_renders_page(self):
+        """
+        test profiles/views.liked_products
+        renders liked.html and liked products
+        """
+
+        liked_product = Product.objects.get(id=1)   
+        self.client.force_login(User.objects.get(id=1))
+        response = self.client.get(
+            '/profiles/liked.html'
+            )
+        
+        self.assertEqual(len(Product.objects.all()), 2)
+        self.assertTemplateUsed(response, 'profiles/liked.html')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            response.context['liked'][0],
+            liked_product.friendly_name
+            )
+        self.assertEqual(len(response.context['liked']), 1)
+        self.assertEqual(response.context['num_liked'], 1)
