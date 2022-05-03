@@ -325,23 +325,28 @@ As a **site user** I can **select checkout from my shopping bag** so that **I ca
 |users can see when a field is invalid, with red text|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578940/LovePlants/Testing/US%204/4.1/desktop4_tk6p8w.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578940/LovePlants/Testing/US%204/4.1/tablet4_on2mnh.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578939/LovePlants/Testing/US%204/4.1/mobile4_krseoj.jpg)|Pass|
 
 Acceptance Criteria:
-- User can proceed to checkout from bag page and notification bar
-- User can enter their delivery/billing information and card details
-- User is aware when their billing/card details are not valid
+- [x] User can proceed to checkout from bag page and notification bar
+- [x] User can enter their delivery/billing information and card details
+- [x] User is aware when their billing/card details are not valid
 
 ### 4.2
 As a **site user** I can **verify the order information before I commit to buy** so that **I can check the contents of my bag**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-|users can see the checkout button in the bag page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/desktop1_rdxedk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/tablet1_lxhxfv.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/mobile1_mytxul.jpg)|Pass|
+|users can see the contents of their bag in the checkout page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651589432/LovePlants/Testing/US%204/4.2/desktop1_r6f45g.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651589432/LovePlants/Testing/US%204/4.2/tablet1_k29fmz.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651589431/LovePlants/Testing/US%204/4.2/mobile1_olk4s1.jpg)|Pass|
+|users can delete items from this page, remove items from their bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651589432/LovePlants/Testing/US%204/4.2/desktop2_ifzr0b.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651589432/LovePlants/Testing/US%204/4.2/tablet2_owk6zi.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651589432/LovePlants/Testing/US%204/4.2/mobile2_xdoy5c.jpg)|Pass|
 
 Acceptance Criteria:
-- Users can see all products in their bag when on the checkout page
-- Users can delete items from their bag on the checkout page
+- [x] Users can see all products in their bag when on the checkout page
+- [x] Users can delete items from their bag on the checkout page
 
 ### 4.3
 As a **site user** I can **see the total amount my card will be billed** so that **I know how much I am spending from my account**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - User knows that pressing Secure Checkout/Submit will charge their card details
@@ -351,6 +356,10 @@ Acceptance Criteria:
 ### 4.4
 As a **site user** I can **select whether to save the billing/delivery information for next time** so that **I do not have to repeat this step each time**
 
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+
 Acceptance Criteria:
 - g
 - g
@@ -358,6 +367,10 @@ Acceptance Criteria:
 
 ### 4.5
 As a **site user** I can **see confirmation that the order has been successful** so that **I am aware the order went through the system**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - User sees a loading screen for confirmation that their order is being processed
