@@ -108,3 +108,42 @@ class TestProfileView(TestCase):
             (response.context['orders'][0].order_ref),
             order.order_ref
             )
+
+    def test_return_profile_form(self):
+        """
+        test user can update profile information
+        """
+
+        self.client.force_login(User.objects.get(id=1))
+        data = {
+            'default_phone_num': '078365165151',
+            'default_street_address_1': 'new street address'
+        }
+
+        response = self.client.post(
+            '/profiles/profile.html', data
+            )
+
+        user_profile_updated = UserProfile.objects.get(id=1)
+        self.assertEqual(
+            user_profile_updated.default_street_address_1,
+            data['default_street_address_1']
+            )
+        self.assertEqual(
+            user_profile_updated.default_phone_num,
+            data['default_phone_num']
+            )
+        self.assertTemplateUsed(response, 'profiles/profile.html')
+
+    def test_profiles_returns_home_if_user_not_authenticated(self):
+        """
+        test site user is returned home if 
+        not logged in but attempts to navigate to profile
+        page
+        """
+
+        response = self.client.get(
+            '/profiles/profile.html'
+            )
+        self.assertTemplateUsed(response, 'home/index.html')
+        self.assertEqual(response.status_code, 200)
