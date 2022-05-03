@@ -886,7 +886,8 @@ class TestAdminEditProducts(TestCase):
             data
         )
 
-        self.assertTrue(len(Product.objects.all()), 1)
+        self.assertEqual(len(Product.objects.all()), 1)
+        self.assertEqual(response.status_code, 302)
         self.assertRedirects(
             response,
             f'/products/edit_product/{product.id}')

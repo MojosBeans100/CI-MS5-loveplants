@@ -455,27 +455,29 @@ def admin_edit_product(request, id):
                 rare = False
 
             if 'save-as-new' in request.POST:
-                
+
                 try:
                     x = request.POST['friendly_name']
                     Product.objects.get(
                         friendly_name=x)
-                    messages.success(request, (f"{x} "
-                                               "already exists:"
-                                               " the name of the plant "
-                                               "must be unique."))
-                    print("here")
+                    messages.success(
+                        request, (f"{x} "
+                                  "already exists:"
+                                  " the name of the plant "
+                                  "must be unique."))
                     return redirect(reverse('edit_product', args=[id]))
-                except Product.DoesNotExist:
 
+                except Product.DoesNotExist:
                     if 'live_on_site' in request.POST:
                         if len(valid_array) > 0:
-                            messages.success(request, ('Cannot add product to'
-                                                       ' live website due to'
-                                                       ' empty fields.'
-                                                       ' Fill in entire'
-                                                       ' form or uncheck '
-                                                       '"live on site"'))
+                            messages.success(
+                                request,
+                                ('Cannot add product to'
+                                 ' live website due to'
+                                 ' empty fields.'
+                                 ' Fill in entire'
+                                 ' form or uncheck '
+                                 '"live on site"'))
                             return redirect(reverse('edit_product', args=[id]))
 
                     x = request.POST['friendly_name']
@@ -536,12 +538,14 @@ def admin_edit_product(request, id):
 
                 if 'live_on_site' in request.POST:
                     if len(valid_array) > 0:
-                        messages.success(request, ('Cannot add product to'
-                                                   ' live website due to'
-                                                   ' empty'
-                                                   ' fields.  Fill in entire'
-                                                   ' form or uncheck '
-                                                   '"live on site"'))
+                        messages.success(
+                            request,
+                             ('Cannot add product to'
+                              ' live website due to'
+                              ' empty'
+                              ' fields.  Fill in entire'
+                              ' form or uncheck '
+                              '"live on site"'))
                         return redirect(reverse('edit_product', args=[id]))
 
                 if form.is_valid():

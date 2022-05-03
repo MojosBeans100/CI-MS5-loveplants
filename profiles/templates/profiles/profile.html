@@ -40,7 +40,7 @@
                 <form action="" method="POST">
                     {% csrf_token %}
                     {{form.as_table}}
-                    <button class="black-button" type="submit">Update Details</button>
+                    <button id="default-info" class="black-button" type="submit">Update Details</button>
                 </form>
             </div>
         </div>
@@ -148,4 +148,24 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script>
+    /**
+     * check that the phone number entered is a number
+    */
+    var valid_phone = document.getElementById('id_default_phone_num')
+    valid_phone.addEventListener('change', function(ev) {
+        if (isNaN(Number(valid_phone.value))) {
+            valid_phone.style.borderColor = 'orange';
+            document.getElementById('default-info').disabled = true
+        } else {
+            valid_phone.style.borderColor = '#ced4da';
+            document.getElementById('default-info').disabled = false
+        }
+    })
+
+</script>
 {% endblock %}

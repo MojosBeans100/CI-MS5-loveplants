@@ -137,6 +137,20 @@
 <script>
     /*jshint esversion: 6 */
 
+    /**
+     * check that the phone number entered is a number
+    */
+    var valid_phone = document.getElementById('id_phone_num')
+    valid_phone.addEventListener('change', function(ev) {
+        if (isNaN(Number(valid_phone.value))) {
+            valid_phone.style.borderColor = 'orange';
+            document.getElementById('checkout-form-submit').disabled = true
+        } else {
+            valid_phone.style.borderColor = '#ced4da';
+            document.getElementById('checkout-form-submit').disabled = false
+        }
+    })
+
     // get keys from template
     var stripe_pk = document.getElementById('id_stripe_pk').textContent.slice(1, -1);
     var stripe_sk = document.getElementById('id_stripe_sk').textContent.slice(1, -1);
