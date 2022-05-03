@@ -143,10 +143,10 @@
     var valid_phone = document.getElementById('id_phone_num')
     valid_phone.addEventListener('change', function(ev) {
         if (isNaN(Number(valid_phone.value))) {
-            valid_phone.style.borderColor = 'orange';
+            valid_phone.style.color = 'red';
             document.getElementById('checkout-form-submit').disabled = true
         } else {
-            valid_phone.style.borderColor = '#ced4da';
+            valid_phone.style.color = 'black';
             document.getElementById('checkout-form-submit').disabled = false
         }
     })

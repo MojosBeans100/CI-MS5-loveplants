@@ -317,15 +317,24 @@ User Story 4 captures the full checkout process.
 ### 4.1
 As a **site user** I can **select checkout from my shopping bag** so that **I can buy the products in my bag**
 
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users can see the checkout button in the bag page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/desktop1_rdxedk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/tablet1_lxhxfv.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/mobile1_mytxul.jpg)|Pass|
+|users can see the checkout button in the notification bar|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/desktop2_pusiah.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578641/LovePlants/Testing/US%204/4.1/tablet2_t0sqx5.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/mobile2_guegr5.jpg)|Pass|
+|users can fill in their delivery details|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578940/LovePlants/Testing/US%204/4.1/desktop3_nsvbxd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578939/LovePlants/Testing/US%204/4.1/tablet3_ogiad4.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578940/LovePlants/Testing/US%204/4.1/mobile3_cdhw1q.jpg)|Pass|
+|users can see when a field is invalid, with red text|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578940/LovePlants/Testing/US%204/4.1/desktop4_tk6p8w.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578940/LovePlants/Testing/US%204/4.1/tablet4_on2mnh.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578939/LovePlants/Testing/US%204/4.1/mobile4_krseoj.jpg)|Pass|
+
 Acceptance Criteria:
 - User can proceed to checkout from bag page and notification bar
 - User can enter their delivery/billing information and card details
 - User is aware when their billing/card details are not valid
-- User is directed to a confirmation page upon successful checkout, rendering relevant details
-- User is aware if and why their checkout was not successful
 
 ### 4.2
 As a **site user** I can **verify the order information before I commit to buy** so that **I can check the contents of my bag**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users can see the checkout button in the bag page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/desktop1_rdxedk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/tablet1_lxhxfv.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651578640/LovePlants/Testing/US%204/4.1/mobile1_mytxul.jpg)|Pass|
 
 Acceptance Criteria:
 - Users can see all products in their bag when on the checkout page
@@ -351,9 +360,9 @@ Acceptance Criteria:
 As a **site user** I can **see confirmation that the order has been successful** so that **I am aware the order went through the system**
 
 Acceptance Criteria:
-- g
-- g
-- g
+- User sees a loading screen for confirmation that their order is being processed
+- User is directed to a confirmation page upon successful checkout, rendering relevant details
+- User is aware if and why their checkout was not successful
 
 
 ## Automated Testing
