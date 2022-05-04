@@ -5,17 +5,31 @@
 
 
 /* GENERAL */
-/* body {
+body {
     font-family: 'Raleway', sans-serif;
-} */
+}
+
+body h1{
+    font-weight: 700;
+}
 
 #index-image {
-    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651424219/LovePlants/pexels-mentatdgt-2535212_qnlt7q.jpg');
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648229681/LovePlants/Media/pexels-madison-inouye-1382392_n8gajn.jpg');
     height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#index-image2 {
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648205969/LovePlants/Media/pexels-maria-orlova-4940808_q6vawi.jpg');
+    height: 90vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 
 #nav-image {
     width: 60px;
