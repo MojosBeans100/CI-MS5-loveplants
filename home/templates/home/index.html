@@ -3,26 +3,21 @@
 
 {% block content %}
 <div class="row">
-    <div class="order-md-first order-last col-12 col-md-6 bg-light m-0 p-5">
-        <div class="p-5" style="font-family: Raleway; margin-top: 100px; max-height: 90vh; overflow: hidden;">
+    <div class="order-md-first order-last col-12 col-md-6 bg-light m-0 p-5 mt-md-5">
+        <div class="p-5 px-md-0" style="font-family: Raleway;max-height: 90vh; overflow: hidden;">
             <div class="mb-5">
                 <h1 class="py-4">Love Plants</h1>
                 <h5>We sell a large selection of houseplants to help <strong>make your home beautiful</strong>.
-                    &nbsp; From popular, easy to care for plants, to <strong>exotic</strong> and <strong>unique</strong>
-                    plants which stand out from the
-                    crowd. &nbsp; <strong>Variegated species</strong> are our speciality, we guarantee you'll find your
-                    next obsession here.
                 </h5>
             </div>
 
-            <div class="mt-4 py-4 d-flex justify-content-center">
-                <div class="col-12 col-md-6">
-                    <a href="{% url 'products' %}?popular"><button
-                            class="w-75 mx-5 px-5 py-3 index-button bg-light">Popular
+            <div class="row mx-4 mt-4 py-4 d-flex justify-content-center">
+                <div class="col-6">
+                    <a href="{% url 'products' %}?popular"><button class="w-75 my-3 py-3 index-button bg-light">Popular
                             plants</button></a>
                 </div>
-                <div class="col-12 col-md-6">
-                    <a href="{% url 'products' %}?rare"><button class="w-75 mx-5 px-5 py-3 index-button bg-light">Rare
+                <div class="col-6">
+                    <a href="{% url 'products' %}?rare"><button class=" w-75 my-3 py-3 index-button bg-light">Rare
                             plants</button></a>
                 </div>
             </div>
@@ -30,6 +25,28 @@
         </div>
     </div>
     <div class="order-md-last order-first col-12 col-md-6 m-0 p-0" id="index-image">
+    </div>
+</div>
+
+<div class="text-center row px-5 mx-5 d-flex justify-contents-evenly">
+    <h2 class="py-5">Why Love Plants?</h2>
+    <div class="col-12 col-md-4 p-3">
+        <img src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651655259/flower-pot_3_rp5bfx.png">
+        
+        <p class="pt-3"><strong>Variegated species</strong> are our speciality, we guarantee you'll find your
+            next obsession here</p>
+    </div>
+    <div class="col-12 col-md-4 p-3">
+        <img src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651655769/plant-pot_dmf65f.png">
+        
+        <p class="pt-3"><strong>Huge variety</strong> From common, easy to care for plants, to <strong>exotic</strong> and <strong>unique</strong> plants
+            which stand out from the crowd</p>
+    </div>
+    <div class="col-12 col-md-4 p-3">
+        <img src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651655654/ecology-and-environment_1_cke84b.png">
+       
+        <p class="pt-3"><strong>Quality delivery</strong> We are meticulous about packaging your plants to ensure
+             they are as <strong>healthy</strong> and <strong>high quality</strong> as when they leave our nursery.</p>
     </div>
 </div>
 

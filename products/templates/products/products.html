@@ -275,7 +275,8 @@
                 <!-- number of products, products per page, sort  -->
                 <div class="row px-1 align-items-center">
 
-                    <div class="col-12 col-sm-4 align-items-center d-flex order-2 order-sm-1 justify-content-sm-start justify-content-center">
+                    <div
+                        class="col-12 col-sm-4 align-items-center d-flex order-2 order-sm-1 justify-content-sm-start justify-content-center">
                         <div class="p-2">
                             <p>{{all_products.count}} products</p>
                         </div>
@@ -294,7 +295,8 @@
 
                     </div>
 
-                    <div class="col-12 col-sm-4 align-items-center p-2 d-flex order-sm-3 justify-content-center order-1 justify-content-sm-end">
+                    <div
+                        class="col-12 col-sm-4 align-items-center p-2 d-flex order-sm-3 justify-content-center order-1 justify-content-sm-end">
                         <div class="dropdown">
                             <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -391,7 +393,8 @@
                 <!-- product name and price -->
                 <div class="card-body text-start">
                     <a href="{% url 'product_detail' product.id %}">
-                        <h5 class="card-title">{{product.friendly_name|upper}}</h5>
+                        <h5 class="card-title">{{product.friendly_name|upper}} {% if user.is_superuser %}<span
+                                id="stock-span">(x {{product.stock_quantity}})</span>{% endif %}</h5>
                     </a>
                     {% if product.latin_name %}
                     <p><em><small>{{product.latin_name}}</small></em></p>
