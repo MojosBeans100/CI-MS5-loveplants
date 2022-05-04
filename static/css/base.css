@@ -29,6 +29,14 @@ body h1{
     background-size: cover;
 }
 
+#index-image3 {
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651664019/LovePlants/thehealthyhouseplant_lq7fkh.jpg');
+    height: 90vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 
 #nav-image {
