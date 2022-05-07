@@ -471,21 +471,21 @@ As a **site admin** I can **apply a discount to any/all products** so that **Lov
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-|the 'Create Sale' button is in clear view on the products page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|admin users can see the form to add sale prices to items|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|admin users can add a percentage discount to products|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|admin users can add a value discount to products|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|admin users can choose which products to apply a discount to|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|admin users can see which products are on sale, and the current sale price|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|admin users can remove these items from the sale|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-|admin users can see the sale prices reflected on the products or product detail page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|the 'Create Sale' button is in clear view on the products page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937302/LovePlants/Testing/US%206/6.3/desktop1_yqjlqn.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937299/LovePlants/Testing/US%206/6.3/tablet1_sgospf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937298/LovePlants/Testing/US%206/6.3/mobile1_vcc1k9.jpg)|Pass|
+|admin users can see the form to add sale prices to items|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937303/LovePlants/Testing/US%206/6.3/desktop2_mnnlj2.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937300/LovePlants/Testing/US%206/6.3/tablet2_f9rxbw.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937298/LovePlants/Testing/US%206/6.3/mobile2_cqloue.jpg)|Pass|
+|admin users can add a percentage discount to products|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937303/LovePlants/Testing/US%206/6.3/desktop3_clkqli.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937301/LovePlants/Testing/US%206/6.3/tablet3_eqnejb.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937299/LovePlants/Testing/US%206/6.3/mobile3_pj3sa8.jpg)|Pass|
+|admin users can add a value discount to products|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937303/LovePlants/Testing/US%206/6.3/desktop4_eleyjm.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937301/LovePlants/Testing/US%206/6.3/tablet4_iid1sx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937299/LovePlants/Testing/US%206/6.3/mobile4_qzcxbr.jpg)|Pass|
+|admin users can choose which products to apply a discount to|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937304/LovePlants/Testing/US%206/6.3/desktop5_gqsxkt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937301/LovePlants/Testing/US%206/6.3/tablet5_fft2l6.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937300/LovePlants/Testing/US%206/6.3/mobile5_khlmb9.jpg)|Pass|
+|admin users can see which products are on sale, and the current sale price|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937304/LovePlants/Testing/US%206/6.3/desktop6_ykanrw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937301/LovePlants/Testing/US%206/6.3/tablet6_qbkkut.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937299/LovePlants/Testing/US%206/6.3/mobile6_be2018.jpg)|Pass|
+|admin users can remove these items from the sale|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937304/LovePlants/Testing/US%206/6.3/desktop7_tblwle.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937298/LovePlants/Testing/US%206/6.3/desktop8_j4k6fv.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937301/LovePlants/Testing/US%206/6.3/tablet7_fhrzld.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937302/LovePlants/Testing/US%206/6.3/tablet8_nt3tev.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937300/LovePlants/Testing/US%206/6.3/mobile7_xq9ni3.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937298/LovePlants/Testing/US%206/6.3/mobile8_pcu2gm.jpg)|Pass|
+|admin users can see the sale prices reflected on the products or product detail page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937301/LovePlants/Testing/US%206/6.3/desktop9_lyndpg.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937303/LovePlants/Testing/US%206/6.3/tablet9_rxmyzt.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651937298/LovePlants/Testing/US%206/6.3/mobile9_jeheps.jpg)|Pass|
 
 Acceptance Criteria:
-- Admin users can see a 'Create Sale' button on the products page
-- Admin users can apply a discount to a singular product, or multiple products
-- Admin users can apply either a value discount or percentage discount
-- Admin users can see which producs are on sale
-- Admin users can remove the sale price from products
+- [x] Admin users can see a 'Create Sale' button on the products page
+- [x] Admin users can apply a discount to a singular product, or multiple products
+- [x] Admin users can apply either a value discount or percentage discount
+- [x] Admin users can see which producs are on sale
+- [x] Admin users can remove the sale price from products
 
 ## Automated Testing
 
