@@ -393,15 +393,14 @@
                 <!-- product name and price -->
                 <div class="card-body text-start">
                     <a href="{% url 'product_detail' product.id %}">
-                        <h5 class="card-title">{{product.friendly_name|upper}} {% if user.is_superuser %}<span
-                                id="stock-span">(x {{product.stock_quantity}})</span>{% endif %}</h5>
+                        <h5 class="card-title">{{product.friendly_name|upper}} {% if user.is_superuser %}({{product.stock_quantity}}){% endif %}</h5>
                     </a>
                     {% if product.latin_name %}
                     <p><em><small>{{product.latin_name}}</small></em></p>
                     {% else %}
                     {% endif %}
                     {% if product.sale_price %}
-                    <p class="card-text"><del>£{{product.price}}</del> £{{product.sale_price}}</p>
+                    <p class="card-text"><del>£{{product.price}}</del>&nbsp; £{{product.sale_price}}</p>
                     {% else %}
                     <p class="card-text">£{{product.price}}</p>
                     {% endif %}
@@ -410,8 +409,9 @@
 
                 {% if user.is_superuser %}
                 {% if product.live_on_site == False %}
-                <p class="text-danger">Not live on site</p>
+                <p class="text-danger">Live on site <i class="fa-solid fa-xmark"></i></p>
                 {% else %}
+                <p class="text-success">Live on site <i class="fa-solid fa-check"></i></p>
                 {% endif %}
                 {% else %}
                 {% endif %}

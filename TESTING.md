@@ -487,6 +487,31 @@ Acceptance Criteria:
 - [x] Admin users can see which producs are on sale
 - [x] Admin users can remove the sale price from products
 
+### 6.4
+As a **site admin** I can **copy a product and save it as a new item** so that **I can add products similar to other products more efficiently**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|admin users can see a 'save as new' button on the edit product page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/desktop1_zf5sai.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/tablet1_m4wcvi.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/mobile1_vtp3ao.jpg)|Pass|
+|admin users are notified if the form is invalid|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/desktop2_mor94a.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/tablet2_qhaexr.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/mobile2_npct2g.jpg)|Pass|
+|admin users can see the duplicate product in products list|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/desktop3_vghy6h.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/tablet3_q73lsd.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651955929/LovePlants/Testing/US%206/6.5/mobile3_jakqbr.jpg)|Pass|
+
+Acceptance Criteria:
+- [x] Admin users can save a product as a new object
+- [x] Admin users see a warning if there are errors in the form
+- [x] Admin users can only save the form if the name of the product is unique
+
+### 6.5
+As a **site admin** I can **delete products from the LovePlants store** so that **discontinued stock can be removed from the product list**
+
+Acceptance Criteria:
+- [x] Admin users can find the delete button on the edit product page
+- [x] Admin users see a warning that the product will be deleted
+- [x] Admin users see a notification that the product has been deleted
+
+
+
+
 ## Automated Testing
 
 ### Coverage Report

@@ -184,6 +184,7 @@ def product_detail(request, id):
     purchase_date = None
     product = get_object_or_404(Product, pk=id)
     product_reviews = ProductReview.objects.filter(product=product.id)
+    product_reviews = product_reviews.exclude(review="")
 
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
@@ -618,7 +619,6 @@ def admin_create_sale(request):
                     per = decimal.Decimal(request.POST['per'])
 
                 for product in all_products:
-
                     try:
                         product_id = request.POST[f"{product.id}"]
                         change_price = Product.objects.get(id=product_id)
@@ -633,6 +633,7 @@ def admin_create_sale(request):
                         sale_products = Product.objects.filter(
                                                         sale_price__gte=0
                                                         )
+                        messages.success(request, "Items added to sale")
                     except:
                         ...
 
@@ -647,6 +648,7 @@ def admin_create_sale(request):
                         sale_products = Product.objects.filter(
                                                         sale_price__gte=0
                                                         )
+                        messages.success(request, "Items removedfrom sale")
                     except:
                         ...
 

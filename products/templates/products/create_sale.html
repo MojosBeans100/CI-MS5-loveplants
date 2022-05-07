@@ -159,6 +159,7 @@
 {% endblock %}
 
 {% block postloadjs %}
+{{block.super}}
 <script>
     var productChecks = document.getElementsByClassName('product-checks');
     removeSaleDiscounts();

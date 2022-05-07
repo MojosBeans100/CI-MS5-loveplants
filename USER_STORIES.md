@@ -344,9 +344,16 @@ Acceptance Criteria:
 As a **site admin** I can **delete products from the LovePlants store** so that **discontinued stock can be removed from the product list**
 
 Acceptance Criteria:
-- A
-- A
-- a
+- Admin users can find the delete button on the edit product page
+- Admin users see a warning that the product will be deleted
+- Admin users see a notification that the product has been deleted
+
+### 6.5
+As a **site admin** I can **copy a product and save it as a new item** so that **I can add products similar to other products more efficiently**
+
+Acceptance Criteria:
+- Admin users can save a product as a new object
+- Admin users see a warning if there are errors in the form
 
 ### 6.5
 As a **site admin** I can **review, edit and delete customer orders** so that **orders can be adjusted accordingly**
