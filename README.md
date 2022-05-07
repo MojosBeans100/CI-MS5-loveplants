@@ -60,7 +60,7 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
 [Back to top](#love-plants)
 
 # UX
-The Five Planes - strategy, scope, structure, skeleton, and surface - method was used during the project planning phase to provide a conceptual framework for designing this e-commerce website.  The methodology for each plane is provided below. 
+The Five Planes method - strategy, scope, structure, skeleton, and surface - was used during the project planning phase to provide a conceptual framework for designing this e-commerce website.  The methodology for each plane is provided below. 
 
 ## Strategy
 The strategy plane considers the website user's needs and the website admin's needs.
@@ -83,7 +83,7 @@ The primary goals of the website owner or admin are as follows:
 - The view and moderate customer ratings and reviews
 
 ### User Stories
-All user stories are detailed in [this document](), and in the [Issues](https://github.com/MojosBeans100/CI-MS5-loveplants/issues) subfolder in the Github repository for the project.
+All user stories are detailed in [this document](USER_STORIES.md), and in the [Issues](https://github.com/MojosBeans100/CI-MS5-loveplants/issues) subfolder in the Github repository for the project.
 
 [Back to top](#love-plants)
 
@@ -233,7 +233,7 @@ The Profiles App provides the user the ability to create their website profile, 
 
 ### UserProfile
 - The UserProfile model allows users to hold their personal information when using the site, and has a One-To-One relationship with the [User](#user-django-context-processor) model.
-- The UserProfile model with be modified automatically upon the User model being modified
+- The UserProfile model will be modified automatically upon the User model being modified
 
 | Field | Description | Field type|
 |-------|-------------|-----------|
@@ -349,7 +349,7 @@ The Checkout App provides the structure for users to create an order and purchas
 |stripe_pid|a unique character string to communicate with Stripe|CharField|
 
 #### OrderLineItem
-- The OrderLineItem model represents details about each product in any given order (Order).
+- The OrderLineItem model represents details about each product in any given order (Order model).
 - The model contains a model method to update the lineitem_total if the quantity is changed.
 
 | Field | Description | Field type|
@@ -491,14 +491,14 @@ Users can also sort the products by price (low, high), rating (low, high) and na
 A list of products which match the filter and search criteria are displayed throughout the rest of the page.  Products are displayed with:
 - a Bootstrap card, providing an image of the product (which the second product image displayed upon hover of the original image).  The card links to the detailed view of the product when clicked
 - the name of the plant
-- the latin name
+- the latin (or botanical) name
 - the price
 - the sale price (if relevant)  
 - the 'like' button (rendered in black if the product is 'liked' by the user, white if not)
 
 ![Products list]()
 
-Users can organise the list further by selection the number of products to view per page. 
+Users can organise the list further by selecting the number of products to view per page. 
 
 ![Products per page]()
 
@@ -548,7 +548,7 @@ If a user has purchased the product, and not previously left a review, they can 
 To keep the user interested in browsing products, suggestions are made for additional products to view.  The list is kept brief, to only 4 products per category, and products are not duplicated between lists.  The categories are:
 - rare products (if the product is rare)
 - popular products (if the product is popular)
-- easy care products (if the product has low care maintance)
+- easy care products (if the product has low care maintenance)
 
 ![Suggested products]()
 
@@ -593,7 +593,7 @@ The checkout page requires users to input their delivery details and payment inf
 
 ### User Details
 (User Story X)
-Form fields are displayed for the user to input their personal and delivery information in order to process the order. Users can save their information for later, so the next order they submit will not required inputting this information again. 
+Form fields are displayed for the user to input their personal and delivery information in order to process the order. Users can save their information for later, so the next order they submit will not require inputting this information again. 
 
 ![User details]()
 

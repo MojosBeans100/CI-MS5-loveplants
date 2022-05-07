@@ -127,6 +127,40 @@
                     </div>
                     {% endif %}
                 </div>
+
+                <div class="row">
+                    <div class="col-4 offset-4">
+                        <table class="table table-borderless mb-0">
+                            <tbody>
+                                {% if reviews.count == 0 %}
+                                <tr>
+                                    <td><i class="fa-regular fa-star"></i></td>
+                                    <td><i class="fa-regular fa-star"></i></td>
+                                    <td><i class="fa-regular fa-star"></i></td>
+                                    <td><i class="fa-regular fa-star"></i></td>
+                                    <td><i class="fa-regular fa-star"></i></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" class="text-center"><small>({{reviews.count}} reviews)</small></td>
+                                </tr>
+                                {% else %}
+                                <tr class="text-center" id="append-star">
+                                </tr>
+                                <tr>
+                                    <td class="text-center" colspan="5" id="avg-rating">
+
+                                        {{product.average_rating|floatformat:1}}/5</td>
+                                </tr>
+                                <tr class="text-center">
+                                    <td colspan="5" class="text-center"><small><a
+                                                href="#product-review-title">({{reviews.count}} reviews)</a></small>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <hr>
 
                 <!-- price, add to basket -->
@@ -218,37 +252,7 @@
                 <!-- reviews form and rating display -->
                 <div class="row">
 
-                    <div class="col-4 offset-4">
-                        <table class="table table-borderless mb-0">
-                            <tbody>
-                                {% if reviews.count == 0 %}
-                                <tr>
-                                    <td><i class="fa-regular fa-star"></i></td>
-                                    <td><i class="fa-regular fa-star"></i></td>
-                                    <td><i class="fa-regular fa-star"></i></td>
-                                    <td><i class="fa-regular fa-star"></i></td>
-                                    <td><i class="fa-regular fa-star"></i></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="5" class="text-center"><small>({{reviews.count}} reviews)</small></td>
-                                </tr>
-                                {% else %}
-                                <tr class="text-center" id="append-star">
-                                </tr>
-                                <tr>
-                                    <td class="text-center" colspan="5" id="avg-rating">
-
-                                        {{product.average_rating|floatformat:1}}/5</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td colspan="5" class="text-center"><small><a
-                                                href="#product-review-title">({{reviews.count}} reviews)</a></small>
-                                    </td>
-                                </tr>
-                                {% endif %}
-                            </tbody>
-                        </table>
-                    </div>
+                    
                     <hr>
 
                     {% if already_reviewed %}

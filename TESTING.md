@@ -390,32 +390,37 @@ As a **site user** I can **I can rate products I have purchased** so that **othe
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|if the user has purchased this product, they can see the rating/review form|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651912363/LovePlants/Testing/US%205/5.1/desktop1_chmkj3.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651912363/LovePlants/Testing/US%205/5.1/tablet1_aerj6s.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651912362/LovePlants/Testing/US%205/5.1/mobile1_au3n13.jpg)|Pass|
+|if the user has not purchased, or already reviewed this product, they cannot see the rating/review form|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651912446/LovePlants/Testing/US%205/5.1/desktop2_pusefh.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651912446/LovePlants/Testing/US%205/5.1/tablet2_nhfi8a.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651912446/LovePlants/Testing/US%205/5.1/mobile2_v08kdu.jpg)|Pass|
 
 Acceptance Criteria:
-- User can rate products they have purchased
-- Users cannot rate products they have not purchased
-- Users cannot rate products more than once
+- [x] User can rate products they have purchased
+- [x] Users cannot rate products they have not purchased
+- [x] Users cannot rate products more than once
 
 ### 5.2
 As a **site user** I can **add a comment review to products I have purchased** so that **other users can see a comment from a previous buyer of the product**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can leave a review and rating and submit|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914038/LovePlants/Testing/US%205/5.2/desktop1_tdshmn.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914037/LovePlants/Testing/US%205/5.2/tablet1_l85186.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914036/LovePlants/Testing/US%205/5.2/mobile1_wvegnu.jpg)|Pass|
+|users can see their review beneath the product, and other reviews if there are any|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914119/LovePlants/Testing/US%205/5.2/desktop2_sflk4q.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914119/LovePlants/Testing/US%205/5.2/tablet2_g6hqap.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914118/LovePlants/Testing/US%205/5.2/mobile2_sqh4wv.jpg)|Pass|
 
 Acceptance Criteria:
-- Users can comment on products they have purchased
-- Users can review comments from other buys
+- [x] Users can comment on products they have purchased
+- [x] Users can review comments from other buyers
 
 ### 5.3
 As a **site user** I can **review ratings for products** so that **I can see previous customer's experience with this product**
 
-Acceptance Criteria:
-- Users can see a review/rating section on each product detail
-- Users can scroll through reviews for a product
-- Users can see when the reviews were left
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users can see other user's reviews of the relevant product|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914538/LovePlants/Testing/US%205/5.3/desktop1_chq1aq.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914538/LovePlants/Testing/US%205/5.3/tablet1_ldqdz3.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651914538/LovePlants/Testing/US%205/5.3/mobile1_icfstv.jpg)|Pass|
 
+Acceptance Criteria:
+- [x] Users can see a review/rating section on each product detail
+- [x] Users can scroll through reviews for a product
+- [x] Users can see when the reviews were left
 
 ## User Story 6 Testing
 
