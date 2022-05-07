@@ -423,6 +423,28 @@ Acceptance Criteria:
 - [x] Users can see when the reviews were left
 
 ## User Story 6 Testing
+User Story 6 captures the admin requirements for using the website, to add, edit, delete products.
+
+### 6.1
+As a **site admin** I can **edit information about products, such as price, quantity remaining, picture** so that **product details can be adjusted as required**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|the 'Edit Product' button is displayed at the top of the product detail page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916779/LovePlants/Testing/US%206/6.1/desktop1_imfqzz.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/tablet1_adhl6a.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916855/LovePlants/Testing/US%206/6.1/mobile1_z9h31b.jpg)|Pass|
+|admin users can see the form displaying details for that product|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916787/LovePlants/Testing/US%206/6.1/desktop2_lkf3cq.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917087/LovePlants/Testing/US%206/6.1/tablet4_ysumaf.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917126/LovePlants/Testing/US%206/6.1/mobile2_z4tn9c.jpg)|Pass|
+|admin users can edit details on the form and submit it|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916788/LovePlants/Testing/US%206/6.1/desktop4_dhmr0p.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/tablet2_iil8rq.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917205/LovePlants/Testing/US%206/6.1/mobile3_cifcmk.jpg)|Pass|
+|admin users can see the changes they made on the product detail page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/desktop6_nndsuk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916791/LovePlants/Testing/US%206/6.1/tablet6_oyhdkx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917318/LovePlants/Testing/US%206/6.1/mobile4_ou1ub7.jpg)|Pass|
+|admin users can see a notification that the form was submitted|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/desktop6_nndsuk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916791/LovePlants/Testing/US%206/6.1/tablet6_oyhdkx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/mobile6_gcbemt.jpg)|Pass|
+|admin users can see if the form was not submitted because of an error*|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917567/LovePlants/Testing/US%206/6.1/desktop8_c7t8cg.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/desktop7_okis0n.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917565/LovePlants/Testing/US%206/6.1/tablet8_z9bplm.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916791/LovePlants/Testing/US%206/6.1/tablet7_aszbsc.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917567/LovePlants/Testing/US%206/6.1/mobile8_plw6nu.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916789/LovePlants/Testing/US%206/6.1/mobile7_f1t8yk.jpg)|Pass|
+
+*if the product is live on the website, all fields must be filled in.  Therefore the edit form will be invalid if a field is missing.  If the product is not live on the website, the form can be submitted with missing fields. 
+
+Acceptance Criteria:
+- [x] Admin users can see an 'Edit product' button at the top of the product detail page
+- [x] Admin users can adjust details as needed on the edit form
+- [x] Admin users can see the changes they made reflected in the product detail page
+- [x] Admin users cannot save products to be live on the website if there are missing fields in the form
+- [x] Admin users are aware if there is an issue with the changes they made
 
 ## Automated Testing
 

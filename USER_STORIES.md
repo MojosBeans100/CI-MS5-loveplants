@@ -314,9 +314,10 @@ User Story 6 captures the admin requirements for using the website, to add, edit
 As a **site admin** I can **edit information about products, such as price, quantity remaining, picture** so that **product details can be adjusted as required**
 
 Acceptance Criteria:
-- p
-- p
-- p
+- Admin users can see an 'Edit product' button at the top of the product detail page
+- Admin users can adjust details as needed on the edit form
+- Admin users can see the changes they made reflected in the product detail page
+- Admin users are aware if there is an issue with the changes they made
 
 ### 6.2
 As a **site admin** I can **add products to the LovePlants store** so that **site users can view and buy new products**
