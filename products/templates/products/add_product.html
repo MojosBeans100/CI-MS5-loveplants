@@ -12,8 +12,8 @@
 
                     <h4 class="text-center">Edit previously created products</h4>
                     {% for product in saved %}
-                    <div class="col-3">
-                        <a href="{% url 'edit_product' product.id %}"><img style="width: 180px; height: 180px;"
+                    <div class="col-6 col-sm-4 col-lg-3">
+                        <a href="{% url 'edit_product' product.id %}"><img style="width: 100%; height: 180px;"
                                 src="{{product.image1_source_url}}">
                             <p>{{product.friendly_name}}</p>
                         </a>
@@ -25,7 +25,7 @@
             <h2>Add a product</h2>
             <hr>
 
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'add_product' %}" id="add-form">
                     {% csrf_token %}
 
@@ -114,16 +114,16 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <img class="id_image1_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
                                 <p class="text-center"><em><small>main image</small></em></p>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <img class="id_image2_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <img class="id_image3_source_url" style="height: 200px; width: 100%;"
                                     src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
                             </div>

@@ -323,9 +323,12 @@ Acceptance Criteria:
 As a **site admin** I can **add products to the LovePlants store** so that **site users can view and buy new products**
 
 Acceptance Criteria:
-- Admin users can click 'Add Product'
+- Admin users can click 'Add Product' on the products page
+- Admin users can see previously created products which are not live on the website
+- Admin users can see placeholders or descriptions so they are aware what the form field represents
 - Admin users can fill in Add Product form
 - Admin users can submit the form
+- Admin users are aware if there is an issue with the from they submitted
 
 ### 6.3
 As a **site admin** I can **apply a discount to any/all products** so that **LovePlants can sell off old stock, or promote product for special calendar days**

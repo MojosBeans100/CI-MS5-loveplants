@@ -367,7 +367,7 @@ def admin_add_product(request):
                 # add is not valid
                 if form.is_valid:
                     form.save()
-                
+
                 return redirect(reverse('products'))
 
             # post the object

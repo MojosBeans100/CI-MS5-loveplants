@@ -446,6 +446,26 @@ Acceptance Criteria:
 - [x] Admin users cannot save products to be live on the website if there are missing fields in the form
 - [x] Admin users are aware if there is an issue with the changes they made
 
+### 6.2
+As a **site admin** I can **add products to the LovePlants store** so that **site users can view and buy new products**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|there is a 'Add Product' button on the products page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922109/LovePlants/Testing/US%206/6.2/desktop1_nmdewr.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922111/LovePlants/Testing/US%206/6.2/tablet1_nafvn2.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/mobile1_qoiqim.jpg)|Pass|
+|admin users can see products which have been saved but not live on the site|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922109/LovePlants/Testing/US%206/6.2/desktop2_grvgr6.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet2_fgfrwn.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/mobile2_qjn0uz.jpg)|Pass|
+|admin users can see placeholders and descriptions for form fields|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922109/LovePlants/Testing/US%206/6.2/desktop3_r97wzm.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet3_qlfeos.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/mobile3_k9ngap.jpg)|Pass|
+|admin users can fill in the product form|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/desktop4_uaosuo.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/desktop5_v3obrn.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet4_om25r0.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet5_kellat.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922111/LovePlants/Testing/US%206/6.2/mobile4_ynvzeb.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922111/LovePlants/Testing/US%206/6.2/mobile5_rrfcyv.jpg)|Pass|
+|admin users can submit the form and add the product to the site|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/desktop6_hr3qja.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet6_ked3rl.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922111/LovePlants/Testing/US%206/6.2/mobile6_ggu3ev.jpg)|Pass|
+||[Desktop]() [Desktop]()|[Tablet]() [Tablet]()|[Mobile]() [Mobile]()|Pass|
+
+Acceptance Criteria:
+- [x] Admin users can click 'Add Product' on the products page
+- [x] Admin users can see previously created products which are not live on the website
+- [x] Admin users can see placeholders or descriptions so they are aware what the form field represents
+- [x] Admin users can fill in Add Product form
+- [x] Admin users can submit the form
+- Admin users are aware if there is an issue with the from they submitted
+
 ## Automated Testing
 
 ### Coverage Report
