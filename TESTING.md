@@ -382,6 +382,43 @@ Acceptance Criteria:
 - [x] User is directed to a confirmation page upon successful checkout, rendering relevant details
 - User is aware if and why their checkout was not successful
 
+## User Story 5 Testing
+User Story 5 refers to features which allow users to leave a review and rating for products.
+
+### 5.1
+As a **site user** I can **I can rate products I have purchased** so that **other users can see customer feedback on the product**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+
+Acceptance Criteria:
+- User can rate products they have purchased
+- Users cannot rate products they have not purchased
+- Users cannot rate products more than once
+
+### 5.2
+As a **site user** I can **add a comment review to products I have purchased** so that **other users can see a comment from a previous buyer of the product**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+
+Acceptance Criteria:
+- Users can comment on products they have purchased
+- Users can review comments from other buys
+
+### 5.3
+As a **site user** I can **review ratings for products** so that **I can see previous customer's experience with this product**
+
+Acceptance Criteria:
+- Users can see a review/rating section on each product detail
+- Users can scroll through reviews for a product
+- Users can see when the reviews were left
+
+
+## User Story 6 Testing
+
 ## Automated Testing
 
 ### Coverage Report
