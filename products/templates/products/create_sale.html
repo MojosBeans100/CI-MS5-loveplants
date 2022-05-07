@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="container" style="margin-bottom: 100px;">
+<div class="container-md" style="margin-bottom: 100px;">
     <div class="margin">
         {% if user.is_superuser %}
         <h2>Create Sale</h2>
@@ -20,14 +20,14 @@
                     <legend>Add discount</legend>
 
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-12 col-md-3">
                             <label>By percentage</label>
                             <input class="form-control w-100 discount-input" type="number" placeholder="%"
                                 name="per{{product.id}}" onchange="calcDiscount(this);">
                         </div>
 
 
-                        <div class="col-3">
+                        <div class="col-12 col-md-3">
                             <label>By value</label>
                             <input class="form-control w-100 discount-input" type="number" placeholder="£"
                                 name="val{{product.id}}" onchange="calcDiscount(this);">
@@ -64,14 +64,15 @@
                             <tbody>
                                 {% for product in products %}
                                 <tr>
-                                    <td><label for="{{product.id}}">{{product.friendly_name}}</label>
+                                    <td style="min-width:240px;"><label
+                                            for="{{product.id}}">{{product.friendly_name}}</label>
                                     </td>
                                     <td>{{product.plant_category}}</td>
                                     <td class="product-price">£{{product.price}}</td>
-                                    <td class="text-center">£<input class="ms-2 w-50 sale-price" type="number"
-                                            step="any" disabled></td>
-                                    <td class="text-center">£<input class="ms-2 w-50 discount-price" type="number"
-                                            step="any" disabled></td>
+                                    <td class="text-center"><input class="ms-2 sale-price" type="number" step="any"
+                                            disabled></td>
+                                    <td class="text-center"><input class="ms-2 discount-price" type="number" step="any"
+                                            disabled></td>
                                     <td class="text-center"><input type="checkbox" class="product-checks"
                                             name="{{product.id}}" value="{{product.id}}" checked
                                             onchange="updatePrices();"><br></td>
@@ -130,11 +131,11 @@
                                 <tr>
                                     <td>{{product.friendly_name}}</td>
                                     <td>{{product.plant_category}}</td>
-                                    <td>£ {{product.price}}</td>
-                                    <td class="text-center">£ {{product.sale_price}}</td>
+                                    <td class="remove-sale-price">£ {{product.price}}</td>
+                                    <td class="text-center remove-sale-sale">£ {{product.sale_price}}</td>
                                     <td class="text-center discount-price2"></td>
                                     <td class="text-center"><input type="checkbox" class="off-sale-checks"
-                                            name="{{product.id}}" value="{{product.id}}" checked></td>
+                                            name="{{product.id}}" value="{{product.id}}" checked onclick="removeSaleDiscounts();"></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -144,7 +145,8 @@
 
                 <div class="row py-3">
                     <div class="col d-flex justify-content-center">
-                        <button class="mx-auto btn admin text-white" type="submit">Remove items from sale</button>
+                        <button class="mx-auto btn admin text-white remove-button" type="submit">Remove items from
+                            sale</button>
                     </div>
                 </div>
             </form>
@@ -159,6 +161,39 @@
 {% block postloadjs %}
 <script>
     var productChecks = document.getElementsByClassName('product-checks');
+    removeSaleDiscounts();
+
+    function removeSaleDiscounts() {
+        var discountPrices2 = document.getElementsByClassName('discount-price2');
+        var removeSalePrice = document.getElementsByClassName('remove-sale-price');
+        var removeSaleSalePrice = document.getElementsByClassName('remove-sale-sale');
+        var removeButton = document.getElementsByClassName('remove-button');
+        var offSaleChecks = document.getElementsByClassName('off-sale-checks');
+
+        for (i = 0; i < discountPrices2.length; i++) {
+            price = parseFloat(removeSalePrice[i].innerHTML.replace('£', ""));
+            saleprice = parseFloat(removeSaleSalePrice[i].innerHTML.replace('£', ""));
+            discount = (price - saleprice).toFixed(2);
+            discountPrices2[i].innerHTML = `£${discount}`;
+        }
+
+        k = 0;
+        for (i = 0; i < offSaleChecks.length; i++) {
+            if (offSaleChecks[i].checked) {
+                k++
+            }
+        }
+
+        console.log(k)
+
+        if (k > 0) {
+            document.getElementsByTagName('button')[2].disabled = false
+            document.getElementsByTagName('button')[2].innerHTML = `Remove ${k} products from sale`;
+        } else {
+            document.getElementsByTagName('button')[2].disabled = true
+            document.getElementsByTagName('button')[2].innerHTML = `Remove 0 products from sale`;
+        }
+    }
 
     /*
     Check/uncheck all checkboxes for discount section
@@ -172,8 +207,11 @@
         } else {
             for (k = 0; k < productChecks.length; k++) {
                 productChecks[k].checked = false
+
             }
         }
+
+        updatePrices();
     }
 
     /*
@@ -191,6 +229,8 @@
                 saleChecks[k].checked = false
             }
         }
+
+        removeSaleDiscounts();
     }
 
     /*
@@ -201,9 +241,8 @@
         var discountInputs = document.getElementsByClassName('discount-input');
         var salePrices = document.getElementsByClassName('sale-price');
         var discountPrices = document.getElementsByClassName('discount-price');
-        var discountPrices2 = document.getElementsByClassName('discount-price2');
-        var productPrices = document.getElementsByClassName('product-price');
 
+        var productPrices = document.getElementsByClassName('product-price');
 
         if (discountInputs[0].value == "" & discountInputs[1].value == "") {
             for (i = 0; i < salePrices.length; i++) {
@@ -211,7 +250,6 @@
                 salePrices[i].value = "";
             }
         } else {
-
 
             if (discountInputs[0] == element & discountInputs[1] !== "") {
                 discountInputs[1].value = "";
@@ -231,6 +269,7 @@
                 }
 
                 if (productChecks[j].checked) {
+
                     if (sale_price > 0) {
                         salePrices[j].value = sale_price
                         discountPrices[j].value = discount_price
@@ -252,8 +291,8 @@
                 }
             }
 
-            document.getElementsByTagName('button')[2].disabled = false
-            document.getElementsByTagName('button')[2].innerHTML = `Apply discount to ${k} products`
+            document.getElementsByTagName('button')[1].disabled = false
+            document.getElementsByTagName('button')[1].innerHTML = `Apply discount to ${k} products`
         }
     }
 
@@ -267,7 +306,7 @@
         if (perc.value) {
             calcDiscount(perc)
         } else if (val.value) {
-            calcDiscount(perc)
+            calcDiscount(val)
         } else {
 
         }

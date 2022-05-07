@@ -334,9 +334,11 @@ Acceptance Criteria:
 As a **site admin** I can **apply a discount to any/all products** so that **LovePlants can sell off old stock, or promote product for special calendar days**
 
 Acceptance Criteria:
-- A
-- A
-- a
+- Admin users can see a 'Create Sale' button on the products page
+- Admin users can apply a discount to a singular product, or multiple products
+- Admin users can apply either a value discount or percentage discount
+- Admin users can see which producs are on sale
+- Admin users can remove the sale price from products
 
 ### 6.4
 As a **site admin** I can **delete products from the LovePlants store** so that **discontinued stock can be removed from the product list**

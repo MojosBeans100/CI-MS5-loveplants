@@ -466,6 +466,27 @@ Acceptance Criteria:
 - [x] Admin users can submit the form
 - Admin users are aware if there is an issue with the from they submitted
 
+### 6.3
+As a **site admin** I can **apply a discount to any/all products** so that **LovePlants can sell off old stock, or promote product for special calendar days**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|the 'Create Sale' button is in clear view on the products page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|admin users can see the form to add sale prices to items|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|admin users can add a percentage discount to products|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|admin users can add a value discount to products|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|admin users can choose which products to apply a discount to|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|admin users can see which products are on sale, and the current sale price|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|admin users can remove these items from the sale|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|admin users can see the sale prices reflected on the products or product detail page|[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+
+Acceptance Criteria:
+- Admin users can see a 'Create Sale' button on the products page
+- Admin users can apply a discount to a singular product, or multiple products
+- Admin users can apply either a value discount or percentage discount
+- Admin users can see which producs are on sale
+- Admin users can remove the sale price from products
+
 ## Automated Testing
 
 ### Coverage Report

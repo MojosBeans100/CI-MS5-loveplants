@@ -368,6 +368,12 @@ def admin_add_product(request):
                 if form.is_valid:
                     form.save()
 
+                    latestid = Product.objects.aggregate(
+                            Max('id'))['id__max']
+                    return redirect(reverse(
+                                    'product_detail',
+                                    args=[latestid]))
+
                 return redirect(reverse('products'))
 
             # post the object
@@ -411,6 +417,11 @@ def admin_add_product(request):
                 # add if not valid
                 if form.is_valid:
                     form.save()
+                    latestid = Product.objects.aggregate(
+                            Max('id'))['id__max']
+                    return redirect(reverse(
+                                    'product_detail',
+                                    args=[latestid]))
 
                 return redirect(reverse('products'))
 
@@ -608,9 +619,8 @@ def admin_create_sale(request):
 
                 for product in all_products:
 
-                    product_id = request.POST[f"{product.id}"]
-
                     try:
+                        product_id = request.POST[f"{product.id}"]
                         change_price = Product.objects.get(id=product_id)
                         if val is None and per is not None:
                             change_price.sale_price = round(
