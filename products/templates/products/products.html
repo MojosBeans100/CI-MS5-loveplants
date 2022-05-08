@@ -393,7 +393,8 @@
                 <!-- product name and price -->
                 <div class="card-body text-start">
                     <a href="{% url 'product_detail' product.id %}">
-                        <h5 class="card-title">{{product.friendly_name|upper}} {% if user.is_superuser %}({{product.stock_quantity}}){% endif %}</h5>
+                        <h5 class="card-title">{{product.friendly_name|upper}}
+                            {% if user.is_superuser %}({{product.stock_quantity}}){% endif %}</h5>
                     </a>
                     {% if product.latin_name %}
                     <p><em><small>{{product.latin_name}}</small></em></p>
@@ -439,6 +440,7 @@
     <!-- pagination -->
     <div class="pagination">
         <span class="step-links">
+
             {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ page_obj.previous_page_number }}">previous</a>
@@ -452,9 +454,9 @@
             <a href="?page={{ page_obj.next_page_number }}">next</a>
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
+
         </span>
     </div>
-</div>
 </div>
 
 {% endblock %}

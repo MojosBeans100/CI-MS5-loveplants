@@ -434,7 +434,7 @@ def admin_add_product(request):
         }
     else:
         ## add 404 or summin
-        return render(request, 'products/products.html')
+        return render(request, 'home/404.html')
 
     return render(request, 'products/add_product.html', context)
 
