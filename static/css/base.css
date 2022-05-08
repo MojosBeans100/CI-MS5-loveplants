@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Raleway:wght@100;300;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 
-/* GENERAL */
+/* -------- GENERAL -------- */
 body {
     font-family: 'Raleway', sans-serif;
 }
@@ -13,64 +13,6 @@ body h1{
     font-weight: 700;
     font-family: 'Handlee', cursive;
 }
-
-#index-image {
-    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648229681/LovePlants/Media/pexels-madison-inouye-1382392_n8gajn.jpg');
-    height: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 50vh;
-}
-
-#index-image2 {
-    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648205969/LovePlants/Media/pexels-maria-orlova-4940808_q6vawi.jpg');
-    height: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 50vh;
-}
-
-#index-image3 {
-    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651664019/LovePlants/thehealthyhouseplant_lq7fkh.jpg');
-    height: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 50vh;
-}
-
-
-
-#nav-image {
-    width: 60px;
-    height: 60px;
-}
-
-/* .dropdown-menu {
-    border-radius: 0;
-    text-align: center;
-    min-width: 30rem;
-    border: 0;
-    padding-top: 0;
-    background-color: none;
-} */
-
-@media (max-width: 1200px) {
-    #nav-icon {
-        display: none;
-    }
-
-
-}
-
-@media (max-width: 768px) {
-    #nav-image {
-        display: none;
-    }
-}
-
 
 .admin {
     background-color: #069b8e;
@@ -98,6 +40,7 @@ a:hover {
     text-decoration: underline;
 }
 
+/* -------- BUTTONS -------- */
 button {
     border-radius: 0 !important;
     border: white solid;
@@ -119,33 +62,10 @@ button {
     color: white;
 }
 
-#index-banner {
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg')
-}
-
-#index-banner hr {
-    background: white;
-    height: 2px;
-    opacity: 1;
-}
-
-#index-banner p {
-    font-size: 70px;
-}
-
-#index-banner .row {
-    padding-top: 65%;
-    color: white;
-}
-
-@media (min-width: 768px) {
-    #index-banner .row {
-        padding-top: 30%;
-    }
+/* -------- NAV -------- */
+#nav-image {
+    width: 60px;
+    height: 60px;
 }
 
 #navbar-main h2 {
@@ -179,6 +99,47 @@ button {
 .navbar-toggler {
     color: white !important;
     padding: 0 0 0 0;
+}
+
+/* -------- NAV MQs -------- */
+@media (max-width: 1200px) {
+    #nav-icon {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #nav-image {
+        display: none;
+    }
+}
+
+/* -------- HOMEPAGE/INDEX -------- */
+#index-image {
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648229681/LovePlants/Media/pexels-madison-inouye-1382392_n8gajn.jpg');
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50vh;
+}
+
+#index-image2 {
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648205969/LovePlants/Media/pexels-maria-orlova-4940808_q6vawi.jpg');
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50vh;
+}
+
+#index-image3 {
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651664019/LovePlants/thehealthyhouseplant_lq7fkh.jpg');
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50vh;
 }
 
 /* IMAGES */
