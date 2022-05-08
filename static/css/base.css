@@ -9,7 +9,7 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
-body h1{
+body h1 {
     font-weight: 700;
     font-family: 'Handlee', cursive;
 }
@@ -60,6 +60,43 @@ button {
 .index-button:hover {
     background-color: black !important;
     color: white;
+}
+
+.product-like-button {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    z-index: 1000;
+    font-size: 20px;
+}
+
+.product-like-button2 {
+    border: none;
+    background: none;
+}
+
+.white-button {
+    background-color: white;
+    border: solid black 1px;
+}
+
+.index-button {
+    border: solid black 1px;
+}
+
+#add-to-bag,
+.black-button {
+    text-align: center !important;
+    border-radius: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
 }
 
 /* -------- NAV -------- */
@@ -142,32 +179,7 @@ button {
     min-height: 50vh;
 }
 
-/* IMAGES */
-.bag-images {
-    height: 150px;
-    width: 100%;
-}
-
-@media (min-width: 576px) {
-    .bag-images {
-        height: 200px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .bag-images {
-        height: 300px;
-    }
-}
-
-/* ALL PRODUCTS */
-@media (min-width: 1400px) {
-    .products-container {
-        width: 75%;
-    }
-
-}
-
+/* -------- ALL PRODUCTS -------- */
 #stock-span {
     color: #069b8e;
 }
@@ -217,57 +229,8 @@ button {
     z-index: -99
 }
 
-.product-like-button {
-    border: none;
-    background: none;
-    position: absolute;
-    top: 3%;
-    right: 5%;
-    z-index: 1000;
-    font-size: 20px;
-}
-
-.product-like-button2 {
-    border: none;
-    background: none;
-}
-
 .extra-filter {
     width: 60%;
-}
-
-.white-button {
-    background-color: white;
-    border: solid black 1px;
-}
-
-.index-button {
-    border: solid black 1px;
-}
-
-#add-to-bag,
-.black-button {
-    text-align: center !important;
-    border-radius: 0 !important;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-    color: white;
-    background-color: black;
-    border: 1px solid black;
-}
-
-.admin-button {
-    text-align: center !important;
-    border-radius: 0 !important;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-    color: white;
-    background-color: rgb(1, 63, 1);
-    border: 1px solid black;
 }
 
 .btn-outline-secondary {
@@ -283,21 +246,7 @@ button {
     line-height: 10px;
 }
 
-/* ALL PRODUCTS MEDIA QUERIES */
-
-@media (min-width: 576px) {
-    .extra-filter {
-        width: 100%;
-    }
-}
-
-@media (min-width: 1400px) {
-    .extra-filter {
-        width: 90%;
-    }
-}
-
-/* PRODUCT DETAIL */
+/* -------- PRODUCT DETAIL -------- */
 .detail_image {
     height: 400px;
     width: 100%;
@@ -340,49 +289,7 @@ input[type=checkbox]:checked {
     accent-color: #069b8e !important;
 }
 
-/* PRODUCT DETAIL MEDIA QUERIES */
-
-@media (min-width: 576px) {
-    #product-detail-add {
-        position: relative;
-        box-shadow: 0 0 0 0 white !important;
-    }
-
-    .qty_input,
-    #add-to-bag {
-        width: 100% !important;
-    }
-
-
-}
-
-@media (min-width: 768px) {
-
-    .detail_image {
-        height: 500px;
-    }
-
-}
-
-@media (min-width: 1200px) {
-
-    .detail_image {
-        height: 600px;
-    }
-
-}
-
-@media (min-width: 1400px) {
-
-    .qty_input,
-    #add-to-bag {
-        width: 60% !important;
-    }
-}
-
-
-/* BAG */
-
+/* -------- BAG -------- */
 #bag-table-line {
     border-top: grey solid 1px;
 }
@@ -401,6 +308,11 @@ input[type=checkbox]:checked {
     font-size: 13px;
 }
 
+.bag-images {
+    height: 150px;
+    width: 100%;
+}
+
 .free-delivery-products {
     position: relative;
 }
@@ -416,8 +328,7 @@ input[type=number] {
     background-color: rgb(255, 255, 255);
 }
 
-/* TOASTS */
-
+/* -------- TOASTS -------- */
 .toast {
     position: absolute;
     top: 90px;
@@ -434,8 +345,7 @@ input[type=number] {
     margin-left: 10%;
 }
 
-/* CHECKOUT */
-
+/* -------- CHECKOUT -------- */
 #checkout-form-submit {
     width: 80%;
     margin-left: 10%;
@@ -459,40 +369,32 @@ input[type=number] {
     opacity: 0.9;
 }
 
+/* -------- 3rd party library code starts -------- */
+/* https://www.w3schools.com/howto/howto_css_loader.asp */
 .loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
     border-radius: 50%;
     width: 120px;
     height: 120px;
     margin-top: calc(50vh - 60px);
     margin-left: calc(50vw - 60px);
     animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
+}
 
-@media (min-width: 756px) {
-    #checkout-button {
-        width: 100%;
-        margin-left: 0;
-        font-size: 15px;
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
 
-@media (min-width: 1200px) {}
+/* -------- 3rd party library code end -------- */
 
-@media (min-width: 1400px) {
-    #checkout-form {
-        width: 70%;
-        margin-left: 15%;
-    }
-}
-
-/* ACCOUNTS */
+/* -------- ACCOUNTS -------- */
 .account-container {
     border-radius: 5px;
 }
@@ -512,17 +414,7 @@ input[type=number] {
     outline: black 1px solid;
 }
 
-/* PROFILES */
-
-@media (max-width: 768px) {
-    #profile-collapse-headers {
-        display: none;
-    }
-}
-
-
-/* 404 */
-
+/* -------- 404 -------- */
 #errorimage {
     background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg');
     height: 100vh;
@@ -539,17 +431,111 @@ input[type=number] {
     font-size: 70px;
 }
 
-/* OVERLAY */
+/* -------- ADMIN ADD PRODUCT -------- 
+3rd party library code starts
+https://www.w3schools.com/howto/howto_css_overlay.asp */
 #overlay {
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
-  }
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* -------- 3rd party library code ends -------- */
+
+/* ---------------- MEDIA QUERIES ---------------- */
+
+/* PROFILES MQs */
+@media (max-width: 768px) {
+    #profile-collapse-headers {
+        display: none;
+    }
+}
+
+/* CHECKOUT MQs */
+@media (min-width: 768px) {
+    #checkout-button {
+        width: 100%;
+        margin-left: 0;
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1400px) {
+    #checkout-form {
+        width: 70%;
+        margin-left: 15%;
+    }
+}
+
+/* PRODUCT DETAIL MQs */
+@media (min-width: 576px) {
+    #product-detail-add {
+        position: relative;
+        box-shadow: 0 0 0 0 white !important;
+    }
+
+    .qty_input,
+    #add-to-bag {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .detail_image {
+        height: 500px;
+    }
+}
+
+@media (min-width: 1200px) {
+
+    .detail_image {
+        height: 600px;
+    }
+}
+
+@media (min-width: 1400px) {
+
+    .qty_input,
+    #add-to-bag {
+        width: 60% !important;
+    }
+}
+
+/* PRODUCTS MQs */
+@media (min-width: 576px) {
+    .extra-filter {
+        width: 100%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .extra-filter {
+        width: 90%;
+    }
+
+    .products-container {
+        width: 75%;
+    }
+}
+
+/* BAG MQs */
+@media (min-width: 576px) {
+    .bag-images {
+        height: 200px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .bag-images {
+        height: 300px;
+    }
+}
