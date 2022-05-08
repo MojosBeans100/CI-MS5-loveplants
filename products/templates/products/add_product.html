@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<div id="overlay"></div>
 <div class="container" style="margin-bottom: 100px;">
     <div class="margin">
         <div class="row">
@@ -264,7 +265,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <button class="btn admin w-100 text-white" name="save-form">Save <i
+                            <button type="submit" class="btn admin w-100 text-white" name="save-form" onclick="saveForm();">Save <i
                                     class="fa-solid fa-floppy-disk"></i></button>
                             <p><em><small>product will be saved but not live on the site</small></em></p>
                         </div>
@@ -288,14 +289,11 @@
                         <button type="button" class="btn-close" id="close-modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>In order to create a product, all fields must be filled in</p>
+                        <p>In order to create a product and add it to the site, all fields must be filled in.</p>
+                        <p>The product can be saved and completed at a later date by clicking 'Save'.</p>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div id="overlay">
-
         </div>
 
     </div>
@@ -308,18 +306,19 @@
     /*jshint esversion: 6 */
 
     var i;
-
     var form = document.getElementById('add-form');
     var modal = document.getElementsByClassName('modal')[0];
     var closeModal = document.getElementById('close-modal');
 
     closeModal.onclick = function () {
         modal.style.display = "none";
+        document.getElementById("overlay").style.display = "none";
     }
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            document.getElementById("overlay").style.display = "none";
         }
     }
 
@@ -343,6 +342,7 @@
             form.submit();
         } else {
             modal.style.display = "block";
+            document.getElementById("overlay").style.display = "block";
         }
     });
 

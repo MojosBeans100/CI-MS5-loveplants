@@ -1,0 +1,81 @@
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+  <div class="container">
+    <div class="toast-header d-flex justify-content-between">
+      <p class="m-0 text-info"><em> {{message}}</em></p>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+
+    <!-- {% for product in all_products %}
+    {% if product.name in message %}
+    <div>
+      <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" value=1 name="quantity">
+        <input type="hidden" name="redirect_url" value="{{request.path}}">
+        <p>Didn't mean to remove this item?</p>
+        <button type="submit">Undo</button>
+      </form>
+    </div>
+    {% else %}
+    {% endif %}
+    {% endfor %} -->
+
+    {% if product_count == 0 %}
+    {% else %}
+    <div class="toast-body">
+      <strong class="me-auto"><a href="{% url 'view_bag' %}">Your basket</a></strong>
+
+      <!-- list bag items -->
+      {% for item in bag_items %}
+      <div class="row">
+        <div class="col-4">
+          <img style="height: 90px; width: 90px;" src="{{item.product.image1_source_url}}"><br>
+
+        </div>
+        <div class="col-8">
+          <p>{{item.product.friendly_name}}<br>
+            <em>{{item.product.latin_name}}</em><br>
+            quantity: {{item.quantity}} <a class="text-center" href="{% url 'delete_bag' item.product.id %}"><i
+                class="ps-3 fa-solid fa-trash-can"></i></a></p>
+          <p><strong>£{{item.product_subtotal}}</strong></p>
+        </div>
+
+      </div>
+      <hr class="py-0 toast-hr">
+      {% endfor %}
+
+      <!-- totals and link to payment -->
+      <div class="row p-3 fw-bold">
+        <table class="table table-borderless">
+          <tbody>
+            <tr>
+              <td>Delivery:
+              </td>
+              <td class="text-end">
+                {% if delivery == 0 %} <span class="text-decoration-line-through pe-2">£{{standard_delivery}}</span> £0
+                {% else %}
+                £{{standard_delivery}}{% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td>Total:</td>
+              <td class="text-end">£{{grand_total}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <!-- buttons -->
+      <div class="row text-center py-2">
+        <div class="col px-1">
+          <a href="{% url 'view_bag' %}"><button class="w-100 black-button">Basket <i class="fa-solid fa-bag-shopping"></i></button></a>
+        </div>
+        <div class="col px-1">
+          <a href="{% url 'view_checkout' %}"><button class="w-100 black-button">Checkout <i class="fa-solid fa-lock"></i></button></a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,31 +1,51 @@
 
 ## Table of contents
-
-- [User Story 1 Testing](#user-story-1-testing)
-  - [1.1](#11)
-  - [1.2](#12)
-  - [1.3](#13)
-  - [1.4](#14)
-  - [1.5](#15)
-  - [1.6](#16)
-- [User Story 2 Testing](#user-story-2-testing)
-  - [2.1](#21)
-  - [2.2](#22)
-  - [2.3](#23)
-  - [2.4](#24)
-  - [2.5](#25)
-  - [2.6](#26)
-- [User Story 3 Testing](#user-story-3-testing)
-  - [3.1](#31)
-  - [3.2](#32)
-  - [3.3](#33)
-  - [3.4](#34)
-  - [3.5](#35)
-  - [3.6](#36)
-- [Validation](#validation)
-  - [CSS](#css)
-  - [HTML](#html)
-  - [Javascript](#javascript)
+- [Manual Testing](#manual-testing)
+  - [Overview of manual testing](#overview-of-manual-testing)
+  - [User Story 1 Testing](#user-story-1-testing)
+    - [1.1](#11)
+    - [1.2](#12)
+    - [1.3](#13)
+    - [1.4](#14)
+    - [1.5](#15)
+    - [1.6](#16)
+  - [User Story 2 Testing](#user-story-2-testing)
+    - [2.1](#21)
+    - [2.2](#22)
+    - [2.3](#23)
+    - [2.4](#24)
+    - [2.5](#25)
+    - [2.6](#26)
+  - [User Story 3 Testing](#user-story-3-testing)
+    - [3.1](#31)
+    - [3.2](#32)
+    - [3.3](#33)
+    - [3.4](#34)
+    - [3.5](#35)
+    - [3.6](#36)
+  - [User Story 4 Testing](#user-story-4-testing)
+    - [4.1](#41)
+    - [4.2](#42)
+    - [4.3](#43)
+    - [4.4](#44)
+    - [4.5](#45)
+  - [User Story 5 Testing](#user-story-5-testing)
+    - [5.1](#51)
+    - [5.2](#52)
+    - [5.3](#53)
+  - [User Story 6 Testing](#user-story-6-testing)
+    - [6.1](#61)
+    - [6.2](#62)
+    - [6.3](#63)
+    - [6.4](#64)
+    - [6.5](#65)
+    - [6.7](#67)
+  - [Automated Testing](#automated-testing)
+    - [Coverage Report](#coverage-report)
+  - [Validation](#validation)
+    - [CSS](#css)
+    - [HTML](#html)
+    - [Javascript](#javascript)
 
 # Manual Testing
 
@@ -509,7 +529,19 @@ Acceptance Criteria:
 - [x] Admin users see a warning that the product will be deleted
 - [x] Admin users see a notification that the product has been deleted
 
+### 6.7 
+As a **non-site admin** I am **redirected to an error page when attempting to access admin pages** so that **I cannot access admin pages or content**
 
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|non-admin users are redirected to a 404 page when trying to *add a product*|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/desktoperror_fvoibd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/tableterror_ed4fnv.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005401/LovePlants/Testing/mobileerror_seree4.jpg)|Pass|
+|"" *edit a product*|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/desktoperror_fvoibd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/tableterror_ed4fnv.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005401/LovePlants/Testing/mobileerror_seree4.jpg)|Pass|
+|"" *delete a product*|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/desktoperror_fvoibd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/tableterror_ed4fnv.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005401/LovePlants/Testing/mobileerror_seree4.jpg)|Pass|
+|"" *create a sale*|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/desktoperror_fvoibd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/tableterror_ed4fnv.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005401/LovePlants/Testing/mobileerror_seree4.jpg)|Pass|
+
+Acceptance Criteria:
+- [x] Non-admin users cannot access admin pages or content
+- [x] Non-admin users are provided a link back to the homepage
 
 
 ## Automated Testing

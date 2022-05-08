@@ -45,12 +45,12 @@
   <header class="container-fluid fixed-top">
 
     <div id="navbar-main" class="row bg-dark align-items-center py-2">
-      <div class="col-1 col-sm-1">
+      <div class="col-0 col-md-1 border border-primary">
         <a><img id="nav-image" src="/static/media/web.png"><sup><i id="nav-icon"
               class="fa-regular fa-heart"></i></sup></a>
       </div>
 
-      <div class="col-4 col-sm-5 col-md-8 d-flex flex-row">
+      <div class="col-2 col-md-2 d-flex flex-row border border-light">
         <nav class="navbar navbar-expand-lg border-0">
           <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -74,46 +74,38 @@
         </nav>
       </div>
 
-      <div class="col-6 col-md-3 d-flex justify-content-end">
-        <ul class="list-group  list-group-horizontal me-md-3">
+      <div class="col-5 border border-info text-center align-items-center">
+        <h2 class="pt-3">Love Plants</h2>
+      </div>
+
+      <div class="col-5 col-md-4 d-flex justify-content-end border border-danger">
+        <ul class="list-group list-group-horizontal me-md-3">
           {% if user.is_authenticated %}
           <li class="list-group-item bg-dark border-0 px-0">
-            <a class="nav-link" title="Logged in as {{request.user}}" aria-current="page" href="{% url 'profile' %}"><i class="fa-solid fa-user-check"></i></a>
+            <a class="nav-link px-2" title="Logged in as {{request.user}}" aria-current="page" href="{% url 'profile' %}"><i
+                class="fa-solid fa-user-check"></i></a>
           </li>
           <li class="list-group-item bg-dark border-0 px-0">
-            <a class="nav-link" title="Favourites" aria-current="page" href="{% url 'liked_products' %}"><i
+            <a class="nav-link px-2" title="Favourites" aria-current="page" href="{% url 'liked_products' %}"><i
                 class="fa-solid fa-heart"></i></a>
           </li>
           {% else %}
           <li class="list-group-item bg-dark border-0 px-0">
-            <a class="nav-link" title="Log in" aria-current="page" href="{% url 'account_login' %}"><i
+            <a class="nav-link px-2" title="Log in" aria-current="page" href="{% url 'account_login' %}"><i
                 class="fa-solid fa-user"></i></a>
           </li>
           <li class="list-group-item bg-dark border-0 px-0">
-            <a class="nav-link" title="Favourites" aria-current="page" href="{% url 'account_login' %}"><i
+            <a class="nav-link px-2" title="Favourites" aria-current="page" href="{% url 'account_login' %}"><i
                 class="fa-solid fa-heart"></i></a>
           </li>
           {% endif %}
-      
+
 
           <li class="list-group-item bg-dark border-0 px-0">
-            <a class=" text-center nav-link" title="Basket: {{product_count}}" aria-current="page"
+            <a class=" text-center nav-link px-2" title="Basket: {{product_count}}" aria-current="page"
               href="{% url 'view_bag' %}">
               <i class="fa-solid fa-bag-shopping"></i><sup>&nbsp;{{product_count}}</sup></a>
           </li>
-
-
-
-          <!-- <li class="list-group-item bg-dark border-0 px-0">
-            {% if user.is_authenticated %}
-            <a class="nav-link" title="Log Out" aria-current="page" href="{% url 'account_logout' %}"><i
-                class="fa-solid fa-arrow-right-to-bracket"></i></a>
-            {% else %}
-            <a class="nav-link" title="Log In" aria-current="page" href="{% url 'account_login' %}"><i
-                class="fa-solid fa-arrow-right-to-bracket"></i></a>
-            {% endif %}
-          </li> -->
-
         </ul>
       </div>
     </div>
@@ -132,15 +124,15 @@
   <div class="message-container">
     {% for message in messages %}
     {% with message.level as level %}
-    {% if level == 40 %}
-    {% include 'includes/toasts/toast_error.html' %}
-    <!-- {% elif level == 30 %}
-            {% include 'includes/toasts/toast_warning.html' %}
-        {% elif level == 25 %}
-            {% include 'includes/toasts/toast_success.html' %} -->
-    {% else %}
-    {% include 'includes/toasts/toast_success.html' %}
-    {% endif %}
+      {% if level == 40 %}
+          {% include 'includes/toasts/toast_error.html' %}
+      {% elif level == 30 %}
+          {% include 'includes/toasts/toast_warning.html' %}
+      {% elif level == 20 %}
+          {% include 'includes/toasts/toast_info.html' %}
+      {% else %}
+        {% include 'includes/toasts/toast_success.html' %}
+      {% endif %}
     {% endwith %}
     {% endfor %}
   </div>

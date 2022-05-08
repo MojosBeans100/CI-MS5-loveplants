@@ -41,12 +41,7 @@
           {% csrf_token %}
           <table class="account-table">
             {{form.as_table}}
-            <!-- {{ form.login }}<br>
-            <hr>
-            {{ form.password }}<br>
-            <hr>
-          </table> -->
-          <!-- {{form.remember.label}} {{ form.remember }} -->
+          </table>
           <br>
           {% if redirect_field_value %}
           <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

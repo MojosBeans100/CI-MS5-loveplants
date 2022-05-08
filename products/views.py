@@ -371,11 +371,16 @@ def admin_add_product(request):
 
                     latestid = Product.objects.aggregate(
                             Max('id'))['id__max']
+                    messages.success(request, "Product added")
                     return redirect(reverse(
                                     'product_detail',
                                     args=[latestid]))
 
-                return redirect(reverse('products'))
+                else:
+                    return render(
+                        request,
+                        'products/add_product.html',
+                        context)
 
             # post the object
             else:
@@ -433,7 +438,6 @@ def admin_add_product(request):
             'saved': saved_products,
         }
     else:
-        ## add 404 or summin
         return render(request, 'home/404.html')
 
     return render(request, 'products/add_product.html', context)
@@ -472,8 +476,8 @@ def admin_edit_product(request, id):
                     x = request.POST['friendly_name']
                     Product.objects.get(
                         friendly_name=x)
-                    messages.success(
-                        request, (f"{x} "
+                    messages.error(
+                        request, (f"'{x}' "
                                   "already exists:"
                                   " the name of the plant "
                                   "must be unique."))
@@ -482,7 +486,7 @@ def admin_edit_product(request, id):
                 except Product.DoesNotExist:
                     if 'live_on_site' in request.POST:
                         if len(valid_array) > 0:
-                            messages.success(
+                            messages.error(
                                 request,
                                 ('Cannot add product to'
                                  ' live website due to'
@@ -577,7 +581,7 @@ def admin_edit_product(request, id):
 
     else:
         messages.success(request, "Only admin users are allowed to access that page. ")
-        return render(request, 'products/products.html')
+        return render(request, 'home/404.html')
 
     return render(request, 'products/edit_product.html', context)
 
@@ -592,7 +596,7 @@ def admin_delete_product(request, id):
         product.delete()
         messages.success(request, f"{product.friendly_name} has been deleted.")
     else:
-        return render(request, 'products/products.html')
+        return render(request, 'home/404.html')
 
     return redirect(reverse('products'))
 
@@ -658,6 +662,6 @@ def admin_create_sale(request):
         }
 
     else:
-        return render('product/products.html')
+        return render(request, 'home/404.html')
 
     return render(request, 'products/create_sale.html', context)
