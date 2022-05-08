@@ -77,17 +77,6 @@ def all_products(request):
                     sortkey = f'-{sortkey}'
             all_products = all_products.order_by(sortkey)
 
-        # if 'category' in request.GET:
-        #     categories = request.GET['category']
-        #     category_id = Category.objects.get(name=categories)
-        #     all_products = all_products.filter(category=category_id.id)
-
-        # if 'stock' in request.GET:
-        #     all_products = Product.objects.all()
-        #     stock_opt = request.GET['stock'].replace('_', ' ')
-        #     all_products = all_products.filter(stock=stock_opt)
-        #     filtered_by = stock_opt
-
         if 'plant_cats' in request.GET:
             plant_cat = request.GET['plant_cats']
             all_products = all_products.filter(plant_category=plant_cat)
@@ -126,19 +115,25 @@ def all_products(request):
                                     price__gte=price_low,
                                     price__lte=price_high
                                     )
+                filtered_by = ['price',
+                               f'{price_low}-{price_high}',
+                               f'£{price_low} - £{price_high}']
             else:
                 price_low = price[0]
                 all_products = all_products.filter(price__gte=price_low)
-            filtered_by = ['price',
-                           f'{price_low}-{price_high}',
-                           f'£{price_low} - £{price_high}']
+                filtered_by = ['price',
+                               f'{price_low}',
+                               f'£{price_low}+']
+
             front_end_filters.append(filtered_by)
 
         if 'q' in request.GET:
             search_query = request.GET['q']
-            # check this still works with line broken up
-            search_queries = Q(name__icontains=search_query) \
-                | Q(description__icontains=search_query)
+            search_queries = (
+                              Q(name__icontains=search_query)
+                              | Q(description__icontains=search_query)
+                              | Q(latin_name__icontains=search_query)
+                            )
             all_products = all_products.filter(search_queries)
 
         if 'liveonsite' in request.GET:
@@ -159,7 +154,6 @@ def all_products(request):
 
     context = {
         'all_products': all_products,
-        #'plant_cats': plant_categories,
         'current_sorting': current_sorting,
         'page_obj': page_obj,
         'search_query': search_query,
@@ -591,10 +585,14 @@ def admin_delete_product(request, id):
     Allow admin users to delete products
     """
 
+
     if request.user.is_superuser:
-        product = Product.objects.get(id=id)
-        product.delete()
-        messages.success(request, f"{product.friendly_name} has been deleted.")
+        try:
+            product = Product.objects.get(id=id)
+            product.delete()
+            messages.success(request, f"{product.friendly_name} has been deleted.")
+        except:
+            messages.error(request, "Error")
     else:
         return render(request, 'home/404.html')
 
