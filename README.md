@@ -478,13 +478,13 @@ The products page displays products available to purchase on the website.
 (User Story X)
 This section provides faceted searching to narrow down product searches.  Users can filter by the plant type, price ranges, sunlight/watering required, whether or not the product is rare, popular, low maintenace, whether they have 'liked' the product.
 
-![Faceted searching]()
+![Faceted searching](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productsfilter_dzmst1.jpg)
 
 ### Sort Products
 (User Story X)
 Users can also sort the products by price (low, high), rating (low, high) and name (alphabetically).
 
-![Sorting]()
+![Sorting](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124838/LovePlants/ReadMe/productsort_mcumam.jpg)
 
 ### Product List
 (User Stories XX)
@@ -496,11 +496,8 @@ A list of products which match the filter and search criteria are displayed thro
 - the sale price (if relevant)  
 - the 'like' button (rendered in black if the product is 'liked' by the user, white if not)
 
-![Products list]()
-
-Users can organise the list further by selecting the number of products to view per page. 
-
-![Products per page]()
+![Liked product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productliked_kbluiw.jpg)
+![Not liked product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124838/LovePlants/ReadMe/notliked_m5kit2.jpg)
 
 [Back to top](#love-plants)
 
@@ -511,13 +508,14 @@ The product detail page provides further information about the product in questi
 (User Story X)
 This feature allows for users to see which category the plant belongs to, and also allows users to navigate back to the products page by clicking on any of the links provided. Users can also use the browser 'back' button to return to the previous page, which would maintain their chosen filter and sort criteria. 
 
-![Breadcrumb navigation]()
+![Breadcrumb navigation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124838/LovePlants/ReadMe/breadcrumb_bqy2dr.jpg)
 
 ### Images
 (User Story X)
 The main product image sits above three smaller images, any of which can be clicked for the user to view more images.  They decrease in opacity on hover so the user is aware they are clickable.
 
-![Product images]()
+![Product images](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productimages_msfm5n.jpg)
+![Product images 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productimage2_txhnuo.jpg)
 
 ### Additional Details
 (User Story X)
@@ -531,17 +529,19 @@ Further details about the product are provided for the user to learn more about 
 - further care instructions
 - the average rating, based on user reviews
 
+![Product details](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productdetail_rfhvws.jpg)
+
 ### Reviews
 (User Story X)
 If any reviews have been left by users for the product, they are displayed in a set of rows beneath the care instructions.  Users can see the average rating, how many reviews have been given, comments written by users, and how long ago they were left. 
 
-![User reviews]()
+![User reviews](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124838/LovePlants/ReadMe/reviews_mrclcx.jpg)
 
 ### Review Form
 (User Story X)
 If a user has purchased the product, and not previously left a review, they can leave a comment and provide a rating from 1 to 5 in a short form. 
 
-![Review form]()
+![Review form](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124985/LovePlants/ReadMe/reviewform_ifwvnm.jpg)
 
 ### Suggested Products
 (User Story X)
@@ -550,13 +550,13 @@ To keep the user interested in browsing products, suggestions are made for addit
 - popular products (if the product is popular)
 - easy care products (if the product has low care maintenance)
 
-![Suggested products]()
+![Suggested products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125041/LovePlants/ReadMe/additionaprodcts_xde83c.jpg)
 
 ### Add To Bag
 (User Story X)
 Users can add the product in question to their bag, by selecting the desired quantity and clicking 'Add to bag'.  The page does not redirect, but provides a notification for users to see if the action has been successful.  This section includes the price, or sale price, of the product. 
 
-![Add to bag]()
+![Add to bag](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125077/LovePlants/ReadMe/addtobag_igtcac.jpg)
 
 [Back to top](#love-plants)
 
@@ -724,6 +724,7 @@ Font awesome was used to provide the relevant fonts/icons for the website
 The testing strategy is detailed in [this document](TESTING.md).
 
 # Search Engine Optimisation (SEO)
+Search Engine Optimisation techniques were employed on the website to improve audience reach and 
 https://www.canva.com/
 https://www.wordtracker.com/
 https://www.xml-sitemaps.com/

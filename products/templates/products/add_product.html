@@ -26,8 +26,8 @@
             <h2>Add a product</h2>
             <hr>
 
+            {% if error_fields %}
             <div class="row">
-                
                 <p class="text-danger">There was an error with the follow fields:</p>
                 <ul class="text-danger list-group">
                     {% for error in error_fields %}
@@ -37,6 +37,7 @@
                     {% endfor %}
                 </ul>
             </div>
+            {% endif %}
 
             <div class="col-12 col-lg-6">
                 <form method="POST" action="{% url 'add_product' %}" id="add-form">
