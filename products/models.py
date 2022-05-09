@@ -173,6 +173,8 @@ class Product(models.Model):
         decimal_places=2,
         max_digits=6,
         default=0,
+        null=True,
+        blank=True,
     )
 
     class Meta:

@@ -17,7 +17,7 @@
             <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
             <hr>
 
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-6">
                 <form method="POST" action="{% url 'edit_product' product.id %}">
                     {% csrf_token %}
 
@@ -74,24 +74,54 @@
                     <fieldset>
                         <legend class="pt-5">Images</legend>
 
-                        <p><small><em>provide urls for up to 3 images from a cloud storage</em></small></p>
-                        {{form.image1_source_url}}
-                        {{form.image2_source_url}}
-                        {{form.image3_source_url}}
+                        <p><small><em>provide urls for up to 3 images from a cloud storage and the source of the image</em></small></p>
 
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col">
+                                <label for="id_image1_source_url">Main image</label>
+                                {{form.image1_source_url}}
+                            </div>
+                            <div class="col">
+                                <label for="id_image1_source">Main image source</label>
+                                {{form.image1_source}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="id_image2_source_url">2nd image</label>
+                                {{form.image2_source_url}}
+                            </div>
+                            <div class="col">
+                                <label for="id_image2_source">2nd image source</label>
+                                {{form.image2_source}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <label for="id_image3_source_url">3rd image</label>
+                                {{form.image3_source_url}}
+                            </div>
+                            <div class="col">
+                                <label for="id_image3_source">3rd image source</label>
+                                {{form.image3_source}}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-4">
                                 <img class="id_image1_source_url" style="height: 200px; width: 100%;"
-                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652113723/LovePlants/product_image_thumbnail_placeholder_hfkkny.png"><br>
                                 <p class="text-center"><em><small>main image</small></em></p>
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <img class="id_image2_source_url" style="height: 200px; width: 100%;"
-                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652113723/LovePlants/product_image_thumbnail_placeholder_hfkkny.png">
                             </div>
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <img class="id_image3_source_url" style="height: 200px; width: 100%;"
-                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652113723/LovePlants/product_image_thumbnail_placeholder_hfkkny.png">
                             </div>
                         </div>
                     </fieldset>

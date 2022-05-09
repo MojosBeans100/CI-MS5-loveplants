@@ -385,6 +385,7 @@ def admin_add_product(request):
                                 request,
                                 "The product could not be"
                                 " added at this time."
+                                " Please refer to the list of errors."
                                 )
                     errors = form.errors.as_json()
                     form = ProductForm(form_data)
@@ -549,6 +550,7 @@ def admin_edit_product(request, id):
                          " has been edited.")
                     messages.success(request, x)
                 else:
+                    print(form.errors)
                     print("errors")
 
                 return redirect(reverse('product_detail', args=[id]))
