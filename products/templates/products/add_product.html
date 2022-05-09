@@ -263,14 +263,19 @@
                         {{form.stock_quantity}}
                     </fieldset>
 
-                    <div class="row">
-                        <div class="col">
-                            <button type="submit" class="btn admin w-100 text-white" name="save-form" onclick="saveForm();">Save <i
+                    <fieldset>
+                        {{form.live_on_site.label}}
+                        {{form.live_on_site}}
+                    </fieldset>
+
+                    <div class="row my-2">
+                        <!-- <div class="col">
+                            <button class="btn admin w-100 text-white" name="save-form">Save <i
                                     class="fa-solid fa-floppy-disk"></i></button>
                             <p><em><small>product will be saved but not live on the site</small></em></p>
-                        </div>
+                        </div> -->
                         <div class="col">
-                            <button name="submit-form" class="btn admin w-100 text-white">Add product <i
+                            <button name="submit-form" class="btn admin w-100 text-white" onclick="validateForm();">Add product <i
                                     class="fa-solid fa-plus"></i></button>
                             <p><em><small>product will be live on the site and available to purchase</small></em></p>
                         </div>
@@ -322,10 +327,12 @@
         }
     }
 
-    form.addEventListener('submit', function (ev) {
+    
+    function validateForm() {
+    // form.addEventListener('submit', function (ev) {
 
         // prevent posting form
-        ev.preventDefault();
+        preventDefault();
         var valid = true;
 
         all_inputs = document.getElementsByTagName('input');
@@ -344,7 +351,7 @@
             modal.style.display = "block";
             document.getElementById("overlay").style.display = "block";
         }
-    });
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('id_sunlight_2').checked = true;

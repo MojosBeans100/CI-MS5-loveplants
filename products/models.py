@@ -53,7 +53,8 @@ class Product(models.Model):
         choices=plant_cats,
         max_length=30,
         null=True,
-        blank=True
+        blank=True,
+        default=None,
     )
     name = models.CharField(
         max_length=100,

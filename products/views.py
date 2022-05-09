@@ -310,6 +310,7 @@ def admin_add_product(request):
     """
 
     if request.user.is_superuser:
+
         if request.method == 'POST':
 
             if 'popular' in request.POST:
@@ -322,96 +323,75 @@ def admin_add_product(request):
             else:
                 rare = False
 
-            # save the object
-            if 'save-form' in request.POST:
+            x = request.POST['care_instructions_source']
+            form_data = {
+                'plant_category': request.POST['plant_category'],
+                'name': slugify(request.POST['friendly_name'], separator='_'),
+                'friendly_name': request.POST['friendly_name'],
+                'latin_name': request.POST['latin_name'],
+                'description': request.POST['description'],
+                'description_source': request.POST['description_source'],
+                'description_url': request.POST['description_url'],
+                'image1_source': request.POST['image1_source'],
+                'image1_source_url': request.POST['image1_source_url'],
+                'image2_source': request.POST['image2_source'],
+                'image2_source_url': request.POST['image2_source_url'],
+                'image3_source': request.POST['image3_source'],
+                'image3_source_url': request.POST['image3_source_url'],
+                'pot_size': request.POST['pot_size'],
+                'height': request.POST['height'],
+                'price': request.POST['price'],
+                'stock_quantity': request.POST['stock_quantity'],
+                'maturity_num': request.POST['maturity_num'],
+                'maturity_time': request.POST['maturity_time'],
+                'sunlight': request.POST['sunlight'],
+                'watering': request.POST['watering'],
+                'care_required': request.POST['care_required'],
+                'care_instructions': request.POST['care_instructions'],
+                'care_instructions_source': x,
+                'care_instructions_url': request.POST['care_instructions_url'],
+                'rare': rare,
+                'popular': popular,
+                'live_on_site': True,
+                'average_rating': 0,
+            }
+            form = ProductForm(form_data)
 
-                form = ProductForm(request.POST)
+            if form.is_valid:
+                if form.errors:
+                    messages.error(
+                                request,
+                                "The product could not be"
+                                " added at this time."
+                                )
 
-                if form.is_valid:
+                    form = ProductForm(request.POST)
+
+                    context = {
+                        'form': form,
+                        }
+                    return redirect(reverse(
+                                'add_product'))
+
+                else:
                     form.save()
-
                     latestid = Product.objects.aggregate(
                             Max('id'))['id__max']
+                    latest_product = Product.objects.get(id=latestid)
                     messages.success(
                         request,
-                        f"'{latestid.friendly_name}' successfully added."
+                        f"'{latest_product.friendly_name}' "
+                        "successfully added."
+                        " This product is live on the site"
+                        " and available to purchase."
                         )
                     return redirect(reverse(
                                     'product_detail',
                                     args=[latestid]))
 
-                else:
-                    messages.error(
-                        request,
-                        "The product could not be added at this time."
-                    )
-
-                    return render(
-                        request,
-                        'products/add_product.html')
-
-            # post the object
-            else:
-                x = request.POST['care_instructions_source']
-
-                form_data = {
-                    'plant_category': request.POST['plant_category'],
-                    'name': slugify(request.POST['friendly_name'], separator='_'),
-                    'friendly_name': request.POST['friendly_name'],
-                    'latin_name': request.POST['latin_name'],
-                    'description': request.POST['description'],
-                    'description_source': request.POST['description_source'],
-                    'description_url': request.POST['description_url'],
-                    'image1_source': request.POST['image1_source'],
-                    'image1_source_url': request.POST['image1_source_url'],
-                    'image2_source': request.POST['image2_source'],
-                    'image2_source_url': request.POST['image2_source_url'],
-                    'image3_source': request.POST['image3_source'],
-                    'image3_source_url': request.POST['image3_source_url'],
-                    'pot_size': request.POST['pot_size'],
-                    'height': request.POST['height'],
-                    'price': request.POST['price'],
-                    'stock_quantity': request.POST['stock_quantity'],
-                    'maturity_num': request.POST['maturity_num'],
-                    'maturity_time': request.POST['maturity_time'],
-                    'sunlight': request.POST['sunlight'],
-                    'watering': request.POST['watering'],
-                    'care_required': request.POST['care_required'],
-                    'care_instructions': request.POST['care_instructions'],
-                    'care_instructions_source': x,
-                    'care_instructions_url': request.POST['care_instructions_url'],
-                    'rare': rare,
-                    'popular': popular,
-                    'live_on_site': True,
-                    'average_rating': 0,
-                }
-
-                form = ProductForm(form_data)
-                print(form.errors)
-                # add if not valid
-                if form.is_valid:
-                    form.save()
-                    latestid = Product.objects.aggregate(
-                            Max('id'))['id__max']
-                    messages.success(
-                        request,
-                        f"'{latestid.friendly_name}' successfully added."
-                        )
-                    return redirect(reverse(
-                                    'product_detail',
-                                    args=[latestid]))
-                else:
-                    messages.error(
-                        request,
-                        "The product could not be added at this time."
-                    )
-
-                    return render(
-                        request,
-                        'products/add_product.html')
         else:
             form = ProductForm()
-            saved_products = Product.objects.filter(live_on_site=False)
+            saved_products = Product.objects.filter(live_on_site=False)[0:4]
             context = {
                 'form': form,
                 'saved': saved_products,

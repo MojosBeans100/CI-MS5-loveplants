@@ -79,7 +79,6 @@ class ProductForm(forms.ModelForm):
             'stock_quantity': NumberInput(attrs={
                 'placeholder': 'eg. 8',
             }),
-
         }
 
     def __init__(self, *args, **kwargs):
