@@ -48,7 +48,8 @@ class ProductForm(forms.ModelForm):
                 'placeholder': ('eg. Pilea peperomiodes, also known as '
                                 'the Chinese money plant, missionary plant,'
                                 ' pancake plant,'
-                                ' the pass-it-along plant and the UFO plant..')
+                                ' the pass-it-along plant and the UFO plant..'),
+                'rows': 3,
             }),
             'description_source': TextInput(attrs={
                 'placeholder': 'eg. Happy House Plants',
@@ -65,7 +66,8 @@ class ProductForm(forms.ModelForm):
             'care_instructions': Textarea(attrs={
                 'placeholder': ('eg. Plant your Pilea peperomiodes in well  '
                                 'drained compost and place in a warm,'
-                                ' bright spot that is not too sunny. ')
+                                ' bright spot that is not too sunny. '),
+                'rows': 3,
             }),
             'care_instructions_source': TextInput(attrs={
                 'placeholder': 'eg. Happy House Plants',

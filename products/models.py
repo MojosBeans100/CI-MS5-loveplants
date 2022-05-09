@@ -52,8 +52,6 @@ class Product(models.Model):
     plant_category = models.CharField(
         choices=plant_cats,
         max_length=30,
-        null=True,
-        blank=True,
         default=None,
     )
     name = models.CharField(
@@ -68,8 +66,6 @@ class Product(models.Model):
         )
     latin_name = models.CharField(
         max_length=100,
-        null=True,
-        blank=True
         )
     description = models.TextField()
     description_source = models.CharField(
@@ -88,13 +84,9 @@ class Product(models.Model):
     )
     image1_source_url = models.URLField(
         max_length=400,
-        null=True,
-        blank=True
     )
     image2_source = models.CharField(
         max_length=200,
-        null=True,
-        blank=True
     )
     image2_source_url = models.URLField(
         max_length=400,
@@ -128,47 +120,29 @@ class Product(models.Model):
         blank=True
         )
     pot_size = models.PositiveIntegerField(
-        null=True,
-        blank=True,
         verbose_name='Pot size (cm)'
         )
     height = models.PositiveIntegerField(
-        null=True,
-        blank=True,
         verbose_name='Height (cm)'
         )
-    length = models.PositiveIntegerField(
-        null=True,
-        blank=True,
-        verbose_name='Length (cm)'
-        )
+
     maturity_num = models.PositiveIntegerField(
-        null=True,
-        blank=True
         )
     maturity_time = models.CharField(
         choices=maturity,
         max_length=15,
-        null=True,
-        blank=True
         )
     sunlight = models.CharField(
         choices=sun_or_water,
         max_length=15,
-        null=True,
-        blank=True
         )
     watering = models.CharField(
         choices=sun_or_water,
         max_length=15,
-        null=True,
-        blank=True
         )
     care_required = models.CharField(
         choices=care_demand,
         max_length=50,
-        null=True,
-        blank=True
         )
     care_instructions = models.TextField(
         null=True,
@@ -198,8 +172,7 @@ class Product(models.Model):
     average_rating = models.DecimalField(
         decimal_places=2,
         max_digits=6,
-        null=True,
-        blank=True
+        default=0,
     )
 
     class Meta:
