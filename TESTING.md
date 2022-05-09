@@ -658,3 +658,23 @@ The validator used to check validity of Javascript code was [JSHINT](https://jsh
 |Checkout|checkout.html|||
 |Checkout|checkout_success.html|||
 |Bag|bag.html|||
+
+### Python
+The validator used to check validity of Python code was [PEP8](http://pep8online.com/).
+
+|App|Template|Result|Status|
+|---|--------|------|------|
+|Home|views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/home_views_cxf9qz.jpg)|Pass|
+|Home|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/home_urls_dewmtl.jpg)|Pass|
+|Home|test_views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102196/LovePlants/Testing/Validation/home_test_views_i04doq.jpg)|Pass|
+|Bag|views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/bag_views_aq3dso.jpg)|Pass|
+|Bag|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/bag_urls_jjgpcc.jpg)|Pass|
+|Bag|test_views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102362/LovePlants/Testing/Validation/bag_test_views_ly0yeo.jpg)|Pass|
+|Bag|contexts.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/bag_contexts_ugdpte.jpg)|Pass|
+|Products|views.py|[Validation]()|Pass|
+|Products|urls.py|[Validation]()|Pass|
+|Products|test_views.py|[Validation]()|Pass|
+|Products|test_models.py|[Validation]()|Pass|
+|Products|forms.py|[Validation]()|Pass|
+|Products|admin.py|[Validation]()|Pass|
+

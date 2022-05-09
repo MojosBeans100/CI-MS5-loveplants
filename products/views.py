@@ -197,11 +197,6 @@ def product_detail(request, id):
     else:
         easy_products = None
 
-    # if rare_products is None and popular_products is None and easy_products is None:
-    #     other_products = Product.objects.all().exclude(id__in=rare_products)
-
-
-    # look for recently viewed products
     if request.user.is_authenticated:
 
         try:
@@ -211,7 +206,6 @@ def product_detail(request, id):
         except:
             liked = None
 
-        # product review
         has_purchased = False
         already_reviewed = False
         user_profile = UserProfile.objects.get(user=request.user)
@@ -240,38 +234,12 @@ def product_detail(request, id):
         else:
             form = None
 
-        # current_user = User.objects.get(username=user)
-        # if RecentlyViewed.objects.filter(
-        #                     user=current_user,
-        #                     product=product).exists():
-        #     print("do nothing")
-        # else:
-        #     viewed_product = RecentlyViewed(
-        #                         user=current_user,
-        #                         viewed=datetime.now(timezone.utc),
-        #                         product=product
-        #                         )
-        #     viewed_product.save()
-
-        # recently_viewed = RecentlyViewed.objects.filter(user=current_user)
-        # recently_viewed_products = []
-
-        # for i in recently_viewed:
-        #     product_name = i.product
-        #     recently_viewed_product = Product.objects.get(
-        #                                     friendly_name=product_name).name
-        #     recently_viewed_products.append(recently_viewed_product)
-
-        # recently_viewed = Product.objects.filter(
-        #                                 name__in=recently_viewed_products)[0:4]
-
     context = {
         'product': product,
         'rare_products': rare_products,
         'popular_products': popular_products,
         'easy_care': easy_products,
         'reviews': product_reviews,
-        # 'recently_viewed': recently_viewed,
         'has_purchased': has_purchased,
         'purchase_date': purchase_date,
         'already_reviewed': already_reviewed,
@@ -585,12 +553,14 @@ def admin_delete_product(request, id):
     Allow admin users to delete products
     """
 
-
     if request.user.is_superuser:
         try:
             product = Product.objects.get(id=id)
             product.delete()
-            messages.success(request, f"{product.friendly_name} has been deleted.")
+            messages.success(
+                request,
+                f"{product.friendly_name} has been deleted."
+                )
         except:
             messages.error(request, "Error")
     else:

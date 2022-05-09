@@ -1,12 +1,11 @@
 # 3rd party imports
-import datetime
 
 # Django imports
 from django.test import TestCase
 from django.contrib.auth.models import User
 
 # Local imports
-from .models import Product, ProductReview
+from .models import Product
 
 
 class TestProductModel(TestCase):
@@ -43,26 +42,3 @@ class TestProductModel(TestCase):
 
         product = Product.objects.get()
         self.assertEqual(product.name, 'a_new_product')
-
-    # def test_average_rating_calculates(self):
-    #     """
-    #     """
-
-    #     product = Product.objects.get()
-    #     user = User.objects.get()
-
-    #     product_review1 = ProductReview(
-    #         product=product,
-    #         rating=5,
-    #         user=user,
-    #         review_time=datetime.date.today()
-    #     )
-
-    #     product_review2 = ProductReview(
-    #         product=product,
-    #         rating=3,
-    #         user=user,
-    #         review_time=datetime.date.today()
-    #     )
-
-    #     print(product.average_rating)

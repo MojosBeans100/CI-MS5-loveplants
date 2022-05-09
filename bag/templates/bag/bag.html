@@ -4,10 +4,12 @@
 {% block content %}
 <div class="container">
     <div class="margin">
+
+        <!-- back to products page -->
         {% if product_count == 0 %}
         {% else %}
         <div class="row">
-            <p><i class="fa-solid fa-arrow-left-long"></i> <a href="{% url 'products' %}">Continue shopping</a></p>
+            <p><a href="{% url 'products' %}">Continue shopping</a></p>
         </div>
         {% endif %}
 
@@ -17,7 +19,8 @@
             <!-- free delivery text -->
             <div class="col-12 order-1">
                 {% if free_delivery_delta > 0 %}
-                <p class="text-center"><i class="fa-solid fa-truck"></i> Spend £{{free_delivery_delta}} more to qualify for free delivery!</p>
+                <p class="text-center"><i class="fa-solid fa-truck"></i> Spend £{{free_delivery_delta}} more to qualify
+                    for free delivery!</p>
                 {% else %}
                 {% if product_count != 0 %}
                 <p class="text-center"><i class="fa-solid fa-truck"></i> You have qualified for free delivery!</p>
@@ -119,6 +122,8 @@
             <hr>
             {% if product_count == 0 %}
             {% else %}
+
+            <!-- order totals -->
             <div class="col py-4 order-3">
                 <div class="container">
                     <div class="row">
@@ -286,7 +291,7 @@
 
                 }
 
-            // if not valid revert to original quantity
+                // if not valid revert to original quantity
             } else {
                 products_quantities[i].value = original_quantities[i];
             }
@@ -325,6 +330,9 @@
         updateSubtotals();
     }
 
+    /**
+    remove a product
+    */
     function removeItem(item_id) {
 
         var items_in_basket = document.getElementsByClassName('remove-item');
