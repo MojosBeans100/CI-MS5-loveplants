@@ -622,7 +622,13 @@ The validator used to check validity of CSS code was [W3 Jigsaw](https://jigsaw.
 
 |File|Result|Status|
 |----|------|------|
-|base.css|||
+|base.css|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652103607/LovePlants/Testing/Validation/css_validation_lrdmcm.jpg)|Pass|
+
+There were [20 warnings](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652103607/LovePlants/Testing/Validation/css_warnings_rgkpb5.jpg) associated with the base.css validation.
+
+- 2-5 (warning level 0) are warning the developer that the imported fonts used are not checked by the validator
+- 98 and 305 (warning level 1) are warning the developer that the button background color and borders are the same.  This was a deliberate styling effect to remove the 3D effect from the default button styling
+- 189, 190, 191 and 193 are vendor extensions and thus not validated by the service. 
 
 ### HTML
 The validator used to check validity of HTML code was [W3C](https://validator.w3.org/).
@@ -672,9 +678,28 @@ The validator used to check validity of Python code was [PEP8](http://pep8online
 |Bag|test_views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102362/LovePlants/Testing/Validation/bag_test_views_ly0yeo.jpg)|Pass|
 |Bag|contexts.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/bag_contexts_ugdpte.jpg)|Pass|
 |Products|views.py|[Validation]()|Pass|
-|Products|urls.py|[Validation]()|Pass|
-|Products|test_views.py|[Validation]()|Pass|
-|Products|test_models.py|[Validation]()|Pass|
-|Products|forms.py|[Validation]()|Pass|
-|Products|admin.py|[Validation]()|Pass|
+|Products|models.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/product_models_sotfdg.jpg)|Pass|
+|Products|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/product_urls_cjq0vf.jpg)|Pass|
+|Products|test_views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102932/LovePlants/Testing/Validation/products_test_views_ymwpis.jpg)|Pass|
+|Products|test_models.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102932/LovePlants/Testing/Validation/product_test_models_nkodj1.jpg)|Pass|
+|Products|forms.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/product_forms_abga3d.jpg)|Pass|
+|Products|admin.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/product_admin_lnju9f.jpg)|Pass|
+|Profiles|views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/profile_views_nsstwv.jpg)|Pass|
+|Profiles|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/profile_urls_hubn69.jpg)|Pass|
+|Profiles|models.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/profile_models_xbqo3w.jpg)|Pass|
+|Profiles|forms.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/profile_forms_j9axwp.jpg)|Pass|
+|Profiles|admin.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/profile_admin_ndlksj.jpg)|Pass|
+|Checkout|views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102044/LovePlants/Testing/Validation/checkout_views_fo5c8s.jpg)|Pass|
+|Checkout|admin.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102044/LovePlants/Testing/Validation/checkout_admin_vlcyhm.jpg)|Pass|
+|Checkout|forms.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102044/LovePlants/Testing/Validation/checkout_forms_v9yg1v.jpg)|Pass|
+|Checkout|signals.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102044/LovePlants/Testing/Validation/checkout_signals_dvrbcy.jpg)|Pass|
+|Checkout|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102044/LovePlants/Testing/Validation/checkout_urls_vfeci5.jpg)|Pass|
+|Checkout|webhooks.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/checkout_webhooks_ifki49.jpg)|Pass|
+|Checkout|webhook_handler.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/checkout_whhandlers_sd3idj.jpg)|Pass|
+|Checkout|models.py|[Validation]()|Pass|
+
+
+
+
+
 

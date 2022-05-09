@@ -503,7 +503,8 @@ class TestProductReview(TestCase):
             product_review1_created.rating,
             5
         )
-        self.assertRedirects(response, f'/products/product_detail/{product.id}')
+        self.assertRedirects(
+            response, f'/products/product_detail/{product.id}')
 
 
 class TestAdminAddProduct(TestCase):
@@ -529,7 +530,6 @@ class TestAdminAddProduct(TestCase):
 
         response = self.client.get('/products/add_product.html')
         self.assertEqual(response.status_code, 200)
-       # self.assertTemplateUsed(response, 'products/add_product.html')
 
     def test_admin_can_add_new_product(self):
         """
@@ -787,7 +787,7 @@ class TestAdminEditProducts(TestCase):
 
         initial_product = Product.objects.get(id=1)
         self.client.force_login(User.objects.get(id=1))
-        
+
         data = {
             'plant_category': 'Potted',
             'name': 'test_name',
