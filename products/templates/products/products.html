@@ -148,10 +148,10 @@
                     <div class="col-12 col-sm-6 col-xl-4 d-flex justify-content-center py-1">
                         <div class="dropdown extra-filter">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                                 Sunlight required
                             </button>
-                            <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuButton1">
+                            <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuButton2">
                                 <li class="text-center list-group-item flex-fill border-0"><a
                                         href="{% url 'products' %}?{{current_filters}}&sunlight=low">Low <i
                                             class="fa-solid fa-cloud"></i></a></li>
@@ -173,10 +173,10 @@
                     <div class="col-12 col-sm-6 col-xl-4 d-flex justify-content-center py-1">
                         <div class="dropdown extra-filter">
                             <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
                                 Watering required
                             </button>
-                            <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuButton1">
+                            <ul class="dropdown-menu border-0" aria-labelledby="dropdownMenuButton3">
                                 <li class="text-center list-group-item flex-fill border-0"><a
                                         href="{% url 'products' %}?{{current_filters}}&watering=low">Low <i
                                             class="fa-solid fa-droplet"></i></a></li>
@@ -197,8 +197,8 @@
 
                     <div class="col-12 col-sm-6 col-xl-4 d-flex justify-content-center py-1">
                         <div class="extra-filter">
-                            <a href="{% url 'products' %}?{{current_filters}}&rare"><button
-                                    class="btn btn-outline-secondary">Rare</button></a>
+                            <button onClick="location.href='{% url 'products' %}?{{current_filters}}&rare'"
+                                class="btn btn-outline-secondary">Rare</button>
                             {% for filter in front_end_filters %}
                             {% if filter == 'Rare' %}
                             <p class="text-center filter"><i class="fa-solid fa-gem"></i></p>
@@ -209,8 +209,8 @@
 
                     <div class="col-12 col-sm-6 col-xl-4  d-flex justify-content-center py-1">
                         <div class="extra-filter">
-                            <a href="{% url 'products' %}?{{current_filters}}&popular"><button
-                                    class="btn btn-outline-secondary">Popular</button></a>
+                            <button onClick="location.href='{% url 'products' %}?{{current_filters}}&popular'"
+                                class="btn btn-outline-secondary">Popular</button>
                             {% for filter in front_end_filters %}
                             {% if filter == 'Popular' %}
                             <p class="text-center filter"><i class="fa-solid fa-bolt"></i></p>

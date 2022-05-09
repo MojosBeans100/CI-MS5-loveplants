@@ -326,23 +326,29 @@ def admin_add_product(request):
             if 'save-form' in request.POST:
 
                 form = ProductForm(request.POST)
-                print(form.errors)
-                # add is not valid
+
                 if form.is_valid:
                     form.save()
 
                     latestid = Product.objects.aggregate(
                             Max('id'))['id__max']
-                    messages.success(request, "Product added")
+                    messages.success(
+                        request,
+                        f"'{latestid.friendly_name}' successfully added."
+                        )
                     return redirect(reverse(
                                     'product_detail',
                                     args=[latestid]))
 
                 else:
+                    messages.error(
+                        request,
+                        "The product could not be added at this time."
+                    )
+
                     return render(
                         request,
-                        'products/add_product.html',
-                        context)
+                        'products/add_product.html')
 
             # post the object
             else:
@@ -387,19 +393,34 @@ def admin_add_product(request):
                     form.save()
                     latestid = Product.objects.aggregate(
                             Max('id'))['id__max']
+                    messages.success(
+                        request,
+                        f"'{latestid.friendly_name}' successfully added."
+                        )
                     return redirect(reverse(
                                     'product_detail',
                                     args=[latestid]))
+                else:
+                    messages.error(
+                        request,
+                        "The product could not be added at this time."
+                    )
 
-                return redirect(reverse('products'))
+                    return render(
+                        request,
+                        'products/add_product.html')
+        else:
+            form = ProductForm()
+            saved_products = Product.objects.filter(live_on_site=False)
+            context = {
+                'form': form,
+                'saved': saved_products,
+            }
 
-        form = ProductForm()
-        saved_products = Product.objects.filter(live_on_site=False)
-        context = {
-            'form': form,
-            'saved': saved_products,
-        }
     else:
+        messages.error(
+            request,
+            "Only admin users are allowed to access that page. ")
         return render(request, 'home/404.html')
 
     return render(request, 'products/add_product.html', context)
@@ -542,7 +563,9 @@ def admin_edit_product(request, id):
         }
 
     else:
-        messages.success(request, "Only admin users are allowed to access that page. ")
+        messages.error(
+            request,
+            "Only admin users are allowed to access that page. ")
         return render(request, 'home/404.html')
 
     return render(request, 'products/edit_product.html', context)
@@ -562,7 +585,10 @@ def admin_delete_product(request, id):
                 f"{product.friendly_name} has been deleted."
                 )
         except:
-            messages.error(request, "Error")
+            messages.error(
+                request,
+                "Error: this product could not be deleted."
+                "  Please try again later. ")
     else:
         return render(request, 'home/404.html')
 
