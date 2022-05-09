@@ -2,6 +2,7 @@
 # 3rd party imports
 from slugify import slugify
 import decimal
+import json
 
 # Django imports
 from django.shortcuts import render, redirect, reverse
@@ -309,9 +310,14 @@ def admin_add_product(request):
     Allow an admin user to add a product
     """
 
+    form = ProductForm()
+    error_fields = []
+    error_messages = []
+
     if request.user.is_superuser:
 
         if request.method == 'POST':
+            #print(request.POST)
 
             if 'popular' in request.POST:
                 popular = True
@@ -322,6 +328,11 @@ def admin_add_product(request):
                 rare = True
             else:
                 rare = False
+
+            if 'live_on_site' in request.POST:
+                live_on_site = True
+            else: 
+                live_on_site = False
 
             x = request.POST['care_instructions_source']
             form_data = {
@@ -352,26 +363,31 @@ def admin_add_product(request):
                 'care_instructions_url': request.POST['care_instructions_url'],
                 'rare': rare,
                 'popular': popular,
-                'live_on_site': True,
+                'live_on_site': live_on_site,
                 'average_rating': 0,
             }
             form = ProductForm(form_data)
 
             if form.is_valid:
                 if form.errors:
+                    print(form.errors.as_json())
+                    errors = json.loads(form.errors.as_json())
+                    keys = list(errors.keys())
+                    values = list(errors.values())
+
+                    for i in keys:
+                        error_fields.append(i)
+
+                    for i in values:
+                        error_messages.append(i[0]['message'])
+
                     messages.error(
                                 request,
                                 "The product could not be"
                                 " added at this time."
                                 )
-
-                    form = ProductForm(request.POST)
-
-                    context = {
-                        'form': form,
-                        }
-                    return redirect(reverse(
-                                'add_product'))
+                    errors = form.errors.as_json()
+                    form = ProductForm(form_data)
 
                 else:
                     form.save()
@@ -389,13 +405,13 @@ def admin_add_product(request):
                                     'product_detail',
                                     args=[latestid]))
 
-        else:
-            form = ProductForm()
-            saved_products = Product.objects.filter(live_on_site=False)[0:4]
-            context = {
-                'form': form,
-                'saved': saved_products,
-            }
+        saved_products = Product.objects.filter(live_on_site=False)[0:4]
+        context = {
+            'form': form,
+            'saved': saved_products,
+            'error_fields': error_fields,
+            'error_messages': error_messages,
+        }
 
     else:
         messages.error(

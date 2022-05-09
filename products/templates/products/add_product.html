@@ -26,6 +26,18 @@
             <h2>Add a product</h2>
             <hr>
 
+            <div class="row">
+                
+                <p class="text-danger">There was an error with the follow fields:</p>
+                <ul class="text-danger">
+                    {% for error in error_fields %}
+                    {% for error_msg in error_messages %}
+                    <li>{{error}} : {{error_msg}}</li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+
             <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'add_product' %}" id="add-form">
                     {% csrf_token %}
@@ -83,33 +95,33 @@
 
                         <div class="row">
                             <div class="col">
-                                <p>Image 1</p>
+                                <label for="id_image1_source_url">Main image</label>
                                 {{form.image1_source_url}}
                             </div>
                             <div class="col">
-                                <p>Source</p>
+                                <label for="id_image1_source">Main image source</label>
                                 {{form.image1_source}}
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <p>Image 2</p>
+                                <label for="id_image2_source_url">2nd image</label>
                                 {{form.image2_source_url}}
                             </div>
                             <div class="col">
-                                <p>Source</p>
+                                <label for="id_image2_source">2nd image source</label>
                                 {{form.image2_source}}
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col">
-                                <p>Image 3</p>
+                                <label for="id_image3_source_url">3rd image</label>
                                 {{form.image3_source_url}}
                             </div>
                             <div class="col">
-                                <p>Source</p>
+                                <label for="id_image3_source">3rd image source</label>
                                 {{form.image3_source}}
                             </div>
                         </div>
@@ -117,16 +129,16 @@
                         <div class="row">
                             <div class="col-12 col-md-4">
                                 <img class="id_image1_source_url" style="height: 200px; width: 100%;"
-                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652113723/LovePlants/product_image_thumbnail_placeholder_hfkkny.png"><br>
                                 <p class="text-center"><em><small>main image</small></em></p>
                             </div>
                             <div class="col-12 col-md-4">
                                 <img class="id_image2_source_url" style="height: 200px; width: 100%;"
-                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652113723/LovePlants/product_image_thumbnail_placeholder_hfkkny.png">
                             </div>
                             <div class="col-12 col-md-4">
                                 <img class="id_image3_source_url" style="height: 200px; width: 100%;"
-                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg">
+                                    src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652113723/LovePlants/product_image_thumbnail_placeholder_hfkkny.png">
                             </div>
                         </div>
                     </fieldset>
@@ -156,11 +168,12 @@
 
                     <!-- care -->
                     <fieldset>
-                        <legend class="py-5">Care</legend>
+                        <legend class="pt-5">Care</legend>
+                        <p><small><em>provide sunlight, water and care requirements for this plant</em></small></p>
 
                         <!-- sunlight -->
-                        <div class="row pb-5 text-center">
-                            <p class="text-center">Required sunlight</p>
+                        <div class="row px-5 pb-5 text-center">
+                            
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i><br>
@@ -183,8 +196,8 @@
 
 
                         <!-- watering -->
-                        <div class="row pb-5 text-center">
-                            <p class="text-center">Required water</p>
+                        <div class="row px-5 pb-5 text-center">
+                           
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.1.id_for_label}}"><i class="fa-solid fa-droplet-slash"></i><br>
@@ -207,15 +220,7 @@
                         </div>
 
                         <!-- care -->
-                        <div class="row pb-5 text-center">
-                            <!-- <p class="text-center">Plant maintenance</p> -->
-                            <!-- <div class="col d-flex justify-content-center">
-                                <label class="plant-care" onclick="boldSelection(this);"
-                                    for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
-                                    <em>largely self-sufficient</em></label>
-                                <input type="radio" name="{{form.care_required.name}}"
-                                    id="{{form.care_required.1.id_for_label}}">
-                            </div> -->
+                        <div class="row px-5 pb-5 text-center">
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
                                     for="{{form.care_required.2.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
@@ -277,7 +282,6 @@
                         <div class="col">
                             <button name="submit-form" class="btn admin w-100 text-white" onclick="validateForm();">Add product <i
                                     class="fa-solid fa-plus"></i></button>
-                            <p><em><small>product will be live on the site and available to purchase</small></em></p>
                         </div>
                     </div>
 
@@ -307,6 +311,7 @@
 {% endblock %}
 
 {% block postloadjs %}
+{{block.super}}
 <script>
     /*jshint esversion: 6 */
 
@@ -328,30 +333,30 @@
     }
 
     
-    function validateForm() {
-    // form.addEventListener('submit', function (ev) {
+    // function validateForm() {
+    // // form.addEventListener('submit', function (ev) {
 
-        // prevent posting form
-        preventDefault();
-        var valid = true;
+    //     // prevent posting form
+    //     preventDefault();
+    //     var valid = true;
 
-        all_inputs = document.getElementsByTagName('input');
+    //     all_inputs = document.getElementsByTagName('input');
 
-        for (i = 0; i < all_inputs.length; i++) {
-            if (all_inputs[i].value == "") {
-                valid = false;
-            } else {
-                valid = true;
-            }
-        }
+    //     for (i = 0; i < all_inputs.length; i++) {
+    //         if (all_inputs[i].value == "") {
+    //             valid = false;
+    //         } else {
+    //             valid = true;
+    //         }
+    //     }
 
-        if (valid == true) {
-            form.submit();
-        } else {
-            modal.style.display = "block";
-            document.getElementById("overlay").style.display = "block";
-        }
-    };
+    //     if (valid == true) {
+    //         form.submit();
+    //     } else {
+    //         modal.style.display = "block";
+    //         document.getElementById("overlay").style.display = "block";
+    //     }
+    // };
 
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('id_sunlight_2').checked = true;
