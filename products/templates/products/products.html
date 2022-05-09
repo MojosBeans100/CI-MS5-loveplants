@@ -27,16 +27,15 @@
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Hanging' %}
-                                <img src="/static/media/hanging_bold.png" title="Hanging plants">
+                                <img src="{% static 'media/hanging_bold.png' %}" title="Hanging plants">
                                 {% else %}
-                                <img src="/static/media/hanging.png" title="Hanging plants"
-                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/hanging.png' %}" title="Hanging plants">
+                                <!-- onmouseover="boldImage(this);" onmouseout="unboldImage(this);" -->
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/hanging.png" title="Hanging plants"
-                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/hanging.png' %}" title="Hanging plants">
                                 {% endif %}
                                 <br><br><small>Hanging</small></a>
                         </div>
@@ -47,16 +46,14 @@
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Floor' %}
-                                <img src="/static/media/floor_bold.png" title="Floor plants">
+                                <img src="{% static 'media/floor_bold.png' %}" title="Floor plants">
                                 {% else %}
-                                <img src="/static/media/floor.png" title="Floor plants" onmouseover="boldImage(this);"
-                                    onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/floor.png' %}" title="Floor plants">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/floor.png" title="Floor plants" onmouseover="boldImage(this);"
-                                    onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/floor.png' %}" title="Floor plants">
                                 {% endif %}
                                 <br><br><small>Floor</small></a>
                         </div>
@@ -67,16 +64,14 @@
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Potted' %}
-                                <img src="/static/media/potted_bold.png" title="Potted plants">
+                                <img src="{% static 'media/potted_bold.png' %}" title="Potted plants">
                                 {% else %}
-                                <img src="/static/media/potted.png" title="Potted plants" onmouseover="boldImage(this);"
-                                    onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/potted.png' %}" title="Potted plants">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/potted.png" title="Potted plants" onmouseover="boldImage(this);"
-                                    onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/potted.png' %}" title="Potted plants">
                                 {% endif %}
                                 <br><br><small>Potted</small></a>
                         </div>
@@ -87,16 +82,14 @@
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
                                 {% if filter.1 == 'Flowers' %}
-                                <img src="/static/media/flowers_bold.png" title="Plants with flowers">
+                                <img src="{% static 'media/flowers_bold.png' %}" title="Plants with flowers">
                                 {% else %}
-                                <img src="/static/media/flowers.png" title="Plants with flowers"
-                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/flowers.png' %}" title="Plants with flowers">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/flowers.png" title="Plants with flowers"
-                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/flowers.png' %}" title="Plants with flowers">
                                 {% endif %}
                                 <br><br><small>Flowers</small></a>
                         </div>
@@ -106,17 +99,15 @@
                                 {% if front_end_filters|length > 0 %}
                                 {% for filter in front_end_filters %}
                                 {% if filter.0 == 'plant_cats' %}
-                                {% if filter.1 == 'Succulents' %}<img src="/static/media/succulent_bold.png"
+                                {% if filter.1 == 'Succulents' %}<img src="{% static 'media/succulent_bold.png' %}"
                                     title="Succulents">
                                 {% else %}
-                                <img src="/static/media/succulent.png" title="Succulent plants"
-                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/succulent.png' %}" title="Succulent plants">
                                 {% endif %}
                                 {% endif %}
                                 {% endfor %}
                                 {% else %}
-                                <img src="/static/media/succulent.png" title="Succulent plants"
-                                    onmouseover="boldImage(this);" onmouseout="unboldImage(this);">
+                                <img src="{% static 'media/succulent.png' %}" title="Succulent plants">
                                 {% endif %}
                                 <br><br><small>Succulents</small></a>
                         </div>
@@ -466,14 +457,15 @@
 <script>
     /*jshint esversion: 6 */
 
-    function boldImage(element) {
-        element.src = element.src.split('.png')[0] + '_bold' + '.png';
-    }
+    // function boldImage(element) {
+    //     console.log(element.src)
+    //     element.src = element.src.split('.png')[0] + '_bold' + '.png';
+    // }
 
-    function unboldImage(element) {
-        element.src = element.src.replace('_bold', "");
-        console.log(element.src)
-    }
+    // function unboldImage(element) {
+    //     element.src = element.src.replace('_bold', "");
+    //     console.log(element.src)
+    // }
 
     // prevent form from refreshing the page
     var i;
