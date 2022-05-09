@@ -395,6 +395,16 @@ input[type=number] {
 /* -------- 3rd party library code end -------- */
 
 /* -------- ACCOUNTS -------- */
+#base_account {
+    border: solid black 1px;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 .account-container {
     border-radius: 5px;
 }
@@ -451,6 +461,14 @@ https://www.w3schools.com/howto/howto_css_overlay.asp */
 /* -------- 3rd party library code ends -------- */
 
 /* ---------------- MEDIA QUERIES ---------------- */
+
+/* GENERAL MQs */
+
+@media (min-width: 576px) {
+    .margin {
+        margin-top: 150px;
+    }
+}
 
 /* PROFILES MQs */
 @media (max-width: 768px) {
