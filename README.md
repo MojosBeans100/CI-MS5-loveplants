@@ -567,26 +567,26 @@ The Bag page displays the contents of a user's bag and a link to checkout.
 (User Story X)
 Identifying details are displayed for each product, namely the plant name, price or sale price, subtotal, quantity and pot size.  Users can click on either the image or the product name to redirect to the product detail page. Users can also 'like' or 'unlike' the product on this page. Users can adjust the product quantity in the bag, or remove it from the bag completely.  
 
-![Product list]()
+![Product list](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/bagproducts_a0fblh.jpg)
 
 ### Free Delivery
 (User Story X)
 Users are aware how much they would need to spend on top of what is already in their bag to qualify for free delivery.  Below the bag, a list of suggested products to reach this total are displayed, organised by lowest cost. 
 
-For example if the user would need to spend £37.00 further to qualify for free delivery, products more expensive than £37.00 are listed, organised by cheapest first. These products have a 'Quick Add' button to prevent the need for the user to visit the product detail page to add to the bag. 
+For example if the user would need to spend £8.02 further to qualify for free delivery, products more expensive than £8.02 are listed, organised by cheapest first. These products have a 'Quick Add' button to prevent the need for the user to visit the product detail page to add to the bag. 
 
-![Free delivery products]()
+![Free delivery products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/freedelivery_kepmhh.jpg)
 
 ### Price Breakdown
 (User Story X)
 The bag total, delivery cost and grand total are listed, as well as a link to checkout the bag. 
 
-![Price breakdown]()
+![Price breakdown](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/pricebreakdown_smeglw.jpg)
 
 ### Suggested Products
 Another list of suggested products are included on this page. This list is not organised or sorted by any particular criteria, and largely exists to encourage users to add more products.
 
-![Suggested products]()
+![Suggested products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/suggestproducts_iuh13q.jpg)
 
 ## Checkout
 The checkout page requires users to input their delivery details and payment information.
@@ -595,25 +595,25 @@ The checkout page requires users to input their delivery details and payment inf
 (User Story X)
 Form fields are displayed for the user to input their personal and delivery information in order to process the order. Users can save their information for later, so the next order they submit will not require inputting this information again. 
 
-![User details]()
+![User details](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/checkoutdetails_gv7xji.jpg)
 
 ### Bag Contents
 (User Story X)
-Users are reminded of the contents in their bag on this page. 
+Users are reminded of the contents in their bag on this page. Users can remove items from their basket on this page too. 
 
-![Bag contents]()
+![Bag contents](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/bagcontents_cgrukb.jpg)
 
 ### Order Summary
 (User Story X)
 The same price breakdown from the bag page is displayed on this page. 
 
-![Price breakdown]()
+![Price breakdown](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/ordersummary_yki8v9.jpg)
 
 ### Payment Section
 (User Story X)
-Users are required to input their card details into the card payment section provided by Stripe, which shows validation if the card details are incorrect.  Users can click 'Submit Payment' to complete the order. 
+Users are required to input their card details into the card payment section provided by Stripe, which shows validation if the card details are incorrect.  Users can click 'Secure Checkout' to complete the order. 
 
-![Submit order]()
+![Submit order](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/customerservice_rtlicr.jpg)
 
 ### Form Submitted
 (User Story X)
@@ -625,7 +625,8 @@ Users have immediate feedback that their order is processing by displaying a 'lo
 (User Story X)
 The checkout confirmation/checkout success page displays details of the submitted order.  Users have confirmation it has been received.  All details about the order are provided for the user to verify.  There are no calls to action on this page.
 
-![Checkout confirmation]()
+![Checkout confirmation 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125593/LovePlants/ReadMe/checkoutconfirm1_hdd4tp.jpg)
+![Checkout confirmation 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125593/LovePlants/ReadMe/checkoutconfirm2_ciusdm.jpg)
 
 ## Profile
 The profile page displays information about the user.
