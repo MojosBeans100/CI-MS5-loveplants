@@ -271,10 +271,36 @@ button {
 }
 
 /* -------- CARE -------- */
-.care-images {
-    width: 50%;
-    height: 40vh;
+#care-banner {
+    height: 50vh;
 }
+
+.care-images {
+    width: 100%;
+    height: 40vh;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.link-images {
+    width: 50%;
+    margin-left: 25%;
+    height: 30vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    .link-images {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #care-banner {
+        height: 70vh;
+    }
+}
+
 
 /* -------- PRODUCT DETAIL -------- */
 .detail_image {
