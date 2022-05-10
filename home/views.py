@@ -16,3 +16,9 @@ def error(request):
     """ Return the 404 error page """
 
     return render(request, 'home/404.html')
+
+
+def ts_and_cs(request):
+    """ Return the Terms and Conditions page """
+
+    return render(request, 'home/terms_and_conditions.html')

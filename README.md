@@ -726,7 +726,7 @@ Font awesome was used to provide the relevant fonts/icons for the website
 The testing strategy is detailed in [this document](TESTING.md).
 
 # Search Engine Optimisation (SEO)
-Search Engine Optimisation techniques were employed on the website to improve audience reach.
+The following Search Engine Optimisation techniques were employed on the website to improve audience reach.
 
 ## Site content
 During development, it was ensured that the website is geared to the user needs, to make user experience better. 
@@ -785,49 +785,60 @@ All relevant keywords were included in the metadata tag in the base.html file.
 #### Semantic Content
 Keywords from the optimised lists were integrated into the website content where possible and relevant.  Keywords were used in semantic HTML elements, such as <code>h1</code>, <code>h2</code>, <code>span</code>, <code>strong</code> and <code>em</code> tags.
 
+![Keywords in HTML content](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652165873/LovePlants/ReadMe/keywordsinhtml_udyof6.jpg)
+
 ## Images
+While high quality images are sourced where possible, some improvements could be made to optimise images for SEO.  Images on an e-commerce website are desired to be high in quality, low in size, consistent in style, have descriptive names and always contain an <code>alt</code> tag for when the image does not load. 
 
+### Optimizing Images for SEO
+- This website uses Cloudinary as a cloud-based image storage system, which automatically generates links to insert into the 'src' attribute for <code>img</code> tags.  The product name is included in this link.  
+- The <code>alt</code> tag for product images contains the product name and latin name, to ensure it is useful for determining the image content. 
+- Many image <code>alt</code> or <code>title</code> tags include keywords.
 
-https://www.canva.com/
-https://www.wordtracker.com/
-https://www.xml-sitemaps.com/
+### Improvements for Images for SEO
+- Some of the product images have a 'squashed' appearance, due to the difficulties in sourcing images of the same height:width ratio. See [this section](#unfixed-bugs) for further information. 
+- Images could be compressed to a smaller size, or a Webp file could be used rather than a .png or .jpeg, to improve website loading times. 
 
-## Keywords
-1. Create list of long-tail and short-tail keywords
-2. Remove items which LovePlants does not provide a solution to
-3. Look for keywords which are high volume but low competition
+## Responsiveness
+Quality of content is not compromised on smaller screens; the website is designed to be mobile and tablet friendly.  This is validated through extensive manual testing (see [Testing](TESTING.md#seo-testing)), and using [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly).
 
-### Long-tail keywords
-Phrase or sentence
-More specific
-Intention behind search is clearer
-Competition is lower
+## Links to useful pages
+Love Plants contains links to other high quality relevant websites, to further improve the website ranking.  While links to other online houseplant stores are not included in order to minimise competition, links to websites providing information about plant care, interesting articles and magazines are included in the website content. 
 
-### Short-tail keywords (head terms)
-1 or 2 words long
-High competition
-Wide array of users
-Attract wider array of users who aren't necessarily target audience
+- The Spruce
+- Gardener's World
+- Plantura
+- RHS.org
+- House Beautiful
+- The Culture Trip
 
-### Links to useful pages
+## Expertise, Authoritativeness, Trustworthiness
+The following criteria were followed to maintain a website proving expertise, authoritativeness and trustworthiness.
 
-### Images
-Descriptions
-Alts
-Keywords
+1. Understand users needs and create engaging content that meets the needs (see [UX](#ux))
 
-### Metadata
-Name, content
+2. Care was taken to maintain professional content, avoid typos and spelling mistakes when developing the website
 
-### Sitemap.xml
+3. Answer user's questions ie FAQ
+The 'Care' page provides users with further information about caring for their houseplants.
+
+4. Ensure info is correct, provide citations and show research
+
+5. Add relevant links to other parts of the site to keep users exploring more content
+
+Provide links to privacy statements, T&Cs
+Include testimonials, reviews, ratings
+Ensure quality of media is high
+
+## Sitemap.xml
 List a websites important URLs
 
-### Robots.txt
+## Robots.txt
 Tells a search engine where they are not allowed to go on the website
 Having this files shows acknowledgement that search engines are allowed on the site and have free access to it
 Having this improves SEO quality
 
-### Further Steps
+## Further Steps
 Register sitemap with Google
 https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap
 
@@ -844,16 +855,7 @@ Dwell time - how long user stays on page before click back through search result
 Session time - how long user spend on site as a whole
 Pagers per session - how many pages users visited before moving on
 
-### Improve expertise, authoritativeness, trustworthiness
-Understand users need and create engaging content that meets the needs
-Professional content, avoid typos and spelling mistakes
-Answer user's questions ie FAQ
-Ensure info is correct, provide citations and show research
-Include well explained examples
-Add relevant links to other parts of the site to keep users exploring more content
-Provide links to privacy statements, T&Cs
-Include testimonials, reviews, ratings
-Ensure quality of media is high
+
 
 # Marketing
 1. SEO

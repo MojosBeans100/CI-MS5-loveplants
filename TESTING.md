@@ -698,6 +698,16 @@ The validator used to check validity of Python code was [PEP8](http://pep8online
 |Checkout|webhook_handler.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/checkout_whhandlers_sd3idj.jpg)|Pass|
 |Checkout|models.py|[Validation]()|Pass|
 
+## SEO Testing
+
+### Mobile Friendly
+The site was further tested to ensure it was mobile friendly using [Google Mobile-Friendly](https://search.google.com/test/mobile-friendly).
+
+|Page|Result|Mobile-Friendly|
+|----|------|---------------|
+|https://ms5loveplants.herokuapp.com/|[Result](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652168906/LovePlants/ReadMe/mft1_sb6avb.jpg)|Yes|
+|https://ms5loveplants.herokuapp.com/products/products.html|[Result](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652168906/LovePlants/ReadMe/mftproducts_s1axkn.jpg)|Yes|
+|https://ms5loveplants.herokuapp.com/products/product_detail/14|[Result](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652168906/LovePlants/ReadMe/mft3_wxtxnk.jpg)|Yes|
 
 
 
