@@ -151,6 +151,11 @@ button {
     }
 }
 
+/* -------- Ts&Cs -------- */
+#tscs-div {
+    border: solid black 1px;
+}
+
 /* -------- HOMEPAGE/INDEX -------- */
 #index-image {
     background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1648229681/LovePlants/Media/pexels-madison-inouye-1382392_n8gajn.jpg');
