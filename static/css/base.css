@@ -203,12 +203,27 @@ button {
 }
 
 /* -------- ALL PRODUCTS -------- */
+
+.product-card {
+    width: 20rem;
+}
+
+#product-image {
+    position: relative;
+}
+
+#product-like-icon {
+    position: absolute;
+    color: white;
+    z-index: -99
+}
+
 #stock-span {
     color: #069b8e;
 }
 
 .card-img-top {
-    height: 320px;
+    height: 300px;
     image-rendering: -moz-crisp-edges;
     image-rendering: -o-crisp-edges;
     image-rendering: -webkit-optimize-contrast;
@@ -338,7 +353,7 @@ input[type=checkbox]:checked {
 }
 
 #append-error {
-    display:none;
+    display: none;
 }
 
 /* -------- BAG -------- */
@@ -476,6 +491,13 @@ input[type=number] {
     outline: black 1px solid;
 }
 
+/* -------- PROFILES -------- */
+
+.order-history-imgs {
+    height: 100px;
+    width: 100px;
+}
+
 /* -------- 404 -------- */
 #errorimage {
     background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg');
@@ -511,6 +533,20 @@ https://www.w3schools.com/howto/howto_css_overlay.asp */
 }
 
 /* -------- 3rd party library code ends -------- */
+
+.add-product-imgs {
+    width: 100%;
+    height: 220px;
+}
+
+#add-product-modal {
+    margin-top: 200px;
+}
+
+/* -------- ADMIN CREATE SALE -------- */
+#create-sale-td {
+    min-width: 240px;
+}
 
 /* ---------------- MEDIA QUERIES ---------------- */
 

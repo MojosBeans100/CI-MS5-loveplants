@@ -2,69 +2,70 @@
 {% load static %}
 
 {% block content %}
-<div class="container my-5" style="padding-top: 100px;">
-    <div class="d-flex">
-        <hr class="flex-grow-1">
-        <h2 class="text-center px-2 px-md-3 px-xl-5"><i class="fa-solid fa-heart"></i></h2>
-        <hr class="flex-grow-1">
-    </div>
-
-    <div class="row py-3">
-        {% if num_liked == 0 %}
-        <div class="col-12 col-md-6 col-lg-6 offset-lg-3">
-            <p class="text-center py-4">You don't have any liked products. <br>Click the <i
-                    class="px-2 fa-solid fa-heart"></i> icon to like products and save them for later.</p>
-            <button class="black-button">Products</button>
+<div class="container my-5">
+    <div class="margin">
+        <div class="d-flex">
+            <hr class="flex-grow-1">
+            <h2 class="text-center px-2 px-md-3 px-xl-5"><i class="fa-solid fa-heart"></i></h2>
+            <hr class="flex-grow-1">
         </div>
 
-        {% else %}
-        <h3 class="text-center">{{num_liked}} products</h3>
-        {% endif %}
+        <div class="row py-3">
+            {% if num_liked == 0 %}
+            <div class="col-12 col-md-6 col-lg-6 offset-lg-3">
+                <p class="text-center py-4">You don't have any liked products. <br>Click the <i
+                        class="px-2 fa-solid fa-heart"></i> icon to like products and save them for later.</p>
+                <button class="black-button">Products</button>
+            </div>
 
-        {% for product in products %}
-        {% if product.friendly_name in liked %}
-        <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
-            <div class="card text-center border-0 py-3" style="width: 20rem;">
-                <div style="position: relative;">
+            {% else %}
+            <h3 class="text-center">{{num_liked}} products</h3>
+            {% endif %}
 
-                    {% if user.is_authenticated %}
+            {% for product in products %}
+            {% if product.friendly_name in liked %}
+            <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
+                <div class="product-card card text-center border-0 py-3">
+                    <div id="product-image">
+
+                        {% if user.is_authenticated %}
                         <button id="{{product.id}}" class="product-like-button">
                             {% if product.friendly_name in liked_list %}
                             <div class="like-icon">
-                                <i style="position: absolute; color: white; z-index: -99"
-                                    class="fa-solid fa-heart"></i>
+                                <i id="product-like-icon" class="fa-solid fa-heart"></i>
                             </div>
                             {% else %}
                             <div class="like-icon">
-                                <i class="fa-solid fa-heart"></i>  
+                                <i class="fa-solid fa-heart"></i>
                             </div>
                             {% endif %}
                         </button>
-                    {% else %}
-                    {% endif %}
+                        {% else %}
+                        {% endif %}
 
 
-                    <a href="{% url 'product_detail' product.id %}">
-                        <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
-                            id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
-                            src="{{product.image1_source_url}}" class="card-img-top rounded-0"
-                            alt="{{product.friendly_name}} product image"></a>
-                </div>
-                <div class="card-body text-start">
-                    <a href="{% url 'product_detail' product.id %}">
-                        <h5 class="card-title">{{product.friendly_name|upper}}</h5>
-                    </a>
-                    {% if product.latin_name %}
-                    <p><em><small>{{product.latin_name}}</small></em></p>
-                    {% else %}
-                    {% endif %}
-                    <p class="card-text">£{{product.price}}</p>
+                        <a href="{% url 'product_detail' product.id %}">
+                            <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
+                                id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
+                                src="{{product.image1_source_url}}" class="card-img-top rounded-0"
+                                alt="{{product.friendly_name}} product image"></a>
+                    </div>
+                    <div class="card-body text-start">
+                        <a href="{% url 'product_detail' product.id %}">
+                            <h5 class="card-title">{{product.friendly_name|upper}}</h5>
+                        </a>
+                        {% if product.latin_name %}
+                        <p><em><small>{{product.latin_name}}</small></em></p>
+                        {% else %}
+                        {% endif %}
+                        <p class="card-text">£{{product.price}}</p>
+                    </div>
                 </div>
             </div>
+            {% else %}
+            {% endif %}
+            {% endfor %}
         </div>
-        {% else %}
-        {% endif %}
-        {% endfor %}
     </div>
 </div>
 

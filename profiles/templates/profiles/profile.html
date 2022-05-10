@@ -87,7 +87,7 @@
                     {% if item.order.order_ref == order.order_ref %}
                     <div class="row align-items-center py-2 text-center">
                         <div class="col">
-                            <img style="height: 100px; width: 100px;" src="{{item.product.image1_source_url}}">
+                            <img class="order-history-imgs" src="{{item.product.image1_source_url}}">
                         </div>
                         <div class="col"><a
                                 href="{% url 'product_detail' item.product.id %}">{{item.product.friendly_name}}</a>

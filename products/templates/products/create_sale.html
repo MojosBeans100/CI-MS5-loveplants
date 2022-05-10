@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="container-md" style="margin-bottom: 100px;">
+<div class="container-md mb-5">
     <div class="margin">
         {% if user.is_superuser %}
         <h2>Create Sale</h2>
@@ -64,7 +64,7 @@
                             <tbody>
                                 {% for product in products %}
                                 <tr>
-                                    <td style="min-width:240px;"><label
+                                    <td id="create-sale-td"><label
                                             for="{{product.id}}">{{product.friendly_name}}</label>
                                     </td>
                                     <td>{{product.plant_category}}</td>

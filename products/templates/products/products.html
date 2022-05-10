@@ -338,10 +338,10 @@
         <div class="col-sm-6 col-lg-3 d-flex justify-content-center">
 
             <!-- product card -->
-            <div class="card text-center border-0 py-3" style="width: 20rem;">
+            <div class="product-card card text-center border-0 py-3">
 
                 <!-- product image -->
-                <div style="position: relative;">
+                <div id="product-image">
 
                     {% if user.is_authenticated %}
                     <form method="POST" action="{% url 'product_like' product.id %}" class="form product-like">
@@ -354,11 +354,11 @@
                             </div>
                             {% else %}
                             <div class="like-icon">
-                                <i style="position: absolute; color: white; z-index: -99" class="fa-solid fa-heart"></i>
+                                <i id="product-like-icon" class="fa-solid fa-heart"></i>
                             </div>
                             {% endif %}
                         </button>
-                        <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                        <input type="hidden" name="redirect_url"
                             value="{{ request.path }}">
                     </form>
                     {% else %}
