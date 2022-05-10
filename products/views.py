@@ -187,20 +187,31 @@ def product_detail(request, id):
 
     if product.rare is True:
         rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
+        rare_products = rare_products.filter(live_on_site=True)
     else:
         rare_products = None
 
     if product.popular is True:
         popular_products = Product.objects.filter(popular=True)
         popular_products = popular_products.exclude(id=id)[0:4]
+        popular_products = popular_products.filter(live_on_site=True)
     else:
         popular_products = None
 
     if product.care_required == 'low':
         easy_products = Product.objects.filter(care_required='low')
         easy_products = easy_products.exclude(id=id)[0:4]
+        easy_products = easy_products.filter(live_on_site=True)
     else:
         easy_products = None
+
+    if (rare_products is None
+            and popular_products is None
+            and easy_products is None):
+        more_products = Product.objects.filter(live_on_site=True)
+        more_products = more_products.exclude(id=id)[0:4]
+    else:
+        more_products = None
 
     if request.user.is_authenticated:
 
@@ -250,6 +261,7 @@ def product_detail(request, id):
         'already_reviewed': already_reviewed,
         'form': form,
         'liked': liked,
+        'more_products': more_products,
     }
 
     return render(request, 'products/product_detail.html', context)

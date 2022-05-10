@@ -146,18 +146,17 @@ button {
 
 /* -------- Ts&Cs -------- */
 .tscs-container {
-    position: absolute;
-    top: 0;
     width: 100%;
     min-height: 100vh;
     height: auto;
     background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg');
     background-size: cover;
     padding-bottom: 30px;
+    padding-top: 30px;
 }
 
 #tscs-div {
-    box-shadow: 0 0 2px 1px rgb(238, 235, 235); 
+    box-shadow: 0 0 2px 1px rgb(238, 235, 235);
     background-color: white;
     margin-top: 200px !important;
 }
@@ -290,18 +289,6 @@ button {
     padding-bottom: 20px;
 }
 
-@media (min-width: 768px) {
-    .link-images {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    #care-banner {
-        height: 70vh;
-    }
-}
-
-
 /* -------- PRODUCT DETAIL -------- */
 .detail_image {
     height: 400px;
@@ -315,6 +302,11 @@ button {
 
 .product_detail_alt_img:hover {
     opacity: 0.6;
+}
+
+.other-products-imgs {
+    width: 100%;
+    height: 60%
 }
 
 #product-detail-add {
@@ -343,6 +335,10 @@ input[type=submit] {
 
 input[type=checkbox]:checked {
     accent-color: #069b8e !important;
+}
+
+#append-error {
+    display:none;
 }
 
 /* -------- BAG -------- */
@@ -624,5 +620,24 @@ https://www.w3schools.com/howto/howto_css_overlay.asp */
 @media (max-width: 768px) {
     #nav-image {
         display: none;
+    }
+}
+
+/* -------- T&Cs MQs -------- */
+@media (max-width: 1200px) {
+    #tscs-div {
+        margin-top: 100px !important;
+    }
+}
+
+/* -------- CARE MQs -------- */
+@media (min-width: 768px) {
+    .link-images {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    #care-banner {
+        height: 70vh;
     }
 }

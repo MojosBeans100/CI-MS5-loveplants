@@ -224,11 +224,6 @@
                         <div class="extra-filter">
                             <a href="{% url 'products' %}?{{current_filters}}&liveonsite"><button
                                     class="btn btn-outline-secondary w-100">Live on site</button></a>
-                            <!-- {% for filter in front_end_filters %}
-                            {% if filter == 'Popular' %}
-                            <p class="text-center filter"><i class="fa-solid fa-bolt"></i></p>
-                            {% endif %}
-                            {% endfor %} -->
                         </div>
                     </div>
                     {% endif %}
@@ -244,10 +239,6 @@
                                     class="ps-3 fa-solid fa-plus"></i></button></a>
                     </div>
 
-                    <!-- <div class="col-3">
-                        <a href="{% url 'products' %}?admin_view_all"><button class="w-100 btn admin text-white">View
-                                all products <i class="ps-3 fa-solid fa-list"></i></button></a>
-                    </div> -->
                     <div class="col col-md-6 col-xl-4">
                         <a href="{% url 'create_sale' %}"><button class="w-100 btn admin text-white">Create sale <i
                                     class="ps-3 fa-solid fa-bell"></i></button></a>
@@ -279,8 +270,7 @@
                                 <div class="col-10"><input type="text" class="p-0 ps-2 border-0 border-bottom w-100"
                                         placeholder="Search for products" name="q"></div>
                                 <div class="col-2"><button class="btn p-0" type="submit">
-                                        <a aria-current="page" href="#"><i
-                                                class="ps-2 fa-solid fa-magnifying-glass"></i></a></button></div>
+                                        <i class="ps-2 fa-solid fa-magnifying-glass"></i></button></div>
                             </div>
                         </form><br>
 
@@ -374,11 +364,17 @@
                     {% else %}
                     {% endif %}
 
+                    {% if product.image2_source_url %}
                     <a href="{% url 'product_detail' product.id %}">
                         <img onmouseover="hoverImage(this)" onmouseout="unHoverImage(this)"
                             id="{{product.image2_source_url}}" title="{{product.image1_source_url}}"
                             src="{{product.image1_source_url}}" class="card-img-top rounded-0"
                             alt="{{product.friendly_name}} | {{product.latin_name}}"></a>
+                    {% else %}
+                    <a href="{% url 'product_detail' product.id %}">
+                        <img title="{{product.image1_source_url}}" src="{{product.image1_source_url}}"
+                            class="card-img-top rounded-0" alt="{{product.friendly_name}} | {{product.latin_name}}"></a>
+                    {% endif %}
                 </div>
 
                 <!-- product name and price -->

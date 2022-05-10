@@ -91,7 +91,7 @@
                 <div class="row d-flex justify-content-center">
                     {% if user.is_authenticated %}
                     <div class="col text-center">
-                        <form method="POST" action="{% url 'product_like' product.id %}" style="width:auto;">
+                        <form method="POST" action="{% url 'product_like' product.id %}">
                             {% csrf_token %}
                             <button id="{{product.id}}" class="product-like-button2" onclick="likeProduct(this);">
                                 {% if liked == True %}
@@ -100,7 +100,7 @@
                                 <i class="fa-regular fa-heart"></i> Like this product
                                 {% endif %}
                             </button>
-                            <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                            <input type="hidden" name="redirect_url"
                                 value="{{ request.path }}">
                         </form>
                     </div>
@@ -196,7 +196,7 @@
                                     <input id="add-to-bag" type="submit" class="text-center" value="Add to bag">
                                 </div>
                             </div>
-                            <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                            <input type="hidden" name="redirect_url"
                                 value="{{ request.path }}">
                         </form>
                         {% endif %}
@@ -276,11 +276,11 @@
                                 <div class="col-2">
                                     <p class="text-center" id="users-rating">0/5</p>
                                 </div>
-                                <p id="append-error" class="text-center" style="display:none;">Be sure to leave a rating
+                                <p id="append-error" class="text-center">Be sure to leave a rating
                                     between 1 and 5</p>
                             </div>
 
-                            <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                            <input type="hidden" name="redirect_url"
                                 value="{{ request.path }}">
 
                             <div class="row d-flex justify-content-center">
@@ -368,7 +368,7 @@
                     <h4>See other rare products</h4>
                     {% for rare in rare_products %}
                     <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' rare.id %}"><img style="width:100%; height:80%" class="p-3"
+                        <a href="{% url 'product_detail' rare.id %}"><img class="other-products-imgs p-3"
                                 src="{{rare.image1_source_url}}"></a>
                         <a href="{% url 'product_detail' rare.id %}">
                             <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
@@ -384,7 +384,7 @@
                     <h4>See other popular products</h4>
                     {% for popular in popular_products %}
                     <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' popular.id %}"><img style="width:100%; height:80%" class="p-3"
+                        <a href="{% url 'product_detail' popular.id %}"><img class="other-products-imgs p-3"
                                 src="{{popular.image1_source_url}}"></a>
                         <a href="{% url 'product_detail' popular.id %}">
                             <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
@@ -400,7 +400,7 @@
                     <h4>See other easy care products</h4>
                     {% for easy in easy_care %}
                     <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' easy.id %}"><img style="width:100%; height:80%" class="p-3"
+                        <a href="{% url 'product_detail' easy.id %}"><img class="other-products-imgs p-3"
                                 src="{{easy.image1_source_url}}"></a>
                         <a href="{% url 'product_detail' easy.id %}">
                             <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
@@ -417,7 +417,7 @@
                     <h4>Recently viewed products</h4>
                     {% for recent in recently_viewed %}
                     <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' recent.id %}"><img style="width:100%; height:60%" class="p-3"
+                        <a href="{% url 'product_detail' recent.id %}"><img class="other-products-imgs p-3"
                                 src="{{recent.image1_source_url}}"></a>
                         <a href="{% url 'product_detail' recent.id %}">
                             <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
@@ -427,6 +427,22 @@
                 </div>
                 {% endif %}
                 {% else %}
+                {% endif %}
+
+                <!-- list further products if not popular, rare etc -->
+                {% if more_products %}
+                <div class="row my-3">
+                    <h4>More products</h4>
+                    {% for product in more_products %}
+                    <div class="col-sm-4 col-lg-3">
+                        <a href="{% url 'product_detail' product.id %}"><img class="other-products-imgs p-3"
+                                src="{{product.image1_source_url}}"></a>
+                        <a href="{% url 'product_detail' product.id %}">
+                            <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
                 {% endif %}
             </div>
         </div>
