@@ -147,6 +147,55 @@
   {% block content %}
   {% endblock %}
 
+  
+  <footer class="bg-dark text-white p-4">
+    <div class="row">
+      <div class="col-12 col-xl-8 offset-xl-2 border border-primary">
+
+        <div class="row px-5 align-items-center">
+          <div class="col-8">
+            <p class="m-0 p-0">Connect with us on social media</p>
+          </div>
+          <div class="col-4 text-end d-flex justify-content-evenly">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-linkedin-in"></i>
+          </div>
+        </div>
+        <hr>
+
+        <div class="row">
+
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h5 id="footer-title">Love Plants</h5>
+            <p>We sell houseplants online. <br>
+              Explore a huge selection of beautiful, unique and breathtaking houseplants</p>
+          </div>
+
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h5>Our Products</h5>
+            <ul class="list-group bg-dark">
+              <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white" href="{% url 'products' %}?popular">Popular plants</a></li>
+              <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white" href="{% url 'products' %}?rare">Rare plants</a></li>
+              <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white" href="{% url 'products' %}?q=variegated">Variegated plants</a></li>
+              <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white" href="{% url 'products' %}?plant_cat=Potted">Potted plants</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <h5>Love Plants</h5>
+            <p>Here you can use rows and columns to organize your footer content. Lorem ipsum
+              dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    
+  </footer>
+
   {% block postloadjs %}
   <script>
     /*jshint esversion: 6 */

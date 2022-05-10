@@ -33,7 +33,7 @@
                         <label for="save_info">Save Information</label>
                         <input id="save_info" type="checkbox">
 
-                        <p><small>We will process your personal data in accordance with LovePlants <a><u>Privacy
+                        <p><small>We will process your personal data in accordance with LovePlants <a href="{% url 'privacy_policy' %}" target="_blank"><u>Privacy
                                         Notice</u></a></small></p>
 
                         <!-- <button id="checkout-form-submit" type="submit">Submit</button> -->
@@ -92,7 +92,7 @@
                     <p class="text-center"><strong>You card will be charged £{{grand_total}}</strong></p>
                     <br>
                     <br>
-                    <p><small> By continuing, you agree to LovePlants <a><u>Terms and Conditions.</u></a>
+                    <p><small> By continuing, you agree to LovePlants <a href="{% url 'ts_and_cs' %}" target="_blank"><u>Terms and Conditions.</u></a>
                         </small></p>
                     </form>
                     <br>

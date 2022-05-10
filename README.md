@@ -826,8 +826,9 @@ The 'Care' page provides users with further information about caring for their h
 
 5. Add relevant links to other parts of the site to keep users exploring more content
 
-Provide links to privacy statements, T&Cs
-https://www.termsandconditionsgenerator.com/
+6. Providing links to Privacy Policy and T&Cs to convey trustworthiness to the user.  The following websites were used to generate generic documents.
+[Terms and Conditions generator](https://www.termsandconditionsgenerator.com/)
+[Privacy Policy generator](https://www.privacypolicygenerator.info/)
 
 Include testimonials, reviews, ratings
 Ensure quality of media is high
