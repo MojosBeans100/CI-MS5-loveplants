@@ -152,8 +152,25 @@ button {
 }
 
 /* -------- Ts&Cs -------- */
+.tscs-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650308742/LovePlants/pexels-sohail-nachiti-807598_wjmwb8.jpg');
+    background-size: cover;
+    padding-bottom: 30px;
+}
+
 #tscs-div {
-    border: solid black 1px;
+    box-shadow: 0 0 2px 1px rgb(238, 235, 235); 
+    background-color: white;
+    margin-top: 200px !important;
+}
+
+#tscs-div p {
+    text-align: justify;
 }
 
 /* -------- HOMEPAGE/INDEX -------- */

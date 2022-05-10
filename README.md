@@ -827,6 +827,8 @@ The 'Care' page provides users with further information about caring for their h
 5. Add relevant links to other parts of the site to keep users exploring more content
 
 Provide links to privacy statements, T&Cs
+https://www.termsandconditionsgenerator.com/
+
 Include testimonials, reviews, ratings
 Ensure quality of media is high
 
