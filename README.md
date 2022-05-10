@@ -619,13 +619,14 @@ Users are required to input their card details into the card payment section pro
 (User Story X)
 Users have immediate feedback that their order is processing by displaying a 'loading' screen, which also prevents the user from clicking any other calls to action during order completion. 
 
-![Submitted order]()
+![Submitted order](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/desktop_yqyx3x.jpg)
 
 ## Checkout Confirmation
 (User Story X)
 The checkout confirmation/checkout success page displays details of the submitted order.  Users have confirmation it has been received.  All details about the order are provided for the user to verify.  There are no calls to action on this page.
 
 ![Checkout confirmation 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125593/LovePlants/ReadMe/checkoutconfirm1_hdd4tp.jpg)
+
 ![Checkout confirmation 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125593/LovePlants/ReadMe/checkoutconfirm2_ciusdm.jpg)
 
 ## Profile
@@ -725,7 +726,68 @@ Font awesome was used to provide the relevant fonts/icons for the website
 The testing strategy is detailed in [this document](TESTING.md).
 
 # Search Engine Optimisation (SEO)
-Search Engine Optimisation techniques were employed on the website to improve audience reach and 
+Search Engine Optimisation techniques were employed on the website to improve audience reach.
+
+## Site content
+During development, it was ensured that the website is geared to the user needs, to make user experience better. 
+The content is clear, uncluttered, and easy to navigate.  Users are clear of the purpose of the website, and the products contained in it. 
+
+The UX development is detailed in [this section](#ux).
+
+## Keywords
+
+### Research
+Thorough keyword research was undertaken, to determine words and phrases relevant to the product.  A brainstorm map of short-tail and long-tail keywords was produced, and optimised to remove items which Love Plants does not provide a solution to.
+
+![Short tail keywords](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652163727/LovePlants/ReadMe/1_hga5zy.png)
+![Long tail keywords](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652163727/LovePlants/ReadMe/2_oy4wkq.png)
+
+### Optimisation
+These lists of keywords could be optimised by determining which would be most effective on the website.  [Word Tracker](https://www.wordtracker.com/) was used to identify which words were deemed:
+
+- high volume, low competition
+- low volume, high competition
+
+Word Tracker results for 'houseplant':
+![Word tracker results](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652164429/LovePlants/ReadMe/keywords_houseplants_nz7q4k.jpg)
+
+Word Tracker results for 'variegated plants':
+![Word tracker results](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652164516/LovePlants/ReadMe/keyword_variegated_oyamnz.jpg)
+
+Using these results, a brief study could be made to determine the most effective keywords to include on the website.  An example of one comparison made between two keyword phrases:
+
+|Keyword(s)|Volume|Competition|
+|----------|------|-----------|
+|'indoor plants'|52,250|22.28|
+|'indoor potted plants'|27,700|6.06|
+
+The keyword 'indoor potted plants' was deemed more beneficial, as it had far lower competition compared to 'indoor plants', yet relatively high volume of web traffic.  Keywords which had a high volume but low competition were prioritised over keywords of low volume, high competition. 
+
+The keyword research also gave insight into which houseplants were most popular - for example in the 'houseplants' Word Tracker results, the following plants have a high volume of searchers implying they are highly sought-after:
+- snake plant
+- peace lily
+- spider plant
+- philodendron
+- prayer plant
+- dracaena
+- devil's cactus
+
+These plants were included in the database of plants available to purchase, to attract customers to the website when searching for these products, and to further increase SEO metrics. 
+
+### Implementation
+These keywords were introduced into the website, maintaining an organic flow of content and avoiding 'keyword stuffing'.
+
+#### Metadata
+All relevant keywords were included in the metadata tag in the base.html file.
+
+![Metadata](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652165361/LovePlants/ReadMe/metadta_okaby7.jpg)
+
+#### Semantic Content
+Keywords from the optimised lists were integrated into the website content where possible and relevant.  Keywords were used in semantic HTML elements, such as <code>h1</code>, <code>h2</code>, <code>span</code>, <code>strong</code> and <code>em</code> tags.
+
+## Images
+
+
 https://www.canva.com/
 https://www.wordtracker.com/
 https://www.xml-sitemaps.com/
