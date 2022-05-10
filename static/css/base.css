@@ -270,6 +270,12 @@ button {
     line-height: 10px;
 }
 
+/* -------- CARE -------- */
+.care-images {
+    width: 50%;
+    height: 40vh;
+}
+
 /* -------- PRODUCT DETAIL -------- */
 .detail_image {
     height: 400px;
