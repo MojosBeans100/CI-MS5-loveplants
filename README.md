@@ -800,29 +800,29 @@ While high quality images are sourced where possible, some improvements could be
 - Images could be compressed to a smaller size, or a Webp file could be used rather than a .png or .jpeg, to improve website loading times. 
 
 ## Responsiveness
-Quality of content is not compromised on smaller screens; the website is designed to be mobile and tablet friendly.  This is validated through extensive manual testing (see [Testing](TESTING.md#seo-testing)), and using [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly).
+Quality of content is not compromised on smaller screens; the website is designed to be mobile and tablet friendly.  This is validated through extensive manual testing (see [Testing](TESTING.md#manual-testing)), and using [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly) (see [Testing](TESTING.md#seo-testing)).
 
 ## Links to useful pages
 Love Plants contains links to other high quality relevant websites, to further improve the website ranking.  While links to other online houseplant stores are not included in order to minimise competition, links to websites providing information about plant care, interesting articles and magazines are included in the website content. 
 
 - The Spruce
 - Gardener's World
-- Plantura
-- RHS.org
-- House Beautiful
-- The Culture Trip
+- Gardening Know How
+
+![Other websites](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652207674/LovePlants/othersources_kizp2l.jpg)
 
 ## Expertise, Authoritativeness, Trustworthiness
-The following criteria were followed to maintain a website proving expertise, authoritativeness and trustworthiness.
+The following criteria were followed to maintain a website providing expertise, authoritativeness and trustworthiness.
 
 1. Understand users needs and create engaging content that meets the needs (see [UX](#ux))
 
-2. Care was taken to maintain professional content, avoid typos and spelling mistakes when developing the website
+2. Care was taken to maintain professional content, and avoid typos and spelling mistakes when developing the website.
 
 3. Answer user's questions ie FAQ
 The 'Care' page provides users with further information about caring for their houseplants.
 
-4. Ensure info is correct, provide citations and show research
+4. Ensure info is correct, provide citations and show research.
+In this website, a lot of text content is sourced from other websites which have more expertise in terms of houseplants. Any content which was not written by the developer is cited by providing a reference to the webpage.  
 
 5. Add relevant links to other parts of the site to keep users exploring more content
 
