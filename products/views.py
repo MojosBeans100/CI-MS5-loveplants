@@ -106,6 +106,10 @@ def all_products(request):
             filtered_by = "Popular"
             front_end_filters.append(filtered_by)
 
+        if 'easycare' in request.GET:
+            all_products = all_products.filter(
+                care_required='can stand a little neglect')
+
         # sale price
         if 'price' in request.GET:
             price = request.GET['price'].split(',')

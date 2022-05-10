@@ -194,6 +194,15 @@ button {
     min-height: 50vh;
 }
 
+#index-image4 {
+    background-image: url('https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650354786/LovePlants/pexels-designecologist-1005058_ersbkg.jpg');
+    height: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50vh;
+}
+
 /* -------- ALL PRODUCTS -------- */
 #stock-span {
     color: #069b8e;

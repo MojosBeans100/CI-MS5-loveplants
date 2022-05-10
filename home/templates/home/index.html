@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<div class="row py-3">
+<div class="row pt-5">
     <div class="order-md-first order-last col-12 col-md-6 bg-light m-0 p-md-5 mt-md-5">
         <div class="p-5 mx-xl-5" style="font-family: Raleway">
             <div class="m-xl-5">
@@ -83,15 +83,13 @@
     </div>
 </div>
 
-<!-- <div class="row">
-    <h1 class="py-5 my-5 text-center">Stock up on amazing plants</h1>
-</div> -->
+<hr class="m-5 px-5">
 
 <div class="row mx-xl-5">
     <div class="order-md-first order-last col-12 col-md-6 m-0 p-0 bg-light">
         <div class="p-5 mx-lg-5">
             <h1 class="py-4">Easy plant babies</h1>
-            <p>Look for <strong>easy to propagate</strong> plants to multiply your collection fast.</p>
+            <p>We stock lots of <strong>easy to propagate</strong> plants to multiply your collection fast.</p>
             <br>
             <p>These plants produce lots of 'babies' or 'pups' which can be separated from the mother plant. Let the
                 roots sit in water until the pup has established a storng enough root system to support itself.</p>
@@ -99,31 +97,41 @@
             <p>Soon you'll have another strong, healthy plant which can be planted into it's own pot.</p>
             <br>
             <p>These plants really are the gift that keeps on giving. </p>
-
-            <button class="w-100 w-sm-75 w-md-50 my-3 py-3 index-button bg-light">Easy to propagate plants</button>
         </div>
     </div>
     <div class="order-md-last order-first col-12 col-md-6 m-0 p-5" id="index-image3">
     </div>
 </div>
 
-<!--<div id="index-banner">
-    <div class="container">
-        
-         <div class="row align-items-center text-center">
-            <div class="col-10 offset-1 col-md-6 offset-md-3">
-                <div class="d-flex align-items-center">
-                    <hr class="flex-grow-1">
-                    <h1 class="text-center px-2 px-md-3 px-xl-5 m-0">LOVE</h1>
-                    <hr class="flex-grow-1"><br>
-                </div>
-                <p>PLANTS</p>
-            </div>
-        </div>
+<hr class="m-5">
 
-        <div class="d-flex align-items-start justify-content-center">
-            <button class="white-button">Shop Plants</button>
-        </div> 
+<div class="row mx-xl-5">
+    <div class="order-md-first order-last col-12 col-md-6 m-0 p-5" id="index-image4">
     </div>
-</div>-->
+    <div class="order-md-last order-first col-12 col-md-6 m-0 p-0 bg-light">
+        <div class="p-5 mx-lg-5">
+            <h1 class="py-4">Going on holiday?</h1>
+            <p>Nobody wants to come home from a well-earned break to discover that half their beautiful plant collection
+                has perished.</p>
+            <br>
+            <p>Look for <strong>low maintenance houseplants</strong> which even the most scatter-brained plant-lover
+                cannot kill!</p>
+            <br>
+            <p>There are many plants which can survive, and even thrive, with significant neglect from their owner. In
+                particular, <strong>succulents</strong> are a good choice because they do not cope with being regularly
+                watered.</p>
+            <br>
+            <button onClick="location.href='{% url 'products' %}?plant_cats=Succulents'"
+                class="w-50 w-lg-100 my-3 py-3 index-button bg-light">
+                Succulents
+            </button>
+            <button onClick="location.href='{% url 'products' %}?easycare'"
+                class="w-50 w-lg-100 my-3 py-3 index-button bg-light">
+                Other easy care plants
+            </button>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
