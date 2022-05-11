@@ -44,26 +44,26 @@
 
                 <div class="row">
                     <div class="col">
-                        <img class="detail_image" src="{{ product.image1_source_url }}" id="main-image"
+                        <img class="detail_image" alt="{{product.friendly_name}} {{product.latin_name}}" src="{{ product.image1_source_url }}" id="main-image"
                             title="Image credit: {{product.image1_source}}">
                     </div>
                 </div>
                 <div class="row py-4">
                     <div class="col">
-                        <img class="product_detail_alt_img" onclick="changeImage(this)"
+                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}" onclick="changeImage(this)"
                             src="{{ product.image1_source_url }}" title="Image credit: {{product.image1_source}}">
                     </div>
 
                     <div class="col">
                         {% if product.image2_source_url %}
-                        <img class="product_detail_alt_img" onclick="changeImage(this)"
+                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}" onclick="changeImage(this)"
                             src="{{ product.image2_source_url }}" title="Image credit: {{product.image2_source}}">
                         {% endif %}
                     </div>
 
                     <div class="col">
                         {% if product.image3_source_url %}
-                        <img class="product_detail_alt_img" onclick="changeImage(this)"
+                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}" onclick="changeImage(this)"
                             src="{{ product.image3_source_url }}" title="Image credit: {{product.image3_source}}">
                         {% endif %}
                     </div>
@@ -241,8 +241,6 @@
 
                 <!-- reviews form and rating display -->
                 <div class="row">
-
-
                     <hr>
 
                     {% if already_reviewed %}
@@ -286,15 +284,13 @@
         </div>
 
         <div>
-            <!-- care instructions if product type is a plant -->
-            {% if product.plant_category %}
             <div class="py-4 row">
                 <h4>Care Instructions</h4>
                 <p>"{{product.care_instructions}}" <small><a href="{{product.care_instructions_url}}"
                             target="_blank">{{product.care_instructions_source}}</a></small></p>
+                <p><a href="{% url 'care' %}"><i class="px-2 fa-solid fa-hand-holding-heart"
+                            title="Care advice"></i>More care advice</a></p>
             </div>
-            {% else %}
-            {% endif %}
             <hr>
 
             <!-- reviews of the product -->
@@ -341,10 +337,9 @@
             </div>
 
         </div>
+        <hr>
         {% else %}
         {% endif %}
-
-        <hr>
 
         <!-- similar products, other recommended products -->
         <div>

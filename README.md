@@ -834,18 +834,19 @@ Include testimonials, reviews, ratings
 Ensure quality of media is high
 
 ## Sitemap.xml
-List a websites important URLs
+A sitemap.xml file was generated using [XML Sitemaps](https://www.xml-sitemaps.com/), whereby the deployed project link was inserted and a list of important URLs was retrieved.  This document speeds up content discovery when search engines are crawling the website, to ensure no important URLs are missed.
 
 ## Robots.txt
-Tells a search engine where they are not allowed to go on the website
-Having this files shows acknowledgement that search engines are allowed on the site and have free access to it
-Having this improves SEO quality
+A robots.txt file was created to manage traffic to the website and tell a search engine where they are not allowed to go on the website, for example, the account authentication pages (Sign Up, Log In etc).
+Having this files also shows acknowledgement that search engines are allowed on the site and have free access to it, which improves SEO quality.
 
 ## Further Steps
-Register sitemap with Google
+This section describes further steps which would be required to deploy the web application to a custom domain.  These steps were not carried out in this development project.
+
+1. Register sitemap with Google
 https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap
 
-Test robots.txt file
+2. Test robots.txt file
 https://support.google.com/webmasters/answer/6062598?hl=en
 
 ### Google Raters
