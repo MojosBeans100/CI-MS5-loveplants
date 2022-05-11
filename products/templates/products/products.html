@@ -341,7 +341,7 @@
             <div class="product-card card text-center border-0 py-3">
 
                 <!-- product image -->
-                <div id="product-image">
+                <div class="product-image">
 
                     {% if user.is_authenticated %}
                     <form method="POST" action="{% url 'product_like' product.id %}" class="form product-like">

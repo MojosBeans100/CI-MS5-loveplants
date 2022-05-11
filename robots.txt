@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /accounts/
 Disallow: /bag/
+Disallow: /checkout/
 Sitemap: https://ms5loveplants.herokuapp.com/sitemap.xml

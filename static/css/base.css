@@ -208,7 +208,7 @@ button {
     width: 20rem;
 }
 
-#product-image {
+.product-image {
     position: relative;
 }
 
