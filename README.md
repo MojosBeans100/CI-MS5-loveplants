@@ -995,13 +995,13 @@ Pagers per session - how many pages users visited before moving on
 [Back to top](#love-plants)
 
 # Marketing
-1. SEO [x] \
+1. SEO -[x] \
 The SEO strategies used for the development of this e-commerce store are documented [here](#search-engine-optimisation-seo)
 
 2. Content marketing \
 Aside from creating useful, engaging content within the website, such as the Care page to advise users how to care after their houseplants, additional content marketing strategies - such as blog posts, videos and podcasts - were not implemented during the development of the project. 
 
-3. Social media marketing [x] \
+3. Social media marketing -[x] \
 Love Plants uses social media marketing to reach a wide range of customers.  
 This marketing platform allows Love Plants to build the brand, connect and interact with potential and existing customers, share regular content and updates, and provide additional customer service and support. 
 
