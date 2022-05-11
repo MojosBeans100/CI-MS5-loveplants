@@ -938,33 +938,34 @@ Love Plants contains links to other high quality relevant websites, to further i
 ## Expertise, Authoritativeness, Trustworthiness
 The following criteria were followed to maintain a website providing expertise, authoritativeness and trustworthiness.
 
-1. Understand users needs and create engaging content that meets the needs
+1. Understand users needs and create engaging content that meets the needs \
 Website content was regarded as the most important criteria.  See [UX](#ux) for further information.
 
-2. Care was taken to maintain professional content, and avoid typos and spelling mistakes when developing the website.
+2. Maintain professional content, avoid typos and spelling mistakes \
 The deployed project URL was input into [W3 Spellchecker](https://www.w3.org/2002/01/spellchecker), and aside from not recognising some plant latin/botanical names ie 'dracaena fragrans', and differences in American and British spelling (color/colour), there were no typographical errors. 
 
-3. Answer user's questions in Frequently Asked Questions (FAQ)
+3. Answer user's questions in Frequently Asked Questions (FAQ) \
 The 'Care' page provides users with further information about caring for their houseplants.
 There is a separate 'FAQ' page will generic e-commerce application questions, which was auto-generated using [Conversions Kitchen](https://conversionskitchen.com/free-faq-ecommerce-generator/).
 
-4. Ensure info is correct, provide citations and show research.
+4. Ensure info is correct, provide citations and show research \
 In this website, a lot of text content is sourced from other websites which have more expertise in terms of houseplants. Any content which was not written by the developer is cited by providing a reference to the webpage.  
 
-5. Add relevant links to other parts of the site to keep users exploring more content
+5. Add relevant links to other parts of the site to keep users exploring more content \
 - Users are linked to the 'Care' page from the product detail page
 - The website footer provides useful links to many pages in the site
 - The homepage provides users with an instant product filter depending on what kind of product they are looking for ie. 'Rare plants', 'Popular plants', 'Easy care plants'
 
-6. Providing links to Privacy Policy and T&Cs to convey trustworthiness to the user.  The following websites were used to generate generic documents.
-[Terms and Conditions generator](https://www.termsandconditionsgenerator.com/)
+6. Providing links to Privacy Policy and T&Cs to convey trustworthiness to the user \
+The following websites were used to generate generic documents.
+[Terms and Conditions generator](https://www.termsandconditionsgenerator.com/) \
 [Privacy Policy generator](https://www.privacypolicygenerator.info/)
 
-7. Include testimonials, reviews, ratings
+7. Include testimonials, reviews, ratings \
 Users may provide a review and rating to a product they have purchased, to allow for other users to trust the quality of the product, or understand its downfalls. 
 
-8. Ensure quality of media is high
-In general, product images are of high quality and sized appropriately.  Limitations of this are outlined [here]()
+8. Ensure quality of media is high \
+In general, product images are of high quality and sized appropriately.  Limitations of this are outlined [here](#unfixed-bugs).
 
 ## Sitemap.xml
 A sitemap.xml file was generated using [XML Sitemaps](https://www.xml-sitemaps.com/), whereby the deployed project link was inserted and a list of important URLs was retrieved.  This document speeds up content discovery when search engines are crawling the website, to ensure no important URLs are missed.
@@ -995,13 +996,13 @@ Pagers per session - how many pages users visited before moving on
 [Back to top](#love-plants)
 
 # Marketing
-1. SEO - [x] \
+1. SEO \
 The SEO strategies used for the development of this e-commerce store are documented [here](#search-engine-optimisation-seo)
 
 2. Content marketing \
 Aside from creating useful, engaging content within the website, such as the Care page to advise users how to care after their houseplants, additional content marketing strategies - such as blog posts, videos and podcasts - were not implemented during the development of the project. 
 
-3. Social media marketing - [x] \
+3. Social media marketing \
 Love Plants uses social media marketing to reach a wide range of customers.  
 This marketing platform allows Love Plants to build the brand, connect and interact with potential and existing customers, share regular content and updates, and provide additional customer service and support. 
 
