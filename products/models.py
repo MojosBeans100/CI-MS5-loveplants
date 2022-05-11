@@ -281,7 +281,7 @@ def update_average_rating(sender, instance, created, **kwargs):
         product.average_rating = average_rating
         product.save()
     else:
-        product.average_rating = 5
+        product.average_rating = 0
 
 
 @receiver(post_delete, sender=ProductReview)
@@ -305,4 +305,4 @@ def update_average_rating_deleted(sender, instance, **kwargs):
         product.average_rating = average_rating
         product.save()
     else:
-        product.average_rating = 5
+        product.average_rating = 0

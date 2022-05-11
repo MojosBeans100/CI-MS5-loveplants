@@ -192,9 +192,9 @@ User Stories/Issues were mapped to Sprints (or Milestones) to plan for the curre
 The first sprints contained the higher priority features, providing basic website functionality to meet the project requirements (eg, allow users to checkout items).  The later sprints contained features which were not considered necessary but enhanced the project (eg, allow users to like and review products).
 
 ### Sprints
-- Sprint 1 - basic project set up: user authentication, create models, homepage templates, display products \
-- Sprint 2 - the 'Bag' and 'Checkout' apps: add, edit, delete products in bag and checkout the order \
-- Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products \
+- Sprint 1 - basic project set up: user authentication, create models, homepage templates, display products
+- Sprint 2 - the 'Bag' and 'Checkout' apps: add, edit, delete products in bag and checkout the order
+- Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products
 - Sprint 4
 - Sprint 5
 
@@ -203,10 +203,6 @@ Epics were defined based on the main functions the website was expected to have,
 
 ### Priority
 Priority labels were assigned to each User Story/Issue, in order to determine which tasks to complete first in a Sprint. When the Issue was not completed, it could be included on another Sprint in order to complete it. Some User Stories were not completed.
-
-### Scope Creep
-### Requirements
-Functional, content
 
 ## Structure
 The Structure plane was used to plan the organisation of website functionality and navigation, to provide a clear pathway to desired user actions.  In order to facilitate the Structure plane, Interaction Design (ID) and Information Architecture (IA) were developed as below. 
@@ -1130,6 +1126,11 @@ As all images are sourced from 3rd party sites (all images are attributed to the
 The images are also highly varying in terms of the way the plant is style, presented, and the background colours and contents. 
 
 While this is unfortunate, the developer felt it was important to build up a reasonable database of products and thus these images were deemed acceptable for the purpose of creating this e-commerce project.  In reality, a true e-commerce store would most likely have original photos which aligned better in terms of content and size.
+
+## Faceted Filtering
+The developer attempted to mimic a common feature in e-commerce websites, which is to provide users faceted searching of products, in order to narrow down their view of products. 
+
+This was achieved by maintaining the previous filter criteria when applying another.  When products are narrowed down by plant category, for example floor plants, this criteria is maintained when filtering again by, for example, price. 
 
 [Back to top](#love-plants)
 
