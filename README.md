@@ -935,6 +935,9 @@ Love Plants contains links to other high quality relevant websites, to further i
 
 ![Other websites](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652207674/LovePlants/othersources_kizp2l.jpg)
 
+## Links to Social Media
+In the footer, a link to the Love Plants Facebook page is provided for users to engage more with the store.  There are also icons for Instagram, Twitter and LinkedIn, although for the purposes of this project they do not provide a link to a page. 
+
 ## Expertise, Authoritativeness, Trustworthiness
 The following criteria were followed to maintain a website providing expertise, authoritativeness and trustworthiness.
 
@@ -946,10 +949,13 @@ The deployed project URL was input into [W3 Spellchecker](https://www.w3.org/200
 
 3. Answer user's questions in Frequently Asked Questions (FAQ) \
 The 'Care' page provides users with further information about caring for their houseplants.
-There is a separate 'FAQ' page will generic e-commerce application questions, which was auto-generated using [Conversions Kitchen](https://conversionskitchen.com/free-faq-ecommerce-generator/).
+There is a separate 'FAQ' page with generic e-commerce application questions, which was copied from [Harper Collins](https://harpercollins.co.uk/pages/ecommerce-faqs) with minor adjustments to suit Love Plants. 
 
-4. Ensure info is correct, provide citations and show research \
-In this website, a lot of text content is sourced from other websites which have more expertise in terms of houseplants. Any content which was not written by the developer is cited by providing a reference to the webpage.  
+4. Ensure information is correct, provide citations and show research \
+In this website, a lot of text content is sourced from other websites which have more expertise in terms of houseplants. Any content which was not written by the developer is cited by providing a reference to the webpage. 
+For example, a lot of the plant descriptions and care instructions are sourced from [The Spruce](https://www.thespruce.com/houseplants-4127735). These are adequately credited by linking the document in the description.
+
+![Citing sources](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652292218/LovePlants/citing_lpq0fk.jpg)
 
 5. Add relevant links to other parts of the site to keep users exploring more content \
 - Users are linked to the 'Care' page from the product detail page
@@ -996,13 +1002,12 @@ Pagers per session - how many pages users visited before moving on
 [Back to top](#love-plants)
 
 # Marketing
+The primary marketing techniques used for the Love Plants store were social media marketing (by linking a Facebook page) and email marketing (by providing an email sign-up for subscribing).
+
 1. SEO \
 The SEO strategies used for the development of this e-commerce store are documented [here](#search-engine-optimisation-seo)
 
-2. Content marketing \
-Aside from creating useful, engaging content within the website, such as the Care page to advise users how to care after their houseplants, additional content marketing strategies - such as blog posts, videos and podcasts - were not implemented during the development of the project. 
-
-3. Social media marketing \
+2. Social media marketing \
 Love Plants uses social media marketing to reach a wide range of customers.  
 This marketing platform allows Love Plants to build the brand, connect and interact with potential and existing customers, share regular content and updates, and provide additional customer service and support. 
 
@@ -1013,45 +1018,37 @@ This marketing platform allows Love Plants to build the brand, connect and inter
 ![Screenshots from Facebook page](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652277509/LovePlants/fb3_ge8dpr.jpg)
 ![Screenshots from Facebook page](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652277509/LovePlants/fb2_hu25xu.jpg)
 
-
-4. Email marketing \
+3. Email marketing \
 Love Plants uses email marketing to reach customers who have subscribed to the mailing list.  As an e-commerce store, it is hugely advantageous to notify customers of flash sales, price drops, new stock and featured products in a quick and convenient manner. 
 
 Love Plants users [Mailchimp](https://us18.admin.mailchimp.com/) to supply a 'Subscribe to Love Plants' form at the end of the homepage.  Users can enter an email address and will be notified when they have successfully joined the mailing list. 
 
 ![Subscribe Form]()
 
-5. Paid advertising
-6. Influence marketing
-7. Affiliate marketing
+## Further Marketing Strategies
+The following marketing strategies were not used for Love Plants, but would be advantageous to include in a real e-commerce store. 
 
-## Further Steps
-paid for social media marketing
+1. Content marketing \
+Aside from creating useful, engaging content within the website, such as the Care page to advise users how to care after their houseplants, additional content marketing strategies - such as blog posts, videos and podcasts - were not implemented during the development of the project. 
+
+2. Paid advertising
+3. Influence marketing
+4. Affiliate marketing
+5. Paid social media marketing
 
 [Back to top](#love-plants)
 
 # Deployment
 ### Local Deployment
-To run this project locally, you will need to clone the repository.  You will also need a Skywatch API key, and a Mapbox Access Token. 
-
-#### Mapbox Access Token
-1. Navigate to [Mapbox](https://www.mapbox.com/)
-2. Create an account with Mapbox.
-3. Navigate to your account page and click 'Create a Token' and create a Public Token
-
-![Mapbox create token](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644512336/mapboxacces_rgirat.jpg)
-![Mapbox public key](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644512336/mapboxaccesstoken_jefps0.jpg)
-
-#### Skywatch API Key
-Create an API key with Skywatch will require navigating to the [Request Access](https://www.skywatch.com/earthcache/get-access) webpage and then awaiting approval.  If there are any issues with requesting access, the developer can provide their own API key, but it is *really important* that this is only used for the purposes of testing the project locally, and that 'max_cost' in the 'create' view is kept to zero.
+To run this project locally, you will need to clone the repository.  
 
 #### Cloning Workspace
 1. Log in to [Github](https://github.com/)
-2. Select the repository MojosBeans100/ms4-spaceport
-3. Click the Code button and copy the HTTPS url, for example: https://github.com/MojosBeans100/ms4-spaceport.git
+2. Select the repository MojosBeans100/CI-MS5-loveplants
+3. Click the Code button and copy the HTTPS url, for example: https://github.com/MojosBeans100/CI-MS5-loveplants.git
 4. In your IDE, open a terminal and run the git clone command, for example
 
-<code>git clone https://github.com/MojosBeans100/ms4-spaceport.git</code>
+<code>git clone https://github.com/MojosBeans100/CI-MS5-loveplants.git</code>
 
 The repository will now be cloned to your workspace.
 
@@ -1078,21 +1075,21 @@ os.environ.setdefault('MAPBOX_KEY', TO BE ADDED BY USER')</code>
 To deploy this application to Heroku, run the following steps.
 
 1. Create an account at [heroku.com](https://id.heroku.com/)
-2. Create an app, give it a name - for example ms4spaceport - and select a region
+2. Create an app, give it a name - for example 'loveplants' - and select a region
 3. Under resources search for postgres, and add a Postgres database to the app
 4. Note the DATABASE_URL, this can be set as an environment variable in Heroku and your local deployment (env.py)
 5. Install the plugins dj-database-url and psycopg2-binary
 6. Run pip3 freeze > requirements.txt so both are added to the requirements.txt file
-7. Create a Procfile with the text: web: gunicorn ms4spaceport.wsgi:application for example
+7. Create a Procfile with the text: web: gunicorn ms5loveplants.wsgi:application for example
 8. In the settings.py ensure the connection is to the Heroku postgres database
 9. Ensure debug is set to false in the settings.py file
-10. Add localhost/127.0.0.1, and ms4spaceport.herokuapp.com to the ALLOWED_HOSTS variable in settings.py
+10. Add localhost/127.0.0.1, and ms5loveplants.herokuapp.com to the ALLOWED_HOSTS variable in settings.py
 11. Run "python3 manage.py showmigrations" to check the status of the migrations
 12. Run "python3 manage.py migrate" to migrate the database
 13. Run "python3 manage.py createsuperuser" to create a super/admin user
 14. Install gunicorn and add it to the requirements.tx file using the command pip3 freeze > requirements.txt
 15. From the CLI login to Heroku using the command heroku git:remote -a ms4spaceport
-16. Disable collectstatic in Heroku before any code is pushed using the command heroku config:set DISABLE_COLLECTSTATIC=1 -a ms4spaceport
+16. Disable collectstatic in Heroku before any code is pushed using the command heroku config:set DISABLE_COLLECTSTATIC=1 -a ms5loveplants
 17. Push the code to Heroku using the command git push heroku master
 18. Ensure the following environment variables are set in Heroku
 
