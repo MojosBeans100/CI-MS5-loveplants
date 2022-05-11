@@ -89,15 +89,14 @@
                                 <div class="col-5">
                                     <form method="POST" action="{% url 'product_like' item.product.id %}" class="form">
                                         {% csrf_token %}
-                                        <button title="Like product" class="text-center white-button"
-                                            style="height: 100%; width:100%">
+                                        <button title="Like product" class="text-center white-button w-100">
                                             {% if item.product.friendly_name in liked_list %}
                                             <i class="fa-solid fa-heart"></i>
                                             {% else %}
                                             <i class="fa-regular fa-heart"></i>
                                             {% endif %}
                                         </button>
-                                        <input style="width: 0; height: 0;" type="hidden" name="redirect_url"
+                                        <input type="hidden" name="redirect_url"
                                             value="{{ request.path }}">
                                     </form>
                                 </div>
@@ -105,9 +104,9 @@
                                     <form class="form update-basket border" method="POST"
                                         action="{% url 'edit_bag' item.item_id %}">
                                         {% csrf_token %}
-                                        <input style="width: 100%; border: black 1px solid;" type="number"
+                                        <input type="number"
                                             value={{item.quantity}} min=1 max={{item.product.stock_quantity}}
-                                            name="quantity" id="{{item.item_id}}" class="item_quantity text-center"
+                                            name="quantity" id="{{item.item_id}}" class="w-100 border border-dark item_quantity text-center"
                                             onchange="userUpdate();">
                                     </form>
                                 </div>
@@ -148,8 +147,8 @@
                         </div>
                         <hr>
                         <div class="col">
-                            <a href="{% url 'view_checkout' %}"><button style="height: 100%; width:100%;"
-                                    class="black-button text-center">Continue to
+                            <a href="{% url 'view_checkout' %}"><button
+                                    class="black-button text-center w-100">Continue to
                                     checkout <i class="ps-2 fa-solid fa-lock"></i></button></a>
                         </div>
                     </div>

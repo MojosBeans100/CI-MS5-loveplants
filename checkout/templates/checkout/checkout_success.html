@@ -84,7 +84,7 @@
 
                     {% for item in line_items %}
                     <tr>
-                        <td><img style="width: 100px; height: 100px;" src="{{item.product.image1_source_url}}"><br>
+                        <td><img class="checkout-imgs" src="{{item.product.image1_source_url}}"><br>
                             {{item.quantity}} x <a
                                 href="{% url 'product_detail' item.product.id %}">{{item.product}}</a>
                         </td>

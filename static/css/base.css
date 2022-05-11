@@ -412,11 +412,21 @@ input[type=number] {
     margin-left: 10%;
 }
 
+.toast-imgs {
+    height: 90px;
+    width: 90px;
+}
+
 /* -------- CHECKOUT -------- */
 #checkout-form-submit {
     width: 80%;
     margin-left: 10%;
     text-align: center !important;
+}
+
+.checkout-imgs {
+    width: 150px;
+    height: 150px;
 }
 
 #checkout-form-save {
