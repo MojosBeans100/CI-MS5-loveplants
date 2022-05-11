@@ -139,9 +139,6 @@
                                     <td><i class="fa-regular fa-star"></i></td>
                                     <td><i class="fa-regular fa-star"></i></td>
                                 </tr>
-                                <tr>
-                                    <td colspan="5" class="text-center"><small>({{reviews.count}} reviews)</small></td>
-                                </tr>
                                 {% else %}
                                 <tr class="text-center" id="append-star">
                                 </tr>
@@ -356,7 +353,7 @@
                 <h4>See other rare products</h4>
                 {% for rare in rare_products %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' rare.id %}"><img class="other-products-imgs p-3"
+                    <a href="{% url 'product_detail' rare.id %}"><img alt="{{rare.friendly_name}}" class="other-products-imgs p-3"
                             src="{{rare.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' rare.id %}">
                         <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
@@ -372,7 +369,7 @@
                 <h4>See other popular products</h4>
                 {% for popular in popular_products %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' popular.id %}"><img class="other-products-imgs p-3"
+                    <a href="{% url 'product_detail' popular.id %}"><img alt="{{popular.friendly_name}}" class="other-products-imgs p-3"
                             src="{{popular.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' popular.id %}">
                         <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
@@ -388,7 +385,7 @@
                 <h4>See other easy care products</h4>
                 {% for easy in easy_care %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' easy.id %}"><img class="other-products-imgs p-3"
+                    <a href="{% url 'product_detail' easy.id %}"><img alt="{{easy.friendly_name}}" class="other-products-imgs p-3"
                             src="{{easy.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' easy.id %}">
                         <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
@@ -405,7 +402,7 @@
                 <h4>Recently viewed products</h4>
                 {% for recent in recently_viewed %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' recent.id %}"><img class="other-products-imgs p-3"
+                    <a href="{% url 'product_detail' recent.id %}"><img alt="{{recent.friendly_name}}" class="other-products-imgs p-3"
                             src="{{recent.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' recent.id %}">
                         <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
@@ -423,7 +420,7 @@
                 <h4>More products</h4>
                 {% for product in more_products %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' product.id %}"><img class="other-products-imgs p-3"
+                    <a href="{% url 'product_detail' product.id %}"><img alt="{{product.friendly_name}}" class="other-products-imgs p-3"
                             src="{{product.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' product.id %}">
                         <p class="text-center"><strong>{{product.friendly_name}}</strong></p>

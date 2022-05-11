@@ -825,6 +825,8 @@ The 'Care' page provides users with further information about caring for their h
 In this website, a lot of text content is sourced from other websites which have more expertise in terms of houseplants. Any content which was not written by the developer is cited by providing a reference to the webpage.  
 
 5. Add relevant links to other parts of the site to keep users exploring more content
+- Users are linked to the 'Care' page from the product detail page
+- 
 
 6. Providing links to Privacy Policy and T&Cs to convey trustworthiness to the user.  The following websites were used to generate generic documents.
 [Terms and Conditions generator](https://www.termsandconditionsgenerator.com/)
@@ -849,7 +851,7 @@ https://developers.google.com/search/docs/advanced/sitemaps/build-sitemap
 2. Test robots.txt file
 https://support.google.com/webmasters/answer/6062598?hl=en
 
-### Google Raters
+3. Google Raters
 Expertise
 Authoritativeness
 Trustworthiness
