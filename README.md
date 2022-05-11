@@ -179,7 +179,7 @@ The primary goals of the website owner or admin are as follows:
 - To manage the stock quantity of products
 - To view, edit and delete customer orders
 - To encourage users to purchase more products
-- The view and moderate customer ratings and reviews
+- To view and moderate customer ratings and reviews
 
 ### User Stories
 All user stories are detailed in [this document](USER_STORIES.md), and in the [Issues](https://github.com/MojosBeans100/CI-MS5-loveplants/issues) subfolder in the Github repository for the project.
@@ -187,23 +187,22 @@ All user stories are detailed in [this document](USER_STORIES.md), and in the [I
 [Back to top](#love-plants)
 
 ## Scope
-The Scope plane determines the scope of the project
+The Scope plane determines the scope of the project \
 User Stories/Issues were mapped to Sprints (or Milestones) to plan for the current and next phase of the project. In general the Sprints were no longer than 2 weeks, and overall followed an organic order to developing an e-commerce website. 
-The first sprints contained the higher priority features, providing basic website functionality to meet the project requirements (eg, allow users to checkout items).  The later sprints contained features which were not considered necessary but enhanced the project (eg, allow users to log in via social media accounts).
+The first sprints contained the higher priority features, providing basic website functionality to meet the project requirements (eg, allow users to checkout items).  The later sprints contained features which were not considered necessary but enhanced the project (eg, allow users to like and review products).
 
 ### Sprints
-Sprint 1 - basic project set up: user authentication, create models, homepage templates, display products
-Sprint 2 - the 'Bag' and 'Checkout' apps: add, edit, delete products in bag and checkout the order
-Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products
-Sprint 4
-Sprint 5
+- Sprint 1 - basic project set up: user authentication, create models, homepage templates, display products \
+- Sprint 2 - the 'Bag' and 'Checkout' apps: add, edit, delete products in bag and checkout the order \
+- Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products \
+- Sprint 4
+- Sprint 5
 
 ### Epics, User Stories, Tasks
 Epics were defined based on the main functions the website was expected to have, which mostly revolved around the main CRUD functions of the database. These Epics were refined into smaller User Stories, which could then be broken down into manageable tasks for the developer to complete within the current project iteration. User acceptance criteria was determined for each Epic/User Story
 
 ### Priority
-Priority labels were assigned to each User Story/Issue, in order to determine which tasks to complete first in a Sprint. When the Issue was not completed, it could be included on another Sprint in order to complete it. 
-
+Priority labels were assigned to each User Story/Issue, in order to determine which tasks to complete first in a Sprint. When the Issue was not completed, it could be included on another Sprint in order to complete it. Some User Stories were not completed.
 
 ### Scope Creep
 ### Requirements
@@ -233,7 +232,7 @@ To maintain predictability for the user, standard website conventions are follow
 
 - the Love Plants logo is kept to the top left of the page, irregardless of the screen size
 - the main navigation menu is placed at the top of the page, and provides only a limited selection of options so as not to overwhelm the user
-- content hierarchy XXXX
+- the footer is kept fixed to the bottom of the screen, and contains contact information and useful links
 - **anchor links** are styled with an underline feature on hover
 - buttons represent important calls to action, such as submitting a form and maintain consistent colours as described [above](#consistency)
 - as in most e-commerce sites, the top right of the page contains links to the user's profile, bag, and log in/log out facilities
@@ -255,8 +254,9 @@ See below some examples of how the developer considered UX learnability when pre
 #### Visibility
 Decent UX/UI visibility is achieved on the website by providing obvious prompts and cues, and ensuring users are aware of all opportunities, for example:
 
-- the navbar remains fixed to the top of the page, providing the user to opportunity to navigate to 
+- the navbar remains fixed to the top of the page, providing the user to opportunity to navigate to all high order pages, such as the Store (products) and their bag items
 - users can obtain free delivery with a minimum basket total, ie by purchasing more products, and can see products which would increase their basket to this total
+- users can see the opportunity to 'like' products, with the heart icon in the nav bar and on product cards
 
 #### Feedback
 As users have significant interaction with the site, feedback on their actions was considered important.  This was provided by:
@@ -280,7 +280,41 @@ Information Architecture, or IA, was considered when creating the structure of t
 [Back to top](#love-plants)
 
 ## Skeleton
+The Skeleton plane defines the form, presentation, and arrangement of components defined in the Structure. 
+
 ### Interface Design
+Initial wireframes were designed during the project proposal stage to mock-up the main website pages (ie homepage, products, product detail, checkout etc).  During development, these designs evolved to better suit the website content, but provided the developer a framework to work from when designing the front-end.  
+
+#### Homepage
+![Homepage wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/homepage-desktop_gq7ele.png)
+
+![Homepage wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409738/LovePlants/ReadMe/Wireframes/homepage-mobile_znwctr.png)
+
+#### Products
+![Products wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-list-desktop_yq6xoh.png)
+
+![Products wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-list-mobile_apfu4a.png)
+
+#### Product Detail
+![Product detail wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-detail-desktop_blousk.png)
+
+![Product detail wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-detail-mobile_ujpi04.png)
+
+#### Shopping Basket
+![Shopping basket wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409738/LovePlants/ReadMe/Wireframes/bag-desktop_akbgpk.png)
+
+![Shopping basket wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409739/LovePlants/ReadMe/Wireframes/bag-mobile_jvlhka.png)
+
+#### Checkout
+![Checkout wireframe desktop]()
+
+![Checkout wireframe mobile]()
+
+#### Checkout Confirmation
+![Checkout confirmation wireframe desktop]()
+
+![Checkout confirmation wireframe mobile]()
+
 ### Navigation Design
 ### Information Design
  
@@ -493,63 +527,7 @@ Bootstrap was used to aid responsiveness, as well as media queries in CSS.  Java
 
 ## Style
 
-### Wireframes
-Initial wireframes were designed during the project proposal stage.  During development, when more was learned about the API and it's capabilities and restrictions, the designs evolved to include more information. 
 
-#### Homepage
-![Homepage wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/homepage-desktop_gq7ele.png)
-
-![Homepage wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409738/LovePlants/ReadMe/Wireframes/homepage-mobile_znwctr.png)
-
-#### Products
-![Products wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-list-desktop_yq6xoh.png)
-
-![Products wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-list-mobile_apfu4a.png)
-
-#### Product Detail
-![Product detail wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-detail-desktop_blousk.png)
-
-![Product detail wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409740/LovePlants/ReadMe/Wireframes/product-detail-mobile_ujpi04.png)
-
-#### Shopping Basket
-![Shopping basket wireframe desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409738/LovePlants/ReadMe/Wireframes/bag-desktop_akbgpk.png)
-
-![Shopping basket wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409739/LovePlants/ReadMe/Wireframes/bag-mobile_jvlhka.png)
-
-#### Checkout
-![Checkout wireframe desktop]()
-
-![Checkout wireframe mobile]()
-
-#### Checkout Confirmation
-![Checkout confirmation wireframe desktop]()
-
-![Checkout confirmation wireframe mobile]()
-
-#### Liked Products
-![Liked products wireframe desktop]()
-
-![Liked products wireframe mobile]()
-
-#### Rate and Review products
-![Rate/review wireframe desktop]()
-
-![Rate/review wireframe mobile]()
-
-#### Purchase History
-![Purchase history wireframe desktop]()
-
-![Purchase history wireframe mobile]()
-
-#### Create Account
-![Create an account wireframe desktop]()
-
-![Create an account wireframe mobile]()
-
-#### Log In
-![Log in]()
-
-#### Sign Out
 
 
 ### Font

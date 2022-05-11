@@ -379,7 +379,7 @@
                 <!-- product name and price -->
                 <div class="card-body text-start">
                     <a href="{% url 'product_detail' product.id %}">
-                        <h5 class="card-title">{{product.friendly_name|upper}} {{product.average_rating}}
+                        <h5 class="card-title">{{product.friendly_name|upper}}
                             {% if user.is_superuser %}({{product.stock_quantity}}){% endif %}</h5>
                     </a>
                     {% if product.latin_name %}
@@ -390,6 +390,9 @@
                     <p class="card-text"><del>£{{product.price}}</del>&nbsp; £{{product.sale_price}}</p>
                     {% else %}
                     <p class="card-text">£{{product.price}}</p>
+                    {% endif %}
+                    {% if product.average_rating != 0 %}
+                    <p>{{product.average_rating|floatformat:0}} <i class="fa-solid fa-star"></i></p>
                     {% endif %}
 
                 </div>
@@ -481,13 +484,21 @@
         var id = parseInt(element.id);
         var url = `/products/product_like/${id}`;
         var redirect_url = '/products/products.html'
+        data = {
+            'redirect_url': redirect_url
+        }
+
+        console.log(id)
+        console.log(url)
+        console.log(redirect_url)
 
         // post to the view
         var response = fetch(url, {
             method: 'POST',
             headers: {
                 "X-CSRFToken": csrfToken
-            }
+            },
+            body: data,
         });
 
         // change the color of the product

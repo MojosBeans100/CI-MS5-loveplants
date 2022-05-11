@@ -280,27 +280,27 @@ def product_like(request, id):
 
         try:
             product = Product.objects.get(pk=id)
+            if ProductReview.objects.filter(product=product,
+                                            user=request.user).exists():
+                product_review = ProductReview.objects.get(product=product,
+                                                        user=request.user)
+                if product_review.liked is True:
+                    product_review.liked = False
+                    product_review.save()
+                else:
+                    product_review.liked = True
+                    product_review.save()
+            else:
+                product_review = ProductReview(product=product,
+                                            user=request.user,
+                                            liked=True)
+                product_review.save()
+
         except Product.DoesNotExist:
             return render(request, 'home/404.html')
 
-        if ProductReview.objects.filter(product=product,
-                                        user=request.user).exists():
-            product_review = ProductReview.objects.get(product=product,
-                                                       user=request.user)
-            if product_review.liked is True:
-                product_review.liked = False
-                product_review.save()
-            else:
-                product_review.liked = True
-                product_review.save()
-        else:
-            product_review = ProductReview(product=product,
-                                           user=request.user,
-                                           liked=True)
-            product_review.save()
-
     redirect_url = request.POST.get('redirect_url')
-    return redirect(redirect_url)
+    return redirect(reverse('products/products.html'))
 
 
 def product_review(request, id):
