@@ -9,29 +9,101 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
 - [Project Overview](#project-overview)
 - [UX](#ux)
   - [Strategy](#strategy)
+    - [Site User](#site-user)
+    - [Admin User](#admin-user)
+    - [User Stories](#user-stories)
   - [Scope](#scope)
+    - [Sprints](#sprints)
+    - [Epics, User Stories, Tasks](#epics-user-stories-tasks)
+    - [Priority](#priority)
+    - [Scope Creep](#scope-creep)
+    - [Requirements](#requirements)
   - [Structure](#structure)
+    - [Interaction Design](#interaction-design)
+      - [Consistency](#consistency)
+      - [Predictability](#predictability)
+      - [Learnability](#learnability)
+      - [Visibility](#visibility)
+      - [Feedback](#feedback)
+    - [Information Architecture](#information-architecture)
   - [Skeleton](#skeleton)
+    - [Interface Design](#interface-design)
+    - [Navigation Design](#navigation-design)
+    - [Information Design](#information-design)
   - [Surface](#surface)
+    - [Visual Design](#visual-design)
 - [Database](#database)
   - [Database Structure](#database-structure)
   - [Models](#models)
+    - [User (Django context processor)](#user-django-context-processor)
+    - [Home App](#home-app)
+    - [Profiles App](#profiles-app)
+    - [UserProfile](#userprofile)
+    - [Products App](#products-app)
+      - [Product](#product)
+      - [Category](#category)
+      - [Plant Category](#plant-category)
+      - [Recently Viewed](#recently-viewed)
+      - [Product Review](#product-review)
+    - [Bag App](#bag-app)
+    - [Checkout App](#checkout-app)
+      - [Order](#order)
+      - [OrderLineItem](#orderlineitem)
+    - [Pages](#pages)
   - [Style](#style)
+    - [Wireframes](#wireframes)
+      - [Homepage](#homepage)
+      - [Products](#products)
+      - [Product Detail](#product-detail)
+      - [Shopping Basket](#shopping-basket)
+      - [Checkout](#checkout)
+      - [Checkout Confirmation](#checkout-confirmation)
+      - [Liked Products](#liked-products)
+      - [Rate and Review products](#rate-and-review-products)
+      - [Purchase History](#purchase-history)
+      - [Create Account](#create-account)
+      - [Log In](#log-in)
+      - [Sign Out](#sign-out)
+    - [Font](#font)
+    - [Colours](#colours)
+    - [Layout](#layout)
   - [Scope](#scope)
+    - [Site User Stories](#site-user-stories)
   - [User Stories Strategy](#user-stories-strategy)
-  - [User Stories](#user-stories)
 - [Features](#features)
   - [Homepage](#homepage)
   - [Products](#products)
+    - [Filter Products](#filter-products)
+    - [Sort Products](#sort-products)
+    - [Product List](#product-list)
   - [Product Detail](#product-detail)
+    - [Breadcrumb Navigation](#breadcrumb-navigation)
+    - [Images](#images)
+    - [Additional Details](#additional-details)
+    - [Reviews](#reviews)
+    - [Review Form](#review-form)
+    - [Suggested Products](#suggested-products)
+    - [Add To Bag](#add-to-bag)
   - [Bag](#bag)
+    - [Product List](#product-list)
+    - [Free Delivery](#free-delivery)
+    - [Price Breakdown](#price-breakdown)
+    - [Suggested Products](#suggested-products)
   - [Checkout](#checkout)
+    - [User Details](#user-details)
+    - [Bag Contents](#bag-contents)
+    - [Order Summary](#order-summary)
+    - [Payment Section](#payment-section)
+    - [Form Submitted](#form-submitted)
   - [Checkout Confirmation](#checkout-confirmation)
   - [Profile](#profile)
+    - [Profile Details](#profile-details)
+    - [Default Order Information](#default-order-information)
+    - [Order History](#order-history)
   - [Liked Products](#liked-products)
   - [Add Product (admin)](#add-product-admin)
   - [Edit Product (admin)](#edit-product-admin)
-  - [Copy/duplicate Product (admin)](#copyduplicate-product-admin)
+  - [Create Sale (admin)](#create-sale-admin)
   - [Error Pages](#error-pages)
   - [Notifications](#notifications)
   - [Sign Up](#sign-up)
@@ -44,17 +116,44 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
   - [Django](#django)
   - [Other Libraries](#other-libraries)
 - [Testing](#testing)
+- [Search Engine Optimisation (SEO)](#search-engine-optimisation-seo)
+  - [Site content](#site-content)
+  - [Keywords](#keywords)
+    - [Research](#research)
+    - [Optimisation](#optimisation)
+    - [Implementation](#implementation)
+      - [Metadata](#metadata)
+      - [Semantic Content](#semantic-content)
+  - [Images](#images)
+    - [Optimizing Images for SEO](#optimizing-images-for-seo)
+    - [Improvements for Images for SEO](#improvements-for-images-for-seo)
+  - [Responsiveness](#responsiveness)
+  - [Links to useful pages](#links-to-useful-pages)
+  - [Expertise, Authoritativeness, Trustworthiness](#expertise-authoritativeness-trustworthiness)
+  - [Sitemap.xml](#sitemapxml)
+  - [Robots.txt](#robotstxt)
+  - [Further Steps](#further-steps)
+- [Marketing](#marketing)
+  - [Further Steps](#further-steps)
 - [Deployment](#deployment)
+    - [Local Deployment](#local-deployment)
+      - [Mapbox Access Token](#mapbox-access-token)
+      - [Skywatch API Key](#skywatch-api-key)
+      - [Cloning Workspace](#cloning-workspace)
+    - [Heroku Deployment](#heroku-deployment)
 - [Limitations](#limitations)
   - [Products](#products)
+  - [Description/ Care Instructions](#description-care-instructions)
+- [Unfixed Bugs](#unfixed-bugs)
+  - [Product Images](#product-images)
 - [Media](#media)
 - [Credits](#credits)
 - [Acknowledgements](#acknowledgements)
 
 # Project Overview
 - This website was developed for submission as the Milestone 5 project of the Code Institute Diploma in Software Development.
-- The website is deployed using the Heroku pages at the following url: XXXX
-- The repository on Github that contains the website source code and assets is available at the following url: XXXX
+- The website is deployed using the Heroku pages at the following url: https://ms5loveplants.herokuapp.com/
+- The repository on Github that contains the website source code and assets is available at the following url: https://github.com/MojosBeans100/CI-MS5-loveplants
 - The website was built with a responsive look and feel, designed to be enjoyable to use on all screen sizes. 
 
 [Back to top](#love-plants)
@@ -104,6 +203,7 @@ Epics were defined based on the main functions the website was expected to have,
 
 ### Priority
 Priority labels were assigned to each User Story/Issue, in order to determine which tasks to complete first in a Sprint. When the Issue was not completed, it could be included on another Sprint in order to complete it. 
+
 
 ### Scope Creep
 ### Requirements
@@ -166,6 +266,8 @@ As users have significant interaction with the site, feedback on their actions w
 - **possible actions** available to them, 
 - **communicating the context**, such as
 
+[Back to top](#love-plants)
+
 ### Information Architecture
 Information Architecture, or IA, was considered when creating the structure of the website, to allow users to understand where the information they want is in relation to their current position, and to deliver the right information at the right time.  Additionally:
 
@@ -174,6 +276,8 @@ Information Architecture, or IA, was considered when creating the structure of t
 - a **database schema** was used to design the database models, and to understand how they communicate with one another. (See further information on the [database]())
 
 - **content inventory** was provided by the in-built Django Admin panel, to maintain a database of products.  This is effectively mirrored in the front-end, with a more user-friendly option for the admin to, for example, create a product
+
+[Back to top](#love-plants)
 
 ## Skeleton
 ### Interface Design
@@ -187,8 +291,12 @@ Data at rest - database
 Data in motion - pulled from db
 Data as presented 
 
+[Back to top](#love-plants)
+
 ## Surface
 ### Visual Design
+
+[Back to top](#love-plants)
 
 # Database
 
@@ -213,6 +321,8 @@ The database includes:
 - USER_STORIES.md, to list all user stories
 
 ![structure schema]()
+
+[Back to top](#love-plants)
 
 ## Models
 The models created to develop this e-commerce project are defined in this section. 
@@ -317,6 +427,8 @@ The Profiles App provides the user the ability to create their website profile, 
 |review_time_ago|how many days/weeks/months ago the user left the review|CharField|
 |liked|whether the user 'likes' the product|BooleanField|
 
+[Back to top](#love-plants)
+
 ### Bag App
 The Bag App serves to provide a temporary session to allow users to add products to their bag.  
 It contains no models. 
@@ -359,7 +471,7 @@ The Checkout App provides the structure for users to create an order and purchas
 |quantity|the quantity of this item on the order|IntegerField|
 |lineitem_total|the total cost of this line item|DecimalField|
 
-[Back to top](#spaceport)
+[Back to top](#love-plants)
 
 ### Pages
 The website has five main pages, with user authentication on XXXX:
@@ -452,7 +564,7 @@ The font style is the default Bootstrap 5 native sans-serif font stack for cross
 
 
 
-[Back to top](#spaceport)
+[Back to top](#love-plants)
 
 ## Scope
 ### Site User Stories
@@ -464,7 +576,7 @@ The User Stories were designated a priority label to complete within the iterati
 
 All User Stories which were not completed had a 'could-have' label assigned to them, updated to 'won't-have' at final deployment, as they were additional features which did not affect the main functionality of the website. These User Stories could be completed if there was an opportunity for another iteration for this project.
 
-[Back to top](#spaceport)
+[Back to top](#love-plants)
 
 # Features
 The section provides an overview of all features found in the website. 
@@ -531,6 +643,8 @@ Further details about the product are provided for the user to learn more about 
 
 ![Product details](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productdetail_rfhvws.jpg)
 
+[Back to top](#love-plants)
+
 ### Reviews
 (User Story X)
 If any reviews have been left by users for the product, they are displayed in a set of rows beneath the care instructions.  Users can see the average rating, how many reviews have been given, comments written by users, and how long ago they were left. 
@@ -588,6 +702,8 @@ Another list of suggested products are included on this page. This list is not o
 
 ![Suggested products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/suggestproducts_iuh13q.jpg)
 
+[Back to top](#love-plants)
+
 ## Checkout
 The checkout page requires users to input their delivery details and payment information.
 
@@ -621,6 +737,8 @@ Users have immediate feedback that their order is processing by displaying a 'lo
 
 ![Submitted order](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/desktop_yqyx3x.jpg)
 
+[Back to top](#love-plants)
+
 ## Checkout Confirmation
 (User Story X)
 The checkout confirmation/checkout success page displays details of the submitted order.  Users have confirmation it has been received.  All details about the order are provided for the user to verify.  There are no calls to action on this page.
@@ -628,6 +746,8 @@ The checkout confirmation/checkout success page displays details of the submitte
 ![Checkout confirmation 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125593/LovePlants/ReadMe/checkoutconfirm1_hdd4tp.jpg)
 
 ![Checkout confirmation 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125593/LovePlants/ReadMe/checkoutconfirm2_ciusdm.jpg)
+
+[Back to top](#love-plants)
 
 ## Profile
 The profile page displays information about the user.
@@ -650,6 +770,8 @@ Users can see a list of previous orders they have submitted, expanded each item 
 
 ![Order history]()
 
+[Back to top](#love-plants)
+
 ## Liked Products
 (User Story X)
 This brief page display products the user has 'liked', and links to the product detail for each product. 
@@ -671,6 +793,8 @@ Admin users can also edit the details of products.  This page also allows admin 
 Admin users can put items on sale with this page.  They can apply a discount to all products or individual products, either by a percentage or a fixed amount.  They can also remove the sale price on this page, to revert products back to their original prices. 
 
 ![Create sale]()
+
+[Back to top](#love-plants)
 
 ## Error Pages
 ## Notifications
@@ -868,7 +992,7 @@ Dwell time - how long user stays on page before click back through search result
 Session time - how long user spend on site as a whole
 Pagers per session - how many pages users visited before moving on
 
-
+[Back to top](#love-plants)
 
 # Marketing
 1. SEO
@@ -895,6 +1019,7 @@ Mailchimp
 ## Further Steps
 paid for social media marketing
 
+[Back to top](#love-plants)
 
 # Deployment
 ### Local Deployment
@@ -938,6 +1063,8 @@ os.environ.setdefault('MAPBOX_KEY', TO BE ADDED BY USER')</code>
 12. Start the application by running python3 manage.py runserver
 13. Open the application in a web browser, for example: http://127.0.0.1:8000/
 
+[Back to top](#love-plants)
+
 ### Heroku Deployment
 To deploy this application to Heroku, run the following steps.
 
@@ -969,6 +1096,8 @@ To deploy this application to Heroku, run the following steps.
 20. Click on the link provided to access the application
 21. If you encounter any issues accessing the build logs is a good way to troubleshoot the issue
 
+[Back to top](#love-plants)
+
 # Limitations
 ## Products
 To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to source or owner of the image.  
@@ -989,7 +1118,9 @@ As all images are sourced from 3rd party sites (all images are attributed to the
 
 The images are also highly varying in terms of the way the plant is style, presented, and the background colours and contents. 
 
-While this is unfortunate, the developer felt it was important to build up a reasonable database of products and thus these images were deemed acceptable for the purpose of creating this e-commerce project.  In reality, a true e-commerce store would most likely have original photos which aligned better in terms of content and size. 
+While this is unfortunate, the developer felt it was important to build up a reasonable database of products and thus these images were deemed acceptable for the purpose of creating this e-commerce project.  In reality, a true e-commerce store would most likely have original photos which aligned better in terms of content and size.
+
+[Back to top](#love-plants)
 
 # Media
 Images used on the site were sourced from the following sources.  Images which are free to use publicy were desirable, however when this was not possible the images are credited.
@@ -1016,6 +1147,8 @@ Images used on the site were sourced from the following sources.  Images which a
 - Fine Art America
 - Farmonaut
 
+[Back to top](#love-plants)
+
 # Credits
 
 Images as acknowledged above
@@ -1032,3 +1165,5 @@ I'd like to thank my mentor, Mo Shami, for providing me support throughout the d
 I'd like to thank tutor support at Code Institute for many hours of technical help.
 
 I'd like to thank my family for taking time to use my project website and providing me helpful feedback. 
+
+[Back to top](#love-plants)
