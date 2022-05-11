@@ -316,19 +316,46 @@ Initial wireframes were designed during the project proposal stage to mock-up th
 ![Checkout confirmation wireframe mobile]()
 
 ### Navigation Design
-### Information Design
- 
-Facilitate the structure ie what form the structure will take
-Buttons, links, navs
-Icons
-Data at rest - database
-Data in motion - pulled from db
-Data as presented 
+Navigation design was considered based on the main functions of the website. A typical user wishes to:
+
+- determine the purpose of the site, and what kind of products to expect (users are directed to the homepage intially)
+- view all available products (users can access the products page directly through the nav bar, or via the calls to action on the homepage)
+- narrow their search down to one or a few products (users can choose products they wish to view on the products page and are directed to the product detail page)
+- view the items they have in their bag (once added, the notification presents the user their bag, also accessible via the bag icon in the nav bar)
+- buy their items (from their bag there is an evident link to checkout)
+- view confirmation that their purchase has been successful (once purchased, users are directed to the checkout confirmation)
+
+This organic process for typical e-commerce site users was kept in mind when determining the layout of pages, content and available calls to action.
 
 [Back to top](#love-plants)
 
 ## Surface
+The look and feel of the website was considered when designing the visual elements of the product, to produce a polished product which brings together all other UX planes. Love Plants wishes users to choose their store over another store, thus visual design was an important aspect of the UX strategy. 
+
 ### Visual Design
+Some aspects of visual design considered when developing Love Plants are detailed below. 
+
+#### Alignment
+In general, text is aligned left to support our natural reading pattern of left-to-right.  
+
+Product cards align text left:
+![Product card](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652300219/LovePlants/alignment_oyt7cu.jpg)
+
+#### Repetition
+Buttons maintain the same style and text throughout the site, with either white-on-black or black-on-white depending on the background.
+
+![Button 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652300398/LovePlants/black_u5o148.jpg)
+![Button 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652300397/LovePlants/button_hfiqzy.jpg)
+
+#### Contrast and Colour
+Contrast is used effectively on the website, as colours are minimised to white, black, and colour from product images. 
+Text is clearly readable on all pages, and products are a welcomed splash of colour amidst an otherwise monochrome webpage. 
+
+#### Consistency
+Consistency is maintained through all elements.  One example of this is the layout of the page content.  On all pages, aside from the homepage, content is in a centered container which responds to the screen size (on smaller screens the container fills the screen, on larger screens there is padding around the container).  The user knows where to expect to see content when navigating to another page. 
+
+#### Typography
+Love Plants uses a different font to the standard Times New Roman, Arial, or native Bootstrap font.  The Raleway font was chosen because it is pleasant with an almost 'handwriting' effect, but maintains readability. 
 
 [Back to top](#love-plants)
 
