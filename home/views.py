@@ -34,3 +34,9 @@ def care(request):
     """ Return the care page """
 
     return render(request, 'home/care.html')
+
+
+def faq(request):
+    """ Return the FAQ page """
+
+    return render(request, 'home/faq.html')

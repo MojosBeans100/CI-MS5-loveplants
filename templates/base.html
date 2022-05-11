@@ -158,10 +158,10 @@
             <h5 class="m-sm-0 p-sm-0">Connect with us on social media</h5>
           </div>
           <div class="col-12 col-sm-4 text-end d-flex justify-content-evenly">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-linkedin-in"></i>
+            <a><i class="fa-brands fa-instagram"></i></a>
+            <a rel="noopener" target="_blank" href="https://www.facebook.com/loveplantsstore/"><i class="fa-brands fa-facebook-f text-white"></i></a>
+            <a><i class="fa-brands fa-twitter"></i></a>
+            <a><i class="fa-brands fa-linkedin-in"></i></a>
           </div>
         </div>
         <hr>
@@ -195,9 +195,7 @@
                   href="{% url 'ts_and_cs' %}">Terms & Conditions</a></li>
               <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white"
                   href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
-              <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white" href="#">About Us</a></li>
-              <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white" href="#">Customer Service</a>
-              </li>
+              <li class="list-group-item bg-dark border-0 px-0 py-1"><a class="text-white" href="{% url 'faq' %}">FAQ</a></li>
 
             </ul>
           </div>

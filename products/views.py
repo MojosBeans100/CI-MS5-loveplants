@@ -180,7 +180,12 @@ def product_detail(request, id):
     already_reviewed = None
     form = None
     purchase_date = None
-    product = get_object_or_404(Product, pk=id)
+
+    try:
+        product = Product.objects.get(pk=id)
+    except Product.DoesNotExist:
+        return render(request, 'home/404.html')
+
     product_reviews = ProductReview.objects.filter(product=product.id)
     product_reviews = product_reviews.exclude(review="")
 
@@ -273,7 +278,11 @@ def product_like(request, id):
 
     if request.method == 'POST':
 
-        product = Product.objects.get(id=id)
+        try:
+            product = Product.objects.get(pk=id)
+        except Product.DoesNotExist:
+            return render(request, 'home/404.html')
+
         if ProductReview.objects.filter(product=product,
                                         user=request.user).exists():
             product_review = ProductReview.objects.get(product=product,
@@ -445,7 +454,11 @@ def admin_edit_product(request, id):
     """
 
     if request.user.is_superuser:
-        product = Product.objects.get(id=id)
+        try:
+            product = Product.objects.get(pk=id)
+        except Product.DoesNotExist:
+            return render(request, 'home/404.html')
+            
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
@@ -590,8 +603,13 @@ def admin_delete_product(request, id):
     """
 
     if request.user.is_superuser:
+
         try:
-            product = Product.objects.get(id=id)
+            product = Product.objects.get(pk=id)
+        except Product.DoesNotExist:
+            return render(request, 'home/404.html')
+
+        try:
             product.delete()
             messages.success(
                 request,

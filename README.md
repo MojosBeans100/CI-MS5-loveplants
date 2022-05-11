@@ -1014,8 +1014,12 @@ This marketing platform allows Love Plants to build the brand, connect and inter
 ![Screenshots from Facebook page](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652277509/LovePlants/fb2_hu25xu.jpg)
 
 
-4. Email marketing [x]
-Mailchimp
+4. Email marketing \
+Love Plants uses email marketing to reach customers who have subscribed to the mailing list.  As an e-commerce store, it is hugely advantageous to notify customers of flash sales, price drops, new stock and featured products in a quick and convenient manner. 
+
+Love Plants users [Mailchimp](https://us18.admin.mailchimp.com/) to supply a 'Subscribe to Love Plants' form at the end of the homepage.  Users can enter an email address and will be notified when they have successfully joined the mailing list. 
+
+![Subscribe Form]()
 
 5. Paid advertising
 6. Influence marketing
