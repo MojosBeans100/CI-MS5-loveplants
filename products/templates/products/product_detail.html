@@ -100,8 +100,7 @@
                                 <i class="fa-regular fa-heart"></i> Like this product
                                 {% endif %}
                             </button>
-                            <input type="hidden" name="redirect_url"
-                                value="{{ request.path }}">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </form>
                     </div>
                     {% endif %}
@@ -129,8 +128,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-4 offset-4">
-                        <table class="table table-borderless mb-0">
+                    <div class="col-12 d-flex justify-content-center">
+                        <table class="table table-borderless mb-0 w-50">
                             <tbody>
                                 {% if reviews.count == 0 %}
                                 <tr>
@@ -146,20 +145,12 @@
                                 {% else %}
                                 <tr class="text-center" id="append-star">
                                 </tr>
-                                <tr>
-                                    <td class="text-center" colspan="5" id="avg-rating">
-
-                                        {{product.average_rating|floatformat:1}}/5</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td colspan="5" class="text-center"><small><a
-                                                href="#product-review-title">({{reviews.count}} reviews)</a></small>
-                                    </td>
-                                </tr>
                                 {% endif %}
                             </tbody>
                         </table>
                     </div>
+                    <p id="avg-rating" class="text-center">{{product.average_rating|floatformat:1}}/5 <a
+                            href="#product-review-title">({{reviews.count}})</a></p>
                 </div>
                 <hr>
 
@@ -196,8 +187,7 @@
                                     <input id="add-to-bag" type="submit" class="text-center" value="Add to bag">
                                 </div>
                             </div>
-                            <input type="hidden" name="redirect_url"
-                                value="{{ request.path }}">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </form>
                         {% endif %}
                     </div>
@@ -252,7 +242,7 @@
                 <!-- reviews form and rating display -->
                 <div class="row">
 
-                    
+
                     <hr>
 
                     {% if already_reviewed %}
@@ -280,8 +270,7 @@
                                     between 1 and 5</p>
                             </div>
 
-                            <input type="hidden" name="redirect_url"
-                                value="{{ request.path }}">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
 
                             <div class="row d-flex justify-content-center">
                                 <button type="submit" id="product-review-submit" class="my-3 w-50 black-button"
@@ -312,141 +301,145 @@
             {% if reviews %}
             <div class="row">
 
-                <div class="col-2">
-                </div>
-
-                <div class="col-12 col-md-8 py-3">
+                <div class="col-12 col-md-8 offset-md-2 py-3">
                     <h2 class="text-center" id="product-review-title">Reviews</h2>
                     <table class="table table-borderless w-25 mx-auto mb-0">
                         <tr class="text-center" id="append-star2">
                         </tr>
                     </table>
-                    <p class="text-center avg-rating">{{product.average_rating|floatformat:1}}/5<br>
-                        (based on {{reviews.count}} reviews)</p>
+                    <p class="text-center avg-rating">{{product.average_rating|floatformat:1}}/5 ({{reviews.count}})
+                    </p>
 
 
                     {% for review in reviews %}
                     {% if review.review %}
                     <div class="row py-2">
-                        <div class="col">
-                            <p>{{review.review}} </p>
+                        <h5>{{review.user}} | {{review.review_time_ago}} days ago</h5>
+
+                        <div class="row justify-content-start">
+
                             <table class="table table-borderless w-25">
                                 <tbody>
                                     <tr class="ratings-tables"></tr>
                                 </tbody>
                             </table>
-                            <p style="display: none;" class="review-rating">{{review.rating}}</p>
-                            <p><small><em>{{review.user}} | {{review.review_time_ago}} days ago</em></small></p>
-                        </div>
-                        <div class="col text-end">
-                            <p class="review-stars"></p>
-                        </div>
-                        <hr>
-                    </div>
-                    {% endif %}
-                    {% endfor %}
-                </div>
 
-                <div class="col-2">
+                        </div>
+
+                        <p>{{review.review}} </p>
+                        <p style="display: none;" class="review-rating">{{review.rating}}</p>
+
+                        <!-- <p>{{review.review}} </p>
+                            
+                            <p style="display: none;" class="review-rating">{{review.rating}}</p>
+                            <p><small><em>{{review.user}} | {{review.review_time_ago}} days ago</em></small></p> -->
+                    </div>
+
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+        {% else %}
+        {% endif %}
+
+        <hr>
+
+        <!-- similar products, other recommended products -->
+        <div>
+            <div class="py-4 row">
+                <h3 class="text-center">You may also like</h3>
+                <div class="row">
+                    <div class="col"></div>
                 </div>
             </div>
+
+            <!-- if product is rare, list other rare products -->
+            {% if product.rare == True %}
+            <div class="my-4 row">
+                <h4>See other rare products</h4>
+                {% for rare in rare_products %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="{% url 'product_detail' rare.id %}"><img class="other-products-imgs p-3"
+                            src="{{rare.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' rare.id %}">
+                        <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- if product is popular, list other popular products -->
+            {% if product.popular == True %}
+            <div class="my-4 row">
+                <h4>See other popular products</h4>
+                {% for popular in popular_products %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="{% url 'product_detail' popular.id %}"><img class="other-products-imgs p-3"
+                            src="{{popular.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' popular.id %}">
+                        <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- if product is easy care, list other easy care products -->
+            {% if product.care_required == 'low' %}
+            <div class="my-4 row">
+                <h4>See other easy care products</h4>
+                {% for easy in easy_care %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="{% url 'product_detail' easy.id %}"><img class="other-products-imgs p-3"
+                            src="{{easy.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' easy.id %}">
+                        <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- list recently viewed products -->
+            {% if user.is_authenticated %}
+            {% if recently_viewed %}
+            <div class="row my-3">
+                <h4>Recently viewed products</h4>
+                {% for recent in recently_viewed %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="{% url 'product_detail' recent.id %}"><img class="other-products-imgs p-3"
+                            src="{{recent.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' recent.id %}">
+                        <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
             {% else %}
             {% endif %}
 
-            <!-- similar products, other recommended products -->
-            <div>
-                <div class="py-4 row">
-                    <h3 class="text-center">You may also like</h3>
-                    <div class="row">
-                        <div class="col"></div>
-                    </div>
+            <!-- list further products if not popular, rare etc -->
+            {% if more_products %}
+            <div class="row my-3">
+                <h4>More products</h4>
+                {% for product in more_products %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="{% url 'product_detail' product.id %}"><img class="other-products-imgs p-3"
+                            src="{{product.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' product.id %}">
+                        <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                    </a>
                 </div>
-
-                <!-- if product is rare, list other rare products -->
-                {% if product.rare == True %}
-                <div class="my-4 row">
-                    <h4>See other rare products</h4>
-                    {% for rare in rare_products %}
-                    <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' rare.id %}"><img class="other-products-imgs p-3"
-                                src="{{rare.image1_source_url}}"></a>
-                        <a href="{% url 'product_detail' rare.id %}">
-                            <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                <!-- if product is popular, list other popular products -->
-                {% if product.popular == True %}
-                <div class="my-4 row">
-                    <h4>See other popular products</h4>
-                    {% for popular in popular_products %}
-                    <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' popular.id %}"><img class="other-products-imgs p-3"
-                                src="{{popular.image1_source_url}}"></a>
-                        <a href="{% url 'product_detail' popular.id %}">
-                            <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                <!-- if product is easy care, list other easy care products -->
-                {% if product.care_required == 'low' %}
-                <div class="my-4 row">
-                    <h4>See other easy care products</h4>
-                    {% for easy in easy_care %}
-                    <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' easy.id %}"><img class="other-products-imgs p-3"
-                                src="{{easy.image1_source_url}}"></a>
-                        <a href="{% url 'product_detail' easy.id %}">
-                            <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-
-                <!-- list recently viewed products -->
-                {% if user.is_authenticated %}
-                {% if recently_viewed %}
-                <div class="row my-3">
-                    <h4>Recently viewed products</h4>
-                    {% for recent in recently_viewed %}
-                    <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' recent.id %}"><img class="other-products-imgs p-3"
-                                src="{{recent.image1_source_url}}"></a>
-                        <a href="{% url 'product_detail' recent.id %}">
-                            <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
-                {% else %}
-                {% endif %}
-
-                <!-- list further products if not popular, rare etc -->
-                {% if more_products %}
-                <div class="row my-3">
-                    <h4>More products</h4>
-                    {% for product in more_products %}
-                    <div class="col-sm-4 col-lg-3">
-                        <a href="{% url 'product_detail' product.id %}"><img class="other-products-imgs p-3"
-                                src="{{product.image1_source_url}}"></a>
-                        <a href="{% url 'product_detail' product.id %}">
-                            <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                {% endif %}
+                {% endfor %}
             </div>
+            {% endif %}
         </div>
     </div>
+</div>
 </div>
 {{ product.average_rating|json_script:"avg_rating" }}
 

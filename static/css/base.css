@@ -321,13 +321,14 @@ button {
 
 .other-products-imgs {
     width: 100%;
-    height: 60%
+    height: 220px;
 }
 
 #product-detail-add {
     box-shadow: 0 0 2px 1px rgb(238, 235, 235) !important;
     position: fixed;
     bottom: 0;
+    z-index: 999;
 }
 
 .qty_input,

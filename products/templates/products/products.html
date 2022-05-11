@@ -288,28 +288,28 @@
                                 {% if current_sorting == 'rating_desc' %}Rating (high to low){% endif %}
                                 {% if current_sorting == 'name_asc' %}Name (A-Z){% endif %}
                                 {% if current_sorting == 'name_desc' %}Name (Z-A){% endif %}
-                                {% if current_sorting == 'category_asc' %}Category (A-Z){% endif %}
-                                {% if current_sorting == 'category_desc' %}Category (Z-A){% endif %}
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <li><a class="dropdown-item"
-                                        href="{% url 'products' %}?sort=price&direction=asc{{current_filters}}">Price
+                                        href="{% url 'products' %}?{{current_filters}}&sort=price&direction=asc">Price
                                         (low-high)</a></li>
                                 <li><a class="dropdown-item"
-                                        href="{% url 'products' %}?sort=price&direction=desc{{current_filters}}">Price
+                                        href="{% url 'products' %}?{{current_filters}}&sort=price&direction=desc">Price
                                         (high-low)</a></li>
                                 <li><a class="dropdown-item"
-                                        href="{% url 'products' %}?sort=average_rating&direction=asc">Rating
+                                        href="{% url 'products' %}?{{current_filters}}&sort=average_rating&direction=asc">Rating
                                         (low-high)</a>
                                 </li>
                                 <li><a class="dropdown-item"
-                                        href="{% url 'products' %}?sort=average_rating&direction=desc">Rating
+                                        href="{% url 'products' %}?{{current_filters}}&sort=average_rating&direction=desc">Rating
                                         (high-low)</a>
                                 </li>
-                                <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=asc">Name
+                                <li><a class="dropdown-item"
+                                        href="{% url 'products' %}?{{current_filters}}&sort=name&direction=asc">Name
                                         (A-Z)</a></li>
-                                <li><a class="dropdown-item" href="{% url 'products' %}?sort=name&direction=desc">Name
+                                <li><a class="dropdown-item"
+                                        href="{% url 'products' %}?{{current_filters}}&sort=name&direction=desc">Name
                                         (Z-A)</a></li>
                             </ul>
                         </div>
@@ -358,8 +358,7 @@
                             </div>
                             {% endif %}
                         </button>
-                        <input type="hidden" name="redirect_url"
-                            value="{{ request.path }}">
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </form>
                     {% else %}
                     {% endif %}
@@ -380,7 +379,7 @@
                 <!-- product name and price -->
                 <div class="card-body text-start">
                     <a href="{% url 'product_detail' product.id %}">
-                        <h5 class="card-title">{{product.friendly_name|upper}}
+                        <h5 class="card-title">{{product.friendly_name|upper}} {{product.average_rating}}
                             {% if user.is_superuser %}({{product.stock_quantity}}){% endif %}</h5>
                     </a>
                     {% if product.latin_name %}

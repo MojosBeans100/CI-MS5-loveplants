@@ -44,7 +44,6 @@ def all_products(request):
 
         # copy the dictionary of filters in the front end
         querydict = request.GET.copy()
-        # myDict = dict(request.GET.lists())
 
         # for all items in the new request
         for i in request.GET.items():
@@ -52,18 +51,17 @@ def all_products(request):
             # if the filter category is already in the dict
             # change the value
             if i[0] in querydict:
-
                 querydict[i[0]] = i[1]
 
             # if not, add this filter category
             else:
                 querydict.update({i[0]: i[1]})
 
-            # if the filter category says remove
-            # remove it
-            if i[0] == 'remove':
-                querydict.pop('remove')
-                querydict.pop(i[1])
+            # # if the filter category says remove
+            # # remove it
+            # if i[0] == 'remove':
+            #     querydict.pop('remove')
+            #     querydict.pop(i[1])
 
         for j in querydict.items():
             current_filters = current_filters + "&" + j[0] + "=" + j[1]
@@ -76,6 +74,7 @@ def all_products(request):
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
+                    print(sortkey)
             all_products = all_products.order_by(sortkey)
 
         if 'plant_cats' in request.GET:
@@ -186,8 +185,8 @@ def product_detail(request, id):
     product_reviews = product_reviews.exclude(review="")
 
     if product.rare is True:
-        rare_products = rare_products.filter(live_on_site=True)
-        rare_products = Product.objects.filter(rare=True).exclude(id=id)[0:4]
+        rare_products = Product.objects.filter(rare=True).exclude(id=id)
+        rare_products = rare_products.filter(live_on_site=True)[0:4]
     else:
         rare_products = None
 
