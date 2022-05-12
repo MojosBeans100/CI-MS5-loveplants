@@ -350,12 +350,12 @@
                         <button id="{{product.id}}" class="product-like-button" onclick="likeProduct(this);">
                             {% if product.friendly_name in liked_list %}
                             <div class="like-icon">
-                                <i class="fa-solid fa-heart"></i>
+                                <i style="color: black;" class="fa-solid fa-heart"></i>
 
                             </div>
                             {% else %}
                             <div class="like-icon">
-                                <i id="product-like-icon" class="fa-solid fa-heart"></i>
+                                <i style="color: white;" class="fa-solid fa-heart"></i>
                             </div>
                             {% endif %}
                         </button>
@@ -493,6 +493,7 @@
         });
 
         // change the color of the product
+        console.log(element.childNodes[1].childNodes[1])
         if (element.childNodes[1].childNodes[1].style.color == 'white') {
             element.childNodes[1].childNodes[1].style.color = 'black';
         } else {

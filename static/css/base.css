@@ -72,8 +72,9 @@ button {
     border: none;
     background: none;
     position: absolute;
-    top: 3%;
-    right: 5%;
+    padding: 10px;
+    top: 0;
+    right: 0;
     z-index: 1000;
     font-size: 20px;
 }
@@ -218,10 +219,10 @@ button {
     position: relative;
 }
 
-#product-like-icon {
+.product-like-icon {
     position: absolute;
     color: white;
-    z-index: -99
+    z-index: -99;
 }
 
 #stock-span {
@@ -268,10 +269,10 @@ button {
     padding: 0;
 }
 
-.like-icon i {
-    position: absolute;
-    z-index: -99
-}
+/* .like-icon i {
+    z-index: -99;
+    color: white;
+} */
 
 .extra-filter {
     width: 60%;

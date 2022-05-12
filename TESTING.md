@@ -63,7 +63,7 @@ Each user story is tested for large, medium and small screen sizes to ensure the
 Note: since performing manual testing, some minor adjustments may have been made to improve small styling details, which would result in slight differences between images on the deployed site and images of the site contained in this document.  It was ensured any changes did not affect the outcome of the testing.
 
 ## User Story 1 Testing
-User Story 1 is based on allow users account authentication on the website. 
+User Story 1 is based on allowing users account authentication on the website. 
 
 ### 1.1 
 As a **site user** I can **create an account to LovePlants with a username, email address and password** so that **I can access personal information and historic orders**
@@ -249,7 +249,7 @@ Acceptance Criteria:
 - User can determine the quantity of this product they want to add to their bag
 
 ### 3.2
-As a **site user** I can **I can see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
+As a **site user** I can **see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|

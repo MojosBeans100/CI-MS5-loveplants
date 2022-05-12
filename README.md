@@ -1041,25 +1041,19 @@ Aside from creating useful, engaging content within the website, such as the Car
 
 # Deployment
 ### Local Deployment
-To run this project locally, you will need to clone the repository.  
+To run this project locally, the repository will need to be cloned.  
 
 #### Cloning Workspace
 1. Log in to [Github](https://github.com/)
 2. Select the repository MojosBeans100/CI-MS5-loveplants
 3. Click the Code button and copy the HTTPS url, for example: https://github.com/MojosBeans100/CI-MS5-loveplants.git
-4. In your IDE, open a terminal and run the git clone command, for example
+4. In an IDE, open a terminal and run the git clone command, for example
 
 <code>git clone https://github.com/MojosBeans100/CI-MS5-loveplants.git</code>
 
-The repository will now be cloned to your workspace.
+The repository will now be cloned to the workspace.
 
-5. Create an env.py file (do not commit this file to source control) in the root folder in your project, and add in the following code with the relevant key, value pairs, and ensure you enter the correct key values
-
-<code>import os
-
-os.environ.setdefault('SKYWATCH_KEY', TO BE ADDED BY USER)
-
-os.environ.setdefault('MAPBOX_KEY', TO BE ADDED BY USER')</code>
+5. Create an env.py file (do not commit this file to source control) in the root folder in the project, and add in the following code with the relevant key, value pairs, and ensure you enter the correct key values
 
 6. Install the relevant packages as per the requirements.txt file
 7. In the settings.py ensure the connection is set to either the Heroku postgres database or the local sqllite database
@@ -1078,7 +1072,7 @@ To deploy this application to Heroku, run the following steps.
 1. Create an account at [heroku.com](https://id.heroku.com/)
 2. Create an app, give it a name - for example 'loveplants' - and select a region
 3. Under resources search for postgres, and add a Postgres database to the app
-4. Note the DATABASE_URL, this can be set as an environment variable in Heroku and your local deployment (env.py)
+4. Note the DATABASE_URL, this can be set as an environment variable in Heroku and the local deployment (env.py)
 5. Install the plugins dj-database-url and psycopg2-binary
 6. Run pip3 freeze > requirements.txt so both are added to the requirements.txt file
 7. Create a Procfile with the text: web: gunicorn ms5loveplants.wsgi:application for example
@@ -1089,7 +1083,7 @@ To deploy this application to Heroku, run the following steps.
 12. Run "python3 manage.py migrate" to migrate the database
 13. Run "python3 manage.py createsuperuser" to create a super/admin user
 14. Install gunicorn and add it to the requirements.tx file using the command pip3 freeze > requirements.txt
-15. From the CLI login to Heroku using the command heroku git:remote -a ms4spaceport
+15. From the CLI login to Heroku using the command heroku git:remote -a ms5loveplants
 16. Disable collectstatic in Heroku before any code is pushed using the command heroku config:set DISABLE_COLLECTSTATIC=1 -a ms5loveplants
 17. Push the code to Heroku using the command git push heroku master
 18. Ensure the following environment variables are set in Heroku
@@ -1101,7 +1095,7 @@ To deploy this application to Heroku, run the following steps.
 ![Heroku Deploy Branch](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644513541/heokudeploy_eaqdqh.jpg)
 
 20. Click on the link provided to access the application
-21. If you encounter any issues accessing the build logs is a good way to troubleshoot the issue
+21. If any issues are encountered, accessing the build logs is a good way to troubleshoot the issue
 
 [Back to top](#love-plants)
 
@@ -1121,7 +1115,7 @@ In reality, an e-commerce store would only include original information about th
 # Unfixed Bugs
 
 ## Product Images
-As all images are sourced from 3rd party sites (all images are attributed to the source), they are downloaded with different width:height ratios.  As the developer felt the site appeared more attractive with all images of a constant , for example, in the products page, some of the images appear 'squashed' and of lower quality due to being resized to the same size as all other images.  
+As all images are sourced from 3rd party sites (all images are attributed to the source), they are downloaded with different width:height ratios.  As the developer felt the site appeared more attractive with all images of a constant size, for example, in the products page, some of the images appear 'squashed' and of lower quality due to being resized to the same size as all other images.  
 
 The images are also highly varying in terms of the way the plant is style, presented, and the background colours and contents. 
 
@@ -1130,34 +1124,52 @@ While this is unfortunate, the developer felt it was important to build up a rea
 ## Faceted Filtering
 The developer attempted to mimic a common feature in e-commerce websites, which is to provide users faceted searching of products, in order to narrow down their view of products. 
 
-This was achieved by maintaining the previous filter criteria when applying another.  When products are narrowed down by plant category, for example floor plants, this criteria is maintained when filtering again by, for example, price. 
+This was achieved by maintaining the previous filter criteria when applying another.  When products are narrowed down by plant category - for example, floor plants - this criteria is maintained when filtering again by, for example, price.  This method in general provides a good solution facted filtering, although may be somewhat verbose.
+
+## Like Product
+In order to allow users to 'like' products, a heart icon is rendered on the product card in the products page - solid white if not liked, solid black if liked.  Inconsistency in product image backgrounds result in a poor contrast of this heart on some product cards.  
+
+Good contrast:
+![Good contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345634/LovePlants/goodcontrast_mrjohi.jpg)
+![Good contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345707/LovePlants/goodcontrast2_lvoppz.jpg)
+
+Poor contrast:
+![Poor contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345633/LovePlants/poorcontrast_n7lpt1.jpg)
+![Poor contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345706/LovePlants/poorcontrast2_ybstdh.jpg)
+
+Possible solutions to this are:
+- better consistency with image backgrounds, in a true e-commerce site the images should be far more consistent
+- place the heart icon somewhere in the product card text, as opposed to within the image
+- use a different icon, a black outline heart icon with a white background (not free on Font Awesome), as opposed to a solid icon in white or black
 
 [Back to top](#love-plants)
 
 # Media
+
+## Images
 Images used on the site were sourced from the following sources.  Images which are free to use publicy were desirable, however when this was not possible the images are credited.
 
-- Pexels
-    - SpaceX
-    - Pixabay
-- GettyImages
-- Spectator Earth
-- Nasa Earth Observatory
-- NOAA GOES Geostationary Satellite
-- Science Friday
-- Discover Magazine
-- https://www.nknews.org
-- Axios
-- Mapbox
-- Terraprints
-- Maxar
-- ABC
-- New York Latest
-- BBC News
-- Working on Cruise Ships
-- Skywatch
-- Fine Art America
-- Farmonaut
+Product images are credited appropriately in the product model (image1_source_url etc).
+
+Pexels was a fantastic resource for sourcing high quality banner images.  The content came from the below creators:
+- cottonbro
+- karolina-grabowska
+- khanh-nguyen
+- huy-phan
+- staphanie-ho
+- mentatdgt
+- daria-shevtsova
+- designecologist
+- element-digital
+- sohail-nachiti
+
+The Spruce gardening website was used extensively to source project images and descriptions.
+
+## Icons
+
+
+## Loading Screen
+
 
 [Back to top](#love-plants)
 

@@ -300,6 +300,7 @@ def product_like(request, id):
                                             user=request.user,
                                             liked=True)
                 product_review.save()
+                print(product_review.rating)
 
     except Product.DoesNotExist:
         return render(request, 'home/404.html')
