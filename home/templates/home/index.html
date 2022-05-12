@@ -4,7 +4,7 @@
 {% block content %}
 <div class="row pt-5">
     <div class="order-md-first order-last col-12 col-md-6 bg-light m-0 p-md-5 mt-md-3">
-        <div class="p-5 mx-xl-5">
+        <div class="p-5 p-md-3 p-xl-5 mx-xl-5">
             <div class="m-xl-5">
                 <h1 class="py-4">Love Plants</h1>
                 <h5>We sell a large selection of houseplants to help <strong>make your home beautiful</strong>
@@ -12,13 +12,13 @@
             </div>
 
             <div class="row mx-3 mt-4 py-4 d-flex justify-content-center">
-                <div class="col-12 col-xl-6 ">
+                <div class="col-12 col-xxl-6">
                     <button onClick="location.href='{% url 'products' %}?popular'"
                         class="w-75 w-lg-100 my-3 py-3 index-button bg-light">
                         Popular plants
                     </button>
                 </div>
-                <div class="col-12 col-xl-6 ">
+                <div class="col-12 col-xxl-6 ">
                     <button onClick="location.href='{% url 'products' %}?rare'"
                         class=" w-75 w-lg-100 my-3 py-3 index-button bg-light">
                         Rare plants
@@ -136,9 +136,9 @@
 <hr class="m-5">
 
 <div class="row m-5 d-flex justify-content-center">
-    <div class="col-12 col-sm-8 offset-sm-1 col-lg-6 offset-lg-2">
+    <div class="col-12 col-md-8 col-lg-6">
 
-        <div id="mc_embed_signup">
+        <div id="mc_embed_signup" style="width: 100%;">
             <form
                 action="https://herokuapp.us18.list-manage.com/subscribe/post?u=e82b0901877d74a6d6cc85d72&amp;id=b74b383235"
                 method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
@@ -156,18 +156,13 @@
                         <div class="response" id="mce-error-response" style="display:none"></div>
                         <div class="response" id="mce-success-response" style="display:none"></div>
                     </div>
-                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
                             name="b_e82b0901877d74a6d6cc85d72_b74b383235" tabindex="-1" value=""></div>
                     <div class="optionalParent">
-                        <div class="clear foot">
+                            <div class="col-12 d-flex justify-content-center">
                             <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
-                                class="btn black-button w-50">
-                            <p class="brandingLogo"><a href="http://eepurl.com/h1PF1f"
-                                    title="Mailchimp - email marketing made easy and fun"><img
-                                        src="https://eep.io/mc-cdn-images/template_images/branding_logo_text_dark_dtp.svg"></a>
-                            </p>
-                        </div>
+                                class="btn black-button mx-0">
+                            </div>
                     </div>
                 </div>
             </form>
