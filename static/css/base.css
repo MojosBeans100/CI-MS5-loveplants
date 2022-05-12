@@ -409,6 +409,7 @@ input[type=number] {
     right: 10px;
     z-index: 9999;
     max-height: 80vh;
+    min-height: 10vh;
     overflow-y: scroll;
     background-color: white;
     opacity: 1;

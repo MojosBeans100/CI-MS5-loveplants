@@ -26,7 +26,8 @@ def all_products(request):
     Display all products to the user, allowing for
     filtering and sorting
     """
-
+    #messages.error(request, "This item could not be added to your basket at this time.")
+    messages.success(request, "This item was successfully added to your basket.")
     # all_products = Product.objects.all()
     # for i in all_products:
     #     i.average_rating = 0
