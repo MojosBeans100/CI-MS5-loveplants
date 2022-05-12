@@ -27,6 +27,11 @@ def all_products(request):
     filtering and sorting
     """
 
+    # all_products = Product.objects.all()
+    # for i in all_products:
+    #     i.average_rating = 0
+    #     i.save()
+
     if request.user.is_superuser:
         all_products = Product.objects.all()
     else:
@@ -276,13 +281,13 @@ def product_like(request, id):
     Allows users to like or unlike products
     """
 
-    if request.method == 'POST':
-
-        try:
-            product = Product.objects.get(pk=id)
+    try:
+        product = Product.objects.get(pk=id)
+        if request.method == 'POST':
             if ProductReview.objects.filter(product=product,
                                             user=request.user).exists():
-                product_review = ProductReview.objects.get(product=product,
+                product_review = ProductReview.objects.get(
+                                                        product=product,
                                                         user=request.user)
                 if product_review.liked is True:
                     product_review.liked = False
@@ -296,11 +301,12 @@ def product_like(request, id):
                                             liked=True)
                 product_review.save()
 
-        except Product.DoesNotExist:
-            return render(request, 'home/404.html')
+    except Product.DoesNotExist:
+        return render(request, 'home/404.html')
 
-    redirect_url = request.POST.get('redirect_url')
-    return redirect(reverse('products/products.html'))
+    redirect_url = request.POST.get('redirect_url',
+                                    '/products/products.html')
+    return redirect((redirect_url))
 
 
 def product_review(request, id):

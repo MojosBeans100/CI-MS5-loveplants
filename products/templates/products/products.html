@@ -346,6 +346,7 @@
                     {% if user.is_authenticated %}
                     <form method="POST" action="{% url 'product_like' product.id %}" class="form product-like">
                         {% csrf_token %}
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         <button id="{{product.id}}" class="product-like-button" onclick="likeProduct(this);">
                             {% if product.friendly_name in liked_list %}
                             <div class="like-icon">
@@ -358,7 +359,6 @@
                             </div>
                             {% endif %}
                         </button>
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
                     </form>
                     {% else %}
                     {% endif %}
@@ -483,14 +483,6 @@
         var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
         var id = parseInt(element.id);
         var url = `/products/product_like/${id}`;
-        var redirect_url = '/products/products.html'
-        data = {
-            'redirect_url': redirect_url
-        }
-
-        console.log(id)
-        console.log(url)
-        console.log(redirect_url)
 
         // post to the view
         var response = fetch(url, {
@@ -498,7 +490,6 @@
             headers: {
                 "X-CSRFToken": csrfToken
             },
-            body: data,
         });
 
         // change the color of the product

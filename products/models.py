@@ -231,7 +231,7 @@ class ProductReview(models.Model):
         )
     rating = models.IntegerField(
         choices=rating,
-        default=5
+        default=0
         )
     review_time = models.DateTimeField(
         auto_now_add=True,
