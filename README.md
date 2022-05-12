@@ -640,19 +640,19 @@ The profile page displays information about the user.
 (User Story X)
 Users can see information about their account settings, which also provide links to logging out and resetting their password.
 
-![Profile details]()
+![Profile details](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/profile_zksong.jpg)
 
 ### Default Order Information
 (User Story X)
 Users can save default delivery information, which will auto-fill in on the checkout form for convenience. 
 
-![Default delivery info]()
+![Default delivery info](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/profiledeafult_wctawh.jpg)
 
 ### Order History
 (User Story X)
 Users can see a list of previous orders they have submitted, expanded each item to see further information.
 
-![Order history]()
+![Order history](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/profileorders_y33jzr.jpg)
 
 [Back to top](#love-plants)
 
@@ -660,41 +660,58 @@ Users can see a list of previous orders they have submitted, expanded each item 
 (User Story X)
 This brief page display products the user has 'liked', and links to the product detail for each product. 
 
+![Liked products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/liked_iyvnvp.jpg)
+
 ## Add Product (admin)
 (User Story X)
 The Add Product page allows site administrators to add a new product on the website.  It contains a form to submit the details, and allows users to either add the product to the site or save it and return to it later. 
 
-![Add product]()
+![Add product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652361446/LovePlants/ReadMe/addproduct_qdxuue.jpg)
 
 ## Edit Product (admin)
 (User Story X)
 Admin users can also edit the details of products.  This page also allows admin users to copy a product and save it as a new item.  This is useful for products which are similar, for example a variegated species of another plant. 
 
-![Edit product]()
+![Edit product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652361446/LovePlants/ReadMe/edit_procut_pidu9x.jpg)
 
 ## Create Sale (admin)
 (User Story X)
 Admin users can put items on sale with this page.  They can apply a discount to all products or individual products, either by a percentage or a fixed amount.  They can also remove the sale price on this page, to revert products back to their original prices. 
 
-![Create sale]()
+![Create sale](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652361446/LovePlants/ReadMe/createsale_qumsqz.jpg)
 
 [Back to top](#love-plants)
 
 ## Error Pages
+A 404 error page is displayed if users attempt to access admin pages.
+
+![404 page](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/desktoperror_fvoibd.jpg)
+
 ## Notifications
-## Sign Up
-## Sign In
-## Log Out
+All users can see notifications in the form of Bootstrap 'toasts' to confirm an action has been completed.
+
+![Notification](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop1_xtuvsa.jpg)
+
+## Account Authentication
+Users can sign up, log in, log out via the account authentication pages. 
+
+![Sign Up Form](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355766/LovePlants/Testing/US1/1.1/desktop3_j8qgvp.jpg)
+
+## T&Cs, Policy, FAQ
+Some generic e-commerce website pages are provided to enhance the professionalism of the website. 
+
+![T&Cs](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652362047/LovePlants/ReadMe/T_Cs_rcvz5r.jpg)
+![Policy](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652362046/LovePlants/ReadMe/policy_fhphdt.jpg)
+![FAQ](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652362045/LovePlants/ReadMe/faq_upmp22.jpg)
 
 
 # Technologies Used
-
 ## HTML/CSS
 The project uses [HTML](https://en.wikipedia.org/wiki/HTML) language to build the website pages.
 [CSS](https://en.wikipedia.org/wiki/CSS) is used to style the pages, along with [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
 
 ## Javascript
-[Javascript](https://www.javascript.com/) is included on most pages.  The main functions are:
+[Javascript](https://www.javascript.com/) is included on most pages.
 
 ## Python
 [Python 3.8]((https://www.python.org/)) was used for server side coding on the project.

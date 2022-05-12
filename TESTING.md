@@ -541,7 +541,6 @@ Acceptance Criteria:
 - [x] Non-admin users cannot access admin pages or content
 - [x] Non-admin users are provided a link back to the homepage
 
-
 ## Automated Testing
 
 ### Coverage Report
