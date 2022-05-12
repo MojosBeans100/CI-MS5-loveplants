@@ -106,9 +106,9 @@
 <hr class="m-5">
 
 <div class="row mx-xl-5">
-    <div class="order-md-first order-last col-12 col-md-6 m-0 p-5" id="index-image4">
+    <div class="order-md-first order-first col-12 col-md-6 m-0 p-5" id="index-image4">
     </div>
-    <div class="order-md-last order-first col-12 col-md-6 m-0 p-0 bg-light">
+    <div class="order-md-last order-last col-12 col-md-6 m-0 p-0 bg-light">
         <div class="p-5 mx-lg-5">
             <h1 class="py-4">Going on holiday?</h1>
             <p>Nobody wants to come home from a well-earned break to discover that half their beautiful plant collection
@@ -121,16 +121,24 @@
                 particular, <strong>succulents</strong> are a good choice because they do not cope with being regularly
                 watered.</p>
             <br>
-            <button onClick="location.href='{% url 'products' %}?plant_cats=Succulents'"
-                class="w-50 w-lg-100 my-3 py-3 index-button bg-light">
-                Succulents
-            </button>
-            <button onClick="location.href='{% url 'products' %}?easycare'"
-                class="w-50 w-lg-100 my-3 py-3 index-button bg-light">
-                Other easy care plants
-            </button>
+
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <button onClick="location.href='{% url 'products' %}?plant_cats=Succulents'"
+                        class="w-100 my-3 py-3 index-button bg-light">
+                        Succulents
+                    </button>
+                </div>
+                <div class="col-12 col-sm-6 col-md-12 col-xl-6">
+                    <button onClick="location.href='{% url 'products' %}?easycare'"
+                        class="w-100 my-3 py-3 index-button bg-light">
+                        Other easy care plants
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
 
 <hr class="m-5">
@@ -159,10 +167,10 @@
                     <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
                             name="b_e82b0901877d74a6d6cc85d72_b74b383235" tabindex="-1" value=""></div>
                     <div class="optionalParent">
-                            <div class="col-12 d-flex justify-content-center">
+                        <div class="col-12 d-flex justify-content-center">
                             <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe"
                                 class="btn black-button mx-0">
-                            </div>
+                        </div>
                     </div>
                 </div>
             </form>

@@ -1,7 +1,7 @@
 # Love Plants
 Love Plants is a Full Stack B2C (business to customer) e-commerce website which allows customers to view and purchase products related to plants. The website was developed for Milestone 5 as part of the Code Institute Diploma in Software Development. 
 
-![Responsive website](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650050038/LovePlants/ReadMe/amirespoinve_twskbo.jpg)
+![Responsive website](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652351332/LovePlants/amirespoinve2_ibxytq.jpg)
 
 # Table of contents
 - [Love Plants](#love-plants)
@@ -9,97 +9,21 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
 - [Project Overview](#project-overview)
 - [UX](#ux)
   - [Strategy](#strategy)
-    - [Site User](#site-user)
-    - [Admin User](#admin-user)
-    - [User Stories](#user-stories)
   - [Scope](#scope)
-    - [Sprints](#sprints)
-    - [Epics, User Stories, Tasks](#epics-user-stories-tasks)
-    - [Priority](#priority)
-    - [Scope Creep](#scope-creep)
-    - [Requirements](#requirements)
   - [Structure](#structure)
-    - [Interaction Design](#interaction-design)
-      - [Consistency](#consistency)
-      - [Predictability](#predictability)
-      - [Learnability](#learnability)
-      - [Visibility](#visibility)
-      - [Feedback](#feedback)
-    - [Information Architecture](#information-architecture)
   - [Skeleton](#skeleton)
-    - [Interface Design](#interface-design)
-    - [Navigation Design](#navigation-design)
-    - [Information Design](#information-design)
   - [Surface](#surface)
-    - [Visual Design](#visual-design)
 - [Database](#database)
   - [Database Structure](#database-structure)
   - [Models](#models)
-    - [User (Django context processor)](#user-django-context-processor)
-    - [Home App](#home-app)
-    - [Profiles App](#profiles-app)
-    - [UserProfile](#userprofile)
-    - [Products App](#products-app)
-      - [Product](#product)
-      - [Category](#category)
-      - [Plant Category](#plant-category)
-      - [Recently Viewed](#recently-viewed)
-      - [Product Review](#product-review)
-    - [Bag App](#bag-app)
-    - [Checkout App](#checkout-app)
-      - [Order](#order)
-      - [OrderLineItem](#orderlineitem)
-    - [Pages](#pages)
-  - [Style](#style)
-    - [Wireframes](#wireframes)
-      - [Homepage](#homepage)
-      - [Products](#products)
-      - [Product Detail](#product-detail)
-      - [Shopping Basket](#shopping-basket)
-      - [Checkout](#checkout)
-      - [Checkout Confirmation](#checkout-confirmation)
-      - [Liked Products](#liked-products)
-      - [Rate and Review products](#rate-and-review-products)
-      - [Purchase History](#purchase-history)
-      - [Create Account](#create-account)
-      - [Log In](#log-in)
-      - [Sign Out](#sign-out)
-    - [Font](#font)
-    - [Colours](#colours)
-    - [Layout](#layout)
-  - [Scope](#scope)
-    - [Site User Stories](#site-user-stories)
-  - [User Stories Strategy](#user-stories-strategy)
 - [Features](#features)
   - [Homepage](#homepage)
   - [Products](#products)
-    - [Filter Products](#filter-products)
-    - [Sort Products](#sort-products)
-    - [Product List](#product-list)
   - [Product Detail](#product-detail)
-    - [Breadcrumb Navigation](#breadcrumb-navigation)
-    - [Images](#images)
-    - [Additional Details](#additional-details)
-    - [Reviews](#reviews)
-    - [Review Form](#review-form)
-    - [Suggested Products](#suggested-products)
-    - [Add To Bag](#add-to-bag)
   - [Bag](#bag)
-    - [Product List](#product-list)
-    - [Free Delivery](#free-delivery)
-    - [Price Breakdown](#price-breakdown)
-    - [Suggested Products](#suggested-products)
   - [Checkout](#checkout)
-    - [User Details](#user-details)
-    - [Bag Contents](#bag-contents)
-    - [Order Summary](#order-summary)
-    - [Payment Section](#payment-section)
-    - [Form Submitted](#form-submitted)
   - [Checkout Confirmation](#checkout-confirmation)
   - [Profile](#profile)
-    - [Profile Details](#profile-details)
-    - [Default Order Information](#default-order-information)
-    - [Order History](#order-history)
   - [Liked Products](#liked-products)
   - [Add Product (admin)](#add-product-admin)
   - [Edit Product (admin)](#edit-product-admin)
@@ -119,34 +43,28 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
 - [Search Engine Optimisation (SEO)](#search-engine-optimisation-seo)
   - [Site content](#site-content)
   - [Keywords](#keywords)
-    - [Research](#research)
-    - [Optimisation](#optimisation)
-    - [Implementation](#implementation)
-      - [Metadata](#metadata)
-      - [Semantic Content](#semantic-content)
   - [Images](#images)
-    - [Optimizing Images for SEO](#optimizing-images-for-seo)
-    - [Improvements for Images for SEO](#improvements-for-images-for-seo)
   - [Responsiveness](#responsiveness)
   - [Links to useful pages](#links-to-useful-pages)
+  - [Links to Social Media](#links-to-social-media)
   - [Expertise, Authoritativeness, Trustworthiness](#expertise-authoritativeness-trustworthiness)
   - [Sitemap.xml](#sitemapxml)
   - [Robots.txt](#robotstxt)
   - [Further Steps](#further-steps)
 - [Marketing](#marketing)
-  - [Further Steps](#further-steps)
+  - [Further Marketing Strategies](#further-marketing-strategies)
 - [Deployment](#deployment)
-    - [Local Deployment](#local-deployment)
-      - [Mapbox Access Token](#mapbox-access-token)
-      - [Skywatch API Key](#skywatch-api-key)
-      - [Cloning Workspace](#cloning-workspace)
-    - [Heroku Deployment](#heroku-deployment)
 - [Limitations](#limitations)
   - [Products](#products)
   - [Description/ Care Instructions](#description-care-instructions)
 - [Unfixed Bugs](#unfixed-bugs)
   - [Product Images](#product-images)
+  - [Faceted Filtering](#faceted-filtering)
+  - [Like Product](#like-product)
 - [Media](#media)
+  - [Images](#images)
+  - [Icons](#icons)
+  - [Loading Screen](#loading-screen)
 - [Credits](#credits)
 - [Acknowledgements](#acknowledgements)
 
@@ -398,7 +316,7 @@ It contains no models.
 (User Stories XXX)
 The Profiles App provides the user the ability to create their website profile, so they can purchase products and review their details and order history. 
 
-### UserProfile
+#### UserProfile
 - The UserProfile model allows users to hold their personal information when using the site, and has a One-To-One relationship with the [User](#user-django-context-processor) model.
 - The UserProfile model will be modified automatically upon the User model being modified
 
@@ -426,8 +344,7 @@ The Profiles App provides the user the ability to create their website profile, 
 | Field | Description | Field type|
 |-------|-------------|-----------|
 |id|primary key (Django auto created|Primary Key|
-|category|product category|CharField|
-|plant_category|if product is plant, plant category|CharField|
+|plant_category|plant category|CharField|
 |name|name of the product|CharField|
 |friendly_name|name of the product to be used in templates|CharField|
 |latin_name|if product is plant, latin name|CharField|
@@ -445,7 +362,6 @@ The Profiles App provides the user the ability to create their website profile, 
 |stock_quantity|quantity of the product in stock|PositiveIntegerField|
 |pot_size|diameter of the pot|PositiveIntegerField|
 |height|height of the product|PositiveIntegerField|
-|length|length of the product|PositiveIntegerField|
 |maturity_num|maturity of the product|PositiveIntegerField|
 |maturity_time|maturity of the product|CharField|
 |sunlight|sunlight required for the product|CharField (choices)|
@@ -458,9 +374,7 @@ The Profiles App provides the user the ability to create their website profile, 
 |popular|whether or not the product is considered popular|BooleanField|
 |stock|string description of whether or not the product is in stock|CharField(choices)|
 |average_rating|average of all ratings the product has received|DecimalField|
-
-#### Category
-#### Plant Category
+|live_on_site|whether or not the product is live on the website to be purchased|BooleanField|
 
 #### Recently Viewed
 - The Recently Viewed model provides a short list of products the user has recently viewed (has visited the product detail page). 
@@ -544,38 +458,6 @@ The additional pages are as follows:
 
 The website was designed to be simple, clear and uncluttered, basic in structure, and easy to navigate.
 Bootstrap was used to aid responsiveness, as well as media queries in CSS.  Javascript provides interactive features to enhance user experience.
-
-
-
-
-## Style
-
-
-
-
-### Font
-The font style is the default Bootstrap 5 native sans-serif font stack for cross platform usability. The font remains consistent throughout the website, aside from being rendered in italic or font style for emphasis.
-
-![Bootstrap Native Font](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1643901837/Spaceport/font_xbuoff.jpg)
-
-### Colours
-- The colours of the website are kept to basic white and black to keep the style clean and minimalistic.  Images from the products provide splashes of colour in an otherwise greyscale website. 
-
-### Layout
-
-
-
-[Back to top](#love-plants)
-
-## Scope
-### Site User Stories
-
-## User Stories Strategy
-Epics were defined based on the main functions the website was expected to have, which mostly revolved around the main CRUD functions of the database.  These Epics were refined into smaller User Stories, which could then be broken down into manageable tasks for the developer to complete within the current project iteration.  User acceptance criteria was determined for each Epic/User Story. See all [project iterations/boards](https://github.com/MojosBeans100/ms4-spaceport/projects).
-
-The User Stories were designated a priority label to complete within the iteration.  The main CRUD functions were assigned a 'must-have' label.  User Stories which were deemed beneficial but not a priority were assigned a 'should-have' label.
-
-All User Stories which were not completed had a 'could-have' label assigned to them, updated to 'won't-have' at final deployment, as they were additional features which did not affect the main functionality of the website. These User Stories could be completed if there was an opportunity for another iteration for this project.
 
 [Back to top](#love-plants)
 
