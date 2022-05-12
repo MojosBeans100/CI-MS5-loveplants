@@ -66,14 +66,14 @@ Note: since performing manual testing, some minor adjustments may have been made
 User Story 1 is based on allowing users account authentication on the website. 
 
 ### 1.1 
-As a **site user** I can **create an account to LovePlants with a username, email address and password** so that **I can access personal information and historic orders**
+As a **site user** I can **create an account to Love Plants with a username, email address and password** so that **I can access personal information and historic orders**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users can create an account|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355766/LovePlants/Testing/US1/1.1/desktop3_j8qgvp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355763/LovePlants/Testing/US1/1.1/tablet1_hhpe0r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355766/LovePlants/Testing/US1/1.1/mobile1_fdx96t.jpg)|Pass|
+|users must confirm their email address before logging in|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355767/LovePlants/Testing/US1/1.1/desktopverify_cd521j.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355765/LovePlants/Testing/US1/1.1/dekstopconfirm_jsyex2.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355764/LovePlants/Testing/US1/1.1/tablet2_s70cik.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355764/LovePlants/Testing/US1/1.1/tablet3_ti41ei.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355766/LovePlants/Testing/US1/1.1/mobile2_fqakdh.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355767/LovePlants/Testing/US1/1.1/mobile3_fokcap.jpg)|Pass|
+|users can log in with their username or email and password|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652356720/LovePlants/Testing/US1/1.1/desktop6_vj1pu0.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355766/LovePlants/Testing/US1/1.1/tablet4_d5ocif.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355762/LovePlants/Testing/US1/1.1/mobile4_xgcomo.jpg)|Pass|
+|users can log out of their account|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652356776/LovePlants/Testing/US1/1.1/desktop7_yfgnxu.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652356704/LovePlants/Testing/US1/1.1/tablet5_lrhwrq.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652356695/LovePlants/Testing/US1/1.1/mobile5_mqqgic.jpg)|Pass|
 
 Acceptance Criteria:
 - New users can create a new account to LovePlants
@@ -140,11 +140,7 @@ Acceptance Criteria:
 ### 1.6
 As a **site user** I can **I can delete my account when I no longer need it** so that **I am removed from the LovePlants website**
 
-Acceptance Criteria:
-- Users can delete their account from LovePlants
-- Users are aware when their account has been deleted
-- Users are given a chance to change their mind before deleting their account
-- Users are aware of the consequences of deleting their account
+As User Story 6 was not completed, it was not tested. 
 
 ## User Story 2 Testing
 User Story 2 involves allowing users to view, filter and search for products.
@@ -228,9 +224,7 @@ Acceptance Criteria:
 ### 2.6
 As a **site user** I can **see products which are out of stock** so that **I can see which products may be available in the future**
 
-Acceptance Criteria:
-- Users can see which products are out of stock/back soon
-- (optional) Users can save these products for later
+As User Story 2.6 was not completed, it was not tested. 
 
 ## User Story 3 Testing
 User Story 3 captures the requirements for users to add products to their shopping bag and checkout. 
@@ -246,8 +240,8 @@ As a **site user** I can **add a product to my shopping bag** so that **I can pu
 |in the bag itself, users can click 'Quick Add' to add further items to their bag|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop3_otomoj.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414943/LovePlants/Testing/US%203/3.1/tablet3_m8h2tk.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/mobile3_rcv0aj.jpg)|Pass|
 
 Acceptance Criteria:
-- User can click on 'Add to Bag' to add the product
-- User can determine the quantity of this product they want to add to their bag
+- [x] User can click on 'Add to Bag' to add the product
+- [x] User can determine the quantity of this product they want to add to their bag
 
 ### 3.2
 As a **site user** I can **see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
@@ -485,7 +479,7 @@ Acceptance Criteria:
 - [x] Admin users can see placeholders or descriptions so they are aware what the form field represents
 - [x] Admin users can fill in Add Product form
 - [x] Admin users can submit the form
-- Admin users are aware if there is an issue with the from they submitted
+- Admin users are aware if there is an issue with the form they submitted
 
 ### 6.3
 As a **site admin** I can **apply a discount to any/all products** so that **LovePlants can sell off old stock, or promote product for special calendar days**
@@ -524,6 +518,9 @@ Acceptance Criteria:
 
 ### 6.5
 As a **site admin** I can **delete products from the LovePlants store** so that **discontinued stock can be removed from the product list**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
 
 Acceptance Criteria:
 - [x] Admin users can find the delete button on the edit product page
