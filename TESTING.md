@@ -68,11 +68,12 @@ User Story 1 is based on allowing users account authentication on the website.
 ### 1.1 
 As a **site user** I can **create an account to LovePlants with a username, email address and password** so that **I can access personal information and historic orders**
 
-Testing Structure
-
-|User action|Desktop|Tablet|Mobile|Status|
+|Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-||||||
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - New users can create a new account to LovePlants

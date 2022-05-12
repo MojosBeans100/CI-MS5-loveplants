@@ -112,9 +112,7 @@ The first sprints contained the higher priority features, providing basic websit
 ### Sprints
 - Sprint 1 - basic project set up: user authentication, create models, homepage templates, display products
 - Sprint 2 - the 'Bag' and 'Checkout' apps: add, edit, delete products in bag and checkout the order
-- Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products
-- Sprint 4
-- Sprint 5
+- Sprint 3 - the 'Profile' app: provides users more detail about their profile, order history, review products.  Admin control of site.
 
 ### Epics, User Stories, Tasks
 Epics were defined based on the main functions the website was expected to have, which mostly revolved around the main CRUD functions of the database. These Epics were refined into smaller User Stories, which could then be broken down into manageable tasks for the developer to complete within the current project iteration. User acceptance criteria was determined for each Epic/User Story
@@ -144,26 +142,31 @@ Elements maintained consistency, to enable users to feel familiar with the brand
 #### Predictability
 To maintain predictability for the user, standard website conventions are followed to meet users expectations, for example:
 
-- the Love Plants logo is kept to the top left of the page, irregardless of the screen size
-- the main navigation menu is placed at the top of the page, and provides only a limited selection of options so as not to overwhelm the user
-- the footer is kept fixed to the bottom of the screen, and contains contact information and useful links
+- the **Love Plants logo** is kept to the top left of the page, irregardless of the screen size
+- the main **navigation menu** is placed at the top of the page, and provides only a limited selection of options so as not to overwhelm the user
+- the **footer** is kept fixed to the bottom of the screen, and contains contact information and useful links
 - **anchor links** are styled with an underline feature on hover
 - buttons represent important calls to action, such as submitting a form and maintain consistent colours as described [above](#consistency)
-- as in most e-commerce sites, the top right of the page contains links to the user's profile, bag, and log in/log out facilities
+- as in most e-commerce sites, the top right of the page contains links to the **user's profile, bag, and log in/log out facilities**
 
 #### Learnability
 See below some examples of how the developer considered UX learnability when presenting the Love Plants brand, to help users achieve their goals quickly and efficiently
 
 - use of **visuals**  as much as possible, such as icons to represent actions as opposed to text
-![Icon for XXX]()
+
+Users see a heart icon to 'like' a product:
+![Icon for liking product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345634/LovePlants/goodcontrast_mrjohi.jpg)
 
 - **simplicity** in design, in effect minimising text, actions, colours.  The develop aims to only provide relevant information for the section or page, so as not cognitively overload the user with unnecessary information
-![eg the checkout page provides only 1 CTA]()
+
+Checkout page with 1 call to action:
+![eg the checkout page provides only 1 CTA](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590180/LovePlants/Testing/US%204/4.3/tablet2_upmyn0.jpg)
 
 - **predictable process** regarding e-commerce websites, ie look for products > select a product > add product to basket > checkout
 
-- **prioritising primary actions**, by providing the main call to action as a button, therefore more visual to users, even though there may be other links or actions on that page.  For example, on the checkout page, users can link back to other pages, but the priority action for that page is to checkout.
-![checkout button]()
+- **prioritising primary actions**, by providing the main call to action as a button, therefore more visual to users, even though there may be other links or actions on that page.  For example, on the bag, users can link back to other pages, but the priority action for that page is to checkout.
+
+![checkout button](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651489084/LovePlants/Testing/US%203/3.5/desktop1_yaotvt.jpg)
 
 #### Visibility
 Decent UX/UI visibility is achieved on the website by providing obvious prompts and cues, and ensuring users are aware of all opportunities, for example:
@@ -177,8 +180,7 @@ As users have significant interaction with the site, feedback on their actions w
 
 - **in-line feedback** on forms, to emphasise invalid fields
 - **notifications** on notable actions, such as adding a product to their basket.  This was achieved with Bootstrap 'toasts'
-- **possible actions** available to them, 
-- **communicating the context**, such as
+- **possible actions** available to them, namely to navigate around the site
 
 [Back to top](#love-plants)
 
@@ -187,7 +189,7 @@ Information Architecture, or IA, was considered when creating the structure of t
 
 - the **MVC architecture pattern** provided by Django allows the website to collect, manipulate and deliver the data
 
-- a **database schema** was used to design the database models, and to understand how they communicate with one another. (See further information on the [database]())
+- a **database schema** was used to design the database models, and to understand how they communicate with one another. (See further information on the [database](#database))
 
 - **content inventory** was provided by the in-built Django Admin panel, to maintain a database of products.  This is effectively mirrored in the front-end, with a more user-friendly option for the admin to, for example, create a product
 
@@ -278,9 +280,8 @@ Love Plants uses a different font to the standard Times New Roman, Arial, or nat
 ## Database Structure
 The database includes:
 - Home app
-  - admin.py
-  
 - Products app
+- Profile app
 - Bag app
 - Checkout app
 - templates
@@ -294,8 +295,8 @@ The database includes:
 - README.md, to outline the developement and purpose of this project
 - TESTING.md,to outline the testing strategy used during development
 - USER_STORIES.md, to list all user stories
-
-![structure schema]()
+- sitemap.xml, to provide search engines will available pages to browse
+- robots.txt, to tell search engines where not to browse
 
 [Back to top](#love-plants)
 
