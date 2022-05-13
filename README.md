@@ -1036,9 +1036,15 @@ The images are also highly varying in terms of the way the plant is style, prese
 While this is unfortunate, the developer felt it was important to build up a reasonable database of products and thus these images were deemed acceptable for the purpose of creating this e-commerce project.  In reality, a true e-commerce store would most likely have original photos which aligned better in terms of content and size.
 
 ## Faceted Filtering
-The developer attempted to mimic a common feature in e-commerce websites, which is to provide users faceted searching of products, in order to narrow down their view of products. 
+The developer attempted to mimic a common feature in e-commerce websites, which is to provide users faceted filtering of products, in order to narrow down their view of products. With each filter that is applied, the list of products becomes more relevant to the user. 
 
-This was achieved by maintaining the previous filter criteria when applying another.  When products are narrowed down by plant category - for example, floor plants - this criteria is maintained when filtering again by, for example, price.  This method in general provides a good solution facted filtering, although may be somewhat verbose.
+This was achieved by maintaining the previous filter criteria when applying another.  When products are narrowed down by plant category - for example, floor plants - this criteria is maintained when filtering again by, for example, price.  
+
+With this method, the search criteria in the webpage url maintains the previous criteria, but is overridden with the new criteria as the querydict recognises the last value.  The example below shows the list of products filtered by 'Floor' plants, then the search criteria is changed to 'Hanging' plants, but the url still shows the previous filter.  Since 'Hanging' plants is the last value of the plant category filters, 'Floor' is ignored and only 'Hanging' plants are listed.
+
+This method in general provides a good solution to faceted filtering, although may be somewhat verbose. See [testing](TESTING.md#2.3) for this user feature. 
+
+![Faceted searching](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652450462/LovePlants/Products/faceted_kdwlyo.jpg)
 
 ## Like Product
 In order to allow users to 'like' products, a heart icon is rendered on the product card in the products page - solid white if not liked, solid black if liked.  Inconsistency in product image backgrounds result in a poor contrast of this heart on some product cards.  

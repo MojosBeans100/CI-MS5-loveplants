@@ -17,7 +17,7 @@
             <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
             <hr>
 
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-8 col-xl-6">
                 <form method="POST" action="{% url 'edit_product' product.id %}">
                     {% csrf_token %}
 
@@ -278,24 +278,19 @@
                 </form>
             </div>
         </div>
-
-        <!-- <div class="col-12 border col-lg-6">
-            <img class="id_image1_source_url" style="height: 350px; width: 100%;"
-                src="https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1650718226/LovePlants/233-2332677_image-500580-placeholder-transparent_ydin0l.jpg"><br>
-            <p class="text-center"><em><small>main image</small></em></p>
-        </div> -->
     </div>
 
     <!-- delete modal -->
     <div class="modal" id="myModal" tabindex="-1">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content p-4">
                 <div class="modal-header">
-                    <h5 class="modal-title"> Delete product</h5>
+                    <h5 class="modal-title"> Delete product - <strong>"{{product.friendly_name}}"</strong></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
+                    <p>Are you sure you want to permanently delete this product?</p>
+                    
                     <br>
                     <p><i class="fa-solid fa-circle-info"></i> Products can be removed from the live website without
                         deleting them by unchecking the 'Live on site' box</p>

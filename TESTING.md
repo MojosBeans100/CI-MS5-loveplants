@@ -521,6 +521,9 @@ As a **site admin** I can **delete products from the Love Plants store** so that
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
+|the 'Delete Product' button is seen at the bottom of the edit product page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453188/LovePlants/Testing/US%206/6.6/desktop1_p9igy3.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453187/LovePlants/Testing/US%206/6.6/tablet1_zosmx7.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453188/LovePlants/Testing/US%206/6.6/mobile1_cy9nyr.jpg)|Pass|
+|admin users are given a chance to change their mind about deleting|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453187/LovePlants/Testing/US%206/6.6/desktop2_tmnlqu.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453188/LovePlants/Testing/US%206/6.6/tablet2_wlmn2q.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453187/LovePlants/Testing/US%206/6.6/mobile2_ix3qfw.jpg)|Pass|
+|a notification is displayed when the deletion has been successful|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453187/LovePlants/Testing/US%206/6.6/desktop3_rnf7ua.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453188/LovePlants/Testing/US%206/6.6/tablet3_ssthn0.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453187/LovePlants/Testing/US%206/6.6/mobile3_pwp3lz.jpg)|Pass|
 
 Acceptance Criteria:
 - [x] Admin users can find the delete button on the edit product page
