@@ -735,11 +735,11 @@ The project uses the bootstrap library for some UI components in the website (Bu
 - Postgres (https://www.postgresql.org/)
 The deployed project on Heroku uses a Postgres database
 - Gitpod (https://gitpod.io/)
-Gitpod was used as an IDE for the project.
+Gitpod was used as an IDE for the project
 - Github (https://github.com/)
 GitHub was used to store the project code in a repository
 - Balsamiq (https://balsamiq.com/)
-Balsamiq was used to create the website wireframes.
+Balsamiq was used to create the website wireframes
 - Chrome dev tools (https://developers.google.com/web/tools/chrome-devtools)
 For troubleshooting and debugging of the project code
 - Responsive Design (http://ami.responsivedesign.is/)
@@ -750,7 +750,12 @@ This software was found useful to perform code in a practice environment
 This was used to view large JSON files in a readable format, ie information from Stripe
 - Font Awesome (https://fontawesome.com/)
 Font awesome was used to provide the relevant fonts/icons for the website
-- XXXX other icons
+- Flaticon Plant Images (https://www.flaticon.com/packs/indoor-plants-1)
+Plant icons created by Icongeek26 were used in the products filter section 
+- Google Fonts (https://fonts.google.com/)
+For choosing a website font
+- Markdown ToC Generator (https://luciopaiva.com/markdown-toc/)
+For creating a Table of Contents for markdown files
 
 [Back to top](#love-plants)
 
@@ -1070,21 +1075,63 @@ Pexels was a fantastic resource for sourcing high quality banner images.  The co
 
 The Spruce gardening website was used extensively to source project images and descriptions.
 
-## Icons
-
-
-## Loading Screen
-
-
 [Back to top](#love-plants)
 
 # Credits
 
-Images as acknowledged above
-- [Font Awesome](https://fontawesome.com/) for us of icons
-- [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) documentation for information about how to style the HTML 
-- [Django 4.0](https://docs.djangoproject.com/en/4.0/) documentation for information about the framework and template syntax
-- [Stack Overflow](https://stackoverflow.com/) for help on a number of programming issues
+## Technologies
+- [Github](https://github.com/)
+- [Gitpod](https://gitpod.io/)
+- [Postgres](https://www.postgresql.org/)
+- [Bootstrap 5.0](https://getbootstrap.com/docs/5.0)
+- [Django](https://www.djangoproject.com/)
+- [CSS](https://en.wikipedia.org/wiki/CSS)
+- [Python 3.8](https://www.python.org/)
+- [Javascript](https://www.javascript.com/)
+- [HTML](https://en.wikipedia.org/wiki/HTML)
+
+## Media
+- [Cloudinary](https://cloudinary.com/console/)
+- [Pexels](https://www.pexels.com/)
+- [The Spruce](https://www.thespruce.com/)
+
+## Design
+- [Balsamiq](https://balsamiq.com/)
+- [QuickDBD](https://www.quickdatabasediagrams.com/)
+
+## Editors
+- [Python Online Editor](https://www.online-python.com/)
+- [JS Beautifier](https://jsonformatter.org/jsbeautifier)
+
+## Content
+- [Harper Collins](https://harpercollins.co.uk/pages/ecommerce-faqs)
+- [Google Fonts](https://fonts.google.com/)
+- [Flaticon Plant Images](https://www.flaticon.com/packs/indoor-plants-1)
+- [Font Awesome](https://fontawesome.com/)
+
+## Generators
+- [Terms and Conditions generator](https://www.termsandconditionsgenerator.com/) \
+- [Privacy Policy generator](https://www.privacypolicygenerator.info/)
+- [Markdown ToC Generator](https://luciopaiva.com/markdown-toc/)
+- [Responsive Design](http://ami.responsivedesign.is/)
+
+## SEO
+- [Word Tracker](https://www.wordtracker.com/)
+- [XML Sitemaps](https://www.xml-sitemaps.com/)
+- [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
+- [Mind Map Creator](https://www.canva.com/graphs/mind-maps/)
+
+## Validators
+- [W3 Spellchecker](https://www.w3.org/2002/01/spellchecker)
+- [Chrome dev tools](https://developers.google.com/web/tools/chrome-devtools)
+- [PEP8](http://pep8online.com/)
+- [JSHINT](https://jshint.com/)
+- [W3C](https://validator.w3.org/)
+- [W3 Jigsaw](https://jigsaw.w3.org/css-validator/)
+
+## Marketing
+- [Mailchimp](https://us18.admin.mailchimp.com/)
+- [Facebook](https://www.facebook.com/)
 
 # Acknowledgements
 

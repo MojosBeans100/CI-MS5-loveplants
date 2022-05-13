@@ -7,43 +7,13 @@ These user stories and associated milestones, sprints and project boards can be 
 ## Table of Contents
 - [User Stories](#user-stories)
   - [Table of Contents](#table-of-contents)
+  - [User Story Strategy](#user-story-strategy)
   - [User Story 1](#user-story-1)
-    - [1.1](#11)
-    - [1.2](#12)
-    - [1.3](#13)
-    - [1.4](#14)
-    - [1.5](#15)
-    - [1.6](#16)
   - [User Story 2](#user-story-2)
-    - [2.1](#21)
-    - [2.2](#22)
-    - [2.3](#23)
-    - [2.4](#24)
-    - [2.5](#25)
-    - [2.6](#26)
   - [User Story 3](#user-story-3)
-    - [3.1](#31)
-    - [3.2](#32)
-    - [3.3](#33)
-    - [3.4](#34)
-    - [3.5](#35)
-    - [3.6](#36)
   - [User Story 4](#user-story-4)
-    - [4.1](#41)
-    - [4.2](#42)
-    - [4.3](#43)
-    - [4.4](#44)
-    - [4.5](#45)
   - [User Story 5](#user-story-5)
-    - [5.1](#51)
-    - [5.2](#52)
-    - [5.3](#53)
   - [User Story 6](#user-story-6)
-    - [6.1](#61)
-    - [6.2](#62)
-    - [6.3](#63)
-    - [6.4](#64)
-    - [6.5](#65)
 
 ## User Story Strategy
 
@@ -371,7 +341,7 @@ Acceptance Criteria:
 ### 6.6
 As a **site admin** I can **review, edit and delete customer orders** so that **orders can be adjusted accordingly**
 
-Acceptance Criteria:
+- Admin users can use the Django admin panel to view order details
 - Admin users can use the Django admin panel to change order details
 
 ### 6.7

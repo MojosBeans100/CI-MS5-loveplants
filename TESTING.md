@@ -499,7 +499,7 @@ Acceptance Criteria:
 - [x] Admin users can see a 'Create Sale' button on the products page
 - [x] Admin users can apply a discount to a singular product, or multiple products
 - [x] Admin users can apply either a value discount or percentage discount
-- [x] Admin users can see which producs are on sale
+- [x] Admin users can see which products are on sale
 - [x] Admin users can remove the sale price from products
 
 ### 6.4
