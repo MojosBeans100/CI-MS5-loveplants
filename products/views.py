@@ -353,7 +353,7 @@ def admin_add_product(request):
     if request.user.is_superuser:
 
         if request.method == 'POST':
-            
+
             product_name = request.POST['friendly_name']
 
             if 'popular' in request.POST:
