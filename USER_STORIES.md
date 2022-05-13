@@ -77,7 +77,7 @@ Clear acceptance criteria for all User Stories were defined, and were not marked
 User Story 1 is based on allow users account authentication on the website. 
 
 ### 1.1 
-As a **site user** I can **create an account to LovePlants with a username, email address and password** so that **I can access personal information and historic orders**
+As a **site user** I can **create an account to Love Plants with a username, email address and password** so that **I can access personal information and historic orders**
 
 Acceptance Criteria:
 - New users can create a new account to LovePlants
@@ -124,7 +124,6 @@ Acceptance Criteria:
 - Users are given a chance to change their mind before deleting their account
 - Users are aware of the consequences of deleting their account
 
-
 ## User Story 2
 User Story 2 involves allowing users to view, filter and search for products.
 
@@ -137,7 +136,7 @@ Acceptance Criteria:
 - Users can see how many products they are viewing
 
 ### 2.2
-As a **site user** I can ** I can use a search bar to input product details** so that **I can search for a specific product**
+As a **site user** I can **I can use a search bar to input product details** so that **I can search for a specific product**
 
 Acceptance Criteria:
 - Users can see a search bar at the top of the product list page
@@ -179,6 +178,12 @@ As a **site user** I can **see products which are out of stock** so that **I can
 Acceptance Criteria:
 - Users can see which products are out of stock/back soon
 - (optional) Users can save these products for later
+
+### 2.7 
+As a **site user** I can **see a list of other products** so that **I am encouraged to keep exploring the website**
+
+Acceptance Critiera:
+- Users can see a list of other suggested products on the product detail and bag page
 
 ## User Story 3
 User Story 3 captures the requirements for users to add products to their shopping bag and checkout. 
@@ -224,7 +229,7 @@ As a **site user** I can **edit the items in my shopping bag** so that **I can a
 
 Acceptance Criteria:
 - Users can see how to update items in their bag
-- [x] Users can see the bag total change when items are updated
+- Users can see the bag total change when items are updated
 - User can see a confirmation message that they edited their item
 
 ### 3.6
@@ -269,23 +274,23 @@ Acceptance Criteria:
 As a **site user** I can **select whether to save the billing/delivery information for next time** so that **I do not have to repeat this step each time**
 
 Acceptance Criteria:
-- g
-- g
-- g
+- Users can see a 'save info' check box
+- Users can see their information saved to their profile page
+- Users can see this information pre-filled into the checkout form on the next order
 
 ### 4.5
 As a **site user** I can **see confirmation that the order has been successful** so that **I am aware the order went through the system**
 
 Acceptance Criteria:
-- g
-- g
-- g
+- User sees a loading screen for confirmation that their order is being processed
+- User is directed to a confirmation page upon successful checkout, rendering relevant details
+- User is aware if and why their checkout was not successful
 
 ## User Story 5
 User Story 5 refers to features which allow users to leave a review and rating for products.
 
 ### 5.1
-As a **site user** I can **I can rate products I have purchased** so that **other users can see customer feedback on the product**
+As a **site user** I can **rate products I have purchased** so that **other users can see customer feedback on the product**
 
 Acceptance Criteria:
 - User can rate products they have purchased
@@ -307,6 +312,14 @@ Acceptance Criteria:
 - Users can scroll through reviews for a product
 - Users can see when the reviews were left
 
+### 5.4
+As a **site user** I can **like products** so that **I can save them for later**
+
+Acceptance Criteria:
+- Users can click on a heart icon on product images to 'like' the product
+- Users can see these products in the product like page, accessible from the navbar
+- Users can 'unlike' products
+
 ## User Story 6
 User Story 6 captures the admin requirements for using the website, to add, edit, delete products.
 
@@ -320,7 +333,7 @@ Acceptance Criteria:
 - Admin users are aware if there is an issue with the changes they made
 
 ### 6.2
-As a **site admin** I can **add products to the LovePlants store** so that **site users can view and buy new products**
+As a **site admin** I can **add products to the Love Plants store** so that **site users can view and buy new products**
 
 Acceptance Criteria:
 - Admin users can click 'Add Product' on the products page
@@ -341,14 +354,6 @@ Acceptance Criteria:
 - Admin users can remove the sale price from products
 
 ### 6.4
-As a **site admin** I can **delete products from the LovePlants store** so that **discontinued stock can be removed from the product list**
-
-Acceptance Criteria:
-- Admin users can find the delete button on the edit product page
-- Admin users see a warning that the product will be deleted
-- Admin users see a notification that the product has been deleted
-
-### 6.5
 As a **site admin** I can **copy a product and save it as a new item** so that **I can add products similar to other products more efficiently**
 
 Acceptance Criteria:
@@ -356,9 +361,22 @@ Acceptance Criteria:
 - Admin users see a warning if there are errors in the form
 
 ### 6.5
+As a **site admin** I can **delete products from the Love Plants store** so that **discontinued stock can be removed from the product list**
+
+Acceptance Criteria:
+- Admin users can find the delete button on the edit product page
+- Admin users see a warning that the product will be deleted
+- Admin users see a notification that the product has been deleted
+
+### 6.6
 As a **site admin** I can **review, edit and delete customer orders** so that **orders can be adjusted accordingly**
 
 Acceptance Criteria:
-- A
-- A
-- a
+- Admin users can use the Django admin panel to change order details
+
+### 6.7
+As a **non-site admin** I am **redirected to an error page when attempting to access admin pages** so that **I cannot access admin pages or content**
+
+Acceptance Criteria:
+- Non-admin users cannot access admin pages or content
+- Non-admin users are provided a link back to the homepage

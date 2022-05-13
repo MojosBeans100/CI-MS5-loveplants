@@ -517,7 +517,7 @@ Acceptance Criteria:
 - [x] Admin users can only save the form if the name of the product is unique
 
 ### 6.5
-As a **site admin** I can **delete products from the LovePlants store** so that **discontinued stock can be removed from the product list**
+As a **site admin** I can **delete products from the Love Plants store** so that **discontinued stock can be removed from the product list**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
@@ -526,6 +526,19 @@ Acceptance Criteria:
 - [x] Admin users can find the delete button on the edit product page
 - [x] Admin users see a warning that the product will be deleted
 - [x] Admin users see a notification that the product has been deleted
+
+### 6.6
+As a **site admin** I can **review, edit and delete customer orders** so that **orders can be adjusted accordingly**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|admin users can view a list of orders|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652428548/LovePlants/adminrevieworder_dvvwto.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652428795/LovePlants/tablet1_noc39j.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652428794/LovePlants/mobile1_ajy9np.jpg)|Pass|
+|admin users can view a items in each order|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652428551/LovePlants/adminrevieworder2_z6tzhc.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652428711/LovePlants/tablet2_qqowya.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652428710/LovePlants/mobile2_sqekef.jpg)|Pass|
+|admin users can edit/delete orders|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652429166/LovePlants/desktop4_wcuqo0.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652429166/LovePlants/desktop5_cfqbcv.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652429165/LovePlants/tablet4_x43a05.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652429165/LovePlants/tablet5_ifrwze.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652429165/LovePlants/mobile4_gooyvj.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652429165/LovePlants/mobile5_upoufl.jpg)|Pass|
+
+Acceptance Criteria:
+- [x] Admin users can use the Django admin panel to view order details
+- [x] Admin users can use the Django admin panel to change order details
 
 ### 6.7 
 As a **non-site admin** I am **redirected to an error page when attempting to access admin pages** so that **I cannot access admin pages or content**

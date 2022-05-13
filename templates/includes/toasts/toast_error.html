@@ -9,6 +9,8 @@
     <div class="container py-2">
       <p class="m-0">{{message}}</p>
 
+      {% if message.extra_tags %}
+      {{message.tags}}
       {% if product_count == 0 %}
       {% else %}
       <div class="toast-body">
@@ -68,6 +70,7 @@
           </div>
         </div>
       </div>
+      {% endif %}
       {% endif %}
     </div>
   </div>
