@@ -46,10 +46,10 @@ def add_to_bag(request, item_id):
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
-            messages.success(request, add_message)
+            messages.success(request, add_message, extra_tags='bag')
         else:
             bag[item_id] = quantity
-            messages.success(request, add_message)
+            messages.success(request, add_message, extra_tags='bag')
 
     request.session['bag'] = bag
     return redirect(redirect_url)
@@ -81,10 +81,10 @@ def edit_bag(request, item_id):
     else:
         if quantity > 0:
             bag[item_id] = quantity
-            messages.success(request, edit_message)
+            messages.success(request, edit_message, extra_tags='bag')
         else:
             bag.pop(item_id)
-            messages.success(request, remove_message)
+            messages.success(request, remove_message, extra_tags='bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
@@ -104,7 +104,7 @@ def delete_bag(request, item_id):
 
     messages.success(request,
                      remove_product_message,
-                     extra_tags=delete_product.id)
+                     extra_tags='bag')
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))

@@ -33,10 +33,9 @@
                         <label for="save_info">Save Information</label>
                         <input id="save_info" type="checkbox">
 
-                        <p><small>We will process your personal data in accordance with LovePlants <a href="{% url 'privacy_policy' %}" target="_blank"><u>Privacy
+                        <p><small>We will process your personal data in accordance with LovePlants <a
+                                    href="{% url 'privacy_policy' %}" target="_blank"><u>Privacy
                                         Notice</u></a></small></p>
-
-                        <!-- <button id="checkout-form-submit" type="submit">Submit</button> -->
                 </div>
 
                 <!-- order summary and checkout button -->
@@ -92,12 +91,18 @@
                     <p class="text-center"><strong>You card will be charged £{{grand_total}}</strong></p>
                     <br>
                     <br>
-                    <p><small> By continuing, you agree to LovePlants <a href="{% url 'ts_and_cs' %}" target="_blank"><u>Terms and Conditions.</u></a>
+                    <p><small> By continuing, you agree to LovePlants <a href="{% url 'ts_and_cs' %}"
+                                target="_blank"><u>Terms and Conditions.</u></a>
                         </small></p>
                     </form>
                     <br>
-                    <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
-                    <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for help</small>
+                    <a href="{% url 'faq' %}">
+                        <p><small><i class="fa-solid fa-truck"></i> &nbsp; Delivery and Returns information</small></p>
+                    </a>
+                    <a href="{% url 'faq' %}">
+                        <p><small><i class="fa-solid fa-people-group"></i> &nbsp; Contact Customer Service for
+                                help</small>
+                    </a>
                     </p>
                 </div>
 
@@ -113,7 +118,8 @@
                     {% for item in bag_items %}
                     <div class="row py-2">
                         <div class="col-6 col-lg-3">
-                            <a href="{% url 'product_detail' item.product.id %}"><img class="checkout-imgs" src="{{item.product.image1_source_url}}"></a>
+                            <a href="{% url 'product_detail' item.product.id %}"><img class="checkout-imgs"
+                                    src="{{item.product.image1_source_url}}" alt="{{product.friendly_name}}"></a>
                         </div>
                         <div class="col-6 col-lg-9">
                             <p class="fw-bold"><small>{{item.product.friendly_name}} &nbsp;<a

@@ -27,7 +27,7 @@ def all_products(request):
     filtering and sorting
     """
     #messages.error(request, "This item could not be added to your basket at this time.")
-    messages.error(request, "This item was successfully added to your basket.")
+    #messages.error(request, "This item was successfully added to your basket.")
     # all_products = Product.objects.all()
     # for i in all_products:
     #     i.average_rating = 0
@@ -45,6 +45,7 @@ def all_products(request):
     querydict = ""
     front_end_filters = []
     filtered_by = ""
+    plant_filter = ""
 
     if request.GET:
 
@@ -88,6 +89,7 @@ def all_products(request):
             all_products = all_products.filter(plant_category=plant_cat)
             filtered_by = ['plant_cats', plant_cat, f'{plant_cat} plants']
             front_end_filters.append(filtered_by)
+            plant_filter = plant_cat
 
         if 'sunlight' in request.GET:
             sunlight = request.GET['sunlight']
@@ -171,6 +173,7 @@ def all_products(request):
         'filtered_by': filtered_by,
         'front_end_filters': front_end_filters,
         'liked_list': liked_products_list,
+        'plant_filter': plant_filter,
     }
 
     return render(request, 'products/products.html', context)
@@ -298,8 +301,8 @@ def product_like(request, id):
                     product_review.save()
             else:
                 product_review = ProductReview(product=product,
-                                            user=request.user,
-                                            liked=True)
+                                               user=request.user,
+                                               liked=True)
                 product_review.save()
                 print(product_review.rating)
 
@@ -349,7 +352,6 @@ def admin_add_product(request):
     if request.user.is_superuser:
 
         if request.method == 'POST':
-            #print(request.POST)
 
             if 'popular' in request.POST:
                 popular = True
@@ -363,7 +365,7 @@ def admin_add_product(request):
 
             if 'live_on_site' in request.POST:
                 live_on_site = True
-            else: 
+            else:
                 live_on_site = False
 
             x = request.POST['care_instructions_source']
@@ -466,7 +468,7 @@ def admin_edit_product(request, id):
             product = Product.objects.get(pk=id)
         except Product.DoesNotExist:
             return render(request, 'home/404.html')
-            
+
         form = ProductForm(instance=product)
 
         if request.method == 'POST':
@@ -518,7 +520,6 @@ def admin_edit_product(request, id):
                     care_url = request.POST['care_instructions_url']
 
                     form_data = {
-                        #'category': request.POST['category'],
                         'plant_category': request.POST['plant_category'],
                         'name': slugify(x, separator='_'),
                         'friendly_name': request.POST['friendly_name'],
@@ -526,16 +527,15 @@ def admin_edit_product(request, id):
                         'description': request.POST['description'],
                         'description_source': des,
                         'description_url': request.POST['description_url'],
-                        #'image1_source': request.POST['image1_source'],
+                        'image1_source': request.POST['image1_source'],
                         'image1_source_url': request.POST['image1_source_url'],
-                        #'image2_source': request.POST['image2_source'],
+                        'image2_source': request.POST['image2_source'],
                         'image2_source_url': request.POST['image2_source_url'],
-                        #'image3_source': request.POST['image3_source'],
+                        'image3_source': request.POST['image3_source'],
                         'image3_source_url': request.POST['image3_source_url'],
                         'pot_size': request.POST['pot_size'],
                         'height': request.POST['height'],
                         'price': request.POST['price'],
-                        #'length': request.POST['length'],
                         'stock_quantity': request.POST['stock_quantity'],
                         'maturity_num': request.POST['maturity_num'],
                         'maturity_time': request.POST['maturity_time'],
@@ -572,12 +572,12 @@ def admin_edit_product(request, id):
                     if len(valid_array) > 0:
                         messages.success(
                             request,
-                             ('Cannot add product to'
-                              ' live website due to'
-                              ' empty'
-                              ' fields.  Fill in entire'
-                              ' form or uncheck '
-                              '"live on site"'))
+                            ('Cannot add product to'
+                             ' live website due to'
+                             ' empty'
+                             ' fields.  Fill in entire'
+                             ' form or uncheck '
+                             '"live on site"'))
                         return redirect(reverse('edit_product', args=[id]))
 
                 if form.is_valid():
@@ -642,8 +642,7 @@ def admin_create_sale(request):
                                         ).order_by(
                                             'plant_category')
         sale_products = Product.objects.filter(
-            sale_price__gte=0).order_by(
-                                            'plant_category')
+            sale_price__gte=0).order_by('plant_category')
 
         if request.method == 'POST':
 
@@ -670,7 +669,9 @@ def admin_create_sale(request):
                         sale_products = Product.objects.filter(
                                                         sale_price__gte=0
                                                         )
-                        messages.success(request, "Items added to sale")
+                        messages.success(
+                            request,
+                            "Items successfully added to sale")
                     except:
                         ...
 
@@ -685,7 +686,9 @@ def admin_create_sale(request):
                         sale_products = Product.objects.filter(
                                                         sale_price__gte=0
                                                         )
-                        messages.success(request, "Items removedfrom sale")
+                        messages.success(
+                            request,
+                            "Items successfully removed from sale")
                     except:
                         ...
 

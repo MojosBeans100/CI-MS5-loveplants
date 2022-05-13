@@ -23,17 +23,8 @@
                         <div class="text-center col-md col-4 d-flex justify-content-around py-2">
                             <a class="anchor-no-decoration"
                                 href="{% url 'products' %}?{{current_filters}}&plant_cats=Hanging">
-                                {% if front_end_filters|length > 0 %}
-                                {% for filter in front_end_filters %}
-                                {% if filter.0 == 'plant_cats' %}
-                                {% if filter.1 == 'Hanging' %}
+                                {% if plant_filter == 'Hanging' %}
                                 <img src="{% static 'media/hanging_bold.png' %}" title="Hanging plants">
-                                {% else %}
-                                <img src="{% static 'media/hanging.png' %}" title="Hanging plants">
-                                <!-- onmouseover="boldImage(this);" onmouseout="unboldImage(this);" -->
-                                {% endif %}
-                                {% endif %}
-                                {% endfor %}
                                 {% else %}
                                 <img src="{% static 'media/hanging.png' %}" title="Hanging plants">
                                 {% endif %}
@@ -42,16 +33,8 @@
                         <div class="text-center col-md col-4 d-flex justify-content-around py-2">
                             <a class="anchor-no-decoration"
                                 href="{% url 'products' %}?{{current_filters}}&plant_cats=Floor">
-                                {% if front_end_filters|length > 0 %}
-                                {% for filter in front_end_filters %}
-                                {% if filter.0 == 'plant_cats' %}
-                                {% if filter.1 == 'Floor' %}
+                                {% if plant_filter == 'Floor' %}
                                 <img src="{% static 'media/floor_bold.png' %}" title="Floor plants">
-                                {% else %}
-                                <img src="{% static 'media/floor.png' %}" title="Floor plants">
-                                {% endif %}
-                                {% endif %}
-                                {% endfor %}
                                 {% else %}
                                 <img src="{% static 'media/floor.png' %}" title="Floor plants">
                                 {% endif %}
@@ -60,16 +43,8 @@
                         <div class="text-center col-md col-4 d-flex justify-content-around py-2">
                             <a class="anchor-no-decoration"
                                 href="{% url 'products' %}?{{current_filters}}&plant_cats=Potted">
-                                {% if front_end_filters|length > 0 %}
-                                {% for filter in front_end_filters %}
-                                {% if filter.0 == 'plant_cats' %}
-                                {% if filter.1 == 'Potted' %}
+                                {% if plant_filter == 'Potted' %}
                                 <img src="{% static 'media/potted_bold.png' %}" title="Potted plants">
-                                {% else %}
-                                <img src="{% static 'media/potted.png' %}" title="Potted plants">
-                                {% endif %}
-                                {% endif %}
-                                {% endfor %}
                                 {% else %}
                                 <img src="{% static 'media/potted.png' %}" title="Potted plants">
                                 {% endif %}
@@ -78,16 +53,8 @@
                         <div class="text-center col-md col-6 d-flex justify-content-around py-2">
                             <a class="anchor-no-decoration"
                                 href="{% url 'products' %}?{{current_filters}}&plant_cats=Flowers">
-                                {% if front_end_filters|length > 0 %}
-                                {% for filter in front_end_filters %}
-                                {% if filter.0 == 'plant_cats' %}
-                                {% if filter.1 == 'Flowers' %}
+                                {% if plant_filter == 'Flowers' %}
                                 <img src="{% static 'media/flowers_bold.png' %}" title="Plants with flowers">
-                                {% else %}
-                                <img src="{% static 'media/flowers.png' %}" title="Plants with flowers">
-                                {% endif %}
-                                {% endif %}
-                                {% endfor %}
                                 {% else %}
                                 <img src="{% static 'media/flowers.png' %}" title="Plants with flowers">
                                 {% endif %}
@@ -96,16 +63,8 @@
                         <div class="text-center col-md col-6 d-flex justify-content-around py-2">
                             <a class="anchor-no-decoration"
                                 href="{% url 'products' %}?{{current_filters}}&plant_cats=Succulents">
-                                {% if front_end_filters|length > 0 %}
-                                {% for filter in front_end_filters %}
-                                {% if filter.0 == 'plant_cats' %}
-                                {% if filter.1 == 'Succulents' %}<img src="{% static 'media/succulent_bold.png' %}"
-                                    title="Succulents">
-                                {% else %}
-                                <img src="{% static 'media/succulent.png' %}" title="Succulent plants">
-                                {% endif %}
-                                {% endif %}
-                                {% endfor %}
+                                {% if plant_filter == 'Succulents' %}
+                                <img src="{% static 'media/succulent_bold.png' %}" title="Succulents">
                                 {% else %}
                                 <img src="{% static 'media/succulent.png' %}" title="Succulent plants">
                                 {% endif %}
@@ -113,7 +72,6 @@
                         </div>
                     </div>
                     <hr>
-
                 </div>
 
                 <!-- other filters -->
@@ -250,6 +208,7 @@
             </div>
         </div>
         <hr>
+
         <!-- products list -->
         <div class="row">
             <div class="col">
@@ -327,6 +286,11 @@
                                     class="ps-2 fa-solid fa-xmark"></i></em></a></p>
                     {% endif %}
                 </div>
+                {% endif %}
+
+                {% if all_products.count == 0 %}
+                <h3 class="text-center py-5">No products found. <br> Try widening the search criteria, or removing all
+                    filters.</h3>
                 {% endif %}
             </div>
         </div>

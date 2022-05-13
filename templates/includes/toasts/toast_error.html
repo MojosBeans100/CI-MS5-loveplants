@@ -1,16 +1,15 @@
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
   <div class="container p-0">
-    <div class="toast-header d-flex justify-content-between bg-black text-white py-1">
-      <p class="m-0 fs-6"><i class="fa-solid fa-triangle-exclamation"></i> There was a problem</p>
-      <button type="button" class="btn black-button" data-bs-dismiss="toast" aria-label="Close"><i
+    <div class="toast-header d-flex justify-content-between bg-dark text-white py-1">
+      <p class="m-0 fs-6"><i class="fa-solid fa-triangle-exclamation pe-2"></i> There was a problem</p>
+      <button type="button" class="btn dark-button" data-bs-dismiss="toast" aria-label="Close"><i
           class="fa-solid fa-xmark"></i></button>
     </div>
 
     <div class="container py-2">
       <p class="m-0">{{message}}</p>
 
-      {% if message.extra_tags %}
-      {{message.tags}}
+      {% if 'bag' in message.extra_tags %}
       {% if product_count == 0 %}
       {% else %}
       <div class="toast-body">

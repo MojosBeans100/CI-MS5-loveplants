@@ -105,6 +105,18 @@ button {
     border: 1px solid black;
 }
 
+.dark-button {
+    background-color: #212529;
+    border: 1px solid #212529;
+    color: white !important;
+}
+
+.dark-button:hover {
+    background-color: #212529;
+    border: 1px solid #212529;
+    color: white;
+}
+
 /* -------- NAV -------- */
 #nav-image {
     width: 60px;
