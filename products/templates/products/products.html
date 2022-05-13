@@ -428,16 +428,6 @@
 <script>
     /*jshint esversion: 6 */
 
-    // function boldImage(element) {
-    //     console.log(element.src)
-    //     element.src = element.src.split('.png')[0] + '_bold' + '.png';
-    // }
-
-    // function unboldImage(element) {
-    //     element.src = element.src.replace('_bold', "");
-    //     console.log(element.src)
-    // }
-
     // prevent form from refreshing the page
     var i;
     var forms = document.getElementsByClassName('product-like');
@@ -466,7 +456,6 @@
         });
 
         // change the color of the product
-        console.log(element.childNodes[1].childNodes[1])
         if (element.childNodes[1].childNodes[1].style.color == 'white') {
             element.childNodes[1].childNodes[1].style.color = 'black';
         } else {

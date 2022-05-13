@@ -3,10 +3,10 @@
 
 {% block content %}
 <div id="window-div">
-    <div id="overlay">
+    <div id="checkout-overlay">
         <div id="loader-icon"></div>
         <br>
-        <h4 class="text-center">LovePlants is processing your order.<br> Please wait momentarily..</h4>
+        <h4 class="text-center">Love Plants is processing your order.<br> Please wait momentarily..</h4>
     </div>
     <div class="container">
         <div class="margin">
@@ -155,16 +155,16 @@
     /**
      * check that the phone number entered is a number
      */
-    var valid_phone = document.getElementById('id_phone_num')
+    var valid_phone = document.getElementById('id_phone_num');
     valid_phone.addEventListener('change', function (ev) {
         if (isNaN(Number(valid_phone.value))) {
             valid_phone.style.color = 'red';
-            document.getElementById('checkout-form-submit').disabled = true
+            document.getElementById('checkout-form-submit').disabled = true;
         } else {
             valid_phone.style.color = 'black';
-            document.getElementById('checkout-form-submit').disabled = false
+            document.getElementById('checkout-form-submit').disabled = false;
         }
-    })
+    });
 
     // get keys from template
     var stripe_pk = document.getElementById('id_stripe_pk').textContent.slice(1, -1);
@@ -195,7 +195,8 @@
     form.addEventListener('submit', function (ev) {
 
         // create loading screen
-        document.getElementById('overlay').className = 'loader-div';
+        document.getElementById('checkout-overlay').style.display = 'block';
+        document.getElementById('checkout-overlay').className = 'loader-div';
         document.getElementById('loader-icon').className = 'loader';
         document.getElementById('window-div').style.height = '100vh';
         document.getElementById('window-div').style.overflow = 'hidden';

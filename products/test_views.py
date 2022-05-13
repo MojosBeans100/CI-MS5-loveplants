@@ -576,7 +576,7 @@ class TestAdminAddProduct(TestCase):
         self.assertEqual(new_product.friendly_name, 'Testing')
         self.assertEqual(new_product.plant_category, 'Potted')
         self.assertEqual(new_product.live_on_site, True)
-        self.assertRedirects(response, '/products/products.html')
+        self.assertRedirects(response, f'/products/product_detail/{new_product.id}')
 
     def test_admin_can_save_product(self):
         """

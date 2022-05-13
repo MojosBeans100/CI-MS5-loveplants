@@ -167,13 +167,7 @@
 
                     <div class="col-12">
                         {% if product.stock == "out of stock" %}
-                        <!-- <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm">
-                        <large>-</large>
-                    </button> -->
                         <input class="text-center" disabled type="number" min=0 max=4>
-                        <!-- <button type="button" disabled class="mx-2 btn btn-outline-secondary btn-sm">
-                        <large>+</large>
-                    </button> -->
                         <button type="button" disabled class="btn btn-outline-secondary">Add to basket </button>
 
                         {% else %}
@@ -452,7 +446,7 @@
 
     function likeProduct(element) {
         preventDefault();
-        console.log(element)
+
         // organise form variables
         var csrfToken = document.getElementsByName('csrfmiddlewaretoken')[0].value;
         var id = parseInt(element.id);
@@ -465,7 +459,6 @@
                 "X-CSRFToken": csrfToken
             }
         });
-
     }
 
     function validateForm() {
@@ -484,10 +477,9 @@
                 checked = true;
             }
         }
-        console.log(checked)
 
         if (checked == false) {
-            appendError.style.display = "block"
+            appendError.style.display = "block";
         } else {
             appendError.style.display = "none";
         }

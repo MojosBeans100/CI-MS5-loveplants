@@ -24,6 +24,7 @@ class TestProductModel(TestCase):
         product = Product.objects.create(
             friendly_name='A New Product',
             price=50.00,
+            pot_size=5,
         )
 
     def test_product_str_method(self):

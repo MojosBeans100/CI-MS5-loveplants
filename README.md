@@ -1146,10 +1146,14 @@ The Spruce gardening website was used extensively to source project images and d
 
 # Acknowledgements
 
-I'd like to thank my mentor, Mo Shami, for providing me support throughout the development of this project.
+- I'd like to thank my mentor, Mo Shami, for providing me support throughout the development of this project.
+- I'd like to thank tutor support at Code Institute for many hours of technical help.
+- I'd like to thank my family for taking time to use my project website and providing me helpful feedback. 
 
-I'd like to thank tutor support at Code Institute for many hours of technical help.
+# Disclaimers
 
-I'd like to thank my family for taking time to use my project website and providing me helpful feedback. 
+- This project was created for educational purposes only for the Code Institute Full Stack Development course.
+- This project includes text content and images sourced from other websites, all of which are credited appropriately. The developer does not own any of the images. 
+- There may be some minor styling differences between images in this ReadMe file and the final deployed website.
 
 [Back to top](#love-plants)

@@ -325,40 +325,14 @@
     closeModal.onclick = function () {
         modal.style.display = "none";
         document.getElementById("overlay").style.display = "none";
-    }
+    };
 
     window.onclick = function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
             document.getElementById("overlay").style.display = "none";
         }
-    }
-
-    
-    // function validateForm() {
-    // // form.addEventListener('submit', function (ev) {
-
-    //     // prevent posting form
-    //     preventDefault();
-    //     var valid = true;
-
-    //     all_inputs = document.getElementsByTagName('input');
-
-    //     for (i = 0; i < all_inputs.length; i++) {
-    //         if (all_inputs[i].value == "") {
-    //             valid = false;
-    //         } else {
-    //             valid = true;
-    //         }
-    //     }
-
-    //     if (valid == true) {
-    //         form.submit();
-    //     } else {
-    //         modal.style.display = "block";
-    //         document.getElementById("overlay").style.display = "block";
-    //     }
-    // };
+    };
 
     document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('id_sunlight_2').checked = true;

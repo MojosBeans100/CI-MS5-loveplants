@@ -712,14 +712,19 @@ The validator used to check validity of Javascript code was [JSHINT](https://jsh
 |---|--------|------|------|
 |-|base.html|-|-|
 |Home|index.html|-|-|
-|Products|products.html|||
-|Products|product_detail.html|||
+|Home|care.html|-|-|
+|Home|404.html|-|-|
+|Home|faq.html|-|-|
+|Home|privacy_policy.html|-|-|
+|Home|terms_and_conditions.html|-|-|
+|Products|products.html|[Validation]()|Pass|
+|Products|product_detail.html|[Validation]()|Pass|
 |Products|add_product.html|||
 |Products|edit_product.html|||
 |Profile|liked.html|||
 |Profile|profile.html|||
 |Checkout|checkout.html|||
-|Checkout|checkout_success.html|||
+|Checkout|checkout_success.html|-|-|
 |Bag|bag.html|||
 
 ### Python
