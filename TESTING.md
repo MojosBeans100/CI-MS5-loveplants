@@ -688,18 +688,22 @@ The validator used to check validity of HTML code was [W3C](https://validator.w3
 
 |App|Template|Result|Status|
 |---|--------|------|------|
-|n/a|base.html|||
-|Home|index.html|||
-|Products|products.html|||
-|Products|product_detail.html|||
-|Products|add_product.html|||
-|Products|edit_product.html|||
-|Products|create_sale.html|||
-|Profile|liked.html|||
-|Profile|profile.html|||
-|Checkout|checkout.html|||
-|Checkout|checkout_success.html|||
-|Bag|bag.html|||
+|Home|[index.html]((https://ms5loveplants.herokuapp.com/))|[Validation]()|Pass|
+|Home|[404.html]()|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468785/LovePlants/Products/404_mfu2gd.jpg)|Pass|
+|Home|[faq.html](https://ms5loveplants.herokuapp.com/faq.html)|[Validation]()|Pass|
+|Home|[care.html](https://ms5loveplants.herokuapp.com/care.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/care_iszums.jpg)|Pass|
+|Home|[terms_and_conditions.html](https://ms5loveplants.herokuapp.com/terms_and_conditions.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/termsn_and_conds_bb7lbe.jpg)|Pass|
+|Home|[privacy_policy.html](https://ms5loveplants.herokuapp.com/privacy_policy.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468624/LovePlants/Products/privacy_nrr5s5.jpg)|Pass|
+|Products|[products.html](https://ms5loveplants.herokuapp.com/products/products.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468624/LovePlants/Products/products_onvrzk.jpg)|Pass|
+|Products|[product_detail.html](https://ms5loveplants.herokuapp.com/products/product_detail/66)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468624/LovePlants/Products/product_detail_kwk4vi.jpg)|Pass|
+|Products|[add_product.html](https://ms5loveplants.herokuapp.com/products/add_product.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/add_product_k0cswb.jpg)|Pass|
+|Products|[edit_product.html](https://ms5loveplants.herokuapp.com/products/edit_product/66)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468624/LovePlants/Products/edit_product_rnxkv3.jpg)|Pass|
+|Products|[create_sale.html](https://ms5loveplants.herokuapp.com/products/create_sale.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468624/LovePlants/Products/create_sale_i4owwy.jpg)|Pass|
+|Profile|[liked.html](https://ms5loveplants.herokuapp.com/profiles/liked.html)|[Validation]()|Pass|
+|Profile|[profile.html](https://ms5loveplants.herokuapp.com/profiles/profile.html)|[Validation]()|Pass|
+|Checkout|[checkout.html](https://ms5loveplants.herokuapp.com/checkout/checkout.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/checkout_tas3nc.jpg)|Pass|
+|Checkout|[checkout_success.html](https://ms5loveplants.herokuapp.com/checkout/checkout_success/68BBAC77C11840F19480D519A54511A9)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/checkout_success_edrr6t.jpg)|Pass|
+|Bag|[bag.html](https://ms5loveplants.herokuapp.com/bag/)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/bag_nmhhhg.jpg)|Pass|
 
 ### Javascript
 The validator used to check validity of Javascript code was [JSHINT](https://jshint.com/).

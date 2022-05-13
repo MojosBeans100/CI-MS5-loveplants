@@ -1142,6 +1142,7 @@ The Spruce gardening website was used extensively to source project images and d
 ## Marketing
 - [Mailchimp](https://us18.admin.mailchimp.com/)
 - [Facebook](https://www.facebook.com/)
+- [Temp Mail](https://tempmail.net/)
 
 # Acknowledgements
 

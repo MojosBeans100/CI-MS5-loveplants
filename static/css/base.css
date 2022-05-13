@@ -177,6 +177,7 @@ button {
     box-shadow: 0 0 2px 1px rgb(238, 235, 235);
     background-color: white;
     margin-top: 200px !important;
+    margin-bottom: 100px;
 }
 
 #tscs-div p {

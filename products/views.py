@@ -26,12 +26,6 @@ def all_products(request):
     Display all products to the user, allowing for
     filtering and sorting
     """
-    #messages.error(request, "This item could not be added to your basket at this time.")
-    #messages.error(request, "This item was successfully added to your basket.")
-    # all_products = Product.objects.all()
-    # for i in all_products:
-    #     i.average_rating = 0
-    #     i.save()
 
     if request.user.is_superuser:
         all_products = Product.objects.all()
@@ -48,27 +42,12 @@ def all_products(request):
     plant_filter = ""
 
     if request.GET:
-
-        # copy the dictionary of filters in the front end
         querydict = request.GET.copy()
-
-        # for all items in the new request
         for i in request.GET.items():
-
-            # if the filter category is already in the dict
-            # change the value
             if i[0] in querydict:
                 querydict[i[0]] = i[1]
-
-            # if not, add this filter category
             else:
                 querydict.update({i[0]: i[1]})
-
-            # # if the filter category says remove
-            # # remove it
-            # if i[0] == 'remove':
-            #     querydict.pop('remove')
-            #     querydict.pop(i[1])
 
         for j in querydict.items():
             current_filters = current_filters + "&" + j[0] + "=" + j[1]
@@ -320,21 +299,30 @@ def product_review(request, id):
     Allow users to add review or rating to a product
     if they have previously purchased it
     """
-
+    product = Product.objects.get(id=id)
     if request.method == 'POST':
-        form_data = {
-            'review': request.POST['review'],
-            'rating': request.POST['rating'],
-            'product': Product.objects.get(id=id)
-        }
 
-        review_form = ProductReviewForm(form_data)
-        if review_form.is_valid:
-            review_form.save()
+        try:
+            review_product = ProductReview.objects.get(
+                product=product,
+                user=request.user)
+            review_product.review = request.POST['review']
+            review_product.rating = request.POST['rating']
+            review_product.save()
+        except:
+            form_data = {
+                'review': request.POST['review'],
+                'rating': request.POST['rating'],
+                'product': Product.objects.get(id=id)
+            }
 
-        reviewed_product = ProductReview.objects.latest()
-        reviewed_product.user = request.user
-        reviewed_product.save()
+            review_form = ProductReviewForm(form_data)
+            if review_form.is_valid:
+                review_form.save()
+
+            reviewed_product = ProductReview.objects.latest()
+            reviewed_product.user = request.user
+            reviewed_product.save()
 
     redirect_url = request.POST.get('redirect_url')
 
