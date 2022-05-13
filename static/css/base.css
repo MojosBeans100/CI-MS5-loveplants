@@ -375,6 +375,10 @@ input[type=checkbox]:checked {
     display: none;
 }
 
+.ratings-tables td{
+    width: 30px !important;
+}
+
 /* -------- BAG -------- */
 #bag-table-line {
     border-top: grey solid 1px;

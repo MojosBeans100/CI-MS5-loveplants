@@ -76,12 +76,13 @@ def all_products(request):
         if 'sort' in request.GET:
             sortkey = request.GET['sort']
             sort = sortkey
+            print(sort)
 
             if 'direction' in request.GET:
                 direction = request.GET['direction']
                 if direction == 'desc':
                     sortkey = f'-{sortkey}'
-                    print(sortkey)
+
             all_products = all_products.order_by(sortkey)
 
         if 'plant_cats' in request.GET:

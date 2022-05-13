@@ -44,27 +44,31 @@
 
                 <div class="row">
                     <div class="col">
-                        <img class="detail_image" alt="{{product.friendly_name}} {{product.latin_name}}" src="{{ product.image1_source_url }}" id="main-image"
+                        <img class="detail_image" alt="{{product.friendly_name}} {{product.latin_name}}"
+                            src="{{ product.image1_source_url }}" id="main-image"
                             title="Image credit: {{product.image1_source}}">
                     </div>
                 </div>
                 <div class="row py-4">
                     <div class="col">
-                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}" onclick="changeImage(this)"
-                            src="{{ product.image1_source_url }}" title="Image credit: {{product.image1_source}}">
+                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}"
+                            onclick="changeImage(this)" src="{{ product.image1_source_url }}"
+                            title="Image credit: {{product.image1_source}}">
                     </div>
 
                     <div class="col">
                         {% if product.image2_source_url %}
-                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}" onclick="changeImage(this)"
-                            src="{{ product.image2_source_url }}" title="Image credit: {{product.image2_source}}">
+                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}"
+                            onclick="changeImage(this)" src="{{ product.image2_source_url }}"
+                            title="Image credit: {{product.image2_source}}">
                         {% endif %}
                     </div>
 
                     <div class="col">
                         {% if product.image3_source_url %}
-                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}" onclick="changeImage(this)"
-                            src="{{ product.image3_source_url }}" title="Image credit: {{product.image3_source}}">
+                        <img class="product_detail_alt_img" alt="{{product.friendly_name}} {{product.latin_name}}"
+                            onclick="changeImage(this)" src="{{ product.image3_source_url }}"
+                            title="Image credit: {{product.image3_source}}">
                         {% endif %}
                     </div>
 
@@ -146,7 +150,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p id="avg-rating" class="text-center">{{product.average_rating|floatformat:1}}/5 <a
+                    <p id="avg-rating" class="text-center">{{product.average_rating|floatformat:0}}/5 <a
                             href="#product-review-title">({{reviews.count}})</a></p>
                 </div>
                 <hr>
@@ -300,39 +304,30 @@
                         <tr class="text-center" id="append-star2">
                         </tr>
                     </table>
-                    <p class="text-center avg-rating">{{product.average_rating|floatformat:1}}/5 ({{reviews.count}})
+                    <p class="text-center avg-rating">{{product.average_rating|floatformat:0}}/5 ({{reviews.count}})
                     </p>
-
 
                     {% for review in reviews %}
                     {% if review.review %}
-                    <div class="row py-2">
+                    <div class="row py-2 px-5">
                         <h5>{{review.user}} | {{review.review_time_ago}} days ago</h5>
 
                         <div class="row justify-content-start">
-
                             <table class="table table-borderless w-25">
                                 <tbody>
                                     <tr class="ratings-tables"></tr>
                                 </tbody>
                             </table>
-
                         </div>
 
                         <p>{{review.review}} </p>
                         <p style="display: none;" class="review-rating">{{review.rating}}</p>
-
-                        <!-- <p>{{review.review}} </p>
-                            
-                            <p style="display: none;" class="review-rating">{{review.rating}}</p>
-                            <p><small><em>{{review.user}} | {{review.review_time_ago}} days ago</em></small></p> -->
                     </div>
+                    {% endif %}
+                    {% endfor %}
 
                 </div>
-                {% endif %}
-                {% endfor %}
             </div>
-
         </div>
         <hr>
         {% else %}
@@ -353,8 +348,8 @@
                 <h4>See other rare products</h4>
                 {% for rare in rare_products %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' rare.id %}"><img alt="{{rare.friendly_name}}" class="other-products-imgs p-3"
-                            src="{{rare.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' rare.id %}"><img alt="{{rare.friendly_name}}"
+                            class="other-products-imgs p-3" src="{{rare.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' rare.id %}">
                         <p class="text-center"><strong>{{rare.friendly_name}}</strong></p>
                     </a>
@@ -369,8 +364,8 @@
                 <h4>See other popular products</h4>
                 {% for popular in popular_products %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' popular.id %}"><img alt="{{popular.friendly_name}}" class="other-products-imgs p-3"
-                            src="{{popular.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' popular.id %}"><img alt="{{popular.friendly_name}}"
+                            class="other-products-imgs p-3" src="{{popular.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' popular.id %}">
                         <p class="text-center"><strong>{{popular.friendly_name}}</strong></p>
                     </a>
@@ -385,8 +380,8 @@
                 <h4>See other easy care products</h4>
                 {% for easy in easy_care %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' easy.id %}"><img alt="{{easy.friendly_name}}" class="other-products-imgs p-3"
-                            src="{{easy.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' easy.id %}"><img alt="{{easy.friendly_name}}"
+                            class="other-products-imgs p-3" src="{{easy.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' easy.id %}">
                         <p class="text-center"><strong>{{easy.friendly_name}}</strong></p>
                     </a>
@@ -402,8 +397,8 @@
                 <h4>Recently viewed products</h4>
                 {% for recent in recently_viewed %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' recent.id %}"><img alt="{{recent.friendly_name}}" class="other-products-imgs p-3"
-                            src="{{recent.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' recent.id %}"><img alt="{{recent.friendly_name}}"
+                            class="other-products-imgs p-3" src="{{recent.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' recent.id %}">
                         <p class="text-center"><strong>{{recent.friendly_name}}</strong></p>
                     </a>
@@ -420,8 +415,8 @@
                 <h4>More products</h4>
                 {% for product in more_products %}
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                    <a href="{% url 'product_detail' product.id %}"><img alt="{{product.friendly_name}}" class="other-products-imgs p-3"
-                            src="{{product.image1_source_url}}"></a>
+                    <a href="{% url 'product_detail' product.id %}"><img alt="{{product.friendly_name}}"
+                            class="other-products-imgs p-3" src="{{product.image1_source_url}}"></a>
                     <a href="{% url 'product_detail' product.id %}">
                         <p class="text-center"><strong>{{product.friendly_name}}</strong></p>
                     </a>

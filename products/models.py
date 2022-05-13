@@ -268,7 +268,8 @@ def update_average_rating(sender, instance, created, **kwargs):
     product = Product.objects.get(pk=instance.product.pk)
     product_reviews = ProductReview.objects.filter(product=product.id)
     num_reviews = ProductReview.objects.filter(
-        product=instance.product.id).count()
+        product=instance.product.id)
+    num_reviews = num_reviews.filter(rating__gte=0).count()
     ratings = []
     count = 0
     sum = 0
@@ -292,7 +293,8 @@ def update_average_rating_deleted(sender, instance, **kwargs):
     product = Product.objects.get(pk=instance.product.pk)
     product_reviews = ProductReview.objects.filter(product=product.id)
     num_reviews = ProductReview.objects.filter(
-        product=instance.product.id).count()
+        product=instance.product.id)
+    num_reviews = num_reviews.filter(rating__gte=0).count()
     ratings = []
     count = 0
     sum = 0

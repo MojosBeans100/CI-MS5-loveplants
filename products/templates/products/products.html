@@ -190,6 +190,8 @@
                 <p class="text-center"><a href="{% url 'products' %}"><em>Clear all <i
                                 class="ps-2 fa-solid fa-xmark"></i></em></a></p>
 
+                <!-- admin buttons -->
+                <div>
                 {% if user.is_superuser %}
                 <div class="row my-4 d-flex justify-content-evenly">
                     <div class="col col-md-6 col-xl-4">
@@ -204,12 +206,13 @@
                 </div>
                 {% else %}
                 {% endif %}
+                </div>
 
             </div>
         </div>
         <hr>
 
-        <!-- products list -->
+        <!-- sort, search -->
         <div class="row">
             <div class="col">
 
@@ -243,8 +246,8 @@
                                 {% if current_sorting == 'None_None' %}Sort products:{% endif %}
                                 {% if current_sorting == 'price_asc' %}Price (low to high){% endif %}
                                 {% if current_sorting == 'price_desc' %}Price (high to low){% endif %}
-                                {% if current_sorting == 'rating_asc' %}Rating (low to high){% endif %}
-                                {% if current_sorting == 'rating_desc' %}Rating (high to low){% endif %}
+                                {% if current_sorting == 'average_rating_asc' %}Rating (low to high){% endif %}
+                                {% if current_sorting == 'average_rating_desc' %}Rating (high to low){% endif %}
                                 {% if current_sorting == 'name_asc' %}Name (A-Z){% endif %}
                                 {% if current_sorting == 'name_desc' %}Name (Z-A){% endif %}
                             </a>
@@ -351,7 +354,7 @@
                     {% else %}
                     {% endif %}
                     {% if product.sale_price %}
-                    <p class="card-text"><del>£{{product.price}}</del>&nbsp; £{{product.sale_price}}</p>
+                    <p class="card-text"><del>£{{product.price}}</del>&nbsp; &nbsp; £{{product.sale_price}}</p>
                     {% else %}
                     <p class="card-text">£{{product.price}}</p>
                     {% endif %}
