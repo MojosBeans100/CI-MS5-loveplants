@@ -15,7 +15,6 @@ Delivery to:
 {{order.country}}
 
 Order date: {{order.order_date}}
-Estimated delivery: XXXX
 
 Billing details:
 Order total: £{{order.order_total}}

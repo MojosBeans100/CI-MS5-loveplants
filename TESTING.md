@@ -413,10 +413,12 @@ As a **site user** I can **see confirmation that the order has been successful**
 |-----------|-------|------|------|------|
 |a loading screen is displayed when the order has been submitted|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/desktop_yqyx3x.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/tablet_hmjipb.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/mobile_xu7hmh.jpg)|Pass|
 |the user can see their order details on the confirmation page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop5_p41mil.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop6_bh5qmt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet5_z3mgay.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet6_rnhjsc.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/mobile5_ao2gj3.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590816/LovePlants/Testing/US%204/4.4/mobile2_zdi3c0.jpg)|Pass|
+|users receive a confirmation email that the order has been successful|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462120/LovePlants/Testing/US%204/4.5/email_v6nspb.jpg)|""|""|Pass|
 ||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
 
 Acceptance Criteria:
 - [x] User sees a loading screen for confirmation that their order is being processed
+- [X] Users received a confirmation email
 - [x] User is directed to a confirmation page upon successful checkout, rendering relevant details
 - User is aware if and why their checkout was not successful
 
@@ -459,6 +461,21 @@ Acceptance Criteria:
 - [x] Users can see a review/rating section on each product detail
 - [x] Users can scroll through reviews for a product
 - [x] Users can see when the reviews were left
+
+### 5.4
+As a **site user** I can **like products** so that **I can save them for later**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users can click on the heart icon on the product page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462496/LovePlants/Testing/US%205/5.4/desktop1_di4daw.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462496/LovePlants/Testing/US%205/5.4/tablet1_vrkjqt.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462496/LovePlants/Testing/US%205/5.4/mobile1_lmcp94.jpg)|Pass|
+|users can click on the heart icon on the product detail page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462637/LovePlants/Testing/US%205/5.4/desktop5_wuzih0.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462637/LovePlants/Testing/US%205/5.4/tablet5_pzblsh.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462637/LovePlants/Testing/US%205/5.4/mobile5_jyd0ya.jpg)|Pass|
+|users can see the change in colour to show product is now 'liked'|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462496/LovePlants/Testing/US%205/5.4/desktop2_rmtbbh.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462638/LovePlants/Testing/US%205/5.4/desktop4_pestjs.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462497/LovePlants/Testing/US%205/5.4/tablet2_i7ggtz.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462637/LovePlants/Testing/US%205/5.4/tablet4_pdhkdb.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462496/LovePlants/Testing/US%205/5.4/mobile2_pts5sn.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462638/LovePlants/Testing/US%205/5.4/mobile4_ijr2re.jpg)|Pass|
+|users can see their 'liked' products on the liked products page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462496/LovePlants/Testing/US%205/5.4/desktop3_o5pv3i.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462497/LovePlants/Testing/US%205/5.4/tablet3_szfvjt.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462496/LovePlants/Testing/US%205/5.4/mobile3_uesl7m.jpg)|Pass|
+
+Acceptance Criteria:
+- [x] Users can click on a heart icon on product images to 'like' the product
+- [x] Users can see these products in the product like page, accessible from the navbar
+- [x] Users can 'unlike' products
 
 ## User Story 6 Testing
 User Story 6 captures the admin requirements for using the website, to add, edit, delete products.

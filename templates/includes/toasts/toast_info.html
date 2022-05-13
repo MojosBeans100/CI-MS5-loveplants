@@ -1,25 +1,15 @@
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
   <div class="container">
-    <div class="toast-header d-flex justify-content-between">
-      <p class="m-0 text-info"><em> {{message}}</em></p>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <div class="toast-header d-flex justify-content-between bg-dark text-white py-1">
+      <p class="m-0 fs-6"><i class="fa-solid fa-info"></i> Information</p>
+      <button type="button" class="btn dark-button" data-bs-dismiss="toast" aria-label="Close"><i
+          class="fa-solid fa-xmark"></i></button>
     </div>
 
-    <!-- {% for product in all_products %}
-    {% if product.name in message %}
-    <div>
-      <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
-        {% csrf_token %}
-        <input type="hidden" value=1 name="quantity">
-        <input type="hidden" name="redirect_url" value="{{request.path}}">
-        <p>Didn't mean to remove this item?</p>
-        <button type="submit">Undo</button>
-      </form>
-    </div>
-    {% else %}
-    {% endif %}
-    {% endfor %} -->
+    <div class="container py-2">
+      <p class="m-0">{{message}}</p>
 
+    {% if user.is_authenticated %}
     {% if product_count == 0 %}
     {% else %}
     <div class="toast-body">
@@ -76,6 +66,7 @@
         </div>
       </div>
     </div>
+    {% endif %}
     {% endif %}
   </div>
 </div>
