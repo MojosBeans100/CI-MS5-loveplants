@@ -27,6 +27,8 @@ stripe_sk = os.environ.get('STRIPE_SECRET_KEY')
 @require_POST
 def cache_checkout_data(request):
     """
+    A view to keep the checkout data while form
+    is being submitted
     """
 
     post_data = json.loads(request.body.decode("utf-8"))
@@ -40,7 +42,8 @@ def cache_checkout_data(request):
         })
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, 'Sorry, your payment could not be completed')
+        messages.error(request, ("Sorry, your payment could not be completed "
+                                 "at this time.  Please try again later."))
         return HttpResponse(content=e, status=400)
 
 
@@ -87,7 +90,8 @@ def view_checkout(request):
                                 args=[order.order_ref]))
 
             else:
-                messages.error(request, 'There is an error in the form')
+                messages.error(request, ("There is an error in the payment "
+                                         "form.  Please check all values."))
 
         else:
             bag = request.session.get('bag', {})
@@ -140,42 +144,47 @@ def checkout_success(request, order_ref):
     A view to display order details when checkout is successful
     """
 
-    save_info = request.session.get('save_info')
-    order = get_object_or_404(Order, order_ref=order_ref)
-    order_line_items = OrderLineItem.objects.filter(order=order)
-
-    for lineitem in order_line_items:
-        product = lineitem.product
-        product.stock_quantity = product.stock_quantity - lineitem.quantity
-        product.save()
-
     if request.user.is_authenticated:
-        profile = UserProfile.objects.get(user=request.user)
-        order.user_profile = profile
-        order.save()
+        save_info = request.session.get('save_info')
+        order = get_object_or_404(Order, order_ref=order_ref)
+        order_line_items = OrderLineItem.objects.filter(order=order)
 
-    if save_info:
-        profile_data = {
-            'default_phone_num': order.phone_num,
-            'default_country': order.country,
-            'default_county': order.county,
-            'default_street_address_1': order.street_address_1,
-            'default_street_address_2': order.street_address_2,
-            'default_postcode': order.postcode,
-            'default_town_or_city': order.town_or_city,
+        for lineitem in order_line_items:
+            product = lineitem.product
+            product.stock_quantity = product.stock_quantity - lineitem.quantity
+            product.save()
+
+        if request.user.is_authenticated:
+            profile = UserProfile.objects.get(user=request.user)
+            order.user_profile = profile
+            order.save()
+
+        if save_info:
+            profile_data = {
+                'default_phone_num': order.phone_num,
+                'default_country': order.country,
+                'default_county': order.county,
+                'default_street_address_1': order.street_address_1,
+                'default_street_address_2': order.street_address_2,
+                'default_postcode': order.postcode,
+                'default_town_or_city': order.town_or_city,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
+        messages.success(request, (f'Order reference {order}'
+                                   ' has been successful!'))
+
+        if 'bag' in request.session:
+            del request.session['bag']
+
+        context = {
+            'order': order,
+            'line_items': order_line_items,
         }
-        user_profile_form = UserProfileForm(profile_data, instance=profile)
-        if user_profile_form.is_valid():
-            user_profile_form.save()
 
-    messages.success(request, f' Order reference {order} has been successful')
-
-    if 'bag' in request.session:
-        del request.session['bag']
-
-    context = {
-        'order': order,
-        'line_items': order_line_items,
-    }
+    else:
+        return redirect(reverse('account_login'))
 
     return render(request, 'checkout/checkout_success.html', context)
