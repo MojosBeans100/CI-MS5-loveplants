@@ -180,8 +180,8 @@
                     {% if user.is_superuser %}
                     <div class="col-12 col-sm-6 col-xl-4  d-flex justify-content-center py-1">
                         <div class="extra-filter">
-                            <a href="{% url 'products' %}?{{current_filters}}&liveonsite"><button
-                                    class="btn btn-outline-secondary w-100">Live on site</button></a>
+                            <button onClick="location.href='{% url 'products' %}?{{current_filters}}&liveonsite'"
+                                class="btn btn-outline-secondary w-100">Live on site</button>
                         </div>
                     </div>
                     {% endif %}
@@ -192,20 +192,22 @@
 
                 <!-- admin buttons -->
                 <div>
-                {% if user.is_superuser %}
-                <div class="row my-4 d-flex justify-content-evenly">
-                    <div class="col col-md-6 col-xl-4">
-                        <a href="{% url 'add_product' %}"><button class="w-100 btn admin text-white">Add product <i
-                                    class="ps-3 fa-solid fa-plus"></i></button></a>
-                    </div>
+                    {% if user.is_superuser %}
+                    <div class="row my-4 d-flex justify-content-evenly">
+                        <div class="col col-md-6 col-xl-4">
+                            <button onClick="location.href='{% url 'add_product' %}'"
+                                class="w-100 btn admin text-white">Add product <i
+                                    class="ps-3 fa-solid fa-plus"></i></button>
+                        </div>
 
-                    <div class="col col-md-6 col-xl-4">
-                        <a href="{% url 'create_sale' %}"><button class="w-100 btn admin text-white">Create sale <i
-                                    class="ps-3 fa-solid fa-bell"></i></button></a>
+                        <div class="col col-md-6 col-xl-4">
+                            <button onClick="location.href='{% url 'create_sale' %}'"
+                                class="w-100 btn admin text-white">Create sale <i
+                                    class="ps-3 fa-solid fa-bell"></i></button>
+                        </div>
                     </div>
-                </div>
-                {% else %}
-                {% endif %}
+                    {% else %}
+                    {% endif %}
                 </div>
 
             </div>

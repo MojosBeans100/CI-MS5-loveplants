@@ -353,6 +353,8 @@ def admin_add_product(request):
     if request.user.is_superuser:
 
         if request.method == 'POST':
+            
+            product_name = request.POST['friendly_name']
 
             if 'popular' in request.POST:
                 popular = True
@@ -366,8 +368,16 @@ def admin_add_product(request):
 
             if 'live_on_site' in request.POST:
                 live_on_site = True
+                message = (f"'{product_name}' "
+                           "successfully added."
+                           " This product is live on the site"
+                           " and available to purchase.")
             else:
                 live_on_site = False
+                message = (f"'{product_name}' "
+                           "successfully added."
+                           " This product is not currently"
+                           " available to purchase.")
 
             x = request.POST['care_instructions_source']
             form_data = {
@@ -429,14 +439,7 @@ def admin_add_product(request):
                     form.save()
                     latestid = Product.objects.aggregate(
                             Max('id'))['id__max']
-                    latest_product = Product.objects.get(id=latestid)
-                    messages.success(
-                        request,
-                        f"'{latest_product.friendly_name}' "
-                        "successfully added."
-                        " This product is live on the site"
-                        " and available to purchase."
-                        )
+                    messages.success(request, message)
                     return redirect(reverse(
                                     'product_detail',
                                     args=[latestid]))

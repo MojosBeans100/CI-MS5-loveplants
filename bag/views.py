@@ -39,10 +39,10 @@ def add_to_bag(request, item_id):
     add_message = f'Added {quantity} x "{product.friendly_name}" to basket'
     bag = request.session.get('bag', {})
 
-    if quantity > items_in_stock:
-        message = "There are not enough items in stock:"
-        " please choose a smaller quantity"
-        print(message)
+    if product.live_on_site is False:
+        messages.error(request, (f"{product.friendly_name} can not"
+                                 " be added to your bag at this time."))
+        return redirect(redirect_url)
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
