@@ -64,8 +64,13 @@
                   class="fa-solid fa-bag-shopping"></i></button></a>
           </div>
           <div class="col px-1">
-            <a href="{% url 'view_checkout' %}"><button class="w-100 black-button">Checkout <i
-                  class="fa-solid fa-lock"></i></button></a>
+            {% if user.is_authenticated %}
+            <button onClick="location.href='{% url 'view_checkout' %}'" class="w-100 black-button">Checkout <i
+                  class="fa-solid fa-lock"></i></button>
+            {% else %}
+            <button onClick="location.href='{% url 'account_login' %}'" class="w-100 black-button">Checkout <i
+              class="fa-solid fa-lock"></i></button>
+            {% endif %}
           </div>
         </div>
       </div>

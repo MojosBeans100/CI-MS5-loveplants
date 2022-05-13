@@ -48,86 +48,89 @@ def view_checkout(request):
     """
     A view to render the checkout page and handle payment
     """
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            bag = request.session.get('bag', {})
+            form_info = {
+                'full_name': request.POST['full_name'],
+                'email': request.POST['email'],
+                'phone_num': request.POST['phone_num'],
+                'street_address_1': request.POST['street_address_1'],
+                'street_address_2': request.POST['street_address_2'],
+                'town_or_city': request.POST['town_or_city'],
+                'county': request.POST['county'],
+                'postcode': request.POST['postcode'],
+                'country': request.POST['country'],
+            }
 
-    if request.method == 'POST':
-        bag = request.session.get('bag', {})
-        form_info = {
-            'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
-            'phone_num': request.POST['phone_num'],
-            'street_address_1': request.POST['street_address_1'],
-            'street_address_2': request.POST['street_address_2'],
-            'town_or_city': request.POST['town_or_city'],
-            'county': request.POST['county'],
-            'postcode': request.POST['postcode'],
-            'country': request.POST['country'],
+            order_form = OrderForm(form_info)
+
+            if order_form.is_valid():
+                order = order_form.save(commit=False)
+                pid = request.POST.get('stripe_sk').split('_secret')[0]
+                order.stripe_pid = pid
+                order.original_bag = json.dumps(bag)
+                order.save()
+
+                for item_id, quantity in bag.items():
+                    product = Product.objects.get(id=item_id)
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        product=product,
+                        quantity=quantity,
+                    )
+                    order_line_item.save()
+
+                request.session['save_info'] = 'save_info' in request.POST
+                return redirect(reverse(
+                                'checkout_success',
+                                args=[order.order_ref]))
+
+            else:
+                messages.error(request, 'There is an error in the form')
+
+        else:
+            bag = request.session.get('bag', {})
+
+            if not bag:
+                messages.error(request, "There's nothing"
+                                        " in your bag at the moment.")
+                return redirect(reverse('products'))
+
+            current_bag = bag_contents(request)
+            current_total = current_bag['grand_total']
+            stripe_total = round(current_total*100)
+            stripe.api_key = stripe_sk
+            intent = stripe.PaymentIntent.create(
+                amount=stripe_total,
+                currency='gbp',
+            )
+
+            if request.user.is_authenticated:
+                profile = get_object_or_404(UserProfile, user=request.user)
+                order_form = OrderForm(initial={
+                        'full_name': profile.user.get_full_name(),
+                        'email': profile.user.email,
+                        'phone_num': profile.default_phone_num,
+                        'country': profile.default_country,
+                        'postcode': profile.default_postcode,
+                        'town_or_city': profile.default_town_or_city,
+                        'street_address_1': profile.default_street_address_1,
+                        'street_address_2': profile.default_street_address_2,
+                        'county': profile.default_county,
+                    })
+
+            else:
+                order_form = OrderForm()
+
+        context = {
+            'order_form': order_form,
+            'stripe_pk': stripe_pk,
+            'stripe_sk': intent.client_secret,
         }
 
-        order_form = OrderForm(form_info)
-
-        if order_form.is_valid():
-            order = order_form.save(commit=False)
-            pid = request.POST.get('stripe_sk').split('_secret')[0]
-            order.stripe_pid = pid
-            order.original_bag = json.dumps(bag)
-            order.save()
-
-            for item_id, quantity in bag.items():
-                product = Product.objects.get(id=item_id)
-                order_line_item = OrderLineItem(
-                    order=order,
-                    product=product,
-                    quantity=quantity,
-                )
-                order_line_item.save()
-
-            request.session['save_info'] = 'save_info' in request.POST
-            return redirect(reverse(
-                            'checkout_success',
-                            args=[order.order_ref]))
-
-        else:
-            messages.error(request, 'There is an error in the form')
-
     else:
-        bag = request.session.get('bag', {})
-
-        if not bag:
-            messages.error(request, "There's nothing"
-                                    " in your bag at the moment.")
-            return redirect(reverse('products'))
-
-        current_bag = bag_contents(request)
-        current_total = current_bag['grand_total']
-        stripe_total = round(current_total*100)
-        stripe.api_key = stripe_sk
-        intent = stripe.PaymentIntent.create(
-            amount=stripe_total,
-            currency='gbp',
-        )
-
-        if request.user.is_authenticated:
-            profile = get_object_or_404(UserProfile, user=request.user)
-            order_form = OrderForm(initial={
-                    'full_name': profile.user.get_full_name(),
-                    'email': profile.user.email,
-                    'phone_num': profile.default_phone_num,
-                    'country': profile.default_country,
-                    'postcode': profile.default_postcode,
-                    'town_or_city': profile.default_town_or_city,
-                    'street_address_1': profile.default_street_address_1,
-                    'street_address_2': profile.default_street_address_2,
-                    'county': profile.default_county,
-                })
-
-        else:
-            order_form = OrderForm()
-
-    context = {
-        'order_form': order_form,
-        'stripe_pk': stripe_pk,
-        'stripe_sk': intent.client_secret,
-    }
+        return redirect(reverse('account_login'))
 
     return render(request, 'checkout/checkout.html', context)
 

@@ -94,6 +94,12 @@ Acceptance Criteria:
 - Users are given a chance to change their mind before deleting their account
 - Users are aware of the consequences of deleting their account
 
+### 1.7
+As a **site user** I am **directed to the login page when accessing checkout un-authenticated** so that **I know I have to log in/sign up to purchase products**
+
+- Users cannot access the checkout page if not logged in
+- Users are directed to log in/sign up if attempting to access the checkout page if not logged in
+
 ## User Story 2
 User Story 2 involves allowing users to view, filter and search for products.
 

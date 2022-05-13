@@ -142,6 +142,18 @@ As a **site user** I can **I can delete my account when I no longer need it** so
 
 As User Story 6 was not completed, it was not tested. 
 
+### 1.7
+As a **site user** I am **directed to the login page when accessing checkout un-authenticated** so that **I know I have to log in/sign up to purchase products**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|users are directed to log in if they have items in their bag but not logged in (from bag page)|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/deskto1_pxtzbz.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/tablet1_bvqler.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459644/LovePlants/Testing/US1/1.7/mobile_nrwign.jpg)|Pass|
+|users are directed to log in if they have items in their bag but not logged in (from notification)|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/desktop1_egojka.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/tablet2_kqsfk1.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/mobile2_l5rupw.jpg)|Pass|
+|users are directed to log in if they have items in their bag but not logged in (direct url input)|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/desktop1_egojka.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/tablet2_kqsfk1.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652459645/LovePlants/Testing/US1/1.7/mobile2_l5rupw.jpg)|Pass|
+
+- [x] Users cannot access the checkout page if not logged in
+- [x] Users are directed to log in/sign up if attempting to access the checkout page if not logged in
+
 ## User Story 2 Testing
 User Story 2 involves allowing users to view, filter and search for products.
 
@@ -225,6 +237,17 @@ Acceptance Criteria:
 As a **site user** I can **see products which are out of stock** so that **I can see which products may be available in the future**
 
 As User Story 2.6 was not completed, it was not tested. 
+
+### 2.7 
+As a **site user** I can **see a list of other products** so that **I am encouraged to keep exploring the website**
+
+|Criteria|Desktop|Tablet|Mobile|Status|
+|-----------|-------|------|------|------|
+|a list of suggested products is provided to users on the product detail page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453615/LovePlants/Testing/US%202/2.7/desktop1_n8xk0i.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453615/LovePlants/Testing/US%202/2.7/tablet1_qgpqfi.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453615/LovePlants/Testing/US%202/2.7/mobile1_t4ngc5.jpg)|Pass|
+|a list of suggested products is provided to users on the bag page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453615/LovePlants/Testing/US%202/2.7/desktop2_kfptnp.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453615/LovePlants/Testing/US%202/2.7/tablet2_grshuo.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652453615/LovePlants/Testing/US%202/2.7/mobile2_w5zcbw.jpg)|Pass|
+
+Acceptance Critiera:
+- [x] Users can see a list of other suggested products on the product detail and bag page
 
 ## User Story 3 Testing
 User Story 3 captures the requirements for users to add products to their shopping bag and checkout. 

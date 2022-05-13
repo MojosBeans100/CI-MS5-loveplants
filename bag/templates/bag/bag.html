@@ -147,9 +147,15 @@
                         </div>
                         <hr>
                         <div class="col">
-                            <a href="{% url 'view_checkout' %}"><button
+                            {% if user.is_authenticated %}
+                            <button onClick="location.href='{% url 'view_checkout' %}'"
                                     class="black-button text-center w-100">Continue to
-                                    checkout <i class="ps-2 fa-solid fa-lock"></i></button></a>
+                                    checkout <i class="ps-2 fa-solid fa-lock"></i></button>
+                            {% else %}
+                            <button onClick="location.href='{% url 'account_login' %}'"
+                                    class="black-button text-center w-100">Sign in to
+                                    checkout <i class="ps-2 fa-solid fa-lock"></i></button>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
