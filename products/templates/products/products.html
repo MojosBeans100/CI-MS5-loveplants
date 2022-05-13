@@ -391,24 +391,28 @@
     </div>
 
     <!-- pagination -->
-    <div class="pagination">
-        <span class="step-links">
+    <div class="py-5 fs-5">
 
-            {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-            {% endif %}
+        <div class="row">
+            <div class="col text-start">
+                {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a><br>
+                <a href="?page={{ page_obj.previous_page_number }}"><strong>previous</strong></a>
+                {% endif %}
+            </div>
+            <div class="col text-center">
+                <span class="current">
+                    <strong>{{ page_obj.number }}</strong> / {{ page_obj.paginator.num_pages }}
+                </span>
+            </div>
 
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-            </span>
-
-            {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-            {% endif %}
-
-        </span>
+            <div class="col text-end">
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}"><strong>next</strong></a><br>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 </div>
 
