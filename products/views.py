@@ -9,7 +9,6 @@ from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
 from django.db.models import Q, Max
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
 
 # Local imports
 from products.models import (
@@ -122,9 +121,9 @@ def all_products(request):
         if 'q' in request.GET:
             search_query = request.GET['q']
             search_queries = (
-                              Q(name__icontains=search_query)
-                              | Q(description__icontains=search_query)
-                              | Q(latin_name__icontains=search_query)
+                              Q(name__icontains=search_query) |
+                              Q(description__icontains=search_query) |
+                              Q(latin_name__icontains=search_query)
                             )
             all_products = all_products.filter(search_queries)
 
@@ -198,9 +197,9 @@ def product_detail(request, id):
     else:
         easy_products = None
 
-    if (rare_products is None
-            and popular_products is None
-            and easy_products is None):
+    if (rare_products is None and
+            popular_products is None and
+            easy_products is None):
         more_products = Product.objects.filter(live_on_site=True)
         more_products = more_products.exclude(id=id)[0:4]
     else:
@@ -545,7 +544,6 @@ def admin_edit_product(request, id):
 
                         if form.is_valid:
 
-                            # form has errors
                             if form.errors:
                                 errors = json.loads(form.errors.as_json())
                                 keys = list(errors.keys())
@@ -561,12 +559,15 @@ def admin_edit_product(request, id):
                                             request,
                                             "The product could not be"
                                             " added at this time."
-                                            " Please refer to the list of errors."
+                                            " Please refer to the"
+                                            " list of errors."
                                             )
                                 errors = form.errors.as_json()
                                 form = ProductForm(form_data)
 
-                                return redirect(reverse('edit_product', args=[id]))
+                                return redirect(reverse(
+                                    'edit_product',
+                                    args=[id]))
 
                             else:
                                 form.save()

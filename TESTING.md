@@ -717,15 +717,18 @@ The validator used to check validity of Javascript code was [JSHINT](https://jsh
 |Home|faq.html|-|-|
 |Home|privacy_policy.html|-|-|
 |Home|terms_and_conditions.html|-|-|
-|Products|products.html|[Validation]()|Pass|
-|Products|product_detail.html|[Validation]()|Pass|
-|Products|add_product.html|||
-|Products|edit_product.html|||
-|Profile|liked.html|||
-|Profile|profile.html|||
-|Checkout|checkout.html|||
+|Products|products.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/products_uujfto.jpg)|Pass|
+|Products|product_detail.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/product_detail_fbgpun.jpg)|Pass|
+|Products|add_product.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/add_product_kovsu5.jpg)|Pass|
+|Products|edit_product.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/edit_product_frfok9.jpg)|Pass|
+|Products|create_sale.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652533149/LovePlants/Testing/Validation/JSHINT/createsale_lupfib.jpg)|Pass|
+|Profile|liked.html|-|-|
+|Profile|profile.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532460/LovePlants/Testing/Validation/JSHINT/profile_w83vii.jpg)|Pass|
+|Checkout|checkout.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/checkout_sl9dcp.jpg)|Pass|
 |Checkout|checkout_success.html|-|-|
-|Bag|bag.html|||
+|Bag|bag.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/bag_idtizi.jpg)|Pass|
+
+*Unused variables in the above images refer to functions which have been called from the HTML code, which was not input into JSHINT
 
 ### Python
 The validator used to check validity of Python code was [PEP8](http://pep8online.com/).
@@ -739,7 +742,7 @@ The validator used to check validity of Python code was [PEP8](http://pep8online
 |Bag|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/bag_urls_jjgpcc.jpg)|Pass|
 |Bag|test_views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102362/LovePlants/Testing/Validation/bag_test_views_ly0yeo.jpg)|Pass|
 |Bag|contexts.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/bag_contexts_ugdpte.jpg)|Pass|
-|Products|views.py|[Validation]()|Pass|
+|Products|views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652533928/LovePlants/Testing/Validation/products_views_z1h8gd.jpg)|Pass|
 |Products|models.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/product_models_sotfdg.jpg)|Pass|
 |Products|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102043/LovePlants/Testing/Validation/product_urls_cjq0vf.jpg)|Pass|
 |Products|test_views.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102932/LovePlants/Testing/Validation/products_test_views_ymwpis.jpg)|Pass|
@@ -758,7 +761,7 @@ The validator used to check validity of Python code was [PEP8](http://pep8online
 |Checkout|urls.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102044/LovePlants/Testing/Validation/checkout_urls_vfeci5.jpg)|Pass|
 |Checkout|webhooks.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/checkout_webhooks_ifki49.jpg)|Pass|
 |Checkout|webhook_handler.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/checkout_whhandlers_sd3idj.jpg)|Pass|
-|Checkout|models.py|[Validation]()|Pass|
+|Checkout|models.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652533621/LovePlants/Testing/Validation/checkout_models_r0lbco.jpg)|Pass|
 
 ## SEO Testing
 

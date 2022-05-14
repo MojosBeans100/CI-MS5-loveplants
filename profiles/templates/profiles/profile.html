@@ -155,16 +155,16 @@
     /**
      * check that the phone number entered is a number
     */
-    var valid_phone = document.getElementById('id_default_phone_num')
+    var valid_phone = document.getElementById('id_default_phone_num');
     valid_phone.addEventListener('change', function(ev) {
         if (isNaN(Number(valid_phone.value))) {
             valid_phone.style.borderColor = 'orange';
-            document.getElementById('default-info').disabled = true
+            document.getElementById('default-info').disabled = true;
         } else {
             valid_phone.style.borderColor = '#ced4da';
-            document.getElementById('default-info').disabled = false
+            document.getElementById('default-info').disabled = false;
         }
-    })
+    });
 
 </script>
 {% endblock %}
