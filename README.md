@@ -135,7 +135,7 @@ Elements maintained consistency, to enable users to feel familiar with the brand
 
 - **Colours** found on the site were deliberately minimised, since the product images provided a variety of colours.  Therefore the main two colours of the website are white and black, and additional colours are only introduced in necessary circumstances, such as to highlight form field errors. Additionally, the white/black colour palette with splashes of colour from images maintains a clean, minimalistic website. Admin users can expect to see a teal (#069b8e) color to represent elements only visible to them
 
-- the same **font** (XXX) was used throughout the website, chosen due to it's readability and cross-platform capabilities
+- the same **fonts** (Raleway, Handlee) were used throughout the website, chosen due to their readability and cross-platform capabilities
 
 - **buttons** adhere to the colour consistency, with white text within a black button, and a hover effect providing the inverse style. Buttons for admin users maintain a teal hue
 
@@ -318,7 +318,7 @@ The Home App serves to display the homepage for the website.
 It contains no models. 
 
 ### Profiles App
-(User Stories XXX)
+(User Story 1, 5)
 The Profiles App provides the user the ability to create their website profile, so they can purchase products and review their details and order history. 
 
 #### UserProfile
@@ -338,7 +338,7 @@ The Profiles App provides the user the ability to create their website profile, 
 |default_country|user's default address|CountryField|
 
 ### Products App
-(User Stories XXX)
+(User Story 2) \
 - The Products App serves to hold a database of products available to purchase, details about them, their categories and any reviews/ratings
 - It contains 5 models (Product, ProductReview, Category, PlantCategory, RecentlyViewed)
 
@@ -450,7 +450,7 @@ The Checkout App provides the structure for users to create an order and purchas
 [Back to top](#love-plants)
 
 ### Pages
-The website has five main pages, with user authentication on XXXX:
+The website has five main pages for site users :
 - Homepage (all users): to introduce users to the website and display purchasable products
 - Products (all users): to display all products available to purchase, with sorting and filtering facilities
 - Product Detail (all users): to provide additional detail about a specific product and facilities to add the product to the shopping basket
@@ -458,8 +458,11 @@ The website has five main pages, with user authentication on XXXX:
 - Checkout (authenticated user): to display a form to submit payment for purchasing contents in shopping basket
 
 The additional pages are as follows:
-- Checkout Confirmation: to display details of a successful checkout
-- Review/Rating: for users to delete pipelines
+- Checkout confirmation: to display details of a successful checkout
+- Policy, T&Cs, FAQs, Care: static pages for more website information
+- Add product (admin user): to allow admin users to add products to the database
+- Edit product (admin user): to allow admin users to edit products to the database
+- Create sale (admin user): to allow admin users to put products on sale
 
 The website was designed to be simple, clear and uncluttered, basic in structure, and easy to navigate.
 Bootstrap was used to aid responsiveness, as well as media queries in CSS.  Javascript provides interactive features to enhance user experience.
@@ -643,19 +646,19 @@ The checkout confirmation/checkout success page displays details of the submitte
 The profile page displays information about the user.
 
 ### Profile Details
-(User Story 1.3)
+(User Story 1.3) \
 Users can see information about their account settings, which also provide links to logging out and resetting their password.
 
 ![Profile details](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/profile_zksong.jpg)
 
 ### Default Order Information
-(User Story X)
+(User Story 4.4) \
 Users can save default delivery information, which will auto-fill in on the checkout form for convenience. 
 
 ![Default delivery info](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/profiledeafult_wctawh.jpg)
 
 ### Order History
-(User Story 1.4)
+(User Story 1.4) \
 Users can see a list of previous orders they have submitted, expanded each item to see further information.
 
 ![Order history](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/profileorders_y33jzr.jpg)
@@ -1081,9 +1084,11 @@ The developer attempted to mimic a common feature in e-commerce websites, which 
 
 This was achieved by maintaining the previous filter criteria when applying another.  When products are narrowed down by plant category - for example, floor plants - this criteria is maintained when filtering again by, for example, price.  
 
-With this method, the search criteria in the webpage url maintains the previous criteria, but is overridden with the new criteria as the querydict recognises the last value.  The example below shows the list of products filtered by 'Floor' plants, then the search criteria is changed to 'Hanging' plants, but the url still shows the previous filter.  Since 'Hanging' plants is the last value of the plant category filters, 'Floor' is ignored and only 'Hanging' plants are listed.
+With this method, the search criteria in the webpage url maintains the previous criteria, but is overridden with the new criteria as the querydict recognises the last value.  
 
-This method in general provides a good solution to faceted filtering, although may be somewhat verbose. See [testing](TESTING.md#2.3) for this user feature. 
+The example below shows the list of products filtered by 'Floor' plants, then the search criteria is changed to 'Hanging' plants, but the url still shows the previous filter.  Since 'Hanging' plants is the last value of the plant category filters, 'Floor' is ignored and only 'Hanging' plants are listed.
+
+This method in general provides a good solution to faceted filtering, although may be somewhat verbose and require refactoring. See [testing](TESTING.md#2.3) for this user feature. 
 
 ![Faceted searching](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652450462/LovePlants/Products/faceted_kdwlyo.jpg)
 
