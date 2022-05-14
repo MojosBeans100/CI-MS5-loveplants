@@ -10,7 +10,7 @@ if os.path.isfile('env.py'):
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['ms5loveplants.herokuapp.com', 'localhost']
 
 INSTALLED_APPS = [
