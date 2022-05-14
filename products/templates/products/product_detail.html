@@ -195,7 +195,7 @@
                     </div>
                     {% for item in bag_items %}
                     {% if item.product.friendly_name == product.friendly_name %}
-                    <p class="text-center fw-bold">This item is already in your <a
+                    <p class="text-center fw-bold py-2">This item is already in your <a
                             href="{% url 'view_bag' %}">basket</a>.
                     </p>
                     {% endif %}

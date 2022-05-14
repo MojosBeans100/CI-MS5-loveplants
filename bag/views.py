@@ -44,12 +44,16 @@ def add_to_bag(request, item_id):
                                  " be added to your bag at this time."))
         return redirect(redirect_url)
     else:
-        if item_id in list(bag.keys()):
-            bag[item_id] += quantity
-            messages.success(request, add_message, extra_tags='bag')
+        if quantity > items_in_stock:
+            messages.error = (request, "There are not enough items in stock: "
+                              "please choose a smaller quantity")
         else:
-            bag[item_id] = quantity
-            messages.success(request, add_message, extra_tags='bag')
+            if item_id in list(bag.keys()):
+                bag[item_id] += quantity
+                messages.success(request, add_message, extra_tags='bag')
+            else:
+                bag[item_id] = quantity
+                messages.success(request, add_message, extra_tags='bag')
 
     request.session['bag'] = bag
     return redirect(redirect_url)
@@ -75,9 +79,8 @@ def edit_bag(request, item_id):
                       f'{product.friendly_name} from basket')
 
     if quantity > items_in_stock:
-        message = "There are not enough items in stock: "
-        "please choose a smaller quantity"
-        print(message)
+        messages.error = (request, "There are not enough items in stock: "
+                          "please choose a smaller quantity")
     else:
         if quantity > 0:
             bag[item_id] = quantity

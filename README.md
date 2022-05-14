@@ -49,8 +49,12 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
   - [Robots.txt](#robotstxt)
   - [Further Steps](#further-steps)
 - [Marketing](#marketing)
+  - [Primary Marketing Strategies](#primary-marketing-strategies)
   - [Further Marketing Strategies](#further-marketing-strategies)
 - [Deployment](#deployment)
+  - [Google emails](#google-emails)
+  - [Cloudinary](#cloudinary)
+  - [Stripe](#stripe)
 - [Limitations](#limitations)
   - [Products](#products)
   - [Description/ Care Instructions](#description-care-instructions)
@@ -71,12 +75,20 @@ Love Plants is a Full Stack B2C (business to customer) e-commerce website which 
   - [Validators](#validators)
   - [Marketing](#marketing)
 - [Acknowledgements](#acknowledgements)
+- [Disclaimers](#disclaimers)
 
 # Project Overview
 - This website was developed for submission as the Milestone 5 project of the Code Institute Diploma in Software Development.
 - The website is deployed using the Heroku pages at the following url: https://ms5loveplants.herokuapp.com/
 - The repository on Github that contains the website source code and assets is available at the following url: https://github.com/MojosBeans100/CI-MS5-loveplants
 - The website was built with a responsive look and feel, designed to be enjoyable to use on all screen sizes. 
+
+## Submitting Orders
+The following details shall be used when attempting to submit an order on the checkout page:
+
+- Card Number: 4242 4242 4242 4242 
+- Expiration Date: Any future date (e.g. 02/24) 
+- CVC: Any three digits
 
 [Back to top](#love-plants)
 
@@ -85,6 +97,13 @@ The Five Planes method - strategy, scope, structure, skeleton, and surface - was
 
 ## Strategy
 The strategy plane considers the website user's needs and the website admin's needs.
+
+### Target Audience
+The target audience for Love Plants are houseplant lovers - in particular, those who:
+- like to build a collection of interesting plants
+- love variegated or rare plant species
+- enjoy learning about caring for plants
+- want to discover a new houseplant to add to their collection
 
 ### Site User
 The primary goals of the website user are as follows:
@@ -101,7 +120,6 @@ The primary goals of the website owner or admin are as follows:
 - To manage the stock quantity of products
 - To view, edit and delete customer orders
 - To encourage users to purchase more products
-- To view and moderate customer ratings and reviews
 
 ### User Stories
 All user stories are detailed in [this document](USER_STORIES.md), and in the [Issues](https://github.com/MojosBeans100/CI-MS5-loveplants/issues) subfolder in the Github repository for the project.
@@ -137,7 +155,7 @@ Elements maintained consistency, to enable users to feel familiar with the brand
 
 - the same **fonts** (Raleway, Handlee) were used throughout the website, chosen due to their readability and cross-platform capabilities
 
-- **buttons** adhere to the colour consistency, with white text within a black button, and a hover effect providing the inverse style. Buttons for admin users maintain a teal hue
+- **buttons** adhere to the colour consistency, with white text within a black button or vice versa, and a hover effect providing the inverse style. Buttons for admin users maintain a teal hue
 
 - where possible, **images** were kept to the same size and width to height ratio.  An example outwith this rule is on the product detail page, where it was deemed beneficial to provide a larger image
 
@@ -146,11 +164,11 @@ Elements maintained consistency, to enable users to feel familiar with the brand
 #### Predictability
 To maintain predictability for the user, standard website conventions are followed to meet users expectations, for example:
 
-- the **Love Plants logo** is kept to the top left of the page, irregardless of the screen size
+- the **Love Plants logo** is kept to the top left of the page and provides a link back to the homepage
 - the main **navigation menu** is placed at the top of the page, and provides only a limited selection of options so as not to overwhelm the user
 - the **footer** is kept fixed to the bottom of the screen, and contains contact information and useful links
 - **anchor links** are styled with an underline feature on hover
-- buttons represent important calls to action, such as submitting a form and maintain consistent colours as described [above](#consistency)
+- **buttons represent important calls to action**, such as submitting a form and maintain consistent colours as described [above](#consistency)
 - as in most e-commerce sites, the top right of the page contains links to the **user's profile, bag, and log in/log out facilities**
 
 #### Learnability
@@ -158,7 +176,7 @@ See below some examples of how the developer considered UX learnability when pre
 
 - use of **visuals**  as much as possible, such as icons to represent actions as opposed to text
 
-Users see a heart icon to 'like' a product:
+Users see a heart icon to 'like' a product: \
 ![Icon for liking product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345634/LovePlants/goodcontrast_mrjohi.jpg)
 
 - **simplicity** in design, in effect minimising text, actions, colours.  The develop aims to only provide relevant information for the section or page, so as not cognitively overload the user with unnecessary information
@@ -184,7 +202,7 @@ As users have significant interaction with the site, feedback on their actions w
 
 - **in-line feedback** on forms, to emphasise invalid fields
 - **notifications** on notable actions, such as adding a product to their basket.  This was achieved with Bootstrap 'toasts'
-- **possible actions** available to them, namely to navigate around the site
+- **possible actions** available to them with links and buttons, namely to navigate around the site
 
 [Back to top](#love-plants)
 
@@ -225,25 +243,15 @@ Initial wireframes were designed during the project proposal stage to mock-up th
 
 ![Shopping basket wireframe mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1647409739/LovePlants/ReadMe/Wireframes/bag-mobile_jvlhka.png)
 
-#### Checkout
-![Checkout wireframe desktop]()
-
-![Checkout wireframe mobile]()
-
-#### Checkout Confirmation
-![Checkout confirmation wireframe desktop]()
-
-![Checkout confirmation wireframe mobile]()
-
 ### Navigation Design
-Navigation design was considered based on the main functions of the website. A typical user wishes to:
+Navigation design was considered based on the main functions of a standard e-commerce website. A typical user wishes to:
 
-- determine the purpose of the site, and what kind of products to expect (users are directed to the homepage intially)
-- view all available products (users can access the products page directly through the nav bar, or via the calls to action on the homepage)
-- narrow their search down to one or a few products (users can choose products they wish to view on the products page and are directed to the product detail page)
-- view the items they have in their bag (once added, the notification presents the user their bag, also accessible via the bag icon in the nav bar)
-- buy their items (from their bag there is an evident link to checkout)
-- view confirmation that their purchase has been successful (once purchased, users are directed to the checkout confirmation)
+1. determine the purpose of the site, and what kind of products to expect and ensure the website meets their needs (users are directed to the homepage intially)
+2. view all available products (users can access the products page directly through the nav bar, or via the calls to action on the homepage)
+3. narrow their search down to one or a few products (users can choose products they wish to view on the products page and are directed to the product detail page)
+4. view the items they have in their bag (once added, the notification presents the user their bag, also accessible via the bag icon in the nav bar)
+5. buy their items (from their bag there is an evident link to checkout)
+6. view confirmation that their purchase has been successful (once purchased, users are directed to the checkout confirmation, receive an email, and can see their order history on the profile page)
 
 This organic process for typical e-commerce site users was kept in mind when determining the layout of pages, content and available calls to action.
 
@@ -309,12 +317,16 @@ The models created to develop this e-commerce project are defined in this sectio
 
 ![database schema](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651259312/LovePlants/QuickDBD-export_wuephp.png)
 
+Notes on the database schema:
+1. the 'length' field in the Product model was removed as the developer felt it was unnecessary
+2. The Product and Order models could be normalised to reduce their size.  The Product model in particular contains several fields which in a live website would not be required eg the image source urls, description url, care instructions url.  These exist for the purpose of ensuring all non-original content is appropriately credited.
+
 ### User (Django context processor)
 - The User model contains information about the user, as part of the [Django allauth library](https://django-allauth.readthedocs.io/en/latest/installation.html)
 - No additional features are added to this model, as a basic username, email and password satisfy the requirements of the project
 
 ### Home App
-The Home App serves to display the homepage for the website.  
+The Home App serves to display the homepage and other static pages (T&Cs, FAQs etc) for the website.  
 It contains no models. 
 
 ### Profiles App
@@ -338,9 +350,9 @@ The Profiles App provides the user the ability to create their website profile, 
 |default_country|user's default address|CountryField|
 
 ### Products App
-(User Story 2) \
+(User Story 2)
 - The Products App serves to hold a database of products available to purchase, details about them, their categories and any reviews/ratings
-- It contains 5 models (Product, ProductReview, Category, PlantCategory, RecentlyViewed)
+- It contains 2 models (Product, ProductReview,)
 
 #### Product
 - The Product model holds information about specific products
@@ -381,15 +393,6 @@ The Profiles App provides the user the ability to create their website profile, 
 |average_rating|average of all ratings the product has received|DecimalField|
 |live_on_site|whether or not the product is live on the website to be purchased|BooleanField|
 
-#### Recently Viewed
-- The Recently Viewed model provides a short list of products the user has recently viewed (has visited the product detail page). 
-
-| Field | Description | Field type|
-|-------|-------------|-----------|
-|product|the product which was recently viewed|Foreign Key (Product)|
-|user|who recently viewed the product|Foreign Key (User)|
-|viewed|when the user viewed the product|DateTimeField|
-
 #### Product Review
 - The Product Review model provides customer reviews and ratings about a specific product.
 
@@ -421,7 +424,7 @@ The Checkout App provides the structure for users to create an order and purchas
 |order_ref|a unique 32 digit character string to provide order reference to the user|CharField|
 |user_profile|the user who submitted the order|ForeignKey (UserProfile)|
 |full_name|the name *of the user who submitted the order|CharField|
-|email|the email *||
+|email|the email *|EmailField|
 |phone_num|the phone number *|CharField|
 |street_address_1|the street address *|CharField|
 |street_address_2|the street address *|CharField|
@@ -474,25 +477,40 @@ This section provides an overview of all features found in the website.
 
 ## Homepage
 
+### Banner Images
+Several attractive banner images are provided alongside text to convey the purpose of the website and type of products the user should expect.
+
+![Banner images](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652555402/LovePlants/Testing/Validation/SEO/homepage1_ryufou.jpg)
+
+### Products filters
+There are a number of buttons provided allowing users to directly access the products list.
+
+![Products buttons](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652555402/LovePlants/Testing/Validation/SEO/homepage2_fdagjr.jpg)
+
+### Subscribe to mailing list
+Users can sign up to the Love Plants mailing list.
+
+![Mailing list](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652555402/LovePlants/Testing/Validation/SEO/homepage3_qaon69.jpg)
+
 ## Products
 The products page displays products available to purchase on the website.  
 
 ### Filter Products
-(User Story 2.3)
-This section provides faceted searching to narrow down product searches.  Users can filter by the plant type, price ranges, sunlight/watering required, whether or not the product is rare, popular, low maintenace, whether they have 'liked' the product.
+(User Story 2.3) \
+This section provides faceted searching to narrow down product searches.  Users can filter by the plant type, price ranges, sunlight/watering required, whether or not the product is rare, popular.
 
 ![Faceted searching](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productsfilter_dzmst1.jpg)
 
 ### Sort Products
-(User Story 2.4)
+(User Story 2.4) \
 Users can also sort the products by price (low, high), rating (low, high) and name (alphabetically).
 
 ![Sorting](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124838/LovePlants/ReadMe/productsort_mcumam.jpg)
 
 ### Product List
-(User Story 2.1)
+(User Story 2.1) \
 A list of products which match the filter and search criteria are displayed throughout the rest of the page.  Products are displayed with:
-- a Bootstrap card, providing an image of the product (which the second product image displayed upon hover of the original image).  The card links to the detailed view of the product when clicked
+- a Bootstrap card, providing an image of the product. The card links to the detailed view of the product when clicked
 - the name of the plant
 - the latin (or botanical) name
 - the price
@@ -508,20 +526,20 @@ A list of products which match the filter and search criteria are displayed thro
 The product detail page provides further information about the product in question.
 
 ### Breadcrumb Navigation
-(User Story 2)
+(User Story 2) \
 This feature allows for users to see which category the plant belongs to, and also allows users to navigate back to the products page by clicking on any of the links provided. Users can also use the browser 'back' button to return to the previous page, which would maintain their chosen filter and sort criteria. 
 
 ![Breadcrumb navigation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124838/LovePlants/ReadMe/breadcrumb_bqy2dr.jpg)
 
 ### Images
-(User Story 2)
+(User Story 2) \
 The main product image sits above three smaller images, any of which can be clicked for the user to view more images.  They decrease in opacity on hover so the user is aware they are clickable.
 
 ![Product images](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productimages_msfm5n.jpg)
 ![Product images 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124839/LovePlants/ReadMe/productimage2_txhnuo.jpg)
 
 ### Additional Details
-(User Story 2.5)
+(User Story 2.5) \
 Further details about the product are provided for the user to learn more about the product.  The information includes:
 - the pot size
 - the height or length of the plant
@@ -537,20 +555,20 @@ Further details about the product are provided for the user to learn more about 
 [Back to top](#love-plants)
 
 ### Reviews
-(User Story 5)
+(User Story 5) \
 If any reviews have been left by users for the product, they are displayed in a set of rows beneath the care instructions.  Users can see the average rating, how many reviews have been given, comments written by users, and how long ago they were left. 
 
 ![User reviews](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124838/LovePlants/ReadMe/reviews_mrclcx.jpg)
 
 ### Review Form
-(User Story 5)
+(User Story 5) \
 If a user has purchased the product, and not previously left a review, they can leave a comment and provide a rating from 1 to 5 in a short form. 
 
 ![Review form](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652124985/LovePlants/ReadMe/reviewform_ifwvnm.jpg)
 
 ### Suggested Products
 (User Story 2.7)
-To keep the user interested in browsing products, suggestions are made for additional products to view.  The list is kept brief, to only 4 products per category, and products are not duplicated between lists.  The categories are:
+To keep the user interested in browsing products, suggestions are made for additional products to view.  The list is kept brief, to only 4 products per category. The categories are:
 - rare products (if the product is rare)
 - popular products (if the product is popular)
 - easy care products (if the product has low care maintenance)
@@ -558,7 +576,7 @@ To keep the user interested in browsing products, suggestions are made for addit
 ![Suggested products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125041/LovePlants/ReadMe/additionaprodcts_xde83c.jpg)
 
 ### Add To Bag
-(User Story 3.1)
+(User Story 3.1) \
 Users can add the product in question to their bag, by selecting the desired quantity and clicking 'Add to bag'.  The page does not redirect, but provides a notification for users to see if the action has been successful.  This section includes the price, or sale price, of the product. 
 
 ![Add to bag](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125077/LovePlants/ReadMe/addtobag_igtcac.jpg)
@@ -569,13 +587,13 @@ Users can add the product in question to their bag, by selecting the desired qua
 The Bag page displays the contents of a user's bag and a link to checkout.
 
 ### Product List
-(User Story 3.2, 3.4)
+(User Story 3.2, 3.4) \
 Identifying details are displayed for each product, namely the plant name, price or sale price, subtotal, quantity and pot size.  Users can click on either the image or the product name to redirect to the product detail page. Users can also 'like' or 'unlike' the product on this page. Users can adjust the product quantity in the bag, or remove it from the bag completely.  
 
 ![Product list](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/bagproducts_a0fblh.jpg)
 
 ### Free Delivery
-(User Story 3.4)
+(User Story 3.4) \
 Users are aware how much they would need to spend on top of what is already in their bag to qualify for free delivery.  Below the bag, a list of suggested products to reach this total are displayed, organised by lowest cost. 
 
 For example if the user would need to spend £8.02 further to qualify for free delivery, products more expensive than £8.02 are listed, organised by cheapest first. These products have a 'Quick Add' button to prevent the need for the user to visit the product detail page to add to the bag. 
@@ -583,14 +601,13 @@ For example if the user would need to spend £8.02 further to qualify for free d
 ![Free delivery products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/freedelivery_kepmhh.jpg)
 
 ### Price Breakdown
-(User Story 3.3)
+(User Story 3.3) \
 The bag total, delivery cost and grand total are listed, as well as a link to checkout the bag. 
 
 ![Price breakdown](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/pricebreakdown_smeglw.jpg)
 
 ### Suggested Products
-(User Story 2.7)
-
+(User Story 2.7) \
 Another list of suggested products are included on this page. This list is not organised or sorted by any particular criteria, and largely exists to encourage users to add more products.
 
 ![Suggested products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125323/LovePlants/ReadMe/suggestproducts_iuh13q.jpg)
@@ -601,31 +618,31 @@ Another list of suggested products are included on this page. This list is not o
 The checkout page requires users to input their delivery details and payment information.
 
 ### User Details
-(User Story 4.1, 4.4)
+(User Story 4.1, 4.4) \
 Form fields are displayed for the user to input their personal and delivery information in order to process the order. Users can save their information for later, so the next order they submit will not require inputting this information again. 
 
 ![User details](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/checkoutdetails_gv7xji.jpg)
 
 ### Bag Contents
-(User Story 4.2)
-Users are reminded of the contents in their bag on this page. Users can remove items from their basket on this page too. 
+(User Story 4.2) \
+Users are reminded of the contents of their bag on this page. Users can remove items from their basket on this page too. 
 
 ![Bag contents](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/bagcontents_cgrukb.jpg)
 
 ### Order Summary
-(User Story 4.3)
+(User Story 4.3) \
 The same price breakdown from the bag page is displayed on this page. 
 
 ![Price breakdown](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/ordersummary_yki8v9.jpg)
 
 ### Payment Section
-(User Story 4.3)
+(User Story 4.3) \
 Users are required to input their card details into the card payment section provided by Stripe, which shows validation if the card details are incorrect.  Users can click 'Secure Checkout' to complete the order. 
 
 ![Submit order](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125481/LovePlants/ReadMe/customerservice_rtlicr.jpg)
 
 ### Form Submitted
-(User Story 4.5)
+(User Story 4.5) \
 Users have immediate feedback that their order is processing by displaying a 'loading' screen, which also prevents the user from clicking any other calls to action during order completion. 
 
 ![Submitted order](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/desktop_yqyx3x.jpg)
@@ -633,8 +650,8 @@ Users have immediate feedback that their order is processing by displaying a 'lo
 [Back to top](#love-plants)
 
 ## Checkout Confirmation
-(User Story 4.5)
-The checkout confirmation/checkout success page displays details of the submitted order.  Users have confirmation it has been received.  All details about the order are provided for the user to verify.  There are no calls to action on this page.
+(User Story 4.5) \
+The checkout confirmation page displays details of the submitted order.  Users have confirmation it has been received.  All details about the order are provided for the user to verify.  There are no calls to action on this page.
 
 ![Checkout confirmation 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652125593/LovePlants/ReadMe/checkoutconfirm1_hdd4tp.jpg)
 
@@ -659,32 +676,32 @@ Users can save default delivery information, which will auto-fill in on the chec
 
 ### Order History
 (User Story 1.4) \
-Users can see a list of previous orders they have submitted, expanded each item to see further information.
+Users can see a list of previous orders they have submitted, and expand each item to see further information.
 
 ![Order history](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/profileorders_y33jzr.jpg)
 
 [Back to top](#love-plants)
 
 ## Liked Products
-(User Story 5.4)
+(User Story 5.4) \
 This brief page display products the user has 'liked', and links to the product detail for each product. 
 
 ![Liked products](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652360791/LovePlants/ReadMe/liked_iyvnvp.jpg)
 
 ## Add Product (admin)
-(User Story 6.2)
-The Add Product page allows site administrators to add a new product on the website.  It contains a form to submit the details, and allows users to either add the product to the site or save it and return to it later. 
+(User Story 6.2) \
+The Add Product page allows site administrators to add a new product on the website.  It contains a form to submit the details, and allows users to either add the product live to the site, or keep it in the back end for later.
 
 ![Add product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652361446/LovePlants/ReadMe/addproduct_qdxuue.jpg)
 
 ## Edit Product (admin)
-(User Story 6.1, 6.4, 6.5)
+(User Story 6.1, 6.4, 6.5) \
 Admin users can also edit the details of products, or delete the product.  This page also allows admin users to copy a product and save it as a new item. This is useful for products which are similar, for example a variegated species of another plant. 
 
 ![Edit product](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652361446/LovePlants/ReadMe/edit_procut_pidu9x.jpg)
 
 ## Create Sale (admin)
-(User Story 6.3)
+(User Story 6.3) \
 Admin users can put items on sale with this page.  They can apply a discount to all products or individual products, either by a percentage or a fixed amount.  They can also remove the sale price on this page, to revert products back to their original prices. 
 
 ![Create sale](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652361446/LovePlants/ReadMe/createsale_qumsqz.jpg)
@@ -692,22 +709,19 @@ Admin users can put items on sale with this page.  They can apply a discount to 
 [Back to top](#love-plants)
 
 ## Error Pages
-(User Story 6.7)
-
+(User Story 6.7) \
 A 404 error page is displayed if users attempt to access admin pages.
 
 ![404 page](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652005403/LovePlants/Testing/desktoperror_fvoibd.jpg)
 
 ## Notifications
-(User Story 3.2, 3.3)
-
+(User Story 3.2, 3.3) \
 All users can see notifications in the form of Bootstrap 'toasts' to confirm an action has been completed.
 
 ![Notification](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/desktop1_xtuvsa.jpg)
 
 ## Account Authentication
-(User Story 1)
-
+(User Story 1) \
 Users can sign up, log in, log out via the account authentication pages. 
 
 ![Sign Up Form](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652355766/LovePlants/Testing/US1/1.1/desktop3_j8qgvp.jpg)
@@ -877,15 +891,16 @@ For example, a lot of the plant descriptions and care instructions are sourced f
 
 ![Citing sources](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652292218/LovePlants/citing_lpq0fk.jpg)
 
-5. Add relevant links to other parts of the site to keep users exploring more content \
+5. Add relevant links to other parts of the site to keep users exploring more content 
 - Users are linked to the 'Care' page from the product detail page
 - The website footer provides useful links to many pages in the site
 - The homepage provides users with an instant product filter depending on what kind of product they are looking for ie. 'Rare plants', 'Popular plants', 'Easy care plants'
 
 6. Providing links to Privacy Policy and T&Cs to convey trustworthiness to the user \
 The following websites were used to generate generic documents.
-[Terms and Conditions generator](https://www.termsandconditionsgenerator.com/) \
-[Privacy Policy generator](https://www.privacypolicygenerator.info/)
+
+-[Terms and Conditions generator](https://www.termsandconditionsgenerator.com/)
+-[Privacy Policy generator](https://www.privacypolicygenerator.info/)
 
 7. Include testimonials, reviews, ratings \
 Users may provide a review and rating to a product they have purchased, to allow for other users to trust the quality of the product, or understand its downfalls. 
@@ -959,6 +974,7 @@ Aside from creating useful, engaging content within the website, such as the Car
 [Back to top](#love-plants)
 
 # Deployment
+This section outlines the steps required to deploy the website.
 
 ### Secret Keys
 A number of secret keys will need to be generated in order to run this project.
@@ -993,7 +1009,7 @@ To set up the project to send emails and to use a Google account as an SMTP serv
 <br><code>pip3 freeze --local > requirements.txt</code>
 5. Add Cloudinary URL to env.py
 <br><code>os.environ["CLOUDINARY_URL"] = 'API environment variable from Step 2'</code>
-6. Add Cloudinary Libraries to installed apps
+6. Add Cloudinary Libraries to installed apps \
 ![Cloudinary in installed apps](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524271/LovePlants/ReadMe/LovePlants/ReadMe/cloudinaryapps_q3nbrf.jpg)
 7. Tell Django to user Cloudinary to store media and static files
 ![Cloudinary static](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524353/LovePlants/ReadMe/LovePlants/ReadMe/cloudinarystatic_soiqcd.jpg)
@@ -1004,7 +1020,7 @@ To set up the project to send emails and to use a Google account as an SMTP serv
 3. Under Developers, click on the API keys section
 <br>![API keys](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524761/LovePlants/ReadMe/LovePlants/ReadMe/stripeapikeys_ssxsn3.jpg)
 4. Note the values for the publishable and secret keys
-5. In the local environment(env.py) and heroku, create environment variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY with the publishable and secret key values
+5. In the local environment (env.py) and Heroku, create environment variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY with the publishable and secret key values
 <br><code>os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_VALUE_GOES_HERE')</code>
 <br><code>os.environ.setdefault('STRIPE_SECRET_KEY', 'YOUR_VALUE_GOES_HERE')</code>
 6. Back in the Developers section of your Stripe account click on Webhooks
@@ -1074,7 +1090,7 @@ To deploy this application to Heroku, run the following steps.
 
 # Limitations
 ## Products
-To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to source or owner of the image.  
+To build up an adequate database of products, a number of sources were used to provide images and descriptions for the products. The Products model contains a number of URLFields which credit these sources, and all images contain either an 'alt' or 'title' attribute which contains a link to the source or owner of the image.  
 
 In a true e-commerce store, these URL source fields would not be necessary, as all content is expected to be original. 
 
@@ -1110,11 +1126,11 @@ This method in general provides a good solution to faceted filtering, although m
 ## Like Product
 In order to allow users to 'like' products, a heart icon is rendered on the product card in the products page - solid white if not liked, solid black if liked.  Inconsistency in product image backgrounds result in a poor contrast of this heart on some product cards.  
 
-Good contrast:
+Good contrast: \
 ![Good contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345634/LovePlants/goodcontrast_mrjohi.jpg)
 ![Good contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345707/LovePlants/goodcontrast2_lvoppz.jpg)
 
-Poor contrast:
+Poor contrast: \
 ![Poor contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345633/LovePlants/poorcontrast_n7lpt1.jpg)
 ![Poor contrast](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652345706/LovePlants/poorcontrast2_ybstdh.jpg)
 
@@ -1122,6 +1138,17 @@ Possible solutions to this are:
 - better consistency with image backgrounds, in a true e-commerce site the images should be far more consistent
 - place the heart icon somewhere in the product card text, as opposed to within the image
 - use a different icon, a black outline heart icon with a white background (not free on Font Awesome), as opposed to a solid icon in white or black
+
+## Stock Quantity
+Love Plants does not have an unlimited supply of plants, therefore each Product has a stock quantity associated with it. This number is reduced upon successful purchase of a product; for example, if there are 5 cactus plants in stock, and a user purchases 2, the stock quantity is reduced to 3.  Users cannot add more than the stock quantity to their bag, so a user would not be able to add 10 cactus plants to their bag.
+
+One downside to this is that if multiple users were on the site at the same time viewing the same product, between them they could technically add more than the total stock quantity to their bags.  One user could have 4 cactus plants in their bag at the same time as another user having 5 cactus plants in their bag. Or a user could add 1 cactus plant, then add another, and another etc, until they have added more items than are in stock. 
+
+More defensive coding would be required to ensure this could not happen; for example, the stock quantity could be reduced in the 'bag' view as opposed to the 'checkout' view.  This would then need to be adjusted again if the bag session was deleted but the item was not purchased (ie a user added the item to their bag, but did not purchase it before leaving the site).
+
+This would introduce another common feature typically seen on an e-commerce site, where users can see a 'This item is no longer in stock' message in their bag view and they would have to delete the item from their bag.
+
+Admin users can see if an item is low on stock (quantity < 10), out of stock (quantity = 0), and they can increase the stock on the edit product page where more items become available. 
 
 [Back to top](#love-plants)
 
@@ -1181,7 +1208,7 @@ The Spruce gardening website was used extensively to source project images and d
 - [Font Awesome](https://fontawesome.com/)
 
 ## Generators
-- [Terms and Conditions generator](https://www.termsandconditionsgenerator.com/) \
+- [Terms and Conditions generator](https://www.termsandconditionsgenerator.com/)
 - [Privacy Policy generator](https://www.privacypolicygenerator.info/)
 - [Markdown ToC Generator](https://luciopaiva.com/markdown-toc/)
 - [Responsive Design](http://ami.responsivedesign.is/)
