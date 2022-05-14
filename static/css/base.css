@@ -376,8 +376,13 @@ input[type=checkbox]:checked {
     display: none;
 }
 
-.ratings-tables td{
-    width: 30px !important;
+.review-td{
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.review-rating-table {
+    width: auto !important;
 }
 
 /* -------- BAG -------- */

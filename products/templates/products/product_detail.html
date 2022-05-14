@@ -136,7 +136,7 @@
 
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <table class="table table-borderless mb-0 w-25">
+                        <table class="table table-borderless mb-0 review-rating-table">
                             <tbody>
                                 {% if reviews.count == 0 %}
                                 <tr>
@@ -297,7 +297,7 @@
 
                 <div class="col-12 col-md-8 offset-md-2 py-3">
                     <h2 class="text-center" id="product-review-title">Reviews</h2>
-                    <table class="table table-borderless w-25 mx-auto mb-0">
+                    <table class="table table-borderless review-rating-table mx-auto mb-0">
                         <tr class="text-center" id="append-star2">
                         </tr>
                     </table>
@@ -310,7 +310,7 @@
                         <h5>{{review.user}} | {{review.review_time_ago}} days ago</h5>
 
                         <div class="row justify-content-start">
-                            <table class="table table-borderless w-25">
+                            <table class="review-rating-table" class="table table-borderless w-25">
                                 <tbody>
                                     <tr class="ratings-tables"></tr>
                                 </tbody>
@@ -500,6 +500,7 @@
             for (j = 0; j < rating; j++) {
                 x = ratingsTables[i].insertCell(0);
                 x.innerHTML = '<i class="fa-solid fa-star"></i>';
+                x.className = "review-td";
             }
         }
     }
@@ -515,20 +516,26 @@
                 x = row.insertCell(0);
                 y = row2.insertCell(0);
                 x.innerHTML = '<i class="fa-solid fa-star"></i>';
+                x.className = "review-td";
                 y.innerHTML = '<i class="fa-solid fa-star"></i>';
+                y.className = "review-td";
             }
             // if not, add a half star
         } else {
             for (i = 0; i < avgRating - 1; i++) {
                 x = row.insertCell(0);
                 x.innerHTML = '<i class="fa-solid fa-star"></i>';
+                x.className = "review-td";
                 y = row2.insertCell(0);
                 y.innerHTML = '<i class="fa-solid fa-star"></i>';
+                y.className = "review-td";
             }
             x = row.insertCell(-1);
             x.innerHTML = '<i class="fa-solid fa-star-half"></i>';
+            x.className = "review-td";
             y = row2.insertCell(-1);
             y.innerHTML = '<i class="fa-solid fa-star-half"></i>';
+            y.className = "review-td";
         }
     }
 
