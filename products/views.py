@@ -242,6 +242,17 @@ def product_detail(request, id):
         else:
             form = None
 
+    if product.stock_quantity < 10:
+        stock_low = True
+    else:
+        stock_low = False
+
+    if product.stock_quantity == 0:
+        out_of_stock = True
+        stock_low = False
+    else:
+        out_of_stock = False
+
     context = {
         'product': product,
         'rare_products': rare_products,
@@ -254,6 +265,8 @@ def product_detail(request, id):
         'form': form,
         'liked': liked,
         'more_products': more_products,
+        'stock_low': stock_low,
+        'out_of_stock': out_of_stock,
     }
 
     return render(request, 'products/product_detail.html', context)

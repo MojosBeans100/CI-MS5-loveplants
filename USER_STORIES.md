@@ -86,7 +86,7 @@ Acceptance Criteria:
 - Users are immediately aware when their details have been changed
 
 ### 1.6
-As a **site user** I can **I can delete my account when I no longer need it** so that **I am removed from the LovePlants website**
+As a **site user** I can **delete my account when I no longer need it** so that **I am removed from the LovePlants website**
 
 Acceptance Criteria:
 - Users can delete their account from LovePlants
@@ -104,7 +104,7 @@ As a **site user** I am **directed to the login page when accessing checkout un-
 User Story 2 involves allowing users to view, filter and search for products.
 
 ### 2.1
-As a **site user** I can **I can view a list of all available products to buy** so that **I can see the selection of products on the website**
+As a **site user** I can **view a list of all available products to buy** so that **I can see the selection of products on the website**
 
 Acceptance Criteria:
 - Users can view products available to buy
@@ -112,7 +112,7 @@ Acceptance Criteria:
 - Users can see how many products they are viewing
 
 ### 2.2
-As a **site user** I can **I can use a search bar to input product details** so that **I can search for a specific product**
+As a **site user** I can **use a search bar to input product details** so that **I can search for a specific product**
 
 Acceptance Criteria:
 - Users can see a search bar at the top of the product list page
@@ -122,7 +122,7 @@ Acceptance Criteria:
 - Users can remove the search functionality to return to all products
 
 ### 2.3
-As a **site user** I can **I can filter the available products by category etc** so that **the product list contains only products I am interested in**
+As a **site user** I can **filter the available products by category etc** so that **the product list contains only products I am interested in**
 
 Acceptance Criteria:
 - Users can see categories on buttons on product list page
@@ -172,7 +172,7 @@ Acceptance Criteria:
 - User can determine the quantity of this product they want to add to their bag
 
 ### 3.2
-As a **site user** I can **I can see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
+As a **site user** I can **see a visual pop-up when a product has been added to my shopping bag** so that **I have confirmation that the product has been added**
 
 Acceptance Criteria:
 - User received a notification that an item was added to their bag

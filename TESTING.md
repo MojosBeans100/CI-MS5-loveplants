@@ -138,7 +138,7 @@ Acceptance Criteria:
 - [x] Users are immediately aware when their details have been changed
 
 ### 1.6
-As a **site user** I can **I can delete my account when I no longer need it** so that **I am removed from the LovePlants website**
+As a **site user** I can **delete my account when I no longer need it** so that **I am removed from the LovePlants website**
 
 As User Story 6 was not completed, it was not tested. 
 
@@ -158,7 +158,7 @@ As a **site user** I am **directed to the login page when accessing checkout un-
 User Story 2 involves allowing users to view, filter and search for products.
 
 ### 2.1
-As a **site user** I can **I can view a list of all available products to buy** so that **I can see the selection of products on the website**
+As a **site user** I can **view a list of all available products to buy** so that **I can see the selection of products on the website**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
@@ -188,7 +188,7 @@ Acceptance Criteria:
 - [x] Users can remove the search functionality to return to all products
 
 ### 2.3
-As a **site user** I can **I can filter the available products by category etc** so that **the product list contains only products I am interested in**
+As a **site user** I can **filter the available products by category etc** so that **the product list contains only products I am interested in**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
@@ -426,7 +426,7 @@ Acceptance Criteria:
 User Story 5 refers to features which allow users to leave a review and rating for products.
 
 ### 5.1
-As a **site user** I can **I can rate products I have purchased** so that **other users can see customer feedback on the product**
+As a **site user** I can **rate products I have purchased** so that **other users can see customer feedback on the product**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
@@ -599,73 +599,23 @@ Acceptance Criteria:
 
 ## Automated Testing
 
+### Automated Testing Strategy
+Automated testing was carried out using [Django Unit Tests](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/unit-tests/). The local sqlite database was used to develop and perform automated testing.
+
+Example of product views test: \
+![Auto tests](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552300/LovePlants/Testing/Validation/SEO/autotesting2_ebcaeq.jpg)
+![Auto tests](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552299/LovePlants/Testing/Validation/SEO/autotesting3_vzwbf0.jpg)
+
+Running tests: \
+![Auto tests](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552299/LovePlants/Testing/Validation/SEO/autotest1_icu52c.jpg)
+
 ### Coverage Report
-|Module|statements|missing|excluded|coverage|
-|------|----------|-------|--------|--------|
-|BAG APP|
-bag/__init__.py|	0|	0|	0|	100%|
-bag/admin.py|	1|	0|	0|	100%|
-bag/apps.py|	4|	0|	0|	100%|
-bag/contexts.py|	36|	14|	0|	61%|
-bag/migrations/__init__.py|	0|	0|	0|	100%|
-bag/models.py|	1|	0|	0|	100%|
-bag/test_views.py|	6|	6|	0|	0%|
-bag/tests.py|	1|	1|	0|	0%|
-bag/urls.py|	3|	0|	0|	100%|
-bag/views.py|	56|	49|	0|	12%|
-|CHECKOUT APP|
-checkout/__init__.py|	1|	0|	0|	100%|
-checkout/admin.py|	11|	0|	0|	100%|
-checkout/apps.py|	6|	0|	0|	100%|
-checkout/forms.py|	16|	9|	0|	44%|
-checkout/models.py|	53|	6|	0|	89%|
-checkout/signals.py|	9|	1|	0|	89%|
-checkout/tests.py|	1|	1|	0|	0%|
-checkout/urls.py|	4|	0|	0|	100%|
-checkout/views.py|	78|	59|	0|	24%|
-checkout/webhook_handler.py|	74|	59|	0|	20%|
-checkout/webhooks.py|	28|	19|	0|	32%|
-|HOME APP|
-home/__init__.py|	0|	0|	0|	100%|
-home/admin.py|	1|	0|	0|	100%|
-home/apps.py|	4|	0|	0|	100%|
-home/migrations/__init__.py|	0|	0|	0|	100%|
-home/models.py|	1|	0|	0|	100%|
-home/test_views.py|	6|	6|	0|	0%|
-home/tests.py|	1|	1|	0|	0%|
-home/urls.py|	3|	0|	0|	100%|
-home/views.py|	3|	1|	0|	67%|
-|LOVE PLANTS|
-loveplants/__init__.py|	0|	0|	0|	100%|
-loveplants/asgi.py|	4|	4|	0|	0%|
-loveplants/settings.py|	45|	0|	0|	100%|
-loveplants/urls.py|	3|	0|	0|	100%|
-loveplants/wsgi.py|	4|	4|	0|	0%|
-manage.py|	12|	2|	0|	83%|
-env.py|	7|	0|	0|	100%|
-|PRODUCTS APP|
-products/__init__.py|	0|	0|	0|	100%|
-products/admin.py|	10|	0|	0|	100%|
-products/apps.py|	4|	0|	0|	100%|
-products/forms.py|	20|	0|	0|	100%|
-products/models.py|	103|	16|	0|	84%|
-products/test_models.py|	14|	0|	0|	100%|
-products/test_views.py|	208|	4|	0|	98%|
-products/tests.py|	1|	0|	0|	100%|
-products/urls.py|	3|	0|	0|	100%|
-products/views.py|	288|	120|	0|	58%|
-|PROFILES APP|
-profiles/__init__.py|	0|	0|	0|	100%|
-profiles/admin.py|	3|	0|	0|	100%|
-profiles/apps.py|	4|	0|	0|	100%|
-profiles/forms.py|	16|	9|	0|	44%|
-profiles/models.py|	21|	1|	0|	95%|
-profiles/test_views.py|	57|	57|	0|	0%|
-profiles/tests.py|	1|	1|	0|	0%|
-profiles/urls.py|	3|	0|	0|	100%|
-profiles/views.py|	31|	23|	0|	26%|
-||||||
-Total|	1412|	473|	0|	67%|
+[Coverage.py](https://coverage.readthedocs.io/en/latest/index.html) was used to generate a coverage report, to determine the coverage percentage of automated testing, which was 72%.  Although coverage is not 100%, extensive manual testing was carried out to ensure functionality of the website. 
+
+![Coverage Report 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552299/LovePlants/Testing/Validation/SEO/autotest4_brhzol.jpg)
+![Coverage Report 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552300/LovePlants/Testing/Validation/SEO/autotest5_jkufu4.jpg)
+![Coverage Report 3](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552300/LovePlants/Testing/Validation/SEO/autotest6_xw3sz1.jpg)
+![Coverage Report 4](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552300/LovePlants/Testing/Validation/SEO/autotest7_yesmmo.jpg)
 
 ## Validation
 All files were checked for format validation.

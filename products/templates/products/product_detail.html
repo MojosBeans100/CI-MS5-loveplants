@@ -20,23 +20,27 @@
         {% endif %}
 
         {% if user.is_superuser %}
-        {% if product.live_on_site == False %}
         <div class="pt-3 row">
+            {% if product.live_on_site == False %}
             <p class="text-danger text-center">This product is not live on the website</p>
+            {% endif %}
+            {% if stock_low %}
+            <p class="text-danger text-center">This product is very low on stock ({{product.stock_quantity}})</p>
+            {% endif %}
+            {% if out_of_stock %}
+            <p class="text-danger text-center">This product is out of stock</p>
+            {% endif %}
         </div>
-        {% else %}
         {% endif %}
-        {% else %}
-        {% endif %}
-
+        
         <!-- navigate back to all products -->
         <div class="row mt-2">
             <p class="text-start">
                 <br>
-                <a href="{% url 'products' %}">All plants</a> >
+                <a href="{% url 'products' %}">All plants</a> &nbsp;>&nbsp;
                 <a href="{% url 'products' %}?plant_cats={{product.plant_category}}">{{product.plant_category}}
                 </a>
-                > <strong><em>{{product.friendly_name}}</em></strong></p>
+                &nbsp; >&nbsp; <strong><em>{{product.friendly_name}}</em></strong></p>
         </div>
 
         <!-- main container for product detail -->

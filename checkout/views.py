@@ -152,6 +152,8 @@ def checkout_success(request, order_ref):
         for lineitem in order_line_items:
             product = lineitem.product
             product.stock_quantity = product.stock_quantity - lineitem.quantity
+            if product.stock_quantity <= 0:
+                product.live_on_site = False
             product.save()
 
         if request.user.is_authenticated:

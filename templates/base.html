@@ -50,7 +50,7 @@
 
     <div id="navbar-main" class="row bg-dark align-items-center py-2">
       <div class="col-0 col-md-1">
-        <a><img id="nav-image" src="{%  static 'media/web.png' %}" alt="Love Plants icon"><sup><i id="nav-icon"
+        <a class="anchor-no-decoration" href="{% url 'home' %}"><img id="nav-image" src="{%  static 'media/web.png' %}" alt="Love Plants icon"><sup><i id="nav-icon"
               class="fa-regular fa-heart"></i></sup></a>
       </div>
 
@@ -79,7 +79,7 @@
       </div>
 
       <div class="col-5 col-sm-6 text-center align-items-center">
-        <h2 class="pt-3">Love Plants</h2>
+        <h2 class="pt-3"><a class="anchor-no-decoration" href="{% url 'home' %}">Love Plants</a></h2>
       </div>
 
       <div class="col-5 col-sm-4 col-md-3 pe-4 d-flex justify-content-end">
@@ -105,7 +105,7 @@
           {% endif %}
 
           <li class="list-group-item bg-dark border-0 px-0">
-            <a class=" text-center nav-link px-2" title="Basket: {{product_count}}" aria-current="page"
+            <a class="text-center nav-link px-2 anchor-no-decoration" title="Basket: {{product_count}}" aria-current="page"
               href="{% url 'view_bag' %}">
               <i class="fa-solid fa-bag-shopping"></i><sup>&nbsp;{{product_count}}</sup></a>
           </li>

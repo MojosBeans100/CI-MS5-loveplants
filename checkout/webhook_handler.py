@@ -78,8 +78,6 @@ class StripeWH_Handler:
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
-                print(profile.default_street_address_1)
-
         order_exists = False
         attempt = 1
 
