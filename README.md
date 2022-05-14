@@ -470,7 +470,7 @@ Bootstrap was used to aid responsiveness, as well as media queries in CSS.  Java
 [Back to top](#love-plants)
 
 # Features
-The section provides an overview of all features found in the website. 
+This section provides an overview of all features found in the website. 
 
 ## Homepage
 
@@ -959,14 +959,14 @@ Aside from creating useful, engaging content within the website, such as the Car
 # Deployment
 
 ### Secret Keys
-A couple of secret keys will need to be generated in order to run this project.
+A number of secret keys will need to be generated in order to run this project.
 
 ## Google emails
 To set up the project to send emails and to use a Google account as an SMTP server, the following steps are required
 1. Create an email account at google.com, login, navigate to Settings in your gmail account and then click on Other Google Account Settings
 2. Turn on 2-step verification and follow the steps to enable
 3. Click on app passwords, select Other as the app and give the password a name, for example Django
-<br>![App password]()
+<br>![App password](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652523635/LovePlants/Testing/Validation/gmailapp_spjooj.jpg)
 4. Click create and a 16 digit password will be generated, note the password down
 5. In the env.py file, create an environment variable called EMAIL_HOST_PASS with the 16 digit password
 6. In the env.py file, create an environment variable called EMAIL_HOST_USER with the email address of the gmail account
@@ -980,11 +980,27 @@ To set up the project to send emails and to use a Google account as an SMTP serv
 <br><code>DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')</code>
 8. You will also need to set the variables EMAIL_HOST_PASS and EMAIL_HOST_USER in your production instance, for example Heroku
 
+![Settings](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524271/LovePlants/ReadMe/LovePlants/ReadMe/settingsemail_undwxn.jpg)
+
+## Cloudinary
+1. Register for a [Cloudinary account](https://cloudinary.com/)
+2. Locate the API Environment variable on the dashboard.
+3. Install Cloudinary Libraries 
+<br><code>pip3 install dj3-cloudinary-storage</code>
+4. Freeze requirements 
+<br><code>pip3 freeze --local > requirements.txt</code>
+5. Add Cloudinary URL to env.py
+<br><code>os.environ["CLOUDINARY_URL"] = 'API environment variable from Step 2'</code>
+6. Add Cloudinary Libraries to installed apps
+![Cloudinary in installed apps](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524271/LovePlants/ReadMe/LovePlants/ReadMe/cloudinaryapps_q3nbrf.jpg)
+7. Tell Django to user Cloudinary to store media and static files
+![Cloudinary static](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524353/LovePlants/ReadMe/LovePlants/ReadMe/cloudinarystatic_soiqcd.jpg)
+
 ## Stripe
 1. Register for an account at stripe.com
 2. Click on the Developers section of your account once logged in
 3. Under Developers, click on the API keys section
-<br>![API keys]()
+<br>![API keys](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524761/LovePlants/ReadMe/LovePlants/ReadMe/stripeapikeys_ssxsn3.jpg)
 4. Note the values for the publishable and secret keys
 5. In your local environment(env.py) and heroku, create environment variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY with the publishable and secret key values
 <br><code>os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_VALUE_GOES_HERE')</code>
@@ -992,7 +1008,7 @@ To set up the project to send emails and to use a Google account as an SMTP serv
 6. Back in the Developers section of your Stripe account click on Webhooks
 7. Create a webhook with the url of your website <url>/checkout/wh/, for example: https://ms5loveplants.herokuapp.com/checkout/wh/
 8. Select the payment_intent.payment_failed and payment_intent.succeeded as events to send
-<br>![Webhook]()
+<br>![Webhook](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524817/LovePlants/ReadMe/LovePlants/ReadMe/stripwebhooks_ezb1gq.jpg)
 9. Note the key created for this webhook
 10. In your local environment(env.py) and heroku, create environment variable STRIPE_WH_SECRET with the secret values
 <code>os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_VALUE_GOES_HERE')</code>
@@ -1006,13 +1022,10 @@ To run this project locally, the repository will need to be cloned.
 2. Select the repository MojosBeans100/CI-MS5-loveplants
 3. Click the Code button and copy the HTTPS url, for example: https://github.com/MojosBeans100/CI-MS5-loveplants.git
 4. In an IDE, open a terminal and run the git clone command, for example
-
 <code>git clone https://github.com/MojosBeans100/CI-MS5-loveplants.git</code>
-
 The repository will now be cloned to the workspace.
-
 5. Create an env.py file (do not commit this file to source control) in the root folder in the project, and add in the following code with the relevant key, value pairs, and ensure you enter the correct key values
-
+![env.py variables](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524510/LovePlants/ReadMe/LovePlants/ReadMe/envs_ewrhyf.jpg)
 6. Install the relevant packages as per the requirements.txt file
 7. In the settings.py ensure the connection is set to either the Heroku postgres database or the local sqlite database
 8. Add localhost/127.0.0.1 to the ALLOWED_HOSTS variable in settings.py
@@ -1028,7 +1041,7 @@ The repository will now be cloned to the workspace.
 To deploy this application to Heroku, run the following steps.
 
 1. Create an account at [heroku.com](https://id.heroku.com/)
-2. Create an app, give it a name - for example 'loveplants' - and select a region
+2. Create an app, give it a name - for example 'ms5loveplants' - and select a region
 3. Under resources search for postgres, and add a Postgres database to the app
 4. Note the DATABASE_URL, this can be set as an environment variable in Heroku and the local deployment (env.py)
 5. Install the plugins dj-database-url and psycopg2-binary
@@ -1046,7 +1059,7 @@ To deploy this application to Heroku, run the following steps.
 17. Push the code to Heroku using the command git push heroku master
 18. Ensure the following environment variables are set in Heroku
 
-![Heroku Config Vars](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1644513398/herokuconfigvars_vfhl5s.jpg)
+![Heroku Config Vars](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524271/LovePlants/ReadMe/LovePlants/ReadMe/herokuconfigvars_uqhpsy.jpg)
 
 19. Connect the app to GitHub, and in Manual Deploy, click deploy branch.
 

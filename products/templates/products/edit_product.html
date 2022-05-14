@@ -82,7 +82,8 @@
                     <fieldset>
                         <legend class="pt-5">Images</legend>
 
-                        <p><small><em>provide urls for up to 3 images from a cloud storage and the source of the image</em></small></p>
+                        <p><small><em>provide urls for up to 3 images from a cloud storage and the source of the
+                                    image</em></small></p>
 
                         <div class="row">
                             <div class="col">
@@ -190,7 +191,7 @@
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.1.id_for_label}}"><i class="fa-solid fa-droplet-slash"></i><br>
-                                   water monthly</label>
+                                    water monthly</label>
                                 {{form.watering.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
@@ -295,7 +296,7 @@
                 </div>
                 <div class="modal-body">
                     <p>Are you sure you want to permanently delete this product?</p>
-                    
+
                     <br>
                     <p><i class="fa-solid fa-circle-info"></i> Products can be removed from the live website without
                         deleting them by unchecking the 'Live on site' box</p>
@@ -326,48 +327,10 @@
     var myModal = document.getElementById('myModal');
     var myInput = document.getElementById('myInput');
     var i;
-    var form = document.getElementsByTagName('form')[1];
-    var liveOnSite = document.getElementById('id_live_on_site');
-    var saveAsNew = document.getElementsByName('save-as-new')[0];
 
     myModal.addEventListener('shown.bs.modal', function () {
         myInput.focus();
-    })
-
-    /**
-     * If user is saving object as a new object
-     */
-
- 
-
-    // function saveNewValidation(ev) {
-
-    //     var validArray = []
-    //     event.preventDefault();
-
-    //     if (liveOnSite.checked) {
-    //         var valid = true;
-    //         all_inputs = document.getElementsByTagName('input');
-
-    //         for (i = 0; i < all_inputs.length; i++) {
-    //             if (all_inputs[i].value == "") {
-    //                 valid = false;
-    //                 validArray.push(valid)
-    //             } else {
-    //                 valid = true;
-    //                 validArray.push(valid)
-    //             }
-    //         }
-    //     } else {
-    //         form.submit(); 
-    //     }
-
-    //     if (validArray.includes('false')) {
-    //         modal.style.display = "block";
-    //     } else {
-    //         form.submit();
-    //     }
-    // }
+    });
 
     document.addEventListener('DOMContentLoaded', () => {
         var sunlight = document.getElementsByName('sunlight');
@@ -409,7 +372,6 @@
 
     function uploadImage(element) {
         var src = element.value;
-        var image_id = element.id;
         var pic = document.getElementsByClassName(element.id)[0];
 
         if (src == "") {

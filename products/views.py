@@ -459,16 +459,13 @@ def admin_edit_product(request, id):
 
     if request.user.is_superuser:
 
-        # if product exists
         try:
             edit_product = Product.objects.get(pk=id)
             form = ProductForm(instance=edit_product)
 
-            # if POST
             if request.method == 'POST':
                 product_name = request.POST['friendly_name']
 
-                # check this
                 if 'popular' in request.POST:
                     popular = True
                 else:
@@ -529,10 +526,8 @@ def admin_edit_product(request, id):
                     'live_on_site': live_on_site
                 }
 
-                # if saving new object
                 if 'save-as-new' in request.POST:
 
-                    # check the name is unique
                     try:
                         x = request.POST['friendly_name']
                         Product.objects.get(
@@ -544,7 +539,6 @@ def admin_edit_product(request, id):
                                       "must be unique."))
                         return redirect(reverse('edit_product', args=[id]))
 
-                    # name is unique
                     except Product.DoesNotExist:
 
                         form = ProductForm(form_data)
@@ -573,8 +567,7 @@ def admin_edit_product(request, id):
                                 form = ProductForm(form_data)
 
                                 return redirect(reverse('edit_product', args=[id]))
-                            
-                            # form does not have errors
+
                             else:
                                 form.save()
                                 messages.success(request, message)
@@ -583,13 +576,10 @@ def admin_edit_product(request, id):
                                 return redirect(reverse(
                                     'product_detail',
                                     args=[latestid]))
-                        
+
                         else:
                             print("errors")
 
-                    return redirect(reverse('products'))
-
-                # editing object
                 else:
                     form = ProductForm(request.POST, instance=edit_product)
 
@@ -629,13 +619,10 @@ def admin_edit_product(request, id):
                     'error_fields': error_fields,
                     'error_messages': error_messages,
                 }
-            print(context)
-        
-        # product does not exist
+
         except Product.DoesNotExist:
             return render(request, 'home/404.html')
 
-    # user is not superuser
     else:
         messages.error(
             request,
