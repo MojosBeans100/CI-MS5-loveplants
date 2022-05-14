@@ -17,6 +17,19 @@
             <a target="_blank" href="{% url 'product_detail' product.id %}">Preview</a>
             <hr>
 
+            {% if error_fields %}
+            <div class="row">
+                <p class="text-danger">There was an error with the follow fields:</p>
+                <ul class="text-danger list-group">
+                    {% for error in error_fields %}
+                    {% for error_msg in error_messages %}
+                    <li class="text-danger list-group-item border-0">{{error|capfirst}} : {{error_msg}}</li>
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
             <div class="col-12 col-lg-8 col-xl-6">
                 <form method="POST" action="{% url 'edit_product' product.id %}">
                     {% csrf_token %}

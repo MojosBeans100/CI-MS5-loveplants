@@ -403,7 +403,6 @@ def admin_add_product(request):
 
             if form.is_valid:
                 if form.errors:
-                    print(form.errors.as_json())
                     errors = json.loads(form.errors.as_json())
                     keys = list(errors.keys())
                     values = list(errors.values())
@@ -455,139 +454,188 @@ def admin_edit_product(request, id):
     or create a new object with similar fields
     """
 
+    error_fields = []
+    error_messages = []
+
     if request.user.is_superuser:
+
+        # if product exists
         try:
-            product = Product.objects.get(pk=id)
+            edit_product = Product.objects.get(pk=id)
+            form = ProductForm(instance=edit_product)
+
+            # if POST
+            if request.method == 'POST':
+                product_name = request.POST['friendly_name']
+
+                # check this
+                if 'popular' in request.POST:
+                    popular = True
+                else:
+                    popular = False
+
+                if 'rare' in request.POST:
+                    rare = True
+                else:
+                    rare = False
+
+                if 'live_on_site' in request.POST:
+                    live_on_site = True
+                    message = (f"'{product_name}' "
+                               "successfully added."
+                               " This product is live on the site"
+                               " and available to purchase.")
+                else:
+                    live_on_site = False
+                    message = (f"'{product_name}' "
+                               "successfully added."
+                               " This product is not currently"
+                               " available to purchase.")
+
+                x = request.POST['friendly_name']
+                des = request.POST['description_source']
+                care_source = request.POST['care_instructions_source']
+                care_url = request.POST['care_instructions_url']
+
+                form_data = {
+                    'plant_category': request.POST['plant_category'],
+                    'name': slugify(x, separator='_'),
+                    'friendly_name': request.POST['friendly_name'],
+                    'latin_name': request.POST['latin_name'],
+                    'description': request.POST['description'],
+                    'description_source': des,
+                    'description_url': request.POST['description_url'],
+                    'image1_source': request.POST['image1_source'],
+                    'image1_source_url': request.POST['image1_source_url'],
+                    'image2_source': request.POST['image2_source'],
+                    'image2_source_url': request.POST['image2_source_url'],
+                    'image3_source': request.POST['image3_source'],
+                    'image3_source_url': request.POST['image3_source_url'],
+                    'pot_size': request.POST['pot_size'],
+                    'height': request.POST['height'],
+                    'price': request.POST['price'],
+                    'stock_quantity': request.POST['stock_quantity'],
+                    'maturity_num': request.POST['maturity_num'],
+                    'maturity_time': request.POST['maturity_time'],
+                    'sunlight': request.POST['sunlight'],
+                    'watering': request.POST['watering'],
+                    'care_required': request.POST['care_required'],
+                    'care_instructions': request.POST['care_instructions'],
+                    'care_instructions_source': care_source,
+                    'care_instructions_url': care_url,
+                    'rare': rare,
+                    'popular': popular,
+                    'average_rating': 0,
+                    'live_on_site': live_on_site
+                }
+
+                # if saving new object
+                if 'save-as-new' in request.POST:
+
+                    # check the name is unique
+                    try:
+                        x = request.POST['friendly_name']
+                        Product.objects.get(
+                            friendly_name=x)
+                        messages.error(
+                            request, (f"'{x}' "
+                                      "already exists:"
+                                      " the name of the plant "
+                                      "must be unique."))
+                        return redirect(reverse('edit_product', args=[id]))
+
+                    # name is unique
+                    except Product.DoesNotExist:
+
+                        form = ProductForm(form_data)
+
+                        if form.is_valid:
+
+                            # form has errors
+                            if form.errors:
+                                errors = json.loads(form.errors.as_json())
+                                keys = list(errors.keys())
+                                values = list(errors.values())
+
+                                for i in keys:
+                                    error_fields.append(i)
+
+                                for i in values:
+                                    error_messages.append(i[0]['message'])
+
+                                messages.error(
+                                            request,
+                                            "The product could not be"
+                                            " added at this time."
+                                            " Please refer to the list of errors."
+                                            )
+                                errors = form.errors.as_json()
+                                form = ProductForm(form_data)
+
+                                return redirect(reverse('edit_product', args=[id]))
+                            
+                            # form does not have errors
+                            else:
+                                form.save()
+                                messages.success(request, message)
+                                latestid = Product.objects.aggregate(
+                                    Max('id'))['id__max']
+                                return redirect(reverse(
+                                    'product_detail',
+                                    args=[latestid]))
+                        
+                        else:
+                            print("errors")
+
+                    return redirect(reverse('products'))
+
+                # editing object
+                else:
+                    form = ProductForm(request.POST, instance=edit_product)
+
+                    if form.is_valid():
+
+                        form.save()
+                        x = (f"{request.POST['friendly_name']}"
+                             " has been edited.")
+                        messages.success(request, x)
+                        return redirect(reverse(
+                                    'product_detail',
+                                    args=[edit_product.id]))
+
+                    else:
+                        errors = json.loads(form.errors.as_json())
+                        keys = list(errors.keys())
+                        values = list(errors.values())
+
+                        for i in keys:
+                            error_fields.append(i)
+
+                        for i in values:
+                            error_messages.append(i[0]['message'])
+
+                        messages.error(
+                                    request,
+                                    "The product could not be"
+                                    " added at this time."
+                                    " Please refer to the list of errors."
+                                    )
+                        errors = form.errors.as_json()
+                        form = ProductForm(form_data)
+
+            context = {
+                    'form': form,
+                    'product': edit_product,
+                    'error_fields': error_fields,
+                    'error_messages': error_messages,
+                }
+            print(context)
+        
+        # product does not exist
         except Product.DoesNotExist:
             return render(request, 'home/404.html')
 
-        form = ProductForm(instance=product)
-
-        if request.method == 'POST':
-            valid_array = []
-            for i in request.POST:
-                if request.POST[i] == "" and i != 'save-as-new':
-                    valid_array.append('false')
-
-            # check this
-            if 'popular' in request.POST:
-                popular = True
-            else:
-                popular = False
-
-            if 'rare' in request.POST:
-                rare = True
-            else:
-                rare = False
-
-            if 'save-as-new' in request.POST:
-
-                try:
-                    x = request.POST['friendly_name']
-                    Product.objects.get(
-                        friendly_name=x)
-                    messages.error(
-                        request, (f"'{x}' "
-                                  "already exists:"
-                                  " the name of the plant "
-                                  "must be unique."))
-                    return redirect(reverse('edit_product', args=[id]))
-
-                except Product.DoesNotExist:
-                    if 'live_on_site' in request.POST:
-                        if len(valid_array) > 0:
-                            messages.error(
-                                request,
-                                ('Cannot add product to'
-                                 ' live website due to'
-                                 ' empty fields.'
-                                 ' Fill in entire'
-                                 ' form or uncheck '
-                                 '"live on site"'))
-                            return redirect(reverse('edit_product', args=[id]))
-
-                    x = request.POST['friendly_name']
-                    des = request.POST['description_source']
-                    care_source = request.POST['care_instructions_source']
-                    care_url = request.POST['care_instructions_url']
-
-                    form_data = {
-                        'plant_category': request.POST['plant_category'],
-                        'name': slugify(x, separator='_'),
-                        'friendly_name': request.POST['friendly_name'],
-                        'latin_name': request.POST['latin_name'],
-                        'description': request.POST['description'],
-                        'description_source': des,
-                        'description_url': request.POST['description_url'],
-                        'image1_source': request.POST['image1_source'],
-                        'image1_source_url': request.POST['image1_source_url'],
-                        'image2_source': request.POST['image2_source'],
-                        'image2_source_url': request.POST['image2_source_url'],
-                        'image3_source': request.POST['image3_source'],
-                        'image3_source_url': request.POST['image3_source_url'],
-                        'pot_size': request.POST['pot_size'],
-                        'height': request.POST['height'],
-                        'price': request.POST['price'],
-                        'stock_quantity': request.POST['stock_quantity'],
-                        'maturity_num': request.POST['maturity_num'],
-                        'maturity_time': request.POST['maturity_time'],
-                        'sunlight': request.POST['sunlight'],
-                        'watering': request.POST['watering'],
-                        'care_required': request.POST['care_required'],
-                        'care_instructions': request.POST['care_instructions'],
-                        'care_instructions_source': care_source,
-                        'care_instructions_url': care_url,
-                        'rare': rare,
-                        'popular': popular,
-                        'average_rating': 0,
-                    }
-                    form = ProductForm(form_data)
-                    if form.is_valid:
-                        form.save()
-                        x = (f"{request.POST['friendly_name']}"
-                             " has been created")
-                        messages.success(request, x)
-                        latestid = Product.objects.aggregate(
-                            Max('id'))['id__max']
-                        return redirect(reverse(
-                            'product_detail',
-                            args=[latestid]))
-                    else:
-                        print("errors")
-
-                return redirect(reverse('products'))
-
-            else:
-                form = ProductForm(request.POST, instance=product)
-
-                if 'live_on_site' in request.POST:
-                    if len(valid_array) > 0:
-                        messages.success(
-                            request,
-                            ('Cannot add product to'
-                             ' live website due to'
-                             ' empty'
-                             ' fields.  Fill in entire'
-                             ' form or uncheck '
-                             '"live on site"'))
-                        return redirect(reverse('edit_product', args=[id]))
-
-                if form.is_valid():
-                    form.save()
-                    x = (f"{request.POST['friendly_name']}"
-                         " has been edited.")
-                    messages.success(request, x)
-                else:
-                    print(form.errors)
-                    print("errors")
-
-                return redirect(reverse('product_detail', args=[id]))
-
-        context = {
-            'form': form,
-            'product': product,
-        }
-
+    # user is not superuser
     else:
         messages.error(
             request,
