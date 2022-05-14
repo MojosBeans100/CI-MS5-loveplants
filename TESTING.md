@@ -638,7 +638,7 @@ The validator used to check validity of HTML code was [W3C](https://validator.w3
 
 |App|Template|Result|Status|
 |---|--------|------|------|
-|Home|[index.html]((https://ms5loveplants.herokuapp.com/))|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652510456/LovePlants/Testing/Validation/home_ebvj6c.jpg)|Pass|
+|Home|[index.html](https://ms5loveplants.herokuapp.com/)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652510456/LovePlants/Testing/Validation/home_ebvj6c.jpg)|Pass|
 |Home|[404.html]()|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468785/LovePlants/Products/404_mfu2gd.jpg)|Pass|
 |Home|[faq.html](https://ms5loveplants.herokuapp.com/faq.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652510456/LovePlants/Testing/Validation/faq_d4wtdq.jpg)|Pass|
 |Home|[care.html](https://ms5loveplants.herokuapp.com/care.html)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/care_iszums.jpg)|Pass|

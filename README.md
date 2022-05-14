@@ -919,6 +919,8 @@ https://support.google.com/webmasters/answer/6062598?hl=en
 [Back to top](#love-plants)
 
 # Marketing
+
+## Primary Marketing Strategies
 The primary marketing techniques used for the Love Plants store were social media marketing (by linking a Facebook page) and email marketing (by providing an email sign-up for subscribing).
 
 1. SEO \
@@ -963,11 +965,11 @@ A number of secret keys will need to be generated in order to run this project.
 
 ## Google emails
 To set up the project to send emails and to use a Google account as an SMTP server, the following steps are required
-1. Create an email account at google.com, login, navigate to Settings in your gmail account and then click on Other Google Account Settings
+1. Create an email account at google.com, login, navigate to Settings and then click on Other Google Account Settings
 2. Turn on 2-step verification and follow the steps to enable
 3. Click on app passwords, select Other as the app and give the password a name, for example Django
 <br>![App password](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652523635/LovePlants/Testing/Validation/gmailapp_spjooj.jpg)
-4. Click create and a 16 digit password will be generated, note the password down
+4. Click create and a 16 digit password will be generated
 5. In the env.py file, create an environment variable called EMAIL_HOST_PASS with the 16 digit password
 6. In the env.py file, create an environment variable called EMAIL_HOST_USER with the email address of the gmail account
 7. Set and confirm the following values in the settings.py file to successfully send emails
@@ -978,13 +980,13 @@ To set up the project to send emails and to use a Google account as an SMTP serv
 <br><code>EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')</code>
 <br><code>EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')</code>
 <br><code>DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')</code>
-8. You will also need to set the variables EMAIL_HOST_PASS and EMAIL_HOST_USER in your production instance, for example Heroku
+8. The variable EMAIL_HOST_PASS and EMAIL_HOST_USER will also need to be set in Heroku
 
 ![Settings](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524271/LovePlants/ReadMe/LovePlants/ReadMe/settingsemail_undwxn.jpg)
 
 ## Cloudinary
 1. Register for a [Cloudinary account](https://cloudinary.com/)
-2. Locate the API Environment variable on the dashboard.
+2. Locate the API Environment variable on the dashboard
 3. Install Cloudinary Libraries 
 <br><code>pip3 install dj3-cloudinary-storage</code>
 4. Freeze requirements 
@@ -998,11 +1000,11 @@ To set up the project to send emails and to use a Google account as an SMTP serv
 
 ## Stripe
 1. Register for an account at stripe.com
-2. Click on the Developers section of your account once logged in
+2. Click on the Developers section once logged in
 3. Under Developers, click on the API keys section
 <br>![API keys](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524761/LovePlants/ReadMe/LovePlants/ReadMe/stripeapikeys_ssxsn3.jpg)
 4. Note the values for the publishable and secret keys
-5. In your local environment(env.py) and heroku, create environment variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY with the publishable and secret key values
+5. In the local environment(env.py) and heroku, create environment variables STRIPE_PUBLIC_KEY and STRIPE_SECRET_KEY with the publishable and secret key values
 <br><code>os.environ.setdefault('STRIPE_PUBLIC_KEY', 'YOUR_VALUE_GOES_HERE')</code>
 <br><code>os.environ.setdefault('STRIPE_SECRET_KEY', 'YOUR_VALUE_GOES_HERE')</code>
 6. Back in the Developers section of your Stripe account click on Webhooks
@@ -1010,7 +1012,7 @@ To set up the project to send emails and to use a Google account as an SMTP serv
 8. Select the payment_intent.payment_failed and payment_intent.succeeded as events to send
 <br>![Webhook](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652524817/LovePlants/ReadMe/LovePlants/ReadMe/stripwebhooks_ezb1gq.jpg)
 9. Note the key created for this webhook
-10. In your local environment(env.py) and heroku, create environment variable STRIPE_WH_SECRET with the secret values
+10. In the local environment(env.py) and Heroku, create environment variable STRIPE_WH_SECRET with the secret values
 <code>os.environ.setdefault('STRIPE_WH_SECRET', 'YOUR_VALUE_GOES_HERE')</code>
 11. Test out the webhook and note the success/fail attempts for troubleshooting
 
