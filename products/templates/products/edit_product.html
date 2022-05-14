@@ -34,16 +34,11 @@
                             <div class="col">
                                 {{form.rare.label}} <i class="fa-solid fa-gem"></i>
                                 {{form.rare}}
-                                <!-- <input type="checkbox" name="rare" value="true" id="{{form.rare.id_for_label}}"><br>
-                                {{form.rare.label}} <i class="fa-solid fa-gem"></i> -->
                             </div>
 
                             <div class="col">
                                 {{form.popular.label}} <i class="fa-solid fa-bolt-lightning"></i>
                                 {{form.popular}}
-                                <!-- <input type="checkbox" name="popular" value="true"
-                                    id="{{form.popular.id_for_label}}"><br>
-                                {{form.popular.label}} <i class="fa-solid fa-bolt-lightning"></i> -->
                             </div>
                         </div>
                     </fieldset>
@@ -136,9 +131,6 @@
                         <i class="pe-3 pb-3 fa-solid fa-ruler-vertical"></i> {{form.height.label}}
                         {{form.height}}
 
-                        <!-- {{form.length.label}}
-                        {{form.length}} -->
-
                         <div class="row">
                             <div class="col">
                                 <i class="pe-3 pb-3 fa-solid fa-seedling"></i> {{form.maturity_num.label}}
@@ -161,19 +153,19 @@
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.1.id_for_label}}"><i class="fa-solid fa-cloud"></i><br>
-                                    <em>1 - 2 hours</em></label>
+                                    1 - 2 hours</label>
                                 {{form.sunlight.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.2.id_for_label}}"><i class="fa-solid fa-cloud-sun"></i><br>
-                                    <em>4 - 7 hours</em></label>
+                                    4 - 7 hours</label>
                                 {{form.sunlight.2.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-sun" onclick="boldSelection(this);"
                                     for="{{form.sunlight.3.id_for_label}}"><i class="fa-solid fa-sun"></i><br>
-                                    <em>8 - 10 hours</em></label>
+                                    8 - 10 hours</label>
                                 {{form.sunlight.3.tag}}
                             </div>
                         </div>
@@ -185,20 +177,20 @@
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.1.id_for_label}}"><i class="fa-solid fa-droplet-slash"></i><br>
-                                    <em>water monthly</em></label>
+                                   water monthly</label>
                                 {{form.watering.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.2.id_for_label}}"><i class="fa-solid fa-droplet"></i><br>
-                                    <em>water weekly</em></label>
+                                    water weekly</label>
                                 {{form.watering.2.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-water" onclick="boldSelection(this);"
                                     for="{{form.watering.3.id_for_label}}"><i class="fa-solid fa-droplet"></i><i
                                         class="fa-solid fa-droplet"></i><br>
-                                    <em>water daily</em></label>
+                                    water daily</label>
                                 {{form.watering.3.tag}}
                             </div>
                         </div>
@@ -210,7 +202,7 @@
                             <div class="col d-flex justify-content-center">
                                 <label class="plant-care" onclick="boldSelection(this);"
                                     for="{{form.care_required.1.id_for_label}}"><i class="fa-solid fa-heart"></i><br>
-                                    <em>can stand a little neglect</em></label>
+                                    can stand a little neglect</label>
                                 {{form.care_required.1.tag}}
                             </div>
                             <div class="col d-flex justify-content-center">
@@ -218,7 +210,7 @@
                                     for="{{form.care_required.2.id_for_label}}">
                                     <i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i
                                         class="fa-solid fa-heart"></i>
-                                    <br><em>requires frequent care</em>
+                                    <br>requires frequent care
                                 </label>
                                 {{form.care_required.2.tag}}
                             </div>

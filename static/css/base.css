@@ -43,7 +43,7 @@ a:hover {
 #mc_embed_signup {
     background: #fff;
     clear: left;
-  }
+}
 
 /* -------- BUTTONS -------- */
 button {
@@ -121,6 +121,11 @@ button {
 #nav-image {
     width: 60px;
     height: 60px;
+}
+
+.navbar-collapse {
+    width: 370px;
+    z-index: 999;
 }
 
 #navbar-main h2 {
@@ -376,7 +381,7 @@ input[type=checkbox]:checked {
     display: none;
 }
 
-.review-td{
+.review-td {
     padding-left: 5px !important;
     padding-right: 5px !important;
 }
@@ -595,6 +600,12 @@ https://www.w3schools.com/howto/howto_css_overlay.asp */
 @media (min-width: 576px) {
     .margin {
         margin-top: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-collapse {
+        width: 50px;
     }
 }
 
