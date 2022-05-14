@@ -20,6 +20,7 @@ class TestProductsView(TestCase):
 
         product1 = Product.objects.create(
             name='test_product',
+            plant_category='Potted',
             friendly_name='Test product',
             latin_name='test_latin_name',
             description='description',
@@ -36,7 +37,6 @@ class TestProductsView(TestCase):
             stock_quantity=5,
             pot_size=10,
             height=10,
-            length=10,
             maturity_num=2,
             maturity_time='months',
             sunlight='med',
@@ -53,6 +53,7 @@ class TestProductsView(TestCase):
 
         product2 = Product.objects.create(
             name='test2_product',
+            plant_category='Potted',
             friendly_name='Test2 product',
             latin_name='test_latin_name',
             description='description',
@@ -69,7 +70,6 @@ class TestProductsView(TestCase):
             stock_quantity=5,
             pot_size=10,
             height=10,
-            length=10,
             maturity_num=2,
             maturity_time='months',
             sunlight='med',
@@ -129,6 +129,7 @@ class TestProductDetailViews(TestCase):
         product1 = Product.objects.create(
             name='test_product',
             friendly_name='Test product',
+            plant_category='Potted',
             latin_name='test_latin_name',
             description='description',
             description_source='description source',
@@ -144,7 +145,6 @@ class TestProductDetailViews(TestCase):
             stock_quantity=5,
             pot_size=10,
             height=10,
-            length=10,
             maturity_num=2,
             maturity_time='months',
             sunlight='med',
@@ -163,6 +163,7 @@ class TestProductDetailViews(TestCase):
             name='test2_product',
             friendly_name='Test2 product',
             latin_name='test_latin_name',
+            plant_category='Potted',
             description='description',
             description_source='description source',
             description_url='description.com',
@@ -177,7 +178,6 @@ class TestProductDetailViews(TestCase):
             stock_quantity=5,
             pot_size=10,
             height=10,
-            length=10,
             maturity_num=2,
             maturity_time='months',
             sunlight='med',
@@ -195,6 +195,7 @@ class TestProductDetailViews(TestCase):
         product3 = Product.objects.create(
             name='test2_product',
             friendly_name='Test3 product',
+            plant_category='Potted',
             latin_name='test_latin_name',
             description='description',
             description_source='description source',
@@ -210,7 +211,6 @@ class TestProductDetailViews(TestCase):
             stock_quantity=5,
             pot_size=10,
             height=10,
-            length=10,
             maturity_num=2,
             maturity_time='months',
             sunlight='med',
@@ -404,12 +404,46 @@ class TestProductLikeView(TestCase):
 
         product1 = Product.objects.create(
             friendly_name='Test4 product',
+            plant_category='Potted',
             price=20.00,
+            pot_size=5,
+            sale_price=0,
+            stock_quantity=5,
+            height=10,
+            maturity_num=2,
+            maturity_time='months',
+            sunlight='med',
+            watering='med',
+            care_required='high',
+            care_instructions='care instruct',
+            care_instructions_source='care source',
+            care_instructions_url='care.com',
+            rare=False,
+            popular=False,
+            live_on_site=False,
+            average_rating=0
         )
 
         product2 = Product.objects.create(
             friendly_name='Test5 product',
             price=25.00,
+            plant_category='Potted',
+            pot_size=5,
+            sale_price=0,
+            stock_quantity=5,
+            height=10,
+            maturity_num=2,
+            maturity_time='months',
+            sunlight='med',
+            watering='med',
+            care_required='high',
+            care_instructions='care instruct',
+            care_instructions_source='care source',
+            care_instructions_url='care.com',
+            rare=False,
+            popular=False,
+            live_on_site=False,
+            average_rating=0
         )
 
         productreview1 = ProductReview.objects.create(
@@ -475,6 +509,23 @@ class TestProductReview(TestCase):
         product = Product.objects.create(
             friendly_name='Test4 product',
             price=20.00,
+            plant_category='Potted',
+            pot_size=5,
+            sale_price=0,
+            stock_quantity=5,
+            height=10,
+            maturity_num=2,
+            maturity_time='months',
+            sunlight='med',
+            watering='med',
+            care_required='high',
+            care_instructions='care instruct',
+            care_instructions_source='care source',
+            care_instructions_url='care.com',
+            rare=False,
+            popular=False,
+            live_on_site=False,
+            average_rating=0
         )
 
     def test_product_review_posted(self):
@@ -588,7 +639,33 @@ class TestAdminAddProduct(TestCase):
         data = {
             'friendly_name': 'Purple Socks',
             'description': 'Cool plant',
-            'price': 20,
+            'plant_category': 'Potted',
+            'latin_name': 'latin name',
+            'description': 'text',
+            'description_source': 'text',
+            'description_url': 'url.com',
+            'image1_source': 'text',
+            'image1_source_url': 'url.com',
+            'image2_source': 'text',
+            'image2_source_url': 'url.com',
+            'image3_source': 'text',
+            'image3_source_url': 'url.com',
+            'pot_size': 10,
+            'height': 10,
+            'price': 10,
+            'stock_quantity': 10,
+            'maturity_num': 10,
+            'maturity_time': 'months',
+            'sunlight': 'low',
+            'watering': 'low',
+            'care_required': 'can stand a little neglect',
+            'care_instructions': 'text',
+            'care_instructions_source': 'text',
+            'care_instructions_url': 'url.com',
+            'rare': True,
+            'popular': True,
+            'live_on_site': False,
+            'average_rating': 0,
             'save-form': True
             }
 
@@ -596,8 +673,9 @@ class TestAdminAddProduct(TestCase):
         saved_product = Product.objects.get()
 
         self.assertEqual(saved_product.friendly_name, 'Purple Socks')
-        self.assertEqual(saved_product.live_on_site, False)
-        self.assertRedirects(response, '/products/products.html')
+        self.assertRedirects(
+            response,
+            f'/products/product_detail/{saved_product.id}')
 
 
 class TestAdminDeleteProduct(TestCase):
@@ -619,6 +697,23 @@ class TestAdminDeleteProduct(TestCase):
         product = Product.objects.create(
             friendly_name='To be deleted',
             price=10,
+            plant_category='Potted',
+            pot_size=5,
+            sale_price=0,
+            stock_quantity=5,
+            height=10,
+            maturity_num=2,
+            maturity_time='months',
+            sunlight='med',
+            watering='med',
+            care_required='high',
+            care_instructions='care instruct',
+            care_instructions_source='care source',
+            care_instructions_url='care.com',
+            rare=False,
+            popular=False,
+            live_on_site=False,
+            average_rating=0
         )
 
     def test_non_admins_cannot_delete_products(self):

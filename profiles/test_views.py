@@ -162,11 +162,27 @@ class TestLikedProducts(TestCase):
         product1 = Product.objects.create(
             friendly_name='Product1',
             price=10,
+            plant_category='Potted',
+            pot_size=10,
+            height=10,
+            maturity_num=2,
+            maturity_time='weeks',
+            sunlight='low',
+            watering='low',
+            care_required='requires frequent care'
         )
 
         product2 = Product.objects.create(
             friendly_name='Product2',
             price=100,
+            plant_category='Potted',
+            pot_size=10,
+            height=10,
+            maturity_num=2,
+            maturity_time='weeks',
+            sunlight='low',
+            watering='low',
+            care_required='requires frequent care'
         )
 
         product_review1 = ProductReview.objects.create(
