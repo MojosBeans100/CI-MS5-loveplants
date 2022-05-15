@@ -194,23 +194,6 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
 
-class RecentlyViewed(models.Model):
-    """
-    A models to allow users to see what they've recently viewed
-    """
-    product = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE
-        )
-
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE
-        )
-
-    viewed = models.DateTimeField()
-
-
 class ProductReview(models.Model):
     """
     A model to allow users to leave a review for a product

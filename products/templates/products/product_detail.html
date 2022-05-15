@@ -170,28 +170,28 @@
                     </div>
 
                     <div class="col-12">
-                        {% if product.stock == "out of stock" %}
-                        <input class="text-center" disabled type="number" min=0 max=4>
-                        <button type="button" disabled class="btn btn-outline-secondary">Add to basket </button>
-
-                        {% else %}
                         <!-- add product to bag -->
                         <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                             {% csrf_token %}
                             <div class="row px-2">
                                 <div class="col col-sm-6 d-flex justify-content-end justify-content-sm-center">
                                     <input class="qty_input text-center border border-dark" type="number" min=1
-                                        max={{product.stock_quantity}}
-                                        oninvalid="setCustomValidity('Not enough items in stock!')" value=1
+                                        max={{product.stock_quantity}} value=1
                                         name="quantity">
                                 </div>
+                                {% if product.live_on_site %}
                                 <div class="col col-sm-6 d-flex justify-content-start justify-content-sm-center">
                                     <input id="add-to-bag" type="submit" class="text-center" value="Add to bag">
                                 </div>
+                                {% else %}
+                                <div class="col col-sm-6 d-flex justify-content-start justify-content-sm-center">
+                                    <input id="add-to-bag-disabled" type="submit" class="text-center" value="Add to bag" disabled>
+                                </div>
+                                {% endif %}
                             </div>
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </form>
-                        {% endif %}
+                       
                     </div>
                     {% for item in bag_items %}
                     {% if item.product.friendly_name == product.friendly_name %}

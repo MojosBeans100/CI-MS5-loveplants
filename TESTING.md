@@ -1,5 +1,5 @@
 
-## Table of contents
+# Table of contents
 - [Manual Testing](#manual-testing)
   - [Overview of manual testing](#overview-of-manual-testing)
   - [User Story 1 Testing](#user-story-1-testing)
@@ -9,6 +9,7 @@
     - [1.4](#14)
     - [1.5](#15)
     - [1.6](#16)
+    - [1.7](#17)
   - [User Story 2 Testing](#user-story-2-testing)
     - [2.1](#21)
     - [2.2](#22)
@@ -16,6 +17,7 @@
     - [2.4](#24)
     - [2.5](#25)
     - [2.6](#26)
+    - [2.7](#27)
   - [User Story 3 Testing](#user-story-3-testing)
     - [3.1](#31)
     - [3.2](#32)
@@ -33,19 +35,25 @@
     - [5.1](#51)
     - [5.2](#52)
     - [5.3](#53)
+    - [5.4](#54)
   - [User Story 6 Testing](#user-story-6-testing)
     - [6.1](#61)
     - [6.2](#62)
     - [6.3](#63)
     - [6.4](#64)
     - [6.5](#65)
+    - [6.6](#66)
     - [6.7](#67)
-  - [Automated Testing](#automated-testing)
-    - [Coverage Report](#coverage-report)
-  - [Validation](#validation)
-    - [CSS](#css)
-    - [HTML](#html)
-    - [Javascript](#javascript)
+- [Automated Testing](#automated-testing)
+  - [Automated Testing Strategy](#automated-testing-strategy)
+  - [Coverage Report](#coverage-report)
+- [Validation](#validation)
+  - [CSS](#css)
+  - [HTML](#html)
+  - [Javascript](#javascript)
+  - [Python](#python)
+- [SEO Testing](#seo-testing)
+  - [Mobile Friendly](#mobile-friendly)
 
 # Manual Testing
 
@@ -101,7 +109,7 @@ As a **site user** I can **navigate to a page which details my personal informat
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
 |upon navigating to the users profile, their identifying and account info is displayed|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/desktop1_cymipd.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/tablet1_dxupzx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651240664/LovePlants/Testing/US1/mobile1_ebhzgp.jpg)|Pass|
-|non authenticated users are redirected to the home page when attempted to navigated to the profile page via the URL|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651244363/LovePlants/Testing/US1/US%201.3/desktopurl_q32r22.jpg)|N/A|N/A|Pass|
+|non authenticated users are redirected to the home page when attempting to navigated to the profile page via the URL|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651244363/LovePlants/Testing/US1/US%201.3/desktopurl_q32r22.jpg)|N/A|N/A|Pass|
 
 Acceptance Criteria:
 - [x] Users are aware how to reach the page for their personal account
@@ -138,7 +146,7 @@ Acceptance Criteria:
 - [x] Users are immediately aware when their details have been changed
 
 ### 1.6
-As a **site user** I can **delete my account when I no longer need it** so that **I am removed from the LovePlants website**
+As a **site user** I can **delete my account when I no longer need it** so that **I am removed from the Love Plants website**
 
 As User Story 6 was not completed, it was not tested. 
 
@@ -414,13 +422,13 @@ As a **site user** I can **see confirmation that the order has been successful**
 |a loading screen is displayed when the order has been submitted|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/desktop_yqyx3x.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/tablet_hmjipb.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651600558/LovePlants/Testing/US%204/4.5/mobile_xu7hmh.jpg)|Pass|
 |the user can see their order details on the confirmation page|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop5_p41mil.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/desktop6_bh5qmt.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet5_z3mgay.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/tablet6_rnhjsc.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590701/LovePlants/Testing/US%204/4.4/mobile5_ao2gj3.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651590816/LovePlants/Testing/US%204/4.4/mobile2_zdi3c0.jpg)|Pass|
 |users receive a confirmation email that the order has been successful|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652462120/LovePlants/Testing/US%204/4.5/email_v6nspb.jpg)|""|""|Pass|
-||[Desktop]()|[Tablet]()|[Mobile]()|Pass|
+|users are redirected to their bag in the checkout was unsuccessful|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652590302/LovePlants/Testing/US%204/4.5/desktop1_sxznin.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652591074/LovePlants/Testing/US%204/4.5/desktop2_swas64.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652590302/LovePlants/Testing/US%204/4.5/tablet1_exhhzh.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652591074/LovePlants/Testing/US%204/4.5/tablet2_tbilrh.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652590302/LovePlants/Testing/US%204/4.5/mobile1_maay6p.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652591074/LovePlants/Testing/US%204/4.5/mobile2_gbtxkj.jpg)|Pass|
 
 Acceptance Criteria:
 - [x] User sees a loading screen for confirmation that their order is being processed
-- [X] Users received a confirmation email
+- [X] Users receive a confirmation email
 - [x] User is directed to a confirmation page upon successful checkout, rendering relevant details
-- User is aware if and why their checkout was not successful
+- [x] User is aware if and why their checkout was not successful
 
 ## User Story 5 Testing
 User Story 5 refers to features which allow users to leave a review and rating for products.
@@ -597,9 +605,9 @@ Acceptance Criteria:
 - [x] Non-admin users cannot access admin pages or content
 - [x] Non-admin users are provided a link back to the homepage
 
-## Automated Testing
+# Automated Testing
 
-### Automated Testing Strategy
+## Automated Testing Strategy
 Automated testing was carried out using [Django Unit Tests](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/unit-tests/). The local sqlite database was used to develop and perform automated testing.
 
 Example of product views test: \
@@ -609,7 +617,7 @@ Example of product views test: \
 Running tests: \
 ![Auto tests](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552299/LovePlants/Testing/Validation/SEO/autotest1_icu52c.jpg)
 
-### Coverage Report
+## Coverage Report
 [Coverage.py](https://coverage.readthedocs.io/en/latest/index.html) was used to generate a coverage report, to determine the coverage percentage of automated testing, which was 72%.  Although coverage is not 100%, extensive manual testing was carried out to ensure functionality of the website. 
 
 ![Coverage Report 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552299/LovePlants/Testing/Validation/SEO/autotest4_brhzol.jpg)
@@ -617,10 +625,10 @@ Running tests: \
 ![Coverage Report 3](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552300/LovePlants/Testing/Validation/SEO/autotest6_xw3sz1.jpg)
 ![Coverage Report 4](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652552300/LovePlants/Testing/Validation/SEO/autotest7_yesmmo.jpg)
 
-## Validation
+# Validation
 All files were checked for format validation.
 
-### CSS
+## CSS
 The validator used to check validity of CSS code was [W3 Jigsaw](https://jigsaw.w3.org/css-validator/).
 
 |File|Result|Status|
@@ -633,7 +641,7 @@ There were [20 warnings](https://res.cloudinary.com/code-institute-mojos-beans/i
 - 98 and 305 (warning level 1) are warning the developer that the button background color and borders are the same.  This was a deliberate styling effect to remove the 3D effect from the default button styling
 - 189, 190, 191 and 193 are vendor extensions and thus not validated by the service. 
 
-### HTML
+## HTML
 The validator used to check validity of HTML code was [W3C](https://validator.w3.org/).
 
 |App|Template|Result|Status|
@@ -655,7 +663,7 @@ The validator used to check validity of HTML code was [W3C](https://validator.w3
 |Checkout|[checkout_success.html](https://ms5loveplants.herokuapp.com/checkout/checkout_success/68BBAC77C11840F19480D519A54511A9)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/checkout_success_edrr6t.jpg)|Pass|
 |Bag|[bag.html](https://ms5loveplants.herokuapp.com/bag/)|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652468623/LovePlants/Products/bag_nmhhhg.jpg)|Pass|
 
-### Javascript
+## Javascript
 The validator used to check validity of Javascript code was [JSHINT](https://jshint.com/).
 
 |App|Template|Result|Status|
@@ -680,7 +688,7 @@ The validator used to check validity of Javascript code was [JSHINT](https://jsh
 
 *Unused variables in the above images refer to functions which have been called from the HTML code, which was not input into JSHINT
 
-### Python
+## Python
 The validator used to check validity of Python code was [PEP8](http://pep8online.com/).
 
 |App|Template|Result|Status|
@@ -713,9 +721,9 @@ The validator used to check validity of Python code was [PEP8](http://pep8online
 |Checkout|webhook_handler.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652102042/LovePlants/Testing/Validation/checkout_whhandlers_sd3idj.jpg)|Pass|
 |Checkout|models.py|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652533621/LovePlants/Testing/Validation/checkout_models_r0lbco.jpg)|Pass|
 
-## SEO Testing
+# SEO Testing
 
-### Mobile Friendly
+## Mobile Friendly
 The site was further tested to ensure it was mobile friendly using [Google Mobile-Friendly](https://search.google.com/test/mobile-friendly).
 
 |App|Template|Result|Status|

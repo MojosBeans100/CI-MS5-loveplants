@@ -6,11 +6,7 @@ from django.contrib import admin
 # Import local
 from .models import (
                 Product,
-                RecentlyViewed,
                 ProductReview)
-
-
-admin.site.register(RecentlyViewed)
 
 
 @admin.register(ProductReview)

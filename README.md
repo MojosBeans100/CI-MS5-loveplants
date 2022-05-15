@@ -1142,13 +1142,21 @@ Possible solutions to this are:
 ## Stock Quantity
 Love Plants does not have an unlimited supply of plants, therefore each Product has a stock quantity associated with it. This number is reduced upon successful purchase of a product; for example, if there are 5 cactus plants in stock, and a user purchases 2, the stock quantity is reduced to 3.  Users cannot add more than the stock quantity to their bag, so a user would not be able to add 10 cactus plants to their bag.
 
-One downside to this is that if multiple users were on the site at the same time viewing the same product, between them they could technically add more than the total stock quantity to their bags.  One user could have 4 cactus plants in their bag at the same time as another user having 5 cactus plants in their bag. Or a user could add 1 cactus plant, then add another, and another etc, until they have added more items than are in stock. 
+One downside to this is that if multiple users were on the site at the same time viewing the same product, between them they could technically add more than the total stock quantity to their bags.  One user could have 4 cactus plants in their bag at the same time as another user has 5 cactus plants in their bag. Or a user could add 1 cactus plant, then add another, and another etc, until they have added more items than are in stock. 
 
-More defensive coding would be required to ensure this could not happen; for example, the stock quantity could be reduced in the 'bag' view as opposed to the 'checkout' view.  This would then need to be adjusted again if the bag session was deleted but the item was not purchased (ie a user added the item to their bag, but did not purchase it before leaving the site).
+More defensive coding would be required to ensure this could not happen; for example, the stock quantity could be reduced in the 'bag' view as opposed to the 'checkout' view.  This would then need to be adjusted again if the bag session was deleted but the item was not purchased (ie a user added the item to their bag, but did not purchase it before leaving the site).  A possible solution to this is to increase each product's stock quantity by the quantity in their bag if the session has been deleted but checkout not carried out - a solution which would presumable require creating a custom method for 'on delete' of request.sessions. 
 
 This would introduce another common feature typically seen on an e-commerce site, where users can see a 'This item is no longer in stock' message in their bag view and they would have to delete the item from their bag.
 
 Admin users can see if an item is low on stock (quantity < 10), out of stock (quantity = 0), and they can increase the stock on the edit product page where more items become available. 
+
+## Sale Price
+There is a sale_price field included in the Products model, whereby admin users can put the item on sale.  On some pages on the website products are sorted by price: for example, sorting on the products page, or the product list on the bag page to increase bag total to gain free delivery.  These lists are all sorted by 'price', the original item price, whereas in reality these lists should be sorted by 'price' if the item is not on sale and 'sale_price' if the item is on sale, creating a custom queryset.
+
+## Recently Viewed
+The Products App featured a model called RecentlyViewed, which was a Foreign Key to the Product model and contained a timestamp of when a user viewed a product's detail page.  This was used to render out a list of 'recently viewed' products (limited to 4 products) to the user on the product detail page where the other suggested products are, a feature many e-commerce websites include. 
+
+This was deleted before deployment, as the model appeared to create a lag in loading the product detail page.
 
 [Back to top](#love-plants)
 

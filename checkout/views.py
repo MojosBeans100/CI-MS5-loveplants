@@ -76,13 +76,20 @@ def view_checkout(request):
                 order.save()
 
                 for item_id, quantity in bag.items():
-                    product = Product.objects.get(id=item_id)
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=quantity,
-                    )
-                    order_line_item.save()
+                    try:
+                        product = Product.objects.get(id=item_id)
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=quantity,
+                        )
+                        order_line_item.save()
+                    except:
+                        messages.error(request,
+                                       ("One of the items in your"
+                                        " bag could not be found."
+                                        " The order was not completed."))
+                        return redirect(reverse('view_checkout'))
 
                 request.session['save_info'] = 'save_info' in request.POST
                 return redirect(reverse(
@@ -91,7 +98,9 @@ def view_checkout(request):
 
             else:
                 messages.error(request, ("There is an error in the payment "
-                                         "form.  Please check all values."))
+                                         "form.  Please check all values."
+                                         " The order was not completed."))
+                return redirect(reverse('view_checkout'))
 
         else:
             bag = request.session.get('bag', {})

@@ -96,7 +96,6 @@ def all_products(request):
             all_products = all_products.filter(
                 care_required='can stand a little neglect')
 
-        # sale price
         if 'price' in request.GET:
             price = request.GET['price'].split(',')
             if len(price) > 1:
