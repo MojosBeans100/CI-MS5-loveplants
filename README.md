@@ -204,6 +204,14 @@ As users have significant interaction with the site, feedback on their actions w
 - **notifications** on notable actions, such as adding a product to their basket.  This was achieved with Bootstrap 'toasts'
 - **possible actions** available to them with links and buttons, namely to navigate around the site
 
+Feedback on field inputs: \
+![Feedback 1](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652596841/LovePlants/Testing/US%206/6.2/feedback_ucj0ah.png)
+
+![Feedback 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652596982/LovePlants/Testing/US%203/3.1/feedback2_ge0mee.png)
+
+Feedback on actions: \
+![Feedback 2](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651414942/LovePlants/Testing/US%203/3.1/mobile1_w3mh7l.jpg)
+
 [Back to top](#love-plants)
 
 ### Information Architecture

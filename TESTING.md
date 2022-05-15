@@ -500,8 +500,6 @@ As a **site admin** I can **edit information about products, such as price, quan
 |admin users can see a notification that the form was submitted|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/desktop6_nndsuk.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916791/LovePlants/Testing/US%206/6.1/tablet6_oyhdkx.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/mobile6_gcbemt.jpg)|Pass|
 |admin users can see if the form was not submitted because of an error*|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917567/LovePlants/Testing/US%206/6.1/desktop8_c7t8cg.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916790/LovePlants/Testing/US%206/6.1/desktop7_okis0n.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917565/LovePlants/Testing/US%206/6.1/tablet8_z9bplm.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916791/LovePlants/Testing/US%206/6.1/tablet7_aszbsc.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651917567/LovePlants/Testing/US%206/6.1/mobile8_plw6nu.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651916789/LovePlants/Testing/US%206/6.1/mobile7_f1t8yk.jpg)|Pass|
 
-*if the product is live on the website, all fields must be filled in.  Therefore the edit form will be invalid if a field is missing.  If the product is not live on the website, the form can be submitted with missing fields. 
-
 Acceptance Criteria:
 - [x] Admin users can see an 'Edit product' button at the top of the product detail page
 - [x] Admin users can adjust details as needed on the edit form
@@ -510,7 +508,7 @@ Acceptance Criteria:
 - [x] Admin users are aware if there is an issue with the changes they made
 
 ### 6.2
-As a **site admin** I can **add products to the LovePlants store** so that **site users can view and buy new products**
+As a **site admin** I can **add products to the Love Plants store** so that **site users can view and buy new products**
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
@@ -519,7 +517,7 @@ As a **site admin** I can **add products to the LovePlants store** so that **sit
 |admin users can see placeholders and descriptions for form fields|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922109/LovePlants/Testing/US%206/6.2/desktop3_r97wzm.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet3_qlfeos.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/mobile3_k9ngap.jpg)|Pass|
 |admin users can fill in the product form|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/desktop4_uaosuo.jpg) [Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922110/LovePlants/Testing/US%206/6.2/desktop5_v3obrn.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet4_om25r0.jpg) [Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet5_kellat.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922111/LovePlants/Testing/US%206/6.2/mobile4_ynvzeb.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922111/LovePlants/Testing/US%206/6.2/mobile5_rrfcyv.jpg)|Pass|
 |admin users can submit the form and add the product to the site|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/desktop6_hr3qja.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922112/LovePlants/Testing/US%206/6.2/tablet6_ked3rl.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651922111/LovePlants/Testing/US%206/6.2/mobile6_ggu3ev.jpg)|Pass|
-||[Desktop]() [Desktop]()|[Tablet]() [Tablet]()|[Mobile]() [Mobile]()|Pass|
+|admin users can see if there was an issue in the form|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652593131/LovePlants/Testing/US%206/6.2/desktop7_rhonma.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652593131/LovePlants/Testing/US%206/6.2/tablet7_tozba1.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652593131/LovePlants/Testing/US%206/6.2/mobile7_mucqqk.jpg)|Pass|
 
 Acceptance Criteria:
 - [x] Admin users can click 'Add Product' on the products page
@@ -527,7 +525,7 @@ Acceptance Criteria:
 - [x] Admin users can see placeholders or descriptions so they are aware what the form field represents
 - [x] Admin users can fill in Add Product form
 - [x] Admin users can submit the form
-- Admin users are aware if there is an issue with the form they submitted
+- [x] Admin users are aware if there is an issue with the form they submitted
 
 ### 6.3
 As a **site admin** I can **apply a discount to any/all products** so that **LovePlants can sell off old stock, or promote product for special calendar days**
