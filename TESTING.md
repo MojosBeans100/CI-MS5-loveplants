@@ -230,7 +230,6 @@ As a **site user** I can **view the specific details of a product** so that **I 
 
 |Criteria|Desktop|Tablet|Mobile|Status|
 |-----------|-------|------|------|------|
-|users can click on any product which will direct them to the detail page.  Upon hover, a second image is displayed|||||
 |upon navigating to the product detail, the user can see the name, category, price and images of the product|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/desktop1_zln4j8.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/tablet1_sl43ri.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410245/LovePlants/Testing/US%202/2.5/mobile1_ujfz0e.jpg) [Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/mobile2_wfb6kn.jpg)|Pass|
 |images can be clicked to reveal a larger size|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651412029/LovePlants/Testing/US%202/2.5/desktop3_wjwtf0.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651412029/LovePlants/Testing/US%202/2.5/tablet3_osoh7r.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651412029/LovePlants/Testing/US%202/2.5/mobile4_cw8jls.jpg)|Pass|
 |the care instructions are provided|[Desktop](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/desktop2_aqt5rf.jpg)|[Tablet](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/tablet1_sl43ri.jpg)|[Mobile](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1651410246/LovePlants/Testing/US%202/2.5/mobile3_o1ozn7.jpg)|Pass|
@@ -666,22 +665,13 @@ The validator used to check validity of Javascript code was [JSHINT](https://jsh
 
 |App|Template|Result|Status|
 |---|--------|------|------|
-|-|base.html|-|-|
-|Home|index.html|-|-|
-|Home|care.html|-|-|
-|Home|404.html|-|-|
-|Home|faq.html|-|-|
-|Home|privacy_policy.html|-|-|
-|Home|terms_and_conditions.html|-|-|
 |Products|products.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/products_uujfto.jpg)|Pass|
 |Products|product_detail.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/product_detail_fbgpun.jpg)|Pass|
 |Products|add_product.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/add_product_kovsu5.jpg)|Pass|
 |Products|edit_product.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/edit_product_frfok9.jpg)|Pass|
 |Products|create_sale.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652533149/LovePlants/Testing/Validation/JSHINT/createsale_lupfib.jpg)|Pass|
-|Profile|liked.html|-|-|
 |Profile|profile.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532460/LovePlants/Testing/Validation/JSHINT/profile_w83vii.jpg)|Pass|
 |Checkout|checkout.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/checkout_sl9dcp.jpg)|Pass|
-|Checkout|checkout_success.html|-|-|
 |Bag|bag.html|[Validation](https://res.cloudinary.com/code-institute-mojos-beans/image/upload/v1652532263/LovePlants/Testing/Validation/JSHINT/bag_idtizi.jpg)|Pass|
 
 *Unused variables in the above images refer to functions which have been called from the HTML code, which was not input into JSHINT
