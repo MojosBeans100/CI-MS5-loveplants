@@ -10,7 +10,7 @@ if os.path.isfile('env.py'):
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['ms5loveplants.herokuapp.com', 'localhost']
 
 INSTALLED_APPS = [
@@ -88,13 +88,6 @@ WSGI_APPLICATION = 'loveplants.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
